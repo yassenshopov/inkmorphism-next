@@ -1,21 +1,25 @@
 import { HelmetProvider } from 'react-helmet-async';
 import app from '../firebase/clientApp';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs, doc, setDoc } from 'firebase/firestore/lite';
 
-function Editor() {
+function Editor(props) {
 
   // FIREBASE FIRESTORE DB CODE:
 
   let db = getFirestore(app);
-  async function getTheData(db) {
+  async function getTheData(db, savedData) {
     const col = collection(db, "websites");
-    const dbData = await getDocs(col);
-    const dbRenderedData = dbData.docs.map(doc => doc.data());
-    console.log(dbData.docs)
+    // const dbData = await getDocs(col);
+    // const dbRenderedData = dbData.docs.map(doc => doc.data());
+    // console.log(dbData.docs)
+
+    console.log(props['name'])
+
+    await setDoc(doc(col, props['name']), savedData)
   }
 
-  getTheData(db)
+  // getTheData(db)
 
   // END OF DB CODE
 
@@ -52,9 +56,7 @@ function Editor() {
 
   for (const key in defaults) {
     try {
-      // console.log(key)
       let element = document.getElementsByClassName(key)[0];
-      // savedData[key] = element.innerHTML;
       element.contentEditable = true;
       element.spellcheck = false;
     } catch(err) {
@@ -65,7 +67,6 @@ function Editor() {
   function saveNewData() {
     for (const key in defaults) {
       try {
-        // console.log(key)
         let element = document.getElementsByClassName(key)[0];
         savedData[key] = element.innerHTML;
       } catch(err) {
@@ -73,6 +74,7 @@ function Editor() {
       }
     }
     console.log(savedData)
+    getTheData(db, savedData)
   };
 
   return (

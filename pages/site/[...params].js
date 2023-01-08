@@ -10,7 +10,9 @@ export default function site() {
     return (
         <>
             {/* <h1>{params}</h1> */}
-            <Editor />
+            <Editor 
+                name={params[0]}
+            />
         </>
     );
 }
