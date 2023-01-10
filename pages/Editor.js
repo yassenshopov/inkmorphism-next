@@ -1,25 +1,68 @@
 import { HelmetProvider } from 'react-helmet-async';
 import app from '../firebase/clientApp';
-import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs, doc, setDoc } from 'firebase/firestore/lite';
+import { useEffect, useState } from 'react';
 
 function Editor(props) {
+
+  console.log(props['name'])
+  // VARIABLES:
+  let callbackDefaults = { 
+    // Meta data:
+    style_main           : "futurism",
+    footer_txt           : "Footer Text",
+    title                : "Meta title",
+    heading              : "Default heading",
+    subheading           : "Default subheading",
+    description          : "Build the perfect website with Aixolotl, the AI website builder. With intuitive drag-and-drop features and customizable templates, creating a professional website has never been easier.",
+    author               : "Default Author",
+    image                : "",
+    nav                  : true,
+    footer               : true,
+    NL_email_placeholder : "Default email placeholder",
+    nav_CTA              : "CTA",
+    form_submit          : "Form submit",
+    link_past_issues_txt : "Link to past issues"
+  }; 
 
   // FIREBASE FIRESTORE DB CODE:
 
   let db = getFirestore(app);
-  async function getTheData(db, savedData) {
-    const col = collection(db, "websites");
-    // const dbData = await getDocs(col);
-    // const dbRenderedData = dbData.docs.map(doc => doc.data());
-    // console.log(dbData.docs)
+  const col = collection(db, "websites");
 
-    console.log(props['name'])
+  const [defaults, setData] = useState(callbackDefaults);
 
+  // This is a smart roundabout => On the initial render, the button is clicked programmatically,
+  // and thus the data that's been fetched is displayed on the page.
+  useEffect(() => {
+    const el = document.getElementById("fetch")
+    setTimeout(() => {
+      el.click()
+    }, 1500)
+  }, [])
+
+  async function getData() {
+    const data = await getDocs(col);
+    for (let entry in data._docs) {
+      if (data._docs[entry].id == props['name']) {
+        let dbRenderedData = data._docs[entry].data();
+        console.log(dbRenderedData)
+        setData(dbRenderedData)
+      }
+    }
+  }
+
+  async function sendData(savedData) {
     await setDoc(doc(col, props['name']), savedData)
   }
 
-  // getTheData(db)
+  // console.log(receivedData)
+ 
+  // dataSetting().
+  // then(data => {
+  //   console.log(data)
+  //   setData(data)
+  // })
 
   // END OF DB CODE
 
@@ -32,25 +75,6 @@ function Editor(props) {
   //     dialog.style.display = "block"
   //   }
   // };
-
-  // VARIABLES:
-  let defaults = {
-    // Meta data:
-    style_main           : "futurism",
-    footer_txt           : "© 2023 Boris Drach",
-    title                : "The Data Chunk | Boris | Substack",
-    heading              : "The Data Chunk",
-    subheading           : "Data driven analysis of a variety of topics",
-    description          : "Build the perfect website with Aixolotl, the AI website builder. With intuitive drag-and-drop features and customizable templates, creating a professional website has never been easier.",
-    author               : "Boris Drach",
-    image                : "",
-    nav                  : true,
-    footer               : true,
-    NL_email_placeholder : "Type your email...",
-    nav_CTA              : "Subscribe",
-    form_submit          : "Submit",
-    link_past_issues_txt : "Read the latest issue"
-  };
 
   let savedData = JSON.parse(JSON.stringify(defaults));
 
@@ -74,7 +98,7 @@ function Editor(props) {
       }
     }
     console.log(savedData)
-    getTheData(db, savedData)
+    sendData(savedData)
   };
 
   return (
@@ -91,6 +115,7 @@ function Editor(props) {
 
       <main id='editor'>
         <main>
+          <button id="fetch" onClick={getData}>Fetch</button>
           <button id='saveBtn' onClick={saveNewData}>Save</button>
           <header>
           <form>
