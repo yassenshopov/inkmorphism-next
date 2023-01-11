@@ -3,6 +3,7 @@
   --mainLight: #fafafa;
   --color1: rgba(230, 181, 22, 0.814);
   --color2: rgba(23, 115, 235);
+  --color1-transparent: rgba(230, 181, 22, 0.4);
   --color2-transparent: rgba(23, 115, 235, 0.4);
   --font1: "BalooChettan2";
   --font2: "Oswald";
@@ -36,23 +37,26 @@ body {
   flex-direction: row-reverse;
   box-sizing: border-box;
 }
+.App .disabled {
+  pointer-events: none;
+  opacity: 0.65;
+}
 .App main {
   box-sizing: border-box;
   width: 80vw;
   min-height: 100vh;
   margin: 2vw;
-  position: relative;
   caret-color: var(--mainLight);
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(45deg, var(--color2-transparent), var(--color2));
+  background: linear-gradient(45deg, var(--color2-transparent), var(--color1-transparent));
 }
 .App main #saveBtn {
   padding: 1vw;
-  position: absolute;
-  top: 1vh;
-  right: 1vh;
+  position: fixed;
+  top: 4vh;
+  right: 4vh;
   border: 2px solid var(--mainLight);
   color: var(--mainLight);
   font-family: var(--font2);
@@ -155,4 +159,5 @@ body {
   width: 20vw;
   min-height: 100vh;
   background-color: #eff6fc;
+  padding: 2vw;
 }

@@ -9,13 +9,17 @@ function Editor(props) {
   // VARIABLES:
   let callbackDefaults = { 
     // Meta data:
+    meta_description     : "Build the perfect website with Aixolotl, the AI website builder. With intuitive drag-and-drop features and customizable templates, creating a professional website has never been easier.",
+    meta_author          : "Default Author",
+
+    // Style data:
     style_main           : "futurism",
+
+    //
     footer_txt           : "Footer Text",
     title                : "Meta title",
     heading              : "Default heading",
     subheading           : "Default subheading",
-    description          : "Build the perfect website with Aixolotl, the AI website builder. With intuitive drag-and-drop features and customizable templates, creating a professional website has never been easier.",
-    author               : "Default Author",
     image                : "",
     nav                  : true,
     footer               : true,
@@ -37,8 +41,9 @@ function Editor(props) {
   useEffect(() => {
     const el = document.getElementById("fetch")
     setTimeout(() => {
-      el.click()
-    }, 1500)
+      el.click();
+      document.getElementById("loader").style.display = "none";
+    }, 500)
   }, [])
 
   async function getData() {
@@ -55,14 +60,6 @@ function Editor(props) {
   async function sendData(savedData) {
     await setDoc(doc(col, props['name']), savedData)
   }
-
-  // console.log(receivedData)
- 
-  // dataSetting().
-  // then(data => {
-  //   console.log(data)
-  //   setData(data)
-  // })
 
   // END OF DB CODE
 
@@ -114,24 +111,27 @@ function Editor(props) {
       </dialog> */}
 
       <main id='editor'>
+        
+        <p id='loader'>Loading...</p>
+
         <main>
-          <button id="fetch" onClick={getData}>Fetch</button>
+          <button id="fetch" onClick={getData}></button>
           <button id='saveBtn' onClick={saveNewData}>Save</button>
           <header>
-          <form>
-              <h1 className='heading'>{defaults['heading']}</h1>
-              <h2 className='subheading'>{defaults['subheading']}</h2>
-              <div class="form_input">
-                  <input type="email" placeholder={defaults['NL_email_placeholder']}></input>
-                  <input type="submit" value={defaults["form_submit"]}></input>
-              </div>
-              <a href="#blog"><p className='link_past_issues_txt'>{defaults['link_past_issues_txt']}</p></a>
-          </form>
+            <form>
+                <h1 className='heading'>{defaults['heading']}</h1>
+                <h2 className='subheading'>{defaults['subheading']}</h2>
+                <div class="form_input">
+                    <input className="disabled" type="email" placeholder={defaults['NL_email_placeholder']}></input>
+                    <input className="disabled" type="submit" value={defaults["form_submit"]}></input>
+                </div>
+                <a href="#"><p className='link_past_issues_txt'>{defaults['link_past_issues_txt']}</p></a>
+            </form>
           </header>
         </main>
 
         <footer>
-          <p>Created with <a href="https://aixolotl.com">Aixolotl</a></p>
+          <p>Created with <a href="https://inkmorphism.com">Inkmorphism</a></p>
           <div>
               <p className='footer_txt'>{defaults["footer_txt"]}</p>
           </div>
@@ -139,7 +139,7 @@ function Editor(props) {
       </main>
 
       <aside>
-
+        <h1>Hello, {defaults["meta_author"]}</h1>
       </aside>
     </div>
   );
