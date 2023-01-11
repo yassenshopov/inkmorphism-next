@@ -1,9 +1,0 @@
-# snip
-      - name: Build
-        run: |
-          npm ci
-          npm run build
-          npm run export
-          touch out/.nojekyll
-          npm set-script build "next build"
-          npm set-script export "next export"
