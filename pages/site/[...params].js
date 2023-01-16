@@ -5,7 +5,6 @@ export default function site() {
 
     const router = useRouter();
     const {params = []} = router.query;
-    console.log(params)
 
     return (
         <>

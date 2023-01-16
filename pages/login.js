@@ -9,7 +9,6 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 import { useEffect, useState, useCallback, useContext } from "react";
-import { resolve } from "styled-jsx/css";
 import {
   getFirestore,
   collection,
@@ -17,10 +16,13 @@ import {
   doc,
   setDoc,
 } from "firebase/firestore/lite";
-import app from "../firebase/clientApp";
+import app from "../firebase/clientApp";7
+import Head from 'next/head'
+import { SiGoogle, SiGithub, SiTwitter } from 'react-icons/si'
 
 export default function Login() {
-  const [profilePic, setProfilePic] = useState("");
+
+  const [userData, setUserData] = useState({});
 
   const auth = getAuth(app);
   // signInWithRedirect(auth, provider)
@@ -30,7 +32,7 @@ export default function Login() {
       // https://firebase.google.com/docs/reference/js/firebase.User
       const uid = user.uid;
       console.log(user);
-      setProfilePic(user.photoURL);
+      setUserData(user);
       sendRegisterData(user);
       // ...
     } else {
@@ -58,7 +60,6 @@ export default function Login() {
       }
       // The signed-in user info.
       const user = result.user;
-      console.log(result);
     });
   }
 
@@ -70,10 +71,11 @@ export default function Login() {
         // This gives you a GitHub Access Token. You can use it to access the GitHub API.
         const token = credential.accessToken;
         // ...
+      } else {
+        console.log("Weird error")
       }
       // The signed-in user info.
       const user = result.user;
-      console.log(result);
     });
   }
 
@@ -88,17 +90,47 @@ export default function Login() {
       }
       // The signed-in user info.
       const user = result.user;
-      console.log(result);
     });
   }
 
+
+    function getTimeFromDate(timestamp) {
+        const pad = num => ("0" + num).slice(-2); // or use padStart
+        const date = new Date(parseInt(timestamp));
+        let hours = date.getHours(),
+            minutes = date.getMinutes(),
+            seconds = date.getSeconds(),
+            month = date.getMonth(),
+            day = date.getDate(), 
+            year = date.getFullYear();
+        return (day) + "/" + (month+1) + "/" + year+ " " + pad(hours) + ":" + pad(minutes) + ":" + pad(seconds)
+    }
+
+    let timeCreated;
+    try {
+        timeCreated = getTimeFromDate(userData.metadata.createdAt);
+    } catch {
+        timeCreated = "---"
+    }
+
   return (
     <>
+    <Head>
+      <title>Log in | Inkmorphism - the AI Website Builder</title>
+      <meta name="description" content="" />
+    </Head>
+    <div className="login">
       <h2>Login:</h2>
-      <button onClick={signInWithGH}>Sign in w/ GitHub</button>
-      <button onClick={signInWithTW}>Sign in w/ Twitter</button>
-      <button onClick={signInWithG}>Sign in w/ Google</button>
-      <img src={profilePic} alt="Profile Pic" />
+      <button onClick={signInWithGH}>Sign in w/ GitHub < SiGithub /></button>
+      <button onClick={signInWithTW}>Sign in w/ Twitter < SiTwitter /></button>
+      <button onClick={signInWithG}>Sign in w/ Google < SiGoogle /></button>
+      <div>
+        <img src={userData.photoURL} alt="Profile Pic" />
+        <p>Name: {userData.displayName}</p>
+        <p>Email: {userData.email}</p>
+        <p>Created at: {timeCreated}</p>
+      </div>
+    </div>
     </>
   );
 }
