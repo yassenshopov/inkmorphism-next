@@ -121,15 +121,26 @@ export default function Login() {
     </Head>
     <div className="login">
       <h2>Login:</h2>
-      <button onClick={signInWithGH}>Sign in w/ GitHub < SiGithub /></button>
-      <button onClick={signInWithTW}>Sign in w/ Twitter < SiTwitter /></button>
-      <button onClick={signInWithG}>Sign in w/ Google < SiGoogle /></button>
-      <div>
+      <form>
+        <input type="email" name="email"/>
+        <input type="password"/>
+      </form>
+      <div id="orSection">
+        <div></div>
+        <p>OR</p>
+        <div></div>
+      </div>
+      <div id="buttons">
+        <button onClick={signInWithGH}><div></div>Sign in with GitHub < SiGithub /></button>
+        <button onClick={signInWithTW}><div></div>Sign in with Twitter < SiTwitter /></button>
+        <button onClick={signInWithG}><div></div>Sign in with Google < SiGoogle /> </button>
+      </div>
+      {/* <div>
         <img src={userData.photoURL} alt="Profile Pic" />
         <p>Name: {userData.displayName}</p>
         <p>Email: {userData.email}</p>
         <p>Created at: {timeCreated}</p>
-      </div>
+      </div> */}
     </div>
     </>
   );

@@ -241,7 +241,7 @@ function Editor(props) {
   };
 
   return (
-    <div className="App">
+    <div className="Editor">
 
       <HelmetProvider>
         <title>{defaults['title']}</title>
@@ -253,6 +253,8 @@ function Editor(props) {
       </dialog> */}
 
       <main id='editor'>
+
+        <nav id='nav'></nav>
         
         <p id='loader'>Loading...</p>
         <button id="fetch" onClick={getData}></button>
@@ -276,6 +278,8 @@ function Editor(props) {
                         <input className="disabled" type="submit" value={defaults["form_submit"]}></input>
                     </div>
                     <a href="#"><p className='link_past_issues_txt'>{defaults['link_past_issues_txt']}</p></a>
+                    <iframe src="https://yassenshopov.substack.com/embed"></iframe>
+
                 </form>
               </header>
             </main>

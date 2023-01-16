@@ -1,30 +1,54 @@
 .login {
   margin: 5vw;
   padding: 3vw;
-  width: 50%;
-  justify-self: center;
-  align-self: center;
+  width: 80vw;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   font-family: var(--font1);
-  box-shadow: 0 0 30px #12121220;
+  box-shadow: 0 0 30px #12121260;
   border-radius: 20px;
   line-height: 1.5;
-  height: 60vh;
+  box-sizing: border-box;
+}
+.login #orSection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1vw;
+}
+.login #orSection :nth-child(1),
+.login #orSection :nth-child(3) {
+  background-color: var(--mainDark);
+  width: 100px;
+  height: 1px;
 }
 .login img {
   width: 5vw;
   border-radius: 10px;
 }
-.login button {
-  font-family: var(--font1);
-  width: 100%;
-  padding: 10px;
+.login #buttons {
+  align-items: center;
   display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 10px;
+  width: 100%;
+}
+.login #buttons button {
+  font-family: var(--font1);
+  background-color: var(--mainLight);
+  border-radius: 15px;
+  box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.1), -5px -5px 5px rgba(255, 255, 255, 0.8);
+  border: none;
+  width: 100%;
+  padding: 20px 5vw;
   flex-direction: row;
   gap: 2vw;
   justify-content: center;
   align-items: center;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 }
