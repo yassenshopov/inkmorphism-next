@@ -1,27 +1,36 @@
+body {
+  background-color: var(--mainLight);
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
 .login {
   margin: 5vw;
-  padding: 3vw;
   width: 60vw;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   font-family: var(--font1);
-  box-shadow: 0 0 30px #12121260;
   border-radius: 20px;
   line-height: 1.5;
   background-color: var(--mainLight);
   box-sizing: border-box;
+}
+.login #loginWrapper {
+  display: flex;
+  flex-direction: column;
 }
 .login #orSection {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 1vw;
+  color: var(--mainGrey);
 }
 .login #orSection :nth-child(1),
 .login #orSection :nth-child(3) {
-  background-color: var(--mainDark);
+  background-color: var(--mainGrey);
   width: 25vw;
   height: 1px;
 }
@@ -83,18 +92,19 @@
   cursor: pointer;
   border: none;
   width: 100%;
-  padding: 20px 5vw;
+  padding: 0px 5vw;
   flex-direction: row;
   gap: 2vw;
-  justify-content: center;
   align-items: center;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
   transition: all 500ms ease-in-out;
+  height: fit-content;
 }
 .login #buttons button:hover {
   box-shadow: 4px 5px 30px rgba(0, 0, 0, 0.25), -5px -5px 15px rgba(255, 255, 255, 0.8);
+  filter: brightness(1.2) saturate(1.5);
 }
 .login #buttons button:nth-child(1) {
   background-color: #DB4437;
@@ -107,4 +117,44 @@
 .login #buttons button:nth-child(3) {
   background-color: #1DA1F2;
   color: var(--mainLight);
+}
+@media (min-width: 600px) {
+  body .login {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+  }
+  body .login #loginWrapper {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    gap: 5vw;
+  }
+  body .login #orSection {
+    flex-direction: column;
+  }
+  body .login #orSection :nth-child(1),
+  body .login #orSection :nth-child(3) {
+    width: 1px;
+    height: 150px;
+  }
+  body .login #buttons {
+    justify-content: center;
+    align-items: center;
+    width: 20vw;
+    height: fit-content;
+  }
+  body .login #buttons button {
+    height: 60px;
+  }
+  body .login #buttons button p {
+    width: 8vw;
+  }
+  body .login #buttons button :nth-child(3) {
+    font-size: 20px;
+  }
+  body .login form {
+    width: 20vw;
+  }
 }

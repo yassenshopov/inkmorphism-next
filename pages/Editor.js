@@ -57,21 +57,15 @@ function Editor(props) {
       MuiAppBar: {
         defaultProps: {
           sx: {
-            // background: `linear-gradient(45deg,`+ mainLight + `, ` + color2 + `)`,
-            position: 'fixed',
-            top: '2%',
-            // left: '0%',
             background: 'none',
-            width: '67vw',
+            width: '100%',
             borderRadius: '1rem',
             backdropFilter: 'brightness(1.1) blur(10px)',
             zIndex: '2',
             my: 5,
             py: 2,
-            // display: 'flex',
-            // flexDirection: 'row',
-            // justifyContent: "center",
-            // alignContent: "center",
+            color: mainLight,
+            fontSize: '2rem',
             boxShadow: '0 0 20px rgb(256 256 256 / 50%)',
           },
         }

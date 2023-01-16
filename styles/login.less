@@ -1,6 +1,13 @@
+body {
+    background-color: var(--mainLight);
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
 .login {
     margin: 5vw;
-    padding: 3vw;
+    // padding: 3vw;
     width: 60vw;
     display: flex;
     flex-direction: column;
@@ -8,20 +15,25 @@
     align-items: center;
     // border: 1px solid #121212;
     font-family: var(--font1);
-    box-shadow: 0 0 30px #12121260;
+    // box-shadow: 0 0 30px #12121260;
     
     border-radius: 20px;
     line-height: 1.5;
     // height: 60vh;
     background-color: var(--mainLight);
     box-sizing: border-box;
+    #loginWrapper {
+        display: flex;
+        flex-direction: column;
+    }
     #orSection {
         display: flex;
         flex-direction: row;
         align-items: center;
         gap: 1vw;
+        color: var(--mainGrey);
         :nth-child(1), :nth-child(3) {
-            background-color: var(--mainDark);
+            background-color: var(--mainGrey);
             width: 25vw;
             height: 1px;
         }
@@ -83,19 +95,20 @@
             cursor: pointer;
             border: none;
             width: 100%;
-            padding: 20px 5vw;
+            padding: 0px 5vw;
             display: flex;
             flex-direction: row;
             gap: 2vw;
-            justify-content: center;
             align-items: center;
             display: flex;
             flex-direction: row-reverse;
             justify-content: space-between;
             transition: all 500ms ease-in-out;
+            height: fit-content;
         }
         button:hover {
             box-shadow: 4px 5px 30px rgb(0 0 0 / 25%), -5px -5px 15px rgb(255 255 255 / 80%);
+            filter: brightness(1.2) saturate(1.5);
         }
         button:nth-child(1) {
             background-color: #DB4437;
@@ -110,4 +123,49 @@
             color: var(--mainLight);
         }
     }
+}
+
+@media (min-width: 600px) {
+    body {
+        // background-color: #00000020;
+        .login {
+            width: 100vw;
+            margin: 0;
+            padding: 0;
+            #loginWrapper {
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                width: 80%;
+                gap: 5vw;
+            }
+            #orSection {
+                flex-direction: column;
+                :nth-child(1), :nth-child(3) {
+                    width: 1px;
+                    height: 150px;
+                }
+            }
+            #buttons {
+                justify-content: center;
+                align-items: center;
+                width: 20vw;
+                height: fit-content;
+                button {
+                    // width: 150%;
+                    height: 60px;
+                    p {
+                        width: 8vw;
+                    }
+                    :nth-child(3) {
+                        // border: 1px solid #fefefe;
+                        font-size: 20px;
+                    }
+                }
+            }
+            form {
+                width: 20vw;
+            }
+        }
     }
+}
