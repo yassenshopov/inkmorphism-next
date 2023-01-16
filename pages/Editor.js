@@ -130,6 +130,10 @@ function Editor(props) {
 
     // Style data:
     style_main           : "futurism",
+    palette              : {
+      color1: "#e6f181",
+      color2: "#aa0000"
+    },
 
     //
     structure            : {
@@ -254,7 +258,13 @@ function Editor(props) {
         <button id="fetch" onClick={getData}></button>
 
         <ThemeProvider theme={theme}>
-          <Container>
+          <Container
+            sx={{
+              background: `linear-gradient(45deg,`+ defaults['palette']['color1'] + `, ` + defaults['palette']['color2'] + `)`,
+              p: 1,
+              position: 'relative',
+            }}
+          >
             <Nav
                 nav={defaults['structure']['nav']}
             />
@@ -272,8 +282,6 @@ function Editor(props) {
                         <input className="disabled" type="submit" value={defaults["form_submit"]}></input>
                     </div>
                     <a href="#"><p className='link_past_issues_txt'>{defaults['link_past_issues_txt']}</p></a>
-                    <iframe src="https://yassenshopov.substack.com/embed"></iframe>
-
                 </form>
               </header>
             </main>

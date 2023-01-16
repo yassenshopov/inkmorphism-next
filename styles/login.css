@@ -2,7 +2,7 @@ body {
   background-color: var(--mainLight);
   justify-content: center;
   align-items: center;
-  height: 90vh;
+  min-height: 100vh;
 }
 .login {
   margin: 5vw;

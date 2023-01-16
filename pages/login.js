@@ -53,7 +53,7 @@ export default function Login() {
 
   function signInWithGH() {
     const provider = new GithubAuthProvider();
-    signInWithRedirect(auth, provider).then((result) => {
+    signInWithPopup(auth, provider).then((result) => {
       const credential = GithubAuthProvider.credentialFromResult(result);
       if (credential) {
         // This gives you a GitHub Access Token. You can use it to access the GitHub API.
@@ -67,7 +67,7 @@ export default function Login() {
 
   function signInWithTW() {
     const provider = new TwitterAuthProvider();
-    signInWithRedirect(auth, provider).then((result) => {
+    signInWithPopup(auth, provider).then((result) => {
       const credential = TwitterAuthProvider.credentialFromResult(result);
       if (credential) {
         // This gives you a GitHub Access Token. You can use it to access the GitHub API.
@@ -83,7 +83,7 @@ export default function Login() {
 
   function signInWithG() {
     const provider = new GoogleAuthProvider();
-    signInWithRedirect(auth, provider).then((result) => {
+    signInWithPopup(auth, provider).then((result) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       if (credential) {
         // This gives you a GitHub Access Token. You can use it to access the GitHub API.
@@ -189,12 +189,12 @@ export default function Login() {
             </button>
           </div>
         </div>
-        {/* <div>
+        <div>
         <img src={userData.photoURL} alt="Profile Pic" />
         <p>Name: {userData.displayName}</p>
         <p>Email: {userData.email}</p>
         <p>Created at: {timeCreated}</p>
-      </div> */}
+      </div>
       </div>
     </>
   );
