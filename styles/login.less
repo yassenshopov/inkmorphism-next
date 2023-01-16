@@ -1,7 +1,7 @@
 .login {
     margin: 5vw;
     padding: 3vw;
-    width: 80vw;
+    width: 60vw;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -13,7 +13,7 @@
     border-radius: 20px;
     line-height: 1.5;
     // height: 60vh;
-    // background-color: var(--mainLight);
+    background-color: var(--mainLight);
     box-sizing: border-box;
     #orSection {
         display: flex;
@@ -22,8 +22,45 @@
         gap: 1vw;
         :nth-child(1), :nth-child(3) {
             background-color: var(--mainDark);
-            width: 100px;
+            width: 25vw;
             height: 1px;
+        }
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+        input {
+            border: none;
+            border-bottom: 1px solid var(--mainGrey);
+            background-color: var(--mainLight);
+            padding: 10px 0;
+            transition: all 500ms ease-in-out;
+        }
+        input:focus {
+            outline: none;
+            border-bottom: 1px solid var(--mainDark);
+        }
+        label {
+            margin-top: 20px;
+        }
+        button {
+            border: none;
+            margin: 10px 0;
+            padding: 15px 0;
+            text-transform: uppercase;
+            color: var(--mainLight);
+            background-color: var(--mainDark);
+            border-radius: 15px;
+            box-shadow: 4px 5px 5px rgb(0 0 0 / 10%), -5px -5px 5px rgb(255 255 255 / 80%);
+            cursor: pointer;
+            font-family: var(--font1);
+            transition: all 500ms ease-in-out;
+            font-size: 1.2rem;
+        }
+        button:hover {
+            filter: brightness(2);
         }
     }
     img {
@@ -42,7 +79,8 @@
             background-color: var(--mainLight);
             border-radius: 15px;
             box-shadow: 4px 5px 5px rgb(0 0 0 / 10%), -5px -5px 5px rgb(255 255 255 / 80%);
-    
+            font-size: 1rem;
+            cursor: pointer;
             border: none;
             width: 100%;
             padding: 20px 5vw;
@@ -54,6 +92,22 @@
             display: flex;
             flex-direction: row-reverse;
             justify-content: space-between;
+            transition: all 500ms ease-in-out;
+        }
+        button:hover {
+            box-shadow: 4px 5px 30px rgb(0 0 0 / 25%), -5px -5px 15px rgb(255 255 255 / 80%);
+        }
+        button:nth-child(1) {
+            background-color: #DB4437;
+            color: var(--mainLight);
+        }
+        button:nth-child(2) {
+            background-color: #000000;
+            color: var(--mainLight);
+        }
+        button:nth-child(3) {
+            background-color: #1DA1F2;
+            color: var(--mainLight);
         }
     }
     }

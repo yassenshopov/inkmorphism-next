@@ -1,7 +1,7 @@
 .login {
   margin: 5vw;
   padding: 3vw;
-  width: 80vw;
+  width: 60vw;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -10,6 +10,7 @@
   box-shadow: 0 0 30px #12121260;
   border-radius: 20px;
   line-height: 1.5;
+  background-color: var(--mainLight);
   box-sizing: border-box;
 }
 .login #orSection {
@@ -21,8 +22,45 @@
 .login #orSection :nth-child(1),
 .login #orSection :nth-child(3) {
   background-color: var(--mainDark);
-  width: 100px;
+  width: 25vw;
   height: 1px;
+}
+.login form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+.login form input {
+  border: none;
+  border-bottom: 1px solid var(--mainGrey);
+  background-color: var(--mainLight);
+  padding: 10px 0;
+  transition: all 500ms ease-in-out;
+}
+.login form input:focus {
+  outline: none;
+  border-bottom: 1px solid var(--mainDark);
+}
+.login form label {
+  margin-top: 20px;
+}
+.login form button {
+  border: none;
+  margin: 10px 0;
+  padding: 15px 0;
+  text-transform: uppercase;
+  color: var(--mainLight);
+  background-color: var(--mainDark);
+  border-radius: 15px;
+  box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.1), -5px -5px 5px rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  font-family: var(--font1);
+  transition: all 500ms ease-in-out;
+  font-size: 1.2rem;
+}
+.login form button:hover {
+  filter: brightness(2);
 }
 .login img {
   width: 5vw;
@@ -41,6 +79,8 @@
   background-color: var(--mainLight);
   border-radius: 15px;
   box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.1), -5px -5px 5px rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  cursor: pointer;
   border: none;
   width: 100%;
   padding: 20px 5vw;
@@ -51,4 +91,20 @@
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
+  transition: all 500ms ease-in-out;
+}
+.login #buttons button:hover {
+  box-shadow: 4px 5px 30px rgba(0, 0, 0, 0.25), -5px -5px 15px rgba(255, 255, 255, 0.8);
+}
+.login #buttons button:nth-child(1) {
+  background-color: #DB4437;
+  color: var(--mainLight);
+}
+.login #buttons button:nth-child(2) {
+  background-color: #000000;
+  color: var(--mainLight);
+}
+.login #buttons button:nth-child(3) {
+  background-color: #1DA1F2;
+  color: var(--mainLight);
 }
