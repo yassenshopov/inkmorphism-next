@@ -5,7 +5,7 @@ export default function Nav(props) {
         return (
             <AppBar position="static">
                 <Toolbar>
-                    <img src={props['nav']['logo']}/>
+                    <img src={props['nav']['logo']} style={{width: '4vw'}}/>
                     <Typography sx={{fontFamily: 'Oswald'}} variant="p">{props['nav']['title']}</Typography>
                     <Button variant="contained">{props['nav']['button']}</Button>
                 </Toolbar>

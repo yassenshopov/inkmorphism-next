@@ -33,6 +33,7 @@ html {
   display: flex;
   flex-direction: row-reverse;
   box-sizing: border-box;
+  font-family: var(--font2);
 }
 .Editor .disabled {
   pointer-events: none;

@@ -10,117 +10,13 @@ import { Button, createTheme, ThemeProvider } from '@mui/material';
 import { blue } from '@mui/material/colors';
 import { Container } from '@mui/system';
 import '@fontsource/roboto/500.css';
+import { MdOpenInFull } from 'react-icons/md'
+import { RiSave3Fill } from 'react-icons/ri'
+import { FaMobileAlt, FaDesktop } from 'react-icons/fa'
+import Head from 'next/head';
 // import '../styles/fonts/Oswald-VariableFont_wgth.ttf'
 
 function Editor(props) {
-
-  // STYLE VARIABLES AND THEME:
-
-  let color1 = 'rgba(230, 181, 22)';
-  let color2 = 'rgba(23, 115, 235)';
-  let color2Transparent = 'rgba(23, 115, 235, 0.4)';
-  let mainLight = '#fafafa';
-  let mainDark = '#252525';
-
-  let glassmorphism = {
-    palette: {
-      primary: {
-        main: color1,
-        light: mainLight,
-        dark: mainDark,
-      },
-      secondary: {
-        main: color2,
-      },
-    },
-    components: {
-      MuiCssBaseline: {
-        styleOverrides: `
-        @font-face {
-          font-family: 'Oswald';
-          src: url('../fonts/Oswald-VariableFont_wght.ttf') format('truetype');
-        }
-        `,
-      },
-      MuiContainer: {
-        defaultProps: {
-          direction: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          sx: {
-            background: `linear-gradient(45deg,`+ color2Transparent + `, ` + color2 + `)`,
-            p: 1,
-            position: 'relative',
-          },
-        }
-      },
-      MuiAppBar: {
-        defaultProps: {
-          sx: {
-            background: 'none',
-            width: '100%',
-            borderRadius: '1rem',
-            backdropFilter: 'brightness(1.1) blur(10px)',
-            zIndex: '2',
-            my: 5,
-            py: 2,
-            color: mainLight,
-            fontSize: '2rem',
-            boxShadow: '0 0 20px rgb(256 256 256 / 50%)',
-          },
-        }
-      },
-      MuiToolbar: {
-        defaultProps: {
-          sx: {
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: "space-evenly",
-            alignContent: "center",
-          }
-        }
-      },
-      MuiBottomNavigation: {
-        defaultProps: {
-          sx: {
-            boxSizing: 'border-box',
-            background: 'none',
-            // background: `linear-gradient(45deg,`+ mainLight + `, ` + color2 + `)`,
-            width: '100%',
-            borderRadius: '1rem',
-            backdropFilter: 'brightness(1.1) blur(10px)',
-            boxShadow: 3,
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-evenly',
-            alignItems: 'center',
-            color: mainDark,
-            my: 2,
-            py: 5,
-            boxShadow: '0 0 20px rgb(256 256 256 / 50%)',
-          },
-        }
-      }, 
-      MuiLink: {
-        defaultProps: {
-          sx: {
-            color: mainDark,
-            textDecorationColor: mainDark
-          }
-        }
-      },
-      MuiTypography: {
-        defaultProps: {
-          sx: {
-            fontFamily: 'Oswald'
-          }
-        }
-      }
-    }
-  }
-
-  const theme = createTheme(glassmorphism)
-  console.log(theme)
 
   // VARIABLES:
   let callbackDefaults = { 
@@ -132,7 +28,9 @@ function Editor(props) {
     style_main           : "futurism",
     palette              : {
       color1: "#e6f181",
-      color2: "#aa0000"
+      color2: "#aa0000",
+      color1Transparent: "#e6f18120",
+      color2Transparent: "#aa000020",
     },
 
     //
@@ -194,6 +92,7 @@ function Editor(props) {
     setFiles({
       logo: logo,
     })
+    console.log(logo)
     }
   }
 
@@ -212,6 +111,124 @@ function Editor(props) {
   //     dialog.style.display = "block"
   //   }
   // };
+
+    // STYLE VARIABLES AND THEME:
+
+    let color1 = 'rgba(230, 181, 22)';
+    let color2 = 'rgba(23, 115, 235)';
+    let color1Transparent = 'rgba(230, 181, 22, 0.4)';
+    let color2Transparent = 'rgba(23, 115, 235, 0.4)';
+    let mainLight = '#fafafa';
+    let mainDark = '#252525';
+  
+    let glassmorphism = {
+      palette: {
+        primary: {
+          main: color1,
+          light: mainLight,
+          dark: mainDark,
+        },
+        secondary: {
+          main: color2,
+        },
+      },
+      components: {
+        MuiCssBaseline: {
+          styleOverrides: `
+          @font-face {
+            font-family: 'Oswald';
+            src: url('../fonts/Oswald-VariableFont_wght.ttf') format('truetype');
+          }
+          `,
+        },
+        MuiContainer: {
+          defaultProps: {
+            direction: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            sx: {
+              background: `linear-gradient(45deg,`+ color2Transparent + `, ` + color2 + `)`,
+              p: 1,
+              position: 'relative',
+            },
+          }
+        },
+        MuiAppBar: {
+          defaultProps: {
+            sx: {
+              background: 'none',
+              width: '100%',
+              borderRadius: '1rem',
+              backdropFilter: 'brightness(1.1) blur(10px) saturate(2)',
+              zIndex: '2',
+              my: 5,
+              py: 2,
+              color: mainLight,
+              fontSize: '2rem',
+              boxShadow: '0 0 20px rgb(256 256 256 / 50%)',
+            },
+          }
+        },
+        MuiToolbar: {
+          defaultProps: {
+            sx: {
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: "space-evenly",
+              alignContent: "center",
+            }
+          }
+        },
+        MuiButton: {
+          defaultProps: {
+            sx: {
+              backgroundColor: defaults['palette']['color1'],
+              color: mainLight,
+              textTransform: 'capitalize',
+              boxShadow: '0.5vw 0.5vw 20px ' + defaults['palette']['color1Transparent'],
+            }
+          }
+        },
+        MuiBottomNavigation: {
+          defaultProps: {
+            sx: {
+              boxSizing: 'border-box',
+              background: 'none',
+              // background: `linear-gradient(45deg,`+ mainLight + `, ` + color2 + `)`,
+              width: '100%',
+              borderRadius: '1rem',
+              backdropFilter: 'brightness(1.1) blur(10px) saturate(2)',
+              boxShadow: 3,
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-evenly',
+              alignItems: 'center',
+              color: mainDark,
+              my: 2,
+              py: 5,
+              boxShadow: '0 0 20px rgb(256 256 256 / 50%)',
+            },
+          }
+        }, 
+        MuiLink: {
+          defaultProps: {
+            sx: {
+              color: mainDark,
+              textDecorationColor: mainDark
+            }
+          }
+        },
+        MuiTypography: {
+          defaultProps: {
+            sx: {
+              fontFamily: 'Oswald'
+            }
+          }
+        }
+      }
+    }
+  
+  const theme = createTheme(glassmorphism)
 
   let savedData = JSON.parse(JSON.stringify(defaults));
 
@@ -241,9 +258,10 @@ function Editor(props) {
   return (
     <div className="Editor">
 
-      <HelmetProvider>
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
         <title>{defaults['title']}</title>
-      </HelmetProvider>
+      </Head>
 
       {/* <dialog open>
         <p>You are refreshing the page</p>
@@ -252,7 +270,12 @@ function Editor(props) {
 
       <main id='editor'>
 
-        <nav id='nav'></nav>
+        <nav id='nav'>
+          <RiSave3Fill/>
+          <FaDesktop/>
+          <FaMobileAlt/>
+          <MdOpenInFull/>
+        </nav>
         
         <p id='loader'>Loading...</p>
         <button id="fetch" onClick={getData}></button>
@@ -260,7 +283,7 @@ function Editor(props) {
         <ThemeProvider theme={theme}>
           <Container
             sx={{
-              background: `linear-gradient(45deg,`+ defaults['palette']['color1'] + `, ` + defaults['palette']['color2'] + `)`,
+              background: `linear-gradient(45deg,`+ defaults['palette']['color2Transparent'] + `, ` + defaults['palette']['color2'] + `)`,
               p: 1,
               position: 'relative',
             }}
