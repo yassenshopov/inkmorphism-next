@@ -255,8 +255,15 @@ function Editor(props) {
     sendData(savedData)
   };
 
+  const [fsClass, setFsClass] = useState('')
+
+  function fullscreen() {
+    setFsClass(' fs')
+    console.log(fsClass)
+  }
+
   return (
-    <div className="Editor">
+    <div className={"Editor" + fsClass}>
 
       <Head>
         <link rel="icon" href="/favicon.ico" />
@@ -271,10 +278,10 @@ function Editor(props) {
       <main id='editor'>
 
         <nav id='nav'>
-          <RiSave3Fill/>
-          <FaDesktop/>
-          <FaMobileAlt/>
-          <MdOpenInFull/>
+          <button onClick={saveNewData}><RiSave3Fill/></button>
+          <button><FaDesktop/></button>
+          <button><FaMobileAlt/></button>
+          <button onClick={fullscreen}><MdOpenInFull/></button>
         </nav>
         
         <p id='loader'>Loading...</p>
@@ -287,6 +294,7 @@ function Editor(props) {
               p: 1,
               position: 'relative',
             }}
+            className="editorPane"
           >
             <Nav
                 nav={defaults['structure']['nav']}
@@ -295,7 +303,7 @@ function Editor(props) {
                 hero={defaults['structure']['hero']}
             />
             <main>
-              <button id='saveBtn' onClick={saveNewData}>Save</button>
+              {/* <button id='saveBtn' onClick={saveNewData}>Save</button> */}
               <header>
                 <form>
                     <h1 className='heading'>{defaults['heading']}</h1>
@@ -323,7 +331,7 @@ function Editor(props) {
       </main>
 
       <aside>
-        <h1>Hello, {defaults["meta_author"]}</h1>
+        <h1>Hello, {defaults["meta_author"]}.</h1>
       </aside>
     </div>
   );
