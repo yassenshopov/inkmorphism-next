@@ -10,7 +10,7 @@ import { Button, createTheme, ThemeProvider } from '@mui/material';
 import { blue } from '@mui/material/colors';
 import { Container } from '@mui/system';
 import '@fontsource/roboto/500.css';
-import { MdOpenInFull } from 'react-icons/md'
+import { MdOpenInFull, MdOutlineCloseFullscreen } from 'react-icons/md'
 import { RiSave3Fill } from 'react-icons/ri'
 import { FaMobileAlt, FaDesktop } from 'react-icons/fa'
 import Head from 'next/head';
@@ -256,14 +256,26 @@ function Editor(props) {
   };
 
   const [fsClass, setFsClass] = useState('')
+  const [modeClass, setModeClass] = useState(' desktop')
 
   function fullscreen() {
     setFsClass(' fs')
-    console.log(fsClass)
+  }
+
+  function normalscreen() {
+    setFsClass('')
+  }
+
+  function mobile() {
+    setModeClass(' mobile')
+  }
+
+  function desktop() {
+    setModeClass(' desktop')
   }
 
   return (
-    <div className={"Editor" + fsClass}>
+    <div className={"Editor" + fsClass + modeClass}>
 
       <Head>
         <link rel="icon" href="/favicon.ico" />
@@ -279,9 +291,10 @@ function Editor(props) {
 
         <nav id='nav'>
           <button onClick={saveNewData}><RiSave3Fill/></button>
-          <button><FaDesktop/></button>
-          <button><FaMobileAlt/></button>
-          <button onClick={fullscreen}><MdOpenInFull/></button>
+          <button id='desktopMode' onClick={desktop}><FaDesktop/></button>
+          <button id='mobileMode' onClick={mobile}><FaMobileAlt/></button>
+          <button id="openFS" onClick={fullscreen}><MdOpenInFull/></button>
+          <button id="closeFS" onClick={normalscreen}><MdOutlineCloseFullscreen/></button>
         </nav>
         
         <p id='loader'>Loading...</p>

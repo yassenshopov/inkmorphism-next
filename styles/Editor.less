@@ -61,7 +61,7 @@ html {
         max-height: 90vh;
         margin: 1vw;
         overflow-y: scroll;
-        border: 2px solid #252525;
+        // border: 2px solid #252525;
         > nav {
             display: flex;
             flex-direction: row;
@@ -69,9 +69,10 @@ html {
             align-items: center;
             padding: 20px 1vw;
             position: fixed;
-            background-color: #c7c7c7;
+            background-color: #fefefe50;
+            backdrop-filter: blur(5px) saturate(2) brightness(1.1);
             z-index: 5;
-            width: 69.8vw;
+            width: 70vw;
             box-sizing: border-box;
             gap: 1vw;
             button {
@@ -83,6 +84,18 @@ html {
                 background: none;
                 border: none;
                 cursor: pointer;
+                border-radius: 5px;
+                padding: 4px;
+                transition: all 400ms ease-in-out;
+            }
+            button:hover {
+                background: var(--mainGrey);
+            }
+            #closeFS, #desktopMode {
+                display: none;
+            }
+            #openFS, #mobileMode {
+                display: flex;
             }
         }
         #saveBtn {
@@ -100,8 +113,13 @@ html {
         caret-color: var(--mainLight);
         .editorPane {
             width: 100%;
-            margin: 80px 0 0 0;
+            margin: calc(48px + 1.8vw) 0 0 0;
             max-width: 100%;
+            .cleanLink {
+                text-decoration: none;
+                text-transform: none;
+                color: var(--mainLight);
+            }
             main {
                 min-height: 100vh;
             }
@@ -235,14 +253,21 @@ html {
         padding: 0;
         margin: 0;
         border: none;
-        overflow-y:auto;
+        overflow-y: auto;
         > nav {
-            display: none;
+            // display: none;
+            width: 100vw !important;
+            left: 0;
+            #closeFS {
+                display: flex;
+            }
+            #openFS {
+                display: none;
+            }
         }
         .editorPane {
             height: 100vh;
             width: 100vw;
-            margin: 0;
             main {
                 min-height: 0;
             }
@@ -250,5 +275,36 @@ html {
     }
     aside {
         display: none;
+    }
+}
+
+.mobile {
+    justify-content: center;
+    > main {
+        width: 30vw;
+        > nav {
+            // left: 0;
+            width: 30vw;
+            #mobileMode {
+                display: none;
+            }
+            #desktopMode {
+                display: flex;
+            }
+        }
+    }
+}
+
+
+.desktop {
+    > main {
+        > nav {
+            #mobileMode {
+                display: flex;
+            }
+            #desktopMode {
+                display: none;
+            }
+        }
     }
 }

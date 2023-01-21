@@ -46,7 +46,6 @@ html {
   max-height: 90vh;
   margin: 1vw;
   overflow-y: scroll;
-  border: 2px solid #252525;
   caret-color: var(--mainLight);
 }
 .Editor > main > nav {
@@ -56,9 +55,10 @@ html {
   align-items: center;
   padding: 20px 1vw;
   position: fixed;
-  background-color: #c7c7c7;
+  background-color: #fefefe50;
+  backdrop-filter: blur(5px) saturate(2) brightness(1.1);
   z-index: 5;
-  width: 69.8vw;
+  width: 70vw;
   box-sizing: border-box;
   gap: 1vw;
 }
@@ -71,6 +71,20 @@ html {
   background: none;
   border: none;
   cursor: pointer;
+  border-radius: 5px;
+  padding: 4px;
+  transition: all 400ms ease-in-out;
+}
+.Editor > main > nav button:hover {
+  background: var(--mainGrey);
+}
+.Editor > main > nav #closeFS,
+.Editor > main > nav #desktopMode {
+  display: none;
+}
+.Editor > main > nav #openFS,
+.Editor > main > nav #mobileMode {
+  display: flex;
 }
 .Editor > main #saveBtn {
   padding: 1vw;
@@ -86,8 +100,13 @@ html {
 }
 .Editor > main .editorPane {
   width: 100%;
-  margin: 80px 0 0 0;
+  margin: calc(48px + 1.8vw) 0 0 0;
   max-width: 100%;
+}
+.Editor > main .editorPane .cleanLink {
+  text-decoration: none;
+  text-transform: none;
+  color: var(--mainLight);
 }
 .Editor > main .editorPane main {
   min-height: 100vh;
@@ -120,16 +139,43 @@ html {
   overflow-y: auto;
 }
 .fs > main > nav {
+  width: 100vw !important;
+  left: 0;
+}
+.fs > main > nav #closeFS {
+  display: flex;
+}
+.fs > main > nav #openFS {
   display: none;
 }
 .fs > main .editorPane {
   height: 100vh;
   width: 100vw;
-  margin: 0;
 }
 .fs > main .editorPane main {
   min-height: 0;
 }
 .fs aside {
+  display: none;
+}
+.mobile {
+  justify-content: center;
+}
+.mobile > main {
+  width: 30vw;
+}
+.mobile > main > nav {
+  width: 30vw;
+}
+.mobile > main > nav #mobileMode {
+  display: none;
+}
+.mobile > main > nav #desktopMode {
+  display: flex;
+}
+.desktop > main > nav #mobileMode {
+  display: flex;
+}
+.desktop > main > nav #desktopMode {
   display: none;
 }
