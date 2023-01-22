@@ -37,15 +37,7 @@ html {
   scroll-behavior: smooth;
 }
 .Editor ::-webkit-scrollbar {
-  width: 0.6vw;
-}
-.Editor ::-webkit-scrollbar-track {
-  background: var(--mainDark);
-  border-radius: 12px;
-}
-.Editor ::-webkit-scrollbar-thumb {
-  background: var(--mainLight);
-  border-radius: 12px;
+  display: none;
 }
 .Editor .disabled {
   pointer-events: none;
@@ -212,6 +204,9 @@ html {
 }
 .mobile > main > nav #desktopMode {
   display: flex;
+}
+#editor {
+  transition: all 500ms ease-in-out;
 }
 .desktop > main > nav #mobileMode {
   display: flex;

@@ -16,6 +16,7 @@ import Head from 'next/head';
 // import '../styles/fonts/Oswald-VariableFont_wgth.ttf'
 import { getAuth } from 'firebase/auth'
 import logo from '../styles/images/logo.png';
+import Blog from './components/blog';
 
 function Editor(props) {
 
@@ -42,6 +43,9 @@ function Editor(props) {
       hero: {
         exists: false
       },
+      blog: {
+        exists: false
+      },
       footer: {
         exists: false
       }
@@ -56,6 +60,7 @@ function Editor(props) {
     nav_CTA              : "CTA",
     form_submit          : "Form submit",
     link_past_issues_txt : "Link to past issues"
+
   };
 
   // FIREBASE FIRESTORE DB CODE:
@@ -96,6 +101,7 @@ function Editor(props) {
       }
     }
     const logo = await getDownloadURL(logoRef)
+    console.log(logo)
     setFiles({
       logo: logo,
     })
@@ -258,7 +264,14 @@ function Editor(props) {
 
   function saveNewData() {
     for (const key in defaults) {
+      console.log(key)
       try {
+        if (key=='palette') {
+          let color1 = document.getElementById('color1');
+          savedData[key]['color1'] = color1.value
+          let color2 = document.getElementById('color2');
+          savedData[key]['color2'] = color2.value
+        }
         let element = document.getElementsByClassName(key)[0];
         savedData[key] = element.innerHTML;
       } catch(err) {
@@ -268,6 +281,12 @@ function Editor(props) {
     console.log(savedData)
     sendData(savedData)
   };
+
+  // function changeSavedData() {
+  //   (event) => {
+  //     console.log(event)
+  //   }
+  // }
 
   const [fsClass, setFsClass] = useState('')
   const [modeClass, setModeClass] = useState(' desktop')
@@ -286,6 +305,14 @@ function Editor(props) {
 
   function desktop() {
     setModeClass(' desktop')
+    // let i = 0;
+    // let el = document.getElementById("editor")
+    // while (i<1000) {
+    //   setTimeout(() => {
+    //     // el.style.width = (30 + ((i*70)/1000)).toString() + "vw"
+    //     i++;
+    //   },10)
+    // }
   }
 
   return (
@@ -329,6 +356,9 @@ function Editor(props) {
             <Hero
                 hero={defaults['structure']['hero']}
             />
+            <Blog
+              blog={defaults['structure']['blog']}
+            />
             <main>
               {/* <button id='saveBtn' onClick={saveNewData}>Save</button> */}
               <header>
@@ -360,6 +390,18 @@ function Editor(props) {
       <aside>
         <img id="mainLogo" src={logo.src}/>
         <h1>Hello, {user.displayName}.</h1>
+
+        <ul>
+          <li>
+            Color1
+            <input id="color1" type="color" defaultValue={defaults['palette']['color1']}/>
+          </li>
+          <li>
+            Color2
+            <input id="color2" type="color" defaultValue={defaults['palette']['color2']}/>
+          </li>
+        </ul>
+
         <section id='profileSection'>
           <img src={user.photoURL} alt="Profile Pic" />
           <div>

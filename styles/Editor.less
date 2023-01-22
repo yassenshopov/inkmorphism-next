@@ -46,16 +46,7 @@ html {
     //     z-index: 2;
     // }
     ::-webkit-scrollbar {
-        width: 0.6vw;
-    }
-    ::-webkit-scrollbar-track {
-        background: var(--mainDark);
-        border-radius: 12px;
-
-    }
-    ::-webkit-scrollbar-thumb {
-        background: var(--mainLight);
-        border-radius: 12px;
+        display: none;
     }
 
     .disabled {
@@ -333,6 +324,10 @@ html {
             }
         }
     }
+}
+
+#editor {
+    transition: all 500ms ease-in-out;
 }
 
 
