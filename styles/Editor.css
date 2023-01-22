@@ -34,6 +34,18 @@ html {
   flex-direction: row-reverse;
   box-sizing: border-box;
   font-family: var(--font2);
+  scroll-behavior: smooth;
+}
+.Editor ::-webkit-scrollbar {
+  width: 0.6vw;
+}
+.Editor ::-webkit-scrollbar-track {
+  background: var(--mainDark);
+  border-radius: 12px;
+}
+.Editor ::-webkit-scrollbar-thumb {
+  background: var(--mainLight);
+  border-radius: 12px;
 }
 .Editor .disabled {
   pointer-events: none;
@@ -46,6 +58,9 @@ html {
   max-height: 90vh;
   margin: 1vw;
   overflow-y: scroll;
+  overflow-x: hidden;
+  border-radius: 20px;
+  box-shadow: 0 0 20px #12121230;
   caret-color: var(--mainLight);
 }
 .Editor > main > nav {
@@ -61,6 +76,7 @@ html {
   width: 70vw;
   box-sizing: border-box;
   gap: 1vw;
+  border-radius: 20px 20px 0 0;
 }
 .Editor > main > nav button {
   font-size: 2rem;
@@ -108,12 +124,36 @@ html {
   text-transform: none;
   color: var(--mainLight);
 }
+.Editor > main .editorPane .editSection {
+  width: 70vw;
+  height: 180px;
+  transition: all 300ms ease-in-out;
+  position: absolute;
+  top: calc(-48px - 1.6vw);
+}
+.Editor > main .editorPane .editSection:hover {
+  background-color: #25252560;
+}
 .Editor > main .editorPane main {
   min-height: 100vh;
 }
 .Editor aside {
   width: 20vw;
   padding: 2vw;
+}
+.Editor aside #mainLogo {
+  width: 4vw;
+  height: 4vw;
+}
+.Editor aside #profileSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.Editor aside #profileSection img {
+  width: 3vw;
+  height: 3vw;
 }
 @media screen and (max-width: 600px) {
   .Editor > main {

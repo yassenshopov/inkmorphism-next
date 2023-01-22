@@ -7,7 +7,6 @@ import Nav from "./components/nav.js"
 import Footer from "./components/footer.js"
 import Hero from "./components/hero.js"
 import { Button, createTheme, ThemeProvider } from '@mui/material';
-import { blue } from '@mui/material/colors';
 import { Container } from '@mui/system';
 import '@fontsource/roboto/500.css';
 import { MdOpenInFull, MdOutlineCloseFullscreen } from 'react-icons/md'
@@ -15,6 +14,8 @@ import { RiSave3Fill } from 'react-icons/ri'
 import { FaMobileAlt, FaDesktop } from 'react-icons/fa'
 import Head from 'next/head';
 // import '../styles/fonts/Oswald-VariableFont_wgth.ttf'
+import { getAuth } from 'firebase/auth'
+import logo from '../styles/images/logo.png';
 
 function Editor(props) {
 
@@ -66,6 +67,11 @@ function Editor(props) {
   const [defaultFiles, setFiles] = useState({
     logo: ''
   });
+  const [user, setUser] = useState({
+    displayName: 'Display Name',
+    photoURL: '',
+    email: 'me@something.com',
+  })
 
   // This is a smart roundabout => On the initial render, the button is clicked programmatically,
   // and thus the data that's been fetched is displayed on the page.
@@ -88,12 +94,20 @@ function Editor(props) {
         console.log(dbRenderedData)
         setData(dbRenderedData)
       }
+    }
     const logo = await getDownloadURL(logoRef)
     setFiles({
       logo: logo,
     })
-    console.log(logo)
+    let temp_user = getAuth(app).currentUser;
+    try {
+      temp_user.displayName
+      setUser(temp_user)
+    } catch {
+
     }
+    console.log(temp_user)
+  
   }
 
   async function sendData(savedData) {
@@ -278,7 +292,7 @@ function Editor(props) {
     <div className={"Editor" + fsClass + modeClass}>
 
       <Head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href={defaultFiles['logo']} />
         <title>{defaults['title']}</title>
       </Head>
 
@@ -344,7 +358,16 @@ function Editor(props) {
       </main>
 
       <aside>
-        <h1>Hello, {defaults["meta_author"]}.</h1>
+        <img id="mainLogo" src={logo.src}/>
+        <h1>Hello, {user.displayName}.</h1>
+        <section id='profileSection'>
+          <img src={user.photoURL} alt="Profile Pic" />
+          <div>
+            <p>{user.displayName}</p>
+            <p>{user.email}</p>
+          </div>
+          <div></div>
+        </section>
       </aside>
     </div>
   );

@@ -18,7 +18,6 @@ import {
   setDoc,
 } from "firebase/firestore/lite";
 import app from "../firebase/clientApp";
-7;
 import Head from "next/head";
 import { SiGoogle, SiGithub, SiTwitter } from "react-icons/si";
 import logo from '../styles/images/logo.png';
@@ -190,11 +189,11 @@ export default function Login() {
           </div>
         </div>
         <div>
-        <img src={userData.photoURL} alt="Profile Pic" />
-        <p>Name: {userData.displayName}</p>
-        <p>Email: {userData.email}</p>
-        <p>Created at: {timeCreated}</p>
-      </div>
+          <img src={userData.photoURL} alt="Profile Pic" />
+          <p>Name: {userData.displayName}</p>
+          <p>Email: {userData.email}</p>
+          <p>Created at: {timeCreated}</p>
+        </div>
       </div>
     </>
   );
