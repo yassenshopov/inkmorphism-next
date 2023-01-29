@@ -1,11 +1,111 @@
+@font-face {
+  font-family: 'Oswald';
+  src: url('fonts/Oswald-VariableFont_wght.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Noto';
+  src: url('fonts/NotoSans-ExtraLight.ttf') format('truetype');
+}
 #dashnav {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  height: 100px;
-  box-shadow: 0 0 10px #12121250;
+  height: 120px;
+  box-shadow: 0 0 20px #12121260;
+  background-color: #2a2a3a;
+  padding: 0 6vw;
+  font-family: 'Oswald';
 }
-#dashnav > * {
-  max-height: 80px;
+#dashnav img {
+  max-height: 60px;
+  border-radius: 22px;
+  box-shadow: 10px 10px 10px #12121290, -10px -10px 10px #ffffff19;
+  filter: contrast(1.6) saturate(2);
+}
+#dashnav div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+}
+#dashnav a {
+  color: #fff;
+}
+#dash {
+  padding: 40px 6vw;
+  font-family: 'Noto';
+  background-color: #2a2a3a;
+  color: #fff;
+}
+#dash h1,
+#dash h2 {
+  font-family: 'Oswald';
+}
+#dash #websites {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 80vh;
+}
+#dash #websites article {
+  display: grid;
+  grid-template-columns: 6% 20% 30% 30%;
+  grid-template-rows: 1fr;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 15px;
+  padding: 20px 6vw;
+  border-top: 2px solid #121212;
+  border-bottom: 2px solid #121212;
+  transition: all 200ms ease-in-out;
+}
+#dash #websites article > *:nth-child(1) {
+  font-size: 2rem;
+}
+#dash #websites article img {
+  max-width: 100%;
+  border-radius: 4px;
+}
+#dash #websites article a {
+  color: #fff;
+  justify-self: left;
+}
+#dash #websites article:hover {
+  background-color: #5b4d8560;
+}
+#dash #websites *:last-child {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+#dashfooter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 120px;
+  box-shadow: 0 0 20px #12121260;
+  background-color: #2a2a3a;
+  padding: 0 6vw;
+  font-family: 'Oswald';
+}
+#dashfooter img {
+  max-height: 60px;
+  border-radius: 22px;
+  box-shadow: 10px 10px 10px #12121290, -10px -10px 10px #ffffff19;
+  filter: contrast(1.6) saturate(2);
+}
+#dashfooter div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+}
+#dashfooter a {
+  color: #fff;
 }

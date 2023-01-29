@@ -2,7 +2,7 @@ import logo from '../../styles/images/logo.png';
 import app from "../../firebase/clientApp";
 import { getAuth } from 'firebase/auth'
  
-export default function Dashnav() {
+export default function Dashfooter() {
     const auth = getAuth(app);
     let profile_pic;
     try {
@@ -11,16 +11,16 @@ export default function Dashnav() {
         profile_pic = "";
     } 
     return (
-        <nav id="dashnav">
+        <footer id="dashfooter">
             <div>
                 <img src={logo.src}/>
                 <a>Inkmorphism</a>
             </div>
             <div>
-                {/* <a href=''>Websites</a>
-                <a href=''>Domains</a> */}
+                {/* {/* <a href=''>Websites</a> */}
+                <a href=''>Domains</a> 
             </div>
             <img src={profile_pic} alt="Profile Pic"/>
-        </nav>
+        </footer>
     );
 }

@@ -1,4 +1,3 @@
-import { HelmetProvider } from 'react-helmet-async';
 import app from '../firebase/clientApp';
 import { getFirestore, collection, getDocs, doc, setDoc } from 'firebase/firestore/lite';
 import { getDownloadURL, getMetadata, getStorage, ref } from "firebase/storage";

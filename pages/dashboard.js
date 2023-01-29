@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import Dashnav from './components/dashnav.js'
+import Dashfooter from './components/dashfooter.js'
+import Dash from './components/dash.js'
 
 function Dashboard() {
 
@@ -11,8 +13,9 @@ function Dashboard() {
         <title>Inkmorphism - Your Dashboard</title>
       </Head>
 
-        <Dashnav/>  
-    
+      <Dashnav/>
+      <Dash/>
+      <Dashfooter/>
     </div>
   );
 }
