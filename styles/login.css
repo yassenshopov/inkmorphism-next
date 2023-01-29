@@ -14,7 +14,6 @@ body {
   font-family: var(--font1);
   border-radius: 20px;
   line-height: 1.5;
-  background-color: var(--mainLight);
   box-sizing: border-box;
 }
 .login #loginWrapper {

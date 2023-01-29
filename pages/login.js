@@ -26,13 +26,13 @@ export default function Login() {
   const [userData, setUserData] = useState({});
 
   const auth = getAuth(app);
+  console.log(auth.currentUser)
   // signInWithRedirect(auth, provider)
   onAuthStateChanged(auth, (user) => {
     if (user) {
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/firebase.User
       const uid = user.uid;
-      console.log(user);
       setUserData(user);
       sendRegisterData(user);
       // ...
@@ -141,6 +141,7 @@ export default function Login() {
   }
 
   console.log(logo)
+  console.log(auth)
   return (
     <>
       <Head>
@@ -148,6 +149,7 @@ export default function Login() {
         <meta name="description" content="" />
       </Head>
       <div className="login">
+        <p>{(auth.currentUser == null) ? "You are not logged in" : auth.currentUser.displayName}</p>
         <img src={logo.src}/>
         <h2>Login:</h2>
         <div id="loginWrapper">
@@ -188,12 +190,12 @@ export default function Login() {
             </button>
           </div>
         </div>
-        <div>
+        {/* <div>
           <img src={userData.photoURL} alt="Profile Pic" />
           <p>Name: {userData.displayName}</p>
           <p>Email: {userData.email}</p>
           <p>Created at: {timeCreated}</p>
-        </div>
+        </div> */}
       </div>
     </>
   );
