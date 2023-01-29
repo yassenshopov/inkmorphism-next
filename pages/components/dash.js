@@ -52,7 +52,9 @@ export default function Dash() {
             <h1>Your Dashboard</h1>
             <div id="websites">
                 {theData}
-                <a><article><BsPlusLg/></article></a>
+                <a href="../templates" target="_blank">
+                    <article><BsPlusLg/></article>
+                </a>
             </div>
             <button id="fetch" onClick={getData}></button>
         </main>

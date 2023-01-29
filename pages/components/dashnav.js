@@ -5,7 +5,7 @@ import { getAuth } from 'firebase/auth'
 export default function Dashnav() {
     const auth = getAuth(app);
     let profile_pic;
-    try {
+    try { 
         profile_pic = auth.currentUser.photoURL;
     } catch(err) {
         profile_pic = "";
