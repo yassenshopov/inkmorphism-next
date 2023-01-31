@@ -13,7 +13,7 @@
   align-items: center;
   height: 120px;
   box-shadow: 0 0 20px #12121260;
-  background-color: #2a2a3a;
+  background-color: #316273;
   padding: 0 6vw;
   font-family: 'Oswald';
 }
@@ -36,7 +36,10 @@
 #dash {
   padding: 40px 6vw;
   font-family: 'Noto';
-  background-color: #2a2a3a;
+  background-color: #316273;
+  color: #fff;
+}
+#dash a {
   color: #fff;
 }
 #dash h1,
@@ -57,8 +60,7 @@
   justify-content: space-between;
   border-radius: 15px;
   padding: 20px 2vw;
-  border-top: 2px solid #121212;
-  border-bottom: 2px solid #121212;
+  box-shadow: 10px 10px 10px #12121230, -10px -10px 10px #ffffff09;
   transition: all 200ms ease-in-out;
 }
 #dash #websites article > *:nth-child(1) {
@@ -73,7 +75,7 @@
   justify-self: left;
 }
 #dash #websites article:hover {
-  background-color: #5b4d8560;
+  background-color: #3994AC;
 }
 #dash #websites *:last-child {
   display: flex;
@@ -83,14 +85,46 @@
   cursor: pointer;
   width: 100%;
 }
+#templatesWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Noto';
+  background-color: #316273;
+  color: #fff;
+  padding: 80px 10vw;
+  font-family: 'Oswald';
+}
+#templatesWrapper #templates {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 500px 500px 500px;
+  row-gap: 60px;
+  column-gap: 6vw;
+}
+#templatesWrapper #templates article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 15px;
+  padding: 20px 2vw;
+  box-shadow: 10px 10px 10px #12121230, -10px -10px 10px #ffffff09;
+  transition: all 200ms ease-in-out;
+}
+#templatesWrapper #templates article:hover {
+  background-color: #3994AC;
+}
 #dashfooter {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
   height: 120px;
   box-shadow: 0 0 20px #12121260;
-  background-color: #2a2a3a;
+  background-color: #316273;
   padding: 0 6vw;
   font-family: 'Oswald';
 }

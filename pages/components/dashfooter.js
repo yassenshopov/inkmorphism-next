@@ -16,11 +16,11 @@ export default function Dashfooter() {
                 <img src={logo.src}/>
                 <a>Inkmorphism</a>
             </div>
-            <div>
-                {/* {/* <a href=''>Websites</a> */}
+            {/* <div>
+                <a href=''>Websites</a>
                 <a href=''>Domains</a> 
-            </div>
-            <img src={profile_pic} alt="Profile Pic"/>
+            </div> */}
+            {/* <img src={profile_pic} alt="Profile Pic"/> */}
         </footer>
     );
 }

@@ -16,7 +16,7 @@
     height: 120px;
     box-shadow: 0 0 20px #12121260;
     // background-color: #ededed;
-    background-color: #2a2a3a;
+    background-color: #316273;
     padding: 0 6vw;
     font-family: 'Oswald';
     & img {
@@ -40,8 +40,11 @@
 #dash {
     padding: 40px 6vw;
     font-family: 'Noto';
-    background-color: #2a2a3a;
+    background-color: #316273;
     color: #fff;
+    a {
+        color: #fff;
+    }
     h1, h2 {
         font-family: 'Oswald';
     }
@@ -58,10 +61,8 @@
             justify-content: space-between;
             border-radius: 15px;
             padding: 20px 2vw;
-            // backdrop-filter: saturate(1.5) brightness(0.8);
-            // box-shadow: 10px 10px 10px #12121290, -10px -10px 10px #ffffff09;
-            border-top: 2px solid #121212;
-            border-bottom: 2px solid #121212;
+            // border: 2px solid #ffffff;
+            box-shadow: 10px 10px 10px #12121230, -10px -10px 10px #ffffff09;
             transition: all 200ms ease-in-out;
             & > *:nth-child(1) {
                 font-size: 2rem;
@@ -79,7 +80,7 @@
         }
         article:hover {
             // backdrop-filter: brightness(1.6);
-            background-color: #5b4d8560;
+            background-color: #3994AC;
         }
         & *:last-child {
             // background-color: #fff;
@@ -93,15 +94,49 @@
     }
 }
 
+#templatesWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Noto';
+    background-color: #316273;
+    color: #fff;
+    padding: 80px 10vw;
+    font-family: 'Oswald';
+
+    #templates {
+        display: grid;
+        width: 100%;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 500px 500px 500px;
+        row-gap: 60px;
+        column-gap: 6vw;
+        article {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 15px;
+            padding: 20px 2vw;
+            box-shadow: 10px 10px 10px #12121230, -10px -10px 10px #ffffff09;
+            transition: all 200ms ease-in-out;
+        }
+        article:hover {
+            background-color: #3994AC;
+        }
+    }
+}
+
 #dashfooter {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
     height: 120px;
     box-shadow: 0 0 20px #12121260;
     // background-color: #ededed;
-    background-color: #2a2a3a;
+    background-color: #316273;
     padding: 0 6vw;
     font-family: 'Oswald';
     & img {
