@@ -1,5 +1,4 @@
-import firebase from "firebase/app";
-import { FirebaseOptions, getApp, initializeApp } from "firebase/app";
+import { getApp, initializeApp } from "firebase/app";
 
 const clientCredentials = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,

@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link'
 import Dashnav from './components/dashnav.js'
 import Dashfooter from './components/dashfooter.js'
 
@@ -16,9 +17,9 @@ export default function Teplates() {
       <main id='templatesWrapper'>
         <section id='templates'>
           <article>
-            <a href='./neobrutalism'>
+            <Link href='templates/neobrutalism'>
               <h2>Neobrutalism</h2>
-            </a>
+            </Link>
           </article>
           <article>
             <h2>Glassmorphism</h2>

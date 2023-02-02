@@ -1,3 +1,10 @@
+:root {
+  --nbMainLight: #faf9f9;
+  --nbMainDark: #121212;
+  --nbColor1: #41528B;
+  --nbColor2: #29396A;
+  --nbColor3: #9C3131;
+}
 @font-face {
   font-family: 'Oswald';
   src: url('fonts/Oswald-VariableFont_wght.ttf') format('truetype');
@@ -18,12 +25,13 @@
   font-family: 'Oswald';
 }
 #dashnav img {
-  max-height: 60px;
-  border-radius: 22px;
+  height: 60px;
+  border-radius: 50%;
   box-shadow: 10px 10px 10px #12121290, -10px -10px 10px #ffffff19;
   filter: contrast(1.6) saturate(2);
 }
-#dashnav div {
+#dashnav > div,
+#dashnav > a {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -113,6 +121,11 @@
   padding: 20px 2vw;
   box-shadow: 10px 10px 10px #12121230, -10px -10px 10px #ffffff09;
   transition: all 200ms ease-in-out;
+  cursor: pointer;
+}
+#templatesWrapper #templates article a {
+  text-decoration: none;
+  color: #fff;
 }
 #templatesWrapper #templates article:hover {
   background-color: #3994AC;
@@ -129,8 +142,8 @@
   font-family: 'Oswald';
 }
 #dashfooter img {
-  max-height: 60px;
-  border-radius: 22px;
+  height: 60px;
+  border-radius: 50%;
   box-shadow: 10px 10px 10px #12121290, -10px -10px 10px #ffffff19;
   filter: contrast(1.6) saturate(2);
 }
@@ -143,4 +156,154 @@
 }
 #dashfooter a {
   color: #fff;
+}
+.Neobrutalism {
+  background-color: var(--nbMainLight);
+}
+.Neobrutalism #contentWrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  font-family: 'Oswald';
+}
+.Neobrutalism #contentWrapper nav {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-height: 200px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 16vw;
+  box-sizing: border-box;
+}
+.Neobrutalism #contentWrapper nav > * {
+  gap: 2vw;
+  font-family: 'Oswald';
+}
+.Neobrutalism #contentWrapper nav > * > * {
+  max-height: 100px;
+}
+.Neobrutalism #contentWrapper nav #logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1vw;
+}
+.Neobrutalism #contentWrapper nav #logo a {
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+.Neobrutalism #contentWrapper nav #logo img {
+  max-height: 100px;
+}
+.Neobrutalism #contentWrapper nav #links {
+  display: flex;
+  flex-direction: row;
+  gap: 2vw;
+}
+.Neobrutalism #contentWrapper nav #links a {
+  text-decoration: none;
+  color: var(--nbMainDark);
+  font-size: 1.2rem;
+}
+.Neobrutalism #contentWrapper nav button {
+  font-size: 1.2rem;
+  border: 2px solid var(--nbMainLight);
+  background-color: var(--nbColor2);
+  color: var(--nbMainLight);
+  padding: 10px 2vw;
+  cursor: pointer;
+}
+.Neobrutalism #contentWrapper main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 0vw 50px 0vw;
+}
+.Neobrutalism #contentWrapper main section {
+  width: 100%;
+  border-bottom: 4px solid var(--nbMainDark);
+  box-sizing: border-box;
+  padding: 0 16vw;
+}
+.Neobrutalism #contentWrapper main #hero {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5vw;
+}
+.Neobrutalism #contentWrapper main #hero h1 {
+  font-size: 5rem;
+  background: #11111100;
+  position: relative;
+  line-height: 1;
+}
+.Neobrutalism #contentWrapper main #hero h2 {
+  font-weight: 200;
+}
+.Neobrutalism #contentWrapper main #hero form {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  box-shadow: 0.4vw 0.4vw 0 var(--nbMainDark);
+  margin: 30px 0;
+}
+.Neobrutalism #contentWrapper main #hero form input {
+  border: 2px solid var(--nbMainDark);
+  padding: 10px 2vw;
+  font-size: 1rem;
+  font-family: 'Oswald';
+  color: #12121280;
+  border-radius: 0;
+}
+.Neobrutalism #contentWrapper main #hero form button {
+  background-color: var(--nbColor3);
+  padding: 10px 2vw;
+  font-size: 1rem;
+  color: var(--nbMainLight);
+  font-family: 'Oswald';
+  border-top: 2px solid var(--nbMainDark);
+  border-bottom: 2px solid var(--nbMainDark);
+  border-right: 2px solid var(--nbMainDark);
+  cursor: pointer;
+}
+.Neobrutalism #contentWrapper main #hero img {
+  margin-top: 50px;
+  width: 36vw;
+  border-radius: 25px;
+}
+.Neobrutalism #contentWrapper main #partners {
+  background-color: var(--nbColor2);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 100px 0;
+}
+.Neobrutalism #contentWrapper main #partners img {
+  background-color: var(--nbMainLight);
+  padding: 1vw;
+  box-shadow: 1vw 1vw 0 var(--nbMainDark);
+  width: 10%;
+}
+.Neobrutalism #contentWrapper footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 16vw;
+  border-top: 2px solid var(--nbMainDark);
+  background-color: var(--nbColor1);
+  color: var(--nbMainLight);
+}
+.Neobrutalism #contentWrapper footer a {
+  font-size: 1.6rem;
+}
+.Neobrutalism #contentWrapper footer #socialLinks {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  gap: 1vw;
+  font-size: 2rem;
 }

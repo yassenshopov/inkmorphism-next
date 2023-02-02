@@ -149,7 +149,7 @@ export default function Login() {
         <meta name="description" content="" />
       </Head>
       <div className="login">
-        <p>{(auth.currentUser == null) ? "You are not logged in" : auth.currentUser.displayName}</p>
+        {/* <p>{(auth.currentUser == null) ? "You are not logged in" : auth.currentUser.displayName}</p> */}
         <img src={logo.src}/>
         <h2>Login:</h2>
         <div id="loginWrapper">

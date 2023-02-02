@@ -12,15 +12,16 @@ export default function Dashnav() {
     } 
     return (
         <nav id="dashnav">
-            <div>
+            <a href='/'>
                 <img src={logo.src}/>
                 <a>Inkmorphism</a>
-            </div>
+            </a> 
             <div>
                 {/* <a href=''>Websites</a>
                 <a href=''>Domains</a> */}
             </div>
             <img src={profile_pic} alt="Profile Pic"/>
+            {/* <button id="fetch" onClick={getData}></button> */}
         </nav>
-    );
+    );   
 }
