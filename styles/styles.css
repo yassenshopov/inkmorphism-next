@@ -195,6 +195,10 @@
 }
 .Neobrutalism #contentWrapper nav #logo img {
   max-height: 100px;
+  transition: all 200ms ease-in-out;
+}
+.Neobrutalism #contentWrapper nav #logo img:hover {
+  filter: saturate(3);
 }
 .Neobrutalism #contentWrapper nav #links {
   display: flex;
@@ -208,11 +212,17 @@
 }
 .Neobrutalism #contentWrapper nav button {
   font-size: 1.2rem;
-  border: 2px solid var(--nbMainLight);
+  border: none;
   background-color: var(--nbColor2);
   color: var(--nbMainLight);
   padding: 10px 2vw;
   cursor: pointer;
+  box-shadow: 0.4vw 0.4vw 0 var(--nbMainDark);
+  transition: all 200ms ease-in-out;
+}
+.Neobrutalism #contentWrapper nav button:hover {
+  filter: saturate(2);
+  box-shadow: 0.8vw 0.8vw 0 var(--nbMainDark);
 }
 .Neobrutalism #contentWrapper main {
   display: flex;
@@ -222,7 +232,6 @@
 }
 .Neobrutalism #contentWrapper main section {
   width: 100%;
-  border-bottom: 4px solid var(--nbMainDark);
   box-sizing: border-box;
   padding: 0 16vw;
 }
@@ -232,14 +241,17 @@
   align-items: center;
   justify-content: space-between;
   gap: 5vw;
+  margin: 0 0 20px 0;
 }
 .Neobrutalism #contentWrapper main #hero h1 {
   font-size: 5rem;
   background: #11111100;
   position: relative;
   line-height: 1;
+  margin: 50px 0;
 }
-.Neobrutalism #contentWrapper main #hero h2 {
+.Neobrutalism #contentWrapper main #hero h2,
+.Neobrutalism #contentWrapper main #hero h3 {
   font-weight: 200;
 }
 .Neobrutalism #contentWrapper main #hero form {
@@ -267,25 +279,56 @@
   border-bottom: 2px solid var(--nbMainDark);
   border-right: 2px solid var(--nbMainDark);
   cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+.Neobrutalism #contentWrapper main #hero form button:hover {
+  filter: saturate(2);
 }
 .Neobrutalism #contentWrapper main #hero img {
   margin-top: 50px;
   width: 36vw;
   border-radius: 25px;
+  margin-right: -6vw;
 }
 .Neobrutalism #contentWrapper main #partners {
-  background-color: var(--nbColor2);
+  background-color: var(--nbColor1);
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
   padding: 100px 0;
 }
-.Neobrutalism #contentWrapper main #partners img {
+.Neobrutalism #contentWrapper main #partners article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 10%;
+  gap: 0vh;
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+}
+.Neobrutalism #contentWrapper main #partners article img {
   background-color: var(--nbMainLight);
   padding: 1vw;
   box-shadow: 1vw 1vw 0 var(--nbMainDark);
-  width: 10%;
+  width: 100%;
+  transition: all 200ms ease-in-out;
+}
+.Neobrutalism #contentWrapper main #partners article p {
+  text-align: center;
+  font-size: 1.4rem;
+  background-color: var(--nbMainLight);
+  padding: 1vw;
+  box-shadow: 1vw 1vw 0 var(--nbMainDark);
+  transition: all 200ms ease-in-out;
+  width: 100%;
+}
+.Neobrutalism #contentWrapper main #partners article:hover > img,
+.Neobrutalism #contentWrapper main #partners article:hover > p {
+  box-shadow: 1.6vw 2vw 0 var(--nbMainDark);
+}
+.Neobrutalism #contentWrapper main #partners article:hover {
+  margin-top: -20px;
 }
 .Neobrutalism #contentWrapper footer {
   display: flex;

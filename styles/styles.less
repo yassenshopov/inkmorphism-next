@@ -4,7 +4,6 @@
     --nbColor1: #41528B;
     --nbColor2: #29396A;
     --nbColor3: #9C3131;
-
 }
 
 @font-face {
@@ -204,6 +203,10 @@
                 }
                 img {
                     max-height: 100px;
+                    transition: all 200ms ease-in-out;
+                }
+                img:hover {
+                    filter: saturate(3);
                 }
             }
             #links {
@@ -218,11 +221,17 @@
             }
             button {
                 font-size: 1.2rem;
-                border: 2px solid var(--nbMainLight);
+                border: none;
                 background-color: var(--nbColor2);
                 color: var(--nbMainLight);
                 padding: 10px 2vw;
                 cursor: pointer;
+                box-shadow: 0.4vw 0.4vw 0 var(--nbMainDark);
+                transition: all 200ms ease-in-out;
+            } 
+            button:hover {
+                filter: saturate(2);
+                box-shadow: 0.8vw 0.8vw 0 var(--nbMainDark);
             }
         }
         main {
@@ -234,7 +243,7 @@
             padding: 0px 0vw 50px 0vw;
             section {
                 width: 100%;
-                border-bottom: 4px solid var(--nbMainDark);
+                // border-bottom: 4px solid var(--nbMainDark);
                 box-sizing: border-box;
                 padding: 0 16vw;
             }
@@ -244,12 +253,13 @@
                 align-items: center;
                 justify-content: space-between;
                 gap: 5vw;
+                margin: 0 0 20px 0;
                 h1 {
                     font-size: 5rem;
                     background: #11111100;
                     position: relative;
                     line-height: 1;
-                    
+                    margin: 50px 0;
                     // filter: drop-shadow(5vw 20px 0px var(--nbColor1));
                     // z-index: 2;
                     // div {
@@ -263,7 +273,7 @@
                     //     mix-blend-mode: color;
                     // }
                 }
-                h2 {
+                h2, h3 {
                     font-weight: 200;
                 }
                 form {
@@ -290,28 +300,58 @@
                         border-bottom: 2px solid var(--nbMainDark);
                         border-right: 2px solid var(--nbMainDark);
                         cursor: pointer;
+                        transition: all 200ms ease-in-out;
+                    }
+                    button:hover {
+                        filter: saturate(2);
                     }
                 }
                 img {
                     margin-top: 50px;
                     width: 36vw;
                     border-radius: 25px;
+                    margin-right: -6vw;
                     // filter: drop-shadow(1vw 1vw 0px var(--nbMainDark));
                 }
             }
             #partners {
-                background-color: var(--nbColor2);
+                background-color: var(--nbColor1);
                 display: flex;
                 flex-direction: row;
                 align-items: center;
                 justify-content: space-evenly;
                 padding: 100px 0;
-                img {
-                    background-color: var(--nbMainLight);
-                    padding: 1vw;
-                    // border: 4px solid var(--nbMainDark);
-                    box-shadow: 1vw 1vw 0 var(--nbMainDark);
+                article {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
                     width: 10%;
+                    gap: 0vh;
+                    transition: all 200ms ease-in-out;
+                    cursor: pointer;
+                    img {
+                        background-color: var(--nbMainLight);
+                        padding: 1vw;
+                        box-shadow: 1vw 1vw 0 var(--nbMainDark);
+                        width: 100%;
+                        transition: all 200ms ease-in-out;
+                    }
+                    p {
+                        text-align: center;
+                        font-size: 1.4rem;
+                        background-color: var(--nbMainLight);
+                        padding: 1vw;
+                        box-shadow: 1vw 1vw 0 var(--nbMainDark);
+                        transition: all 200ms ease-in-out;
+                        width: 100%;
+                    }
+                }
+                article:hover > img, article:hover > p{
+                    // margin-top: -2px;
+                    box-shadow: 1.6vw 2vw 0 var(--nbMainDark);
+                }
+                article:hover {
+                    margin-top: -20px;
                 }
             }
         }

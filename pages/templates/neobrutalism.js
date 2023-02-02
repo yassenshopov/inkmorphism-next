@@ -36,20 +36,45 @@ export default function Neobrutalism() {
                 <input type='email' placeholder='Enter your email...'/>
                 <button>Subscribe</button>
               </form>
-              <h3>Join 23K others in out mailing list! 📧</h3>
+              <h3>Join 23K others in our mailing list! 📧</h3>
             </div>
             <img src='nbHero.png'/>
           </section>
 
           <section id='partners'>
-            <img src='partner1.png'/>
-            <img src='partner2.png'/>
-            <img src='partner3.png'/>
+            <article>
+              <img src='partner1.png'/>
+              <p>Fuji Studios</p>
+            </article>
+            <article>
+              <img src='partner2.png'/>
+              <p>Punko Pop Inc.</p>
+            </article>
+            <article>
+              <img src='partner3.png'/>
+              <p>CAA-AMF</p>
+            </article>
+            <article>
+              <img src='partner4.png'/>
+              <p>Far Ltd.</p>
+            </article>
+            <article>
+              <img src='partner5.png'/>
+              <p>Scribblers Ltd.</p>
+            </article>
+          </section>
+
+          <section>
+            <img src='nbMountains2_clear.png'/>
+            <p>123</p>
           </section>
         </main>
 
         <footer>
-          <a>Made with Inkmorphism</a>
+          <div>
+            <a>Made with Inkmorphism</a>
+            <p><em>(All images are created with Midjourney)</em></p>
+          </div>
           <section id='socialLinks'>
             <SiLinkedin/>
             <SiInstagram/>
