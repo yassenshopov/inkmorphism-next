@@ -17,6 +17,7 @@ export default function Teplates() {
       <main id='templatesWrapper'>
         <section id='templates'>
           <article>
+            <img src='templates/neobrutalismTemplate.png'/>
             <Link href='templates/neobrutalism'>
               <h2>Neobrutalism</h2>
             </Link>

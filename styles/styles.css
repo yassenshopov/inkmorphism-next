@@ -114,18 +114,23 @@
 #templatesWrapper #templates article {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   text-align: center;
   border-radius: 15px;
-  padding: 20px 2vw;
-  box-shadow: 10px 10px 10px #12121230, -10px -10px 10px #ffffff09;
+  background-color: var(--nbMainDark);
+  box-shadow: 10px 10px 10px #12121250, -10px -10px 10px #ffffff19;
   transition: all 200ms ease-in-out;
   cursor: pointer;
+  overflow: hidden;
+}
+#templatesWrapper #templates article img {
+  width: 100%;
 }
 #templatesWrapper #templates article a {
   text-decoration: none;
   color: #fff;
+  margin-bottom: 20px;
 }
 #templatesWrapper #templates article:hover {
   background-color: #3994AC;
@@ -159,6 +164,7 @@
 }
 .Neobrutalism {
   background-color: var(--nbMainLight);
+  scroll-behavior: smooth;
 }
 .Neobrutalism #contentWrapper {
   display: flex;
@@ -222,7 +228,7 @@
 }
 .Neobrutalism #contentWrapper nav button:hover {
   filter: saturate(2);
-  box-shadow: 0.8vw 0.8vw 0 var(--nbMainDark);
+  box-shadow: 0.6vw 0.6vw 0 var(--nbMainDark);
 }
 .Neobrutalism #contentWrapper main {
   display: flex;
@@ -233,7 +239,11 @@
 .Neobrutalism #contentWrapper main section {
   width: 100%;
   box-sizing: border-box;
-  padding: 0 16vw;
+  padding: 0px 16vw;
+}
+.Neobrutalism #contentWrapper main section:nth-child(2n) {
+  background-color: var(--nbColor1);
+  color: var(--nbMainLight);
 }
 .Neobrutalism #contentWrapper main #hero {
   display: flex;
@@ -291,44 +301,133 @@
   margin-right: -6vw;
 }
 .Neobrutalism #contentWrapper main #partners {
-  background-color: var(--nbColor1);
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+.Neobrutalism #contentWrapper main #partners h2 {
+  font-size: 3rem;
+  color: var(--nbMainLight);
+  align-self: center;
+}
+.Neobrutalism #contentWrapper main #partners #articles {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
-  padding: 100px 0;
+  padding: 60px 0vw;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
 }
-.Neobrutalism #contentWrapper main #partners article {
+.Neobrutalism #contentWrapper main #partners #articles article {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 10%;
-  gap: 0vh;
+  min-width: 14vw;
   transition: all 200ms ease-in-out;
   cursor: pointer;
+  margin: 0 8vw;
 }
-.Neobrutalism #contentWrapper main #partners article img {
+.Neobrutalism #contentWrapper main #partners #articles article img {
   background-color: var(--nbMainLight);
   padding: 1vw;
   box-shadow: 1vw 1vw 0 var(--nbMainDark);
   width: 100%;
   transition: all 200ms ease-in-out;
 }
-.Neobrutalism #contentWrapper main #partners article p {
+.Neobrutalism #contentWrapper main #partners #articles article p {
   text-align: center;
   font-size: 1.4rem;
+  color: var(--nbMainDark);
   background-color: var(--nbMainLight);
   padding: 1vw;
   box-shadow: 1vw 1vw 0 var(--nbMainDark);
   transition: all 200ms ease-in-out;
   width: 100%;
 }
-.Neobrutalism #contentWrapper main #partners article:hover > img,
-.Neobrutalism #contentWrapper main #partners article:hover > p {
+.Neobrutalism #contentWrapper main #partners #articles article:nth-child(1) {
+  margin-left: 10vw;
+}
+.Neobrutalism #contentWrapper main #partners #articles article:hover > img,
+.Neobrutalism #contentWrapper main #partners #articles article:hover > p {
   box-shadow: 1.6vw 2vw 0 var(--nbMainDark);
 }
-.Neobrutalism #contentWrapper main #partners article:hover {
+.Neobrutalism #contentWrapper main #partners #articles article:hover {
   margin-top: -20px;
+}
+.Neobrutalism #contentWrapper main #partners #articles::-webkit-scrollbar {
+  display: none;
+}
+.Neobrutalism #contentWrapper main #about {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 100px 16vw;
+  box-sizing: border-box;
+  gap: 6vw;
+}
+.Neobrutalism #contentWrapper main #about img {
+  width: 36vw;
+  transition: all 200ms ease-in-out;
+}
+.Neobrutalism #contentWrapper main #about img:hover {
+  filter: saturate(2);
+}
+.Neobrutalism #contentWrapper main #about div {
+  text-align: right;
+  width: 22vw;
+}
+.Neobrutalism #contentWrapper main #about div h2 {
+  font-size: 3.4rem;
+}
+.Neobrutalism #contentWrapper main #about div p {
+  font-size: 1.2rem;
+}
+.Neobrutalism #contentWrapper main #testimonials {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Neobrutalism #contentWrapper main #testimonials article {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 0;
+  gap: 10vw;
+}
+.Neobrutalism #contentWrapper main #testimonials article img {
+  min-width: 14vw;
+  max-width: 14vw;
+  min-height: 14vw;
+  max-height: 14vw;
+  box-shadow: 1vw 1vw 0 var(--nbMainDark);
+  background-color: var(--nbMainLight);
+  transition: all 200ms ease-in-out;
+}
+.Neobrutalism #contentWrapper main #testimonials article img:hover,
+.Neobrutalism #contentWrapper main #testimonials article .review:hover {
+  box-shadow: 1.4vw 1.4vw 0 var(--nbMainDark);
+  filter: saturate(2);
+}
+.Neobrutalism #contentWrapper main #testimonials article img:hover {
+  margin-top: -14px;
+}
+.Neobrutalism #contentWrapper main #testimonials article .review {
+  background-color: var(--nbMainLight);
+  color: var(--nbMainDark);
+  padding: 2vw;
+  box-shadow: 1vw 1vw 0 var(--nbMainDark);
+  font-size: 1.4rem;
+  text-align: right;
+  transition: all 200ms ease-in-out;
+}
+.Neobrutalism #contentWrapper main #testimonials article .review .starsReview {
+  font-size: 2rem;
+  color: var(--nbColor3);
 }
 .Neobrutalism #contentWrapper footer {
   display: flex;
@@ -336,7 +435,6 @@
   justify-content: space-between;
   align-items: center;
   padding: 80px 16vw;
-  border-top: 2px solid var(--nbMainDark);
   background-color: var(--nbColor1);
   color: var(--nbMainLight);
 }
@@ -347,6 +445,6 @@
   cursor: pointer;
   display: flex;
   flex-direction: row;
-  gap: 1vw;
+  gap: 2vw;
   font-size: 2rem;
 }
