@@ -8,8 +8,17 @@ import {
   SiGooglemybusiness,
 } from "react-icons/si";
 import { AiFillStar } from "react-icons/ai";
-
+import { BsFillArrowRightCircleFill } from "react-icons/bs"
+import { useState } from "react";
+ 
 export default function Neobrutalism() {
+
+  const [scrollTop, setScrollTop] = useState(0);
+
+  const handleScroll = event => {
+    setScrollTop((((event.currentTarget.scrollWidth/3) - event.currentTarget.scrollLeft)/(event.currentTarget.scrollWidth/3)) - 0);
+  };
+
   return (
     <div className="Neobrutalism">
       <Head>
@@ -28,7 +37,7 @@ export default function Neobrutalism() {
             <a href="#testimonials">Testimonials</a>
             <a href="#contact">Contact us</a>
           </div>
-          <button>Get in touch</button>
+          <button className="noSelect">Get in touch</button>
         </nav>
 
         <main>
@@ -52,24 +61,25 @@ export default function Neobrutalism() {
 
           <section id="partners">
             <h2>Our Clients</h2>
-            <div id="articles">
-              <article>
+            <div id="arrowHint" style={{opacity: scrollTop}}>< BsFillArrowRightCircleFill /></div>
+            <div id="articles" onScroll={handleScroll}>
+              <article className="noSelect">
                 <img src="partner1.png" />
                 <p>Fuji Studios</p>
               </article>
-              <article>
+              <article className="noSelect">
                 <img src="partner2.png" />
                 <p>Punko Pop Inc.</p>
               </article>
-              <article>
+              <article className="noSelect">
                 <img src="partner3.png" />
                 <p>CAA-AMF</p>
               </article>
-              <article>
+              <article className="noSelect">
                 <img src="partner4.png" />
                 <p>Far Ltd.</p>
               </article>
-              <article>
+              <article className="noSelect">
                 <img src="partner5.png" />
                 <p>Scribblers Ltd.</p>
               </article>
@@ -163,7 +173,16 @@ export default function Neobrutalism() {
           </section>
 
           <section id="contact">
-
+            <h2>Contact us for business enquiries ⇨</h2>
+            <form id="contactForm">
+              <div id="names">
+                <input type="text" id="firstName" placeholder="First name..."/>
+                <input type="text" id="lastName" placeholder="Last name..."/>
+              </div>
+              <input type="email" id="email" placeholder="Email address..."/>
+              <textarea id="message" placeholder="Type your message here..."/>
+              <button>Submit</button>
+            </form>
           </section>
         </main>
 

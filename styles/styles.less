@@ -1,4 +1,10 @@
 :root {
+    --mainLight: #fefefe;
+    --mainDark: #101010;
+    --mainColor1: #3994AC;
+    --mainColor2: #316273;
+    --mainColor3: #C52973;
+
     --nbMainLight: #faf9f9;
     --nbMainDark: #121212;
     --nbColor1: #41528B;
@@ -14,6 +20,70 @@
 @font-face {
     font-family: 'Noto';
     src: url('./fonts/NotoSans-ExtraLight.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'WorkSans';
+    src: url('./fonts/WorkSans-VariableFont_wght.ttf') format('truetype');
+}
+
+#mainPage {
+    font-family: 'WorkSans';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    nav {
+        position: fixed;
+        top: 0;
+        width: 80vw;
+        padding: 20px 10vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        backdrop-filter: blur(10px) saturate(2) brightness(1.2);
+        font-family: 'Oswald';
+        color: var(--mainLight);
+        a {
+            color: var(--mainLight);
+            text-decoration: none;     
+            font-size: 1.4rem;
+        }
+        * {
+            max-height: 60px;
+        } 
+        #logo {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1vw;
+            font-size: 1.6rem;
+        }
+    }
+    main {
+        // background: linear-gradient(175deg, var(--mainColor1) 0%, var(--mainColor1) 20%, var(--mainColor2) 20%, var(--mainColor2) 80%, var(--mainColor3) 80%, var(--mainColor3) 100%);
+        background: linear-gradient(var(--mainColor2), var(--mainColor3));
+        min-height: 100vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 80px;
+        h1 {
+            font-weight: 1000;
+            font-size: 4rem;
+            color: var(--mainLight);
+        }
+    }
+    footer {
+        width: 100%;
+        min-height: 200px;
+        background: linear-gradient(to top, var(--mainColor1), var(--mainColor3));
+    }
 }
 
 #dashnav {
@@ -114,7 +184,7 @@
         display: grid;
         width: 100%;
         grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 500px 500px 500px;
+        grid-template-rows: fit-content fit-content fit-content;
         row-gap: 60px;
         column-gap: 6vw;
         article {
@@ -178,6 +248,18 @@
 .Neobrutalism {
     background-color: var(--nbMainLight);
     scroll-behavior: smooth;
+    .noSelect {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    .noSelect:focus {
+        outline: none !important;
+    }      
     #contentWrapper {
         display: flex;
         flex-direction: column;
@@ -319,10 +401,19 @@
                 margin: 0;
                 padding: 0;
                 justify-content: center;
+                position: relative;
                 h2 {
                     font-size: 3rem;
                     color: var(--nbMainLight);
                     align-self: center;
+                }
+                #arrowHint {
+                    position: absolute;
+                    right: 2vw;
+                    top: 240px;
+                    font-size: 4rem;
+                    // opacity: 0.4;
+                    // color: #101010;
                 }
                 #articles {
                     display: flex;
@@ -439,6 +530,71 @@
                             font-size: 2rem;
                             color: var(--nbColor3);
                         }
+                    }
+                }
+            }
+            #contact {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                gap: 6vw;
+                padding: 80px 16vw;
+                h2 {
+                    font-size: 3.2rem;
+                }
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 20px;
+                    width: 30vw;
+                    box-sizing: border-box;
+                    #names {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        align-items: center;
+                        gap: 1vw;
+                        width: 30vw;
+                        box-sizing: border-box;
+
+
+                    }
+                    input, textarea {
+                        box-sizing: border-box;
+                        border: none;
+                        padding: 10px 1vw;
+                        font-family: 'Oswald';
+                        background-color: var(--nbColor2);
+                        color: var(--mainLight);
+                        box-shadow: 0.4vw 0.4vw 0 var(--nbMainDark);
+                        width: 100%;
+                        opacity: 0.9;
+                        font-size: 1.2rem;
+                    }
+                    textarea {
+                        min-width: 100%;
+                        max-width: 100%;
+                    }
+                    input::placeholder, textarea::placeholder {
+                        color: var(--mainLight);
+
+                    }
+                    #message {
+                        min-height: 100px;
+                    }
+                    button {
+                        background-color: var(--nbColor3);
+                        color: var(--nbMainLight);
+                        font-family: 'Oswald';
+                        border: none;
+                        padding: 10px 1vw;
+                        font-size: 1.6rem;
+                        padding: 10px 1vw;
+                        box-shadow: 0.4vw 0.4vw 0 var(--nbMainDark);
+                        width: 100%;
                     }
                 }
             }

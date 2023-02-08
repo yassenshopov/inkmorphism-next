@@ -15,7 +15,7 @@ export default function Dashnav() {
             <a href='/'>
                 <img src={logo.src}/>
                 <a>Inkmorphism</a>
-            </a> 
+            </a>
             <div>
                 {/* <a href=''>Websites</a>
                 <a href=''>Domains</a> */}
