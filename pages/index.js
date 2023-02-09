@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import logo from '../styles/images/logo.png';
+import {FaTwitter,FaLinkedin,FaInstagram} from 'react-icons/fa'
 
 export default function Home() {
   return (
@@ -20,11 +21,41 @@ export default function Home() {
       </nav>
 
       <main>
-        <h1>Inkmorphism - the AI Website Builder</h1>
+        <section id='hero'>
+          <div id='heroTxt'>
+            <h1>Inkmorphism - the AI Website Builder</h1>
+            <h2>Get started with a free website</h2>
+            <button>Let's go</button>
+          </div>
+          <img src='main/example.png'/>
+        </section>
+
+        <section>
+        </section>
+
+        <section>
+        </section>
+
+        <section>
+        </section>
+
+        <section>
+        </section>
+
+        <section>
+        </section>
+
+        <section>
+        </section>
+
       </main>
 
       <footer>
-
+        <div id='socialLinks'>
+          <a href='https://twitter.com/inkmorphism'>< FaTwitter /></a>
+          <a href='https://instagram.com/inkmorphism'>< FaInstagram /></a>
+          <a>< FaLinkedin /></a>
+        </div>
       </footer>
     </div>
   )
