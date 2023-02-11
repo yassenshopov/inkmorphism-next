@@ -21,9 +21,20 @@ export default function Teplates() {
             <Link href='templates/neobrutalism'>
               <h2>Neobrutalism</h2>
             </Link>
+            <div id='hiddenBtns'>
+              <a href='templates/neobrutalism'>Get Started with Neobrutalism →</a>
+              <a href='templates/neobrutalism'>Preview Template</a>
+            </div>
           </article>
           <article>
-            <h2>Glassmorphism</h2>
+          <img src='templates/glassmorphismTemplate.png'/>
+            <Link href='templates/glassmorphism'>
+              <h2>Glassmorphism</h2>
+            </Link>
+            <div id='hiddenBtns'>
+              <a href='templates/glassmorphism'>Get Started with glassmorphism →</a>
+              <a href='templates/glassmorphism'>Preview Template</a>
+            </div>
           </article>
           <article>
             <h2>Futurism</h2>

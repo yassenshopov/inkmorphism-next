@@ -8,15 +8,17 @@ import {
   SiGooglemybusiness,
 } from "react-icons/si";
 import { AiFillStar } from "react-icons/ai";
-import { BsFillArrowRightCircleFill } from "react-icons/bs"
+import { BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill } from "react-icons/bs"
 import { useState } from "react";
  
 export default function Neobrutalism() {
 
-  const [scrollTop, setScrollTop] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(1);
+  const [scrollRight, setScrollRight] = useState(0);
 
   const handleScroll = event => {
-    setScrollTop((((event.currentTarget.scrollWidth/3) - event.currentTarget.scrollLeft)/(event.currentTarget.scrollWidth/3)) - 0);
+    setScrollLeft((((event.currentTarget.scrollWidth/3) - event.currentTarget.scrollLeft)/(event.currentTarget.scrollWidth/3)));
+    setScrollRight(1 + (-1)*(((event.currentTarget.scrollWidth/3) - event.currentTarget.scrollLeft)/(event.currentTarget.scrollWidth/3)))
   };
 
   return (
@@ -61,7 +63,8 @@ export default function Neobrutalism() {
 
           <section id="partners">
             <h2>Our Clients</h2>
-            <div id="arrowHint" style={{opacity: scrollTop}}>< BsFillArrowRightCircleFill /></div>
+            <div id="arrowHint" style={{opacity: scrollLeft}}>< BsFillArrowRightCircleFill /></div>
+            <div id="arrowHintRight" style={{opacity: scrollRight}}>< BsFillArrowLeftCircleFill /></div>
             <div id="articles" onScroll={handleScroll}>
               <article className="noSelect">
                 <img src="partner1.png" />

@@ -330,18 +330,57 @@
   align-items: center;
   text-align: center;
   border-radius: 15px;
-  background-color: var(--nbMainDark);
   box-shadow: 10px 10px 10px #12121250, -10px -10px 10px #ffffff19;
   transition: all 200ms ease-in-out;
-  cursor: pointer;
   overflow: hidden;
+  position: relative;
+  font-family: 'WorkSans';
 }
 #templatesWrapper #templates article img {
   width: 100%;
+  z-index: 1;
 }
 #templatesWrapper #templates article a {
   text-decoration: none;
   color: #fff;
+}
+#templatesWrapper #templates article #hiddenBtns {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(var(--mainLight), var(--mainColor2));
+  opacity: 0;
+  transition: all 300ms ease-in-out;
+  gap: 40px;
+}
+#templatesWrapper #templates article #hiddenBtns a {
+  font-family: 'WorkSans';
+  font-weight: 1000;
+  text-transform: uppercase;
+  color: var(--mainDark);
+  font-size: 1.4rem;
+  width: 90%;
+  transition: all 200ms ease-in-out;
+  border-bottom: 2px solid #10101000;
+  padding: 0 0 10px 0;
+  width: 70%;
+}
+#templatesWrapper #templates article #hiddenBtns > *:nth-child(2) {
+  color: #4c4c4e;
+}
+#templatesWrapper #templates article #hiddenBtns a:hover {
+  border-bottom: 2px solid var(--mainDark);
+}
+#templatesWrapper #templates article #hiddenBtns a:nth-child(2):hover {
+  border-bottom: 2px solid #4c4c4e;
+}
+#templatesWrapper #templates article #hiddenBtns:hover {
+  opacity: 1;
 }
 #templatesWrapper #templates article:hover {
   background-color: var(--mainColor1);
@@ -374,8 +413,12 @@
   color: #fff;
 }
 .Neobrutalism {
-  background-color: var(--nbMainLight);
-  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0 0 0;
+  font-size: 0.8vw;
 }
 .Neobrutalism .noSelect {
   -webkit-tap-highlight-color: transparent;
@@ -390,9 +433,16 @@
   outline: none !important;
 }
 .Neobrutalism #contentWrapper {
+  border: 1px solid #101010;
+  width: 60%;
+  height: 90vh;
+  overflow-y: scroll;
+  background-color: var(--nbMainLight);
+  scroll-behavior: smooth;
+  justify-self: center;
+  align-self: center;
   display: flex;
   flex-direction: column;
-  max-width: 100%;
   font-family: 'Oswald';
 }
 .Neobrutalism #contentWrapper nav {
@@ -402,11 +452,11 @@
   max-height: 200px;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 16vw;
+  padding: 20px 16%;
   box-sizing: border-box;
 }
 .Neobrutalism #contentWrapper nav > * {
-  gap: 2vw;
+  gap: 2%;
   font-family: 'Oswald';
 }
 .Neobrutalism #contentWrapper nav > * > * {
@@ -416,35 +466,37 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 1vw;
+  gap: 2%;
 }
 .Neobrutalism #contentWrapper nav #logo a {
-  font-size: 1.8rem;
+  font-size: 1.6em;
   font-weight: 900;
 }
 .Neobrutalism #contentWrapper nav #logo img {
-  max-height: 100px;
+  max-width: 40%;
   transition: all 200ms ease-in-out;
 }
 .Neobrutalism #contentWrapper nav #logo img:hover {
   filter: saturate(3);
 }
 .Neobrutalism #contentWrapper nav #links {
+  width: 40%;
   display: flex;
   flex-direction: row;
-  gap: 2vw;
+  gap: 4%;
 }
 .Neobrutalism #contentWrapper nav #links a {
   text-decoration: none;
   color: var(--nbMainDark);
-  font-size: 1.2rem;
+  font-size: 1.2em;
+  text-align: center;
 }
 .Neobrutalism #contentWrapper nav button {
   font-size: 1.2rem;
   border: none;
   background-color: var(--nbColor2);
   color: var(--nbMainLight);
-  padding: 10px 2vw;
+  padding: 10px 4%;
   cursor: pointer;
   box-shadow: 0.4vw 0.4vw 0 var(--nbMainDark);
   transition: all 200ms ease-in-out;
@@ -462,7 +514,7 @@
 .Neobrutalism #contentWrapper main section {
   width: 100%;
   box-sizing: border-box;
-  padding: 0px 16vw;
+  padding: 0px 16%;
 }
 .Neobrutalism #contentWrapper main section:nth-child(2n) {
   background-color: var(--nbColor1);
@@ -473,11 +525,11 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 5vw;
+  gap: 5%;
   margin: 0 0 20px 0;
 }
 .Neobrutalism #contentWrapper main #hero h1 {
-  font-size: 5rem;
+  font-size: 4rem;
   background: #11111100;
   position: relative;
   line-height: 1;
@@ -519,7 +571,7 @@
 }
 .Neobrutalism #contentWrapper main #hero img {
   margin-top: 50px;
-  width: 36vw;
+  width: 46%;
   border-radius: 25px;
   margin-right: -6vw;
 }
@@ -536,17 +588,24 @@
   color: var(--nbMainLight);
   align-self: center;
 }
-.Neobrutalism #contentWrapper main #partners #arrowHint {
+.Neobrutalism #contentWrapper main #partners #arrowHint,
+.Neobrutalism #contentWrapper main #partners #arrowHintRight {
   position: absolute;
+  font-size: 4rem;
+}
+.Neobrutalism #contentWrapper main #partners #arrowHint {
   right: 2vw;
   top: 240px;
-  font-size: 4rem;
+}
+.Neobrutalism #contentWrapper main #partners #arrowHintRight {
+  left: 2vw;
+  top: 240px;
 }
 .Neobrutalism #contentWrapper main #partners #articles {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 60px 0vw;
+  padding: 8vh 0vw;
   overflow-x: scroll;
   scroll-behavior: smooth;
 }
@@ -554,10 +613,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-width: 14vw;
+  min-width: 14%;
   transition: all 200ms ease-in-out;
   cursor: pointer;
-  margin: 0 8vw;
+  margin: 0 8%;
 }
 .Neobrutalism #contentWrapper main #partners #articles article img {
   background-color: var(--nbMainLight);
@@ -577,7 +636,7 @@
   width: 100%;
 }
 .Neobrutalism #contentWrapper main #partners #articles article:nth-child(1) {
-  margin-left: 10vw;
+  margin-left: 10%;
 }
 .Neobrutalism #contentWrapper main #partners #articles article:hover > img,
 .Neobrutalism #contentWrapper main #partners #articles article:hover > p {
@@ -594,12 +653,12 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  padding: 100px 16vw;
+  padding: 100px 16%;
   box-sizing: border-box;
-  gap: 6vw;
+  gap: 6%;
 }
 .Neobrutalism #contentWrapper main #about img {
-  width: 36vw;
+  width: 46%;
   transition: all 200ms ease-in-out;
 }
 .Neobrutalism #contentWrapper main #about img:hover {
@@ -607,7 +666,7 @@
 }
 .Neobrutalism #contentWrapper main #about div {
   text-align: right;
-  width: 22vw;
+  width: 42%;
 }
 .Neobrutalism #contentWrapper main #about div h2 {
   font-size: 3.4rem;
@@ -627,13 +686,11 @@
   justify-content: center;
   align-items: center;
   padding: 60px 0;
-  gap: 10vw;
+  gap: 10%;
+  width: 100%;
 }
 .Neobrutalism #contentWrapper main #testimonials article img {
-  min-width: 14vw;
-  max-width: 14vw;
-  min-height: 14vw;
-  max-height: 14vw;
+  width: 100%;
   box-shadow: 1vw 1vw 0 var(--nbMainDark);
   background-color: var(--nbMainLight);
   transition: all 200ms ease-in-out;
@@ -647,9 +704,10 @@
   margin-top: -14px;
 }
 .Neobrutalism #contentWrapper main #testimonials article .review {
+  max-width: 60%;
   background-color: var(--nbMainLight);
   color: var(--nbMainDark);
-  padding: 2vw;
+  padding: 4%;
   box-shadow: 1vw 1vw 0 var(--nbMainDark);
   font-size: 1.4rem;
   text-align: right;
@@ -665,9 +723,10 @@
   justify-content: center;
   align-items: center;
   gap: 6vw;
-  padding: 80px 16vw;
+  padding: 80px 16%;
 }
 .Neobrutalism #contentWrapper main #contact h2 {
+  width: 40%;
   font-size: 3.2rem;
 }
 .Neobrutalism #contentWrapper main #contact form {
@@ -676,7 +735,7 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
-  width: 30vw;
+  width: 40%;
   box-sizing: border-box;
 }
 .Neobrutalism #contentWrapper main #contact form #names {
@@ -685,7 +744,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 1vw;
-  width: 30vw;
+  width: 100%;
   box-sizing: border-box;
 }
 .Neobrutalism #contentWrapper main #contact form input,
@@ -700,6 +759,7 @@
   width: 100%;
   opacity: 0.9;
   font-size: 1.2rem;
+  transition: background-color 200ms ease-in-out;
 }
 .Neobrutalism #contentWrapper main #contact form textarea {
   min-width: 100%;
@@ -707,7 +767,18 @@
 }
 .Neobrutalism #contentWrapper main #contact form input::placeholder,
 .Neobrutalism #contentWrapper main #contact form textarea::placeholder {
+  transition: all 200ms ease-in-out;
   color: var(--mainLight);
+}
+.Neobrutalism #contentWrapper main #contact form input:hover,
+.Neobrutalism #contentWrapper main #contact form textarea:hover {
+  background-color: var(--nbMainLight);
+}
+.Neobrutalism #contentWrapper main #contact form input:hover::placeholder,
+.Neobrutalism #contentWrapper main #contact form textarea:hover::placeholder,
+.Neobrutalism #contentWrapper main #contact form input:hover,
+.Neobrutalism #contentWrapper main #contact form textarea:hover {
+  color: var(--nbMainDark);
 }
 .Neobrutalism #contentWrapper main #contact form #message {
   min-height: 100px;
@@ -728,7 +799,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 80px 16vw;
+  padding: 80px 16%;
   background-color: var(--nbColor1);
   color: var(--nbMainLight);
 }
