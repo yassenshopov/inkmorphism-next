@@ -18,19 +18,33 @@ export default function Home() {
         </a>
         <a href='/login'>Sign In</a>
         {/* <img src={profile_pic} alt="Profile Pic"/> */}
+        <div id='mobileMenu'>
+          <div id='bar1'></div>
+          <div id='bar2'></div>
+          <div id='bar3'></div>
+        </div>
       </nav>
 
       <main>
         <section id='hero'>
           <div id='heroTxt'>
-            <h1>Inkmorphism - the AI Website Builder</h1>
-            <h2>Get started with a free website</h2>
-            <button>Let's go</button>
+            <h1>Never start with a blank webpage again.</h1>
+            <h2>Let <em>Inkmorphism</em> build it for you</h2>
+            <a href='/templates'>Let's go</a>
           </div>
-          <img src='main/example.png'/>
+          <div id='exampleSites'>
+            <img src='main/example.png'/>
+            <img src='main/example.png'/>
+            <img src='main/example.png'/>
+          </div>
         </section>
 
-        <section>
+        <section id='partners'>
+          <img src='main/openaiLogo.png'/>
+          <div></div>
+          <p>We work with</p>
+          <div></div>
+          <img src='main/midjourneyLogo.png'/>
         </section>
 
         <section>
@@ -51,6 +65,7 @@ export default function Home() {
       </main>
 
       <footer>
+        <p>Inkmorphism © 2023</p>
         <div id='socialLinks'>
           <a href='https://twitter.com/inkmorphism'>< FaTwitter /></a>
           <a href='https://instagram.com/inkmorphism'>< FaInstagram /></a>

@@ -9,7 +9,7 @@ export default function Dashnav() {
         profile_pic = auth.currentUser.photoURL;
     } catch(err) {         
         profile_pic = ""; 
-    } 
+    }  
     return (
         <nav id="dashnav">
             <a href='/'>
