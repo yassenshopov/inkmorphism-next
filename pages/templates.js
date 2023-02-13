@@ -18,9 +18,7 @@ export default function Teplates() {
         <section id='templates'>
           <article>
             <img src='templates/neobrutalismTemplate.png'/>
-            <Link href='templates/neobrutalism'>
-              <h2>Neobrutalism</h2>
-            </Link>
+            <h2>Neobrutalism</h2>
             <div id='hiddenBtns'>
               <a href='templates/neobrutalism'>Get Started with Neobrutalism →</a>
               <a href='templates/neobrutalism'>Preview Template</a>
@@ -28,19 +26,22 @@ export default function Teplates() {
           </article>
           <article>
           <img src='templates/glassmorphismTemplate.png'/>
-            <Link href='templates/glassmorphism'>
-              <h2>Glassmorphism</h2>
-            </Link>
+            <h2>Glassmorphism</h2>
             <div id='hiddenBtns'>
               <a href='templates/glassmorphism'>Get Started with glassmorphism →</a>
               <a href='templates/glassmorphism'>Preview Template</a>
             </div>
           </article>
           <article>
-            <h2>Futurism</h2>
+          <img src='templates/web3Template.png'/>
+            <h2>Web3</h2>
+            <div id='hiddenBtns'>
+              <a href='templates/web3'>Get Started with Web3 →</a>
+              <a href='templates/web3'>Preview Template</a>
+            </div>
           </article>
           <article>
-            <h2>Web3</h2>
+            <h2>Futurism</h2>
           </article>
           <article>
             <h2>Minimalism</h2>
