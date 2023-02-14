@@ -3,7 +3,7 @@ import Dashnav from './components/dashnav.js'
 import Dashfooter from './components/dashfooter.js'
 import Dash from './components/dash.js'
 
-function Dashboard() {
+function Dashboard() { 
 
   return (
     <div className={"Dashboard"}>

@@ -244,6 +244,7 @@
   background-color: #316273;
   padding: 0 6vw;
   font-family: 'Oswald';
+  color: #fff;
 }
 #dashnav img {
   height: 60px;
@@ -262,11 +263,14 @@
 #dashnav a {
   color: #fff;
 }
+#dashnav #signOut {
+  cursor: pointer;
+}
 #dash {
   padding: 40px 6vw;
   font-family: 'Noto';
-  background-color: #316273;
   color: #fff;
+  background: linear-gradient(var(--mainColor2), var(--mainColor3));
 }
 #dash a {
   color: #fff;
@@ -424,6 +428,38 @@
 }
 #dashfooter a {
   color: #fff;
+}
+#loader {
+  position: fixed;
+  z-index: 4;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--mainLight);
+  background: linear-gradient(var(--mainColor1), var(--mainColor2));
+}
+#loader #loadWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: rotate 1s infinite linear;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#loader * {
+  font-size: 8rem;
 }
 .Neobrutalism {
   display: flex;

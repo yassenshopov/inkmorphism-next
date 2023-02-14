@@ -21,6 +21,7 @@ import app from "../firebase/clientApp";
 import Head from "next/head";
 import { SiGoogle, SiGithub, SiTwitter } from "react-icons/si";
 import logo from '../styles/images/logo.png';
+import { useRouter } from "next/router";
 
 export default function Login() {
   const [userData, setUserData] = useState({});
@@ -140,8 +141,14 @@ export default function Login() {
     timeCreated = "---";
   }
 
-  console.log(logo)
   console.log(auth)
+
+  let router = useRouter();
+  function redirect() {
+    setTimeout(() => {
+      router.push('/dashboard')
+    }, 500)
+  }
   return (
     <>
       <Head>
@@ -149,7 +156,7 @@ export default function Login() {
         <meta name="description" content="" />
       </Head>
       <div className="login">
-        {/* <p>{(auth.currentUser == null) ? "You are not logged in" : auth.currentUser.displayName}</p> */}
+        <p>{(auth.currentUser == null) ? "You are not logged in" : redirect()}</p>
         <img src={logo.src}/>
         <h2>Login:</h2>
         <div id="loginWrapper">
