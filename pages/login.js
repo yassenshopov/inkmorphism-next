@@ -99,10 +99,12 @@ export default function Login() {
     let email = document.getElementById("email");
     let password = document.getElementById("password");
     console.log(password);
-    createUserWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+        console.log(userCredential)
         // Signed in
         const user = userCredential.user;
+        console.log(user)
         // ...
       })
       .catch((error) => {
@@ -132,13 +134,6 @@ export default function Login() {
       ":" +
       pad(seconds)
     );
-  }
-
-  let timeCreated;
-  try {
-    timeCreated = getTimeFromDate(userData.metadata.createdAt);
-  } catch {
-    timeCreated = "---";
   }
 
   console.log(auth)
@@ -197,12 +192,6 @@ export default function Login() {
             </button>
           </div>
         </div>
-        {/* <div>
-          <img src={userData.photoURL} alt="Profile Pic" />
-          <p>Name: {userData.displayName}</p>
-          <p>Email: {userData.email}</p>
-          <p>Created at: {timeCreated}</p>
-        </div> */}
       </div>
     </>
   );
