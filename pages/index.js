@@ -16,8 +16,12 @@ export default function Home() {
             <img src="/favicon.ico"/>
             <a>Inkmorphism</a>
         </a>
-        <a href='/login'>Sign In</a>
-        {/* <img src={profile_pic} alt="Profile Pic"/> */}
+        <div>
+          <a>About us</a>
+          <a href='/blog'>Blog</a>
+          <a href='/login'>Sign in</a>
+          {/* <img src={profile_pic} alt="Profile Pic"/> */}
+        </div>
         <div id='mobileMenu'>
           <div id='bar1'></div>
           <div id='bar2'></div>
@@ -29,13 +33,13 @@ export default function Home() {
         <section id='hero'>
           <div id='heroTxt'>
             <h1>Never start with a blank webpage again.</h1>
-            <h2>Let <em>Inkmorphism</em> build it for you</h2>
+            <h2>Let Inkmorphism build it for you</h2>
             <a href='/templates'>Let's go</a>
           </div>
           <div id='exampleSites'>
-            <img src='main/example.png'/>
-            <img src='main/example.png'/>
-            <img src='main/example.png'/>
+            <img src='main/example1.png'/>
+            <img src='main/example2.png'/>
+            <img src='main/example4.png'/>
           </div>
         </section>
 

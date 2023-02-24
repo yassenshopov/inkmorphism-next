@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import Loader from '../components/loader.js'
 import { useState } from 'react';
  
-export default function Dashnav() {
+export default function Dashnav() { 
     const [loadBool, setLoadBool] = useState(false);
     const auth = getAuth(app);
     console.log(auth)
@@ -35,7 +35,7 @@ export default function Dashnav() {
                 <a href=''>Domains</a> */}
             </div>
             <div>
-                <p id="signOut" onClick={signOut}>Sign out</p>
+                <p id="signOut" onClick={signOut}>Log out</p>
                 <img src={profile_pic} alt="Profile Pic"/>
             </div>
             {loadBool ? <Loader/> : ""}

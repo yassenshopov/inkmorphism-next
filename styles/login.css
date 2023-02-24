@@ -117,6 +117,132 @@ body {
   background-color: #1DA1F2;
   color: var(--mainLight);
 }
+.register {
+  margin: 5vw;
+  width: 60vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-family: var(--font1);
+  border-radius: 20px;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+.register #registerWrapper {
+  display: flex;
+  flex-direction: column;
+}
+.register #orSection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1vw;
+  color: var(--mainGrey);
+}
+.register #orSection :nth-child(1),
+.register #orSection :nth-child(3) {
+  background-color: var(--mainGrey);
+  width: 25vw;
+  height: 1px;
+}
+.register form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+.register form input {
+  border: none;
+  border-bottom: 1px solid var(--mainGrey);
+  background-color: var(--mainLight);
+  padding: 10px 0;
+  transition: all 500ms ease-in-out;
+}
+.register form input:focus {
+  outline: none;
+  border-bottom: 1px solid var(--mainDark);
+}
+.register form label {
+  margin-top: 20px;
+}
+.register form button {
+  border: none;
+  margin: 10px 0;
+  padding: 15px 0;
+  text-transform: uppercase;
+  color: var(--mainLight);
+  background-color: var(--mainDark);
+  border-radius: 15px;
+  box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.1), -5px -5px 5px rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  font-family: var(--font1);
+  transition: all 500ms ease-in-out;
+  font-size: 1.2rem;
+}
+.register form button:hover {
+  filter: brightness(2) opacity(0.8);
+}
+.register img {
+  width: 5vw;
+  border-radius: 10px;
+}
+.register #buttons {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 10px;
+  width: 100%;
+}
+.register #buttons button {
+  font-family: var(--font1);
+  background-color: var(--mainLight);
+  border-radius: 15px;
+  box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.1), -5px -5px 5px rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  padding: 0px 5vw;
+  flex-direction: row;
+  gap: 2vw;
+  align-items: center;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  transition: all 500ms ease-in-out;
+  height: fit-content;
+}
+.register #buttons button:hover {
+  box-shadow: 4px 5px 30px rgba(0, 0, 0, 0.25), -5px -5px 15px rgba(255, 255, 255, 0.8);
+  filter: brightness(1.2) saturate(1.5) opacity(0.8);
+}
+.register #buttons button:nth-child(1) {
+  background-color: #DB4437;
+  color: var(--mainLight);
+}
+.register #buttons button:nth-child(2) {
+  background-color: #000000;
+  color: var(--mainLight);
+}
+.register #buttons button:nth-child(3) {
+  background-color: #1DA1F2;
+  color: var(--mainLight);
+}
+.register #registerDisclaimer {
+  padding: 10px 2vw;
+  box-sizing: border-box;
+  width: 40%;
+  margin: 20px 0;
+  text-align: center;
+  border-radius: 24px;
+  box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.1), -5px -5px 5px rgba(255, 255, 255, 0.8);
+}
+.register #registerDisclaimer a {
+  font-weight: 1000;
+  color: var(--mainLinkColor);
+}
 @media (min-width: 600px) {
   body .login {
     width: 100vw;
@@ -154,6 +280,44 @@ body {
     font-size: 20px;
   }
   body .login form {
+    width: 20vw;
+  }
+  body .register {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+  }
+  body .register #registerWrapper {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    gap: 5vw;
+  }
+  body .register #orSection {
+    flex-direction: column;
+  }
+  body .register #orSection :nth-child(1),
+  body .register #orSection :nth-child(3) {
+    width: 1px;
+    height: 150px;
+  }
+  body .register #buttons {
+    justify-content: center;
+    align-items: center;
+    width: 20vw;
+    height: fit-content;
+  }
+  body .register #buttons button {
+    height: 60px;
+  }
+  body .register #buttons button p {
+    width: 8vw;
+  }
+  body .register #buttons button :nth-child(3) {
+    font-size: 20px;
+  }
+  body .register form {
     width: 20vw;
   }
 }

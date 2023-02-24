@@ -121,7 +121,7 @@ html {
         caret-color: var(--mainLight);
         .editorPane {
             width: 100%;
-            margin: calc(48px + 1.8vw) 0 0 0;
+            margin: calc(48px + 2rem) 0 0 0;
             max-width: 100%;
             
             .cleanLink {
@@ -280,11 +280,12 @@ html {
     height: 100vh;
     > main {
         width: 100%;
-        height: 100vh;
+        height: fit-content;
+        // height: 100vh;
         padding: 0;
         margin: 0;
         border: none;
-        overflow-y: auto;
+        border-radius: 0;
         > nav {
             // display: none;
             width: 100vw !important;
@@ -297,8 +298,7 @@ html {
             }
         }
         .editorPane {
-            height: 100vh;
-            width: 100vw;
+            // height: 100vh;
             main {
                 min-height: 0;
             }

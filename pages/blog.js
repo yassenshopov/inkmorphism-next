@@ -1,19 +1,16 @@
 import Head from 'next/head';
 import Link from 'next/link'
-import Dashnav from './components/dashnav.js'
-import Dashfooter from './components/dashfooter.js'
 
-export default function Templates() {
+export default function Blog() {
 
   return (
-    <div className={"Templates"}>
+    <div className={"Blog"}>
 
       <Head>
         {/* <link rel="icon" href={defaultFiles['logo']} /> */}
-        <title>Inkmorphism - Templates for your websites!</title>
+        <title>Inkmorphism - Blog</title>
       </Head>
 
-      <Dashnav/>
       <main id='templatesWrapper'>
         <section id='templates'>
           <article>
@@ -54,7 +51,6 @@ export default function Templates() {
           </article>
         </section>
       </main>
-      <Dashfooter/>
     </div>
   );
 }

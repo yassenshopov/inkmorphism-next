@@ -4,6 +4,7 @@
   --mainColor1: #3994AC;
   --mainColor2: #316273;
   --mainColor3: #C52973;
+  --mainLinkColor: #415eec;
   --nbMainLight: #faf9f9;
   --nbMainDark: #121212;
   --nbColor1: #41528B;
@@ -126,7 +127,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 160px 16vw 100px 16vw;
+  padding: 180px 16vw 100px 16vw;
   gap: 4vw;
   box-sizing: border-box;
 }
@@ -144,14 +145,13 @@
 #mainPage main #hero #heroTxt a {
   text-align: center;
   display: block;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: var(--mainLight);
   background-color: var(--mainDark);
   border: none;
   padding: 20px 2vw;
   width: fit-content;
   font-family: 'Oswald';
-  text-transform: uppercase;
   margin-top: 40px;
   text-decoration: none;
 }
@@ -190,7 +190,7 @@
 }
 #mainPage main #hero #exampleSites > *:nth-child(3) {
   position: absolute;
-  animation: moveSites 6s infinite 4s;
+  animation: moveSites 6s infinite 3s;
 }
 #mainPage main #partners {
   display: flex;

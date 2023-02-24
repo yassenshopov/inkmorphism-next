@@ -123,14 +123,13 @@ export default function Login() {
   return (
     <>
       <Head>
-        <title>Log in | Inkmorphism - the AI Website Builder</title>
+        <title>Register | Inkmorphism - the AI Website Builder</title>
         <meta name="description" content="" />
       </Head>
-      <div className="login">
+      <div className="register">
         <p>{(auth.currentUser == null) ? "You are not logged in" : redirect()}</p>
         <img src={logo.src}/>
-        {/* <h2>Login:</h2> */}
-        <div id="loginWrapper">
+        <div id="registerWrapper">
           <form>
             <label for="email">Email address:</label>
             <input
@@ -139,6 +138,8 @@ export default function Login() {
               name="email"
               placeholder="me@gmail.com"
             />
+            <label for="name">Full name:</label>
+            <input id="name" type="name" name="name" placeholder="Jon Snow..."/>
             <label for="password">Password:</label>
             <input
               id="pasword"
@@ -146,7 +147,7 @@ export default function Login() {
               name="password"
               placeholder="Enter your password"
             />
-            <button onClick={signInWithEmail}>Log in</button>
+            <button onClick={signInWithEmail}>Register</button>
           </form>
           <div id="orSection">
             <div></div>
@@ -156,17 +157,20 @@ export default function Login() {
           <div id="buttons">
             <button onClick={signInWithG}>
               <div></div>
-              <p>Log in with Google</p> <SiGoogle />{" "}
+              <p>Sign in with Google</p> <SiGoogle />{" "}
             </button>
             <button onClick={signInWithGH}>
               <div></div>
-              <p>Log in with GitHub</p> <SiGithub />
+              <p>Sign in with GitHub</p> <SiGithub />
             </button>
             <button onClick={signInWithTW}>
               <div></div>
-              <p>Log in with Twitter</p> <SiTwitter />
+              <p>Sign in with Twitter</p> <SiTwitter />
             </button>
           </div>
+        </div>
+        <div id="registerDisclaimer">
+          <p>Do you have an account? <a href="../login">Log in</a></p>
         </div>
       </div>
     </>
