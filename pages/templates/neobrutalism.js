@@ -10,6 +10,10 @@ import {
 import { AiFillStar } from "react-icons/ai";
 import { BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill } from "react-icons/bs"
 import { useState } from "react";
+import { randomWords } from "random-words";
+import { getFirestore, collection, getDocs, doc, setDoc } from 'firebase/firestore/lite';
+import { getAuth } from 'firebase/auth'
+import app from '../../firebase/clientApp';
  
 export default function Neobrutalism() {
 
@@ -20,6 +24,34 @@ export default function Neobrutalism() {
     setScrollLeft((((event.currentTarget.scrollWidth/3) - event.currentTarget.scrollLeft)/(event.currentTarget.scrollWidth/3)));
     setScrollRight(1 + (-1)*(((event.currentTarget.scrollWidth/3) - event.currentTarget.scrollLeft)/(event.currentTarget.scrollWidth/3)))
   };
+
+  const auth = getAuth(app);
+  const user = "user-" + auth.currentUser.uid
+
+  let db = getFirestore(app);
+  const col = collection(db, "users", user, "websites");
+
+  async function randomSiteGen() {
+    let randomWords = require('random-words');
+    let words = randomWords(2)
+    let slug = "";
+    for (let word in words) {
+      console.log(words[word])
+      slug = slug + words[word] + "-"
+    }
+    slug = slug + Math.ceil(Math.random()*999)
+    slug = slug + ".inkmorphism.com"
+    console.log(slug)
+
+    let newSite = {
+      "domain": slug,
+      initDate: "",
+      name: "New Site",
+      thumbnail: ""
+    }
+
+    await setDoc(doc(col, "new_site"), newSite)
+  }
 
   return (
     <div className="Neobrutalism">
@@ -203,6 +235,10 @@ export default function Neobrutalism() {
             <SiGooglemybusiness />
           </section>
         </footer>
+      </div>
+
+      <div>
+        <a onClick={randomSiteGen}>Create your website with Neobrutalism</a>
       </div>
     </div>
   );

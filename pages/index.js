@@ -13,7 +13,7 @@ export default function Home() {
       </Head>
       <nav>
         <a href='/' id='logo'>
-            <img src="/favicon.ico"/>
+            <img src="/logoWh.png"/>
             <a>Inkmorphism</a>
         </a>
         <div>

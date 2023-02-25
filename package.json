@@ -17,6 +17,7 @@
     "firebase": "^9.15.0",
     "firebaseui": "^6.0.2",
     "next": "13.1.1",
+    "random-words": "^1.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-firebase-hooks": "^5.1.1",

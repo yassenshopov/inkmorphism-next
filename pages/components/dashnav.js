@@ -1,4 +1,4 @@
-import logo from '../../styles/images/logo.png';
+import logo from '../../styles/images/logoWh.png';
 import app from "../../firebase/clientApp";
 import { getAuth } from 'firebase/auth'
 import { useRouter } from 'next/router';
@@ -13,7 +13,7 @@ export default function Dashnav() {
     try {  
         profile_pic = auth.currentUser.photoURL;
     } catch(err) {         
-        profile_pic = ""; 
+        profile_pic = "";
     }  
     let router = useRouter();
     function signOut() {
