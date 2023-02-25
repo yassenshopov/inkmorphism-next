@@ -3,13 +3,13 @@ import Dashnav from './components/dashnav.js'
 import Dashfooter from './components/dashfooter.js'
 import Dash from './components/dash.js'
 
-function Dashboard() { 
+export default function Dashboard() { 
 
   return (
     <div className={"Dashboard"}>
 
       <Head>
-        {/* <link rel="icon" href={defaultFiles['logo']} /> */}
+        <link rel="icon" href="/faviconWh.ico" />
         <title>Inkmorphism - Your Dashboard</title>
       </Head>
 
@@ -19,5 +19,3 @@ function Dashboard() {
     </div>
   );
 }
-
-export default Dashboard;

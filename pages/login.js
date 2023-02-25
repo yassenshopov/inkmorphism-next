@@ -132,19 +132,21 @@ export default function Login() {
         {/* <h2>Login:</h2> */}
         <div id="loginWrapper">
           <form>
-            <label for="email">Email address:</label>
+            <label htmlFor="email">Email address:</label>
             <input
               id="email"
               type="email"
               name="email"
               placeholder="me@gmail.com"
+              autoComplete="username"
             />
-            <label for="password">Password:</label>
+            <label htmlFor="password">Password:</label>
             <input
               id="pasword"
               type="password"
               name="password"
               placeholder="Enter your password"
+              autoComplete="current-password"
             />
             <button onClick={signInWithEmail}>Log in</button>
           </form>

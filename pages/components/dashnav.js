@@ -4,7 +4,7 @@ import { getAuth } from 'firebase/auth'
 import { useRouter } from 'next/router';
 import Loader from '../components/loader.js'
 import { useState } from 'react';
- 
+  
 export default function Dashnav() { 
     const [loadBool, setLoadBool] = useState(false);
     const auth = getAuth(app);
@@ -28,17 +28,18 @@ export default function Dashnav() {
         <nav id="dashnav">
             <a href='/'>
                 <img src={logo.src}/>
-                <a>Inkmorphism</a>
+                <p>Inkmorphism</p>
             </a>
             <div>
                 {/* <a href=''>Websites</a>
                 <a href=''>Domains</a> */}
             </div>
             <div>
+                <a href='../dashboard'>Dashboard</a>
                 <p id="signOut" onClick={signOut}>Log out</p>
                 <img src={profile_pic} alt="Profile Pic"/>
             </div>
-            {loadBool ? <Loader/> : ""}
+            {loadBool ? <Loader/> : ""}  
         </nav>
     );   
 }

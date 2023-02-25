@@ -36,7 +36,8 @@ export default function Dash() {
                     < MdAllOut />
                     <img src={(site.thumbnail==="") ? placeholder.src : site.thumbnail} />
                     <h2>{site.name}</h2>
-                    <a href={"https://"+site.domain} target="_blank">{site.domain}</a>
+                    <p>{site.style}</p>
+                    <p href={"https://"+site.domain} target="_blank">{site.domain}</p>
                     {/* <p>{site.initDate}</p> */}
             </a>
         )

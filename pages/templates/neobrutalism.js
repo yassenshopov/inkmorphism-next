@@ -30,7 +30,8 @@ export default function Neobrutalism() {
     setSiteName(e.target.value)
   }
 
-  async function randomSiteGen() {
+  async function randomSiteGen(style) {
+    alert(style)
     let user;
     let db = getFirestore(app);
     const auth = getAuth(app);
@@ -59,21 +60,22 @@ export default function Neobrutalism() {
     let newSite = {
       "domain": slug,
       initDate: "",
-      name: siteName,
-      thumbnail: ""
+      name: siteName, 
+      thumbnail: "",
+      style: style,
     }
 
     await setDoc(doc(col, siteName), newSite);
 
     let urlRedirect = "../../config/" + slug
-    window.location.href = urlRedirect
+    // window.location.href = urlRedirect
   }
 
   return ( 
     <div className="Neobrutalism">
       <Head>
         {/* <link rel="icon" href={defaultFiles['logo']} /> */}
-        <title>Neobrutalism | Inkmorphism - The AI Website Builder</title>
+        <title>Neobrutalism | Inkmorphism - The AI Website Builder</title> 
       </Head>
 
       <div id="contentWrapper">
@@ -255,7 +257,7 @@ export default function Neobrutalism() {
 
       <div>
         <input id="siteName" type="text" placeholder="Enter your site name..." onChange={siteInput}/>
-        <button onClick={randomSiteGen}>Create your website with Neobrutalism</button>
+        <button onClick={() => {randomSiteGen("Neobrutalism")}}>Create your website with Neobrutalism</button>
       </div>
     </div>
   );
