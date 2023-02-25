@@ -1,11 +1,12 @@
 import { Box, Typography } from "@mui/material";
 
 export default function Hero(props) {
+    let heroExists;
     try {
-        let heroExists = props['hero']['exists']
+        heroExists = props['hero']['exists']
     } catch(err) {
         console.log(err)
-        let heroExists = false
+        heroExists = false
     }
     if (heroExists) {
         return (

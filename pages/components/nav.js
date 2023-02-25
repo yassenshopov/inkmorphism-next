@@ -1,11 +1,12 @@
 import { AppBar, Button, Toolbar, Typography, Box } from "@mui/material";
 
 export default function Nav(props) {
+    let navExists;
     try {
-        let navExists = props['nav']['exists']
+        navExists = props['nav']['exists']
     } catch(err) {
         console.log(err)
-        let navExists = false
+        navExists = false
     }
     if (navExists) {
         return (

@@ -93,7 +93,14 @@ function Editor(props) {
   }, [])
 
   const storage = getStorage(app);
-  const logoRef = ref(storage, (props['name'] + '/logo.png'));
+  console.log(props['name'] === undefined)
+  let propsName;
+  if (props['name'] === undefined) {
+    propsName = "thedatachunk";
+  } else {
+    propsName = props['name'];
+  }
+  const logoRef = ref(storage, (propsName + '/logo.png'));
 
   async function getData() {
     const data = await getDocs(col);
