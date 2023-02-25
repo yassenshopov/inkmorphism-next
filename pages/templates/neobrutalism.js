@@ -9,7 +9,7 @@ import {
 } from "react-icons/si";
 import { AiFillStar } from "react-icons/ai";
 import { BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill } from "react-icons/bs"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { randomWords } from "random-words";
 import { getFirestore, collection, getDocs, doc, setDoc } from 'firebase/firestore/lite';
 import { getAuth } from 'firebase/auth'
@@ -19,19 +19,32 @@ export default function Neobrutalism() {
 
   const [scrollLeft, setScrollLeft] = useState(1);
   const [scrollRight, setScrollRight] = useState(0);
-
   const handleScroll = event => {
     setScrollLeft((((event.currentTarget.scrollWidth/3) - event.currentTarget.scrollLeft)/(event.currentTarget.scrollWidth/3)));
     setScrollRight(1 + (-1)*(((event.currentTarget.scrollWidth/3) - event.currentTarget.scrollLeft)/(event.currentTarget.scrollWidth/3)))
   };
 
-  const auth = getAuth(app);
-  const user = "user-" + auth.currentUser.uid
-
-  let db = getFirestore(app);
-  const col = collection(db, "users", user, "websites");
+  const [siteName, setSiteName] = useState("")
+  const siteInput = (e) => {
+    console.log(e.target.value)
+    setSiteName(e.target.value)
+  }
 
   async function randomSiteGen() {
+    let user;
+    let db = getFirestore(app);
+    const auth = getAuth(app);
+    let uid;
+    let col;
+    try {
+      uid = auth.currentUser.uid; 
+      user = "user-" + uid
+      let db = getFirestore(app);
+      col = collection(db, "users", user, "websites");
+    } catch (error) {
+      console.log(error)
+      uid = "_" 
+    }
     let randomWords = require('random-words');
     let words = randomWords(2)
     let slug = "";
@@ -42,18 +55,21 @@ export default function Neobrutalism() {
     slug = slug + Math.ceil(Math.random()*999)
     slug = slug + ".inkmorphism.com"
     console.log(slug)
-
+    console.log(siteName)
     let newSite = {
       "domain": slug,
       initDate: "",
-      name: "New Site",
+      name: siteName,
       thumbnail: ""
     }
 
-    await setDoc(doc(col, "new_site"), newSite)
+    await setDoc(doc(col, siteName), newSite);
+
+    let urlRedirect = "../../config/" + slug
+    window.location.href = urlRedirect
   }
 
-  return (
+  return ( 
     <div className="Neobrutalism">
       <Head>
         {/* <link rel="icon" href={defaultFiles['logo']} /> */}
@@ -238,7 +254,8 @@ export default function Neobrutalism() {
       </div>
 
       <div>
-        <a onClick={randomSiteGen}>Create your website with Neobrutalism</a>
+        <input id="siteName" type="text" placeholder="Enter your site name..." onChange={siteInput}/>
+        <button onClick={randomSiteGen}>Create your website with Neobrutalism</button>
       </div>
     </div>
   );

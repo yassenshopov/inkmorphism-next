@@ -4,6 +4,7 @@ import { getAuth } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { MdAllOut } from 'react-icons/md'
 import { BsPlusLg } from 'react-icons/bs'
+import placeholder from '../../styles/images/placeholder.png';
 
 export default function Dash() {
     
@@ -36,7 +37,7 @@ export default function Dash() {
         const websites = dbRenderedData.map((site) =>
             <article>
                 < MdAllOut />
-                <img src={site.thumbnail} />
+                <img src={(site.thumbnail==="") ? placeholder.src : site.thumbnail} />
                 <h2>{site.name}</h2>
                 <a href={"https://"+site.domain} target="_blank">{site.domain}</a>
                 {/* <p>{site.initDate}</p> */}
@@ -52,7 +53,7 @@ export default function Dash() {
             <h1>Your Dashboard</h1>
             <div id="websites">
                 {theData}
-                <a href="../templates" target="_blank">
+                <a href="../templates">
                     <article><BsPlusLg/></article>
                 </a>
             </div>
