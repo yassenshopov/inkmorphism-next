@@ -26,18 +26,14 @@ export default function Dashnav() {
 
     return (
         <nav id="dashnav">
-            <a href='/'>
+            <a href='/' className='noSelect'>
                 <img src={logo.src}/>
                 <p>Inkmorphism</p>
             </a>
-            <div>
-                {/* <a href=''>Websites</a>
-                <a href=''>Domains</a> */}
-            </div>
-            <div>
+            <div id='rightPane'>
                 <a href='../dashboard'>Dashboard</a>
                 <p id="signOut" onClick={signOut}>Log out</p>
-                <img src={profile_pic} alt="Profile Pic"/>
+                <img src={profile_pic} alt="Profile Pic" id='profilePic'/>
             </div>
             {loadBool ? <Loader/> : ""}  
         </nav>

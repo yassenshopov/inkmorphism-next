@@ -1,8 +1,18 @@
 import Head from 'next/head'
-import logo from '../styles/images/logo.png';
-import {FaTwitter,FaLinkedin,FaInstagram} from 'react-icons/fa'
+import { useState } from 'react'
+import { FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa'
 
 export default function Home() {
+
+  const [mobileToggle, setMobileToggle] = useState("");
+  function mobileSwitch() {
+    if (mobileToggle === "") {
+      setMobileToggle("clicked")
+    } else {
+      setMobileToggle("")
+    }
+  }
+
   return (
     <div id='mainPage'>
       <Head>
@@ -12,7 +22,7 @@ export default function Home() {
         <link rel="icon" href="/faviconWh.ico" />
       </Head>
       <nav>
-        <a href='/' id='logo'>
+        <a href='/' id='logo' className='noSelect'>
             <img src="/logoWh.png"/>
             <p>Inkmorphism</p>
         </a>
@@ -22,10 +32,15 @@ export default function Home() {
           <a href='/login'>Sign in</a>
           {/* <img src={profile_pic} alt="Profile Pic"/> */}
         </div>
-        <div id='mobileMenu'>
+        <div id='mobileMenu' onClick={mobileSwitch} className={"noSelect " + mobileToggle}>
           <div id='bar1'></div>
           <div id='bar2'></div>
           <div id='bar3'></div>
+        </div>
+        <div id='overlayMenu' className={mobileToggle}>
+          <a className='noSelect'>About us</a>
+          <a className='noSelect' href='/blog'>Blog</a>
+          <a className='noSelect' href='/login'>Sign in</a>
         </div>
       </nav>
 
@@ -44,11 +59,15 @@ export default function Home() {
         </section>
 
         <section id='partners'>
-          <img src='main/openaiLogo.png'/>
+          <a className='noSelect' href='https://openai.com/'>
+            <img src='main/openaiLogo.png'/>
+          </a>
           <div></div>
           <p>We work with</p>
           <div></div>
-          <img src='main/midjourneyLogo.png'/>
+          <a className='noSelect' href='https://www.midjourney.com'>
+            <img src='main/midjourneyLogo.png'/>
+          </a>
         </section>
 
         <section>

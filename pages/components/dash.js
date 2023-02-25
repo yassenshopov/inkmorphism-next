@@ -2,7 +2,7 @@ import app from "../../firebase/clientApp";
 import { getFirestore, collection, getDocs, doc, setDoc } from 'firebase/firestore/lite';
 import { getAuth } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { MdAllOut } from 'react-icons/md'
+import { FaCircle } from 'react-icons/fa'
 import { BsPlusLg } from 'react-icons/bs'
 import placeholder from '../../styles/images/placeholder.png';
 
@@ -15,6 +15,7 @@ export default function Dash() {
     }, [])
 
     const [theData, setData] = useState("") 
+    const [sitesTotal, setSitesTotal] = useState(0)
 
     async function getData() {
         let db = getFirestore(app);
@@ -32,8 +33,8 @@ export default function Dash() {
             dbRenderedData.push(data._docs[entry].data());
         }
         const websites = dbRenderedData.map((site) =>
-            <a href={"../config/" + site.domain}>
-                    < MdAllOut />
+            <a href={"../config/" + site.domain} className="noSelect">
+                    {/* < FaCircle /> */}
                     <img src={(site.thumbnail==="") ? placeholder.src : site.thumbnail} />
                     <h2>{site.name}</h2>
                     <p>{site.style}</p>
@@ -43,6 +44,7 @@ export default function Dash() {
         )
         console.log(dbRenderedData)
         console.log(websites)
+        setSitesTotal(dbRenderedData.length)
         setData(websites)
     } 
 
@@ -50,6 +52,7 @@ export default function Dash() {
         <main id="dash">
             <h1>Your Dashboard</h1>
             <div id="websites">
+                <p>You have {sitesTotal} website projects in total</p>
                 {theData}
                 <a href="../templates">
                     <article><BsPlusLg/></article>
