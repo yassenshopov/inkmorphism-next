@@ -285,7 +285,7 @@
   gap: 20px;
   min-height: 80vh;
 }
-#dash #websites article {
+#dash #websites a {
   display: grid;
   grid-template-columns: 6% 20% 30% 30%;
   grid-template-rows: 1fr;
@@ -296,14 +296,14 @@
   box-shadow: 10px 10px 10px #12121230, -10px -10px 10px #ffffff09;
   transition: all 200ms ease-in-out;
 }
-#dash #websites article > *:nth-child(1) {
+#dash #websites a > *:nth-child(1) {
   font-size: 2rem;
 }
-#dash #websites article img {
+#dash #websites a img {
   max-width: 100%;
   border-radius: 4px;
 }
-#dash #websites article a {
+#dash #websites a a {
   color: #fff;
   justify-self: left;
 }
@@ -431,7 +431,7 @@
 }
 #loader {
   position: fixed;
-  z-index: 4;
+  z-index: 6;
   top: 0;
   left: 0;
   width: 100%;

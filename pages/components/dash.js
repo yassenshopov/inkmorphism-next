@@ -7,9 +7,6 @@ import { BsPlusLg } from 'react-icons/bs'
 import placeholder from '../../styles/images/placeholder.png';
 
 export default function Dash() {
-    
-
-
     useEffect(() => {
         const el = document.getElementById("fetch")
         setTimeout(() => {
@@ -35,13 +32,13 @@ export default function Dash() {
             dbRenderedData.push(data._docs[entry].data());
         }
         const websites = dbRenderedData.map((site) =>
-            <article>
-                < MdAllOut />
-                <img src={(site.thumbnail==="") ? placeholder.src : site.thumbnail} />
-                <h2>{site.name}</h2>
-                <a href={"https://"+site.domain} target="_blank">{site.domain}</a>
-                {/* <p>{site.initDate}</p> */}
-            </article>
+            <a href={"../config/" + site.domain}>
+                    < MdAllOut />
+                    <img src={(site.thumbnail==="") ? placeholder.src : site.thumbnail} />
+                    <h2>{site.name}</h2>
+                    <a href={"https://"+site.domain} target="_blank">{site.domain}</a>
+                    {/* <p>{site.initDate}</p> */}
+            </a>
         )
         console.log(dbRenderedData)
         console.log(websites)

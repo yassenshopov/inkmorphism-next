@@ -1,4 +1,4 @@
-import logo from '../../styles/images/logo.png';
+import logo from '../../styles/images/logoWh.png';
 import app from "../../firebase/clientApp";
 import { getAuth } from 'firebase/auth'
  

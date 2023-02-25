@@ -16,8 +16,11 @@ import Head from 'next/head';
 import { getAuth } from 'firebase/auth'
 import logo from '../styles/images/logo.png';
 import Blog from './components/blog';
+import Loader from './components/loader.js'
 
 function Editor(props) {
+
+  const [loadBool, setLoadBool] = useState(false);
 
   // VARIABLES:
   let callbackDefaults = { 
@@ -81,9 +84,11 @@ function Editor(props) {
   // and thus the data that's been fetched is displayed on the page.
   useEffect(() => {
     const el = document.getElementById("fetch")
+    setLoadBool(true)
     setTimeout(() => {
       el.click();
       document.getElementById("loader").style.display = "none";
+      setLoadBool(false)
     }, 1500)
   }, [])
 
@@ -410,6 +415,7 @@ function Editor(props) {
           <div></div>
         </section>
       </aside>
+      {loadBool ? <Loader/> : ""}
     </div>
   );
 }
