@@ -306,6 +306,17 @@
 #dashnav #signOut {
   cursor: pointer;
 }
+@keyframes rotatePic {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+#dashnav #profilePic:active {
+  animation: rotatePic 650ms 1 linear;
+}
 #dash {
   padding: 40px 6vw;
   font-family: 'Noto';
@@ -415,6 +426,9 @@
   gap: 40px;
   filter: saturate(2);
 }
+#templatesWrapper #templates article #hiddenBtns * {
+  cursor: pointer;
+}
 #templatesWrapper #templates article #hiddenBtns a {
   font-family: 'WorkSans';
   font-weight: 1000;
@@ -425,16 +439,16 @@
   transition: all 200ms ease-in-out;
   border-bottom: 2px solid #10101000;
   padding: 0 0 10px 0;
-  width: 70%;
+  width: 60%;
 }
 #templatesWrapper #templates article #hiddenBtns > *:nth-child(2) {
-  color: #4c4c4e;
+  color: var(--mainLight);
 }
 #templatesWrapper #templates article #hiddenBtns a:hover {
   border-bottom: 2px solid var(--mainDark);
 }
 #templatesWrapper #templates article #hiddenBtns a:nth-child(2):hover {
-  border-bottom: 2px solid #4c4c4e;
+  border-bottom: 2px solid var(--mainLight);
 }
 #templatesWrapper #templates article #hiddenBtns:hover {
   opacity: 1;
@@ -1429,6 +1443,7 @@
   }
   #dash #websites > a *:last-child {
     text-decoration: underline;
+    padding: 16px 0;
   }
   #dashfooter {
     justify-content: center;

@@ -10,16 +10,15 @@ import app from '../firebase/clientApp';
 export default function Templates() {
 
   async function randomSiteGen(style) {
-    alert(style)
     let user;
-    let db = getFirestore(app);
+    let db;
     const auth = getAuth(app);
     let uid;
     let col;
     try {
       uid = auth.currentUser.uid; 
       user = "user-" + uid
-      let db = getFirestore(app);
+      db = getFirestore(app);
       col = collection(db, "users", user, "websites");
     } catch (error) {
       console.log(error)
@@ -54,6 +53,7 @@ export default function Templates() {
 
       <Head>
         {/* <link rel="icon" href={defaultFiles['logo']} /> */}
+        <link rel="icon" href="/faviconWh.ico" />
         <title>Inkmorphism - Templates for your websites!</title>
       </Head>
 

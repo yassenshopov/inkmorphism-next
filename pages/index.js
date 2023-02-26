@@ -27,6 +27,7 @@ export default function Home() {
             <p>Inkmorphism</p>
         </a>
         <div>
+          <a className='noSelect' href='/templates'>Templates</a>
           <a>About us</a>
           <a href='/blog'>Blog</a>
           <a href='/login'>Sign in</a>
@@ -38,6 +39,7 @@ export default function Home() {
           <div id='bar3'></div>
         </div>
         <div id='overlayMenu' className={mobileToggle}>
+          <a className='noSelect' href='/templates'>Templates</a>
           <a className='noSelect'>About us</a>
           <a className='noSelect' href='/blog'>Blog</a>
           <a className='noSelect' href='/login'>Sign in</a>

@@ -329,6 +329,17 @@
     #signOut {
         cursor: pointer;
     }
+    @keyframes rotatePic {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(359deg);
+        }
+    }
+    #profilePic:active {
+        animation: rotatePic 650ms 1 linear;
+    }
 }
 
 #dash {
@@ -444,6 +455,9 @@
                 transition: all 300ms ease-in-out;
                 gap: 40px;
                 filter: saturate(2);
+                * {
+                    cursor: pointer;
+                }
                 a {
                     font-family: 'WorkSans';
                     font-weight: 1000;
@@ -455,17 +469,17 @@
                     transition: all 200ms ease-in-out;
                     border-bottom: 2px solid #10101000;
                     padding: 0 0 10px 0;
-                    width: 70%;
+                    width: 60%;
                 }
                 & > *:nth-child(2) {
-                    color: #4c4c4e;
+                    color: var(--mainLight);
                 }
                 a:hover {
                     border-bottom: 2px solid var(--mainDark);
                     // text-decoration: underline;
                 }
                 a:nth-child(2):hover {
-                    border-bottom: 2px solid #4c4c4e;
+                    border-bottom: 2px solid var(--mainLight);
                     // text-decoration: underline;
                 }
             }
@@ -1502,6 +1516,7 @@
                 }
                 *:last-child {
                     text-decoration: underline;
+                    padding: 16px 0;
                 }
             }
         }

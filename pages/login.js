@@ -125,6 +125,7 @@ export default function Login() {
       <Head>
         <title>Log in | Inkmorphism - the AI Website Builder</title>
         <meta name="description" content="" />
+        <link rel="icon" href="/faviconWh.ico" />
       </Head>
       <div className="login">
         <p>{(auth.currentUser == null) ? "You are not logged in" : redirect()}</p>
@@ -139,6 +140,7 @@ export default function Login() {
               name="email"
               placeholder="me@gmail.com"
               autoComplete="username"
+              disabled
             />
             <label htmlFor="password">Password:</label>
             <input
@@ -147,8 +149,9 @@ export default function Login() {
               name="password"
               placeholder="Enter your password"
               autoComplete="current-password"
+              disabled
             />
-            <button onClick={signInWithEmail}>Log in</button>
+            <button onClick={signInWithEmail} disabled>Log in</button>
           </form>
           <div id="orSection">
             <div></div>
