@@ -6,7 +6,7 @@ export default function Nav(props) {
         navExists = props['nav']['exists']
     } catch(err) {
         console.log(err)
-        navExists = false
+        navExists = false 
     }
     if (navExists) {
         return (
