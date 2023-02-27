@@ -10,9 +10,9 @@ import { FiLogOut, FiUser } from 'react-icons/fi'
   
 export default function Dashnav() { 
 
-    // const [userData, setUserData] = useState({
-    //     profile_pic: defaultProfilePic.src
-    // })
+    const [userData, setUserData] = useState({
+        profile_pic: defaultProfilePic.src
+    })
     // async function getData() {
     //     let db = getFirestore(app);
     //     const auth = getAuth(app);
