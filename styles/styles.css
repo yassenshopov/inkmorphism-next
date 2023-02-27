@@ -320,29 +320,15 @@
   line-height: 0.6;
   transition: margin 400ms ease-in-out, visibility 400ms ease-in-out, opacity 400ms ease-in-out;
   z-index: 2;
+  cursor: pointer;
 }
 #dashnav #profileMenu #signOut {
   cursor: pointer;
 }
-@keyframes rotatePic {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(-359deg);
-  }
-}
 #dashnav #profileMenu #profilePic {
-  box-shadow: 10px 10px 10px #12121200;
   z-index: 3;
-  cursor: pointer;
-  transition: all 400ms ease-in-out;
-}
-#dashnav #profileMenu #profilePic:active {
-  animation: rotatePic 400ms 1 linear;
-}
-#dashnav #profileMenu #profilePic:hover {
-  box-shadow: 0 0 20px var(--mainLight);
+  border-radius: 0 50% 50% 0;
+  box-shadow: 10px 10px 10px #12121200;
 }
 #dash {
   padding: 40px 6vw;
@@ -512,9 +498,68 @@
 #dashfooter a {
   color: #fff;
 }
+#popupWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  background-color: #00000099;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  box-sizing: border-box;
+  font-family: 'Oswald';
+  color: var(--mainDark);
+  transition: all 1s ease-in-out;
+}
+#popupWrapper #popup {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--mainLight);
+  border-radius: 24px;
+  padding: 40px 0 0 0;
+  font-size: 1.4rem;
+  min-width: 40vw;
+  max-width: 80vw;
+  text-align: center;
+  box-shadow: 10px 10px 10px #12121299, -10px -10px 10px #ffffff25;
+}
+#popupWrapper #popup #message {
+  padding: 0 10vw 40px 10vw;
+}
+#popupWrapper #popup #buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+  border-radius: 24px;
+}
+#popupWrapper #popup #buttons p {
+  font-family: 'Oswald';
+  width: 100%;
+  font-size: 1.2rem;
+  border: none;
+  padding: 20px 0;
+  color: var(--mainLight);
+  margin: 0;
+  cursor: pointer;
+}
+#popupWrapper #popup #buttons p:nth-child(1) {
+  border-radius: 0 0 0 24px;
+  background-color: #a3a5c5;
+}
+#popupWrapper #popup #buttons p:nth-child(2) {
+  border-radius: 0 0 24px 0;
+  background-color: #cc4040;
+}
 #loader {
   position: fixed;
-  z-index: 6;
+  z-index: 96;
   top: 0;
   left: 0;
   width: 100%;
@@ -1448,7 +1493,7 @@
   #templatesWrapper #templates {
     grid-template-columns: 1fr;
   }
-  #dashnav *:nth-child(1) p {
+  #dashnav a:nth-child(1) p {
     display: none;
   }
   #dashnav #rightPane > *:not(#profileMenu) {

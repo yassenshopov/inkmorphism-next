@@ -159,15 +159,15 @@ export default function Login() {
             <div></div>
           </div>
           <div id="buttons">
-            <button onClick={signInWithG}>
+            <button onClick={signInWithG} className="noSelect">
               <div></div>
               <p>Log in with Google</p> <SiGoogle />{" "}
             </button>
-            <button onClick={signInWithGH}>
+            <button onClick={signInWithGH} className="noSelect">
               <div></div>
               <p>Log in with GitHub</p> <SiGithub />
             </button>
-            <button onClick={signInWithTW}>
+            <button onClick={signInWithTW} className="noSelect">
               <div></div>
               <p>Log in with Twitter</p> <SiTwitter />
             </button>
