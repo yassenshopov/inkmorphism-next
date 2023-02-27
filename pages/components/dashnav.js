@@ -32,7 +32,7 @@ export default function Dashnav() {
     const profileMenuToggle = (e) => {
         if (profileMenuOpacity === 0 && profileMenuMargin === "-7.5vw") {
             setProfileMenuOpacity(1)
-            setProfileMenuMargin("0px")
+            setProfileMenuMargin("0px") 
         } else {
             setProfileMenuOpacity(0)    
             setProfileMenuMargin("-7.5vw")
