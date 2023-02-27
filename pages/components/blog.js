@@ -21,4 +21,4 @@ export default function Blog(props) {
     } catch(err) {
         console.log(err)
     }
-}
+} 
