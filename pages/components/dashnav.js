@@ -1,11 +1,14 @@
 import logo from '../../styles/images/logoWh.png';
+import defaultProfilePic from '../../styles/images/defaultProfilePic.png';
 import app from "../../firebase/clientApp";
 import { getAuth } from 'firebase/auth'
 import { useRouter } from 'next/router';
 import Loader from '../components/loader.js'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { FiLogOut, FiUser } from 'react-icons/fi'
   
 export default function Dashnav() { 
+
     const [loadBool, setLoadBool] = useState(false);
     const auth = getAuth(app);
     console.log(auth)
@@ -13,7 +16,7 @@ export default function Dashnav() {
     try {  
         profile_pic = auth.currentUser.photoURL;
     } catch(err) {         
-        profile_pic = "";
+        profile_pic = defaultProfilePic.src;
     }  
     let router = useRouter();
     function signOut() {
@@ -24,6 +27,18 @@ export default function Dashnav() {
           }, 200)
     }
 
+    const [profileMenuOpacity, setProfileMenuOpacity] = useState(0)
+    const [profileMenuMargin, setProfileMenuMargin] = useState("-7.5vw")
+    const profileMenuToggle = (e) => {
+        if (profileMenuOpacity === 0 && profileMenuMargin === "-7.5vw") {
+            setProfileMenuOpacity(1)
+            setProfileMenuMargin("0px")
+        } else {
+            setProfileMenuOpacity(0)    
+            setProfileMenuMargin("-7.5vw")
+        } 
+    }
+
     return (
         <nav id="dashnav">
             <a href='/' className='noSelect'>
@@ -32,8 +47,12 @@ export default function Dashnav() {
             </a>
             <div id='rightPane'>
                 <a href='../dashboard'>Dashboard</a>
-                <p id="signOut" onClick={signOut}>Log out</p>
-                <img src={profile_pic} alt="Profile Pic" id='profilePic'/>
+                <div id='profileMenu'>
+                    <p style={{opacity: profileMenuOpacity, marginRight: profileMenuMargin}}>My account < FiUser/></p>
+                    {/* <p>|</p> */}
+                    <p style={{opacity: profileMenuOpacity, marginRight: profileMenuMargin}} id="signOut" onClick={signOut}>Log out < FiLogOut /></p>
+                    <img src={profile_pic} id='profilePic' onClick={profileMenuToggle} className={"noSelect"}/>
+                </div>
             </div>
             {loadBool ? <Loader/> : ""}  
         </nav>
