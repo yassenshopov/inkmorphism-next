@@ -59,9 +59,6 @@ export default function Dashboard() {
   })
   try {  
       profile_pic = auth.currentUser.photoURL;
-      // setUserData({
-      //   profile_pic: auth.currentUser.photoURL 
-      // })
   } catch(err) {         
       profile_pic = userData.profile_pic;
   }  
@@ -82,6 +79,7 @@ export default function Dashboard() {
 
       <Dashnav
         profile_pic={profile_pic}
+        auth={auth}
       />
       <Dash
         sitesTotal={sitesTotal}

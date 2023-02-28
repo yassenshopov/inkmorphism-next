@@ -381,7 +381,7 @@
 #dash #websites > a:hover {
   background-color: #3994AC;
 }
-#dash #websites *:last-child {
+#dash #websites > *:last-child {
   display: flex;
   flex-direction: row;
   justify-content: center;

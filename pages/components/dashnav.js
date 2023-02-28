@@ -15,12 +15,9 @@ export default function Dashnav(props) {
     function signOut() {
         setLoadBool(true)
         setTimeout(() => {
-            auth.signOut()
+            props.auth.signOut()
             router.push('/login')
           }, 200)
-    }
-    function account() {
-        router.push('/account')
     }
 
     const [popupToggle, setPopupToggle] = useState(false)
@@ -28,7 +25,7 @@ export default function Dashnav(props) {
         setPopupToggle(!popupToggle)
         console.log(popupToggle)
     }
-
+ 
     return (
         <nav id="dashnav">
             <a href='/' className='noSelect'>
@@ -38,7 +35,7 @@ export default function Dashnav(props) {
             <div id='rightPane'>
                 <a href='../dashboard'>Dashboard</a>
                 <div id='profileMenu'>
-                    <p onClick={account}>My account < FiUser/></p>
+                    <a href="../account">My account < FiUser/></a>
                     {/* <p>|</p> */}
                     <p id="signOut" onClick={openPopup}>Log out < FiLogOut /></p>
                     <img src={props.profile_pic} id='profilePic' className={"noSelect"}/>
