@@ -7,6 +7,7 @@ import app from "../firebase/clientApp";
 import { useEffect, useState } from 'react';
 import { getFirestore, collection, getDocs, doc, setDoc } from 'firebase/firestore/lite';
 import placeholder from '../styles/images/placeholder.png';
+import defaultProfilePic from '../styles/images/defaultProfilePic.png';
 
 export default function Dashboard() { 
 
@@ -51,6 +52,16 @@ export default function Dashboard() {
       setData(websites)
   } 
   const auth = getAuth(app);
+        
+  let profile_pic;
+  const [userData, setUserData] = useState({
+      profile_pic: defaultProfilePic.src
+  })
+  try {  
+      profile_pic = auth.currentUser.photoURL;
+  } catch(err) {         
+      profile_pic = userData.profile_pic;
+  }  
   // console.log(auth)
   // if (auth.currentUser === null) {
   //   window.location.href = "../login";  
@@ -66,7 +77,10 @@ export default function Dashboard() {
 
       <button id="fetch" onClick={getData}></button>
 
-      <Dashnav/>
+      <Dashnav
+        profile_pic={profile_pic}
+        auth={auth}
+      />
       <Dash
         sitesTotal={sitesTotal}
         theData={theData}
