@@ -108,7 +108,7 @@ export default function Templates() {
     }
 
     return (
-    <div className={"Templates"}>
+    <div className={"Account"}>
 
         <Head>
         {/* <link rel="icon" href={defaultFiles['logo']} /> */}
