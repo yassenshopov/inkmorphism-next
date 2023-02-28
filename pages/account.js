@@ -10,6 +10,7 @@ import app from '../firebase/clientApp';
 import { useEffect, useState } from 'react';
 import placeholder from '../styles/images/placeholder.png';
 import defaultProfilePic from '../styles/images/defaultProfilePic.png';
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 export default function Templates() {
 
@@ -84,16 +85,24 @@ export default function Templates() {
         } catch(err) {
             uid = "_"  
         }
+        
+        const storage = getStorage();
+        const storageRef = ref(storage, (uid + "/profilePic.png"));
+        getDownloadURL(storageRef)
+        .then((metadata) => {
+            console.log(metadata)
+            setUserDB({
+                photoURL: metadata
+            })
+            // Metadata now contains the metadata for 'images/forest.jpg'
+          })
+          .catch((error) => {
+            // Uh-oh, an error occurred!
+          });
 
-        let ref = doc(db, "users", uid)
-        const thisUser = await getDoc(ref)
+        let dataRef = doc(db, "users", uid)
+        const thisUser = await getDoc(dataRef)
         console.log(thisUser.data())
-        try {
-            
-            setUserDB(thisUser.data())
-        } catch {
-
-        }
         try { 
             // profile_pic = auth.currentUser.photoURL;
             console.log(auth)
