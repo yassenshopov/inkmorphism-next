@@ -317,6 +317,11 @@
 }
 #dashnav #profileMenu p,
 #dashnav #profileMenu a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4vw;
   line-height: 0.6;
   transition: margin 400ms ease-in-out, visibility 400ms ease-in-out, opacity 400ms ease-in-out;
   z-index: 2;
