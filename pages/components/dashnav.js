@@ -1,5 +1,4 @@
 import logo from '../../styles/images/logoWh.png';
-import defaultProfilePic from '../../styles/images/defaultProfilePic.png';
 import app from "../../firebase/clientApp";
 import { getAuth } from 'firebase/auth'
 import { getFirestore, collection, getDoc, doc, setDoc } from 'firebase/firestore/lite';
@@ -8,42 +7,10 @@ import Loader from '../components/loader.js'
 import { useEffect, useState } from 'react';
 import { FiLogOut, FiUser } from 'react-icons/fi'
   
-export default function Dashnav() { 
+export default function Dashnav(props) { 
 
-    const [userData, setUserData] = useState({
-        profile_pic: defaultProfilePic.src
-    })
-    // async function getData() {
-    //     let db = getFirestore(app);
-    //     const auth = getAuth(app);
-    //     let uid;
-    //     try {
-    //         uid = "user-" + auth.currentUser.uid; 
-    //     } catch(err) {
-    //         uid = "_"  
-    //     }
-    //     const col = doc(db, (`users`), uid);
-    //     console.log(col)
-    //     let data = await getDoc(col);
-    //     let renderedData = []
-    //     // for (let entry in data._docs) {
-    //     //     console.log(data._docs[entry].data())
-    //     //     renderedData.push(data._docs[entry].data());
-    //     // }
-    //     // console.log(renderedData)
-    //     // setUserData(renderedData)
-    // } 
+    const [loadBool, setLoadBool] = useState(false)
 
-
-    const [loadBool, setLoadBool] = useState(false);
-    const auth = getAuth(app);
-    console.log(auth)
-    let profile_pic;
-    try {  
-        profile_pic = auth.currentUser.photoURL;
-    } catch(err) {         
-        profile_pic = userData.profile_pic;
-    }  
     let router = useRouter();
     function signOut() {
         setLoadBool(true)
@@ -74,7 +41,7 @@ export default function Dashnav() {
                     <p onClick={account}>My account < FiUser/></p>
                     {/* <p>|</p> */}
                     <p id="signOut" onClick={openPopup}>Log out < FiLogOut /></p>
-                    <img src={profile_pic} id='profilePic' className={"noSelect"}/>
+                    <img src={props.profile_pic} id='profilePic' className={"noSelect"}/>
                 </div>
             </div>
 
