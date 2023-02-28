@@ -293,6 +293,62 @@
     }
 }
 
+#accountWrapper {
+    background: linear-gradient(var(--mainColor2), var(--mainColor3));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    #accountSection {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Oswald';
+        // background-color: #fefefe80;
+        // backdrop-filter: blur(10px) saturate(2) brightness(1.2);
+        // backdrop-filter: blur(10px) saturate(1.2) brightness(1.6);
+        width: 25%;
+        padding: 40px 0;
+        margin: 40px 0;
+        color: var(--mainLight);
+        box-shadow: 10px 10px 10px #12121250, -10px -10px 10px #ffffff19;
+        border-radius: 24px;
+
+        #profilePicWrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            max-width: 10vw;
+            position: relative;
+            .hiddenMenu {
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: #000000;
+                width: 100%;
+                border-radius: 24px;
+                height: 100%;
+                transition: all 400ms ease-in-out;
+                opacity: 0;
+                font-size: 1.2rem;
+                cursor: pointer;
+            }
+            .hiddenMenu:hover {
+                opacity: 0.8;
+            }
+            #profilePic {
+                width: 100%;
+                border-radius: 24px;
+            }
+        }
+    }
+}
+
 #dashnav {
     display: flex;
     flex-direction: row;
@@ -560,6 +616,8 @@
     #popup {
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
         background-color: var(--mainLight);
         border-radius: 24px;
         padding: 40px 0 0 0;
@@ -571,6 +629,14 @@
         #message {
             // margin: 0 0 40px 0;
             padding: 0 10vw 40px 10vw;
+        }
+        #previewPicUpload {
+            width: 100%;
+            border-radius: 50%;
+            height: 30vh;
+            width: 30vh;
+            box-shadow: 10px 10px 10px #12121299, -10px -10px 10px #ffffff25;
+            margin: 40px 0;
         }
         #buttons {
             display: flex;
@@ -597,6 +663,9 @@
             p:nth-child(2) {
                 border-radius: 0 0 24px 0;
                 background-color: #cc4040;
+            }
+            .green {
+                background-color: #098334 !important;
             }
         }
     }
