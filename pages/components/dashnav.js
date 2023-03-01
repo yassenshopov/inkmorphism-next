@@ -10,7 +10,6 @@ import { FiLogOut, FiUser } from 'react-icons/fi'
 export default function Dashnav(props) { 
 
 
-    console.log(props)
     const [loadBool, setLoadBool] = useState(false)
 
     let router = useRouter();
@@ -25,7 +24,6 @@ export default function Dashnav(props) {
     const [popupToggle, setPopupToggle] = useState(false)
     const openPopup = () => {
         setPopupToggle(!popupToggle)
-        console.log(popupToggle)
     }
  
     return (
@@ -35,7 +33,7 @@ export default function Dashnav(props) {
                 <p>Inkmorphism</p>
             </a>
             <div id='rightPane'>
-                <a href='../dashboard'>Dashboard</a>
+                <a className="noSelect" href='../dashboard'>Dashboard</a>
                 <div id='profileMenu'>
                     <a href="../account">My account < FiUser/></a>
                     {/* <p>|</p> */}

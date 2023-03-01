@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { getAuth } from "firebase/auth";
 import app from "../../firebase/clientApp";
+import { BiLoaderAlt } from 'react-icons/bi'
 
 export default function Account(props) {
 
@@ -24,7 +25,6 @@ export default function Account(props) {
         }
         let photoRef = ref(storage, uid)
         let metadata = {contentType: "image/png"}
-        console.log(file)
         uploadBytes(photoRef, fileToUpload, metadata).then((snapshot) => {
             window.location.reload(false)
         })
@@ -33,7 +33,6 @@ export default function Account(props) {
     const [file, setFile] = useState();
     const [fileToUpload, setFileToUpload] = useState()
     function showPreview(e) {
-        console.log(URL.createObjectURL(e.target.files[0]))
         setFile(URL.createObjectURL(e.target.files[0]))
         setFileToUpload((e.target.files[0]))
     }
@@ -41,20 +40,24 @@ export default function Account(props) {
     const [popupToggle, setPopupToggle] = useState(false)
     const openPopup = () => {
         setPopupToggle(!popupToggle)
-        console.log(popupToggle)
     }
+
+    const profileSec = 
+        // return (
+        <main id="accountSection">
+            <div id="profilePicWrapper">
+                <img src={props.profilePic} id="profilePic"/>
+                <div className="hiddenMenu" onClick={openPopup}>
+                    <p>Change picture</p>
+                </div>
+            </div>
+            <p id="displayName">{props.displayName}</p>
+        </main>
+        // )    
 
     return (
         <div id="accountWrapper">
-            <main id="accountSection">
-                <div id="profilePicWrapper">
-                    <img src={props.profilePic} id="profilePic"/>
-                    <div className="hiddenMenu" onClick={openPopup}>
-                        <p>Change picture</p>
-                    </div>
-                </div>
-                <p id="displayName">{props.displayName}</p>
-            </main>
+            {(props.profilePic === "") ? <BiLoaderAlt id='loaderSites'/> : profileSec}
 
             <div style={{ display: ((popupToggle) ? 'flex' : 'none') }} id="popupWrapper">
                 <form id="popup">
