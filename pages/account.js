@@ -50,22 +50,31 @@ export default function Templates() {
             setUserDB({
                 photoURL: metadata
             })
+            try { 
+                console.log(userDataDB)
+                // profile_pic = auth.currentUser.photoURL;
+                setUserData({
+                    profile_pic: metadata,
+                    // profile_pic: auth.currentUser.photoURL,
+                    displayName: auth.currentUser.displayName
+                })
+            } catch(err) {
+            } 
             // Metadata now contains the metadata for 'images/forest.jpg'
           })
           .catch((error) => {
             // Uh-oh, an error occurred!
+            try { 
+                console.log(userDataDB)
+                // profile_pic = auth.currentUser.photoURL;
+                setUserData({
+                    profile_pic: auth.currentUser.photoURL,
+                    // profile_pic: auth.currentUser.photoURL,
+                    displayName: auth.currentUser.displayName
+                })
+            } catch(err) {
+            } 
           });
-
-        let dataRef = doc(db, "users", uid)
-        const thisUser = await getDoc(dataRef)
-        try { 
-            // profile_pic = auth.currentUser.photoURL;
-            setUserData({
-                profile_pic: auth.currentUser.photoURL,
-                displayName: auth.currentUser.displayName
-            })
-        } catch(err) {
-        } 
     }
 
     return (
