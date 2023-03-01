@@ -1,6 +1,9 @@
 import Head from 'next/head'
 import { useState } from 'react'
 import { FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa'
+import { getAuth } from "firebase/auth";
+import app from "../firebase/clientApp";
+import { useRouter } from "next/router";
 
 export default function Home() {
 
@@ -11,6 +14,28 @@ export default function Home() {
     } else {
       setMobileToggle("")
     }
+  }
+
+  let router = useRouter();
+  function redirect() {
+    setTimeout(() => {
+      router.push('/dashboard')
+    }, 500)
+  }
+
+  function checkLogin() {
+    const auth = getAuth(app)
+    setTimeout(() => {
+      if (auth.currentUser !== null) {
+        setTimeout(() => {
+          router.push('/dashboard')
+        }, 500)
+      } else {
+        setTimeout(() => {
+          router.push('/login')
+        }, 500)
+      }
+    }, 1000)
   }
 
   return (
@@ -30,7 +55,7 @@ export default function Home() {
           <a className='noSelect' href='/templates'>Templates</a>
           <a>About us</a>
           <a href='/blog'>Blog</a>
-          <a href='/login'>Sign in</a>
+          <a onClick={checkLogin}>Sign in</a>
           {/* <img src={profile_pic} alt="Profile Pic"/> */}
         </div>
         <div id='mobileMenu' onClick={mobileSwitch} className={"noSelect " + mobileToggle}>
@@ -42,7 +67,7 @@ export default function Home() {
           <a className='noSelect' href='/templates'>Templates</a>
           <a className='noSelect'>About us</a>
           <a className='noSelect' href='/blog'>Blog</a>
-          <a className='noSelect' href='/login'>Sign in</a>
+          <a className='noSelect' onClick={checkLogin}>Sign in</a>
         </div>
       </nav>
 
