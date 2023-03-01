@@ -53,9 +53,9 @@ export default function Home() {
         </a>
         <div>
           <a className='noSelect' href='/templates'>Templates</a>
-          <a>About us</a>
-          <a href='/blog'>Blog</a>
-          <a onClick={checkLogin}>Sign in</a>
+          <a className='noSelect' href='/about'>About us</a>
+          <a className='noSelect' href='/blog'>Blog</a>
+          <a className='noSelect' onClick={checkLogin}>Sign in</a>
           {/* <img src={profile_pic} alt="Profile Pic"/> */}
         </div>
         <div id='mobileMenu' onClick={mobileSwitch} className={"noSelect " + mobileToggle}>
@@ -65,7 +65,7 @@ export default function Home() {
         </div>
         <div id='overlayMenu' className={mobileToggle}>
           <a className='noSelect' href='/templates'>Templates</a>
-          <a className='noSelect'>About us</a>
+          <a className='noSelect' href='/about'>About us</a>
           <a className='noSelect' href='/blog'>Blog</a>
           <a className='noSelect' onClick={checkLogin}>Sign in</a>
         </div>

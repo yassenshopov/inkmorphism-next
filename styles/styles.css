@@ -386,6 +386,21 @@
   border-radius: 0 50% 50% 0;
   box-shadow: 10px 10px 10px #12121200;
 }
+@keyframes loaderRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#loaderSites {
+  justify-self: center;
+  align-self: center;
+  font-size: 4rem;
+  animation: loaderRotate 800ms infinite linear;
+  color: var(--mainLight);
+}
 #dash {
   padding: 40px 6vw;
   font-family: 'Noto';

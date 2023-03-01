@@ -36,9 +36,8 @@ export default function Dashboard() {
       for (let entry in data._docs) {
           dbRenderedData.push(data._docs[entry].data());
       }
-      console.log(dbRenderedData)
       const websites = dbRenderedData.map((site) =>
-          <a href={"../config/" + site.domain} className="noSelect">
+          <a key={site.domain} href={"../config/" + site.domain} className="noSelect">
                   {/* < FaCircle /> */}
                   <img src={(site.thumbnail==="") ? placeholder.src : site.thumbnail} />
                   <h2>{site.name}</h2>
@@ -47,7 +46,6 @@ export default function Dashboard() {
                   {/* <p>{site.initDate}</p> */}
           </a>
       )
-      console.log(websites)
       setSitesTotal(dbRenderedData.length)
       setData(websites)
   } 
