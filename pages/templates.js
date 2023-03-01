@@ -6,47 +6,58 @@ import { randomWords } from "random-words";
 import { getFirestore, collection, getDocs, doc, setDoc } from 'firebase/firestore/lite';
 import { getAuth } from 'firebase/auth'
 import app from '../firebase/clientApp';
+import { useState, useEffect } from 'react';
+import placeholder from '../styles/images/placeholder.png';
+import defaultProfilePic from '../styles/images/defaultProfilePic.png';
 
 export default function Templates() {
 
-  async function randomSiteGen(style) {
-    let user;
-    let db;
+  let profile_pic = ""
+
+  useEffect(() => {
+      const el = document.getElementById("fetch")
+      setTimeout(() => {
+          el.click();
+      }, 1500)
+  }, [])
+
+const auth = getAuth(app);
+        
+const [userData, setUserData] = useState({
+    profile_pic: defaultProfilePic.src,
+    displayName: "Default"
+})
+
+console.log(userData)
+
+async function getData() {
+    let db = getFirestore(app);
     const auth = getAuth(app);
     let uid;
-    let col;
     try {
-      uid = auth.currentUser.uid; 
-      user = "user-" + uid
-      db = getFirestore(app);
-      col = collection(db, "users", user, "websites");
-    } catch (error) {
-      console.log(error)
-      uid = "_" 
-    }
-    let randomWords = require('random-words');
-    let words = randomWords(2)
-    let slug = "";
-    for (let word in words) {
-      console.log(words[word])
-      slug = slug + words[word] + "-"
-    }
-    slug = slug + Math.ceil(Math.random()*999)
-    let fullSlug = slug + ".inkmorphism.com"
-    console.log(slug)
-    let newSite = {
-      "domain": fullSlug,
-      initDate: "",
-      name: "", 
-      thumbnail: "",
-      style: style,
+        uid = "user-" + auth.currentUser.uid; 
+    } catch(err) {
+        uid = "_"  
     }
 
-    await setDoc(doc(col, slug), newSite);
+    try { 
+        // profile_pic = auth.currentUser.photoURL;
+        console.log(auth)
+        setUserData({
+            profile_pic: auth.currentUser.photoURL,
+            displayName: auth.currentUser.displayName
+        })
+        console.log(userData)
+    } catch(err) {
+        console.log(err)
+    }
+}
 
-    let urlRedirect = "../../config/" + slug
-    // window.location.href = urlRedirect
-  }
+  try {  
+    profile_pic = auth.currentUser.photoURL;
+  } catch(err) {         
+    profile_pic = userData.profile_pic;
+  }  
 
   return (
     <div className={"Templates"}>
@@ -57,7 +68,12 @@ export default function Templates() {
         <title>Inkmorphism - Templates for your websites!</title>
       </Head>
 
-      <Dashnav/>
+      <button id="fetch" onClick={getData}></button>
+
+      <Dashnav
+        profile_pic={profile_pic}
+        auth={auth}
+      />
       <main id='templatesWrapper'>
         <section id='templates'>
           <article>

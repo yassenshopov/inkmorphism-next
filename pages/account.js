@@ -64,9 +64,6 @@ export default function Templates() {
         }, 1500)
     }, [])
 
-    const [theData, setData] = useState("") 
-    const [sitesTotal, setSitesTotal] = useState(0)
-
     const auth = getAuth(app);
             
     const [userData, setUserData] = useState({

@@ -56,7 +56,6 @@ export default function Login() {
     signInWithPopup(auth, provider).then((result) => {
       const credential = GithubAuthProvider.credentialFromResult(result);
       if (credential) {
-        // This gives you a GitHub Access Token. You can use it to access the GitHub API.
         const token = credential.accessToken;
         // ...
       }
@@ -70,7 +69,6 @@ export default function Login() {
     signInWithPopup(auth, provider).then((result) => {
       const credential = TwitterAuthProvider.credentialFromResult(result);
       if (credential) {
-        // This gives you a GitHub Access Token. You can use it to access the GitHub API.
         const token = credential.accessToken;
         // ...
       } else {

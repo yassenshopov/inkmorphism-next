@@ -9,6 +9,8 @@ import { FiLogOut, FiUser } from 'react-icons/fi'
   
 export default function Dashnav(props) { 
 
+
+    console.log(props)
     const [loadBool, setLoadBool] = useState(false)
 
     let router = useRouter();
@@ -37,7 +39,7 @@ export default function Dashnav(props) {
                 <div id='profileMenu'>
                     <a href="../account">My account < FiUser/></a>
                     {/* <p>|</p> */}
-                    <p id="signOut" onClick={openPopup}>Log out < FiLogOut /></p>
+                    <p id="signOut" onClick={openPopup} className="noSelect">Log out < FiLogOut /></p>
                     <img src={props.profile_pic} id='profilePic' className={"noSelect"}/>
                 </div>
             </div>
