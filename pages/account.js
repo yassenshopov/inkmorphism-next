@@ -74,7 +74,7 @@ export default function Templates() {
         <Head>
         {/* <link rel="icon" href={defaultFiles['logo']} /> */}
         <link rel="icon" href="/faviconWh.ico" />
-        <title>Inkmorphism - Templates for your websites!</title>
+        <title>Inkmorphism - My account</title>
         </Head>
 
         <button id="fetch" onClick={getData}></button>
