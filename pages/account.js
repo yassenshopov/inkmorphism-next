@@ -56,7 +56,7 @@ export default function Templates() {
                 setUserData({
                     profile_pic: metadata,
                     // profile_pic: auth.currentUser.photoURL,
-                    displayName: auth.currentUser.displayName
+                    displayName: auth.currentUser.displayName 
                 })
             } catch(err) {
             } 

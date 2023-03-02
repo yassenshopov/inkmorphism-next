@@ -8,8 +8,41 @@ import { useEffect, useState } from 'react';
 import { getFirestore, collection, getDocs, doc, setDoc } from 'firebase/firestore/lite';
 import placeholder from '../styles/images/placeholder.png';
 import defaultProfilePic from '../styles/images/defaultProfilePic.png';
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 export default function Dashboard() { 
+
+  const [folderName, setFolderName] = useState('default');
+  const [pageTitle, setPageTitle] = useState('default');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('/api/create-page', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ folderName, pageTitle })
+      });
+
+      const data = await response.json();
+      console.log(data.message);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const [userDataDB, setUserDB] = useState({
+      photoURL: ""
+  });
+  const auth = getAuth(app);
+            
+  const [userData, setUserData] = useState({
+      profile_pic: defaultProfilePic.src,
+      displayName: "Default"
+  })
 
   useEffect(() => {
       const el = document.getElementById("fetch")
@@ -20,6 +53,7 @@ export default function Dashboard() {
 
   const [theData, setData] = useState("") 
   const [sitesTotal, setSitesTotal] = useState(0)
+  let profile_pic;
 
   async function getData() {
       let db = getFirestore(app);
@@ -48,18 +82,41 @@ export default function Dashboard() {
       )
       setSitesTotal(dbRenderedData.length)
       setData(websites)
+      const storage = getStorage();
+      const storageRef = ref(storage, (uid + "/profilePic.png"));
+      getDownloadURL(storageRef)
+      .then((metadata) => {
+          console.log(metadata)
+          setUserDB({
+              photoURL: metadata
+          })
+          try { 
+              console.log(userDataDB)
+              // profile_pic = auth.currentUser.photoURL;
+              setUserData({
+                  profile_pic: metadata,
+                  // profile_pic: auth.currentUser.photoURL,
+                  displayName: auth.currentUser.displayName
+              })
+          } catch(err) {
+          } 
+          // Metadata now contains the metadata for 'images/forest.jpg'
+        })
+        .catch((error) => {
+          // Uh-oh, an error occurred!
+          try { 
+              console.log(userDataDB)
+              // profile_pic = auth.currentUser.photoURL;
+              setUserData({
+                  profile_pic: auth.currentUser.photoURL,
+                  // profile_pic: auth.currentUser.photoURL,
+                  displayName: auth.currentUser.displayName
+              })
+          } catch(err) {
+          } 
+        }); 
   } 
-  const auth = getAuth(app);
         
-  let profile_pic;
-  const [userData, setUserData] = useState({
-      profile_pic: defaultProfilePic.src
-  })
-  try {  
-      profile_pic = auth.currentUser.photoURL;
-  } catch(err) {         
-      profile_pic = userData.profile_pic;
-  }  
   // console.log(auth)
   // if (auth.currentUser === null) {
   //   window.location.href = "../login";  
@@ -73,10 +130,24 @@ export default function Dashboard() {
         <title>Inkmorphism - Your Dashboard</title>
       </Head>
 
+      <form onSubmit={handleSubmit}>
+        <label>
+          Folder name:
+          <input type="text" value={folderName} onChange={(e) => setFolderName(e.target.value)} />
+        </label>
+        <br />
+        <label>
+          Page title:
+          <input type="text" value={pageTitle} onChange={(e) => setPageTitle(e.target.value)} />
+        </label>
+        <br />
+        <button type="submit">Create page</button>
+      </form>
+
       <button id="fetch" onClick={getData}></button>
 
       <Dashnav
-        profile_pic={profile_pic}
+        profile_pic={userData.profile_pic}
         auth={auth}
       />
       <Dash
