@@ -59,6 +59,47 @@ async function getData() {
     profile_pic = userData.profile_pic;
   }  
 
+  
+  async function randomSiteGen(style) {
+    alert(style)
+    let user;
+    let db = getFirestore(app);
+    const auth = getAuth(app);
+    let uid;
+    let col;
+    try {
+      uid = auth.currentUser.uid; 
+      user = "user-" + uid
+      let db = getFirestore(app);
+      col = collection(db, "users", user, "websites");
+    } catch (error) {
+      console.log(error)
+      uid = "_" 
+    }
+    let randomWords = require('random-words');
+    let words = randomWords(2)
+    let slug = "";
+    for (let word in words) {
+      console.log(words[word])
+      slug = slug + words[word] + "-"
+    }
+    slug = slug + Math.ceil(Math.random()*999)
+    slug = slug + ".inkmorphism.com"
+    console.log(slug)
+    let newSite = {
+      "domain": slug,
+      initDate: "",
+      name: "New Site", 
+      thumbnail: "",
+      style: style,
+    }
+
+    await setDoc(doc(col, slug), newSite);
+
+    let urlRedirect = "../../config/" + slug
+    // window.location.href = urlRedirect
+  }
+
   return (
     <div className={"Templates"}>
 
