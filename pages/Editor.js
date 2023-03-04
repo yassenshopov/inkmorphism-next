@@ -5,8 +5,6 @@ import { useEffect, useState } from 'react';
 import Nav from "./components/nav.js"
 import Footer from "./components/footer.js"
 import Hero from "./components/hero.js"
-import { Button, createTheme, ThemeProvider } from '@mui/material';
-import { Container } from '@mui/system';
 import '@fontsource/roboto/500.css';
 import { MdOpenInFull, MdOutlineCloseFullscreen } from 'react-icons/md'
 import { RiSave3Fill } from 'react-icons/ri'
@@ -93,16 +91,20 @@ function Editor(props) {
   }, [])
 
   const storage = getStorage(app);
-  console.log(props['name'] === undefined)
-  let propsName;
-  if (props['name'] === undefined) {
-    propsName = "thedatachunk";
-  } else {
-    propsName = props['name'];
-  }
-  const logoRef = ref(storage, (propsName + '/logo.png'));
 
   async function getData() {
+    console.log(props['name'] === undefined)
+    let propsName;
+      if (props['name'] === undefined) {
+        propsName = "thedatachunk";
+      } else {
+        try {
+          propsName = "user-" + props.auth.currentUser.uid + "/" + props['name'];
+        } catch {
+          propsName = "user-" + "fallback" + "/" + props['name'];
+        }
+      }
+      const logoRef = ref(storage, (propsName + '/logo.png'));
     const data = await getDocs(col);
     for (let entry in data._docs) {
       if (data._docs[entry].id == props['name']) {
@@ -143,124 +145,6 @@ function Editor(props) {
   //   }
   // };
 
-    // STYLE VARIABLES AND THEME:
-
-    let color1 = 'rgba(230, 181, 22)';
-    let color2 = 'rgba(23, 115, 235)';
-    let color1Transparent = 'rgba(230, 181, 22, 0.4)';
-    let color2Transparent = 'rgba(23, 115, 235, 0.4)';
-    let mainLight = '#fafafa';
-    let mainDark = '#252525';
-  
-    let glassmorphism = {
-      palette: {
-        primary: {
-          main: color1,
-          light: mainLight,
-          dark: mainDark,
-        },
-        secondary: {
-          main: color2,
-        },
-      },
-      components: {
-        MuiCssBaseline: {
-          styleOverrides: `
-          @font-face {
-            font-family: 'Oswald';
-            src: url('../fonts/Oswald-VariableFont_wght.ttf') format('truetype');
-          }
-          `,
-        },
-        MuiContainer: {
-          defaultProps: {
-            direction: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            sx: {
-              background: `linear-gradient(45deg,`+ color2Transparent + `, ` + color2 + `)`,
-              p: 1,
-              position: 'relative',
-            },
-          }
-        },
-        MuiAppBar: {
-          defaultProps: {
-            sx: {
-              background: 'none',
-              width: '100%',
-              borderRadius: '1rem',
-              backdropFilter: 'brightness(1.1) blur(10px) saturate(2)',
-              zIndex: '2',
-              my: 5,
-              py: 2,
-              color: mainLight,
-              fontSize: '2rem',
-              boxShadow: '0 0 20px rgb(256 256 256 / 50%)',
-            },
-          }
-        },
-        MuiToolbar: {
-          defaultProps: {
-            sx: {
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: "space-evenly",
-              alignContent: "center",
-            }
-          }
-        },
-        MuiButton: {
-          defaultProps: {
-            sx: {
-              backgroundColor: defaults['palette']['color1'],
-              color: mainLight,
-              textTransform: 'capitalize',
-              boxShadow: '0.5vw 0.5vw 20px ' + defaults['palette']['color1Transparent'],
-            }
-          }
-        },
-        MuiBottomNavigation: {
-          defaultProps: {
-            sx: {
-              boxSizing: 'border-box',
-              background: 'none',
-              // background: `linear-gradient(45deg,`+ mainLight + `, ` + color2 + `)`,
-              width: '100%',
-              borderRadius: '1rem',
-              backdropFilter: 'brightness(1.1) blur(10px) saturate(2)',
-              boxShadow: 3,
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-evenly',
-              alignItems: 'center',
-              color: mainDark,
-              my: 2,
-              py: 5,
-              boxShadow: '0 0 20px rgb(256 256 256 / 50%)',
-            },
-          }
-        }, 
-        MuiLink: {
-          defaultProps: {
-            sx: {
-              color: mainDark,
-              textDecorationColor: mainDark
-            }
-          }
-        },
-        MuiTypography: {
-          defaultProps: {
-            sx: {
-              fontFamily: 'Oswald'
-            }
-          }
-        }
-      }
-    }
-  
-  const theme = createTheme(glassmorphism)
-
   let savedData = JSON.parse(JSON.stringify(defaults));
 
   for (const key in defaults) {
@@ -293,12 +177,6 @@ function Editor(props) {
     sendData(savedData)
   };
 
-  // function changeSavedData() {
-  //   (event) => {
-  //     console.log(event)
-  //   }
-  // }
-
   const [fsClass, setFsClass] = useState('')
   const [modeClass, setModeClass] = useState(' desktop')
 
@@ -316,14 +194,6 @@ function Editor(props) {
 
   function desktop() {
     setModeClass(' desktop')
-    // let i = 0;
-    // let el = document.getElementById("editor")
-    // while (i<1000) {
-    //   setTimeout(() => {
-    //     // el.style.width = (30 + ((i*70)/1000)).toString() + "vw"
-    //     i++;
-    //   },10)
-    // }
   }
 
   return (
@@ -337,7 +207,7 @@ function Editor(props) {
       {/* <dialog open>
         <p>You are refreshing the page</p>
         <button>Ok</button><button>Maybe</button><button>Cancel</button>
-      </dialog> */}
+      </dialog> */} 
 
       <main id='editor'>
 
@@ -352,8 +222,7 @@ function Editor(props) {
         <p id='loader'>Loading...</p>
         <button id="fetch" onClick={getData}></button>
 
-        <ThemeProvider theme={theme}>
-          <Container
+          {/* <Container
             sx={{
               background: `linear-gradient(45deg,`+ defaults['palette']['color2Transparent'] + `, ` + defaults['palette']['color2'] + `)`,
               p: 1,
@@ -371,7 +240,6 @@ function Editor(props) {
               blog={defaults['structure']['blog']}
             />
             <main>
-              {/* <button id='saveBtn' onClick={saveNewData}>Save</button> */}
               <header>
                 <form>
                     <h1 className='heading'>{defaults['heading']}</h1>
@@ -387,8 +255,7 @@ function Editor(props) {
             <Footer
                 footer={defaults['structure']['footer']}
             />
-          </Container>
-        </ThemeProvider>
+          </Container> */}
 
         {/* <footer>
           <p>Created with <a href="https://inkmorphism.com">Inkmorphism</a></p>

@@ -59,12 +59,17 @@ export default function Templates() {
                     displayName: auth.currentUser.displayName 
                 })
             } catch(err) {
+                console.log(err)
             } 
             // Metadata now contains the metadata for 'images/forest.jpg'
           })
           .catch((error) => {
             // Uh-oh, an error occurred!
+            console.log(error)
             try { 
+                setUserDB({
+                    photoURL: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/yassenshopov%2Flogo.png?alt=media&token=b2a105ce-a56f-4c2f-837e-62b10ff4ed65"
+                })
                 console.log(userDataDB)
                 // profile_pic = auth.currentUser.photoURL;
                 setUserData({
@@ -73,6 +78,7 @@ export default function Templates() {
                     displayName: auth.currentUser.displayName
                 })
             } catch(err) {
+                console.log(err)
             } 
           });
     }

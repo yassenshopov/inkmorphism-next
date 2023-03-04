@@ -56,6 +56,7 @@ export default function Dashboard() {
   let profile_pic;
 
   async function getData() {
+    try {
       let db = getFirestore(app);
       const auth = getAuth(app);
       let uid;
@@ -71,12 +72,12 @@ export default function Dashboard() {
           dbRenderedData.push(data._docs[entry].data());
       }
       const websites = dbRenderedData.map((site) =>
-          <a key={site.domain} href={"../config/" + site.domain} className="noSelect">
+          <a key={site.domain} href={"../config/" + site.domainSlug} className="noSelect">
                   {/* < FaCircle /> */}
                   <img src={(site.thumbnail==="") ? placeholder.src : site.thumbnail} />
                   <h2>{site.name}</h2>
                   <p>{site.style}</p>
-                  <p href={"https://"+site.domain} target="_blank">{site.domain}</p>
+                  <p target="_blank">{site.domain}</p>
                   {/* <p>{site.initDate}</p> */}
           </a>
       )
@@ -115,6 +116,9 @@ export default function Dashboard() {
           } catch(err) {
           } 
         }); 
+    } catch(err) {
+      window.location.href = "../login";  
+    }
   } 
         
   // console.log(auth)

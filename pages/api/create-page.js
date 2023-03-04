@@ -7,12 +7,10 @@ export default function handler(req, res) {
 
     let pageTitleUp = pageTitle.charAt(0).toUpperCase() + pageTitle.slice(1); 
     //   create new folder
-    fs.mkdirSync(`pages/clients/${folderName}`);
-    console.log("1st half YES")
-
+    fs.mkdirSync(`pages/sites/${folderName}`);
     // create new page file
     fs.writeFileSync(
-    `pages/clients/${folderName}/index.js`,
+    `pages/sites/${folderName}/index.js`,
     `export default function Default() {
         return (
         <div>

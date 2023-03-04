@@ -84,12 +84,14 @@ async function getData() {
       slug = slug + words[word] + "-"
     }
     slug = slug + Math.ceil(Math.random()*999)
+    let domainSlug = slug;
     slug = slug + ".inkmorphism.com"
     console.log(slug)
     let newSite = {
-      "domain": slug,
+      domain: slug,
+      domainSlug: domainSlug,
       initDate: "",
-      name: "New Site", 
+      name: "New Site v2", 
       thumbnail: "",
       style: style,
     }

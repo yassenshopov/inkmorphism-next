@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useState } from "react";
 
 export default function CPanel() {
@@ -23,18 +24,23 @@ export default function CPanel() {
         }
     }
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-            Folder name:
-            <input type="text" value={folderName} onChange={(e) => setFolderName(e.target.value)} />
-            </label>
-            <br />
-            <label>
-            Page title:
-            <input type="text" value={pageTitle} onChange={(e) => setPageTitle(e.target.value)} />
-            </label>
-            <br />
-            <button type="submit">Create page</button>
-        </form>
+        <div className="cPanel">
+            <Head>
+                <title>Control Panel - Inkmorphism</title>
+            </Head>
+            <form onSubmit={handleSubmit}>
+                <label>
+                Folder name:
+                <input type="text" value={folderName} onChange={(e) => setFolderName(e.target.value)} />
+                </label>
+                <br />
+                <label>
+                Page title:
+                <input type="text" value={pageTitle} onChange={(e) => setPageTitle(e.target.value)} />
+                </label>
+                <br />
+                <button type="submit">Create page</button>
+            </form>
+        </div>
     )
 }
