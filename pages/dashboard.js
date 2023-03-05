@@ -87,12 +87,10 @@ export default function Dashboard() {
       const storageRef = ref(storage, (uid + "/profilePic.png"));
       getDownloadURL(storageRef)
       .then((metadata) => {
-          console.log(metadata)
           setUserDB({
               photoURL: metadata
           })
           try { 
-              console.log(userDataDB)
               // profile_pic = auth.currentUser.photoURL;
               setUserData({
                   profile_pic: metadata,

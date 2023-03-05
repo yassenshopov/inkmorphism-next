@@ -60,7 +60,6 @@ function Editor(props) {
     nav_CTA              : "CTA",
     form_submit          : "Form submit",
     link_past_issues_txt : "Link to past issues"
-
   };
 
   // FIREBASE FIRESTORE DB CODE:
@@ -95,29 +94,36 @@ function Editor(props) {
   async function getData() {
     console.log(props['name'] === undefined)
     let propsName;
-      if (props['name'] === undefined) {
-        propsName = "thedatachunk";
-      } else {
-        try {
-          propsName = "user-" + props.auth.currentUser.uid + "/" + props['name'];
-        } catch {
-          propsName = "user-" + "fallback" + "/" + props['name'];
-        }
-      }
-      const logoRef = ref(storage, (propsName + '/logo.png'));
-    const data = await getDocs(col);
-    for (let entry in data._docs) {
-      if (data._docs[entry].id == props['name']) {
-        let dbRenderedData = data._docs[entry].data();
-        console.log(dbRenderedData)
-        setData(dbRenderedData)
+    if (props['name'] === undefined) {
+      propsName = "thedatachunk";
+    } else {
+      try {
+        propsName = "user-" + props.auth.currentUser.uid + "/" + props['name'];
+      } catch {
+        propsName = "user-" + "fallback" + "/" + props['name'];
       }
     }
-    const logo = await getDownloadURL(logoRef)
-    console.log(logo)
-    setFiles({
-      logo: logo,
-    })
+    try {
+      const logoRef = ref(storage, (propsName + '/logo.png'));
+      const data = await getDocs(col);
+      for (let entry in data._docs) {
+        if (data._docs[entry].id == props['name']) {
+          let dbRenderedData = data._docs[entry].data();
+          console.log(dbRenderedData)
+          setData(dbRenderedData)
+        }
+      }
+      const logo = await getDownloadURL(logoRef)
+      console.log(logo)
+      setFiles({
+        logo: logo,
+      })
+    } catch(err) {
+      console.log(err)
+      setFiles({
+        logo: "/faviconWh.ico",
+      })
+    }
     let temp_user = getAuth(app).currentUser;
     try {
       temp_user.displayName
