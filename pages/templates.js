@@ -61,7 +61,6 @@ async function getData() {
 
   
   async function randomSiteGen(style) {
-    alert(style)
     let user;
     let db = getFirestore(app);
     const auth = getAuth(app);
@@ -80,10 +79,9 @@ async function getData() {
     let words = randomWords(2)
     let slug = "";
     for (let word in words) {
-      console.log(words[word])
       slug = slug + words[word] + "-"
     }
-    slug = slug + Math.ceil(Math.random()*999)
+    slug = slug + Math.ceil(100 + Math.random()*899)
     let domainSlug = slug;
     slug = slug + ".inkmorphism.com"
     console.log(slug)
