@@ -89,7 +89,6 @@ function Editor(props) {
   const storage = getStorage(app);
 
   async function getData() {
-    console.log(props['name'] === undefined)
     let propsName;
     if (props['name'] === undefined) {
       propsName = "thedatachunk";
@@ -106,17 +105,14 @@ function Editor(props) {
       for (let entry in data._docs) {
         if (data._docs[entry].id == props['name']) {
           let dbRenderedData = data._docs[entry].data();
-          console.log(dbRenderedData)
           setData(dbRenderedData)
         }
       }
       const logo = await getDownloadURL(logoRef)
-      console.log(logo)
       setFiles({
         logo: logo,
       })
     } catch(err) {
-      console.log(err)
       setFiles({
         logo: logo.src,
       })
@@ -127,9 +123,7 @@ function Editor(props) {
       setUser(temp_user)
     } catch {
 
-    }
-    console.log(temp_user)
-  
+    }  
   }
 
   async function sendData(savedData) {
@@ -162,7 +156,6 @@ function Editor(props) {
 
   function saveNewData() {
     for (const key in defaults) {
-      console.log(key)
       try {
         if (key=='palette') {
           let color1 = document.getElementById('color1');
@@ -176,7 +169,6 @@ function Editor(props) {
         // console.log(err)
       }
     }
-    console.log(savedData)
     sendData(savedData)
   };
 
@@ -206,7 +198,7 @@ function Editor(props) {
         <link rel="icon" href={defaultFiles['logo']} />
         <title>{defaults['title']}</title>
       </Head>
-      
+
       {loadBool ? <Loader/> : ""}
 
       {/* <dialog open>

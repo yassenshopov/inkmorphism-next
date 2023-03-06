@@ -17,6 +17,7 @@
     "@fontsource/roboto": "^4.5.8",
     "@mui/material": "^5.11.4",
     "@next/font": "13.1.1",
+    "bad-words": "^3.0.4",
     "firebaseui": "^6.0.2",
     "fs": "^0.0.1-security",
     "next": "13.1.1",
