@@ -120,7 +120,7 @@ async function getData() {
       <main id='templatesWrapper'>
         <section id='templates'>
           <article>
-            <img src='templates/neobrutalismTemplate.png'/>
+            <img src='templates/neobrutalismTemplate2.png'/>
             <h2>Neobrutalism</h2>
             <div id='hiddenBtns'>
               <a onClick={() => {randomSiteGen("Neobrutalism")}}>Get Started with Neobrutalism →</a>

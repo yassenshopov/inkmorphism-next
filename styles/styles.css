@@ -540,9 +540,6 @@
 #templatesWrapper #templates article #hiddenBtns:hover {
   opacity: 1;
 }
-#templatesWrapper #templates article:hover {
-  background-color: var(--mainColor1);
-}
 #dashfooter {
   display: flex;
   flex-direction: row-reverse;
