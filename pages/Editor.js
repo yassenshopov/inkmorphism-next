@@ -1,16 +1,14 @@
 import app from '../firebase/clientApp';
 import { getFirestore, collection, getDocs, doc, setDoc } from 'firebase/firestore/lite';
-import { getDownloadURL, getMetadata, getStorage, ref } from "firebase/storage";
+import { getDownloadURL, getStorage, ref } from "firebase/storage";
 import { useEffect, useState } from 'react';
 import Nav from "./components/nav.js"
 import Footer from "./components/footer.js"
 import Hero from "./components/hero.js"
-import '@fontsource/roboto/500.css';
 import { MdOpenInFull, MdOutlineCloseFullscreen } from 'react-icons/md'
 import { RiSave3Fill } from 'react-icons/ri'
 import { FaMobileAlt, FaDesktop } from 'react-icons/fa'
 import Head from 'next/head';
-// import '../styles/fonts/Oswald-VariableFont_wgth.ttf'
 import { getAuth } from 'firebase/auth'
 import logo from '../styles/images/logo.png';
 import Blog from './components/blog';
@@ -84,7 +82,6 @@ function Editor(props) {
     setLoadBool(true)
     setTimeout(() => {
       el.click();
-      document.getElementById("loader").style.display = "none";
       setLoadBool(false)
     }, 1500)
   }, [])
@@ -121,7 +118,7 @@ function Editor(props) {
     } catch(err) {
       console.log(err)
       setFiles({
-        logo: "/faviconWh.ico",
+        logo: logo.src,
       })
     }
     let temp_user = getAuth(app).currentUser;
@@ -209,6 +206,8 @@ function Editor(props) {
         <link rel="icon" href={defaultFiles['logo']} />
         <title>{defaults['title']}</title>
       </Head>
+      
+      {loadBool ? <Loader/> : ""}
 
       {/* <dialog open>
         <p>You are refreshing the page</p>
@@ -225,7 +224,6 @@ function Editor(props) {
           <button id="closeFS" onClick={normalscreen}><MdOutlineCloseFullscreen/></button>
         </nav>
         
-        <p id='loader'>Loading...</p>
         <button id="fetch" onClick={getData}></button>
 
           {/* <Container
@@ -295,7 +293,6 @@ function Editor(props) {
           <div></div>
         </section>
       </aside>
-      {loadBool ? <Loader/> : ""}
     </div>
   );
 }
