@@ -1,133 +1,150 @@
-import app from '../firebase/clientApp';
-import { getFirestore, collection, getDocs, doc, setDoc } from 'firebase/firestore/lite';
+import app from "../firebase/clientApp";
+import {
+  getFirestore,
+  collection,
+  getDoc,
+  doc,
+  setDoc,
+} from "firebase/firestore/lite";
 import { getDownloadURL, getStorage, ref } from "firebase/storage";
-import { useEffect, useState } from 'react';
-import Nav from "./components/nav.js"
-import Footer from "./components/footer.js"
-import Hero from "./components/hero.js"
-import { MdOpenInFull, MdOutlineCloseFullscreen } from 'react-icons/md'
-import { RiSave3Fill } from 'react-icons/ri'
-import { FaMobileAlt, FaDesktop } from 'react-icons/fa'
-import Head from 'next/head';
-import { getAuth } from 'firebase/auth'
-import logo from '../styles/images/logo.png';
-import Blog from './components/blog';
-import Loader from './components/loader.js'
+import { useEffect, useState } from "react";
+import Nav from "./components/nav.js";
+import Footer from "./components/footer.js";
+import Hero from "./components/hero.js";
+import { MdOpenInFull, MdOutlineCloseFullscreen } from "react-icons/md";
+import { RiSave3Fill } from "react-icons/ri";
+import { FaMobileAlt, FaDesktop } from "react-icons/fa";
+import Head from "next/head";
+import { getAuth } from "firebase/auth";
+import logo from "../styles/images/logoWh.png";
+import Blog from "./components/blog";
+import Loader from "./components/loader.js";
 
 function Editor(props) {
-
   const [loadBool, setLoadBool] = useState(false);
 
   // VARIABLES:
-  let callbackDefaults = { 
-    // Meta data:
-    meta_description     : "Build the perfect website with Aixolotl, the AI website builder. With intuitive drag-and-drop features and customizable templates, creating a professional website has never been easier.",
-    meta_author          : "Default Author",
-
-    // Style data:
-    style_main           : "futurism",
-    palette              : {
-      color1: "#e6f181",
-      color2: "#aa0000",
-      color1Transparent: "#e6f18120",
-      color2Transparent: "#aa000020",
+  let fallbackDefaults = {
+    webContent: {
+      meta: {
+        metaAuthor: "Boris Drach",
+        metaStyle: "web3",
+        metaDescription: "The description for Frosty Layer",
+        colorPalette: {
+          color1: "#5C8BB5",
+          color2: "#457596",
+          color3: "#E05276",
+          colorDark: "#121212",
+          colorLight: "#fefefe",
+        },
+        metaTitle: "Frosty Layer Website",
+        metaThumbnail:
+          "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fmusic-point-595%2Fthumbnail.png?alt=media&token=667a1542-8de7-45b2-ae39-520667a9af22",
+        metaFavicon:
+          "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fmusic-point-595%2Flogo.png?alt=media&token=b601d1f8-8708-4c89-b8f5-8d75f2f1c164",
+      },
     },
-
-    //
-    structure            : {
-      nav: {
-        exists: false
-      },
-      hero: {
-        exists: false
-      },
-      blog: {
-        exists: false
-      },
-      footer: {
-        exists: false
-      }
-    },
-
-    footer_txt           : "Footer Text",
-    title                : "Meta title",
-    heading              : "Default heading",
-    subheading           : "Default subheading",
-    image                : "",
-    NL_email_placeholder : "Default email placeholder",
-    nav_CTA              : "CTA",
-    form_submit          : "Form submit",
-    link_past_issues_txt : "Link to past issues"
+    initDate: "",
+    style: "Web3",
+    name: "Frosty Hut",
+    thumbnail:
+      "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fmusic-point-595%2Fthumbnail.png?alt=media&token=667a1542-8de7-45b2-ae39-520667a9af22",
+    domainSlug: "bicycle-heading-370",
+    domain: "bicycle-heading-370.inkmorphism.com",
   };
 
   // FIREBASE FIRESTORE DB CODE:
 
   let db = getFirestore(app);
-  const col = collection(db, "websites");
 
-  const [defaults, setData] = useState(callbackDefaults);
+  const [defaults, setData] = useState(fallbackDefaults);
   const [defaultFiles, setFiles] = useState({
-    logo: ''
+    logo: "",
   });
   const [user, setUser] = useState({
-    displayName: 'Display Name',
-    photoURL: '',
-    email: 'me@something.com',
-  })
+    displayName: "Display Name",
+    photoURL: "",
+    email: "me@something.com",
+  });
 
   // This is a smart roundabout => On the initial render, the button is clicked programmatically,
   // and thus the data that's been fetched is displayed on the page.
   useEffect(() => {
-    const el = document.getElementById("fetch")
-    setLoadBool(true)
+    const el = document.getElementById("fetch");
+    setLoadBool(true);
     setTimeout(() => {
       el.click();
-      setLoadBool(false)
-    }, 1500)
-  }, [])
+      setLoadBool(false);
+    }, 2500);
+  }, []);
 
   const storage = getStorage(app);
 
   async function getData() {
     let propsName;
-    if (props['name'] === undefined) {
+    let userName;
+    if (props["name"] === undefined) {
       propsName = "thedatachunk";
+      userName = "";
     } else {
       try {
-        propsName = "user-" + props.auth.currentUser.uid + "/" + props['name'];
+        propsName = "user-" + props.auth.currentUser.uid + "/" + props["name"];
+        userName = "user-" + props.auth.currentUser.uid;
       } catch {
-        propsName = "user-" + "fallback" + "/" + props['name'];
+        propsName = "user-" + "fallback" + "/" + props["name"];
+        userName = "fallback";
       }
     }
+    const col = doc(db, "users", userName, "websites", props["name"]);
     try {
-      const logoRef = ref(storage, (propsName + '/logo.png'));
-      const data = await getDocs(col);
-      for (let entry in data._docs) {
-        if (data._docs[entry].id == props['name']) {
-          let dbRenderedData = data._docs[entry].data();
-          setData(dbRenderedData)
-        }
-      }
-      const logo = await getDownloadURL(logoRef)
+      const logoRef = ref(storage, propsName + "/logo.png");
+      const data = await getDoc(col);
+      console.log(data.data());
+      setData(data.data());
+      // for (let entry in data._docs) {
+      //   console.log(data._docs[entry].data())
+      //   if (data._docs[entry].id == props['name']) {
+      //     let dbRenderedData = data._docs[entry].data();
+      //     setData(dbRenderedData)
+      //     console.log(dbRenderedData)
+      //   }
+      // }
+      const logo = await getDownloadURL(logoRef);
       setFiles({
         logo: logo,
-      })
-    } catch(err) {
+      });
+    } catch (err) {
+      console.log(err);
       setFiles({
         logo: logo.src,
-      })
+      });
     }
     let temp_user = getAuth(app).currentUser;
     try {
-      temp_user.displayName
-      setUser(temp_user)
-    } catch {
-
-    }  
+      temp_user.displayName;
+      setUser(temp_user);
+    } catch {}
   }
 
   async function sendData(savedData) {
-    await setDoc(doc(col, props['name']), savedData)
+    let propsName;
+    let userName;
+    if (props["name"] === undefined) {
+      propsName = "thedatachunk";
+      userName = "";
+    } else {
+      try {
+        propsName = "user-" + props.auth.currentUser.uid + "/" + props["name"];
+        userName = "user-" + props.auth.currentUser.uid;
+      } catch {
+        propsName = "user-" + "fallback" + "/" + props["name"];
+        userName = "fallback";
+      }
+    }
+    await setDoc(
+      doc(db, "users", userName, "websites", props["name"]),
+      savedData
+    );
   }
 
   // END OF DB CODE
@@ -149,76 +166,93 @@ function Editor(props) {
       let element = document.getElementsByClassName(key)[0];
       element.contentEditable = true;
       element.spellcheck = false;
-    } catch(err) {
+    } catch (err) {
       // console.log(err)
     }
   }
 
   function saveNewData() {
-    for (const key in defaults) {
-      try {
-        if (key=='palette') {
-          let color1 = document.getElementById('color1');
-          savedData[key]['color1'] = color1.value
-          let color2 = document.getElementById('color2');
-          savedData[key]['color2'] = color2.value
-        }
-        let element = document.getElementsByClassName(key)[0];
-        savedData[key] = element.innerHTML;
-      } catch(err) {
-        // console.log(err)
-      }
-    }
-    sendData(savedData)
+    // for (const key in defaults) {
+    //   try {
+    //     if (key == "palette") {
+    //       let color1 = document.getElementById("color1");
+    //       savedData[key]["color1"] = color1.value;
+    //       let color2 = document.getElementById("color2");
+    //       savedData[key]["color2"] = color2.value;
+    //     }
+    //     let element = document.getElementsByClassName(key)[0];
+    //     savedData[key] = element.innerHTML;
+    //   } catch (err) {
+    //     // console.log(err)
+    //   }
+    // }
+    sendData(savedData);
+  }
+
+  const colorChange = (e) => {
+    console.log(e.target.value);
+    savedData["webContent"]["meta"]["colorPalette"][e.target.id] = e.target.value;
   };
 
-  const [fsClass, setFsClass] = useState('')
-  const [modeClass, setModeClass] = useState(' desktop')
+  const [fsClass, setFsClass] = useState("");
+  const [modeClass, setModeClass] = useState(" desktop");
 
   function fullscreen() {
-    setFsClass(' fs')
+    setFsClass(" fs");
   }
 
   function normalscreen() {
-    setFsClass('')
+    setFsClass("");
   }
 
   function mobile() {
-    setModeClass(' mobile')
+    setModeClass(" mobile");
   }
 
   function desktop() {
-    setModeClass(' desktop')
+    setModeClass(" desktop");
   }
 
   return (
     <div className={"Editor" + fsClass + modeClass}>
-
       <Head>
-        <link rel="icon" href={defaultFiles['logo']} />
-        <title>{defaults['title']}</title>
+        <link rel="icon" href={defaultFiles["logo"]} />
+        <title>{defaults["webContent"]["meta"]["metaTitle"]}</title>
+        <meta
+          name="description"
+          content={defaults["webContent"]["meta"]["metaDescription"]}
+        ></meta>
       </Head>
 
-      {loadBool ? <Loader/> : ""}
+      {loadBool ? <Loader /> : ""}
 
       {/* <dialog open>
         <p>You are refreshing the page</p>
         <button>Ok</button><button>Maybe</button><button>Cancel</button>
-      </dialog> */} 
+      </dialog> */}
 
-      <main id='editor'>
-
-        <nav id='nav'>
-          <button onClick={saveNewData}><RiSave3Fill/></button>
-          <button id='desktopMode' onClick={desktop}><FaDesktop/></button>
-          <button id='mobileMode' onClick={mobile}><FaMobileAlt/></button>
-          <button id="openFS" onClick={fullscreen}><MdOpenInFull/></button>
-          <button id="closeFS" onClick={normalscreen}><MdOutlineCloseFullscreen/></button>
+      <main id="editor">
+        <nav id="nav">
+          <button onClick={saveNewData}>
+            <RiSave3Fill />
+          </button>
+          <button id="desktopMode" onClick={desktop}>
+            <FaDesktop />
+          </button>
+          <button id="mobileMode" onClick={mobile}>
+            <FaMobileAlt />
+          </button>
+          <button id="openFS" onClick={fullscreen}>
+            <MdOpenInFull />
+          </button>
+          <button id="closeFS" onClick={normalscreen}>
+            <MdOutlineCloseFullscreen />
+          </button>
         </nav>
-        
+
         <button id="fetch" onClick={getData}></button>
 
-          {/* <Container
+        {/* <Container
             sx={{
               background: `linear-gradient(45deg,`+ defaults['palette']['color2Transparent'] + `, ` + defaults['palette']['color2'] + `)`,
               p: 1,
@@ -262,21 +296,68 @@ function Editor(props) {
       </main>
 
       <aside>
-        <img id="mainLogo" src={logo.src}/>
+        <img id="mainLogo" src={logo.src} />
         <h1>Hello, {user.displayName}.</h1>
 
         <ul>
           <li>
             Color1
-            <input id="color1" type="color" defaultValue={defaults['palette']['color1']}/>
+            <input
+              id="color1"
+              type="color"
+              defaultValue={
+                defaults["webContent"]["meta"]["colorPalette"]["color1"]
+              }
+              onChange={colorChange}
+            />
           </li>
           <li>
             Color2
-            <input id="color2" type="color" defaultValue={defaults['palette']['color2']}/>
+            <input
+              id="color2"
+              type="color"
+              defaultValue={
+                defaults["webContent"]["meta"]["colorPalette"]["color2"]
+              }
+              onChange={colorChange}
+            />
+          </li>
+          <li>
+            Color3
+            <input
+              id="color3"
+              type="color"
+              defaultValue={
+                defaults["webContent"]["meta"]["colorPalette"]["color3"]
+              }
+              onChange={colorChange}
+            />
+          </li>
+          <li>
+            Color Light
+            <input
+              id="colorLight"
+              type="color"
+              defaultValue={
+                defaults["webContent"]["meta"]["colorPalette"]["colorLight"]
+              }
+              onChange={colorChange}
+            />
+          </li>
+          <li>
+            Color Dark
+            <input
+              id="colorDark"
+              type="color"
+              defaultValue={
+                defaults["webContent"]["meta"]["colorPalette"]["colorDark"]
+              }
+              onChange={colorChange}
+            />
           </li>
         </ul>
 
-        <section id='profileSection'>
+        <section id="profileSection">
           <img src={user.photoURL} alt="Profile Pic" />
           <div>
             <p>{user.displayName}</p>
