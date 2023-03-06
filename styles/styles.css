@@ -104,6 +104,7 @@
   height: 2px;
   background-color: var(--mainLight);
   border-radius: 4px;
+  transition: all 200ms ease-in-out;
 }
 #mainPage nav .clicked div:nth-child(1) {
   transform: rotate(45deg) translateX(6px) translateY(6px);
