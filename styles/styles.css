@@ -84,7 +84,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 0vw;
+  gap: 1vw;
   font-size: 1.6rem;
   z-index: 9;
 }

@@ -94,7 +94,7 @@ async function getData() {
       style: style,
     }
 
-    await setDoc(doc(col, slug), newSite);
+    await setDoc(doc(col, domainSlug), newSite);
 
     let urlRedirect = "../../config/" + slug
     // window.location.href = urlRedirect
