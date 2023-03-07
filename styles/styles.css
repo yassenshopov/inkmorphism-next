@@ -1539,6 +1539,9 @@
   font-size: 2rem;
 }
 @media screen and (max-width: 650px) {
+  #mainPage {
+    width: 100vw;
+  }
   #mainPage nav {
     justify-content: center;
   }
