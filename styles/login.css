@@ -96,7 +96,7 @@ body {
   border: none;
   min-width: fit-content;
   width: 100%;
-  padding: 40px 5vw;
+  padding: 10px 5vw;
   flex-direction: row;
   gap: 2vw;
   align-items: center;
@@ -251,7 +251,7 @@ body {
   font-weight: 1000;
   color: var(--mainLinkColor);
 }
-@media (min-width: 600px) {
+@media screen and (min-width: 650px) {
   body .login {
     width: 100vw;
     margin: 0;
@@ -280,6 +280,7 @@ body {
   }
   body .login #buttons button {
     height: 60px;
+    padding: 40px 5vw;
   }
   body .login #buttons button p {
     width: 8vw;
