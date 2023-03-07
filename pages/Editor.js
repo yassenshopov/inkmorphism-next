@@ -74,7 +74,6 @@ function Editor(props) {
     setLoadBool(true);
     setTimeout(() => {
       el.click();
-      setLoadBool(false);
     }, 2500);
   }, []);
 
@@ -108,7 +107,7 @@ function Editor(props) {
       //     setData(dbRenderedData)
       //     console.log(dbRenderedData)
       //   }
-      // }
+      // } 
       const logo = await getDownloadURL(logoRef);
       setFiles({
         logo: logo,
@@ -124,6 +123,7 @@ function Editor(props) {
       temp_user.displayName;
       setUser(temp_user);
     } catch {}
+    setLoadBool(false);
   }
 
   async function sendData(savedData) {

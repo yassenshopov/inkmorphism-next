@@ -1,14 +1,17 @@
 body {
     background-color: var(--mainLight);
+    display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    box-sizing: border-box;
 }
 
 .login {
-    margin: 5vw;
+    // margin: 5vw;
+    box-sizing: border-box;
     // padding: 3vw;
-    width: 60vw;
+    width: 80vw;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -23,8 +26,11 @@ body {
     // background-color: var(--mainDark);
     box-sizing: border-box;
     #loginWrapper {
+        width: 100%;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
     #orSection {
         display: flex;
@@ -94,8 +100,9 @@ body {
             font-size: 1rem;
             cursor: pointer;
             border: none;
+            min-width: fit-content;
             width: 100%;
-            padding: 0px 5vw;
+            padding: 40px 5vw;
             display: flex;
             flex-direction: row;
             gap: 2vw;
@@ -105,6 +112,9 @@ body {
             justify-content: space-between;
             transition: all 500ms ease-in-out;
             height: fit-content;
+            p {
+                font-size: 1rem;
+            }
         }
         button:hover {
             box-shadow: 4px 5px 30px rgb(0 0 0 / 25%), -5px -5px 15px rgb(255 255 255 / 80%);
