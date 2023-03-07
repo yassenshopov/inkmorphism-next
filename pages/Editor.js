@@ -216,7 +216,7 @@ function Editor(props) {
   return (
     <div className={"Editor" + fsClass + modeClass}>
       <Head>
-        <link rel="icon" href={defaultFiles["logo"]} />
+        <link rel="icon" href={defaults["webContent"]["meta"]["metaFavicon"]} />
         <title>{defaults["webContent"]["meta"]["metaTitle"]}</title>
         <meta
           name="description"

@@ -9,6 +9,8 @@ import app from '../firebase/clientApp';
 import { useState, useEffect } from 'react';
 import placeholder from '../styles/images/placeholder.png';
 import defaultProfilePic from '../styles/images/defaultProfilePic.png';
+import defaultLogo from '../styles/images/logoPlace.png';
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 
 export default function Templates() {
 
@@ -69,7 +71,6 @@ async function getData() {
     try {
       uid = auth.currentUser.uid; 
       user = "user-" + uid
-      let db = getFirestore(app);
       col = collection(db, "users", user, "websites");
     } catch (error) {
       console.log(error)
@@ -86,15 +87,42 @@ async function getData() {
     slug = slug + ".inkmorphism.com"
     console.log(slug)
     let newSite = {
-      domain: slug,
-      domainSlug: domainSlug,
-      initDate: "",
-      name: "New Site v2", 
-      thumbnail: "",
-      style: style,
+      "domain": slug,
+      "domainSlug": domainSlug,
+      "initDate": "",
+      "name": "New Site v3", 
+      "style": style,
+      "thumbnail": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fthumbnail.png?alt=media&token=bf24a392-9096-4d28-a9b0-f9d7941f8e85",
+      "webContent": {
+          "meta": {
+              "colorPalette": {
+                "color1": "#e6970f",
+                "color2": "#d9d8af",
+                "color3": "#79e16b",
+                "colorLight": "#fefefe",
+                "colorDark": "#121212",
+              },
+              "metaFavicon": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Flogo.png?alt=media&token=ba50553d-4f67-4d24-b909-e98e6585dad9",
+              "metaStyle": style.toLowerCase(),
+              "metaTitle": "Your Website",
+              "metaDescription": "The description for your website",
+              "metaThumbnail": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fthumbnail.png?alt=media&token=bf24a392-9096-4d28-a9b0-f9d7941f8e85",
+              "metaAuthor": "Meta Author"
+          }
+      }
     }
-
     await setDoc(doc(col, domainSlug), newSite);
+
+    const storage = getStorage();
+    let logoRef = ref(storage, user, domainSlug)
+    let metadata = {contentType: "image/png"}
+    const logoUrl = newSite['webContent']['meta']['metaFavicon']
+    const fileName = 'logo.png'
+    const file = defaultLogo;
+    // access file here
+    uploadBytes(logoRef, file, metadata).then((snapshot) => {
+      // window.location.reload(false)
+    })
 
     let urlRedirect = "../../config/" + slug
     // window.location.href = urlRedirect
