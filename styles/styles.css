@@ -278,6 +278,7 @@
   justify-content: center;
   align-items: center;
   min-height: 80vh;
+  width: 100vw;
 }
 #accountWrapper #accountSection {
   display: flex;
@@ -1665,6 +1666,20 @@
   }
   #dashfooter {
     justify-content: center;
+  }
+  #popupWrapper #popup #previewPicUpload {
+    width: 100%;
+    border-radius: 18%;
+    height: 64vw;
+    width: 80%;
+    box-shadow: 0px 0px 10px #12121299, 0px 0px 10px #ffffff00;
+    margin: 40px 0;
+  }
+  #accountWrapper #accountSection {
+    width: 90%;
+  }
+  #accountWrapper #accountSection #profilePicWrapper {
+    max-width: 70%;
   }
 }
 @media screen and (max-width: 900px) and (min-width: 649px) {
