@@ -126,7 +126,7 @@ export default function Login() {
         <link rel="icon" href="/faviconWh.ico" />
       </Head>
       <div className="login">
-        <p>{(auth.currentUser == null) ? "You are not logged in" : redirect()}</p>
+        {/* <p>{(auth.currentUser == null) ? "You are not logged in" : redirect()}</p> */}
         <img src={logo.src}/>
         {/* <h2>Login:</h2> */}
         <div id="loginWrapper">

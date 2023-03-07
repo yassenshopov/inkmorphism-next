@@ -1,12 +1,13 @@
 body {
   background-color: var(--mainLight);
+  display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  box-sizing: border-box;
 }
 .login {
-  margin: 5vw;
-  width: 60vw;
+  width: 80vw;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -17,8 +18,11 @@ body {
   box-sizing: border-box;
 }
 .login #loginWrapper {
+  width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .login #orSection {
   display: flex;
@@ -90,8 +94,9 @@ body {
   font-size: 1rem;
   cursor: pointer;
   border: none;
+  min-width: fit-content;
   width: 100%;
-  padding: 0px 5vw;
+  padding: 40px 5vw;
   flex-direction: row;
   gap: 2vw;
   align-items: center;
@@ -100,6 +105,9 @@ body {
   justify-content: space-between;
   transition: all 500ms ease-in-out;
   height: fit-content;
+}
+.login #buttons button p {
+  font-size: 1rem;
 }
 .login #buttons button:hover {
   box-shadow: 4px 5px 30px rgba(0, 0, 0, 0.25), -5px -5px 15px rgba(255, 255, 255, 0.8);

@@ -25,6 +25,14 @@ export default function Dashnav(props) {
     const openPopup = () => {
         setPopupToggle(!popupToggle)
     }
+    const [mobileToggle, setMobileToggle] = useState("");
+    function mobileSwitch() {
+      if (mobileToggle === "") {
+        setMobileToggle("clicked")
+      } else {
+        setMobileToggle("")
+      }
+    }
  
     return (
         <nav id="dashnav">
@@ -40,6 +48,17 @@ export default function Dashnav(props) {
                     <p id="signOut" onClick={openPopup} className="noSelect">Log out < FiLogOut /></p>
                     <img src={props.profile_pic} id='profilePic' className={"noSelect"}/>
                 </div>
+            </div>
+
+            <div id='mobileMenu' onClick={mobileSwitch} className={"noSelect " + mobileToggle}>
+                <div id='bar1'></div>
+                <div id='bar2'></div>
+                <div id='bar3'></div>
+            </div>
+            <div id='overlayMenu' className={mobileToggle}>
+                <a className="noSelect" href='../dashboard'>Dashboard</a>
+                <a href="../account">My account < FiUser /></a>
+                <p id="signOut" onClick={openPopup} className="noSelect">Log out < FiLogOut /></p>
             </div>
 
             <div style={{ display: ((popupToggle) ? 'flex' : 'none') }} id="popupWrapper">
