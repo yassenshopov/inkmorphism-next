@@ -29,9 +29,9 @@ function Editor(props) {
   let fallbackDefaults = {
     webContent: {
       meta: {
-        metaAuthor: "Boris Drach",
+        metaAuthor: "Meta Author",
         metaStyle: "web3",
-        metaDescription: "The description for Frosty Layer",
+        metaDescription: "The description for your website",
         colorPalette: {
           color1: "#5C8BB5",
           color2: "#457596",
@@ -39,7 +39,7 @@ function Editor(props) {
           colorDark: "#121212",
           colorLight: "#fefefe",
         },
-        metaTitle: "Frosty Layer Website",
+        metaTitle: "Inkmorphism - Your Website",
         metaThumbnail:
           "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fmusic-point-595%2Fthumbnail.png?alt=media&token=667a1542-8de7-45b2-ae39-520667a9af22",
         metaFavicon:
@@ -48,11 +48,12 @@ function Editor(props) {
     },
     initDate: "",
     style: "Web3",
-    name: "Frosty Hut",
+    name: "Website Defaults",
     thumbnail:
       "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fmusic-point-595%2Fthumbnail.png?alt=media&token=667a1542-8de7-45b2-ae39-520667a9af22",
-    domainSlug: "bicycle-heading-370",
-    domain: "bicycle-heading-370.inkmorphism.com",
+    domainSlug: "default",
+    domain: "default.inkmorphism.com",
+    deleted: false,
   };
 
   // FIREBASE FIRESTORE DB CODE:
@@ -102,14 +103,6 @@ function Editor(props) {
       const data = await getDoc(col);
       console.log(data.data());
       setData(data.data());
-      // for (let entry in data._docs) {
-      //   console.log(data._docs[entry].data())
-      //   if (data._docs[entry].id == props['name']) {
-      //     let dbRenderedData = data._docs[entry].data();
-      //     setData(dbRenderedData)
-      //     console.log(dbRenderedData)
-      //   }
-      // } 
       const logo = await getDownloadURL(logoRef);
       setFiles({
         logo: logo,
