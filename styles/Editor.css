@@ -138,6 +138,18 @@ html {
   width: 4vw;
   height: 4vw;
 }
+.Editor aside #trashIcon {
+  cursor: pointer;
+  color: #ab0000;
+  font-size: 2rem;
+  padding: 20px;
+  transition: all 200ms ease-in-out;
+  border-radius: 10px;
+}
+.Editor aside #trashIcon:hover {
+  color: #e80000;
+  background: var(--mainGrey);
+}
 .Editor aside #profileSection {
   display: flex;
   flex-direction: row;

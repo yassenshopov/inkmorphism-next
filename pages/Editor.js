@@ -5,6 +5,7 @@ import {
   getDoc,
   doc,
   setDoc,
+  updateDoc,
 } from "firebase/firestore/lite";
 import { getDownloadURL, getStorage, ref } from "firebase/storage";
 import { useEffect, useState } from "react";
@@ -13,11 +14,12 @@ import Footer from "./components/footer.js";
 import Hero from "./components/hero.js";
 import { MdOpenInFull, MdOutlineCloseFullscreen } from "react-icons/md";
 import { RiSave3Fill } from "react-icons/ri";
-import { FaMobileAlt, FaDesktop } from "react-icons/fa";
+import { FaMobileAlt, FaDesktop, FaTrashAlt } from "react-icons/fa";
 import Head from "next/head";
 import { getAuth } from "firebase/auth";
 import logo from "../styles/images/logoWh.png";
 import Blog from "./components/blog";
+import { useRouter } from "next/router";
 import Loader from "./components/loader.js";
 
 function Editor(props) {
@@ -79,22 +81,22 @@ function Editor(props) {
 
   const storage = getStorage(app);
 
+  const [userName, setUserName] = useState("fallback")
+
   async function getData() {
     let propsName;
-    let userName;
     if (props["name"] === undefined) {
       propsName = "thedatachunk";
-      userName = "";
     } else {
       try {
         propsName = "user-" + props.auth.currentUser.uid + "/" + props["name"];
-        userName = "user-" + props.auth.currentUser.uid;
+        setUserName("user-" + props.auth.currentUser.uid);
+        const col = doc(db, "users", userName, "websites", props["name"]);
       } catch {
         propsName = "user-" + "fallback" + "/" + props["name"];
-        userName = "fallback";
+        setUserName("fallback");
       }
     }
-    const col = doc(db, "users", userName, "websites", props["name"]);
     try {
       const logoRef = ref(storage, propsName + "/logo.png");
       const data = await getDoc(col);
@@ -128,17 +130,15 @@ function Editor(props) {
 
   async function sendData(savedData) {
     let propsName;
-    let userName;
     if (props["name"] === undefined) {
       propsName = "thedatachunk";
-      userName = "";
     } else {
       try {
         propsName = "user-" + props.auth.currentUser.uid + "/" + props["name"];
-        userName = "user-" + props.auth.currentUser.uid;
+        setUserName("user-" + props.auth.currentUser.uid);
       } catch {
         propsName = "user-" + "fallback" + "/" + props["name"];
-        userName = "fallback";
+        setUserName("fallback");
       }
     }
     await setDoc(
@@ -172,20 +172,6 @@ function Editor(props) {
   }
 
   function saveNewData() {
-    // for (const key in defaults) {
-    //   try {
-    //     if (key == "palette") {
-    //       let color1 = document.getElementById("color1");
-    //       savedData[key]["color1"] = color1.value;
-    //       let color2 = document.getElementById("color2");
-    //       savedData[key]["color2"] = color2.value;
-    //     }
-    //     let element = document.getElementsByClassName(key)[0];
-    //     savedData[key] = element.innerHTML;
-    //   } catch (err) {
-    //     // console.log(err)
-    //   }
-    // }
     sendData(savedData);
   }
 
@@ -211,6 +197,16 @@ function Editor(props) {
 
   function desktop() {
     setModeClass(" desktop");
+  }
+
+  let router = useRouter();
+
+  async function deleteSite() {
+    console.log(userName)
+    await updateDoc(doc(db, "users", userName, "websites", props["name"]), {deleted: true})
+    setTimeout(() => {
+      router.push('/dashboard')
+    }, 500)
   }
 
   return (
@@ -252,47 +248,7 @@ function Editor(props) {
 
         <button id="fetch" onClick={getData}></button>
 
-        {/* <Container
-            sx={{
-              background: `linear-gradient(45deg,`+ defaults['palette']['color2Transparent'] + `, ` + defaults['palette']['color2'] + `)`,
-              p: 1,
-              position: 'relative',
-            }}
-            className="editorPane"
-          >
-            <Nav
-                nav={defaults['structure']['nav']}
-            />
-            <Hero
-                hero={defaults['structure']['hero']}
-            />
-            <Blog
-              blog={defaults['structure']['blog']}
-            />
-            <main>
-              <header>
-                <form>
-                    <h1 className='heading'>{defaults['heading']}</h1>
-                    <h2 className='subheading'>{defaults['subheading']}</h2>
-                    <div class="form_input">
-                        <input className="disabled" type="email" placeholder={defaults['NL_email_placeholder']}></input>
-                        <input className="disabled" type="submit" value={defaults["form_submit"]}></input>
-                    </div>
-                    <a href="#"><p className='link_past_issues_txt'>{defaults['link_past_issues_txt']}</p></a>
-                </form>
-              </header>
-            </main>
-            <Footer
-                footer={defaults['structure']['footer']}
-            />
-          </Container> */}
 
-        {/* <footer>
-          <p>Created with <a href="https://inkmorphism.com">Inkmorphism</a></p>
-          <div>
-              <p className='footer_txt'>{defaults["footer_txt"]}</p>
-          </div>
-        </footer> */}
       </main>
 
       <aside>
@@ -356,6 +312,9 @@ function Editor(props) {
             />
           </li>
         </ul>
+
+        <h2>Danger zone</h2>
+        < FaTrashAlt id="trashIcon" className="noSelect" onClick={deleteSite}/>
 
         <section id="profileSection">
           <img src={user.photoURL} alt="Profile Pic" />

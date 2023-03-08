@@ -27,7 +27,6 @@ export default function Login() {
   const [userData, setUserData] = useState({});
 
   const auth = getAuth(app);
-  console.log(auth.currentUser)
   // signInWithRedirect(auth, provider)
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -48,7 +47,7 @@ export default function Login() {
 
   async function sendRegisterData(regData) {
     regData = JSON.parse(JSON.stringify(regData));
-    await setDoc(doc(col, regData["uid"]), regData);
+    await setDoc(doc(col, "user-"+ regData["uid"]), regData);
   }
 
   function signInWithGH() {
@@ -90,27 +89,25 @@ export default function Login() {
       }
       // The signed-in user info.
       const user = result.user;
-    });
+    }).catch((err) => {
+      // console.log(err);
+      return
+    })
   }
 
   function signInWithEmail() {
     let email = document.getElementById("email");
     let password = document.getElementById("password");
-    console.log(password);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log(userCredential)
         // Signed in
         const user = userCredential.user;
-        console.log(user)
         // ...
       })
       .catch((error) => {
         console.log(error);
       });
   }
-
-  console.log(auth)
 
   let router = useRouter();
   function redirect() {
