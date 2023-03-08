@@ -1,11 +1,3 @@
-body {
-  background-color: var(--mainLight);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  box-sizing: border-box;
-}
 .login {
   width: 80vw;
   display: flex;
@@ -114,7 +106,7 @@ body {
   filter: brightness(1.2) saturate(1.5) opacity(0.8);
 }
 .login #buttons button:nth-child(1) {
-  background-color: #DB4437;
+  background-color: #db4437;
   color: var(--mainLight);
 }
 .login #buttons button:nth-child(2) {
@@ -122,7 +114,7 @@ body {
   color: var(--mainLight);
 }
 .login #buttons button:nth-child(3) {
-  background-color: #1DA1F2;
+  background-color: #1da1f2;
   color: var(--mainLight);
 }
 .register {
@@ -227,7 +219,7 @@ body {
   filter: brightness(1.2) saturate(1.5) opacity(0.8);
 }
 .register #buttons button:nth-child(1) {
-  background-color: #DB4437;
+  background-color: #db4437;
   color: var(--mainLight);
 }
 .register #buttons button:nth-child(2) {
@@ -235,7 +227,7 @@ body {
   color: var(--mainLight);
 }
 .register #buttons button:nth-child(3) {
-  background-color: #1DA1F2;
+  background-color: #1da1f2;
   color: var(--mainLight);
 }
 .register #registerDisclaimer {
@@ -252,81 +244,81 @@ body {
   color: var(--mainLinkColor);
 }
 @media screen and (min-width: 650px) {
-  body .login {
+  .login {
     width: 100vw;
     margin: 0;
     padding: 0;
   }
-  body .login #loginWrapper {
+  .login #loginWrapper {
     flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 80%;
     gap: 5vw;
   }
-  body .login #orSection {
+  .login #orSection {
     flex-direction: column;
   }
-  body .login #orSection :nth-child(1),
-  body .login #orSection :nth-child(3) {
+  .login #orSection :nth-child(1),
+  .login #orSection :nth-child(3) {
     width: 1px;
     height: 150px;
   }
-  body .login #buttons {
+  .login #buttons {
     justify-content: center;
     align-items: center;
     width: 20vw;
     height: fit-content;
   }
-  body .login #buttons button {
+  .login #buttons button {
     height: 60px;
     padding: 40px 5vw;
   }
-  body .login #buttons button p {
+  .login #buttons button p {
     width: 8vw;
   }
-  body .login #buttons button :nth-child(3) {
+  .login #buttons button :nth-child(3) {
     font-size: 20px;
   }
-  body .login form {
+  .login form {
     width: 20vw;
   }
-  body .register {
+  .register {
     width: 100vw;
     margin: 0;
     padding: 0;
   }
-  body .register #registerWrapper {
+  .register #registerWrapper {
     flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 80%;
     gap: 5vw;
   }
-  body .register #orSection {
+  .register #orSection {
     flex-direction: column;
   }
-  body .register #orSection :nth-child(1),
-  body .register #orSection :nth-child(3) {
+  .register #orSection :nth-child(1),
+  .register #orSection :nth-child(3) {
     width: 1px;
     height: 150px;
   }
-  body .register #buttons {
+  .register #buttons {
     justify-content: center;
     align-items: center;
     width: 20vw;
     height: fit-content;
   }
-  body .register #buttons button {
+  .register #buttons button {
     height: 60px;
   }
-  body .register #buttons button p {
+  .register #buttons button p {
     width: 8vw;
   }
-  body .register #buttons button :nth-child(3) {
+  .register #buttons button :nth-child(3) {
     font-size: 20px;
   }
-  body .register form {
+  .register form {
     width: 20vw;
   }
 }
