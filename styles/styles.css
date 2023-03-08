@@ -2,8 +2,8 @@
   --mainLight: #fefefe;
   --mainDark: #101010;
   --mainColor1: #3994AC;
-  --mainColor2: #316273;
-  --mainColor3: #C52973;
+  --mainColor2: #09596b;
+  --mainColor3: #42042c;
   --mainLinkColor: #415eec;
   --nbMainLight: #faf9f9;
   --nbMainDark: #121212;
@@ -38,12 +38,10 @@
 ::-webkit-scrollbar-track {
   background: var(--mainColor3);
 }
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: var(--mainColor1);
   border-radius: 10px;
 }
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
@@ -116,6 +114,7 @@
 }
 #mainPage nav #overlayMenu[class="clicked"] {
   visibility: visible !important;
+  overflow-y: hidden;
 }
 #mainPage nav #overlayMenu {
   position: absolute;
@@ -323,6 +322,9 @@
   width: 100%;
   border-radius: 24px;
 }
+.Dashboard {
+  width: 100vw;
+}
 #dashnav {
   display: flex;
   flex-direction: row;
@@ -330,7 +332,7 @@
   align-items: center;
   height: 120px;
   box-shadow: 0 0 20px #12121260;
-  background-color: #316273;
+  background-color: var(--mainColor2);
   padding: 0 6vw;
   font-family: 'Oswald';
   color: #fff;
@@ -482,7 +484,7 @@
   justify-content: space-between;
   border-radius: 15px;
   padding: 0;
-  box-shadow: 10px 10px 10px #12121230, -10px -10px 10px #ffffff09;
+  box-shadow: 10px 10px 10px #12121260, -10px -10px 20px #ffffff12;
   transition: all 200ms ease-in-out;
 }
 #dash #websites > a > *:nth-child(1) {
@@ -495,6 +497,13 @@
 #dash #websites > a a {
   color: #fff;
   justify-self: right;
+}
+#dash #websites > a article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 #dash #websites > a:hover {
   background-color: #3994AC;
@@ -597,7 +606,6 @@
   justify-content: space-between;
   align-items: center;
   height: 120px;
-  box-shadow: 0 0 20px #12121260;
   background: linear-gradient(var(--mainColor3), var(--mainColor2));
   padding: 0 6vw;
   font-family: 'Oswald';
@@ -1540,9 +1548,6 @@
   font-size: 2rem;
 }
 @media screen and (max-width: 650px) {
-  #mainPage {
-    width: 100vw;
-  }
   #mainPage nav {
     justify-content: center;
   }

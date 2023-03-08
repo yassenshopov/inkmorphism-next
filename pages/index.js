@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useState } from 'react'
 import { FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa'
+import { FiLogIn } from 'react-icons/fi'
 import { getAuth } from "firebase/auth";
 import app from "../firebase/clientApp";
 import { useRouter } from "next/router";
@@ -55,7 +56,7 @@ export default function Home() {
           <a className='noSelect' href='/templates'>Templates</a>
           <a className='noSelect' href='/about'>About us</a>
           <a className='noSelect' href='/blog'>Blog</a>
-          <a className='noSelect' onClick={checkLogin}>Sign in</a>
+          <a className='noSelect signIn' onClick={checkLogin}>Sign in <FiLogIn/></a>
           {/* <img src={profile_pic} alt="Profile Pic"/> */}
         </div>
         <div id='mobileMenu' onClick={mobileSwitch} className={"noSelect " + mobileToggle}>
@@ -67,7 +68,7 @@ export default function Home() {
           <a className='noSelect' href='/templates'>Templates</a>
           <a className='noSelect' href='/about'>About us</a>
           <a className='noSelect' href='/blog'>Blog</a>
-          <a className='noSelect' onClick={checkLogin}>Sign in</a>
+          <a className='noSelect signIn' onClick={checkLogin}>Sign in <FiLogIn/></a>
         </div>
       </nav>
 

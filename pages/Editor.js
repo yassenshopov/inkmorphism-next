@@ -21,7 +21,7 @@ import Blog from "./components/blog";
 import Loader from "./components/loader.js";
 
 function Editor(props) {
-  const [loadBool, setLoadBool] = useState(false);
+  const [loadBool, setLoadBool] = useState(true);
 
   // VARIABLES:
   let fallbackDefaults = {

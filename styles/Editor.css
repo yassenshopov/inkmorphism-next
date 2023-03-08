@@ -132,6 +132,7 @@ html {
 .Editor aside {
   width: 20vw;
   padding: 2vw;
+  min-height: 80vh;
 }
 .Editor aside #mainLogo {
   width: 4vw;
