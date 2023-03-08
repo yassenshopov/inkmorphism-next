@@ -87,6 +87,7 @@ async function getData() {
     slug = slug + ".inkmorphism.com"
     console.log(slug)
     let newSite = {
+      "deleted": false,
       "domain": slug,
       "domainSlug": domainSlug,
       "initDate": "",
@@ -154,7 +155,7 @@ async function getData() {
             </div>
           </article>
           <article>
-          <img src='templates/glassmorphismTemplate.png'/>
+            <img src='templates/glassmorphismTemplate.png'/>
             <h2>Glassmorphism</h2>
             <div id='hiddenBtns'>
               <a onClick={() => {randomSiteGen("Glassmorphism")}}>Get Started with glassmorphism →</a>
@@ -162,7 +163,7 @@ async function getData() {
             </div>
           </article>
           <article>
-          <img src='templates/web3Template.png'/>
+            <img src='templates/web3Template.png'/>
             <h2>Web3</h2>
             <div id='hiddenBtns'>
               <a onClick={() => {randomSiteGen("Web3")}}>Get Started with Web3 →</a>
@@ -170,10 +171,20 @@ async function getData() {
             </div>
           </article>
           <article>
+            <img src='templates/futurismTemplate.png'/>
             <h2>Futurism</h2>
+            <div id='hiddenBtns'>
+              <a onClick={() => {randomSiteGen("Futurism")}}>Get Started with Futurism →</a>
+              <a href='templates/futurism'>Preview Template</a>
+            </div>
           </article>
           <article>
+            <img src='templates/minimalismTemplate.png'/>
             <h2>Minimalism</h2>
+            <div id='hiddenBtns'>
+              <a onClick={() => {randomSiteGen("Minimalism")}}>Get Started with Minimalism →</a>
+              <a href='templates/minimalism'>Preview Template</a>
+            </div>
           </article>
           <article>
             <h2>Isometrism</h2>

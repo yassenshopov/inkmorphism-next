@@ -71,17 +71,23 @@ export default function Dashboard() {
       for (let entry in data._docs) {
           dbRenderedData.push(data._docs[entry].data());
       }
-      const websites = dbRenderedData.map((site) =>
+      const websitesArray = dbRenderedData.reduce((obj, site) => {
+        site.deleted ? obj.deleted.push(site) : obj.existing.push(site)
+        return obj
+      }, {deleted:[], existing:[]})
+      console.log(websitesArray)
+      const websites = websitesArray.existing.map((site) => 
           <a key={site.domain} href={"../config/" + site.domainSlug} className="noSelect">
-                  {/* < FaCircle /> */}
-                  <img src={(site.thumbnail==="") ? placeholder.src : site.thumbnail} />
-                  <h2>{site.name}</h2>
-                  <p>{site.style}</p>
-                  <p target="_blank">{site.domain}</p>
-                  {/* <p>{site.initDate}</p> */}
+            {/* < FaCircle /> */}
+            <img src={(site.thumbnail==="") ? placeholder.src : site.thumbnail} />
+            <h2>{site.name}</h2>
+            <p>{site.style}</p>
+            <p target="_blank">{site.domain}</p>
+            {/* <p>{site.initDate}</p> */}
           </a>
       )
-      setSitesTotal(dbRenderedData.length)
+      console.log(websites)
+      setSitesTotal(websitesArray.existing.length)
       setData(websites)
       const storage = getStorage();
       const storageRef = ref(storage, (uid + "/profilePic.png"));
