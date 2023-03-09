@@ -2,12 +2,10 @@ import {
   GithubAuthProvider,
   getAuth,
   signInWithPopup,
-  signInWithRedirect,
-  getRedirectResult,
   TwitterAuthProvider,
   onAuthStateChanged,
   GoogleAuthProvider,
-  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import { useEffect, useState, useCallback, useContext } from "react";
 import {
@@ -96,8 +94,8 @@ export default function Login() {
   }
 
   function signInWithEmail() {
-    let email = document.getElementById("email");
-    let password = document.getElementById("password");
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
@@ -127,7 +125,7 @@ export default function Login() {
         <img src={logo.src}/>
         {/* <h2>Login:</h2> */}
         <div id="loginWrapper">
-          <form>
+          <div id="form">
             <label htmlFor="email">Email address:</label>
             <input
               id="email"
@@ -135,19 +133,17 @@ export default function Login() {
               name="email"
               placeholder="me@gmail.com"
               autoComplete="username"
-              disabled
             />
             <label htmlFor="password">Password:</label>
             <input
-              id="pasword"
+              id="password"
               type="password"
               name="password"
               placeholder="Enter your password"
               autoComplete="current-password"
-              disabled
             />
-            <button onClick={signInWithEmail} disabled>Log in</button>
-          </form>
+            <button onClick={signInWithEmail}>Log in</button>
+          </div>
           <div id="orSection">
             <div></div>
             <p>OR</p>
