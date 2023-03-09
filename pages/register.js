@@ -23,7 +23,7 @@ import { SiGoogle, SiGithub, SiTwitter } from "react-icons/si";
 import logo from '../styles/images/logo.png';
 import { useRouter } from "next/router";
 
-export default function Login() {
+export default function Register() {
   const [userData, setUserData] = useState({});
 
   const auth = getAuth(app);
@@ -48,7 +48,7 @@ export default function Login() {
 
   async function sendRegisterData(regData) {
     regData = JSON.parse(JSON.stringify(regData));
-    await setDoc(doc(col, regData["uid"]), regData);
+    await setDoc(doc(col, "user-" + regData["uid"]), regData);
   }
 
   function signInWithGH() {
@@ -95,21 +95,31 @@ export default function Login() {
     });
   }
 
-  function signInWithEmail() {
-    let email = document.getElementById("email");
-    let password = document.getElementById("password");
-    console.log(password);
-    signInWithEmailAndPassword(auth, email, password)
+  function registerWithEmail() {
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    if (password.length < 6) {
+      alert("Your password must be at least 6 symbols long")
+    } else {
+      createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log(userCredential)
-        // Signed in
-        const user = userCredential.user;
-        console.log(user)
-        // ...
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((err) => {
+        console,log(err)
+      })
+    }
+    // signInWithEmailAndPassword(auth, email, password)
+    //   .then((userCredential) => {
+    //     console.log(userCredential)
+    //     // Signed in
+    //     const user = userCredential.user;
+    //     console.log(user)
+    //     // ...
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   }
 
   console.log(auth)
@@ -127,28 +137,28 @@ export default function Login() {
         <meta name="description" content="" />
       </Head>
       <div className="register">
-        <p>{(auth.currentUser == null) ? "You are not logged in" : redirect()}</p>
+        <p>{(auth.currentUser == null) ? "" : redirect()}</p>
         <img src={logo.src}/>
         <div id="registerWrapper">
-          <form>
-            <label for="email">Email address:</label>
+          <div>
+            <label htmlFor="email">Email address:</label>
             <input
               id="email"
               type="email"
               name="email"
               placeholder="me@gmail.com"
             />
-            <label for="name">Full name:</label>
+            <label htmlFor="name">Full name:</label>
             <input id="name" type="name" name="name" placeholder="Jon Snow..."/>
-            <label for="password">Password:</label>
+            <label htmlFor="password">Password:</label>
             <input
-              id="pasword"
+              id="password"
               type="password"
               name="password"
               placeholder="Enter your password"
             />
-            <button onClick={signInWithEmail}>Register</button>
-          </form>
+            <button onClick={registerWithEmail}>Register</button>
+          </div>
           <div id="orSection">
             <div></div>
             <p>OR</p>

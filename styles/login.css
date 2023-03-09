@@ -7,6 +7,7 @@
   font-family: var(--font1);
   border-radius: 20px;
   line-height: 1.5;
+  height: 80vh;
   box-sizing: border-box;
 }
 .login #loginWrapper {
@@ -29,27 +30,27 @@
   width: 25vw;
   height: 1px;
 }
-.login form {
+.login #form {
   display: flex;
   flex-direction: column;
   gap: 5px;
   width: 100%;
 }
-.login form input {
+.login #form input {
   border: none;
   border-bottom: 1px solid var(--mainGrey);
   background-color: var(--mainLight);
   padding: 10px 0;
   transition: all 500ms ease-in-out;
 }
-.login form input:focus {
+.login #form input:focus {
   outline: none;
   border-bottom: 1px solid var(--mainDark);
 }
-.login form label {
+.login #form label {
   margin-top: 20px;
 }
-.login form button {
+.login #form button {
   border: none;
   margin: 10px 0;
   padding: 15px 0;
@@ -63,11 +64,11 @@
   transition: all 500ms ease-in-out;
   font-size: 1.2rem;
 }
-.login form button:hover {
+.login #form button:hover {
   filter: brightness(2) opacity(0.8);
 }
 .login img {
-  width: 5vw;
+  width: 20vw;
   border-radius: 10px;
 }
 .login #buttons {
@@ -146,27 +147,27 @@
   width: 25vw;
   height: 1px;
 }
-.register form {
+.register #form {
   display: flex;
   flex-direction: column;
   gap: 5px;
   width: 100%;
 }
-.register form input {
+.register #form input {
   border: none;
   border-bottom: 1px solid var(--mainGrey);
   background-color: var(--mainLight);
   padding: 10px 0;
   transition: all 500ms ease-in-out;
 }
-.register form input:focus {
+.register #form input:focus {
   outline: none;
   border-bottom: 1px solid var(--mainDark);
 }
-.register form label {
+.register #form label {
   margin-top: 20px;
 }
-.register form button {
+.register #form button {
   border: none;
   margin: 10px 0;
   padding: 15px 0;
@@ -180,7 +181,7 @@
   transition: all 500ms ease-in-out;
   font-size: 1.2rem;
 }
-.register form button:hover {
+.register #form button:hover {
   filter: brightness(2) opacity(0.8);
 }
 .register img {
@@ -249,6 +250,9 @@
     margin: 0;
     padding: 0;
   }
+  .login img {
+    width: 8vw;
+  }
   .login #loginWrapper {
     flex-direction: row;
     justify-content: center;
@@ -280,7 +284,7 @@
   .login #buttons button :nth-child(3) {
     font-size: 20px;
   }
-  .login form {
+  .login #form {
     width: 20vw;
   }
   .register {
@@ -318,7 +322,7 @@
   .register #buttons button :nth-child(3) {
     font-size: 20px;
   }
-  .register form {
+  .register #form {
     width: 20vw;
   }
 }
