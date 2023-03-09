@@ -8,6 +8,7 @@ import {
   onAuthStateChanged,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  sendSignInLinkToEmail,
 } from "firebase/auth";
 import { useEffect, useState, useCallback, useContext } from "react";
 import {
@@ -95,6 +96,23 @@ export default function Register() {
     });
   }
 
+  const actionCodeSettings = {
+    // URL you want to redirect back to. The domain (www.example.com) for this
+    // URL must be in the authorized domains list in the Firebase Console.
+    url: 'https://www.inkmorphism.com/verify-email',
+    // This must be true.
+    handleCodeInApp: true,
+    iOS: {
+      bundleId: 'com.inkmorphism.ios'
+    },
+    android: {
+      packageName: 'com.inkmorphism.android',
+      installApp: true,
+      minimumVersion: '12'
+    },
+    dynamicLinkDomain: 'inkmorphism.page.link'
+  };
+
   function registerWithEmail() {
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
@@ -104,6 +122,18 @@ export default function Register() {
       createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log(userCredential)
+        sendSignInLinkToEmail(auth, email, actionCodeSettings)
+          .then(() => {
+            // The link was successfully sent. Inform the user.
+            // Save the email locally so you don't need to ask the user for it again
+            // if they open the link on the same device.
+            window.localStorage.setItem('emailForSignIn', email);
+            // ...
+          })
+          .catch((error) => {
+            console.log(error)
+            // ...
+          });
       })
       .catch((err) => {
         console,log(err)
@@ -140,7 +170,7 @@ export default function Register() {
         <p>{(auth.currentUser == null) ? "" : redirect()}</p>
         <img src={logo.src}/>
         <div id="registerWrapper">
-          <div>
+          <div id="form">
             <label htmlFor="email">Email address:</label>
             <input
               id="email"

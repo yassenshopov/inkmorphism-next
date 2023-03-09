@@ -9,6 +9,7 @@ import { FiLogOut, FiUser } from 'react-icons/fi'
   
 export default function Dashnav(props) { 
 
+    console.log(props.auth)
 
     const [loadBool, setLoadBool] = useState(false)
 
