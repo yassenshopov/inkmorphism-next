@@ -119,8 +119,8 @@
   color: var(--mainLight);
 }
 .register {
-  margin: 5vw;
-  width: 60vw;
+  margin: 5vh 0;
+  width: 80vw;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -128,11 +128,15 @@
   font-family: var(--font1);
   border-radius: 20px;
   line-height: 1.5;
+  height: 80vh;
   box-sizing: border-box;
 }
 .register #registerWrapper {
+  width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .register #orSection {
   display: flex;
@@ -157,12 +161,14 @@
   border: none;
   border-bottom: 1px solid var(--mainGrey);
   background-color: var(--mainLight);
-  padding: 10px 0;
+  padding: 10px 10px;
   transition: all 500ms ease-in-out;
+  border-radius: 6px 6px 0 0;
 }
 .register #form input:focus {
   outline: none;
   border-bottom: 1px solid var(--mainDark);
+  background-color: #faf9fe;
 }
 .register #form label {
   margin-top: 20px;
@@ -185,7 +191,7 @@
   filter: brightness(2) opacity(0.8);
 }
 .register img {
-  width: 5vw;
+  width: 20vw;
   border-radius: 10px;
 }
 .register #buttons {
@@ -204,8 +210,9 @@
   font-size: 1rem;
   cursor: pointer;
   border: none;
+  min-width: fit-content;
   width: 100%;
-  padding: 0px 5vw;
+  padding: 10px 5vw;
   flex-direction: row;
   gap: 2vw;
   align-items: center;
@@ -214,6 +221,9 @@
   justify-content: space-between;
   transition: all 500ms ease-in-out;
   height: fit-content;
+}
+.register #buttons button p {
+  font-size: 1rem;
 }
 .register #buttons button:hover {
   box-shadow: 4px 5px 30px rgba(0, 0, 0, 0.25), -5px -5px 15px rgba(255, 255, 255, 0.8);
@@ -230,19 +240,6 @@
 .register #buttons button:nth-child(3) {
   background-color: #1da1f2;
   color: var(--mainLight);
-}
-.register #registerDisclaimer {
-  padding: 10px 2vw;
-  box-sizing: border-box;
-  width: 40%;
-  margin: 20px 0;
-  text-align: center;
-  border-radius: 24px;
-  box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.1), -5px -5px 5px rgba(255, 255, 255, 0.8);
-}
-.register #registerDisclaimer a {
-  font-weight: 1000;
-  color: var(--mainLinkColor);
 }
 @media screen and (min-width: 650px) {
   .login {
@@ -292,6 +289,9 @@
     margin: 0;
     padding: 0;
   }
+  .register img {
+    width: 8vw;
+  }
   .register #registerWrapper {
     flex-direction: row;
     justify-content: center;
@@ -315,6 +315,7 @@
   }
   .register #buttons button {
     height: 60px;
+    padding: 40px 5vw;
   }
   .register #buttons button p {
     width: 8vw;

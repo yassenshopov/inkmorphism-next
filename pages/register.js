@@ -9,6 +9,7 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   sendSignInLinkToEmail,
+  updateProfile,
 } from "firebase/auth";
 import { useEffect, useState, useCallback, useContext } from "react";
 import {
@@ -21,20 +22,23 @@ import {
 import app from "../firebase/clientApp";
 import Head from "next/head";
 import { SiGoogle, SiGithub, SiTwitter } from "react-icons/si";
-import logo from '../styles/images/logo.png';
+import logo from "../styles/images/logo.png";
 import { useRouter } from "next/router";
 
 export default function Register() {
   const [userData, setUserData] = useState({});
 
-  const auth = getAuth(app);
-  console.log(auth.currentUser)
+  let auth = getAuth(app);
   // signInWithRedirect(auth, provider)
   onAuthStateChanged(auth, (user) => {
     if (user) {
+      let name = document.getElementById("name").value;
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/firebase.User
       const uid = user.uid;
+      // user.updateProfile({
+      //   displayName: name,
+      // })
       setUserData(user);
       sendRegisterData(user);
       // ...
@@ -93,51 +97,57 @@ export default function Register() {
       }
       // The signed-in user info.
       const user = result.user;
-    });
+    })
+    .catch((err) => {
+        return
+      }
+    )
   }
 
   const actionCodeSettings = {
     // URL you want to redirect back to. The domain (www.example.com) for this
     // URL must be in the authorized domains list in the Firebase Console.
-    url: 'https://www.inkmorphism.com/verify-email',
+    url: "https://www.inkmorphism.com/verify-email",
     // This must be true.
     handleCodeInApp: true,
     iOS: {
-      bundleId: 'com.inkmorphism.ios'
+      bundleId: "com.inkmorphism.ios",
     },
     android: {
-      packageName: 'com.inkmorphism.android',
+      packageName: "com.inkmorphism.android",
       installApp: true,
-      minimumVersion: '12'
+      minimumVersion: "12",
     },
-    dynamicLinkDomain: 'inkmorphism.page.link'
+    dynamicLinkDomain: "inkmorphism.page.link",
   };
 
   function registerWithEmail() {
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
+    // let name = document.getElementById("name").value;
+    // auth.currentUser.displayName = name;
     if (password.length < 6) {
-      alert("Your password must be at least 6 symbols long")
+      alert("Your password must be at least 6 symbols long");
     } else {
       createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log(userCredential)
-        sendSignInLinkToEmail(auth, email, actionCodeSettings)
-          .then(() => {
-            // The link was successfully sent. Inform the user.
-            // Save the email locally so you don't need to ask the user for it again
-            // if they open the link on the same device.
-            window.localStorage.setItem('emailForSignIn', email);
-            // ...
-          })
-          .catch((error) => {
-            console.log(error)
-            // ...
-          });
-      })
-      .catch((err) => {
-        console,log(err)
-      })
+        .then((userCredential) => {
+          console.log(userCredential);
+          sendSignInLinkToEmail(auth, email, actionCodeSettings)
+            .then(() => {
+              // The link was successfully sent. Inform the user.
+              // Save the email locally so you don't need to ask the user for it again
+              // if they open the link on the same device.
+              window.localStorage.setItem("emailForSignIn", email);
+              // ...
+            })
+            .catch((error) => {
+              console.log(error);
+              // ...
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
     // signInWithEmailAndPassword(auth, email, password)
     //   .then((userCredential) => {
@@ -152,13 +162,13 @@ export default function Register() {
     //   });
   }
 
-  console.log(auth)
+  console.log(auth);
 
   let router = useRouter();
   function redirect() {
     setTimeout(() => {
-      router.push('/dashboard')
-    }, 500)
+      router.push("/dashboard");
+    }, 500);
   }
   return (
     <>
@@ -167,8 +177,8 @@ export default function Register() {
         <meta name="description" content="" />
       </Head>
       <div className="register">
-        <p>{(auth.currentUser == null) ? "" : redirect()}</p>
-        <img src={logo.src}/>
+        <p>{auth.currentUser == null ? "" : redirect()}</p>
+        <img src={logo.src} />
         <div id="registerWrapper">
           <div id="form">
             <label htmlFor="email">Email address:</label>
@@ -179,7 +189,12 @@ export default function Register() {
               placeholder="me@gmail.com"
             />
             <label htmlFor="name">Full name:</label>
-            <input id="name" type="name" name="name" placeholder="Jon Snow..."/>
+            <input
+              id="name"
+              type="name"
+              name="name"
+              placeholder="Jon Snow..."
+            />
             <label htmlFor="password">Password:</label>
             <input
               id="password"
@@ -195,22 +210,24 @@ export default function Register() {
             <div></div>
           </div>
           <div id="buttons">
-            <button onClick={signInWithG}>
+            <button onClick={signInWithG} className="noSelect">
               <div></div>
-              <p>Sign in with Google</p> <SiGoogle />{" "}
+              <p>Sign up with Google</p> <SiGoogle />{" "}
             </button>
-            <button onClick={signInWithGH}>
+            <button onClick={signInWithGH} className="noSelect">
               <div></div>
-              <p>Sign in with GitHub</p> <SiGithub />
+              <p>Sign up with GitHub</p> <SiGithub />
             </button>
-            <button onClick={signInWithTW}>
+            <button onClick={signInWithTW} className="noSelect">
               <div></div>
-              <p>Sign in with Twitter</p> <SiTwitter />
+              <p>Sign up with Twitter</p> <SiTwitter />
             </button>
           </div>
         </div>
         <div id="registerDisclaimer">
-          <p>Do you have an account? <a href="../login">Log in</a></p>
+          <p>
+            Do you have an account? <a href="../login">Log in</a>
+          </p>
         </div>
       </div>
     </>
