@@ -164,6 +164,9 @@ export default function Login() {
             </button>
           </div>
         </div>
+        <div id="loginDisclaimer">
+          <p>Don't have an account? <a href="../register">Register</a></p>
+        </div>
       </div>
     </>
   );

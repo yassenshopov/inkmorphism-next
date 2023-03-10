@@ -75,7 +75,6 @@ export default function Dashboard() {
         site.deleted ? obj.deleted.push(site) : obj.existing.push(site)
         return obj
       }, {deleted:[], existing:[]})
-      console.log(websitesArray)
       const websites = websitesArray.existing.map((site) => 
           <a key={site.domain} href={"../config/" + site.domainSlug} className="noSelect">
             {/* < FaCircle /> */}
@@ -86,7 +85,6 @@ export default function Dashboard() {
             {/* <p>{site.initDate}</p> */}
           </a>
       )
-      console.log(websites)
       setSitesTotal(websitesArray.existing.length)
       setData(websites)
       const storage = getStorage();

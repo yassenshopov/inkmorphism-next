@@ -131,9 +131,10 @@
 }
 
 .register {
-  margin: 5vw;
+  margin: 5vh 0;
+  box-sizing: border-box;
   // padding: 3vw;
-  width: 60vw;
+  width: 80vw;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -144,12 +145,15 @@
 
   border-radius: 20px;
   line-height: 1.5;
-  // height: 60vh;
+  height: 80vh;
   // background-color: var(--mainDark);
   box-sizing: border-box;
   #registerWrapper {
+    width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   #orSection {
     display: flex;
@@ -173,12 +177,14 @@
       border: none;
       border-bottom: 1px solid var(--mainGrey);
       background-color: var(--mainLight);
-      padding: 10px 0;
+      padding: 10px 10px;
       transition: all 500ms ease-in-out;
+      border-radius: 6px 6px 0 0;
     }
     input:focus {
       outline: none;
       border-bottom: 1px solid var(--mainDark);
+      background-color: #faf9fe;
     }
     label {
       margin-top: 20px;
@@ -203,7 +209,7 @@
     }
   }
   img {
-    width: 5vw;
+    width: 20vw;
     border-radius: 10px;
   }
   #buttons {
@@ -222,8 +228,9 @@
       font-size: 1rem;
       cursor: pointer;
       border: none;
+      min-width: fit-content;
       width: 100%;
-      padding: 0px 5vw;
+      padding: 10px 5vw;
       display: flex;
       flex-direction: row;
       gap: 2vw;
@@ -233,6 +240,9 @@
       justify-content: space-between;
       transition: all 500ms ease-in-out;
       height: fit-content;
+      p {
+        font-size: 1rem;
+      }
     }
     button:hover {
       box-shadow: 4px 5px 30px rgb(0 0 0 / 25%),
@@ -250,21 +260,6 @@
     button:nth-child(3) {
       background-color: #1da1f2;
       color: var(--mainLight);
-    }
-  }
-  #registerDisclaimer {
-    // border: 1px solid var(--mainDark);
-    padding: 10px 2vw;
-    box-sizing: border-box;
-    width: 40%;
-    margin: 20px 0;
-    text-align: center;
-    border-radius: 24px;
-    box-shadow: 4px 5px 5px rgb(0 0 0 / 10%),
-      -5px -5px 5px rgb(255 255 255 / 80%);
-    a {
-      font-weight: 1000;
-      color: var(--mainLinkColor);
     }
   }
 }
@@ -318,6 +313,9 @@
     width: 100vw;
     margin: 0;
     padding: 0;
+    img {
+      width: 8vw;
+    }
     #registerWrapper {
       flex-direction: row;
       justify-content: center;
@@ -341,6 +339,7 @@
       button {
         // width: 150%;
         height: 60px;
+        padding: 40px 5vw;
         p {
           width: 8vw;
         }
