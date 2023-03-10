@@ -82,17 +82,18 @@ function Editor(props) {
 
   const storage = getStorage(app);
 
-  const [userName, setUserName] = useState("fallback")
+  const [userName, setUserName] = useState("fallback");
 
   async function getData() {
     let propsName;
+    let col;
     if (props["name"] === undefined) {
       propsName = "thedatachunk";
     } else {
       try {
         propsName = "user-" + props.auth.currentUser.uid + "/" + props["name"];
         setUserName("user-" + props.auth.currentUser.uid);
-        const col = doc(db, "users", userName, "websites", props["name"]);
+        col = doc(db, "users", userName, "websites", props["name"]);
       } catch {
         propsName = "user-" + "fallback" + "/" + props["name"];
         setUserName("fallback");
@@ -170,7 +171,8 @@ function Editor(props) {
 
   const colorChange = (e) => {
     console.log(e.target.value);
-    savedData["webContent"]["meta"]["colorPalette"][e.target.id] = e.target.value;
+    savedData["webContent"]["meta"]["colorPalette"][e.target.id] =
+      e.target.value;
   };
 
   const [fsClass, setFsClass] = useState("");
@@ -195,11 +197,13 @@ function Editor(props) {
   let router = useRouter();
 
   async function deleteSite() {
-    console.log(userName)
-    await updateDoc(doc(db, "users", userName, "websites", props["name"]), {deleted: true})
+    console.log(userName);
+    await updateDoc(doc(db, "users", userName, "websites", props["name"]), {
+      deleted: true,
+    });
     setTimeout(() => {
-      router.push('/dashboard')
-    }, 500)
+      router.push("/dashboard");
+    }, 500);
   }
 
   return (
@@ -240,8 +244,6 @@ function Editor(props) {
         </nav>
 
         <button id="fetch" onClick={getData}></button>
-
-
       </main>
 
       <aside>
@@ -307,7 +309,7 @@ function Editor(props) {
         </ul>
 
         <h2>Danger zone</h2>
-        < FaTrashAlt id="trashIcon" className="noSelect" onClick={deleteSite}/>
+        <FaTrashAlt id="trashIcon" className="noSelect" onClick={deleteSite} />
 
         <section id="profileSection">
           <img src={user.photoURL} alt="Profile Pic" />
