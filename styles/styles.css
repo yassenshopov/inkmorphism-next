@@ -45,15 +45,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-#mainPage {
-  font-family: 'WorkSans';
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-}
-#mainPage nav {
+#MainNav {
   position: fixed;
   top: 0;
   width: 80vw;
@@ -67,17 +59,17 @@
   color: var(--mainLight);
   z-index: 2;
 }
-#mainPage nav a {
+#MainNav a {
   color: var(--mainLight);
   text-decoration: none;
   font-size: 1.4rem;
   padding: 20px 1vw;
   cursor: pointer;
 }
-#mainPage nav * {
+#MainNav * {
   max-height: 40px;
 }
-#mainPage nav #logo {
+#MainNav #logo {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -86,7 +78,7 @@
   font-size: 1.6rem;
   z-index: 9;
 }
-#mainPage nav #mobileMenu {
+#MainNav #mobileMenu {
   position: absolute;
   right: 6vw;
   display: none;
@@ -96,27 +88,27 @@
   gap: 8px;
   z-index: 9;
 }
-#mainPage nav #mobileMenu div {
+#MainNav #mobileMenu div {
   width: 10vw;
   height: 2px;
   background-color: var(--mainLight);
   border-radius: 4px;
   transition: all 200ms ease-in-out;
 }
-#mainPage nav .clicked div:nth-child(1) {
+#MainNav .clicked div:nth-child(1) {
   transform: rotate(45deg) translateX(6px) translateY(6px);
 }
-#mainPage nav .clicked div:nth-child(2) {
+#MainNav .clicked div:nth-child(2) {
   transform: scale(0);
 }
-#mainPage nav .clicked div:nth-child(3) {
+#MainNav .clicked div:nth-child(3) {
   transform: rotate(135deg) translateX(-8px) translateY(9px);
 }
-#mainPage nav #overlayMenu[class="clicked"] {
+#MainNav #overlayMenu[class="clicked"] {
   visibility: visible !important;
   overflow-y: hidden;
 }
-#mainPage nav #overlayMenu {
+#MainNav #overlayMenu {
   position: absolute;
   top: 0;
   left: 0;
@@ -131,11 +123,36 @@
   justify-content: center;
   align-items: center;
 }
-#mainPage nav #overlayMenu a {
+#MainNav #overlayMenu a {
   font-size: 2.4rem;
 }
-#mainPage nav #overlayMenu a:last-child {
+#MainNav #overlayMenu a:last-child {
   margin: 0 0 50px 0;
+}
+.About {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100vw;
+}
+#WIP {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(var(--mainColor2), var(--mainColor3));
+  box-sizing: border-box;
+  width: 100vw;
+}
+#mainPage {
+  font-family: 'WorkSans';
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 }
 #mainPage main {
   background: linear-gradient(var(--mainColor2), var(--mainColor3));
@@ -1548,23 +1565,26 @@
   font-size: 2rem;
 }
 @media screen and (max-width: 650px) {
-  #mainPage {
+  .About {
     width: 100vw;
   }
-  #mainPage nav {
+  #MainNav {
     justify-content: center;
   }
-  #mainPage nav #logo img {
+  #MainNav #logo img {
     max-height: 60px;
   }
-  #mainPage nav #logo p {
+  #MainNav #logo p {
     display: none;
   }
-  #mainPage nav > *:nth-child(2) {
+  #MainNav > *:nth-child(2) {
     display: none;
   }
-  #mainPage nav #mobileMenu {
+  #MainNav #mobileMenu {
     display: flex;
+  }
+  #mainPage {
+    width: 100vw;
   }
   #mainPage main #hero {
     padding: 160px 0vw 100px 0vw;
