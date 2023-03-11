@@ -143,7 +143,7 @@
     }
 }
 
-.About {
+.About, .Blog {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -160,6 +160,24 @@
     background: linear-gradient(var(--mainColor2), var(--mainColor3));
     box-sizing: border-box;  
     width: 100vw;
+    padding: 120px 0;
+    .txt {
+        font-family: 'WorkSans';
+        color: var(--mainLight);
+        width: 60%;
+        text-align: center;
+        h1 {
+            font-size: 2rem;
+        }
+        p {
+            font-size: 1.2rem;
+        }
+    }
+    img {
+        width: 50%;
+        mix-blend-mode: difference;
+        // filter: drop-shadow(20px 20px 0 var(--mainDark));
+    }
 }
 
 #mainPage {
@@ -1634,7 +1652,7 @@
 }
 
 @media screen and (max-width: 650px) {
-    .About {
+    .About, .Blog {
         width: 100vw;
     }
     #MainNav {
