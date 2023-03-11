@@ -97,10 +97,10 @@ export default function Templates() {
       domain: slug,
       domainSlug: domainSlug,
       initDate: "",
-      name: "New Site v3",
+      name: "New Site v4",
       style: style,
       thumbnail:
-        "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fthumbnail.png?alt=media&token=bf24a392-9096-4d28-a9b0-f9d7941f8e85",
+        "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fthumbnail.png?alt=media&token=7ac92b40-dd97-42be-91e2-87aa677ebae1",
       webContent: {
         meta: {
           colorPalette: {
@@ -119,6 +119,11 @@ export default function Templates() {
             "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fthumbnail.png?alt=media&token=bf24a392-9096-4d28-a9b0-f9d7941f8e85",
           metaAuthor: "Meta Author",
         },
+        pages: {
+          main: {
+            structure: [1, 2, 3]
+          }
+        } 
       },
     };
     await setDoc(doc(col, domainSlug), newSite);
