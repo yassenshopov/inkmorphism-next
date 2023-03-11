@@ -11,6 +11,7 @@ export default function About() {
       <Head>
         {/* <link rel="icon" href={defaultFiles['logo']} /> */}
         <title>Inkmorphism - About us</title>
+        <link rel="icon" href="/faviconWh.ico" />
       </Head>
 
       <MainNav/>

@@ -129,7 +129,8 @@
 #MainNav #overlayMenu a:last-child {
   margin: 0 0 50px 0;
 }
-.About {
+.About,
+.Blog {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -145,6 +146,23 @@
   background: linear-gradient(var(--mainColor2), var(--mainColor3));
   box-sizing: border-box;
   width: 100vw;
+  padding: 120px 0;
+}
+#WIP .txt {
+  font-family: 'WorkSans';
+  color: var(--mainLight);
+  width: 60%;
+  text-align: center;
+}
+#WIP .txt h1 {
+  font-size: 2rem;
+}
+#WIP .txt p {
+  font-size: 1.2rem;
+}
+#WIP img {
+  width: 50%;
+  mix-blend-mode: difference;
 }
 #mainPage {
   font-family: 'WorkSans';
@@ -1565,7 +1583,8 @@
   font-size: 2rem;
 }
 @media screen and (max-width: 650px) {
-  .About {
+  .About,
+  .Blog {
     width: 100vw;
   }
   #MainNav {
