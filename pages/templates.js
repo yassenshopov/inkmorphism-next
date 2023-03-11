@@ -130,10 +130,8 @@ export default function Templates() {
     // const fileName = 'logo.png'
 
     // let file;
-    let url =
-      "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Flogo.png?alt=media&token=ba50553d-4f67-4d24-b909-e98e6585dad9";
-      // "https://kofiscrib.com/resources/images/logo.png"
-    fetch(url, {mode: "cors"})
+    let url = "./newSiteLogo.png"
+    fetch(url)
     .then((response) => response.blob())
     .then((blob) => {
       console.log(blob)
@@ -143,9 +141,7 @@ export default function Templates() {
       console.log(fileObject)
       setFile(fileObject);
           // access file here
-      console.log(file)
       uploadBytes(logoRef, file, metadata).then((snapshot) => {
-        console.log(snapshot);
         // window.location.reload(false)
       });
     });

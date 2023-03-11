@@ -22,6 +22,8 @@ import Blog from "./components/blog";
 import { useRouter } from "next/router";
 import Loader from "./components/loader.js";
 
+const dataArr = [];
+
 function Editor(props) {
   const [loadBool, setLoadBool] = useState(true);
 
@@ -60,7 +62,6 @@ function Editor(props) {
 
   let db = getFirestore(app);
 
-  const [defaults, setData] = useState(fallbackDefaults);
   const [defaultFiles, setFiles] = useState({
     logo: "",
   });
@@ -84,6 +85,7 @@ function Editor(props) {
 
   const [userName, setUserName] = useState("fallback");
 
+  const [defaults, setData] = useState(fallbackDefaults);
   async function getData() {
     let propsName;
     let col;
@@ -91,19 +93,28 @@ function Editor(props) {
       propsName = "thedatachunk";
     } else {
       try {
-        propsName = "user-" + props.auth.currentUser.uid + "/" + props["name"];
+        propsName = "user-" + props.auth.currentUser.uid + "/" + props.name;
         setUserName("user-" + props.auth.currentUser.uid);
-        col = doc(db, "users", userName, "websites", props["name"]);
-      } catch {
+        col = doc(db, "users", userName, "websites", props.name);
+        const data = await getDoc(col)
+        .then(doc => {
+          dataArr.push(doc.data());
+          dataArr.forEach((item) => {
+            if ((item) !== undefined) {
+              setData(item)
+            }
+          })
+        })
+      } catch(err) {
         propsName = "user-" + "fallback" + "/" + props["name"];
         setUserName("fallback");
       }
     }
     try {
       const logoRef = ref(storage, propsName + "/logo.png");
-      const data = await getDoc(col);
-      console.log(data.data());
-      setData(data.data());
+      // console.log(col)
+      // const data = await getDoc(col);
+      // console.log(data.data());
       const logo = await getDownloadURL(logoRef);
       setFiles({
         logo: logo,
@@ -114,11 +125,11 @@ function Editor(props) {
         logo: logo.src,
       });
     }
-    let temp_user = getAuth(app).currentUser;
-    try {
-      temp_user.displayName;
-      setUser(temp_user);
-    } catch {}
+    // let temp_user = getAuth(app).currentUser;
+    // try {
+    //   temp_user.displayName;
+    //   setUser(temp_user);
+    // } catch {}
     setLoadBool(false);
   }
 
@@ -153,6 +164,7 @@ function Editor(props) {
   //   }
   // };
 
+
   let savedData = JSON.parse(JSON.stringify(defaults));
 
   for (const key in defaults) {
@@ -170,7 +182,6 @@ function Editor(props) {
   }
 
   const colorChange = (e) => {
-    console.log(e.target.value);
     savedData["webContent"]["meta"]["colorPalette"][e.target.id] =
       e.target.value;
   };
@@ -197,7 +208,6 @@ function Editor(props) {
   let router = useRouter();
 
   async function deleteSite() {
-    console.log(userName);
     await updateDoc(doc(db, "users", userName, "websites", props["name"]), {
       deleted: true,
     });
