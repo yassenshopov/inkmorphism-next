@@ -119,7 +119,6 @@
   transform: rotate(135deg) translateX(-8px) translateY(9px);
 }
 #MainNav #overlayMenu[class="clicked"] {
-  visibility: visible !important;
   overflow-y: hidden;
   height: 100vh;
   opacity: 1;
@@ -131,7 +130,6 @@
   width: 100%;
   height: 0vh;
   opacity: 0;
-  visibility: hidden;
   max-height: 100vh;
   background: linear-gradient(var(--mainColor2), var(--mainColor3));
   z-index: 88;
@@ -451,7 +449,7 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
-  z-index: 9;
+  z-index: 99;
 }
 #dashnav #mobileMenu div {
   width: 10vw;
@@ -470,18 +468,20 @@
   transform: rotate(135deg) translateX(-8px) translateY(9px);
 }
 #dashnav #overlayMenu[class="clicked"] {
-  visibility: visible !important;
+  height: 100vh;
+  opacity: 1;
 }
 #dashnav #overlayMenu {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
-  visibility: hidden;
+  height: 0vh;
+  opacity: 0;
+  transition: all 400ms ease-in-out;
   max-height: 100vh;
   background: linear-gradient(var(--mainColor2), var(--mainColor3));
-  z-index: 8;
+  z-index: 88;
   display: flex;
   flex-direction: column;
   justify-content: center;
