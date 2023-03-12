@@ -107,13 +107,16 @@
 #MainNav #overlayMenu[class="clicked"] {
   visibility: visible !important;
   overflow-y: hidden;
+  height: 100vh;
+  opacity: 1;
 }
 #MainNav #overlayMenu {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 0vh;
+  opacity: 0;
   visibility: hidden;
   max-height: 100vh;
   background: linear-gradient(var(--mainColor2), var(--mainColor3));
@@ -122,6 +125,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: all 400ms ease-in-out;
 }
 #MainNav #overlayMenu a {
   font-size: 2.4rem;
@@ -1586,6 +1590,9 @@
   .About,
   .Blog {
     width: 100vw;
+  }
+  #WIP img {
+    width: 80%;
   }
   #MainNav {
     justify-content: center;
