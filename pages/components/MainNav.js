@@ -1,6 +1,8 @@
-import { useState } from "react";
 import { useRouter } from "next/router";
 import { FiLogIn } from 'react-icons/fi'
+import { useState } from 'react'
+import { getAuth } from "firebase/auth";
+import app from "../../firebase/clientApp";
 
 export default function MainNav() {
     
