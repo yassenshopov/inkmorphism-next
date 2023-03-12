@@ -120,7 +120,7 @@
   visibility: hidden;
   max-height: 100vh;
   background: linear-gradient(var(--mainColor2), var(--mainColor3));
-  z-index: 8;
+  z-index: 88;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -621,11 +621,11 @@
   text-transform: uppercase;
   color: var(--mainDark);
   font-size: 1.4rem;
-  width: 90%;
   transition: all 200ms ease-in-out;
   border-bottom: 2px solid #10101000;
   padding: 0 0 10px 0;
-  width: 60%;
+  min-width: 60%;
+  max-width: 80%;
 }
 #templatesWrapper #templates article #hiddenBtns > *:nth-child(2) {
   color: var(--mainLight);

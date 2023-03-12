@@ -148,13 +148,11 @@ export default function Templates() {
           // access file here
       uploadBytes(logoRef, file, metadata).then((snapshot) => {
         // window.location.reload(false)
+        
+        let urlRedirect = "../../config/" + domainSlug;
+        window.location.href = urlRedirect
       });
     });
-
-
-
-    let urlRedirect = "../../config/" + slug;
-    // window.location.href = urlRedirect
   }
 
   return (
