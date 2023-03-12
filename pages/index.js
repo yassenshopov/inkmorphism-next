@@ -1,10 +1,5 @@
 import Head from 'next/head'
-import { useState } from 'react'
 import { FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa'
-import { FiLogIn } from 'react-icons/fi'
-import { getAuth } from "firebase/auth";
-import app from "../firebase/clientApp";
-import { useRouter } from "next/router";
 import MainNav from './components/MainNav';
 
 export default function Home() {

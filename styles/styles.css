@@ -59,6 +59,20 @@
   color: var(--mainLight);
   z-index: 2;
 }
+@keyframes mobileMenuAnimation {
+  0% {
+    filter: drop-shadow(0 0 0px var(--mainLight));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px var(--mainLight));
+  }
+  100% {
+    filter: drop-shadow(0 0 0px var(--mainLight));
+  }
+}
+#MainNav .onClickAnimation {
+  animation: mobileMenuAnimation 2s 1;
+}
 #MainNav a {
   color: var(--mainLight);
   text-decoration: none;
@@ -86,7 +100,7 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
-  z-index: 9;
+  z-index: 99;
 }
 #MainNav #mobileMenu div {
   width: 10vw;
