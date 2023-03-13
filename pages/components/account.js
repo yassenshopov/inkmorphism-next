@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react"
 import { getStorage, ref, uploadBytes } from "firebase/storage";
-import { getAuth } from "firebase/auth";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import app from "../../firebase/clientApp";
 import { BiLoaderAlt } from 'react-icons/bi'
+import { useRouter } from 'next/router';
 
 export default function Account(props) {
 
     const [profilePic, setProfilePic] = useState("")
+    let router = useRouter();
 
     const storage = getStorage();
     const auth = getAuth(app);
@@ -48,6 +50,24 @@ export default function Account(props) {
         setPopupToggle(!popupToggle)
     }
 
+    function sendReset() {
+        sendPasswordResetEmail(auth, auth.currentUser.email)
+            .then(() => {
+                // Password reset email sent!
+                // ..
+                auth.signOut();
+                setTimeout(() => {
+                    router.push('/login')
+                  }, 200)
+
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+            });
+    }
+
     const profileSec = 
         // return (
         <main id="accountSection">
@@ -58,6 +78,7 @@ export default function Account(props) {
                 </div>
             </div>
             <p id="displayName">{props.displayName}</p>
+            <button onClick={sendReset}>Reset your password</button>
         </main>
         // )    
 
