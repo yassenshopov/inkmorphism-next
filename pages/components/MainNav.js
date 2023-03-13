@@ -23,18 +23,12 @@ export default function MainNav() {
     }
   
     function checkLogin() {
-      const auth = getAuth(app)
-      setTimeout(() => {
+        const auth = getAuth(app);
         if (auth.currentUser !== null) {
-          setTimeout(() => {
             router.push('/dashboard')
-          }, 500)
         } else {
-          setTimeout(() => {
             router.push('/login')
-          }, 500)
         }
-      }, 1000)
     }
 
     return (
