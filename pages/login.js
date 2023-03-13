@@ -20,12 +20,13 @@ import Head from "next/head";
 import { SiGoogle, SiGithub, SiTwitter } from "react-icons/si";
 import logo from '../styles/images/logo.png';
 import { useRouter } from "next/router";
+import Loader from './components/loader.js'
 
 export default function Login() {
   const [userData, setUserData] = useState({});
+  const [loadBool, setLoadBool] = useState(false);
 
   const auth = getAuth(app);
-  // signInWithRedirect(auth, provider)
   onAuthStateChanged(auth, (user) => {
     if (user) {
       // User is signed in, see docs for a list of available properties
@@ -78,18 +79,15 @@ export default function Login() {
 
   function signInWithG() {
     const provider = new GoogleAuthProvider();
+    setLoadBool(true)
     signInWithPopup(auth, provider).then((result) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       if (credential) {
-        // This gives you a GitHub Access Token. You can use it to access the GitHub API.
         const token = credential.accessToken;
-        // ...
       }
-      // The signed-in user info.
       const user = result.user;
     }).catch((err) => {
-      // console.log(err);
-      return
+      setLoadBool(false)
     })
   }
 
@@ -98,9 +96,7 @@ export default function Login() {
     let password = document.getElementById("password").value;
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
-        // ...
       })
       .catch((error) => {
         console.log(error);
@@ -120,6 +116,7 @@ export default function Login() {
         <meta name="description" content="" />
         <link rel="icon" href="/faviconWh.ico" />
       </Head>
+      {loadBool ? <Loader /> : ""}
       <div className="login">
         <p>{(auth.currentUser == null) ? "" : redirect()}</p>
         <img src={logo.src}/>
