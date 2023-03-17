@@ -26,37 +26,35 @@ const dataArr = [];
 
 function Editor(props) {
   const [loadBool, setLoadBool] = useState(true);
-
-  // VARIABLES:
-  let fallbackDefaults = {
-    webContent: {
-      meta: {
-        metaAuthor: "Meta Author",
-        metaStyle: "web3",
-        metaDescription: "The description for your website",
-        colorPalette: {
-          color1: "#5C8BB5",
-          color2: "#457596",
-          color3: "#E05276",
-          colorDark: "#121212",
-          colorLight: "#fefefe",
+  const [defaults, setData] = useState({
+      webContent: {
+        meta: {
+          metaAuthor: "Meta Author",
+          metaStyle: "web3",
+          metaDescription: "The description for your website",
+          colorPalette: {
+            color1: "#5C8BB5",
+            color2: "#457596",
+            color3: "#E05276",
+            colorDark: "#121212",
+            colorLight: "#fefefe",
+          },
+          metaTitle: "Inkmorphism - Your Website",
+          metaThumbnail:
+            "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fmusic-point-595%2Fthumbnail.png?alt=media&token=667a1542-8de7-45b2-ae39-520667a9af22",
+          metaFavicon:
+            "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fmusic-point-595%2Flogo.png?alt=media&token=b601d1f8-8708-4c89-b8f5-8d75f2f1c164",
         },
-        metaTitle: "Inkmorphism - Your Website",
-        metaThumbnail:
-          "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fmusic-point-595%2Fthumbnail.png?alt=media&token=667a1542-8de7-45b2-ae39-520667a9af22",
-        metaFavicon:
-          "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fmusic-point-595%2Flogo.png?alt=media&token=b601d1f8-8708-4c89-b8f5-8d75f2f1c164",
       },
-    },
-    initDate: "",
-    style: "Web3",
-    name: "Website Defaults",
-    thumbnail:
-      "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fmusic-point-595%2Fthumbnail.png?alt=media&token=667a1542-8de7-45b2-ae39-520667a9af22",
-    domainSlug: "default",
-    domain: "default.inkmorphism.com",
-    deleted: false,
-  };
+      initDate: "",
+      style: "Web3",
+      name: "Website Defaults",
+      thumbnail:
+        "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fmusic-point-595%2Fthumbnail.png?alt=media&token=667a1542-8de7-45b2-ae39-520667a9af22",
+      domainSlug: "default",
+      domain: "default.inkmorphism.com",
+      deleted: false,
+    });
 
   // FIREBASE FIRESTORE DB CODE:
 
@@ -85,7 +83,6 @@ function Editor(props) {
 
   const [userName, setUserName] = useState("fallback");
 
-  const [defaults, setData] = useState(fallbackDefaults);
   async function getData() {
     let propsName;
     let col;
@@ -96,16 +93,16 @@ function Editor(props) {
         propsName = "user-" + props.auth.currentUser.uid + "/" + props.name;
         setUserName("user-" + props.auth.currentUser.uid);
         col = doc(db, "users", userName, "websites", props.name);
-        const data = await getDoc(col)
-        .then(doc => {
+        const data = await getDoc(col).then((doc) => {
           dataArr.push(doc.data());
+          console.log(dataArr)
           dataArr.forEach((item) => {
-            if ((item) !== undefined) {
-              setData(item)
+            if (item !== undefined) {
+              setData(item);
             }
-          })
-        })
-      } catch(err) {
+          });
+        });
+      } catch (err) {
         propsName = "user-" + "fallback" + "/" + props["name"];
         setUserName("fallback");
       }
@@ -146,6 +143,7 @@ function Editor(props) {
         setUserName("fallback");
       }
     }
+    console.log(props["name"]);
     await setDoc(
       doc(db, "users", userName, "websites", props["name"]),
       savedData
@@ -164,7 +162,6 @@ function Editor(props) {
   //   }
   // };
 
-
   let savedData = JSON.parse(JSON.stringify(defaults));
 
   for (const key in defaults) {
@@ -178,6 +175,7 @@ function Editor(props) {
   }
 
   function saveNewData() {
+    console.log(savedData);
     sendData(savedData);
   }
 
@@ -210,20 +208,19 @@ function Editor(props) {
   async function deleteSite() {
     await updateDoc(doc(db, "users", userName, "websites", props["name"]), {
       deleted: true,
-    });
-    setTimeout(() => {
+    }).then(() => {
       router.push("/dashboard");
-    }, 500);
+    })
   }
 
   return (
     <div className={"Editor" + fsClass + modeClass}>
       <Head>
-        <link rel="icon" href={defaults["webContent"]["meta"]["metaFavicon"]} />
-        <title>{defaults["webContent"]["meta"]["metaTitle"]}</title>
+        <link rel="icon" href={savedData["webContent"]["meta"]["metaFavicon"]} />
+        <title>{savedData["webContent"]["meta"]["metaTitle"]}</title>
         <meta
           name="description"
-          content={defaults["webContent"]["meta"]["metaDescription"]}
+          content={savedData["webContent"]["meta"]["metaDescription"]}
         ></meta>
       </Head>
 
@@ -254,6 +251,24 @@ function Editor(props) {
         </nav>
 
         <button id="fetch" onClick={getData}></button>
+
+        <main
+          className={savedData["webContent"]["meta"]["metaStyle"]}
+          style={{
+            "--color1":
+              savedData["webContent"]["meta"]["colorPalette"]["color1"],
+            "--color2":
+              savedData["webContent"]["meta"]["colorPalette"]["color2"],
+            "--color3":
+              savedData["webContent"]["meta"]["colorPalette"]["color3"],
+            "--colorLight":
+              savedData["webContent"]["meta"]["colorPalette"]["colorLight"],
+            "--colorDark":
+              savedData["webContent"]["meta"]["colorPalette"]["colorDark"],
+          }}
+        >
+        
+        </main>
       </main>
 
       <aside>

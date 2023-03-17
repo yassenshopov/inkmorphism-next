@@ -73,7 +73,7 @@ export default function Account(props) {
         <main id="accountSection">
             <div id="profilePicWrapper">
                 <img src={props.profilePic} id="profilePic"/>
-                <div className="hiddenMenu" onClick={openPopup}>
+                <div className="hiddenMenu noSelect" onClick={openPopup}>
                     <p>Change picture</p>
                 </div>
             </div>
