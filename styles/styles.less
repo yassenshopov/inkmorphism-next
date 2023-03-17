@@ -473,14 +473,17 @@
             z-index: 3;
             border-radius: 0 50% 50% 0;
             box-shadow: 10px 10px 10px #12121200;
-            max-width: 60px;
+            width: 60px;
+            height: 60px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             overflow: hidden;
             img {
-                width: max-content;
+                min-width: 60px;
+                width: 100%;
+                height: max-content;
                 border-radius: 0 50% 50% 0;
             }
         }
@@ -553,6 +556,7 @@
         transform: rotate(360deg);
     }
 }
+
 #loaderSites {
     justify-self: center;
     align-self: center;
@@ -1265,6 +1269,14 @@
         }
     }
 }
+
+
+.skeletal {
+    background: linear-gradient(var(--color1), var(--mainColor2));
+    width: 100%;
+    height: 150vh;
+}
+
 
 .Web3 {
     display: flex;
