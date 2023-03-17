@@ -45,6 +45,15 @@ function Editor(props) {
           metaFavicon:
             "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fmusic-point-595%2Flogo.png?alt=media&token=b601d1f8-8708-4c89-b8f5-8d75f2f1c164",
         },
+        pages: {
+          main: {
+            structure: [
+              1,
+              2,
+              3
+            ]
+          }
+        }
       },
       initDate: "",
       style: "Web3",
@@ -162,7 +171,7 @@ function Editor(props) {
   //   }
   // };
 
-  let savedData = JSON.parse(JSON.stringify(defaults));
+  // let savedData = JSON.parse(JSON.stringify(defaults));
 
   for (const key in defaults) {
     try {
@@ -180,8 +189,19 @@ function Editor(props) {
   }
 
   const colorChange = (e) => {
-    savedData["webContent"]["meta"]["colorPalette"][e.target.id] =
-      e.target.value;
+    let id = e.target.id; 
+    let value = e.target.value; 
+    setData({...defaults, webContent : {
+      ...defaults.webContent, meta : {
+        ...defaults.webContent.meta, colorPalette : {
+          ...defaults.webContent.meta.colorPalette, [e.target.id] : value,
+        } 
+      }
+    }});
+    console.log(defaults)
+    console.log(value)
+    // savedData["webContent"]["meta"]["colorPalette"][e.target.id] =
+    //   e.target.value;
   };
 
   const [fsClass, setFsClass] = useState("");
@@ -216,11 +236,11 @@ function Editor(props) {
   return (
     <div className={"Editor" + fsClass + modeClass}>
       <Head>
-        <link rel="icon" href={savedData["webContent"]["meta"]["metaFavicon"]} />
-        <title>{savedData["webContent"]["meta"]["metaTitle"]}</title>
+        <link rel="icon" href={defaults["webContent"]["meta"]["metaFavicon"]} />
+        <title>{defaults["webContent"]["meta"]["metaTitle"]}</title>
         <meta
           name="description"
-          content={savedData["webContent"]["meta"]["metaDescription"]}
+          content={defaults["webContent"]["meta"]["metaDescription"]}
         ></meta>
       </Head>
 
@@ -253,18 +273,18 @@ function Editor(props) {
         <button id="fetch" onClick={getData}></button>
 
         <main
-          className={savedData["webContent"]["meta"]["metaStyle"]}
+          className={defaults["webContent"]["meta"]["metaStyle"]}
           style={{
             "--color1":
-              savedData["webContent"]["meta"]["colorPalette"]["color1"],
+              defaults["webContent"]["meta"]["colorPalette"]["color1"],
             "--color2":
-              savedData["webContent"]["meta"]["colorPalette"]["color2"],
+              defaults["webContent"]["meta"]["colorPalette"]["color2"],
             "--color3":
-              savedData["webContent"]["meta"]["colorPalette"]["color3"],
+              defaults["webContent"]["meta"]["colorPalette"]["color3"],
             "--colorLight":
-              savedData["webContent"]["meta"]["colorPalette"]["colorLight"],
+              defaults["webContent"]["meta"]["colorPalette"]["colorLight"],
             "--colorDark":
-              savedData["webContent"]["meta"]["colorPalette"]["colorDark"],
+              defaults["webContent"]["meta"]["colorPalette"]["colorDark"],
           }}
         >
         

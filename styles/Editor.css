@@ -75,6 +75,7 @@ html {
   box-sizing: border-box;
   gap: 1vw;
   overflow-y: scroll;
+  border-radius: 20px 20px 0 0 ;
 }
 .Editor > main > nav button {
   font-size: 2rem;
@@ -116,7 +117,6 @@ html {
 .Editor > main > main {
   transition: all 400ms ease-in-out;
   overflow-y: scroll;
-  height: fit-content;
 }
 .Editor aside {
   width: 20vw;
