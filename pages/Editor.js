@@ -184,8 +184,7 @@ function Editor(props) {
   }
 
   function saveNewData() {
-    console.log(savedData);
-    sendData(savedData);
+    sendData(defaults);
   }
 
   const colorChange = (e) => {
