@@ -47,7 +47,9 @@ export default function Dashnav(props) {
                     <a href="../account">My account < FiUser /></a>
                     {/* <p>|</p> */}
                     <p id="signOut" onClick={openPopup} className="noSelect">Log out < FiLogOut /></p>
-                    <img src={props.profile_pic} id='profilePic' className={"noSelect"}/>
+                    <div id='profilePic'>
+                        <img src={props.profile_pic} className={"noSelect"}/>
+                    </div>
                 </div>
             </div>
 
