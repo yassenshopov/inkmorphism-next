@@ -440,6 +440,16 @@
   z-index: 3;
   border-radius: 0 50% 50% 0;
   box-shadow: 10px 10px 10px #12121200;
+  max-width: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+#dashnav #profileMenu #profilePic img {
+  width: max-content;
+  border-radius: 0 50% 50% 0;
 }
 #dashnav #mobileMenu {
   position: absolute;
