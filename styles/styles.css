@@ -722,6 +722,7 @@
   max-width: 80vw;
   text-align: center;
   box-shadow: 10px 10px 10px #12121299, -10px -10px 10px #ffffff25;
+  z-index: 102;
 }
 #popupWrapper #popup #message {
   padding: 0 10vw 40px 10vw;
