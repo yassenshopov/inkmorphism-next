@@ -87,6 +87,7 @@ function Editor(props) {
   // FIREBASE FIRESTORE DB CODE:
 
   let db = getFirestore(app);
+  let col;
 
   const [defaultFiles, setFiles] = useState({
     logo: "",
@@ -102,9 +103,10 @@ function Editor(props) {
   useEffect(() => {
     const el = document.getElementById("fetch");
     setLoadBool(true);
+    console.log(123)
     setTimeout(() => {
       el.click();
-    }, 2500);
+    }, 3500);
   }, []);
 
   const storage = getStorage(app);
@@ -112,6 +114,7 @@ function Editor(props) {
   const [userName, setUserName] = useState("fallback");
 
   useEffect(() => {
+    console.log(pageData)
     const sections = pageData.map((section, index) => {
       switch (section.type) {
         case "imgAndTxt":
@@ -138,8 +141,36 @@ function Editor(props) {
     setSectionsData(sections) 
   }, [pageData])
 
+  useEffect(() => {
+    async function asyncFunc() {
+      if (userName !== "fallback") {
+        console.log(userName, props.name)
+        col = doc(db, "users", userName, "websites", props.name);
+        console.log(col)
+        const data = await getDoc(col).then((doc) => {
+          dataArr.push(doc.data());
+          dataArr.forEach((item) => {
+            console.log(item)
+            if (item !== undefined) {
+              try {
+                setData(item);
+                setPageData(item.webContent.pages.main.structure)
+                console.log(pageData)
+              } catch (err) {
+                console.log(err)
+              }
+    
+            }
+          });
+        });
+      }
+    }
+    asyncFunc()
+  }, [userName])
+
   async function getData() {
     let propsName;
+    console.log(123)
     let col;
     if (props["name"] === undefined) {
       propsName = "thedatachunk";
@@ -147,19 +178,9 @@ function Editor(props) {
       try {
         propsName = "user-" + props.auth.currentUser.uid + "/" + props.name;
         setUserName("user-" + props.auth.currentUser.uid);
-        col = doc(db, "users", userName, "websites", props.name);
-        const data = await getDoc(col).then((doc) => {
-          dataArr.push(doc.data());
-          dataArr.forEach((item) => {
-            if (item !== undefined) {
-              setData(item);
-              setPageData(item.webContent.pages.main.structure)
-            }
-          });
-        });
       } catch (err) {
         propsName = "user-" + "fallback" + "/" + props["name"];
-        setUserName("fallback");
+        setUserName("fallback2");
       }
     }
     try {
