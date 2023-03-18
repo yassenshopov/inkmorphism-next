@@ -25,6 +25,7 @@ import Loader from "./components/loader.js";
 const dataArr = [];
 
 function Editor(props) {
+  
   const [loadBool, setLoadBool] = useState(true);
   const [defaults, setData] = useState({
     webContent: {
@@ -61,6 +62,13 @@ function Editor(props) {
     deleted: false,
   });
   const [pageData, setPageData] = useState([
+    {
+      type: "nav",
+      options: {},
+      content: {
+        logo: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fleaf-since-484%2FsrcFiles%2Flogo.png?alt=media&token=3a81fc14-b6cc-454f-9d1c-48e9b84ccbc3"
+      }
+    },
     {
       type: "imgAndTxt",
       content: {
@@ -104,13 +112,29 @@ function Editor(props) {
   const [userName, setUserName] = useState("fallback");
 
   useEffect(() => {
-    console.log("Now it's time" + pageData)
-    const sections = pageData.map((section) => 
-      <section className={section.type + " " + section.options.direction}>
-        <p onInput={fieldChange} contentEditable={true}>{section.content.txt}</p>
-        <img src={section.content.img}/>
-      </section>
-    ) 
+    const sections = pageData.map((section) => {
+      switch (section.type) {
+        case "imgAndTxt":
+          return (
+            <section className={section.type + " " + section.options.direction}>
+              <p suppressContentEditableWarning={true} onInput={fieldChange} contentEditable={true}>{section.content.txt}</p>
+              <img src={section.content.img}/>
+            </section>
+          )     
+        case "nav":
+            return (
+              <nav className={section.type}>
+                <a href="." id="navLogo">
+                  <img src={section.content.logo}/>
+                  <p>{defaults.name}</p>
+                </a>
+              </nav>
+            )
+        default:
+          // return("")
+          break
+      }
+    }) 
     setSectionsData(sections) 
   }, [pageData])
 
@@ -126,7 +150,6 @@ function Editor(props) {
         col = doc(db, "users", userName, "websites", props.name);
         const data = await getDoc(col).then((doc) => {
           dataArr.push(doc.data());
-          console.log(dataArr);
           dataArr.forEach((item) => {
             if (item !== undefined) {
               setData(item);
@@ -141,7 +164,6 @@ function Editor(props) {
     }
     try {
       const logoRef = ref(storage, propsName + "/logo.png");
-      // console.log(col)
       // const data = await getDoc(col);
       // console.log(data.data());
       const logo = await getDownloadURL(logoRef);
@@ -149,7 +171,6 @@ function Editor(props) {
         logo: logo,
       });
     } catch (err) {
-      console.log(err);
       setFiles({
         logo: logo.src,
       });
@@ -194,18 +215,6 @@ function Editor(props) {
   //   }
   // };
 
-  // let savedData = JSON.parse(JSON.stringify(defaults));
-
-  for (const key in defaults) {
-    try {
-      let element = document.getElementsByClassName(key)[0];
-      element.contentEditable = true;
-      element.spellcheck = false;
-    } catch (err) {
-      // console.log(err)
-    }
-  }
-
   function saveNewData() {
     sendData(defaults);
   }
@@ -226,8 +235,6 @@ function Editor(props) {
         },
       },
     });
-    console.log(defaults);
-    console.log(value);
     // savedData["webContent"]["meta"]["colorPalette"][e.target.id] =
     //   e.target.value;
   };
