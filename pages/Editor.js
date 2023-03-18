@@ -112,18 +112,18 @@ function Editor(props) {
   const [userName, setUserName] = useState("fallback");
 
   useEffect(() => {
-    const sections = pageData.map((section) => {
+    const sections = pageData.map((section, index) => {
       switch (section.type) {
         case "imgAndTxt":
           return (
-            <section className={section.type + " " + section.options.direction}>
+            <section key={index} className={section.type + " " + section.options.direction}>
               <p suppressContentEditableWarning={true} onInput={fieldChange} contentEditable={true}>{section.content.txt}</p>
               <img src={section.content.img} draggable={false}/>
             </section>
           )     
         case "nav":
             return (
-              <nav className={section.type}>
+              <nav className={index} key={section.type}>
                 <a href="." id="navLogo">
                   <img src={section.content.logo} draggable={false}/>
                   <p>{defaults.name}</p>
