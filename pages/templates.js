@@ -121,7 +121,48 @@ export default function Templates() {
         },
         pages: {
           main: {
-            structure: [1, 2, 3]
+            structure: [
+              {
+                "type": "imgAndTxt",
+                "content": {
+                    "img": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fminerals-locate-276%2FsrcFiles%2FimgPlaceholder.png?alt=media&token=f3dbf650-3ac2-4644-9047-a207ab6f80f9",
+                    "txt": "This is text about some located minerals. This is text about some located minerals. This is text about some located minerals. This is text about some located minerals."
+                },
+                "options": {
+                    "direction": "directHorizontal"
+                }
+              },
+              {
+                "type": "imgAndTxt",
+                "content": {
+                    "img": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fminerals-locate-276%2FsrcFiles%2FimgPlaceholder.png?alt=media&token=f3dbf650-3ac2-4644-9047-a207ab6f80f9",
+                    "txt": "This is text about some located minerals. This is text about some located minerals. This is text about some located minerals. This is text about some located minerals."
+                },
+                "options": {
+                    "direction": "directHorizontal"
+                }
+              },
+              {
+                "type": "imgAndTxt",
+                "content": {
+                  "img": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fminerals-locate-276%2FsrcFiles%2FimgPlaceholder.png?alt=media&token=f3dbf650-3ac2-4644-9047-a207ab6f80f9",
+                  "txt": "This is text about some located minerals. This is text about some located minerals. This is text about some located minerals. This is text about some located minerals."
+                },
+                "options": {
+                  "direction": "directHorizontal"
+                }
+              },
+              {
+                "type": "imgAndTxt",
+                "content": {
+                  "img": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fminerals-locate-276%2FsrcFiles%2FimgPlaceholder.png?alt=media&token=f3dbf650-3ac2-4644-9047-a207ab6f80f9",
+                  "txt": "This is text about some located minerals. This is text about some located minerals. This is text about some located minerals. This is text about some located minerals."
+                },
+                "options": {
+                  "direction": "directHorizontal"
+                }
+              } 
+            ]
           }
         } 
       },
