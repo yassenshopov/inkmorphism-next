@@ -118,10 +118,17 @@ html {
   transition: all 400ms ease-in-out;
   overflow-y: scroll;
 }
+.Editor > main > main > * {
+  transition: all 400ms ease-in-out;
+}
+.Editor > main > main > *:hover {
+  background-color: #49494920;
+}
 .Editor aside {
   width: 20vw;
   padding: 2vw;
   min-height: 80vh;
+  transition: all 400ms ease-in-out;
 }
 .Editor aside #mainLogo {
   width: 4vw;
@@ -166,13 +173,15 @@ html {
 }
 .fs > main {
   width: 100%;
-  padding: 0;
+  padding: calc(2rem + 16px + 40px) 0 0 0;
   margin: 0;
   border: none;
   border-radius: 0;
+  height: 100vh;
 }
 .fs > main > nav {
   width: 100vw !important;
+  top: 0;
   left: 0;
 }
 .fs > main > nav #closeFS {
@@ -185,7 +194,9 @@ html {
   min-height: 0;
 }
 .fs aside {
-  display: none;
+  width: 0;
+  padding: 0;
+  opacity: 0;
 }
 .mobile {
   justify-content: center;

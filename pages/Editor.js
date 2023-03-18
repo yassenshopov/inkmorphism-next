@@ -118,14 +118,14 @@ function Editor(props) {
           return (
             <section className={section.type + " " + section.options.direction}>
               <p suppressContentEditableWarning={true} onInput={fieldChange} contentEditable={true}>{section.content.txt}</p>
-              <img src={section.content.img}/>
+              <img src={section.content.img} draggable={false}/>
             </section>
           )     
         case "nav":
             return (
               <nav className={section.type}>
                 <a href="." id="navLogo">
-                  <img src={section.content.logo}/>
+                  <img src={section.content.logo} draggable={false}/>
                   <p>{defaults.name}</p>
                 </a>
               </nav>
@@ -391,6 +391,8 @@ function Editor(props) {
             />
           </li>
         </ul>
+
+        <a href="../../dashboard">Back to Dashboard</a>
 
         <h2>Danger zone</h2>
         <FaTrashAlt id="trashIcon" className="noSelect" onClick={deleteSite} />
