@@ -138,12 +138,19 @@ html {
             overflow-y: scroll;
             // height: ;
             // position: absolute;
+            > * {
+                transition: all 400ms ease-in-out;
+            }
+            > *:hover {
+                background-color: #49494920;
+            }
         }
     }
     aside {
         width: 20vw;
         padding: 2vw;
         min-height: 80vh;
+        transition: all 400ms ease-in-out;
         #mainLogo {
             width: 4vw;
             height: 4vw;
@@ -194,13 +201,15 @@ html {
         width: 100%;
         // height: fit-content;
         // height: 100vh;
-        padding: 0;
+        padding: calc(2rem + 16px + 40px) 0 0 0;
         margin: 0;
         border: none;
         border-radius: 0;
+        height: 100vh;
         > nav {
             // display: none;
             width: 100vw !important;
+            top: 0;
             left: 0;
             #closeFS {
                 display: flex;
@@ -217,7 +226,10 @@ html {
         }
     }
     aside {
-        display: none;
+        width: 0;
+        padding: 0;
+        opacity: 0;
+        // display: none;
     }
 }
 
