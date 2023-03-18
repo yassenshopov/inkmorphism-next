@@ -123,7 +123,7 @@ function Editor(props) {
           )     
         case "nav":
             return (
-              <nav className={index} key={section.type}>
+              <nav className={section.type} key={index}>
                 <a href="." id="navLogo">
                   <img src={section.content.logo} draggable={false}/>
                   <p>{defaults.name}</p>
