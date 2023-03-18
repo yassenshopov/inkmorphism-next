@@ -1275,20 +1275,50 @@
     background: linear-gradient(var(--color1), var(--color2));
     width: 100%;
     height: 150vh;
-    font-family: 'Times New Roman', Times, serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    img {
+        border-radius: 16px;
+    }
 }
 
-//Editor sections
+//Editor Sections
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 2vw;
+    box-sizing: border-box;
+    width: 100%;
+    #navLogo {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        text-decoration: none;
+        img {
+            height: 100%;
+            width: auto;
+        }
+        p {
+            font-size: 1.4rem;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: var(--colorDark);
+        }
+    }
+}
+
 .imgAndTxt {
     display: flex;
     padding: 40px 10%;
     align-items: center;
     justify-content: space-between;    
-    img {
-        border-radius: 24px;
-    }
     p {
         font-size: 1.2rem;
+        cursor: pointer;
+        padding: 10px 1vw;
+        caret-color: #000000;
     }
 }
 
@@ -1329,7 +1359,7 @@
         width: 100%;
     }
 }
-
+//End of Editor Sections
 
 .Web3 {
     display: flex;
