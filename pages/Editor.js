@@ -27,43 +27,54 @@ const dataArr = [];
 function Editor(props) {
   const [loadBool, setLoadBool] = useState(true);
   const [defaults, setData] = useState({
-      webContent: {
-        meta: {
-          metaAuthor: "Meta Author",
-          metaStyle: "web3",
-          metaDescription: "The description for your website",
-          colorPalette: {
-            color1: "#5C8BB5",
-            color2: "#457596",
-            color3: "#E05276",
-            colorDark: "#121212",
-            colorLight: "#fefefe",
-          },
-          metaTitle: "Inkmorphism - Your Website",
-          metaThumbnail:
-            "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fmusic-point-595%2Fthumbnail.png?alt=media&token=667a1542-8de7-45b2-ae39-520667a9af22",
-          metaFavicon:
-            "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fmusic-point-595%2Flogo.png?alt=media&token=b601d1f8-8708-4c89-b8f5-8d75f2f1c164",
+    webContent: {
+      meta: {
+        metaAuthor: "Meta Author",
+        metaStyle: "web3",
+        metaDescription: "The description for your website",
+        colorPalette: {
+          color1: "#5C8BB5",
+          color2: "#457596",
+          color3: "#E05276",
+          colorDark: "#121212",
+          colorLight: "#fefefe",
         },
-        pages: {
-          main: {
-            structure: [
-              1,
-              2,
-              3
-            ]
-          }
-        }
+        metaTitle: "Inkmorphism - Your Website",
+        metaThumbnail:
+          "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fmusic-point-595%2Fthumbnail.png?alt=media&token=667a1542-8de7-45b2-ae39-520667a9af22",
+        metaFavicon:
+          "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fmusic-point-595%2Flogo.png?alt=media&token=b601d1f8-8708-4c89-b8f5-8d75f2f1c164",
       },
-      initDate: "",
-      style: "Web3",
-      name: "Website Defaults",
-      thumbnail:
-        "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fmusic-point-595%2Fthumbnail.png?alt=media&token=667a1542-8de7-45b2-ae39-520667a9af22",
-      domainSlug: "default",
-      domain: "default.inkmorphism.com",
-      deleted: false,
-    });
+      pages: {
+        main: {
+          structure: [1, 2, 3],
+        },
+      },
+    },
+    initDate: "",
+    style: "Web3",
+    name: "Website Defaults",
+    thumbnail:
+      "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fmusic-point-595%2Fthumbnail.png?alt=media&token=667a1542-8de7-45b2-ae39-520667a9af22",
+    domainSlug: "default",
+    domain: "default.inkmorphism.com",
+    deleted: false,
+  });
+  const [pageData, setPageData] = useState([
+    {
+      type: "imgAndTxt",
+      content: {
+        img: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fminerals-locate-276%2FsrcFiles%2FimgPlaceholder.png?alt=media&token=f3dbf650-3ac2-4644-9047-a207ab6f80f9",
+        txt: "This is text about some located minerals. This is text about some located minerals. This is text about some located minerals. This is text about some located minerals.",
+      },
+      options: {
+        direction: "directHorizontal"
+      }
+    },
+  ]);
+  const [sectionsData, setSectionsData] = useState(
+    <section></section>
+  );
 
   // FIREBASE FIRESTORE DB CODE:
 
@@ -92,6 +103,17 @@ function Editor(props) {
 
   const [userName, setUserName] = useState("fallback");
 
+  useEffect(() => {
+    console.log("Now it's time" + pageData)
+    const sections = pageData.map((section) => 
+      <section className={section.type + " " + section.options.direction}>
+        <p onInput={fieldChange} contentEditable={true}>{section.content.txt}</p>
+        <img src={section.content.img}/>
+      </section>
+    ) 
+    setSectionsData(sections) 
+  }, [pageData])
+
   async function getData() {
     let propsName;
     let col;
@@ -104,10 +126,11 @@ function Editor(props) {
         col = doc(db, "users", userName, "websites", props.name);
         const data = await getDoc(col).then((doc) => {
           dataArr.push(doc.data());
-          console.log(dataArr)
+          console.log(dataArr);
           dataArr.forEach((item) => {
             if (item !== undefined) {
               setData(item);
+              setPageData(item.webContent.pages.main.structure)
             }
           });
         });
@@ -188,20 +211,30 @@ function Editor(props) {
   }
 
   const colorChange = (e) => {
-    let id = e.target.id; 
-    let value = e.target.value; 
-    setData({...defaults, webContent : {
-      ...defaults.webContent, meta : {
-        ...defaults.webContent.meta, colorPalette : {
-          ...defaults.webContent.meta.colorPalette, [e.target.id] : value,
-        } 
-      }
-    }});
-    console.log(defaults)
-    console.log(value)
+    let id = e.target.id;
+    let value = e.target.value;
+    setData({
+      ...defaults,
+      webContent: {
+        ...defaults.webContent,
+        meta: {
+          ...defaults.webContent.meta,
+          colorPalette: {
+            ...defaults.webContent.meta.colorPalette,
+            [e.target.id]: value,
+          },
+        },
+      },
+    });
+    console.log(defaults);
+    console.log(value);
     // savedData["webContent"]["meta"]["colorPalette"][e.target.id] =
     //   e.target.value;
   };
+
+  const fieldChange = (e) => {
+    console.log(e.target.innerHTML)
+  }
 
   const [fsClass, setFsClass] = useState("");
   const [modeClass, setModeClass] = useState(" desktop");
@@ -229,7 +262,7 @@ function Editor(props) {
       deleted: true,
     }).then(() => {
       router.push("/dashboard");
-    })
+    });
   }
 
   return (
@@ -286,7 +319,7 @@ function Editor(props) {
               defaults["webContent"]["meta"]["colorPalette"]["colorDark"],
           }}
         >
-        
+          {sectionsData}
         </main>
       </main>
 
