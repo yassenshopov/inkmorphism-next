@@ -68,7 +68,7 @@ html {
   padding: 20px 1vw;
   position: fixed;
   top: 20px;
-  background-color: #fefefe50;
+  background-color: var(--mainLight);
   box-shadow: 0 6px 6px #12121230;
   z-index: 5;
   width: 70vw;
@@ -183,6 +183,7 @@ html {
   width: 100vw !important;
   top: 0;
   left: 0;
+  background-color: var(--mainLight);
 }
 .fs > main > nav #closeFS {
   display: flex;
