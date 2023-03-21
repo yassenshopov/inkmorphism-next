@@ -140,9 +140,64 @@ html {
             // position: absolute;
             > * {
                 transition: all 400ms ease-in-out;
+                position: relative;
+                z-index: 1;
+                box-sizing: border-box;
             }
             > *:hover {
                 background-color: #49494920;
+            }
+            > *:hover > .editBtn {
+                opacity: 1;
+            }
+            > *:hover > .addSection {
+                border-top: 2px solid #121212;
+                border-bottom: 2px solid #121212;
+            }
+            .editBtn {
+                position: absolute;
+                font-size: 2rem;
+                cursor: pointer;
+                top: 0;
+                right: 0;
+                width: fit-content;
+                height: fit-content;
+                padding: 4px 0.6vw;
+                margin: 6px 0.6vw;
+                opacity: 0;
+                border-radius: 12px;
+                transition: all 400ms ease-in-out;
+            }
+            .editBtn:hover {
+                background-color: var(--mainLight);
+            }
+            .addSection {
+                position: absolute;
+                // bottom: -1.4rem;
+                top: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 4px 0;
+                left: 0;
+                font-size: 2rem;
+                width: 100%;
+                height: 100%;
+                transition: all 400ms ease-in-out;
+                border: 2px solid #12121200;
+                box-sizing: border-box;
+                z-index: 0;
+                pointer-events: none;
+                // background-color: #252525;
+                p {
+                    position: absolute;
+                    bottom: 0;
+                    left: 45%;
+                }
+            }
+            .addSection:hover {
+                border: 2px solid #121212;
             }
         }
     }
