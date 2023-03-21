@@ -14,7 +14,8 @@ import Footer from "./components/footer.js";
 import Hero from "./components/hero.js";
 import { MdOpenInFull, MdOutlineCloseFullscreen } from "react-icons/md";
 import { RiSave3Fill } from "react-icons/ri";
-import { FaMobileAlt, FaDesktop, FaTrashAlt } from "react-icons/fa";
+import { BiEdit } from "react-icons/bi";
+import { FaMobileAlt, FaDesktop, FaTrashAlt, FaPlus } from "react-icons/fa";
 import Head from "next/head";
 import { getAuth } from "firebase/auth";
 import logo from "../styles/images/logoWh.png";
@@ -122,17 +123,22 @@ function Editor(props) {
             <section key={index} className={section.type + " " + section.options.direction}>
               <p suppressContentEditableWarning={true} onInput={fieldChange} contentEditable={true}>{section.content.txt}</p>
               <img src={section.content.img} draggable={false}/>
+              <p className="editBtn">< BiEdit /></p>
+              <div className="addSection">
+                {/* <p>Add section < FaPlus /></p> */}
+              </div>
             </section>
           )     
         case "nav":
-            return (
-              <nav className={section.type} key={index}>
-                <a href="." id="navLogo">
-                  <img src={section.content.logo} draggable={false}/>
-                  <p>{defaults.name}</p>
-                </a>
-              </nav>
-            )
+          return (
+            <nav className={section.type} key={index}>
+              <a href="." id="navLogo">
+                <img src={section.content.logo} draggable={false}/>
+                <p>{defaults.name}</p>
+              </a>
+              <p className="editBtn">< BiEdit /></p>
+            </nav>
+          )
         default:
           // return("")
           break
