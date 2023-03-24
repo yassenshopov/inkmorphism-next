@@ -859,6 +859,44 @@
     }
 }
 
+#hideContent {
+    position: fixed;
+    z-index: 96;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--mainLight);
+    background: linear-gradient(var(--mainColor1), var(--mainColor2));
+    p, a {
+        font-size: 2rem;
+    }
+    a {
+        color: var(--mainDark);
+        text-decoration: none;
+        padding: 20px 6vw;
+        // border: 2px solid var(--mainDark);
+        border-radius: 24px;
+        background-color: var(--mainLight);
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    * {
+        font-size: 8rem;
+    }
+}
+
 .noSelect {
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;

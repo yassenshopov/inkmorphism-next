@@ -22,6 +22,7 @@ import logo from "../styles/images/logoWh.png";
 import Blog from "./components/blog";
 import { useRouter } from "next/router";
 import Loader from "./components/loader.js";
+import HideContent from "./components/hideContent.js";
 
 const dataArr = [];
 
@@ -84,6 +85,8 @@ function Editor(props) {
   const [sectionsData, setSectionsData] = useState(
     <section></section>
   );
+
+  const [hideContent, setHideContent] = useState(false)
 
   // FIREBASE FIRESTORE DB CODE:
 
@@ -165,10 +168,12 @@ function Editor(props) {
               } catch (err) {
                 console.log(err)
               }
-    
             }
           });
-        });
+        }).catch((err) => {
+          console.log(err)
+          setHideContent(true);
+        })
       }
     }
     asyncFunc()
@@ -311,6 +316,8 @@ function Editor(props) {
       </Head>
 
       {loadBool ? <Loader /> : ""}
+
+      {hideContent ? <HideContent/> : ""}
 
       {/* <dialog open>
         <p>You are refreshing the page</p>
