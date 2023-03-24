@@ -269,12 +269,12 @@
                     opacity: 0;
                 }
                 50% {
+                    transform: translate(-2vw, -2vw);
                     box-shadow: 1vw 1vw 4vw #fefefe10;
                     opacity: 1;
                 }
                 100% {
                     box-shadow: 1vw 1vw 4vw #fefefe80;
-                    transform: translate(-2vw, -2vw);
                     opacity: 0;
                 }
             }
@@ -289,7 +289,7 @@
                     left: 0;
                     border-radius: 12px;
                     box-shadow: 1vw 1vw 4vw #fefefe70;
-                    animation: moveSites 6s infinite;
+                    animation: moveSites 6s infinite 3s;
                     // border: 2px solid green;
                 }
                 & > *:nth-child(2) {
@@ -300,7 +300,7 @@
                 & > *:nth-child(3) {
                     // border: 2px solid red;
                     position: absolute;
-                    animation: moveSites 6s infinite 3s;
+                    animation: moveSites 6s infinite 0s;
                 }
             }
 
