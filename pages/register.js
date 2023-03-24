@@ -175,6 +175,7 @@ export default function Register() {
       <Head>
         <title>Register | Inkmorphism - the AI Website Builder</title>
         <meta name="description" content="" />
+        <link rel="icon" href="/faviconWh.ico" />
       </Head>
       <div className="register">
         <p>{auth.currentUser == null ? "" : redirect()}</p>
