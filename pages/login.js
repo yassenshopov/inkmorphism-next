@@ -59,6 +59,11 @@ export default function Login() {
       }
       // The signed-in user info.
       const user = result.user;
+    }).catch((err) => {
+      console.log(err.code)
+      if (err.code === 'auth/account-exists-with-different-credential') {
+        console.log(err)
+      }
     });
   }
 
