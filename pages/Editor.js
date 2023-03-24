@@ -128,7 +128,7 @@ function Editor(props) {
               <img src={section.content.img} draggable={false}/>
               <p className="editBtn">< BiEdit /></p>
               <div className="addSection">
-                {/* <p>Add section < FaPlus /></p> */}
+                <p>Add section < FaPlus /></p>
               </div>
             </section>
           )     
