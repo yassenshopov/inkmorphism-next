@@ -78,7 +78,7 @@ export default function Dashboard() {
       const websites = websitesArray.existing.map((site) => 
           <a key={site.domain} href={"../config/" + site.domainSlug} className="noSelect">
             {/* < FaCircle /> */}
-            <img src={(site.thumbnail==="") ? placeholder.src : site.thumbnail} />
+            <img src={(site.thumbnail==="") ? placeholder.src : site.thumbnail} loading="lazy"/>
             <h2>{site.name}</h2>
             <p>{site.style}</p>
             <p target="_blank">{site.domain}</p>

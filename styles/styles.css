@@ -557,7 +557,9 @@
   font-size: 2rem;
 }
 #dash #websites > a img {
+  width: 100%;
   max-width: 100%;
+  min-height: 80px;
   border-radius: 15px 0 0 15px;
 }
 #dash #websites > a a {
