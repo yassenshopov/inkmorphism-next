@@ -2,17 +2,30 @@ import Head from "next/head";
 import { FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
 import MainNav from "./components/MainNav";
 
+// Meta data:
+let title = "Inkmorphism - the AI Website Builder";
+let img = "main/og.webp";
+let description =
+  "Create stunning websites with Inkmorphism - the AI-powered website builder that leverages generative image and text technology to streamline your design process.";
+let author = "Yassen Shopov";
+
 export default function Home() {
   return (
     <div id="mainPage">
       <Head>
-        <title>Inkmorphism - the AI Website Builder</title>
-        <meta
-          name="description"
-          content="Create stunning websites with Inkmorphism - the AI-powered website builder that leverages generative image and text technology to streamline your design process."
-        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{title}</title>
+        <meta name="author" content={author}></meta>
+        <meta name="description" content={description} />
         <link rel="icon" href="/faviconWh.ico" />
+        <meta property="og:image" content={img}></meta>
+        <meta property="og:type" content="website"></meta>
+        <meta property="og:title" content={title}></meta>
+        <meta property="og:description" content={description}></meta>
+        <meta property="og:image" content={img}></meta>
+        <meta property="twitter:card" content="summary_large_image"></meta>
+        <meta property="twitter:title" content={title}></meta>
+        <meta property="twitter:description" content={description}></meta>
       </Head>
 
       <MainNav />
