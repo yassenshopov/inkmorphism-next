@@ -5,7 +5,6 @@
   justify-content: space-around;
   align-items: center;
   font-family: var(--font1);
-  border-radius: 20px;
   line-height: 1.5;
   height: fit-content;
   box-sizing: border-box;
@@ -119,16 +118,14 @@
   color: var(--mainLight);
 }
 .register {
-  margin: 5vh 0;
   width: 80vw;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   font-family: var(--font1);
-  border-radius: 20px;
   line-height: 1.5;
-  height: 80vh;
+  height: fit-content;
   box-sizing: border-box;
 }
 .register #registerWrapper {
