@@ -131,8 +131,7 @@ html {
   opacity: 1;
 }
 .Editor > main > main > *:hover > .addSection {
-  border-top: 2px solid #121212;
-  border-bottom: 2px solid #121212;
+  opacity: 1;
 }
 .Editor > main > main .editBtn {
   position: absolute;
@@ -158,24 +157,26 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 4px 0;
   left: 0;
-  font-size: 2rem;
   width: 100%;
-  height: 100%;
   transition: all 400ms ease-in-out;
-  border: 2px solid #12121200;
+  border-top: 2px solid var(--mainLight);
   box-sizing: border-box;
-  z-index: 0;
-  pointer-events: none;
+  z-index: 200;
+  opacity: 0;
+  cursor: pointer;
 }
 .Editor > main > main .addSection p {
-  position: absolute;
-  bottom: 0;
-  left: 45%;
-}
-.Editor > main > main .addSection:hover {
-  border: 2px solid #121212;
+  width: fit-content;
+  background-color: var(--mainLight);
+  color: var(--mainDark);
+  font-weight: 800;
+  margin: 0;
+  padding: 10px 4vw;
+  font-size: 1rem;
+  border-radius: 0 0 24px 24px;
+  box-shadow: 0 4px 10px #fefefe50;
+  border: none;
 }
 .Editor aside {
   width: 20vw;
