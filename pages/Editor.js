@@ -117,6 +117,27 @@ function Editor(props) {
 
   const [userName, setUserName] = useState("fallback");
 
+  function addSection(index) {
+    console.log(index)
+    const newSection = {
+      content: {
+        txt: "Hello to your new section",
+        img: "https://media.discordapp.net/attachments/1059220738718048346/1090307251182518283/midjourney_dungeons_and_dragons_character_female_thin_white_bod_b83a713b-9ddd-41b4-b979-7a720fe78a6c.png?width=490&height=643"
+      },
+      options: {
+        direction: "directHorizontal"
+      },
+      type: "imgAndTxt"
+    };
+    setPageData(pageData => [
+      ...pageData.slice(0, index),
+      newSection,
+      ...pageData.slice(index)
+    ])
+    console.log(pageData)
+    // console.log(sect)
+  }
+
   useEffect(() => {
     console.log(pageData)
     const sections = pageData.map((section, index) => {
@@ -124,22 +145,31 @@ function Editor(props) {
         case "imgAndTxt":
           return (
             <section key={index} className={section.type + " " + section.options.direction}>
+              <div onClick={()=>{addSection(index)}} className="addSection">
+                <p>Add section < FaPlus /></p>
+              </div>
               <p suppressContentEditableWarning={true} onInput={fieldChange} contentEditable={true}>{section.content.txt}</p>
               <img src={section.content.img} draggable={false}/>
               <p className="editBtn">< BiEdit /></p>
               <div className="addSection">
-                <p>Add section < FaPlus /></p>
+                <p onClick={()=>{addSection(index+1)}}>Add section < FaPlus /></p>
               </div>
             </section>
           )     
         case "nav":
           return (
             <nav className={section.type} key={index}>
+              <div className="addSection">
+                <p onClick={()=>{addSection(index)}}>Add section < FaPlus /></p>
+              </div>
               <a href="." id="navLogo">
                 <img src={section.content.logo} draggable={false}/>
                 <p>{defaults.name}</p>
               </a>
               <p className="editBtn">< BiEdit /></p>
+              <div className="addSection">
+                <p onClick={()=>{addSection(index+1)}}>Add section < FaPlus /></p>
+              </div>
             </nav>
           )
         default:
@@ -148,6 +178,7 @@ function Editor(props) {
       }
     }) 
     setSectionsData(sections) 
+    console.log(sections)
   }, [pageData])
 
   useEffect(() => {

@@ -122,15 +122,19 @@ html {
   transition: all 400ms ease-in-out;
   position: relative;
   z-index: 1;
+  border-top: 2px solid #12121200;
+  border-bottom: 2px solid #12121200;
   box-sizing: border-box;
 }
 .Editor > main > main > *:hover {
+  border-top: 2px solid var(--mainLight);
+  border-bottom: 2px solid var(--mainLight);
   background-color: #49494920;
 }
 .Editor > main > main > *:hover > .editBtn {
   opacity: 1;
 }
-.Editor > main > main > *:hover > .addSection {
+.Editor > main > main > *:hover > *[class="addSection"] {
   opacity: 1;
 }
 .Editor > main > main .editBtn {
@@ -150,21 +154,28 @@ html {
 .Editor > main > main .editBtn:hover {
   background-color: var(--mainLight);
 }
+.Editor > main > main .addSection:first-child {
+  top: 0;
+}
+.Editor > main > main .addSection:last-child {
+  bottom: 0;
+}
+.Editor > main > main .addSection:last-child p {
+  border-radius: 24px 24px 0 0;
+}
 .Editor > main > main .addSection {
   position: absolute;
-  top: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  left: 0;
-  width: 100%;
+  width: fit-content;
+  left: 50%;
+  transform: translateX(-50%);
   transition: all 400ms ease-in-out;
-  border-top: 2px solid var(--mainLight);
   box-sizing: border-box;
   z-index: 200;
   opacity: 0;
-  cursor: pointer;
 }
 .Editor > main > main .addSection p {
   width: fit-content;
@@ -176,6 +187,7 @@ html {
   font-size: 1rem;
   border-radius: 0 0 24px 24px;
   box-shadow: 0 4px 10px #fefefe50;
+  cursor: pointer;
   border: none;
 }
 .Editor aside {
