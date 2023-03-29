@@ -15,6 +15,7 @@ import Hero from "./components/hero.js";
 import { MdOpenInFull, MdOutlineCloseFullscreen } from "react-icons/md";
 import { RiSave3Fill } from "react-icons/ri";
 import { BiEdit } from "react-icons/bi";
+import { CgFormatText } from "react-icons/cg";
 import { FaMobileAlt, FaDesktop, FaTrashAlt, FaPlus } from "react-icons/fa";
 import Head from "next/head";
 import { getAuth } from "firebase/auth";
@@ -23,11 +24,12 @@ import Blog from "./components/blog";
 import { useRouter } from "next/router";
 import Loader from "./components/loader.js";
 import HideContent from "./components/hideContent.js";
+import { TfiLayoutMediaLeft } from "react-icons/tfi";
+import { RxCross1 } from "react-icons/rx";
 
 const dataArr = [];
 
 function Editor(props) {
-  
   const [loadBool, setLoadBool] = useState(true);
   const [defaults, setData] = useState({
     webContent: {
@@ -68,8 +70,8 @@ function Editor(props) {
       type: "nav",
       options: {},
       content: {
-        logo: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fleaf-since-484%2FsrcFiles%2Flogo.png?alt=media&token=3a81fc14-b6cc-454f-9d1c-48e9b84ccbc3"
-      }
+        logo: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fleaf-since-484%2FsrcFiles%2Flogo.png?alt=media&token=3a81fc14-b6cc-454f-9d1c-48e9b84ccbc3",
+      },
     },
     {
       type: "imgAndTxt",
@@ -78,15 +80,13 @@ function Editor(props) {
         txt: "This is text about some located minerals. This is text about some located minerals. This is text about some located minerals. This is text about some located minerals.",
       },
       options: {
-        direction: "directHorizontal"
-      }
+        direction: "directHorizontal",
+      },
     },
   ]);
-  const [sectionsData, setSectionsData] = useState(
-    <section></section>
-  );
+  const [sectionsData, setSectionsData] = useState(<section></section>);
 
-  const [hideContent, setHideContent] = useState(false)
+  const [hideContent, setHideContent] = useState(false);
 
   // FIREBASE FIRESTORE DB CODE:
 
@@ -107,7 +107,6 @@ function Editor(props) {
   useEffect(() => {
     const el = document.getElementById("fetch");
     setLoadBool(true);
-    console.log(123)
     setTimeout(() => {
       el.click();
     }, 3500);
@@ -117,102 +116,208 @@ function Editor(props) {
 
   const [userName, setUserName] = useState("fallback");
 
-  function addSection(index) {
-    console.log(index)
-    const newSection = {
-      content: {
-        txt: "Hello to your new section",
-        img: "https://media.discordapp.net/attachments/1059220738718048346/1090307251182518283/midjourney_dungeons_and_dragons_character_female_thin_white_bod_b83a713b-9ddd-41b4-b979-7a720fe78a6c.png?width=490&height=643"
-      },
-      options: {
-        direction: "directHorizontal"
-      },
-      type: "imgAndTxt"
-    };
-    setPageData(pageData => [
-      ...pageData.slice(0, index),
-      newSection,
-      ...pageData.slice(index)
-    ])
-    console.log(pageData)
-    // console.log(sect)
+  const [newSection, setNewSection] = useState({
+    content: {
+      txt: "Hello to your new section",
+    },
+    options: {
+      direction: "reverseHorizontal",
+    },
+    type: "txtOnly",
+  });
+
+  const [callerIndex, setCallerIndex] = useState(0);
+
+  function addSectionPopup(index) {
+    openPopup();
+    setCallerIndex(index)
   }
 
+  function addSection(type) {
+    // setNewSection()
+    setPageData((pageData) => [
+      ...pageData.slice(0, callerIndex),
+      newSection,
+      ...pageData.slice(callerIndex),
+    ]);
+    setPopupToggle(false);
+  }
+  const sectionTypes = [
+    {
+      id: "txtOnly",
+      icon: <CgFormatText />,
+      name: "Text Section",
+    },
+    {
+      id: "imgAndTxt",
+      icon: <TfiLayoutMediaLeft />,
+      name: "Image and Text Section",
+    },
+  ];
+
+  const [popupToggle, setPopupToggle] = useState(false);
+  const [sectionSelection, setSectionsSelection] = useState(
+    sectionTypes.map((section, index) => {
+      return (
+        <section key={index} id={section.id} onClick={() => {
+          addSection(section.type)
+        }}>
+          {section.icon}
+          <p>{section.name}</p>
+        </section>
+      );
+    })
+  );
+  const openPopup = () => {
+    setPopupToggle(true);
+  };
+
   useEffect(() => {
-    console.log(pageData)
     const sections = pageData.map((section, index) => {
       switch (section.type) {
-        case "imgAndTxt":
+        case "txtOnly":
           return (
-            <section key={index} className={section.type + " " + section.options.direction}>
-              <div onClick={()=>{addSection(index)}} className="addSection">
-                <p>Add section < FaPlus /></p>
+            <section
+              key={index}
+              className={section.type + " " + section.options.direction}
+            >
+              <div
+                onClick={() => {
+                  addSectionPopup(index);
+                }}
+                className="addSection"
+              >
+                <p>
+                  Add section <FaPlus />
+                </p>
               </div>
-              <p suppressContentEditableWarning={true} onInput={fieldChange} contentEditable={true}>{section.content.txt}</p>
-              <img src={section.content.img} draggable={false}/>
-              <p className="editBtn">< BiEdit /></p>
+              <p
+                suppressContentEditableWarning={true}
+                onInput={fieldChange}
+                contentEditable={true}
+              >
+                {section.content.txt}
+              </p>
+              <p className="editBtn">
+                <BiEdit />
+              </p>
               <div className="addSection">
-                <p onClick={()=>{addSection(index+1)}}>Add section < FaPlus /></p>
+                <p
+                  onClick={() => {
+                    addSectionPopup(index + 1);
+                  }}
+                >
+                  Add section <FaPlus />
+                </p>
               </div>
             </section>
-          )     
+          );
+        case "imgAndTxt":
+          return (
+            <section
+              key={index}
+              className={section.type + " " + section.options.direction}
+            >
+              <div
+                onClick={() => {
+                  addSectionPopup(index);
+                }}
+                className="addSection"
+              >
+                <p>
+                  Add section <FaPlus />
+                </p>
+              </div>
+              <p
+                suppressContentEditableWarning={true}
+                onInput={fieldChange}
+                contentEditable={true}
+              >
+                {section.content.txt}
+              </p>
+              <img src={section.content.img} draggable={false} />
+              <p className="editBtn">
+                <BiEdit />
+              </p>
+              <div className="addSection">
+                <p
+                  onClick={() => {
+                    addSectionPopup(index + 1);
+                  }}
+                >
+                  Add section <FaPlus />
+                </p>
+              </div>
+            </section>
+          );
         case "nav":
           return (
             <nav className={section.type} key={index}>
               <div className="addSection">
-                <p onClick={()=>{addSection(index)}}>Add section < FaPlus /></p>
+                <p
+                  onClick={() => {
+                    addSection(index);
+                  }}
+                >
+                  Add section <FaPlus />
+                </p>
               </div>
               <a href="." id="navLogo">
-                <img src={section.content.logo} draggable={false}/>
+                <img src={section.content.logo} draggable={false} />
                 <p>{defaults.name}</p>
               </a>
-              <p className="editBtn">< BiEdit /></p>
+              <p className="editBtn">
+                <BiEdit />
+              </p>
               <div className="addSection">
-                <p onClick={()=>{addSection(index+1)}}>Add section < FaPlus /></p>
+                <p
+                  onClick={() => {
+                    addSection(index + 1);
+                  }}
+                >
+                  Add section <FaPlus />
+                </p>
               </div>
             </nav>
-          )
+          );
         default:
           // return("")
-          break
+          break;
       }
-    }) 
-    setSectionsData(sections) 
-    console.log(sections)
-  }, [pageData])
+    });
+    setSectionsData(sections);
+  }, [pageData]);
 
   useEffect(() => {
     async function asyncFunc() {
       if (userName !== "fallback") {
-        console.log(userName, props.name)
+        console.log(userName, props.name);
         col = doc(db, "users", userName, "websites", props.name);
-        console.log(col)
-        const data = await getDoc(col).then((doc) => {
-          dataArr.push(doc.data());
-          dataArr.forEach((item) => {
-            console.log(item)
-            if (item !== undefined) {
-              try {
-                setData(item);
-                setPageData(item.webContent.pages.main.structure)
-                console.log(pageData)
-              } catch (err) {
-                console.log(err)
+        const data = await getDoc(col)
+          .then((doc) => {
+            dataArr.push(doc.data());
+            dataArr.forEach((item) => {
+              if (item !== undefined) {
+                try {
+                  setData(item);
+                  setPageData(item.webContent.pages.main.structure);
+                } catch (err) {
+                  console.log(err);
+                }
               }
-            }
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+            setHideContent(true);
           });
-        }).catch((err) => {
-          console.log(err)
-          setHideContent(true);
-        })
       }
     }
-    asyncFunc()
-  }, [userName])
+    asyncFunc();
+  }, [userName]);
 
   async function getData() {
     let propsName;
-    console.log(123)
     let col;
     if (props["name"] === undefined) {
       propsName = "thedatachunk";
@@ -227,8 +332,6 @@ function Editor(props) {
     }
     try {
       const logoRef = ref(storage, propsName + "/logo.png");
-      // const data = await getDoc(col);
-      // console.log(data.data());
       const logo = await getDownloadURL(logoRef);
       setFiles({
         logo: logo,
@@ -238,11 +341,6 @@ function Editor(props) {
         logo: logo.src,
       });
     }
-    // let temp_user = getAuth(app).currentUser;
-    // try {
-    //   temp_user.displayName;
-    //   setUser(temp_user);
-    // } catch {}
     setLoadBool(false);
   }
 
@@ -259,7 +357,6 @@ function Editor(props) {
         setUserName("fallback");
       }
     }
-    console.log(props["name"]);
     await setDoc(
       doc(db, "users", userName, "websites", props["name"]),
       savedData
@@ -303,8 +400,8 @@ function Editor(props) {
   };
 
   const fieldChange = (e) => {
-    console.log(e.target.innerHTML)
-  }
+    console.log(e.target.innerHTML);
+  };
 
   const [fsClass, setFsClass] = useState("");
   const [modeClass, setModeClass] = useState(" desktop");
@@ -348,7 +445,7 @@ function Editor(props) {
 
       {loadBool ? <Loader /> : ""}
 
-      {hideContent ? <HideContent/> : ""}
+      {hideContent ? <HideContent /> : ""}
 
       {/* <dialog open>
         <p>You are refreshing the page</p>
@@ -375,6 +472,22 @@ function Editor(props) {
         </nav>
 
         <button id="fetch" onClick={getData}></button>
+
+        <div
+          style={{ display: popupToggle ? "flex" : "none" }}
+          id="popupWrapper"
+        >
+          <form id="popup">
+            <RxCross1
+              id="customX"
+              onClick={() => {
+                setPopupToggle(false);
+              }}
+            />
+            <p id="message">Choose the new section:</p>
+            <div id="sectionSelection">{sectionSelection}</div>
+          </form>
+        </div>
 
         <main
           className={defaults["webContent"]["meta"]["metaStyle"]}

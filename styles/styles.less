@@ -780,9 +780,17 @@
         text-align: center;
         box-shadow: 10px 10px 10px #12121299, -10px -10px 10px #ffffff25;
         z-index: 102;
+        position: relative;
         #message {
             // margin: 0 0 40px 0;
             padding: 0 10vw 40px 10vw;
+        }
+        #customX {
+            position: absolute;
+            top: 10px;
+            right: 1vw;
+            cursor: pointer;
+            padding: 8px 1vw;
         }
         #previewPicUpload {
             width: 100%;
@@ -791,6 +799,31 @@
             width: 30vh;
             box-shadow: 10px 10px 10px #12121299, -10px -10px 10px #ffffff25;
             margin: 40px 0;
+        }
+        #sectionSelection {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            column-gap: 1vw;
+            // flex-direction: row;
+            // justify-content: space-evenly;
+            width: 100%;
+            padding: 10px 2vw 50px;
+            box-sizing: border-box;
+            section {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 20px 2vw;
+                border-radius: 12px;
+                max-width: 8vw;
+                // height: 150px;
+                box-shadow: 0 0 10px #12121280;
+                p {
+                    font-size: 1rem;
+                    word-wrap: break-word;
+                }
+            }
         }
         #buttons {
             display: flex;
