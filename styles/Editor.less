@@ -67,14 +67,12 @@ html {
     padding-top: calc(2rem + 16px + 40px);
     overflow-y: scroll;
     overflow-x: hidden;
-    // border: 2px solid #252525;
     border-radius: 20px;
     box-shadow: 0 0 20px #12121230;
     display: flex;
     flex-direction: column;
-    // justify-content: center;
     align-items: center;
-  transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
     > nav {
       transition: all 400ms ease-in-out;
       display: flex;
@@ -85,16 +83,12 @@ html {
       position: fixed;
       top: 20px;
       background-color: var(--mainLight);
-      box-shadow: 0 6px 6px #12121230;
-      // backdrop-filter: blur(5px) saturate(2) brightness(1.1);
       z-index: 5;
       width: 70vw;
       box-sizing: border-box;
       gap: 1vw;
       overflow-y: scroll;
       border-radius: 20px 20px 0 0;
-
-      // border-radius: 20px 20px 0 0;
       button {
         font-size: 2rem;
         display: flex;
@@ -225,7 +219,7 @@ html {
     transition: all 400ms ease-in-out;
     #mainLogo {
       width: 4vw;
-      height: 4vw; 
+      height: 4vw;
     }
     #trashIcon {
       cursor: pointer;
@@ -254,10 +248,31 @@ html {
 
 @media screen and (max-width: 600px) {
   .Editor {
+    // flex-direction: column;
     > main {
-      width: 95vw;
+      margin: 0;
+      width: 100%;
+      border-radius: 0;
+      height: 100%;
+      nav {
+        top: 0;
+        width: 100%;
+        border-radius: 0;
+        padding: 20px 2vw;
+        #mobileMode,
+        #openFS {
+          display: none !important;
+        }
+      }
     }
     aside {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 99;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
       display: none;
     }
   }

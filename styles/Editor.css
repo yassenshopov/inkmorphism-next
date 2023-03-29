@@ -70,7 +70,6 @@ html {
   position: fixed;
   top: 20px;
   background-color: var(--mainLight);
-  box-shadow: 0 6px 6px #12121230;
   z-index: 5;
   width: 70vw;
   box-sizing: border-box;
@@ -227,9 +226,29 @@ html {
 }
 @media screen and (max-width: 600px) {
   .Editor > main {
-    width: 95vw;
+    margin: 0;
+    width: 100%;
+    border-radius: 0;
+    height: 100%;
+  }
+  .Editor > main nav {
+    top: 0;
+    width: 100%;
+    border-radius: 0;
+    padding: 20px 2vw;
+  }
+  .Editor > main nav #mobileMode,
+  .Editor > main nav #openFS {
+    display: none !important;
   }
   .Editor aside {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
     display: none;
   }
 }
