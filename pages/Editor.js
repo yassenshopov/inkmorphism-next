@@ -191,7 +191,7 @@ function Editor(props) {
     const sections = pageData.map((section, index) => {
       switch (section.type) {
         case "txtOnly":
-          return (
+          return ( 
             <section
               key={index}
               className={section.type + " " + section.options.direction}
