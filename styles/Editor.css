@@ -14,16 +14,16 @@ html {
   box-sizing: border-box;
 }
 @font-face {
-  font-family: 'Doergon';
-  src: url('fonts/Doergon.ttf') format('truetype');
+  font-family: "Doergon";
+  src: url("fonts/Doergon.ttf") format("truetype");
 }
 @font-face {
-  font-family: 'BalooChettan2';
-  src: url('fonts/BalooChettan2-VariableFont_wght.ttf') format('truetype');
+  font-family: "BalooChettan2";
+  src: url("fonts/BalooChettan2-VariableFont_wght.ttf") format("truetype");
 }
 @font-face {
-  font-family: 'Oswald';
-  src: url('fonts/Oswald-VariableFont_wght.ttf') format('truetype');
+  font-family: "Oswald";
+  src: url("fonts/Oswald-VariableFont_wght.ttf") format("truetype");
 }
 #fetch {
   display: none;
@@ -47,7 +47,7 @@ html {
   box-sizing: border-box;
   position: relative;
   width: 70vw;
-  height: 86vh;
+  height: 90vh;
   margin: 20px 1vw;
   padding-top: calc(2rem + 16px + 40px);
   overflow-y: scroll;
@@ -57,6 +57,7 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: all 500ms ease-in-out;
   caret-color: var(--mainLight);
 }
 .Editor > main > nav {
@@ -75,7 +76,7 @@ html {
   box-sizing: border-box;
   gap: 1vw;
   overflow-y: scroll;
-  border-radius: 20px 20px 0 0 ;
+  border-radius: 20px 20px 0 0;
 }
 .Editor > main > nav button {
   font-size: 2rem;
@@ -119,6 +120,7 @@ html {
   overflow-y: scroll;
 }
 .Editor > main > main > * {
+  min-height: 150px;
   transition: all 400ms ease-in-out;
   position: relative;
   z-index: 1;
@@ -182,6 +184,7 @@ html {
   background-color: var(--mainLight);
   color: var(--mainDark);
   font-weight: 800;
+  font-family: "Oswald";
   margin: 0;
   padding: 10px 4vw;
   font-size: 1rem;
@@ -277,9 +280,6 @@ html {
 .mobile > main > main {
   width: 30vw;
   box-shadow: 0 6px 16px #12121240;
-}
-#editor {
-  transition: all 500ms ease-in-out;
 }
 .desktop > main > nav #mobileMode {
   display: flex;

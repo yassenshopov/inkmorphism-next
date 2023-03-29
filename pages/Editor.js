@@ -107,7 +107,6 @@ function Editor(props) {
   useEffect(() => {
     const el = document.getElementById("fetch");
     setLoadBool(true);
-    console.log(123);
     setTimeout(() => {
       el.click();
     }, 3500);
@@ -117,27 +116,32 @@ function Editor(props) {
 
   const [userName, setUserName] = useState("fallback");
 
-  function addSection(index) {
+  const [newSection, setNewSection] = useState({
+    content: {
+      txt: "Hello to your new section",
+    },
+    options: {
+      direction: "reverseHorizontal",
+    },
+    type: "txtOnly",
+  });
+
+  const [callerIndex, setCallerIndex] = useState(0);
+
+  function addSectionPopup(index) {
     openPopup();
-    console.log(popupToggle);
-    console.log(index);
-    const newSection = {
-      content: {
-        txt: "Hello to your new section",
-        img: "https://media.discordapp.net/attachments/1059220738718048346/1090307251182518283/midjourney_dungeons_and_dragons_character_female_thin_white_bod_b83a713b-9ddd-41b4-b979-7a720fe78a6c.png?width=490&height=643",
-      },
-      options: {
-        direction: "reverseHorizontal",
-      },
-      type: "imgAndTxt",
-    };
-    setPageData((pageData) => [
-      ...pageData.slice(0, index),
-      newSection,
-      ...pageData.slice(index),
-    ]);
+    setCallerIndex(index)
   }
 
+  function addSection(type) {
+    // setNewSection()
+    setPageData((pageData) => [
+      ...pageData.slice(0, callerIndex),
+      newSection,
+      ...pageData.slice(callerIndex),
+    ]);
+    setPopupToggle(false);
+  }
   const sectionTypes = [
     {
       id: "txtOnly",
@@ -154,9 +158,10 @@ function Editor(props) {
   const [popupToggle, setPopupToggle] = useState(false);
   const [sectionSelection, setSectionsSelection] = useState(
     sectionTypes.map((section, index) => {
-      console.log(pageData);
       return (
-        <section key={index} id={section.id}>
+        <section key={index} id={section.id} onClick={() => {
+          addSection(section.type)
+        }}>
           {section.icon}
           <p>{section.name}</p>
         </section>
@@ -168,9 +173,45 @@ function Editor(props) {
   };
 
   useEffect(() => {
-    console.log(pageData);
     const sections = pageData.map((section, index) => {
       switch (section.type) {
+        case "txtOnly":
+          return (
+            <section
+              key={index}
+              className={section.type + " " + section.options.direction}
+            >
+              <div
+                onClick={() => {
+                  addSectionPopup(index);
+                }}
+                className="addSection"
+              >
+                <p>
+                  Add section <FaPlus />
+                </p>
+              </div>
+              <p
+                suppressContentEditableWarning={true}
+                onInput={fieldChange}
+                contentEditable={true}
+              >
+                {section.content.txt}
+              </p>
+              <p className="editBtn">
+                <BiEdit />
+              </p>
+              <div className="addSection">
+                <p
+                  onClick={() => {
+                    addSectionPopup(index + 1);
+                  }}
+                >
+                  Add section <FaPlus />
+                </p>
+              </div>
+            </section>
+          );
         case "imgAndTxt":
           return (
             <section
@@ -179,7 +220,7 @@ function Editor(props) {
             >
               <div
                 onClick={() => {
-                  addSection(index);
+                  addSectionPopup(index);
                 }}
                 className="addSection"
               >
@@ -201,7 +242,7 @@ function Editor(props) {
               <div className="addSection">
                 <p
                   onClick={() => {
-                    addSection(index + 1);
+                    addSectionPopup(index + 1);
                   }}
                 >
                   Add section <FaPlus />
@@ -245,7 +286,6 @@ function Editor(props) {
       }
     });
     setSectionsData(sections);
-    console.log(sections);
   }, [pageData]);
 
   useEffect(() => {
@@ -253,17 +293,14 @@ function Editor(props) {
       if (userName !== "fallback") {
         console.log(userName, props.name);
         col = doc(db, "users", userName, "websites", props.name);
-        console.log(col);
         const data = await getDoc(col)
           .then((doc) => {
             dataArr.push(doc.data());
             dataArr.forEach((item) => {
-              console.log(item);
               if (item !== undefined) {
                 try {
                   setData(item);
                   setPageData(item.webContent.pages.main.structure);
-                  console.log(pageData);
                 } catch (err) {
                   console.log(err);
                 }
@@ -281,7 +318,6 @@ function Editor(props) {
 
   async function getData() {
     let propsName;
-    console.log(123);
     let col;
     if (props["name"] === undefined) {
       propsName = "thedatachunk";
@@ -296,8 +332,6 @@ function Editor(props) {
     }
     try {
       const logoRef = ref(storage, propsName + "/logo.png");
-      // const data = await getDoc(col);
-      // console.log(data.data());
       const logo = await getDownloadURL(logoRef);
       setFiles({
         logo: logo,
@@ -307,11 +341,6 @@ function Editor(props) {
         logo: logo.src,
       });
     }
-    // let temp_user = getAuth(app).currentUser;
-    // try {
-    //   temp_user.displayName;
-    //   setUser(temp_user);
-    // } catch {}
     setLoadBool(false);
   }
 
@@ -328,7 +357,6 @@ function Editor(props) {
         setUserName("fallback");
       }
     }
-    console.log(props["name"]);
     await setDoc(
       doc(db, "users", userName, "websites", props["name"]),
       savedData
@@ -453,7 +481,6 @@ function Editor(props) {
             <RxCross1
               id="customX"
               onClick={() => {
-                console.log(popupToggle);
                 setPopupToggle(false);
               }}
             />
