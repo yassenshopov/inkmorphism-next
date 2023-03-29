@@ -116,29 +116,55 @@ function Editor(props) {
 
   const [userName, setUserName] = useState("fallback");
 
-  const [newSection, setNewSection] = useState({
-    content: {
-      txt: "Hello to your new section",
+  const newSections = {
+    txtOnly: {
+      content: {
+        txt: "Hello to your new section",
+      },
+      options: {
+        direction: "reverseHorizontal",
+      },
+      type: "txtOnly",
     },
-    options: {
-      direction: "reverseHorizontal",
-    },
-    type: "txtOnly",
-  });
 
+    imgAndTxt: {
+      content: {
+        txt: "This is your new ImgNTxt section.",
+        img: "https://cdn.discordapp.com/ephemeral-attachments/1062880104792997970/1090657787555610735/midjourney_bread_2d_minimalism_anime_style_realism_afd91681-d51d-4612-8322-0a5b2bb6dd20.png",
+      },
+      options: {
+        direction: "reverseHorizontal",
+      },
+      type: "imgAndTxt",
+    },
+  };
   const [callerIndex, setCallerIndex] = useState(0);
 
-  function addSectionPopup(index) {
-    openPopup();
-    setCallerIndex(index)
+  function addSectionPopup(ind) {
+    setPopupToggle(true);
+    setSectionsSelection(
+      sectionTypes.map((section, index) => {
+        return (
+          <section
+            key={index}
+            id={section.id}
+            onClick={() => {
+              addSection(section.id, ind);
+            }}
+          >
+            {section.icon}
+            <p>{section.name}</p>
+          </section>
+        );
+      })
+    );
   }
 
-  function addSection(type) {
-    // setNewSection()
+  function addSection(type, index) {
     setPageData((pageData) => [
-      ...pageData.slice(0, callerIndex),
-      newSection,
-      ...pageData.slice(callerIndex),
+      ...pageData.slice(0, index),
+      newSections[type],
+      ...pageData.slice(index),
     ]);
     setPopupToggle(false);
   }
@@ -156,18 +182,7 @@ function Editor(props) {
   ];
 
   const [popupToggle, setPopupToggle] = useState(false);
-  const [sectionSelection, setSectionsSelection] = useState(
-    sectionTypes.map((section, index) => {
-      return (
-        <section key={index} id={section.id} onClick={() => {
-          addSection(section.type)
-        }}>
-          {section.icon}
-          <p>{section.name}</p>
-        </section>
-      );
-    })
-  );
+  const [sectionSelection, setSectionsSelection] = useState();
   const openPopup = () => {
     setPopupToggle(true);
   };
@@ -256,7 +271,7 @@ function Editor(props) {
               <div className="addSection">
                 <p
                   onClick={() => {
-                    addSection(index);
+                    addSectionPopup(index);
                   }}
                 >
                   Add section <FaPlus />
@@ -272,7 +287,7 @@ function Editor(props) {
               <div className="addSection">
                 <p
                   onClick={() => {
-                    addSection(index + 1);
+                    addSectionPopup(index + 1);
                   }}
                 >
                   Add section <FaPlus />
@@ -583,6 +598,13 @@ function Editor(props) {
           </div>
           <div></div>
         </section>
+        <button
+          onClick={() => {
+            console.log(pageData);
+          }}
+        >
+          callerIndex
+        </button>
       </aside>
     </div>
   );
