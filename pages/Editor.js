@@ -191,7 +191,7 @@ function Editor(props) {
     const sections = pageData.map((section, index) => {
       switch (section.type) {
         case "txtOnly":
-          return ( 
+          return (
             <section
               key={index}
               className={section.type + " " + section.options.direction}
@@ -598,13 +598,6 @@ function Editor(props) {
           </div>
           <div></div>
         </section>
-        <button
-          onClick={() => {
-            console.log(pageData);
-          }}
-        >
-          callerIndex
-        </button>
       </aside>
     </div>
   );
