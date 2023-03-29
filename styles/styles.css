@@ -762,6 +762,7 @@
   border-radius: 12px;
   max-width: 8vw;
   box-shadow: 0 0 10px #12121280;
+  cursor: pointer;
 }
 #popupWrapper #popup #sectionSelection section p {
   font-size: 1rem;
