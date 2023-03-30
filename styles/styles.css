@@ -1914,6 +1914,9 @@
   #dashfooter {
     justify-content: center;
   }
+  #popupWrapper {
+    transition: all 400ms ease-in-out;
+  }
   #popupWrapper #popup {
     width: 100%;
     max-width: 90%;
