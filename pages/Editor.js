@@ -296,11 +296,24 @@ function Editor(props) {
             </nav>
           );
         default:
-          // return("")
           break;
       }
     });
     setSectionsData(sections);
+    console.log(pageData)
+    setData({
+      ...defaults,
+      webContent: {
+        ...defaults.webContent,
+        pages: {
+          ...defaults.webContent.pages,
+          main: {
+            ...defaults.webContent.pages.main,
+            structure: pageData,          
+          },
+        },
+      },
+    })
   }, [pageData]);
 
   useEffect(() => {
@@ -376,6 +389,7 @@ function Editor(props) {
       doc(db, "users", userName, "websites", props["name"]),
       savedData
     );
+    console.log(savedData)
   }
 
   // END OF DB CODE
