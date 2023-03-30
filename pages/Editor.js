@@ -411,12 +411,11 @@ function Editor(props) {
   // };
 
   function saveNewData() {
+    console.log(defaults)
     sendData(defaults);
   }
 
   function txtFieldChange(e, index) {
-    console.log(e.target.innerHTML)
-    console.log(index)
     setData({
       ...defaults,
       webContent: {
@@ -426,9 +425,7 @@ function Editor(props) {
           main: {
             ...defaults.webContent.pages.main,
             structure: defaults.webContent.pages.main.structure.map((el, arrIndex) => {
-              // console.log(el)
               if (arrIndex === parseInt(index)) {
-                console.log(el, arrIndex)
                 let updatedTxtContent = {...el, content: {...el.content, txt: e.target.innerHTML}}
                 return (updatedTxtContent)
               } else {
@@ -635,6 +632,8 @@ function Editor(props) {
 
         <h2>Danger zone</h2>
         <FaTrashAlt id="trashIcon" className="noSelect" onClick={deleteSite} />
+
+        <button onClick={() => console.log(defaults)}>Press me for 'defaults'</button>
 
         <section id="profileSection">
           <img src={user.photoURL} alt="Profile Pic" />

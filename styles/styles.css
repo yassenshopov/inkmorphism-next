@@ -1287,7 +1287,6 @@
   justify-content: center;
 }
 .txtOnly p {
-  min-width: 40%;
   width: fit-content !important;
   font-size: 1.2rem;
   cursor: pointer;
