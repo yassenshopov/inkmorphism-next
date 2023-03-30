@@ -109,7 +109,13 @@ function Editor(props) {
     setLoadBool(true);
     setTimeout(() => {
       el.click();
+      setUser({
+        displayName: props.auth.currentUser.displayName,
+        photoURL: props.auth.currentUser.photoURL,
+        email: props.auth.currentUser.email,
+      });
     }, 3500);
+    console.log(props);
   }, []);
 
   const storage = getStorage(app);
@@ -208,12 +214,12 @@ function Editor(props) {
               </div>
               <p
                 suppressContentEditableWarning={true}
-                onInput={fieldChange}
+                onInput={(e) => {txtFieldChange(e, index)}}
                 contentEditable={true}
               >
                 {section.content.txt}
               </p>
-              <p className="editBtn">
+              <p className="editBtn noSelect">
                 <BiEdit />
               </p>
               <div className="addSection">
@@ -245,13 +251,13 @@ function Editor(props) {
               </div>
               <p
                 suppressContentEditableWarning={true}
-                onInput={fieldChange}
+                onInput={(e) => {txtFieldChange(e, index)}}
                 contentEditable={true}
               >
                 {section.content.txt}
               </p>
               <img src={section.content.img} draggable={false} />
-              <p className="editBtn">
+              <p className="editBtn noSelect">
                 <BiEdit />
               </p>
               <div className="addSection">
@@ -281,7 +287,7 @@ function Editor(props) {
                 <img src={section.content.logo} draggable={false} />
                 <p>{defaults.name}</p>
               </a>
-              <p className="editBtn">
+              <p className="editBtn noSelect">
                 <BiEdit />
               </p>
               <div className="addSection">
@@ -300,7 +306,7 @@ function Editor(props) {
       }
     });
     setSectionsData(sections);
-    console.log(pageData)
+    console.log(pageData);
     setData({
       ...defaults,
       webContent: {
@@ -309,11 +315,11 @@ function Editor(props) {
           ...defaults.webContent.pages,
           main: {
             ...defaults.webContent.pages.main,
-            structure: pageData,          
+            structure: pageData,
           },
         },
       },
-    })
+    });
   }, [pageData]);
 
   useEffect(() => {
@@ -389,7 +395,7 @@ function Editor(props) {
       doc(db, "users", userName, "websites", props["name"]),
       savedData
     );
-    console.log(savedData)
+    console.log(savedData);
   }
 
   // END OF DB CODE
@@ -408,6 +414,34 @@ function Editor(props) {
     sendData(defaults);
   }
 
+  function txtFieldChange(e, index) {
+    console.log(e.target.innerHTML)
+    console.log(index)
+    setData({
+      ...defaults,
+      webContent: {
+        ...defaults.webContent,
+        pages: {
+          ...defaults.webContent.pages,
+          main: {
+            ...defaults.webContent.pages.main,
+            structure: defaults.webContent.pages.main.structure.map((el, arrIndex) => {
+              // console.log(el)
+              if (arrIndex === parseInt(index)) {
+                console.log(el, arrIndex)
+                let updatedTxtContent = {...el, content: {...el.content, txt: e.target.innerHTML}}
+                return (updatedTxtContent)
+              } else {
+                return (el)
+              }
+            }),
+          },
+        },
+      },
+    });
+    console.log(defaults)
+  };
+
   const colorChange = (e) => {
     let id = e.target.id;
     let value = e.target.value;
@@ -424,8 +458,6 @@ function Editor(props) {
         },
       },
     });
-    // savedData["webContent"]["meta"]["colorPalette"][e.target.id] =
-    //   e.target.value;
   };
 
   const fieldChange = (e) => {
@@ -483,19 +515,19 @@ function Editor(props) {
 
       <main id="editor">
         <nav id="nav">
-          <button onClick={saveNewData}>
+          <button onClick={saveNewData} className="noSelect">
             <RiSave3Fill />
           </button>
-          <button id="desktopMode" onClick={desktop}>
+          <button id="desktopMode" onClick={desktop} className="noSelect">
             <FaDesktop />
           </button>
-          <button id="mobileMode" onClick={mobile}>
+          <button id="mobileMode" onClick={mobile} className="noSelect">
             <FaMobileAlt />
           </button>
-          <button id="openFS" onClick={fullscreen}>
+          <button id="openFS" onClick={fullscreen} className="noSelect">
             <MdOpenInFull />
           </button>
-          <button id="closeFS" onClick={normalscreen}>
+          <button id="closeFS" onClick={normalscreen} className="noSelect">
             <MdOutlineCloseFullscreen />
           </button>
         </nav>
