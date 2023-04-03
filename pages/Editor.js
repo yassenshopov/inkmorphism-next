@@ -165,6 +165,27 @@ function Editor(props) {
     );
   }
 
+  function deleteSectionPopup(ind) {
+    setEditPopupToggle(true);
+    setDeleteBtn(
+      <p
+        onClick={() => {
+          deleteSection(ind);
+        }}
+      >
+        Delete this section
+      </p>
+    );
+  }
+
+  function deleteSection(index) {
+    setPageData((pageData) => [
+      ...pageData.slice(0, index),
+      ...pageData.slice(index + 1),
+    ]);
+    setEditPopupToggle(false);
+  }
+
   function addSection(type, index) {
     setPageData((pageData) => [
       ...pageData.slice(0, index),
@@ -187,6 +208,8 @@ function Editor(props) {
   ];
 
   const [popupToggle, setPopupToggle] = useState(false);
+  const [editPopupToggle, setEditPopupToggle] = useState(false);
+  const [deleteBtn, setDeleteBtn] = useState();
   const [sectionSelection, setSectionsSelection] = useState();
   const openPopup = () => {
     setPopupToggle(true);
@@ -213,12 +236,19 @@ function Editor(props) {
               </div>
               <p
                 suppressContentEditableWarning={true}
-                onInput={(e) => {txtFieldChange(e, index)}}
+                onInput={(e) => {
+                  txtFieldChange(e, index);
+                }}
                 contentEditable={true}
               >
                 {section.content.txt}
               </p>
-              <p className="editBtn noSelect">
+              <p
+                className="editBtn noSelect"
+                onClick={() => {
+                  deleteSectionPopup(index);
+                }}
+              >
                 <BiEdit />
               </p>
               <div className="addSection">
@@ -250,13 +280,20 @@ function Editor(props) {
               </div>
               <p
                 suppressContentEditableWarning={true}
-                onInput={(e) => {txtFieldChange(e, index)}}
+                onInput={(e) => {
+                  txtFieldChange(e, index);
+                }}
                 contentEditable={true}
               >
                 {section.content.txt}
               </p>
               <img src={section.content.img} draggable={false} />
-              <p className="editBtn noSelect">
+              <p
+                className="editBtn noSelect"
+                onClick={() => {
+                  deleteSectionPopup(index);
+                }}
+              >
                 <BiEdit />
               </p>
               <div className="addSection">
@@ -286,7 +323,12 @@ function Editor(props) {
                 <img src={section.content.logo} draggable={false} />
                 <p>{defaults.name}</p>
               </a>
-              <p className="editBtn noSelect">
+              <p
+                className="editBtn noSelect"
+                onClick={() => {
+                  deleteSectionPopup(index);
+                }}
+              >
                 <BiEdit />
               </p>
               <div className="addSection">
@@ -395,10 +437,7 @@ function Editor(props) {
       savedData
     );
     console.log(savedData);
-    // setPageData(savedData.webContent.pages.main.structure)
   }
-
-  // END OF DB CODE
 
   // onkeydown = function(e) {
   //   if (e.ctrlKey && e.keyCode === 'R'.charCodeAt(0)) {
@@ -411,7 +450,7 @@ function Editor(props) {
   // };
 
   function saveNewData() {
-    console.log(defaults)
+    console.log(defaults);
     sendData(defaults);
   }
 
@@ -424,20 +463,25 @@ function Editor(props) {
           ...defaults.webContent.pages,
           main: {
             ...defaults.webContent.pages.main,
-            structure: defaults.webContent.pages.main.structure.map((el, arrIndex) => {
-              if (arrIndex === parseInt(index)) {
-                let updatedTxtContent = {...el, content: {...el.content, txt: e.target.innerHTML}}
-                return (updatedTxtContent)
-              } else {
-                return (el)
+            structure: defaults.webContent.pages.main.structure.map(
+              (el, arrIndex) => {
+                if (arrIndex === parseInt(index)) {
+                  let updatedTxtContent = {
+                    ...el,
+                    content: { ...el.content, txt: e.target.innerHTML },
+                  };
+                  return updatedTxtContent;
+                } else {
+                  return el;
+                }
               }
-            }),
+            ),
           },
         },
       },
     });
-    console.log(defaults)
-  };
+    console.log(defaults);
+  }
 
   const colorChange = (e) => {
     let id = e.target.id;
@@ -547,6 +591,23 @@ function Editor(props) {
           </form>
         </div>
 
+        <div
+          style={{ display: editPopupToggle ? "flex" : "none" }}
+          id="popupWrapper"
+        >
+          <form id="popup">
+            <RxCross1
+              id="customX"
+              className="noSelect"
+              onClick={() => {
+                setEditPopupToggle(false);
+              }}
+            />
+            <p id="message">Edit Section</p>
+            <div id="editSectionDeleteBtn">{deleteBtn}</div>
+          </form>
+        </div>
+
         <main
           className={defaults["webContent"]["meta"]["metaStyle"]}
           style={{
@@ -633,7 +694,9 @@ function Editor(props) {
         <h2>Danger zone</h2>
         <FaTrashAlt id="trashIcon" className="noSelect" onClick={deleteSite} />
 
-        <button onClick={() => console.log(defaults.webContent.pages.main.structure)}>Press me for 'defaults'</button>
+        <button onClick={() => console.log(pageData)}>
+          Press me for 'pageData'
+        </button>
 
         <section id="profileSection">
           <img src={user.photoURL} alt="Profile Pic" />
