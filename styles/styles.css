@@ -1316,6 +1316,7 @@
 .imgOnly img {
   width: 100% !important;
   border-radius: 0;
+  height: auto;
 }
 .nav {
   display: flex;
@@ -1359,8 +1360,8 @@
 .directHorizontal {
   flex-direction: row;
 }
-.directHorizontal img {
-  width: 50%;
+.directHorizontal > * {
+  width: 50% !important;
 }
 .directHorizontal p {
   width: 40%;
@@ -1368,8 +1369,8 @@
 .reverseHorizontal {
   flex-direction: row-reverse;
 }
-.reverseHorizontal img {
-  width: 50%;
+.reverseHorizontal > * {
+  width: 50% !important;
 }
 .reverseHorizontal p {
   width: 40%;

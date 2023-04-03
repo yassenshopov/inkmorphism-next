@@ -129,6 +129,37 @@ html {
   border-bottom: 2px solid #12121200;
   box-sizing: border-box;
 }
+.Editor > main > main > * .imgWrapper {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  overflow: hidden;
+}
+.Editor > main > main > * .imgWrapper .changeImg {
+  top: 0;
+  z-index: 99;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #12121280;
+  width: 100%;
+  height: 99%;
+  opacity: 0;
+  transition: all 400ms ease-in-out;
+  color: var(--mainLight);
+  max-width: 100%;
+  font-size: 2rem;
+  cursor: pointer;
+  border-radius: 24px;
+}
+.Editor > main > main > * .imgWrapper .changeImg:hover {
+  opacity: 1;
+}
+.Editor > main > main > * .imgWrapper img {
+  width: 100%;
+}
 .Editor > main > main > *:hover {
   border-top: 2px solid var(--mainLight);
   border-bottom: 2px solid var(--mainLight);
@@ -153,6 +184,7 @@ html {
   opacity: 0;
   border-radius: 12px;
   transition: all 400ms ease-in-out;
+  z-index: 102;
 }
 .Editor > main > main .editBtn:hover {
   background-color: var(--colorLight);

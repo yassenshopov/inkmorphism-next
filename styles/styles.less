@@ -1404,6 +1404,7 @@
   img {
     width: 100% !important;
     border-radius: 0;
+    height: auto;
   }
 }
 
@@ -1450,8 +1451,8 @@
 
 .directHorizontal {
   flex-direction: row;
-  img {
-    width: 50%;
+  > * {
+    width: 50% !important;
   }
   p {
     width: 40%;
@@ -1460,8 +1461,8 @@
 
 .reverseHorizontal {
   flex-direction: row-reverse;
-  img {
-    width: 50%;
+  > * {
+    width: 50% !important;
   }
   p {
     width: 40%;
