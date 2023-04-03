@@ -1006,9 +1006,9 @@ function Editor(props) {
           </a>
         </div>
 
-        <button onClick={() => console.log(pageData)}>
+        {/* <button onClick={() => console.log(pageData)}>
           Press me for 'pageData'
-        </button>
+        </button> */}
       </aside>
     </div>
   );
