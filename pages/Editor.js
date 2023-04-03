@@ -1,7 +1,6 @@
 import app from "../firebase/clientApp";
 import {
   getFirestore,
-  collection,
   getDoc,
   doc,
   setDoc,
@@ -9,18 +8,18 @@ import {
 } from "firebase/firestore/lite";
 import { getDownloadURL, getStorage, ref } from "firebase/storage";
 import { useEffect, useState } from "react";
-import Nav from "./components/nav.js";
-import Footer from "./components/footer.js";
-import Hero from "./components/hero.js";
-import { MdOpenInFull, MdOutlineCloseFullscreen, MdKeyboardArrowDown } from "react-icons/md";
+import {
+  MdOpenInFull,
+  MdOutlineCloseFullscreen,
+  MdKeyboardArrowDown,
+} from "react-icons/md";
 import { RiSave3Fill } from "react-icons/ri";
 import { BiEdit } from "react-icons/bi";
+import { BsCheckLg } from "react-icons/bs";
 import { CgFormatText } from "react-icons/cg";
 import { FaMobileAlt, FaDesktop, FaTrashAlt, FaPlus } from "react-icons/fa";
 import Head from "next/head";
-import { getAuth } from "firebase/auth";
 import logo from "../styles/images/logoWh.png";
-import Blog from "./components/blog";
 import { useRouter } from "next/router";
 import Loader from "./components/loader.js";
 import HideContent from "./components/hideContent.js";
@@ -419,6 +418,8 @@ function Editor(props) {
     setLoadBool(false);
   }
 
+  const [isSaved, setIsSaved] = useState(false);
+
   async function sendData(savedData) {
     let propsName;
     if (props["name"] === undefined) {
@@ -437,6 +438,10 @@ function Editor(props) {
       savedData
     );
     console.log(savedData);
+    setIsSaved(true);
+    setTimeout(() => {
+      setIsSaved(false);
+    }, 2000);
   }
 
   // onkeydown = function(e) {
@@ -573,7 +578,8 @@ function Editor(props) {
       <main id="editor">
         <nav id="nav">
           <button onClick={saveNewData} className="noSelect">
-            <RiSave3Fill />
+            <RiSave3Fill style={{ display: isSaved ? "none" : "flex" }} />
+            <BsCheckLg style={{ display: isSaved ? "flex" : "none" }} />
           </button>
           <button id="desktopMode" onClick={desktop} className="noSelect">
             <FaDesktop />
@@ -650,100 +656,94 @@ function Editor(props) {
         <div id="dropDowns">
           <div id="styleMenu" className="noSelect">
             <div className="dropdown-content">
-              <a onClick={toggleStyle}>Style <MdKeyboardArrowDown/></a>
-              {isStyleOpen && (
-                <div className="dropdown-items">
-                  <a>Colors</a>
-                  <ul id="colorList">
-                    <li>
-                      <input
-                        id="color1"
-                        type="color"
-                        defaultValue={
-                          defaults["webContent"]["meta"]["colorPalette"][
-                            "color1"
-                          ]
-                        }
-                        onChange={colorChange}
-                      />
-                      Main color 1
-                    </li>
-                    <li>
-                      <input
-                        id="color2"
-                        type="color"
-                        defaultValue={
-                          defaults["webContent"]["meta"]["colorPalette"][
-                            "color2"
-                          ]
-                        }
-                        onChange={colorChange}
-                      />
-                      Main color 2
-                    </li>
-                    <li>
-                      <input
-                        id="color3"
-                        type="color"
-                        defaultValue={
-                          defaults["webContent"]["meta"]["colorPalette"][
-                            "color3"
-                          ]
-                        }
-                        onChange={colorChange}
-                      />
-                      Accent color
-                    </li>
-                    <li>
-                      <input
-                        id="colorLight"
-                        type="color"
-                        defaultValue={
-                          defaults["webContent"]["meta"]["colorPalette"][
-                            "colorLight"
-                          ]
-                        }
-                        onChange={colorChange}
-                      />
-                      Color Light
-                    </li>
-                    <li>
-                      <input
-                        id="colorDark"
-                        type="color"
-                        defaultValue={
-                          defaults["webContent"]["meta"]["colorPalette"][
-                            "colorDark"
-                          ]
-                        }
-                        onChange={colorChange}
-                      />
-                      Color Dark
-                    </li>
-                  </ul>
-                </div>
-              )}
-              <a onClick={toggleProfile}>Profile <MdKeyboardArrowDown/></a>
-              {isProfileOpen && (
-                <div className="dropdown-items">
-                  <section id="profileSection">
-                    <img src={user.photoURL} alt="Profile Pic" />
-                    <div>
-                      <p>{user.displayName}</p>
-                      <p>{user.email}</p>
-                    </div>
-                    <div></div>
-                  </section>
-                </div>
-              )}
-              <a onClick={toggleSettings}>Settings <MdKeyboardArrowDown/></a>
-              {isSettingsOpen && (
-                <div className="dropdown-items">
-                  <a className="noSelect" id="deleteSite" onClick={deleteSite}>
-                    Delete this website <FaTrashAlt id="trashIcon" />
-                  </a>
-                </div>
-              )}
+              <a onClick={toggleStyle}>
+                Style <MdKeyboardArrowDown />
+              </a>
+              <div className={`dropdown-items ${isStyleOpen ? "show" : ""}`}>
+                <a>Colors</a>
+                <ul id="colorList">
+                  <li>
+                    <input
+                      id="color1"
+                      type="color"
+                      defaultValue={
+                        defaults["webContent"]["meta"]["colorPalette"]["color1"]
+                      }
+                      onChange={colorChange}
+                    />
+                    Main color 1
+                  </li>
+                  <li>
+                    <input
+                      id="color2"
+                      type="color"
+                      defaultValue={
+                        defaults["webContent"]["meta"]["colorPalette"]["color2"]
+                      }
+                      onChange={colorChange}
+                    />
+                    Main color 2
+                  </li>
+                  <li>
+                    <input
+                      id="color3"
+                      type="color"
+                      defaultValue={
+                        defaults["webContent"]["meta"]["colorPalette"]["color3"]
+                      }
+                      onChange={colorChange}
+                    />
+                    Accent color
+                  </li>
+                  <li>
+                    <input
+                      id="colorLight"
+                      type="color"
+                      defaultValue={
+                        defaults["webContent"]["meta"]["colorPalette"][
+                          "colorLight"
+                        ]
+                      }
+                      onChange={colorChange}
+                    />
+                    Color Light
+                  </li>
+                  <li>
+                    <input
+                      id="colorDark"
+                      type="color"
+                      defaultValue={
+                        defaults["webContent"]["meta"]["colorPalette"][
+                          "colorDark"
+                        ]
+                      }
+                      onChange={colorChange}
+                    />
+                    Color Dark
+                  </li>
+                </ul>
+              </div>
+              <a onClick={toggleProfile}>
+                Profile <MdKeyboardArrowDown />
+              </a>
+              <div className={`dropdown-items ${isProfileOpen ? "show" : ""}`}>
+                <section id="profileSection">
+                  <img src={user.photoURL} alt="Profile Pic" />
+                  <div>
+                    <p>{user.displayName}</p>
+                    <p>{user.email}</p>
+                  </div>
+                  <div></div>
+                </section>
+              </div>
+              <a onClick={toggleSettings}>
+                Settings <MdKeyboardArrowDown />
+              </a>
+              <div className={`dropdown-items ${isSettingsOpen ? "show" : ""}`}>
+                <a className="noSelect" id="deleteSite" onClick={deleteSite}>
+                  Delete this website <FaTrashAlt id="trashIcon" />
+                </a>
+              </div>
             </div>
           </div>
         </div>

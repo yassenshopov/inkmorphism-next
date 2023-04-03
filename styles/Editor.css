@@ -113,6 +113,7 @@ html {
   border-radius: 10px;
   background: #ffffff40;
   cursor: pointer;
+  transition: all 400ms ease-in-out;
 }
 .Editor > main > main {
   transition: all 400ms ease-in-out;
@@ -257,6 +258,14 @@ html {
 .Editor aside .dropdown-content #colorList li input {
   height: 40px;
   cursor: pointer;
+}
+.Editor aside .dropdown-items {
+  max-height: 0;
+  transition: all 200ms ease-out;
+  overflow: hidden;
+}
+.Editor aside .dropdown-items.show {
+  max-height: fit-content;
 }
 .Editor aside .dropdown-items a {
   color: black;
