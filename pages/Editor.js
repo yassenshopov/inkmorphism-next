@@ -534,6 +534,22 @@ function Editor(props) {
     });
   }
 
+  const [isStyleOpen, setIsStyleOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+
+  const toggleStyle = () => {
+    setIsStyleOpen(!isStyleOpen);
+  };
+
+  const toggleProfile = () => {
+    setIsProfileOpen(!isProfileOpen);
+  };
+
+  const toggleSettings = () => {
+    setIsSettingsOpen(!isSettingsOpen);
+  };
+
   return (
     <div className={"Editor" + fsClass + modeClass}>
       <Head>
@@ -631,81 +647,112 @@ function Editor(props) {
         <img id="mainLogo" src={logo.src} />
         <h1>Hello, {user.displayName}.</h1>
 
-        <ul>
-          <li>
-            Color1
-            <input
-              id="color1"
-              type="color"
-              defaultValue={
-                defaults["webContent"]["meta"]["colorPalette"]["color1"]
-              }
-              onChange={colorChange}
-            />
-          </li>
-          <li>
-            Color2
-            <input
-              id="color2"
-              type="color"
-              defaultValue={
-                defaults["webContent"]["meta"]["colorPalette"]["color2"]
-              }
-              onChange={colorChange}
-            />
-          </li>
-          <li>
-            Color3
-            <input
-              id="color3"
-              type="color"
-              defaultValue={
-                defaults["webContent"]["meta"]["colorPalette"]["color3"]
-              }
-              onChange={colorChange}
-            />
-          </li>
-          <li>
-            Color Light
-            <input
-              id="colorLight"
-              type="color"
-              defaultValue={
-                defaults["webContent"]["meta"]["colorPalette"]["colorLight"]
-              }
-              onChange={colorChange}
-            />
-          </li>
-          <li>
-            Color Dark
-            <input
-              id="colorDark"
-              type="color"
-              defaultValue={
-                defaults["webContent"]["meta"]["colorPalette"]["colorDark"]
-              }
-              onChange={colorChange}
-            />
-          </li>
-        </ul>
+        <div id="dropDowns">
+          <div id="styleMenu" className="noSelect">
+            <div className="dropdown-content">
+              <a onClick={toggleStyle}>Style</a>
+              {isStyleOpen && (
+                <div className="dropdown-items">
+                  <a>Colors</a>
+                  <ul id="colorList">
+                    <li>
+                      <input
+                        id="color1"
+                        type="color"
+                        defaultValue={
+                          defaults["webContent"]["meta"]["colorPalette"][
+                            "color1"
+                          ]
+                        }
+                        onChange={colorChange}
+                      />
+                      Color1
+                    </li>
+                    <li>
+                      <input
+                        id="color2"
+                        type="color"
+                        defaultValue={
+                          defaults["webContent"]["meta"]["colorPalette"][
+                            "color2"
+                          ]
+                        }
+                        onChange={colorChange}
+                      />
+                      Color2
+                    </li>
+                    <li>
+                      <input
+                        id="color3"
+                        type="color"
+                        defaultValue={
+                          defaults["webContent"]["meta"]["colorPalette"][
+                            "color3"
+                          ]
+                        }
+                        onChange={colorChange}
+                      />
+                      Color3
+                    </li>
+                    <li>
+                      <input
+                        id="colorLight"
+                        type="color"
+                        defaultValue={
+                          defaults["webContent"]["meta"]["colorPalette"][
+                            "colorLight"
+                          ]
+                        }
+                        onChange={colorChange}
+                      />
+                      Color Light
+                    </li>
+                    <li>
+                      <input
+                        id="colorDark"
+                        type="color"
+                        defaultValue={
+                          defaults["webContent"]["meta"]["colorPalette"][
+                            "colorDark"
+                          ]
+                        }
+                        onChange={colorChange}
+                      />
+                      Color Dark
+                    </li>
+                  </ul>
+                </div>
+              )}
+              <a onClick={toggleProfile}>Profile</a>
+              {isProfileOpen && (
+                <div className="dropdown-items">
+                  <section id="profileSection">
+                    <img src={user.photoURL} alt="Profile Pic" />
+                    <div>
+                      <p>{user.displayName}</p>
+                      <p>{user.email}</p>
+                    </div>
+                    <div></div>
+                  </section>
+                </div>
+              )}
+              <a onClick={toggleSettings}>Settings</a>
+              {isSettingsOpen && (
+                <div className="dropdown-items">
+                  <a className="noSelect" id="deleteSite" onClick={deleteSite}>
+                    Delete this website <FaTrashAlt id="trashIcon" />
+                  </a>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
 
         <a href="../../dashboard">Back to Dashboard</a>
-
-        <h2>Danger zone</h2>
-        <FaTrashAlt id="trashIcon" className="noSelect" onClick={deleteSite} />
 
         <button onClick={() => console.log(pageData)}>
           Press me for 'pageData'
         </button>
-
-        <section id="profileSection">
-          <img src={user.photoURL} alt="Profile Pic" />
-          <div>
-            <p>{user.displayName}</p>
-            <p>{user.email}</p>
-          </div>
-          <div></div>
-        </section>
       </aside>
     </div>
   );

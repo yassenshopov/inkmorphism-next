@@ -197,20 +197,87 @@ html {
   padding: 2vw;
   min-height: 80vh;
   transition: all 400ms ease-in-out;
+  max-height: 80vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+.Editor aside input[type="color"] {
+  padding: 0;
+  background: none;
+  border: none;
+}
+.Editor aside #dropDowns {
+  position: relative;
+  display: inline-block;
+  box-shadow: 0 0 10px #12121210;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+}
+.Editor aside .dropdown-content a {
+  z-index: 1;
+}
+.Editor aside .dropdown:hover .dropdown-content {
+  display: block;
+}
+.Editor aside .dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 1.2rem;
+}
+.Editor aside .dropdown-content > * > * {
+  padding: 10px 2vw;
+}
+.Editor aside .dropdown-content #colorList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 10px 2vw;
+}
+.Editor aside .dropdown-content #colorList li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.Editor aside .dropdown-content #colorList li input {
+  height: 40px;
+  cursor: pointer;
+}
+.Editor aside .dropdown-items a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color: #f2f2f2;
+  font-size: 1rem;
+}
+.Editor aside .dropdown-items a:hover {
+  background-color: #ddd;
+}
+.Editor aside .dropdown-content a:hover {
+  background-color: #ddd;
 }
 .Editor aside #mainLogo {
   width: 4vw;
   height: 4vw;
 }
-.Editor aside #trashIcon {
+.Editor aside #deleteSite {
+  cursor: pointer;
+}
+.Editor aside #deleteSite #trashIcon {
   cursor: pointer;
   color: #ab0000;
-  font-size: 2rem;
-  padding: 20px;
+  font-size: 1rem;
   transition: all 200ms ease-in-out;
-  border-radius: 10px;
 }
-.Editor aside #trashIcon:hover {
+.Editor aside #deleteSite #trashIcon #trashIcon:hover {
   color: #e80000;
   background: var(--mainGrey);
 }
