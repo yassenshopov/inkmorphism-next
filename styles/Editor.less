@@ -121,6 +121,7 @@ html {
         border-radius: 10px;
         background: #ffffff40;
         cursor: pointer;
+        transition: all 400ms ease-in-out;
       }
     }
     caret-color: var(--mainLight);
@@ -252,7 +253,7 @@ html {
       svg {
         padding: 0;
       }
-      > * > *{
+      > * > * {
         padding: 10px 2vw;
       }
       #colorList {
@@ -275,6 +276,16 @@ html {
           }
         }
       }
+    }
+
+    .dropdown-items {
+      max-height: 0;
+      transition: all 200ms ease-out;
+      overflow: hidden;
+    }
+
+    .dropdown-items.show{
+      max-height: fit-content;
     }
     
     .dropdown-items a {
