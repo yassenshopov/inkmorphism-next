@@ -144,7 +144,6 @@ function Editor(props) {
       type: "imgAndTxt",
     },
   };
-  const [callerIndex, setCallerIndex] = useState(0);
 
   function addSectionPopup(ind) {
     setPopupToggle(true);
@@ -283,7 +282,7 @@ function Editor(props) {
                   Add section <FaPlus />
                 </p>
               </div>
-              <a href="." id="navLogo">
+              <a id="navLogo">
                 <img src={section.content.logo} draggable={false} />
                 <p>{defaults.name}</p>
               </a>
@@ -396,6 +395,7 @@ function Editor(props) {
       savedData
     );
     console.log(savedData);
+    // setPageData(savedData.webContent.pages.main.structure)
   }
 
   // END OF DB CODE
@@ -633,7 +633,7 @@ function Editor(props) {
         <h2>Danger zone</h2>
         <FaTrashAlt id="trashIcon" className="noSelect" onClick={deleteSite} />
 
-        <button onClick={() => console.log(defaults)}>Press me for 'defaults'</button>
+        <button onClick={() => console.log(defaults.webContent.pages.main.structure)}>Press me for 'defaults'</button>
 
         <section id="profileSection">
           <img src={user.photoURL} alt="Profile Pic" />
