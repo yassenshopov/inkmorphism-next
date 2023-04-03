@@ -460,18 +460,19 @@ function Editor(props) {
   }
 
   function txtFieldChange(e, index) {
-    console.log(e, index)
-    console.log(pageData)
+    console.log(e, index);
+    console.log(pageData);
     setPageData((pageData) => [
       ...pageData.slice(0, index),
-      {...pageData[index], 
+      {
+        ...pageData[index],
         content: {
           ...pageData.content,
           txt: e.target.innerText,
-          img: pageData[index].content.img
-        }
+          img: pageData[index].content.img,
+        },
       },
-      ...pageData.slice(index+1),
+      ...pageData.slice(index + 1),
     ]);
     // setData({
     //   ...defaults,
@@ -776,7 +777,8 @@ function Editor(props) {
                 />
               </a>
               <div className={`dropdown-items ${isSettingsOpen ? "show" : ""}`}>
-                <a className="noSelect" id="deleteSite" onClick={deleteSite}>
+                <a>Danger zone</a>
+                <a className="noSelect" id="deleteSite" onClick={deleteSite} style={{fontSize: "1.2rem"}}>
                   Delete this website <FaTrashAlt id="trashIcon" />
                 </a>
               </div>
@@ -785,11 +787,15 @@ function Editor(props) {
           <div id="shadowFilter"></div>
         </div>
 
-        <a href="../../dashboard">Back to Dashboard</a>
+        <div id="backBtnWrapper">
+          <a href="../../dashboard" id="backBtn">
+          ←	 Back to Dashboard
+          </a>
+        </div>
 
-        <button onClick={() => console.log(pageData)}>
+        {/* <button onClick={() => console.log(pageData)}>
           Press me for 'pageData'
-        </button>
+        </button> */}
       </aside>
     </div>
   );

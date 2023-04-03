@@ -212,7 +212,7 @@ html {
   position: relative;
   display: inline-block;
   box-shadow: 0 0 10px #12121210;
-  border-radius: 12px;
+  border-radius: 12px 12px 0 0;
   overflow: hidden;
   width: 100%;
 }
@@ -319,6 +319,22 @@ html {
 .Editor aside #profileSection img {
   width: 3vw;
   height: 3vw;
+}
+.Editor #backBtnWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+.Editor #backBtnWrapper a {
+  width: 90%;
+  background-color: #252525;
+  padding: 20px 1vw;
+  border-radius: 0 0 12px 12px;
+  color: var(--mainLight);
+  text-decoration: none;
 }
 @media screen and (max-width: 600px) {
   .Editor > main {

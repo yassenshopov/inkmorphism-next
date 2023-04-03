@@ -593,6 +593,7 @@
   padding: 80px 10vw;
   font-family: 'Oswald';
   background: linear-gradient(var(--mainColor2), var(--mainColor3));
+  width: 80vw;
 }
 #templatesWrapper #templates {
   display: grid;
@@ -601,6 +602,7 @@
   grid-template-rows: fit-content fit-content fit-content;
   row-gap: 60px;
   column-gap: 6vw;
+  min-height: 60vh;
 }
 #templatesWrapper #templates article {
   display: flex;
@@ -619,7 +621,10 @@
   filter: saturate(1.2);
 }
 #templatesWrapper #templates article img {
-  max-height: 420px;
+  min-width: 100%;
+  width: auto;
+  min-height: 420px;
+  max-height: 460px;
   z-index: 1;
 }
 #templatesWrapper #templates article a {
