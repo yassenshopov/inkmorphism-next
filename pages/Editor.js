@@ -598,12 +598,13 @@ function Editor(props) {
           <form id="popup">
             <RxCross1
               id="customX"
+              className="noSelect"
               onClick={() => {
-                setPopupToggle(false);
+                setEditPopupToggle(false);
               }}
             />
             <p id="message">Edit Section</p>
-            <div id="deleteBtn">{deleteBtn}</div>
+            <div id="editSectionDeleteBtn">{deleteBtn}</div>
           </form>
         </div>
 
