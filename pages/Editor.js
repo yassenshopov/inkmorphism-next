@@ -6,7 +6,7 @@ import {
   setDoc,
   updateDoc,
 } from "firebase/firestore/lite";
-import { getDownloadURL, getStorage, ref } from "firebase/storage";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { useEffect, useState } from "react";
 import {
   MdOpenInFull,
@@ -24,7 +24,7 @@ import logo from "../styles/images/logoWh.png";
 import { useRouter } from "next/router";
 import Loader from "./components/loader.js";
 import HideContent from "./components/hideContent.js";
-import { TfiLayoutMediaLeft } from "react-icons/tfi";
+import { TfiLayoutMediaLeft, TfiImage } from "react-icons/tfi";
 import { RxCross1 } from "react-icons/rx";
 
 const dataArr = [];
@@ -132,7 +132,6 @@ function Editor(props) {
       },
       type: "txtOnly",
     },
-
     imgAndTxt: {
       content: {
         txt: "This is your new ImgNTxt section.",
@@ -142,6 +141,15 @@ function Editor(props) {
         direction: "reverseHorizontal",
       },
       type: "imgAndTxt",
+    },
+    imgOnly: {
+      content: {
+        img: "https://media.discordapp.net/attachments/1059220738718048346/1092535423944892416/midjourney_bunny_swimming_in_sea_of_toast_bread_yellow_and_brow_cf8add4b-117d-4a8b-b90d-d92db524ad24.png?width=1147&height=642",
+      },
+      options: {
+        direction: "",
+      },
+      type: "imgOnly",
     },
   };
 
@@ -205,15 +213,17 @@ function Editor(props) {
       icon: <TfiLayoutMediaLeft />,
       name: "Image and Text Section",
     },
+    {
+      id: "imgOnly",
+      icon: <TfiImage />,
+      name: "Image Section",
+    },
   ];
-
+  const [trigger, setTrigger] = useState(false);
   const [popupToggle, setPopupToggle] = useState(false);
   const [editPopupToggle, setEditPopupToggle] = useState(false);
   const [deleteBtn, setDeleteBtn] = useState();
   const [sectionSelection, setSectionsSelection] = useState();
-  const openPopup = () => {
-    setPopupToggle(true);
-  };
 
   useEffect(() => {
     const sections = pageData.map((section, index) => {
@@ -287,7 +297,17 @@ function Editor(props) {
               >
                 {section.content.txt}
               </p>
-              <img src={section.content.img} draggable={false} />
+              <div className="imgWrapper">
+                <img src={section.content.img} draggable={false} />
+                <div
+                  className="changeImg"
+                  onClick={() => {
+                    uploadNewImg(index);
+                  }}
+                >
+                  Click to change image
+                </div>
+              </div>
               <p
                 className="editBtn noSelect"
                 onClick={() => {
@@ -342,6 +362,52 @@ function Editor(props) {
               </div>
             </nav>
           );
+        case "imgOnly":
+          return (
+            <section
+              key={index}
+              className={section.type + " " + section.options.direction}
+            >
+              <div
+                onClick={() => {
+                  addSectionPopup(index);
+                }}
+                className="addSection"
+              >
+                <p>
+                  Add section <FaPlus />
+                </p>
+              </div>
+              <div className="imgWrapper">
+                <img src={section.content.img} draggable={false} />
+                <div
+                  className="changeImg"
+                  onClick={() => {
+                    uploadNewImg(index);
+                  }}
+                >
+                  Click to change image
+                </div>
+              </div>
+              <p
+                className="editBtn noSelect"
+                onClick={() => {
+                  deleteSectionPopup(index);
+                }}
+              >
+                <BiEdit />
+              </p>
+              <div className="addSection">
+                <p
+                  onClick={() => {
+                    addSectionPopup(index + 1);
+                  }}
+                >
+                  Add section <FaPlus />
+                </p>
+              </div>
+            </section>
+          );
         default:
           break;
       }
@@ -361,7 +427,7 @@ function Editor(props) {
         },
       },
     });
-  }, [pageData]);
+  }, [pageData, trigger]);
 
   useEffect(() => {
     async function asyncFunc() {
@@ -442,6 +508,7 @@ function Editor(props) {
     setTimeout(() => {
       setIsSaved(false);
     }, 2000);
+    setTrigger(!trigger);
   }
 
   // onkeydown = function(e) {
@@ -460,18 +527,19 @@ function Editor(props) {
   }
 
   function txtFieldChange(e, index) {
-    console.log(e, index)
-    console.log(pageData)
+    console.log(e, index);
+    console.log(pageData);
     setPageData((pageData) => [
       ...pageData.slice(0, index),
-      {...pageData[index], 
+      {
+        ...pageData[index],
         content: {
           ...pageData.content,
           txt: e.target.innerText,
-          img: pageData[index].content.img
-        }
+          img: pageData[index].content.img,
+        },
       },
-      ...pageData.slice(index+1),
+      ...pageData.slice(index + 1),
     ]);
     // setData({
     //   ...defaults,
@@ -519,8 +587,12 @@ function Editor(props) {
     });
   };
 
-  const fieldChange = (e) => {
-    console.log(e.target.innerHTML);
+  const nameChange = (e) => {
+    let value = e.target.value;
+    setData({
+      ...defaults,
+      name: value,
+    });
   };
 
   const [fsClass, setFsClass] = useState("");
@@ -567,6 +639,104 @@ function Editor(props) {
   const toggleSettings = () => {
     setIsSettingsOpen(!isSettingsOpen);
   };
+
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
+
+  const [uploadImgFunc, setUploadImgFunc] = useState();
+
+  function uploadNewImg(index) {
+    setUploadNewImgToggle(true);
+    console.log(index);
+    setUploadImgFunc(() => {
+      return (
+        <p onClick={() => {uploadFile(index)}} className="noSelect green">
+          Upload
+        </p>
+      );
+    });
+  }
+
+  const [file, setFile] = useState();
+  const [fileToUpload, setFileToUpload] = useState();
+  const [uploadNewImgToggle, setUploadNewImgToggle] = useState(false);
+  function showPreview(e) {
+    if (e.target.files[0].size > 4187152) {
+      alert("File is bigger than 4 MB. Use a smaller file.");
+      e.val = "";
+    } else {
+      setFile(URL.createObjectURL(e.target.files[0]));
+      setFileToUpload(e.target.files[0]);
+    }
+  }
+
+  function generateRandomString(length) {
+    let result = "";
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
+
+  async function uploadFile(index) {
+    let uid;
+    let randomString = generateRandomString(16);
+    console.log(props);
+    try {
+      uid =
+        "user-" +
+        props.auth.currentUser.uid +
+        "/" +
+        props.name +
+        "/" +
+        randomString +
+        ".png";
+    } catch (err) {
+      uid = "_";
+    }
+
+    let photoRef = ref(storage, uid);
+    let metadata = { contentType: "image/png" };
+
+    // photoRef.put(fileToUpload).then((snapshot) => {
+    //   console.log('Uploaded a file:', snapshot.metadata.name);
+    //   snapshot.ref.getDownloadURL().then((url) => {
+    //     console.log('File download URL:', url);
+    //   });
+    // });
+
+    await uploadBytes(photoRef, fileToUpload, metadata).then((snapshot) => {
+      console.log('Uploaded a file:', snapshot.metadata.name);
+      console.log(snapshot)
+      const pngURL = getDownloadURL(photoRef).then((url) => {
+        console.log(url)
+        setUploadNewImgToggle(false);
+        setTimeout(() => {
+          setPageData((pageData) => [
+            ...pageData.slice(0, index),
+            {
+              ...pageData[index],
+              content: {
+                ...pageData.content,
+                txt: (pageData[index].content.txt !== undefined ? pageData[index].content.txt : ""),
+                img: url,
+              },
+            },
+            ...pageData.slice(index + 1),
+          ]);
+        },2000)
+      });
+
+      // snapshot.ref.getDownloadURL().then((url) => {
+      //   console.log('File download URL:', url);
+      // });
+      // window.location.reload(false);
+    });
+  }
 
   return (
     <div className={"Editor" + fsClass + modeClass}>
@@ -640,6 +810,34 @@ function Editor(props) {
             />
             <p id="message">Edit Section</p>
             <div id="editSectionDeleteBtn">{deleteBtn}</div>
+          </form>
+        </div>
+
+        <div
+          style={{ display: uploadNewImgToggle ? "flex" : "none" }}
+          id="popupWrapper"
+        >
+          <form id="popup">
+            <p id="message">Upload new image</p>
+            <input
+              type="file"
+              placeholder="Upload new picture"
+              accept="image/png, image/gif, image/jpeg"
+              onChange={showPreview}
+            />
+            <img id="previewPicUpload" src={file} />
+            <div id="buttons">
+              <p
+                onClick={() => {
+                  console.log(uploadNewImgToggle);
+                  setUploadNewImgToggle(false);
+                }}
+                className="noSelect"
+              >
+                Cancel
+              </p>
+              {uploadImgFunc}
+            </div>
           </form>
         </div>
 
@@ -776,7 +974,24 @@ function Editor(props) {
                 />
               </a>
               <div className={`dropdown-items ${isSettingsOpen ? "show" : ""}`}>
-                <a className="noSelect" id="deleteSite" onClick={deleteSite}>
+                <form id="websiteNameWrapper" onSubmit={handleSubmit}>
+                  <label htmlFor="websiteName">Website Title</label>
+                  <input
+                    id="websiteName"
+                    name="websiteName"
+                    type="text"
+                    defaultValue={defaults.name}
+                    placeholder="Enter website name..."
+                    onChange={nameChange}
+                  />
+                </form>
+                <a>Danger zone</a>
+                <a
+                  className="noSelect"
+                  id="deleteSite"
+                  onClick={deleteSite}
+                  style={{ fontSize: "1.2rem" }}
+                >
                   Delete this website <FaTrashAlt id="trashIcon" />
                 </a>
               </div>
@@ -785,11 +1000,15 @@ function Editor(props) {
           <div id="shadowFilter"></div>
         </div>
 
-        <a href="../../dashboard">Back to Dashboard</a>
+        <div id="backBtnWrapper">
+          <a href="../../dashboard" id="backBtn">
+            ← Back to Dashboard
+          </a>
+        </div>
 
-        <button onClick={() => console.log(pageData)}>
+        {/* <button onClick={() => console.log(pageData)}>
           Press me for 'pageData'
-        </button>
+        </button> */}
       </aside>
     </div>
   );

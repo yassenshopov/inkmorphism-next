@@ -217,6 +217,20 @@ export default function Templates() {
       <main id="templatesWrapper">
         <section id="templates">
           <article>
+            <img src="templates/simpleTemplate.png" />
+            <h2>Simple</h2>
+            <div id="hiddenBtns">
+              <a
+                onClick={() => {
+                  randomSiteGen("Skeletal");
+                }}
+              >
+                Get Started with Simple →
+              </a>
+              <a href="templates/simple">Preview Template</a>
+            </div>
+          </article>
+          {/* <article>
             <img src="templates/neobrutalismTemplate2.png" />
             <h2>Neobrutalism</h2>
             <div id="hiddenBtns">
@@ -291,7 +305,7 @@ export default function Templates() {
           </article>
           <article>
             <h2>Fantasm</h2>
-          </article>
+          </article> */}
         </section>
       </main>
       <Dashfooter />
