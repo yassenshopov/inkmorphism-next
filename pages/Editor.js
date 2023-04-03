@@ -24,7 +24,7 @@ import logo from "../styles/images/logoWh.png";
 import { useRouter } from "next/router";
 import Loader from "./components/loader.js";
 import HideContent from "./components/hideContent.js";
-import { TfiLayoutMediaLeft } from "react-icons/tfi";
+import { TfiLayoutMediaLeft, TfiImage } from "react-icons/tfi";
 import { RxCross1 } from "react-icons/rx";
 
 const dataArr = [];
@@ -132,7 +132,6 @@ function Editor(props) {
       },
       type: "txtOnly",
     },
-
     imgAndTxt: {
       content: {
         txt: "This is your new ImgNTxt section.",
@@ -142,6 +141,15 @@ function Editor(props) {
         direction: "reverseHorizontal",
       },
       type: "imgAndTxt",
+    },
+    imgOnly: {
+      content: {
+        img: "https://media.discordapp.net/attachments/1059220738718048346/1092535423944892416/midjourney_bunny_swimming_in_sea_of_toast_bread_yellow_and_brow_cf8add4b-117d-4a8b-b90d-d92db524ad24.png?width=1147&height=642",
+      },
+      options: {
+        direction: "reverseHorizontal",
+      },
+      type: "imgOnly",
     },
   };
 
@@ -205,16 +213,17 @@ function Editor(props) {
       icon: <TfiLayoutMediaLeft />,
       name: "Image and Text Section",
     },
+    {
+      id: "imgOnly",
+      icon: <TfiImage />,
+      name: "Image Section",
+    },
   ];
   const [trigger, setTrigger] = useState(false);
-
   const [popupToggle, setPopupToggle] = useState(false);
   const [editPopupToggle, setEditPopupToggle] = useState(false);
   const [deleteBtn, setDeleteBtn] = useState();
   const [sectionSelection, setSectionsSelection] = useState();
-  const openPopup = () => {
-    setPopupToggle(true);
-  };
 
   useEffect(() => {
     const sections = pageData.map((section, index) => {
@@ -343,6 +352,42 @@ function Editor(props) {
               </div>
             </nav>
           );
+        case "imgOnly":
+          return (
+            <section
+              key={index}
+              className={section.type + " " + section.options.direction}
+            >
+              <div
+                onClick={() => {
+                  addSectionPopup(index);
+                }}
+                className="addSection"
+              >
+                <p>
+                  Add section <FaPlus />
+                </p>
+              </div>
+              <img src={section.content.img}/>
+              <p
+                className="editBtn noSelect"
+                onClick={() => {
+                  deleteSectionPopup(index);
+                }}
+              >
+                <BiEdit />
+              </p>
+              <div className="addSection">
+                <p
+                  onClick={() => {
+                    addSectionPopup(index + 1);
+                  }}
+                >
+                  Add section <FaPlus />
+                </p>
+              </div>
+            </section>
+          );
         default:
           break;
       }
@@ -443,7 +488,7 @@ function Editor(props) {
     setTimeout(() => {
       setIsSaved(false);
     }, 2000);
-    setTrigger(!trigger)
+    setTrigger(!trigger);
   }
 
   // onkeydown = function(e) {
@@ -524,7 +569,6 @@ function Editor(props) {
 
   const nameChange = (e) => {
     let value = e.target.value;
-    console.log(value)
     setData({
       ...defaults,
       name: value,
