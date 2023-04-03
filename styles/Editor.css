@@ -226,6 +226,14 @@ html {
   text-decoration: none;
   display: block;
   font-size: 1.2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.Editor aside .dropdown-content svg {
+  padding: 0;
 }
 .Editor aside .dropdown-content > * > * {
   padding: 10px 2vw;
