@@ -620,6 +620,10 @@ function Editor(props) {
     setIsSettingsOpen(!isSettingsOpen);
   };
 
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
+
   return (
     <div className={"Editor" + fsClass + modeClass}>
       <Head>
@@ -828,7 +832,7 @@ function Editor(props) {
                 />
               </a>
               <div className={`dropdown-items ${isSettingsOpen ? "show" : ""}`}>
-                <form id="websiteNameWrapper">
+                <form id="websiteNameWrapper" onSubmit={handleSubmit}>
                   <label htmlFor="websiteName">Website Title</label>
                   <input
                     id="websiteName"
