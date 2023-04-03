@@ -236,7 +236,7 @@ function Editor(props) {
               </div>
               <p
                 suppressContentEditableWarning={true}
-                onInput={(e) => {
+                onBlur={(e) => {
                   txtFieldChange(e, index);
                 }}
                 contentEditable={true}
@@ -280,7 +280,7 @@ function Editor(props) {
               </div>
               <p
                 suppressContentEditableWarning={true}
-                onInput={(e) => {
+                onBlur={(e) => {
                   txtFieldChange(e, index);
                 }}
                 contentEditable={true}
@@ -393,7 +393,6 @@ function Editor(props) {
 
   async function getData() {
     let propsName;
-    let col;
     if (props["name"] === undefined) {
       propsName = "thedatachunk";
     } else {
@@ -419,7 +418,6 @@ function Editor(props) {
     setLoadBool(false);
   }
 
-  const [isOpenDropDown, setIsOpenDropDown] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
 
   async function sendData(savedData) {
@@ -462,32 +460,45 @@ function Editor(props) {
   }
 
   function txtFieldChange(e, index) {
-    setData({
-      ...defaults,
-      webContent: {
-        ...defaults.webContent,
-        pages: {
-          ...defaults.webContent.pages,
-          main: {
-            ...defaults.webContent.pages.main,
-            structure: defaults.webContent.pages.main.structure.map(
-              (el, arrIndex) => {
-                if (arrIndex === parseInt(index)) {
-                  let updatedTxtContent = {
-                    ...el,
-                    content: { ...el.content, txt: e.target.innerHTML },
-                  };
-                  return updatedTxtContent;
-                } else {
-                  return el;
-                }
-              }
-            ),
-          },
-        },
+    console.log(e, index)
+    console.log(pageData)
+    setPageData((pageData) => [
+      ...pageData.slice(0, index),
+      {...pageData[index], 
+        content: {
+          ...pageData.content,
+          txt: e.target.innerText,
+          img: pageData[index].content.img
+        }
       },
-    });
-    console.log(defaults);
+      ...pageData.slice(index+1),
+    ]);
+    // setData({
+    //   ...defaults,
+    //   webContent: {
+    //     ...defaults.webContent,
+    //     pages: {
+    //       ...defaults.webContent.pages,
+    //       main: {
+    //         ...defaults.webContent.pages.main,
+    //         structure: defaults.webContent.pages.main.structure.map(
+    //           (el, arrIndex) => {
+    //             if (arrIndex === parseInt(index)) {
+    //               let updatedTxtContent = {
+    //                 ...el,
+    //                 content: { ...el.content, txt: e.target.innerHTML },
+    //               };
+    //               return updatedTxtContent;
+    //             } else {
+    //               return el;
+    //             }
+    //           }
+    //         ),
+    //       },
+    //     },
+    //   },
+    // });
+    // console.log(defaults);
   }
 
   const colorChange = (e) => {
