@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import Nav from "./components/nav.js";
 import Footer from "./components/footer.js";
 import Hero from "./components/hero.js";
-import { MdOpenInFull, MdOutlineCloseFullscreen } from "react-icons/md";
+import { MdOpenInFull, MdOutlineCloseFullscreen, MdKeyboardArrowDown } from "react-icons/md";
 import { RiSave3Fill } from "react-icons/ri";
 import { BiEdit } from "react-icons/bi";
 import { CgFormatText } from "react-icons/cg";
@@ -650,7 +650,7 @@ function Editor(props) {
         <div id="dropDowns">
           <div id="styleMenu" className="noSelect">
             <div className="dropdown-content">
-              <a onClick={toggleStyle}>Style</a>
+              <a onClick={toggleStyle}>Style <MdKeyboardArrowDown/></a>
               {isStyleOpen && (
                 <div className="dropdown-items">
                   <a>Colors</a>
@@ -666,7 +666,7 @@ function Editor(props) {
                         }
                         onChange={colorChange}
                       />
-                      Color1
+                      Main color 1
                     </li>
                     <li>
                       <input
@@ -679,7 +679,7 @@ function Editor(props) {
                         }
                         onChange={colorChange}
                       />
-                      Color2
+                      Main color 2
                     </li>
                     <li>
                       <input
@@ -692,7 +692,7 @@ function Editor(props) {
                         }
                         onChange={colorChange}
                       />
-                      Color3
+                      Accent color
                     </li>
                     <li>
                       <input
@@ -723,7 +723,7 @@ function Editor(props) {
                   </ul>
                 </div>
               )}
-              <a onClick={toggleProfile}>Profile</a>
+              <a onClick={toggleProfile}>Profile <MdKeyboardArrowDown/></a>
               {isProfileOpen && (
                 <div className="dropdown-items">
                   <section id="profileSection">
@@ -736,7 +736,7 @@ function Editor(props) {
                   </section>
                 </div>
               )}
-              <a onClick={toggleSettings}>Settings</a>
+              <a onClick={toggleSettings}>Settings <MdKeyboardArrowDown/></a>
               {isSettingsOpen && (
                 <div className="dropdown-items">
                   <a className="noSelect" id="deleteSite" onClick={deleteSite}>
