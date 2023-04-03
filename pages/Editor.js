@@ -206,6 +206,7 @@ function Editor(props) {
       name: "Image and Text Section",
     },
   ];
+  const [trigger, setTrigger] = useState(false);
 
   const [popupToggle, setPopupToggle] = useState(false);
   const [editPopupToggle, setEditPopupToggle] = useState(false);
@@ -361,7 +362,7 @@ function Editor(props) {
         },
       },
     });
-  }, [pageData]);
+  }, [pageData, trigger]);
 
   useEffect(() => {
     async function asyncFunc() {
@@ -442,6 +443,7 @@ function Editor(props) {
     setTimeout(() => {
       setIsSaved(false);
     }, 2000);
+    setTrigger(!trigger)
   }
 
   // onkeydown = function(e) {
@@ -520,8 +522,13 @@ function Editor(props) {
     });
   };
 
-  const fieldChange = (e) => {
-    console.log(e.target.innerHTML);
+  const nameChange = (e) => {
+    let value = e.target.value;
+    console.log(value)
+    setData({
+      ...defaults,
+      name: value,
+    });
   };
 
   const [fsClass, setFsClass] = useState("");
@@ -777,8 +784,24 @@ function Editor(props) {
                 />
               </a>
               <div className={`dropdown-items ${isSettingsOpen ? "show" : ""}`}>
+                <form id="websiteNameWrapper">
+                  <label htmlFor="websiteName">Website Title</label>
+                  <input
+                    id="websiteName"
+                    name="websiteName"
+                    type="text"
+                    defaultValue={defaults.name}
+                    placeholder="Enter website name..."
+                    onChange={nameChange}
+                  />
+                </form>
                 <a>Danger zone</a>
-                <a className="noSelect" id="deleteSite" onClick={deleteSite} style={{fontSize: "1.2rem"}}>
+                <a
+                  className="noSelect"
+                  id="deleteSite"
+                  onClick={deleteSite}
+                  style={{ fontSize: "1.2rem" }}
+                >
                   Delete this website <FaTrashAlt id="trashIcon" />
                 </a>
               </div>
@@ -789,7 +812,7 @@ function Editor(props) {
 
         <div id="backBtnWrapper">
           <a href="../../dashboard" id="backBtn">
-          ←	 Back to Dashboard
+            ← Back to Dashboard
           </a>
         </div>
 
