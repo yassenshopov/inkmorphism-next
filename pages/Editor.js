@@ -12,6 +12,7 @@ import {
   MdOpenInFull,
   MdOutlineCloseFullscreen,
   MdKeyboardArrowDown,
+  MdKeyboardArrowLeft,
 } from "react-icons/md";
 import { RiSave3Fill } from "react-icons/ri";
 import { BiEdit } from "react-icons/bi";
@@ -418,10 +419,12 @@ function Editor(props) {
     setLoadBool(false);
   }
 
+  const [isOpenDropDown, setIsOpenDropDown] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
 
   async function sendData(savedData) {
     let propsName;
+    setIsSaved(true);
     if (props["name"] === undefined) {
       propsName = "thedatachunk";
     } else {
@@ -438,7 +441,6 @@ function Editor(props) {
       savedData
     );
     console.log(savedData);
-    setIsSaved(true);
     setTimeout(() => {
       setIsSaved(false);
     }, 2000);
@@ -657,13 +659,20 @@ function Editor(props) {
           <div id="styleMenu" className="noSelect">
             <div className="dropdown-content">
               <a onClick={toggleStyle}>
-                Style <MdKeyboardArrowDown />
+                Style{" "}
+                <MdKeyboardArrowDown
+                  style={{ display: isStyleOpen ? "none" : "flex" }}
+                />{" "}
+                <MdKeyboardArrowLeft
+                  style={{ display: isStyleOpen ? "flex" : "none" }}
+                />
               </a>
               <div className={`dropdown-items ${isStyleOpen ? "show" : ""}`}>
                 <a>Colors</a>
                 <ul id="colorList">
                   <li>
                     <input
+                      name="color1"
                       id="color1"
                       type="color"
                       defaultValue={
@@ -671,10 +680,11 @@ function Editor(props) {
                       }
                       onChange={colorChange}
                     />
-                    Main color 1
+                    <label htmlFor="color1">Main color 1</label>
                   </li>
                   <li>
                     <input
+                      name="color2"
                       id="color2"
                       type="color"
                       defaultValue={
@@ -682,10 +692,11 @@ function Editor(props) {
                       }
                       onChange={colorChange}
                     />
-                    Main color 2
+                    <label htmlFor="color2">Main color 2</label>
                   </li>
                   <li>
                     <input
+                      name="color3"
                       id="color3"
                       type="color"
                       defaultValue={
@@ -693,10 +704,11 @@ function Editor(props) {
                       }
                       onChange={colorChange}
                     />
-                    Accent color
+                    <label htmlFor="color3">Accent Color</label>
                   </li>
                   <li>
                     <input
+                      name="colorLight"
                       id="colorLight"
                       type="color"
                       defaultValue={
@@ -706,10 +718,11 @@ function Editor(props) {
                       }
                       onChange={colorChange}
                     />
-                    Color Light
+                    <label htmlFor="colorLight">Color Light</label>
                   </li>
                   <li>
                     <input
+                      name="colorDark"
                       id="colorDark"
                       type="color"
                       defaultValue={
@@ -719,12 +732,18 @@ function Editor(props) {
                       }
                       onChange={colorChange}
                     />
-                    Color Dark
+                    <label htmlFor="colorDark">Color Dark</label>
                   </li>
                 </ul>
               </div>
               <a onClick={toggleProfile}>
-                Profile <MdKeyboardArrowDown />
+                Profile{" "}
+                <MdKeyboardArrowDown
+                  style={{ display: isProfileOpen ? "none" : "flex" }}
+                />{" "}
+                <MdKeyboardArrowLeft
+                  style={{ display: isProfileOpen ? "flex" : "none" }}
+                />
               </a>
               <div className={`dropdown-items ${isProfileOpen ? "show" : ""}`}>
                 <section id="profileSection">
@@ -737,7 +756,13 @@ function Editor(props) {
                 </section>
               </div>
               <a onClick={toggleSettings}>
-                Settings <MdKeyboardArrowDown />
+                Settings{" "}
+                <MdKeyboardArrowDown
+                  style={{ display: isSettingsOpen ? "none" : "flex" }}
+                />{" "}
+                <MdKeyboardArrowLeft
+                  style={{ display: isSettingsOpen ? "flex" : "none" }}
+                />
               </a>
               <div className={`dropdown-items ${isSettingsOpen ? "show" : ""}`}>
                 <a className="noSelect" id="deleteSite" onClick={deleteSite}>
@@ -746,6 +771,7 @@ function Editor(props) {
               </div>
             </div>
           </div>
+          <div id="shadowFilter"></div>
         </div>
 
         <a href="../../dashboard">Back to Dashboard</a>

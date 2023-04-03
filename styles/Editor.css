@@ -117,6 +117,7 @@ html {
 }
 .Editor > main > main {
   transition: all 400ms ease-in-out;
+  scroll-behavior: smooth;
   overflow-y: scroll;
 }
 .Editor > main > main > * {
@@ -154,7 +155,7 @@ html {
   transition: all 400ms ease-in-out;
 }
 .Editor > main > main .editBtn:hover {
-  background-color: var(--mainLight);
+  background-color: var(--colorLight);
 }
 .Editor > main > main .addSection:first-child {
   top: 0;
@@ -215,6 +216,15 @@ html {
   overflow: hidden;
   width: 100%;
 }
+.Editor aside #dropDowns #shadowFilter {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 94;
+  user-select: none;
+  pointer-events: none;
+  top: 0;
+}
 .Editor aside .dropdown-content a {
   z-index: 1;
 }
@@ -267,7 +277,7 @@ html {
 .Editor aside .dropdown-items.show {
   max-height: fit-content;
 }
-.Editor aside .dropdown-items a {
+.Editor aside .dropdown-items * {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
@@ -287,16 +297,18 @@ html {
 }
 .Editor aside #deleteSite {
   cursor: pointer;
-}
-.Editor aside #deleteSite #trashIcon {
-  cursor: pointer;
-  color: #ab0000;
-  font-size: 1rem;
   transition: all 200ms ease-in-out;
 }
-.Editor aside #deleteSite #trashIcon #trashIcon:hover {
-  color: #e80000;
-  background: var(--mainGrey);
+.Editor aside #deleteSite #trashIcon {
+  font-size: 1rem;
+  background: none;
+}
+.Editor aside #deleteSite:hover {
+  color: var(--mainLight);
+  background-color: #c90404;
+}
+.Editor aside #deleteSite:hover #trashIcon {
+  color: var(--mainLight) !important;
 }
 .Editor aside #profileSection {
   display: flex;
