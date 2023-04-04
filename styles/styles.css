@@ -1313,6 +1313,9 @@
   justify-content: center;
   align-items: center;
 }
+.imgOnly .imgWrapper {
+  width: 100% !important;
+}
 .imgOnly img {
   width: 100% !important;
   border-radius: 0;
