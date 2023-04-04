@@ -381,6 +381,7 @@ function Editor(props) {
               <div className="imgWrapper">
                 <img src={section.content.img} draggable={false} />
                 <div
+                style={{borderRadius: 0}}
                   className="changeImg"
                   onClick={() => {
                     uploadNewImg(index);

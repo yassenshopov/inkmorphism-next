@@ -177,6 +177,7 @@ html {
   cursor: pointer;
   top: 0;
   right: 0;
+  max-width: fit-content;
   width: fit-content;
   height: fit-content;
   padding: 4px 0.6vw;
