@@ -349,6 +349,21 @@ html {
 .Editor aside #deleteSite:hover #trashIcon {
   color: var(--mainLight) !important;
 }
+.Editor aside #websiteStyle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.Editor aside #websiteStyle label {
+  font-size: 1.2rem;
+}
+.Editor aside #websiteStyle .dropdown {
+  border-radius: 0;
+  padding: 1rem;
+}
+.Editor aside #websiteStyle .dropdown option {
+  background-color: #ddd;
+}
 .Editor aside #profileSection {
   height: fit-content;
   display: flex;
