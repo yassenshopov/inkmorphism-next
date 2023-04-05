@@ -332,15 +332,15 @@ function Editor(props) {
         case "nav":
           return (
             <nav className={section.type} key={index}>
-              <div className="addSection">
-                {/* <p
+              {/* <div className="addSection">
+                <p
                   onClick={() => {
                     addSectionPopup(index);
                   }}
                 >
                   Add section <FaPlus />
-                </p> */}
-              </div>
+                </p>
+              </div> */}
               <a id="navLogo">
                 <img src={section.content.logo} draggable={false} loading="lazy"/>
                 <p>{defaults.name}</p>
@@ -364,6 +364,38 @@ function Editor(props) {
               </div>
             </nav>
           );
+        case "footer":
+            return (
+              <footer className={section.type} key={index}>
+                <div className="addSection">
+                  <p
+                    onClick={() => {
+                      addSectionPopup(index);
+                    }}
+                  >
+                    Add section <FaPlus />
+                  </p>
+                </div>
+                  <p>{section.content.txt}</p>
+                <p
+                  className="editBtn noSelect"
+                  onClick={() => {
+                    deleteSectionPopup(index);
+                  }}
+                >
+                  <BiEdit />
+                </p>
+                <div className="addSection">
+                  <p
+                    onClick={() => {
+                      addSectionPopup(index + 1);
+                    }}
+                  >
+                    Add section <FaPlus />
+                  </p>
+                </div>
+              </footer>
+            );
         case "imgOnly":
           return (
             <section
