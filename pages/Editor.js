@@ -302,7 +302,8 @@ function Editor(props) {
                 <div
                   className="changeImg noSelect"
                   onClick={() => {
-                    uploadNewImg(index);
+                    setIndexOfNewPic(index);
+                    uploadNewImg();
                   }}
                 >
                   Click to change image
@@ -384,7 +385,8 @@ function Editor(props) {
                   style={{ borderRadius: 0 }}
                   className="changeImg noSelect"
                   onClick={() => {
-                    uploadNewImg(index);
+                    setIndexOfNewPic(index);
+                    uploadNewImg();
                   }}
                 >
                   Click to change image
@@ -645,23 +647,22 @@ function Editor(props) {
     event.preventDefault();
   }
 
-  const [uploadImgFunc, setUploadImgFunc] = useState();
+  // const [uploadImgFunc, setUploadImgFunc] = useState(
+  //   <p onClick={() => uploadFile()} className="noSelect green">
+  //     Upload
+  //   </p>
+  // );
 
   function uploadNewImg(index) {
     setUploadNewImgToggle(true);
     console.log(index);
-    setUploadImgFunc(() => {
-      return (
-        <p
-          onClick={() => {
-            uploadFile(index);
-          }}
-          className="noSelect green"
-        >
-          Upload
-        </p>
-      );
-    });
+    // setUploadImgFunc(() => {
+    //   return (
+    //     <p onClick={() => uploadFile()} className="noSelect green">
+    //       Upload
+    //     </p>
+    //   );
+    // });
   }
 
   const [file, setFile] = useState();
@@ -689,10 +690,9 @@ function Editor(props) {
   }
 
   function actualUpload(photoRef, metadata, index) {
-    uploadBytes(photoRef, actualFileToUpload, metadata).then((snapshot) => {
+    uploadBytes(photoRef, fileToUpload, metadata).then((snapshot) => {
       console.log("Uploaded a file:", snapshot.metadata.name);
       console.log(snapshot);
-      console.log(actualFileToUpload)      
       const pngURL = getDownloadURL(photoRef).then((url) => {
         console.log(url);
         setUploadNewImgToggle(false);
@@ -719,13 +719,14 @@ function Editor(props) {
   }
 
   useEffect(() => {
-    console.log(fileToUpload)
-    setActualFileToUpload(fileToUpload)
-  }, [fileToUpload])
+    console.log(fileToUpload);
+    setActualFileToUpload(fileToUpload);
+  }, [fileToUpload]);
 
   const [actualFileToUpload, setActualFileToUpload] = useState();
+  const [indexOfNewPic, setIndexOfNewPic] = useState(1);
 
-  async function uploadFile(index) {
+  async function uploadFile() {
     let uid;
     let randomString = generateRandomString(16);
     console.log(props);
@@ -749,14 +750,14 @@ function Editor(props) {
       console.log(fileToUpload);
       console.log(file);
     } else {
-      actualUpload(photoRef, metadata, index)
+      actualUpload(photoRef, metadata, indexOfNewPic);
     }
   }
 
   function clearFileInput() {
-    setActualFileToUpload("")
-    setFileToUpload("")
-    setFile("")
+    setActualFileToUpload("");
+    setFileToUpload("");
+    setFile("");
   }
 
   return (
@@ -840,6 +841,7 @@ function Editor(props) {
           id="popupWrapper"
         >
           <form id="popup">
+            {/* <p onClick={() => uploadFile()}>Click for upload</p> */}
             <p id="message">Upload new image</p>
             <input
               type="file"
@@ -858,7 +860,9 @@ function Editor(props) {
               >
                 Cancel
               </p>
-              {uploadImgFunc}
+              <p onClick={() => uploadFile()} className="noSelect green">
+                Upload
+              </p>
             </div>
           </form>
         </div>
