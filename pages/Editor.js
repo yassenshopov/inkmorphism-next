@@ -539,7 +539,7 @@ function Editor(props) {
         content: {
           ...pageData.content,
           txt: e.target.innerText,
-          img: pageData[index].content.img,
+          img: (pageData[index].content.img !== undefined ? pageData[index].content.img : ""),
         },
       },
       ...pageData.slice(index + 1),
