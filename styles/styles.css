@@ -774,12 +774,18 @@
   padding: 20px 2vw;
   border-radius: 12px;
   max-width: 8vw;
+  transition: all 200ms ease-in-out;
   box-shadow: 0 0 10px #12121230;
   cursor: pointer;
 }
 #popupWrapper #popup #sectionSelection section p {
   font-size: 1rem;
   word-wrap: break-word;
+}
+#popupWrapper #popup #sectionSelection section:hover {
+  box-shadow: 0px 0px 20px #12121260;
+  color: var(--mainLight);
+  background-color: var(--mainColor2);
 }
 #popupWrapper #popup #buttons {
   display: flex;

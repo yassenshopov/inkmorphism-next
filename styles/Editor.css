@@ -115,12 +115,19 @@ html {
   cursor: pointer;
   transition: all 400ms ease-in-out;
 }
-.Editor > main > main {
+.Editor > main #mainEditorWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  scroll-behavior: smooth;
+}
+.Editor > main #mainEditorWrapper main {
   transition: all 400ms ease-in-out;
   scroll-behavior: smooth;
   overflow-y: scroll;
 }
-.Editor > main > main > * {
+.Editor > main #mainEditorWrapper main > * {
   min-height: 150px;
   transition: all 400ms ease-in-out;
   position: relative;
@@ -129,14 +136,14 @@ html {
   border-bottom: 2px solid #12121200;
   box-sizing: border-box;
 }
-.Editor > main > main > * .imgWrapper {
+.Editor > main #mainEditorWrapper main > * .imgWrapper {
   position: relative;
   width: fit-content;
   display: inline-block;
   overflow: hidden;
   box-sizing: border-box;
 }
-.Editor > main > main > * .imgWrapper .changeImg {
+.Editor > main #mainEditorWrapper main > * .imgWrapper .changeImg {
   top: 0;
   z-index: 99;
   position: absolute;
@@ -155,26 +162,26 @@ html {
   cursor: pointer;
   border-radius: 24px;
 }
-.Editor > main > main > * .imgWrapper .changeImg:hover {
+.Editor > main #mainEditorWrapper main > * .imgWrapper .changeImg:hover {
   opacity: 1;
 }
-.Editor > main > main > * .imgWrapper img {
+.Editor > main #mainEditorWrapper main > * .imgWrapper img {
   display: block;
   width: 100%;
   height: 100%;
 }
-.Editor > main > main > *:hover {
+.Editor > main #mainEditorWrapper main > *:hover {
   border-top: 2px solid var(--mainLight);
   border-bottom: 2px solid var(--mainLight);
   background-color: #49494920;
 }
-.Editor > main > main > *:hover > .editBtn {
+.Editor > main #mainEditorWrapper main > *:hover > .editBtn {
   opacity: 1;
 }
-.Editor > main > main > *:hover > *[class="addSection"] {
+.Editor > main #mainEditorWrapper main > *:hover > *[class="addSection"] {
   opacity: 1;
 }
-.Editor > main > main .editBtn {
+.Editor > main #mainEditorWrapper main .editBtn {
   position: absolute;
   font-size: 2rem;
   cursor: pointer;
@@ -191,19 +198,19 @@ html {
   z-index: 102;
   display: flex;
 }
-.Editor > main > main .editBtn:hover {
+.Editor > main #mainEditorWrapper main .editBtn:hover {
   background-color: var(--colorLight);
 }
-.Editor > main > main .addSection:first-child {
+.Editor > main #mainEditorWrapper main .addSection:first-child {
   top: 0;
 }
-.Editor > main > main .addSection:last-child {
+.Editor > main #mainEditorWrapper main .addSection:last-child {
   bottom: 0;
 }
-.Editor > main > main .addSection:last-child p {
+.Editor > main #mainEditorWrapper main .addSection:last-child p {
   border-radius: 24px 24px 0 0;
 }
-.Editor > main > main .addSection {
+.Editor > main #mainEditorWrapper main .addSection {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -217,7 +224,7 @@ html {
   z-index: 200;
   opacity: 0;
 }
-.Editor > main > main .addSection p {
+.Editor > main #mainEditorWrapper main .addSection p {
   width: fit-content;
   background-color: var(--mainLight);
   color: var(--mainDark);
@@ -472,7 +479,7 @@ html {
 .mobile > main > nav #desktopMode {
   display: flex;
 }
-.mobile > main > main {
+.mobile > main main {
   width: 30vw;
   box-shadow: 0 6px 16px #12121240;
 }
