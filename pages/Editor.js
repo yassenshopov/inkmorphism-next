@@ -957,8 +957,8 @@ function Editor(props) {
               </a>
               <div className={`dropdown-items ${isProfileOpen ? "show" : ""}`}>
                 <section id="profileSection">
-                  <img src={user.photoURL} alt="Profile Pic" />
                   <div>
+                    <img src={user.photoURL} alt="Profile Pic" />
                     <p>{user.displayName}</p>
                     <p>{user.email}</p>
                   </div>
@@ -1002,7 +1002,7 @@ function Editor(props) {
         </div>
 
         <div id="backBtnWrapper">
-          <a href="../../dashboard" id="backBtn">
+          <a href="../../dashboard" id="backBtn" className="noSelect">
             ← Back to Dashboard
           </a>
         </div>

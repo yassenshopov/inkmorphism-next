@@ -132,8 +132,9 @@ html {
 .Editor > main > main > * .imgWrapper {
   position: relative;
   width: fit-content;
-  height: fit-content;
+  display: inline-block;
   overflow: hidden;
+  box-sizing: border-box;
 }
 .Editor > main > main > * .imgWrapper .changeImg {
   top: 0;
@@ -145,7 +146,7 @@ html {
   align-items: center;
   background-color: #12121280;
   width: 100%;
-  height: 99%;
+  height: 100%;
   opacity: 0;
   transition: all 400ms ease-in-out;
   color: var(--mainLight);
@@ -158,7 +159,9 @@ html {
   opacity: 1;
 }
 .Editor > main > main > * .imgWrapper img {
+  display: block;
   width: 100%;
+  height: 100%;
 }
 .Editor > main > main > *:hover {
   border-top: 2px solid var(--mainLight);
@@ -274,6 +277,7 @@ html {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  transition: all 200ms ease-in-out;
   cursor: pointer;
 }
 .Editor aside .dropdown-content svg {
@@ -322,7 +326,8 @@ html {
   background-color: #ddd;
 }
 .Editor aside .dropdown-content a:hover {
-  background-color: #ddd;
+  background-color: var(--mainColor2);
+  color: var(--mainLight);
 }
 .Editor aside #mainLogo {
   width: 4vw;
@@ -344,12 +349,17 @@ html {
   color: var(--mainLight) !important;
 }
 .Editor aside #profileSection {
+  height: fit-content;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
+.Editor aside #profileSection * {
+  margin: 0;
+}
 .Editor aside #profileSection img {
+  border-radius: 24px;
   width: 3vw;
   height: 3vw;
 }
@@ -360,6 +370,7 @@ html {
   align-items: center;
   text-align: center;
   width: 100%;
+  margin-top: -5px;
 }
 .Editor #backBtnWrapper a {
   width: 90%;
@@ -368,6 +379,10 @@ html {
   border-radius: 0 0 12px 12px;
   color: var(--mainLight);
   text-decoration: none;
+  transition: all 200ms ease-in-out;
+}
+.Editor #backBtnWrapper a:hover {
+  background-color: var(--mainColor2);
 }
 @media screen and (max-width: 600px) {
   .Editor > main {
