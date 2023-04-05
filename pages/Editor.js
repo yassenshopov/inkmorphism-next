@@ -5,6 +5,8 @@ import {
   doc,
   setDoc,
   updateDoc,
+  collection,
+  getDocs
 } from "firebase/firestore/lite";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { useEffect, useRef, useState } from "react";
@@ -332,15 +334,15 @@ function Editor(props) {
         case "nav":
           return (
             <nav className={section.type} key={index}>
-              <div className="addSection">
-                {/* <p
+              {/* <div className="addSection">
+                <p
                   onClick={() => {
                     addSectionPopup(index);
                   }}
                 >
                   Add section <FaPlus />
-                </p> */}
-              </div>
+                </p>
+              </div> */}
               <a id="navLogo">
                 <img src={section.content.logo} draggable={false} loading="lazy"/>
                 <p>{defaults.name}</p>
@@ -364,6 +366,38 @@ function Editor(props) {
               </div>
             </nav>
           );
+        case "footer":
+            return (
+              <footer className={section.type} key={index}>
+                <div className="addSection">
+                  <p
+                    onClick={() => {
+                      addSectionPopup(index);
+                    }}
+                  >
+                    Add section <FaPlus />
+                  </p>
+                </div>
+                  <p>{section.content.txt}</p>
+                <p
+                  className="editBtn noSelect"
+                  onClick={() => {
+                    deleteSectionPopup(index);
+                  }}
+                >
+                  <BiEdit />
+                </p>
+                {/* <div className="addSection">
+                  <p
+                    onClick={() => {
+                      addSectionPopup(index + 1);
+                    }}
+                  >
+                    Add section <FaPlus />
+                  </p>
+                </div> */}
+              </footer>
+            );
         case "imgOnly":
           return (
             <section
@@ -434,9 +468,22 @@ function Editor(props) {
   }, [pageData, trigger]);
 
   useEffect(() => {
+
     async function asyncFunc() {
       if (userName !== "fallback") {
         console.log(userName, props.name);
+        const col2 = collection(db, "users", userName, "websites");
+        const data2 = await getDocs(col2).then((snapshot) => {
+          let checkPrivacy = false;
+          snapshot.forEach((doc) => {
+            if (doc.data().domainSlug === props.name) {
+              checkPrivacy = true;
+            }
+          })
+          if (checkPrivacy === false) {
+            setHideContent(true);
+          }
+        })
         col = doc(db, "users", userName, "websites", props.name);
         const data = await getDoc(col)
           .then((doc) => {

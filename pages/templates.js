@@ -66,7 +66,7 @@ export default function Templates() {
     profile_pic = userData.profile_pic;
   }
 
-  const [file, setFile] = useState(null)
+  const [file, setFile] = useState(null);
 
   async function randomSiteGen(style) {
     let user;
@@ -97,10 +97,10 @@ export default function Templates() {
       domain: slug,
       domainSlug: domainSlug,
       initDate: "",
-      name: "New Site v4",
+      name: "New Site v5",
       style: style,
       thumbnail:
-        "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fthumbnail.png?alt=media&token=7ac92b40-dd97-42be-91e2-87aa677ebae1",
+        "https://media.discordapp.net/attachments/1059220738718048346/1093273362404495442/midjourney_steel_mines_blue_and_black_anime_style_realism_26d3a467-8571-4daa-9bd1-1ddd4ca51f24.png?width=1115&height=643",
       webContent: {
         meta: {
           colorPalette: {
@@ -126,52 +126,29 @@ export default function Templates() {
                 type: "nav",
                 options: {},
                 content: {
-                  logo: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fleaf-since-484%2FsrcFiles%2Flogo.png?alt=media&token=3a81fc14-b6cc-454f-9d1c-48e9b84ccbc3"
-                }
+                  logo: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fleaf-since-484%2FsrcFiles%2Flogo.png?alt=media&token=3a81fc14-b6cc-454f-9d1c-48e9b84ccbc3",
+                },
               },
               {
-                "type": "imgAndTxt",
-                "content": {
-                    "img": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fminerals-locate-276%2FsrcFiles%2FimgPlaceholder.png?alt=media&token=f3dbf650-3ac2-4644-9047-a207ab6f80f9",
-                    "txt": "This is text about some located minerals. This is text about some located minerals. This is text about some located minerals. This is text about some located minerals."
+                type: "imgAndTxt",
+                content: {
+                  img: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fminerals-locate-276%2FsrcFiles%2FimgPlaceholder.png?alt=media&token=f3dbf650-3ac2-4644-9047-a207ab6f80f9",
+                  txt: "This is text about some located minerals. This is text about some located minerals. This is text about some located minerals. This is text about some located minerals.",
                 },
-                "options": {
-                    "direction": "directHorizontal"
-                }
+                options: {
+                  direction: "directHorizontal",
+                },
               },
               {
-                "type": "imgAndTxt",
-                "content": {
-                    "img": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fminerals-locate-276%2FsrcFiles%2FimgPlaceholder.png?alt=media&token=f3dbf650-3ac2-4644-9047-a207ab6f80f9",
-                    "txt": "This is text about some located minerals. This is text about some located minerals. This is text about some located minerals. This is text about some located minerals."
+                type: "footer",
+                options: {},
+                content: {
+                  txt: "Copyright by XYZ",
                 },
-                "options": {
-                    "direction": "directHorizontal"
-                }
               },
-              {
-                "type": "imgAndTxt",
-                "content": {
-                  "img": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fminerals-locate-276%2FsrcFiles%2FimgPlaceholder.png?alt=media&token=f3dbf650-3ac2-4644-9047-a207ab6f80f9",
-                  "txt": "This is text about some located minerals. This is text about some located minerals. This is text about some located minerals. This is text about some located minerals."
-                },
-                "options": {
-                  "direction": "directHorizontal"
-                }
-              },
-              {
-                "type": "imgAndTxt",
-                "content": {
-                  "img": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fminerals-locate-276%2FsrcFiles%2FimgPlaceholder.png?alt=media&token=f3dbf650-3ac2-4644-9047-a207ab6f80f9",
-                  "txt": "This is text about some located minerals. This is text about some located minerals. This is text about some located minerals. This is text about some located minerals."
-                },
-                "options": {
-                  "direction": "directHorizontal"
-                }
-              } 
-            ]
-          }
-        } 
+            ],
+          },
+        },
       },
     };
     await setDoc(doc(col, domainSlug), newSite);
@@ -183,24 +160,24 @@ export default function Templates() {
     // const fileName = 'logo.png'
 
     // let file;
-    let url = "./newSiteLogo.png"
+    let url = "./newSiteLogo.png";
     fetch(url)
-    .then((response) => response.blob())
-    .then((blob) => {
-      console.log(blob)
-      const fileObject = new File([blob], "logo.png", {
-        type:"image/png",
+      .then((response) => response.blob())
+      .then((blob) => {
+        console.log(blob);
+        const fileObject = new File([blob], "logo.png", {
+          type: "image/png",
+        });
+        console.log(fileObject);
+        setFile(fileObject);
+        // access file here
+        uploadBytes(logoRef, file, metadata).then((snapshot) => {
+          // window.location.reload(false)
+
+          let urlRedirect = "../../config/" + domainSlug;
+          window.location.href = urlRedirect;
+        });
       });
-      console.log(fileObject)
-      setFile(fileObject);
-          // access file here
-      uploadBytes(logoRef, file, metadata).then((snapshot) => {
-        // window.location.reload(false)
-        
-        let urlRedirect = "../../config/" + domainSlug;
-        window.location.href = urlRedirect
-      });
-    });
   }
 
   return (
