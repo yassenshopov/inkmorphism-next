@@ -189,6 +189,7 @@ html {
   border-radius: 12px;
   transition: all 400ms ease-in-out;
   z-index: 102;
+  display: flex;
 }
 .Editor > main > main .editBtn:hover {
   background-color: var(--colorLight);
