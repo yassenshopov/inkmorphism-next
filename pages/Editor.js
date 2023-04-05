@@ -7,7 +7,7 @@ import {
   updateDoc,
 } from "firebase/firestore/lite";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   MdOpenInFull,
   MdOutlineCloseFullscreen,
@@ -300,7 +300,7 @@ function Editor(props) {
               <div className="imgWrapper">
                 <img src={section.content.img} draggable={false} />
                 <div
-                  className="changeImg"
+                  className="changeImg noSelect"
                   onClick={() => {
                     uploadNewImg(index);
                   }}
@@ -381,8 +381,8 @@ function Editor(props) {
               <div className="imgWrapper">
                 <img src={section.content.img} draggable={false} />
                 <div
-                style={{borderRadius: 0}}
-                  className="changeImg"
+                  style={{ borderRadius: 0 }}
+                  className="changeImg noSelect"
                   onClick={() => {
                     uploadNewImg(index);
                   }}
@@ -652,7 +652,12 @@ function Editor(props) {
     console.log(index);
     setUploadImgFunc(() => {
       return (
-        <p onClick={() => {uploadFile(index)}} className="noSelect green">
+        <p
+          onClick={() => {
+            uploadFile(index);
+          }}
+          className="noSelect green"
+        >
           Upload
         </p>
       );
@@ -660,7 +665,7 @@ function Editor(props) {
   }
 
   const [file, setFile] = useState();
-  const [fileToUpload, setFileToUpload] = useState();
+  const [fileToUpload, setFileToUpload] = useState("123");
   const [uploadNewImgToggle, setUploadNewImgToggle] = useState(false);
   function showPreview(e) {
     if (e.target.files[0].size > 4187152) {
@@ -683,6 +688,43 @@ function Editor(props) {
     return result;
   }
 
+  function actualUpload(photoRef, metadata, index) {
+    uploadBytes(photoRef, actualFileToUpload, metadata).then((snapshot) => {
+      console.log("Uploaded a file:", snapshot.metadata.name);
+      console.log(snapshot);
+      console.log(actualFileToUpload)      
+      const pngURL = getDownloadURL(photoRef).then((url) => {
+        console.log(url);
+        setUploadNewImgToggle(false);
+        setTimeout(() => {
+          setPageData((pageData) => [
+            ...pageData.slice(0, index),
+            {
+              ...pageData[index],
+              content: {
+                ...pageData.content,
+                txt:
+                  pageData[index].content.txt !== undefined
+                    ? pageData[index].content.txt
+                    : "",
+                img: url,
+              },
+            },
+            ...pageData.slice(index + 1),
+          ]);
+          // clearFileInput();
+        }, 2000);
+      });
+    });
+  }
+
+  useEffect(() => {
+    console.log(fileToUpload)
+    setActualFileToUpload(fileToUpload)
+  }, [fileToUpload])
+
+  const [actualFileToUpload, setActualFileToUpload] = useState();
+
   async function uploadFile(index) {
     let uid;
     let randomString = generateRandomString(16);
@@ -703,40 +745,18 @@ function Editor(props) {
     let photoRef = ref(storage, uid);
     let metadata = { contentType: "image/png" };
 
-    // photoRef.put(fileToUpload).then((snapshot) => {
-    //   console.log('Uploaded a file:', snapshot.metadata.name);
-    //   snapshot.ref.getDownloadURL().then((url) => {
-    //     console.log('File download URL:', url);
-    //   });
-    // });
+    if (false) {
+      console.log(fileToUpload);
+      console.log(file);
+    } else {
+      actualUpload(photoRef, metadata, index)
+    }
+  }
 
-    await uploadBytes(photoRef, fileToUpload, metadata).then((snapshot) => {
-      console.log('Uploaded a file:', snapshot.metadata.name);
-      console.log(snapshot)
-      const pngURL = getDownloadURL(photoRef).then((url) => {
-        console.log(url)
-        setUploadNewImgToggle(false);
-        setTimeout(() => {
-          setPageData((pageData) => [
-            ...pageData.slice(0, index),
-            {
-              ...pageData[index],
-              content: {
-                ...pageData.content,
-                txt: (pageData[index].content.txt !== undefined ? pageData[index].content.txt : ""),
-                img: url,
-              },
-            },
-            ...pageData.slice(index + 1),
-          ]);
-        },2000)
-      });
-
-      // snapshot.ref.getDownloadURL().then((url) => {
-      //   console.log('File download URL:', url);
-      // });
-      // window.location.reload(false);
-    });
+  function clearFileInput() {
+    setActualFileToUpload("")
+    setFileToUpload("")
+    setFile("")
   }
 
   return (
@@ -788,6 +808,7 @@ function Editor(props) {
           <form id="popup">
             <RxCross1
               id="customX"
+              className="noSelect"
               onClick={() => {
                 setPopupToggle(false);
               }}
@@ -957,8 +978,8 @@ function Editor(props) {
               </a>
               <div className={`dropdown-items ${isProfileOpen ? "show" : ""}`}>
                 <section id="profileSection">
-                  <img src={user.photoURL} alt="Profile Pic" />
                   <div>
+                    <img src={user.photoURL} alt="Profile Pic" />
                     <p>{user.displayName}</p>
                     <p>{user.email}</p>
                   </div>
@@ -1002,7 +1023,7 @@ function Editor(props) {
         </div>
 
         <div id="backBtnWrapper">
-          <a href="../../dashboard" id="backBtn">
+          <a href="../../dashboard" id="backBtn" className="noSelect">
             ← Back to Dashboard
           </a>
         </div>
