@@ -2,10 +2,6 @@
   --mainDark: #252525;
   --mainGrey: #c7c7c7;
   --mainLight: #fafafa;
-  --color1: rgba(230, 181, 22, 0.814);
-  --color2: rgba(23, 115, 235);
-  --color1-transparent: rgba(230, 181, 22, 0.4);
-  --color2-transparent: rgba(23, 115, 235, 0.4);
   --font1: "BalooChettan2";
   --font2: "Oswald";
 }
@@ -158,7 +154,7 @@ html {
   transition: all 400ms ease-in-out;
   color: var(--mainLight);
   max-width: 100%;
-  font-size: 2rem;
+  font-size: 2vw;
   cursor: pointer;
   border-radius: 24px;
 }

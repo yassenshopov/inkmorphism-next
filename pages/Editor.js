@@ -5,6 +5,8 @@ import {
   doc,
   setDoc,
   updateDoc,
+  collection,
+  getDocs
 } from "firebase/firestore/lite";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { useEffect, useRef, useState } from "react";
@@ -385,7 +387,7 @@ function Editor(props) {
                 >
                   <BiEdit />
                 </p>
-                <div className="addSection">
+                {/* <div className="addSection">
                   <p
                     onClick={() => {
                       addSectionPopup(index + 1);
@@ -393,7 +395,7 @@ function Editor(props) {
                   >
                     Add section <FaPlus />
                   </p>
-                </div>
+                </div> */}
               </footer>
             );
         case "imgOnly":
@@ -466,9 +468,22 @@ function Editor(props) {
   }, [pageData, trigger]);
 
   useEffect(() => {
+
     async function asyncFunc() {
       if (userName !== "fallback") {
         console.log(userName, props.name);
+        const col2 = collection(db, "users", userName, "websites");
+        const data2 = await getDocs(col2).then((snapshot) => {
+          let checkPrivacy = false;
+          snapshot.forEach((doc) => {
+            if (doc.data().domainSlug === props.name) {
+              checkPrivacy = true;
+            }
+          })
+          if (checkPrivacy === false) {
+            setHideContent(true);
+          }
+        })
         col = doc(db, "users", userName, "websites", props.name);
         const data = await getDoc(col)
           .then((doc) => {
