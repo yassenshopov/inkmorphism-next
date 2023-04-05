@@ -161,6 +161,7 @@ function Editor(props) {
           <section
             key={index}
             id={section.id}
+            className="noSelect"
             onClick={() => {
               addSection(section.id, ind);
             }}
@@ -332,16 +333,16 @@ function Editor(props) {
           return (
             <nav className={section.type} key={index}>
               <div className="addSection">
-                <p
+                {/* <p
                   onClick={() => {
                     addSectionPopup(index);
                   }}
                 >
                   Add section <FaPlus />
-                </p>
+                </p> */}
               </div>
               <a id="navLogo">
-                <img src={section.content.logo} draggable={false} />
+                <img src={section.content.logo} draggable={false} loading="lazy"/>
                 <p>{defaults.name}</p>
               </a>
               <p
@@ -380,7 +381,7 @@ function Editor(props) {
                 </p>
               </div>
               <div className="imgWrapper">
-                <img src={section.content.img} draggable={false} />
+                <img src={section.content.img} draggable={false} loading="lazy"/>
                 <div
                   style={{ borderRadius: 0 }}
                   className="changeImg noSelect"
@@ -869,24 +870,25 @@ function Editor(props) {
             </div>
           </form>
         </div>
-
-        <main
-          className={defaults["webContent"]["meta"]["metaStyle"]}
-          style={{
-            "--color1":
-              defaults["webContent"]["meta"]["colorPalette"]["color1"],
-            "--color2":
-              defaults["webContent"]["meta"]["colorPalette"]["color2"],
-            "--color3":
-              defaults["webContent"]["meta"]["colorPalette"]["color3"],
-            "--colorLight":
-              defaults["webContent"]["meta"]["colorPalette"]["colorLight"],
-            "--colorDark":
-              defaults["webContent"]["meta"]["colorPalette"]["colorDark"],
-          }}
-        >
-          {sectionsData}
-        </main>
+        <div id="mainEditorWrapper">
+          <main
+            className={defaults["webContent"]["meta"]["metaStyle"]}
+            style={{
+              "--color1":
+                defaults["webContent"]["meta"]["colorPalette"]["color1"],
+              "--color2":
+                defaults["webContent"]["meta"]["colorPalette"]["color2"],
+              "--color3":
+                defaults["webContent"]["meta"]["colorPalette"]["color3"],
+              "--colorLight":
+                defaults["webContent"]["meta"]["colorPalette"]["colorLight"],
+              "--colorDark":
+                defaults["webContent"]["meta"]["colorPalette"]["colorDark"],
+            }}
+          >
+            {sectionsData}
+          </main>
+        </div>
       </main>
 
       <aside>
