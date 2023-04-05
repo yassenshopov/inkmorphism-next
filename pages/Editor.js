@@ -539,7 +539,10 @@ function Editor(props) {
         content: {
           ...pageData.content,
           txt: e.target.innerText,
-          img: (pageData[index].content.img !== undefined ? pageData[index].content.img : ""),
+          img:
+            pageData[index].content.img !== undefined
+              ? pageData[index].content.img
+              : "",
         },
       },
       ...pageData.slice(index + 1),
@@ -970,6 +973,20 @@ function Editor(props) {
                     <label htmlFor="colorDark">Color Dark</label>
                   </li>
                 </ul>
+                {/* This is a TODO section */}
+                {/* <div id="websiteStyle">
+                  <label for="websiteStyle" class="label">
+                    Website Style:
+                  </label>
+                  <select name="websiteStyle" class="dropdown">
+                    <option value="neobrutalism" selected>
+                      Simple
+                    </option>
+                    <option value="neobrutalism">Neobrutalism</option>
+                    <option value="glassmorphism">Glassmorphism</option>
+                    <option value="minimalism">Minimalism</option>
+                  </select>
+                </div> */}
               </div>
               <a onClick={toggleProfile}>
                 Profile{" "}
