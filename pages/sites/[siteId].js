@@ -11,18 +11,30 @@ import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import Head from "next/head";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+
 export default function Default() {
   const router = useRouter();
   const siteId = router.query.siteId;
-  console.log(siteId);
+  useEffect(() => {
+    const getStatic = () => {
+      importData();
+    };
+    getStatic();
+  }, [router.query.siteId]);
+  const importData = async () => {
+    if (siteId !== undefined) {
+      const jsonData = await import(`./static/${siteId}.json`);
+      setPageData(jsonData.default.webContent.pages.main.structure);
+      setMetaData(jsonData.default.webContent.meta);
+    }
+  };
 
   const [fullSite, setFullSite] = useState(<></>);
   useEffect(() => {
     const el = document.getElementById("fetch");
-    // el.click();
     setTimeout(() => {
       el.click();
-    }, 3500);
+    }, 1500);
   }, []);
 
   let dataArr = [];
@@ -49,21 +61,23 @@ export default function Default() {
 
   async function getData() {
     const ref = doc(db, "publicSites", siteId);
-    const data = await getDoc(ref).then((doc) => {
-      dataArr.push(doc.data());
-      dataArr.forEach((item, index) => {
-        if (item !== undefined && index === 1) {
-          try {
-            setPageData(item.webContent.pages.main.structure);
-            setMetaData(item.webContent.meta);
-            console.log(item.webContent.meta);
-          } catch (err) {
-            console.log(err);
+    try {
+      const data = await getDoc(ref).then((doc) => {
+        dataArr.push(doc.data());
+        dataArr.forEach((item, index) => {
+          if (item !== undefined && index === 1) {
+            try {
+              setPageData(item.webContent.pages.main.structure);
+              setMetaData(item.webContent.meta);
+            } catch (err) {
+              console.log(err);
+            }
           }
-        }
+        });
       });
-      console.log(dataArr);
-    });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   useEffect(() => {
@@ -138,18 +152,13 @@ export default function Default() {
         "--color1": metaData["colorPalette"]["color1"],
         "--color2": metaData["colorPalette"]["color2"],
         "--color3": metaData["colorPalette"]["color3"],
-        "--colorLight":
-          metaData["colorPalette"]["colorLight"],
-        "--colorDark":
-          metaData["colorPalette"]["colorDark"],
+        "--colorLight": metaData["colorPalette"]["colorLight"],
+        "--colorDark": metaData["colorPalette"]["colorDark"],
       }}
     >
       <Head>
         <title>{metaData.metaTitle}</title>
-        <meta
-          name="description"
-          content={metaData.metaDescription}
-        ></meta>
+        <meta name="description" content={metaData.metaDescription}></meta>
         <link rel="icon" href={metaData.metaFavicon} />
       </Head>
       <button id="fetch" onClick={getData}></button>
