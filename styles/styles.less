@@ -1380,8 +1380,16 @@
   min-height: 100vh;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: var(--colorDark);
+  display: flex;
+  flex-direction: column;
+
+  > * {
+    min-height: 150px;
+  }
+  
   img {
     border-radius: 16px;
+    width: 100%;
   }
 }
 
@@ -1459,6 +1467,7 @@
   padding: 40px 10%;
   align-items: center;
   justify-content: space-between;
+  gap: 2vw;
   p {
     font-size: 1.2rem;
     cursor: pointer;

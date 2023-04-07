@@ -6,7 +6,7 @@ import {
   setDoc,
   updateDoc,
   collection,
-  getDocs
+  getDocs,
 } from "firebase/firestore/lite";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { useEffect, useRef, useState } from "react";
@@ -67,25 +67,7 @@ function Editor(props) {
     domain: "default.inkmorphism.com",
     deleted: false,
   });
-  const [pageData, setPageData] = useState([
-    {
-      type: "nav",
-      options: {},
-      content: {
-        logo: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fleaf-since-484%2FsrcFiles%2Flogo.png?alt=media&token=3a81fc14-b6cc-454f-9d1c-48e9b84ccbc3",
-      },
-    },
-    {
-      type: "imgAndTxt",
-      content: {
-        img: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fminerals-locate-276%2FsrcFiles%2FimgPlaceholder.png?alt=media&token=f3dbf650-3ac2-4644-9047-a207ab6f80f9",
-        txt: "This is text about some located minerals. This is text about some located minerals. This is text about some located minerals. This is text about some located minerals.",
-      },
-      options: {
-        direction: "directHorizontal",
-      },
-    },
-  ]);
+  const [pageData, setPageData] = useState([]);
   const [sectionsData, setSectionsData] = useState(<section></section>);
 
   const [hideContent, setHideContent] = useState(false);
@@ -344,7 +326,11 @@ function Editor(props) {
                 </p>
               </div> */}
               <a id="navLogo">
-                <img src={section.content.logo} draggable={false} loading="lazy"/>
+                <img
+                  src={section.content.logo}
+                  draggable={false}
+                  loading="lazy"
+                />
                 <p>{defaults.name}</p>
               </a>
               <p
@@ -367,27 +353,27 @@ function Editor(props) {
             </nav>
           );
         case "footer":
-            return (
-              <footer className={section.type} key={index}>
-                <div className="addSection">
-                  <p
-                    onClick={() => {
-                      addSectionPopup(index);
-                    }}
-                  >
-                    Add section <FaPlus />
-                  </p>
-                </div>
-                  <p>{section.content.txt}</p>
+          return (
+            <footer className={section.type} key={index}>
+              <div className="addSection">
                 <p
-                  className="editBtn noSelect"
                   onClick={() => {
-                    deleteSectionPopup(index);
+                    addSectionPopup(index);
                   }}
                 >
-                  <BiEdit />
+                  Add section <FaPlus />
                 </p>
-                {/* <div className="addSection">
+              </div>
+              <p>{section.content.txt}</p>
+              <p
+                className="editBtn noSelect"
+                onClick={() => {
+                  deleteSectionPopup(index);
+                }}
+              >
+                <BiEdit />
+              </p>
+              {/* <div className="addSection">
                   <p
                     onClick={() => {
                       addSectionPopup(index + 1);
@@ -396,8 +382,8 @@ function Editor(props) {
                     Add section <FaPlus />
                   </p>
                 </div> */}
-              </footer>
-            );
+            </footer>
+          );
         case "imgOnly":
           return (
             <section
@@ -415,7 +401,11 @@ function Editor(props) {
                 </p>
               </div>
               <div className="imgWrapper">
-                <img src={section.content.img} draggable={false} loading="lazy"/>
+                <img
+                  src={section.content.img}
+                  draggable={false}
+                  loading="lazy"
+                />
                 <div
                   style={{ borderRadius: 0 }}
                   className="changeImg noSelect"
@@ -468,7 +458,6 @@ function Editor(props) {
   }, [pageData, trigger]);
 
   useEffect(() => {
-
     async function asyncFunc() {
       if (userName !== "fallback") {
         console.log(userName, props.name);
@@ -479,11 +468,11 @@ function Editor(props) {
             if (doc.data().domainSlug === props.name) {
               checkPrivacy = true;
             }
-          })
+          });
           if (checkPrivacy === false) {
             setHideContent(true);
           }
-        })
+        });
         col = doc(db, "users", userName, "websites", props.name);
         const data = await getDoc(col)
           .then((doc) => {
@@ -553,6 +542,10 @@ function Editor(props) {
     }
     await setDoc(
       doc(db, "users", userName, "websites", props["name"]),
+      savedData
+    );
+    await setDoc(
+      doc(db, "publicSites", props["name"]), 
       savedData
     );
     console.log(savedData);
