@@ -44,12 +44,12 @@ export default function Default() {
     },
     metaDescription: "The description for your website",
   });
-  
+
   let db = getFirestore(app);
 
   async function getData() {
     const ref = doc(db, "publicSites", siteId);
-    const data = await getDoc(ref).then((doc) => { 
+    const data = await getDoc(ref).then((doc) => {
       dataArr.push(doc.data());
       dataArr.forEach((item, index) => {
         if (item !== undefined && index === 1) {
@@ -75,10 +75,7 @@ export default function Default() {
               key={index}
               className={section.type + " " + section.options.direction}
             >
-              <p
-              >
-                {section.content.txt}
-              </p>
+              <p>{section.content.txt}</p>
             </section>
           );
         case "imgAndTxt":
@@ -87,10 +84,7 @@ export default function Default() {
               key={index}
               className={section.type + " " + section.options.direction}
             >
-              <p
-              >
-                {section.content.txt}
-              </p>
+              <p>{section.content.txt}</p>
               <div className="imgWrapper">
                 <img src={section.content.img} draggable={false} />
               </div>
@@ -105,7 +99,7 @@ export default function Default() {
                   draggable={false}
                   loading="lazy"
                 />
-                {/* <p>{defaults.name}</p> */}
+                <p>{metaData.metaTitle}</p>
               </a>
             </nav>
           );
@@ -138,8 +132,26 @@ export default function Default() {
   }, [pageData]);
 
   return (
-    <div className={metaData.metaStyle}>
-      <Head></Head>
+    <div
+      className={metaData.metaStyle}
+      style={{
+        "--color1": metaData["colorPalette"]["color1"],
+        "--color2": metaData["colorPalette"]["color2"],
+        "--color3": metaData["colorPalette"]["color3"],
+        "--colorLight":
+          metaData["colorPalette"]["colorLight"],
+        "--colorDark":
+          metaData["colorPalette"]["colorDark"],
+      }}
+    >
+      <Head>
+        <title>{metaData.metaTitle}</title>
+        <meta
+          name="description"
+          content={metaData.metaDescription}
+        ></meta>
+        <link rel="icon" href={metaData.metaFavicon} />
+      </Head>
       <button id="fetch" onClick={getData}></button>
       {fullSite}
     </div>
