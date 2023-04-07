@@ -49,7 +49,7 @@ export default function Default() {
 
   async function getData() {
     const ref = doc(db, "publicSites", siteId);
-    const data = await getDoc(ref).then((doc) => {
+    const data = await getDoc(ref).then((doc) => { 
       dataArr.push(doc.data());
       dataArr.forEach((item, index) => {
         if (item !== undefined && index === 1) {
