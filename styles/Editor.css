@@ -123,6 +123,7 @@ html {
   transition: all 400ms ease-in-out;
   scroll-behavior: smooth;
   overflow-y: scroll;
+  width: 100%;
 }
 .Editor > main #mainEditorWrapper main > * {
   min-height: 150px;

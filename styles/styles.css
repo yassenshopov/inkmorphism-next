@@ -1292,7 +1292,7 @@
 }
 .skeletal {
   background: linear-gradient(var(--color1), var(--color2));
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: var(--colorDark);
@@ -1995,6 +1995,24 @@
   }
   #accountWrapper #accountSection #profilePicWrapper {
     max-width: 70%;
+  }
+  .nav p {
+    display: none;
+  }
+  .imgAndTxt {
+    flex-direction: column-reverse;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .imgAndTxt img,
+  .imgAndTxt p {
+    width: 100% !important;
+  }
+  .imgAndTxt p {
+    text-align: center;
+  }
+  .imgAndTxt img {
+    border-radius: 0;
   }
 }
 @media screen and (max-width: 900px) and (min-width: 649px) {

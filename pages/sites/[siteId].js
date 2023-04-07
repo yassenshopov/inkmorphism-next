@@ -23,9 +23,13 @@ export default function Default() {
   }, [router.query.siteId]);
   const importData = async () => {
     if (siteId !== undefined) {
-      const jsonData = await import(`./static/${siteId}.json`);
-      setPageData(jsonData.default.webContent.pages.main.structure);
-      setMetaData(jsonData.default.webContent.meta);
+      try {
+        const jsonData = await import(`./static/${siteId}.json`);
+        setPageData(jsonData.default.webContent.pages.main.structure);
+        setMetaData(jsonData.default.webContent.meta);
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
@@ -66,6 +70,7 @@ export default function Default() {
         dataArr.push(doc.data());
         dataArr.forEach((item, index) => {
           if (item !== undefined && index === 1) {
+            console.log(item)
             try {
               setPageData(item.webContent.pages.main.structure);
               setMetaData(item.webContent.meta);
@@ -99,19 +104,16 @@ export default function Default() {
               className={section.type + " " + section.options.direction}
             >
               <p>{section.content.txt}</p>
-              <div className="imgWrapper">
-                <img src={section.content.img} draggable={false} />
-              </div>
+              <img src={section.content.img} draggable={false} loading={index>3 ? "lazy" : "eager"} />
             </section>
           );
         case "nav":
           return (
             <nav className={section.type} key={index}>
-              <a id="navLogo">
+              <a href="" id="navLogo" className="noSelect">
                 <img
                   src={section.content.logo}
                   draggable={false}
-                  loading="lazy"
                 />
                 <p>{metaData.metaTitle}</p>
               </a>
@@ -129,13 +131,7 @@ export default function Default() {
               key={index}
               className={section.type + " " + section.options.direction}
             >
-              <div className="imgWrapper">
-                <img
-                  src={section.content.img}
-                  draggable={false}
-                  loading="lazy"
-                />
-              </div>
+              <img src={section.content.img} draggable={false} loading={index>3 ? "lazy" : "eager"} />
             </section>
           );
         default:

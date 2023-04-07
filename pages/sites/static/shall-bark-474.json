@@ -1,96 +1,106 @@
 {
-    "thumbnail": "https://media.discordapp.net/attachments/1059220738718048346/1093273362404495442/midjourney_steel_mines_blue_and_black_anime_style_realism_26d3a467-8571-4daa-9bd1-1ddd4ca51f24.png?width=1115&height=643",
-    "deleted": false,
-    "webContent": {
-        "pages": {
-            "main": {
-                "structure": [
-                    {
-                        "options": {},
-                        "type": "nav",
-                        "content": {
-                            "logo": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fleaf-since-484%2FsrcFiles%2Flogo.png?alt=media&token=3a81fc14-b6cc-454f-9d1c-48e9b84ccbc3"
-                        }
-                    },
-                    {
-                        "options": {
-                            "direction": ""
-                        },
-                        "type": "imgOnly",
-                        "content": {
-                            "txt": "",
-                            "img": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fshall-bark-474%2FmmQAKCnrYuGN0j6o.png?alt=media&token=39fbacdc-dea5-4002-a8fb-5f3f30f14b6f"
-                        }
-                    },
-                    {
-                        "options": {
-                            "direction": ""
-                        },
-                        "type": "imgOnly",
-                        "content": {
-                            "txt": "",
-                            "img": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fshall-bark-474%2FRGypkWyDpthgnJGI.png?alt=media&token=7a7b398b-9d35-4aa0-b1ec-5b2dfa81d8a4"
-                        }
-                    },
-                    {
-                        "options": {
-                            "direction": "directHorizontal"
-                        },
-                        "type": "imgAndTxt",
-                        "content": {
-                            "txt": "Age of Dragons",
-                            "img": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fshall-bark-474%2FzPMvX9bDRBWtM37T.png?alt=media&token=6d277089-eb0d-49fd-a4e1-d4d99204ea8b"
-                        }
-                    },
-                    {
-                        "options": {
-                            "direction": ""
-                        },
-                        "type": "imgOnly",
-                        "content": {
-                            "txt": "",
-                            "img": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fshall-bark-474%2Fp9yKHi19nTlm10Ov.png?alt=media&token=b2042c70-535f-4a1f-8f35-5a6d5fd62673"
-                        }
-                    },
-                    {
-                        "options": {
-                            "direction": ""
-                        },
-                        "type": "imgOnly",
-                        "content": {
-                            "txt": "",
-                            "img": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fshall-bark-474%2FbMslbqtsbY7RRGWP.png?alt=media&token=d687ab47-8556-41f1-94dc-07704ee558ed"
-                        }
-                    },
-                    {
-                        "options": {},
-                        "type": "footer",
-                        "content": {
-                            "txt": "Copyright by XYZ"
-                        }
-                    }
-                ]
+  "thumbnail": "https://media.discordapp.net/attachments/1059220738718048346/1093273362404495442/midjourney_steel_mines_blue_and_black_anime_style_realism_26d3a467-8571-4daa-9bd1-1ddd4ca51f24.png?width=1115&height=643",
+  "deleted": false,
+  "webContent": {
+    "pages": {
+      "main": {
+        "structure": [
+          {
+            "options": {},
+            "type": "nav",
+            "content": {
+              "logo": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fshall-bark-474%2Flogo.png?alt=media&token=ab62a6c5-6114-441b-81d2-d632694356e6"
             }
-        },
-        "meta": {
-            "metaThumbnail": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fthumbnail.png?alt=media&token=bf24a392-9096-4d28-a9b0-f9d7941f8e85",
-            "metaFavicon": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Flogo.png?alt=media&token=ba50553d-4f67-4d24-b909-e98e6585dad9",
-            "metaStyle": "skeletal",
-            "metaTitle": "Your Website",
-            "metaAuthor": "Meta Author",
-            "colorPalette": {
-                "color1": "#e5ffee",
-                "color2": "#edffeb",
-                "colorDark": "#121212",
-                "colorLight": "#fefefe",
-                "color3": "#79e16b"
+          },
+          {
+            "options": {
+              "direction": ""
             },
-            "metaDescription": "The description for your website"
-        }
+            "type": "imgOnly",
+            "content": {
+              "txt": "",
+              "img": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fshall-bark-474%2FRGypkWyDpthgnJGI.png?alt=media&token=7a7b398b-9d35-4aa0-b1ec-5b2dfa81d8a4"
+            }
+          },
+          {
+            "options": {
+              "direction": "reverseHorizontal"
+            },
+            "type": "imgAndTxt",
+            "content": {
+              "txt": "This is your new ImgNTxt section.",
+              "img": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fshall-bark-474%2FlEQiZmO3x85X5dKb.png?alt=media&token=cf5b3b7b-b217-4e0b-93ba-ecdea6372460"
+            }
+          },
+          {
+            "options": {
+              "direction": "directHorizontal"
+            },
+            "type": "imgAndTxt",
+            "content": {
+              "txt": "Age of Dragons",
+              "img": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fshall-bark-474%2F5i4fGxZt0IdF372U.png?alt=media&token=48d4be46-7c38-41d8-adc8-9d4a83a71ce2"
+            }
+          },
+          {
+            "options": {
+              "direction": "reverseHorizontal"
+            },
+            "type": "imgAndTxt",
+            "content": {
+              "txt": "This is your new ImgNTxt section.",
+              "img": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fshall-bark-474%2FDuxVkppDDHScYBUP.png?alt=media&token=627ebee0-9ad3-4454-a8e4-6482a9674401"
+            }
+          },
+          {
+            "options": {
+              "direction": ""
+            },
+            "type": "imgOnly",
+            "content": {
+              "txt": "",
+              "img": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fshall-bark-474%2Fp9yKHi19nTlm10Ov.png?alt=media&token=b2042c70-535f-4a1f-8f35-5a6d5fd62673"
+            }
+          },
+          {
+            "options": {
+              "direction": ""
+            },
+            "type": "imgOnly",
+            "content": {
+              "txt": "",
+              "img": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fshall-bark-474%2FbMslbqtsbY7RRGWP.png?alt=media&token=d687ab47-8556-41f1-94dc-07704ee558ed"
+            }
+          },
+          {
+            "options": {},
+            "type": "footer",
+            "content": {
+              "txt": "Copyright by DnD 2023"
+            }
+          }
+        ]
+      }
     },
-    "domainSlug": "shall-bark-474",
-    "initDate": "",
-    "domain": "shall-bark-474.inkmorphism.com",
-    "name": "Forestry",
-    "style": "Skeletal"
+    "meta": {
+      "metaThumbnail": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fthumbnail.png?alt=media&token=bf24a392-9096-4d28-a9b0-f9d7941f8e85",
+      "metaStyle": "skeletal",
+      "metaTitle": "Dragon's Den",
+      "metaFavicon": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fshall-bark-474%2Flogo.png?alt=media&token=ab62a6c5-6114-441b-81d2-d632694356e6",
+      "metaAuthor": "Meta Author",
+      "colorPalette": {
+        "color1": "#000000",
+        "color2": "#000000",
+        "colorDark": "#ffffff",
+        "colorLight": "#fefefe",
+        "color3": "#79e16b"
+      },
+      "metaDescription": "The description for your website"
+    }
+  },
+  "domainSlug": "shall-bark-474",
+  "initDate": "",
+  "domain": "shall-bark-474.inkmorphism.com",
+  "name": "Dragon's Den",
+  "style": "Skeletal"
 }
