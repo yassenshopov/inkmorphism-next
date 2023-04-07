@@ -1296,9 +1296,15 @@
   min-height: 100vh;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: var(--colorDark);
+  display: flex;
+  flex-direction: column;
+}
+.skeletal > * {
+  min-height: 150px;
 }
 .skeletal img {
   border-radius: 16px;
+  width: 100%;
 }
 .txtOnly {
   display: flex;
@@ -1368,6 +1374,7 @@
   padding: 40px 10%;
   align-items: center;
   justify-content: space-between;
+  gap: 2vw;
 }
 .imgAndTxt p {
   font-size: 1.2rem;
