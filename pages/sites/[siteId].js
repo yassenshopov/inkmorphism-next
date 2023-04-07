@@ -70,6 +70,7 @@ export default function Default() {
         dataArr.push(doc.data());
         dataArr.forEach((item, index) => {
           if (item !== undefined && index === 1) {
+            console.log(item)
             try {
               setPageData(item.webContent.pages.main.structure);
               setMetaData(item.webContent.meta);
@@ -103,7 +104,7 @@ export default function Default() {
               className={section.type + " " + section.options.direction}
             >
               <p>{section.content.txt}</p>
-              <img src={section.content.img} draggable={false} />
+              <img src={section.content.img} draggable={false} loading={index>3 ? "lazy" : "eager"} />
             </section>
           );
         case "nav":
@@ -113,7 +114,6 @@ export default function Default() {
                 <img
                   src={section.content.logo}
                   draggable={false}
-                  loading="lazy"
                 />
                 <p>{metaData.metaTitle}</p>
               </a>
@@ -131,7 +131,7 @@ export default function Default() {
               key={index}
               className={section.type + " " + section.options.direction}
             >
-              <img src={section.content.img} draggable={false} loading="lazy" />
+              <img src={section.content.img} draggable={false} loading={index>3 ? "lazy" : "eager"} />
             </section>
           );
         default:

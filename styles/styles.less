@@ -1382,11 +1382,9 @@
   color: var(--colorDark);
   display: flex;
   flex-direction: column;
-
   > * {
     min-height: 150px;
   }
-  
   img {
     border-radius: 16px;
     width: 100%;
@@ -1453,13 +1451,13 @@
 }
 
 .footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    p {
-        text-align: center;
-    }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  p {
+    text-align: center;
+  }
 }
 
 .imgAndTxt {
@@ -2133,6 +2131,27 @@
       #profilePicWrapper {
         max-width: 70%;
       }
+    }
+  }
+
+  .nav {
+    p {
+      display: none;
+    }
+  }
+
+  .imgAndTxt {
+    flex-direction: column-reverse;
+    padding-left: 0;
+    padding-right: 0;
+    img, p {
+      width: 100% !important;
+    }
+    p {
+      text-align: center;
+    }
+    img {
+      border-radius: 0;
     }
   }
 }
