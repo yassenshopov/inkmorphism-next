@@ -23,13 +23,13 @@ export default function Default() {
   }, [router.query.siteId]);
   const importData = async () => {
     if (siteId !== undefined) {
-        try {
-            const jsonData = await import(`./static/${siteId}.json`);
-            setPageData(jsonData.default.webContent.pages.main.structure);
-            setMetaData(jsonData.default.webContent.meta);
-        } catch(err) {
-            console.log(err)
-        }
+      try {
+        const jsonData = await import(`./static/${siteId}.json`);
+        setPageData(jsonData.default.webContent.pages.main.structure);
+        setMetaData(jsonData.default.webContent.meta);
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
@@ -103,15 +103,13 @@ export default function Default() {
               className={section.type + " " + section.options.direction}
             >
               <p>{section.content.txt}</p>
-              <div className="imgWrapper">
-                <img src={section.content.img} draggable={false} />
-              </div>
+              <img src={section.content.img} draggable={false} />
             </section>
           );
         case "nav":
           return (
             <nav className={section.type} key={index}>
-              <a id="navLogo">
+              <a href="" id="navLogo" className="noSelect">
                 <img
                   src={section.content.logo}
                   draggable={false}
@@ -133,13 +131,7 @@ export default function Default() {
               key={index}
               className={section.type + " " + section.options.direction}
             >
-              <div className="imgWrapper">
-                <img
-                  src={section.content.img}
-                  draggable={false}
-                  loading="lazy"
-                />
-              </div>
+              <img src={section.content.img} draggable={false} loading="lazy" />
             </section>
           );
         default:
