@@ -23,9 +23,13 @@ export default function Default() {
   }, [router.query.siteId]);
   const importData = async () => {
     if (siteId !== undefined) {
-      const jsonData = await import(`./static/${siteId}.json`);
-      setPageData(jsonData.default.webContent.pages.main.structure);
-      setMetaData(jsonData.default.webContent.meta);
+        try {
+            const jsonData = await import(`./static/${siteId}.json`);
+            setPageData(jsonData.default.webContent.pages.main.structure);
+            setMetaData(jsonData.default.webContent.meta);
+        } catch(err) {
+            console.log(err)
+        }
     }
   };
 
