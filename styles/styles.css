@@ -576,7 +576,7 @@
 #dash #websites > a:hover {
   background-color: #3994ac;
 }
-#dash #websites > *:last-child {
+#dash #websites #linkTemplates {
   display: flex;
   flex-direction: row;
   justify-content: center;
