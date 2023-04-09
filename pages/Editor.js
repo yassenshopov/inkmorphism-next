@@ -316,18 +316,9 @@ function Editor(props) {
         case "nav":
           return (
             <nav className={section.type} key={index}>
-              {/* <div className="addSection">
-                <p
-                  onClick={() => {
-                    addSectionPopup(index);
-                  }}
-                >
-                  Add section <FaPlus />
-                </p>
-              </div> */}
               <a id="navLogo">
                 <img
-                  src={section.content.logo}
+                  src={defaults.webContent.meta.metaFavicon}
                   draggable={false}
                   loading="lazy"
                 />
@@ -482,6 +473,7 @@ function Editor(props) {
                 try {
                   setData(item);
                   setPageData(item.webContent.pages.main.structure);
+                  setLogoFile(item.webContent.meta.metaFavicon);
                 } catch (err) {
                   console.log(err);
                 }
@@ -544,10 +536,7 @@ function Editor(props) {
       doc(db, "users", userName, "websites", props["name"]),
       savedData
     );
-    await setDoc(
-      doc(db, "publicSites", props["name"]), 
-      savedData
-    );
+    await setDoc(doc(db, "publicSites", props["name"]), savedData);
     console.log(savedData);
     setTimeout(() => {
       setIsSaved(false);
@@ -722,6 +711,59 @@ function Editor(props) {
     }
   }
 
+  const [logoFile, setLogoFile] = useState();
+  const [logoFileToUpload, setLogoFileToUpload] = useState("123");
+
+  function showLogoPreview(e) {
+    try {
+      if (e.target.files[0].size > 4187152) {
+        alert("File is bigger than 4 MB. Use a smaller file.");
+        e.val = "";
+      } else {
+        setLogoFile(URL.createObjectURL(e.target.files[0]));
+        setLogoFileToUpload(e.target.files[0]);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  useEffect(() => {
+    console.log(logoFileToUpload);
+    if (logoFileToUpload !== "123" && 1) {
+      try {
+        uid =
+          "user-" + props.auth.currentUser.uid + "/" + props.name + "/logo.png";
+      } catch (err) {
+        uid = "_";
+      }
+      let logoFileRef = ref(storage, uid);
+      let metadata = { contentType: "image/png" };
+      // actualUpload(photoRef, metadata);
+      console.log();
+      uploadBytes(logoFileRef, logoFileToUpload, metadata).then((snapshot) => {
+        console.log(snapshot);
+        const pngURL = getDownloadURL(logoFileRef).then((url) => {
+          console.log(url);
+          setTrigger(!trigger);
+        });
+      });
+      // setPageData((pageData) => [
+      //   {
+      //     ...pageData[0],
+      //     content: {
+      //       ...pageData.content,
+      //       txt:
+      //         pageData[0].content.txt !== undefined
+      //           ? pageData[0].content.txt
+      //           : "",
+      //     },
+      //   },
+      //   ...pageData.slice(1),
+      // ]);
+    }
+  }, [logoFileToUpload]);
+
   function generateRandomString(length) {
     let result = "";
     const characters =
@@ -770,8 +812,9 @@ function Editor(props) {
   const [actualFileToUpload, setActualFileToUpload] = useState();
   const [indexOfNewPic, setIndexOfNewPic] = useState(1);
 
+  let uid;
+
   async function uploadFile() {
-    let uid;
     let randomString = generateRandomString(16);
     console.log(props);
     try {
@@ -789,13 +832,7 @@ function Editor(props) {
 
     let photoRef = ref(storage, uid);
     let metadata = { contentType: "image/png" };
-
-    if (false) {
-      console.log(fileToUpload);
-      console.log(file);
-    } else {
-      actualUpload(photoRef, metadata, indexOfNewPic);
-    }
+    actualUpload(photoRef, metadata, indexOfNewPic);
   }
 
   function clearFileInput() {
@@ -803,6 +840,12 @@ function Editor(props) {
     setFileToUpload("");
     setFile("");
   }
+
+  const [isPublishToggleOn, setPublishToggle] = useState(false);
+
+  const handlePublishToggle = () => {
+    setPublishToggle(!isPublishToggleOn);
+  };
 
   return (
     <div className={"Editor" + fsClass + modeClass}>
@@ -1059,7 +1102,7 @@ function Editor(props) {
                 />
               </a>
               <div className={`dropdown-items ${isSettingsOpen ? "show" : ""}`}>
-                <form id="websiteNameWrapper" onSubmit={handleSubmit}>
+                <form id="websiteSettings" onSubmit={handleSubmit}>
                   <label htmlFor="websiteName">Website Title</label>
                   <input
                     id="websiteName"
@@ -1069,8 +1112,30 @@ function Editor(props) {
                     placeholder="Enter website name..."
                     onChange={nameChange}
                   />
+                  <label id="message" htmlFor="changeLogo">
+                    Change logo:
+                  </label>
+                  <input
+                    type="file"
+                    placeholder="Upload new picture"
+                    name="changeLogo"
+                    id="changeLogo"
+                    accept="image/png, image/gif, image/jpeg"
+                    onChange={showLogoPreview}
+                  />
+                  <img id="logoPreview" src={logoFile} />
                 </form>
                 <a>Danger zone</a>
+                <div id="publishWebsite">
+                  <p>Publish website:</p>
+                  <div
+                    className={`publishToggle ${isPublishToggleOn ? "on" : ""}`}
+                    onClick={handlePublishToggle}
+                  >
+                    <div className="switch"></div>
+                    <p>Published</p>
+                  </div>
+                </div>
                 <a
                   className="noSelect"
                   id="deleteSite"

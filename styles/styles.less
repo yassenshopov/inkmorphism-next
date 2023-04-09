@@ -418,7 +418,6 @@
   align-items: center;
   height: 120px;
   box-shadow: 0 0 20px #12121260;
-  // background-color: #ededed;
   background-color: var(--mainColor2);
   padding: 0 6vw;
   font-family: "Oswald";
@@ -429,8 +428,7 @@
   & img {
     height: 60px;
     border-radius: 50%;
-    box-shadow: 10px 10px 10px #12121290, -10px -10px 10px #ffffff19;
-    // filter: contrast(1.6) saturate(2);
+    box-shadow: 10px 10px 10px #12121240, -10px -10px 10px #ffffff16;
   }
   & > div,
   & > a {
@@ -455,7 +453,7 @@
     padding: 0 0 0 1.4vw;
     border-radius: 48px;
     max-height: 60px;
-    box-shadow: 10px 10px 10px #12121290, -10px -10px 10px #ffffff12;
+    box-shadow: 10px 10px 10px #12121240, -10px -10px 10px #ffffff08;
     p,
     a {
       display: flex;
@@ -596,7 +594,7 @@
       justify-content: space-between;
       border-radius: 15px;
       padding: 0 2vw 0 0;
-      box-shadow: 10px 10px 10px #12121260, -10px -10px 20px #a59cc412;
+      box-shadow: 10px 10px 10px #12121220, -10px -10px 20px #a59cc409;
       transition: all 200ms ease-in-out;
       & > *:nth-child(1) {
         font-size: 2rem;
@@ -737,15 +735,13 @@
   justify-content: space-between;
   align-items: center;
   height: 120px;
-  // box-shadow: 0 0 20px #12121260;
-  // background-color: #ededed;
   background: linear-gradient(var(--mainColor3), var(--mainColor2));
   padding: 0 6vw;
   font-family: "Oswald";
   & img {
     height: 60px;
     border-radius: 50%;
-    box-shadow: 10px 10px 10px #12121290, -10px -10px 10px #ffffff19;
+    box-shadow: 10px 10px 10px #12121240, -10px -10px 10px #ffffff08;
     filter: contrast(1.6) saturate(2);
   }
   & div {
@@ -814,10 +810,10 @@
     }
     #previewPicUpload {
       width: 100%;
-      border-radius: 50%;
+      border-radius: 10px;
       height: 30vh;
       width: 30vh;
-      box-shadow: 10px 10px 10px #12121299, -10px -10px 10px #ffffff25;
+      box-shadow: 0px 0px 20px #12121229;
       margin: 40px 0;
     }
     #sectionSelection {
@@ -1437,6 +1433,7 @@
     align-items: center;
     height: 100px;
     text-decoration: none;
+    gap: 1vw;
     padding: 0px 2vw;
     img {
       height: 100%;
@@ -2134,6 +2131,10 @@
     }
   }
 
+  .skeletal {
+    overflow-x: hidden;
+  }
+
   .nav {
     p {
       display: none;
@@ -2144,7 +2145,8 @@
     flex-direction: column-reverse;
     padding-left: 0;
     padding-right: 0;
-    img, p {
+    img,
+    p {
       width: 100% !important;
     }
     p {
