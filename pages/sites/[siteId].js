@@ -112,7 +112,7 @@ export default function Default() {
             <nav className={section.type} key={index}>
               <a href="" id="navLogo" className="noSelect">
                 <img
-                  src={section.content.logo}
+                  src={metaData.metaFavicon}
                   draggable={false}
                 />
                 <p>{metaData.metaTitle}</p>

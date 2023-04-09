@@ -149,7 +149,7 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #12121280;
+  background-color: #00000099;
   width: 100%;
   height: 100%;
   opacity: 0;
@@ -158,7 +158,7 @@ html {
   max-width: 100%;
   font-size: 2vw;
   cursor: pointer;
-  border-radius: 24px;
+  border-radius: 16px;
 }
 .Editor > main #mainEditorWrapper main > * .imgWrapper .changeImg:hover {
   opacity: 1;
@@ -339,6 +339,55 @@ html {
   width: 4vw;
   height: 4vw;
 }
+.Editor aside #publishWebsite {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+.Editor aside #publishWebsite .publishToggle {
+  position: relative;
+  width: 40%;
+  height: 30px;
+  border-radius: 30px;
+  background-color: #ccc;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border: 6px solid var(--mainLight);
+  align-self: center;
+}
+.Editor aside #publishWebsite .publishToggle .switch {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 12%;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #fff;
+  transition: all 0.2s ease-in-out;
+  z-index: 2;
+}
+.Editor aside #publishWebsite .publishToggle p {
+  position: absolute;
+  top: 25%;
+  left: 16%;
+  background-color: transparent;
+  color: var(--mainLight);
+  padding: 0;
+  margin: 0;
+  z-index: 1;
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
+}
+.Editor aside #publishWebsite .publishToggle.on {
+  background-color: var(--mainColor1);
+}
+.Editor aside #publishWebsite .publishToggle.on .switch {
+  left: calc(100% - 53px);
+}
+.Editor aside #publishWebsite .publishToggle.on p {
+  opacity: 1;
+}
 .Editor aside #deleteSite {
   cursor: pointer;
   transition: all 200ms ease-in-out;
@@ -383,6 +432,20 @@ html {
   border-radius: 24px;
   width: 3vw;
   height: 3vw;
+}
+.Editor #websiteSettings {
+  display: flex;
+  flex-direction: column;
+}
+.Editor #websiteSettings #websiteName {
+  border: none;
+  background-color: var(--mainLight);
+}
+.Editor #logoPreview {
+  width: 60%;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
 }
 .Editor #backBtnWrapper {
   display: flex;
@@ -449,6 +512,7 @@ html {
   height: 100vh;
 }
 .fs > main > nav {
+  border-radius: 0;
   width: 100vw !important;
   top: 0;
   left: 0;
