@@ -535,14 +535,14 @@ html {
 .mobile {
   justify-content: center;
 }
-.mobile > main > nav #mobileMode {
+.mobile main > nav #mobileMode {
   display: none;
 }
-.mobile > main > nav #desktopMode {
+.mobile main > nav #desktopMode {
   display: flex;
 }
-.mobile > main main {
-  width: 30vw;
+.mobile main main {
+  width: 30vw !important;
   box-shadow: 0 6px 16px #12121240;
 }
 .desktop > main > nav #mobileMode {
