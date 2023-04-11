@@ -474,6 +474,7 @@ function Editor(props) {
                   setData(item);
                   setPageData(item.webContent.pages.main.structure);
                   setLogoFile(item.webContent.meta.metaFavicon);
+                  setThumbnailFile(item.webContent.meta.metaThumbnail);
                 } catch (err) {
                   console.log(err);
                 }
@@ -763,6 +764,59 @@ function Editor(props) {
       // ]);
     }
   }, [logoFileToUpload]);
+
+  const [thumbnailFile, setThumbnailFile] = useState();
+  const [thumbnailFileToUpload, setThumbnailFileToUpload] = useState("123");
+
+  function showThumbnailPreview(e) {
+    try {
+      if (e.target.files[0].size > 4187152) {
+        alert("File is bigger than 4 MB. Use a smaller file.");
+        e.val = "";
+      } else {
+        setThumbnailFile(URL.createObjectURL(e.target.files[0]));
+        setThumbnailFileToUpload(e.target.files[0]);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  useEffect(() => {
+    console.log(thumbnailFileToUpload);
+    if (thumbnailFileToUpload !== "123" && 1) {
+      try {
+        uid =
+          "user-" + props.auth.currentUser.uid + "/" + props.name + "/thumbnail.png";
+      } catch (err) {
+        uid = "_";
+      }
+      let thumbnailFileRef = ref(storage, uid);
+      let metadata = { contentType: "image/png" };
+      // actualUpload(photoRef, metadata);
+      console.log();
+      uploadBytes(thumbnailFileRef, thumbnailFileToUpload, metadata).then((snapshot) => {
+        console.log(snapshot);
+        const pngURL = getDownloadURL(thumbnailFileRef).then((url) => {
+          console.log(url);
+          setTrigger(!trigger);
+        });
+      });
+      // setPageData((pageData) => [
+      //   {
+      //     ...pageData[0],
+      //     content: {
+      //       ...pageData.content,
+      //       txt:
+      //         pageData[0].content.txt !== undefined
+      //           ? pageData[0].content.txt
+      //           : "",
+      //     },
+      //   },
+      //   ...pageData.slice(1),
+      // ]);
+    }
+  }, [thumbnailFileToUpload]);
 
   function generateRandomString(length) {
     let result = "";
@@ -1124,6 +1178,18 @@ function Editor(props) {
                     onChange={showLogoPreview}
                   />
                   <img id="logoPreview" src={logoFile} />
+                  <label id="message" htmlFor="changeThumbnail">
+                    Change thumbnail:
+                  </label>
+                  <input
+                    type="file"
+                    placeholder="Upload new picture"
+                    name="changeThumbnail"
+                    id="changeThumbnail"
+                    accept="image/png, image/gif, image/jpeg"
+                    onChange={showThumbnailPreview}
+                  />
+                  <img id="thumbnailPreview" src={thumbnailFile} />
                 </form>
                 <a>Danger zone</a>
                 <div id="publishWebsite">
