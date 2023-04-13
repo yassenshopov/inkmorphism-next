@@ -172,7 +172,15 @@ html {
             }
           }
         }
-        > *:hover {
+        > *:first-child:hover {
+          background-color: #49494920;
+          border-bottom: 2px solid var(--mainLight);
+        }
+        > *:last-child:hover {
+          background-color: #49494920;
+          border-top: 2px solid var(--mainLight);
+        }
+        > *:not(:first-child, :last-child):hover {
           border-top: 2px solid var(--mainLight);
           border-bottom: 2px solid var(--mainLight);
           background-color: #49494920;
@@ -463,9 +471,35 @@ html {
   #websiteSettings {
     display: flex;
     flex-direction: column;
-    #websiteName {
-      border: none;
-      background-color: var(--mainLight);
+    #websiteNameWrapper {
+      box-sizing: border-box;
+      position: relative;
+      #websiteName {
+        border: none;
+        background-color: var(--mainLight);
+        z-index: 5;
+        width: 90%;
+      }
+      span {
+        position: absolute;
+        bottom: 14px;
+        right: 1vw;
+        z-index: 6;
+        background-color: #00000000;
+        cursor: pointer;
+        padding: 10px 0.6vw;
+        transition: all 200ms ease-in-out;
+        border-radius: 12px;
+        * {
+        background: none;
+        }
+      }
+      span:hover {
+        background-color: var(--mainColor2);
+        * {
+          color: var(--mainLight);
+        }
+      }
     }
   }
 

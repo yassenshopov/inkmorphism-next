@@ -355,7 +355,15 @@ function Editor(props) {
                   Add section <FaPlus />
                 </p>
               </div>
-              <p>{section.content.txt}</p>
+              <p
+                suppressContentEditableWarning={true}
+                onBlur={(e) => {
+                  txtFieldChange(e, index);
+                }}
+                contentEditable={true}
+              >
+                {section.content.txt}
+              </p>
               <p
                 className="editBtn noSelect"
                 onClick={() => {
@@ -787,7 +795,11 @@ function Editor(props) {
     if (thumbnailFileToUpload !== "123" && 1) {
       try {
         uid =
-          "user-" + props.auth.currentUser.uid + "/" + props.name + "/thumbnail.png";
+          "user-" +
+          props.auth.currentUser.uid +
+          "/" +
+          props.name +
+          "/thumbnail.png";
       } catch (err) {
         uid = "_";
       }
@@ -795,13 +807,15 @@ function Editor(props) {
       let metadata = { contentType: "image/png" };
       // actualUpload(photoRef, metadata);
       console.log();
-      uploadBytes(thumbnailFileRef, thumbnailFileToUpload, metadata).then((snapshot) => {
-        console.log(snapshot);
-        const pngURL = getDownloadURL(thumbnailFileRef).then((url) => {
-          console.log(url);
-          setTrigger(!trigger);
-        });
-      });
+      uploadBytes(thumbnailFileRef, thumbnailFileToUpload, metadata).then(
+        (snapshot) => {
+          console.log(snapshot);
+          const pngURL = getDownloadURL(thumbnailFileRef).then((url) => {
+            console.log(url);
+            setTrigger(!trigger);
+          });
+        }
+      );
       // setPageData((pageData) => [
       //   {
       //     ...pageData[0],
@@ -1157,15 +1171,25 @@ function Editor(props) {
               </a>
               <div className={`dropdown-items ${isSettingsOpen ? "show" : ""}`}>
                 <form id="websiteSettings" onSubmit={handleSubmit}>
-                  <label htmlFor="websiteName">Website Title</label>
-                  <input
-                    id="websiteName"
-                    name="websiteName"
-                    type="text"
-                    defaultValue={defaults.name}
-                    placeholder="Enter website name..."
-                    onChange={nameChange}
-                  />
+                  <div id="websiteNameWrapper">
+                    <label htmlFor="websiteName">Website Title</label>
+                    <input
+                      id="websiteName"
+                      name="websiteName"
+                      type="text"
+                      defaultValue={defaults.name}
+                      placeholder="Enter website name..."
+                      onChange={nameChange}
+                    />
+                    <span onClick={saveNewData}>
+                      <RiSave3Fill
+                        style={{ display: isSaved ? "none" : "flex" }}
+                      />
+                      <BsCheckLg
+                        style={{ display: isSaved ? "flex" : "none" }}
+                      />
+                    </span>
+                  </div>
                   <label id="message" htmlFor="changeLogo">
                     Change logo:
                   </label>

@@ -168,7 +168,15 @@ html {
   width: 100%;
   height: 100%;
 }
-.Editor > main #mainEditorWrapper main > *:hover {
+.Editor > main #mainEditorWrapper main > *:first-child:hover {
+  background-color: #49494920;
+  border-bottom: 2px solid var(--mainLight);
+}
+.Editor > main #mainEditorWrapper main > *:last-child:hover {
+  background-color: #49494920;
+  border-top: 2px solid var(--mainLight);
+}
+.Editor > main #mainEditorWrapper main > *:not(:first-child, :last-child):hover {
   border-top: 2px solid var(--mainLight);
   border-bottom: 2px solid var(--mainLight);
   background-color: #49494920;
@@ -437,9 +445,35 @@ html {
   display: flex;
   flex-direction: column;
 }
-.Editor #websiteSettings #websiteName {
+.Editor #websiteSettings #websiteNameWrapper {
+  box-sizing: border-box;
+  position: relative;
+}
+.Editor #websiteSettings #websiteNameWrapper #websiteName {
   border: none;
   background-color: var(--mainLight);
+  z-index: 5;
+  width: 90%;
+}
+.Editor #websiteSettings #websiteNameWrapper span {
+  position: absolute;
+  bottom: 14px;
+  right: 1vw;
+  z-index: 6;
+  background-color: #00000000;
+  cursor: pointer;
+  padding: 10px 0.6vw;
+  transition: all 200ms ease-in-out;
+  border-radius: 12px;
+}
+.Editor #websiteSettings #websiteNameWrapper span * {
+  background: none;
+}
+.Editor #websiteSettings #websiteNameWrapper span:hover {
+  background-color: var(--mainColor2);
+}
+.Editor #websiteSettings #websiteNameWrapper span:hover * {
+  color: var(--mainLight);
 }
 .Editor #logoPreview {
   width: 60%;
