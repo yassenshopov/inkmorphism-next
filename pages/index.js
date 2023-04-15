@@ -55,7 +55,7 @@ export default function Home() {
             <img src="main/midjourneyLogo.png" />
           </a>
         </section>
-
+{/* 
         <section></section>
 
         <section></section>
@@ -64,7 +64,7 @@ export default function Home() {
 
         <section></section>
 
-        <section></section>
+        <section></section> */}
       </main>
 
       <footer>
