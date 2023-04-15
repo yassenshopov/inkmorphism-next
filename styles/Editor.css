@@ -231,7 +231,8 @@ html {
   opacity: 0;
 }
 .Editor > main #mainEditorWrapper main .addSection p {
-  width: fit-content;
+  display: block;
+  width: fit-content !important;
   background-color: var(--mainLight);
   color: var(--mainDark);
   font-weight: 800;
