@@ -119,7 +119,7 @@ function Editor(props) {
     imgAndTxt: {
       content: {
         txt: "This is your new ImgNTxt section.",
-        img: "https://cdn.discordapp.com/ephemeral-attachments/1062880104792997970/1090657787555610735/midjourney_bread_2d_minimalism_anime_style_realism_afd91681-d51d-4612-8322-0a5b2bb6dd20.png",
+        img: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2FimgAndTxt.png?alt=media&token=754fc70d-7640-4975-9077-6d46b953d15b",
       },
       options: {
         direction: "reverseHorizontal",
@@ -128,7 +128,7 @@ function Editor(props) {
     },
     imgOnly: {
       content: {
-        img: "https://media.discordapp.net/attachments/1059220738718048346/1092535423944892416/midjourney_bunny_swimming_in_sea_of_toast_bread_yellow_and_brow_cf8add4b-117d-4a8b-b90d-d92db524ad24.png?width=1147&height=642",
+        img: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2FimgOnly.png?alt=media&token=ec1b1d09-f378-4223-8f47-13e6469d5ebb",
       },
       options: {
         direction: "",

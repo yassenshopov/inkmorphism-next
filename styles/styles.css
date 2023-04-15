@@ -408,6 +408,8 @@
 }
 #dashnav a {
   color: #fff;
+  padding: 20px 0.4vw;
+  margin: 0;
 }
 #dashnav #profileMenu {
   display: flex;
@@ -432,6 +434,8 @@
   transition: margin 400ms ease-in-out, visibility 400ms ease-in-out, opacity 400ms ease-in-out;
   z-index: 2;
   cursor: pointer;
+  padding: 20px 0.4vw;
+  margin: 0;
 }
 #dashnav #profileMenu #signOut {
   cursor: pointer;
@@ -541,9 +545,11 @@
   gap: 20px;
   min-height: 80vh;
   padding: 40px 0;
+  position: relative;
 }
 #dash #websites > a {
   display: grid;
+  position: relative;
   grid-template-columns: 20% 20% 15% 25%;
   grid-template-rows: 1fr;
   align-items: center;
@@ -572,6 +578,21 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
+}
+#dash #websites > a .publishedCheck {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: -4px;
+  right: 1vw;
+  font-size: 0.8rem;
+}
+#dash #websites > a .publishedCheck svg {
+  padding: 0;
+  margin: 0;
+  vertical-align: unset;
 }
 #dash #websites > a:hover {
   background-color: #3994ac;
@@ -1949,6 +1970,7 @@
     grid-template-columns: 1fr;
     padding: 0;
     text-decoration: none;
+    text-align: center;
   }
   #dash #websites > a img {
     border-radius: 15px 15px 0 0;
@@ -1957,9 +1979,15 @@
     justify-self: center;
     align-self: center;
   }
-  #dash #websites > a *:last-child {
+  #dash #websites > a > *:last-child {
     text-decoration: underline;
     padding: 16px 0;
+  }
+  #dash #websites > a .publishedCheck {
+    position: relative;
+    text-decoration: none;
+    margin: 0;
+    padding: 0 0 20px 0;
   }
   #dashfooter {
     justify-content: center;
