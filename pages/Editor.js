@@ -472,6 +472,7 @@ function Editor(props) {
         },
       },
     });
+    setPublishToggle(defaults.published)
   }, [pageData, trigger]);
 
   useEffect(() => {
@@ -563,7 +564,6 @@ function Editor(props) {
       console.log(err);
     }
     // console.log(profilePic);
-
     setLoadBool(false);
   }
 
@@ -587,7 +587,9 @@ function Editor(props) {
       doc(db, "users", userName, "websites", props["name"]),
       savedData
     );
-    await setDoc(doc(db, "publicSites", props["name"]), savedData);
+    if (savedData.published) {
+      await setDoc(doc(db, "publicSites", props["name"]), savedData);
+    }
     console.log(savedData);
     setTimeout(() => {
       setIsSaved(false);
@@ -731,22 +733,9 @@ function Editor(props) {
     event.preventDefault();
   }
 
-  // const [uploadImgFunc, setUploadImgFunc] = useState(
-  //   <p onClick={() => uploadFile()} className="noSelect green">
-  //     Upload
-  //   </p>
-  // );
-
   function uploadNewImg(index) {
     setUploadNewImgToggle(true);
     console.log(index);
-    // setUploadImgFunc(() => {
-    //   return (
-    //     <p onClick={() => uploadFile()} className="noSelect green">
-    //       Upload
-    //     </p>
-    //   );
-    // });
   }
 
   const [file, setFile] = useState();
@@ -791,7 +780,6 @@ function Editor(props) {
       let logoFileRef = ref(storage, uid);
       let metadata = { contentType: "image/png" };
       // actualUpload(photoRef, metadata);
-      console.log();
       uploadBytes(logoFileRef, logoFileToUpload, metadata).then((snapshot) => {
         console.log(snapshot);
         const pngURL = getDownloadURL(logoFileRef).then((url) => {
@@ -799,19 +787,6 @@ function Editor(props) {
           setTrigger(!trigger);
         });
       });
-      // setPageData((pageData) => [
-      //   {
-      //     ...pageData[0],
-      //     content: {
-      //       ...pageData.content,
-      //       txt:
-      //         pageData[0].content.txt !== undefined
-      //           ? pageData[0].content.txt
-      //           : "",
-      //     },
-      //   },
-      //   ...pageData.slice(1),
-      // ]);
     }
   }, [logoFileToUpload]);
 
@@ -847,8 +822,6 @@ function Editor(props) {
       }
       let thumbnailFileRef = ref(storage, uid);
       let metadata = { contentType: "image/png" };
-      // actualUpload(photoRef, metadata);
-      console.log();
       uploadBytes(thumbnailFileRef, thumbnailFileToUpload, metadata).then(
         (snapshot) => {
           console.log(snapshot);
@@ -858,19 +831,6 @@ function Editor(props) {
           });
         }
       );
-      // setPageData((pageData) => [
-      //   {
-      //     ...pageData[0],
-      //     content: {
-      //       ...pageData.content,
-      //       txt:
-      //         pageData[0].content.txt !== undefined
-      //           ? pageData[0].content.txt
-      //           : "",
-      //     },
-      //   },
-      //   ...pageData.slice(1),
-      // ]);
     }
   }, [thumbnailFileToUpload]);
 
@@ -955,6 +915,10 @@ function Editor(props) {
 
   const handlePublishToggle = () => {
     setPublishToggle(!isPublishToggleOn);
+    setData({
+      ...defaults,
+      published: !isPublishToggleOn,
+    });
   };
 
   return (
