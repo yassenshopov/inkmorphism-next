@@ -93,6 +93,7 @@ export default function Templates() {
     slug = slug + ".inkmorphism.com";
     console.log(slug);
     let newSite = {
+      published: false,
       deleted: false,
       domain: slug,
       domainSlug: domainSlug,
