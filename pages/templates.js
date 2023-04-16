@@ -158,9 +158,7 @@ export default function Templates() {
     let logoRef = ref(storage, user + "/" + domainSlug + "/logo.png");
     let metadata = { contentType: "image/png" };
     const logoUrl = newSite["webContent"]["meta"]["metaFavicon"];
-    // const fileName = 'logo.png'
 
-    // let file;
     let url = "./newSiteLogo.png";
     fetch(url)
       .then((response) => response.blob())
@@ -184,7 +182,6 @@ export default function Templates() {
   return (
     <div className={"Templates"}>
       <Head>
-        {/* <link rel="icon" href={defaultFiles['logo']} /> */}
         <link rel="icon" href="/faviconWh.ico" />
         <title>Inkmorphism - Templates for your websites!</title>
       </Head>
