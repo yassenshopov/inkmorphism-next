@@ -86,6 +86,29 @@ function Editor(props) {
     email: "me@something.com",
   });
 
+  // function getUserData() {
+  //   const storageRef = ref(storage, uid + "/profilePic.png");
+
+  //   const user = doc(db, "users", userName, "websites", props.name);
+  //   const data = await getDoc(col)
+  //     .then((doc) => {
+  //       dataArr.push(doc.data());
+  //       dataArr.forEach((item) => {
+  //         if (item !== undefined) {
+  //           try {
+  //             setData(item);
+  //             setPageData(item.webContent.pages.main.structure);
+  //             setLogoFile(item.webContent.meta.metaFavicon);
+  //             setThumbnailFile(item.webContent.meta.metaThumbnail);
+  //           } catch (err) {
+  //             console.log(err);
+  //           }
+  //         }
+  //       });
+  //     })
+  //   setUser()
+  // }
+
   // This is a smart roundabout => On the initial render, the button is clicked programmatically,
   // and thus the data that's been fetched is displayed on the page.
   useEffect(() => {
@@ -93,11 +116,6 @@ function Editor(props) {
     setLoadBool(true);
     setTimeout(() => {
       el.click();
-      setUser({
-        displayName: props.auth.currentUser.displayName,
-        photoURL: props.auth.currentUser.photoURL,
-        email: props.auth.currentUser.email,
-      });
     }, 3500);
     console.log(props);
   }, []);
@@ -522,6 +540,30 @@ function Editor(props) {
         logo: logo.src,
       });
     }
+    try {
+      uid =
+        "user-" +
+        props.auth.currentUser.uid
+    } catch (err) {
+      console.log(err)
+      uid = "_";
+    }
+    const profilePicRef = ref(storage, uid + "/profilePic.png");
+    try {
+      // const profilePic = getDoc(profilePicRef);
+      getDownloadURL(profilePicRef).then((metadata) => {
+        console.log(metadata);
+        setUser({
+          displayName: props.auth.currentUser.displayName,
+          photoURL: metadata,
+          email: props.auth.currentUser.email,
+        });
+      });
+    } catch (err) {
+      console.log(err);
+    }
+    // console.log(profilePic);
+
     setLoadBool(false);
   }
 
