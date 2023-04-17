@@ -630,32 +630,6 @@ function Editor(props) {
       },
       ...pageData.slice(index + 1),
     ]);
-    // setData({
-    //   ...defaults,
-    //   webContent: {
-    //     ...defaults.webContent,
-    //     pages: {
-    //       ...defaults.webContent.pages,
-    //       main: {
-    //         ...defaults.webContent.pages.main,
-    //         structure: defaults.webContent.pages.main.structure.map(
-    //           (el, arrIndex) => {
-    //             if (arrIndex === parseInt(index)) {
-    //               let updatedTxtContent = {
-    //                 ...el,
-    //                 content: { ...el.content, txt: e.target.innerHTML },
-    //               };
-    //               return updatedTxtContent;
-    //             } else {
-    //               return el;
-    //             }
-    //           }
-    //         ),
-    //       },
-    //     },
-    //   },
-    // });
-    // console.log(defaults);
   }
 
   const colorChange = (e) => {

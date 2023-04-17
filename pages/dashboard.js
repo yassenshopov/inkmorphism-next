@@ -84,13 +84,24 @@ export default function Dashboard() {
         },
         { deleted: [], existing: [] }
       );
+      websitesArray.existing.sort((a, b) => {
+        // First, sort by the 'published' property
+        if (a.published && !b.published) {
+          return -1;
+        } else if (!a.published && b.published) {
+          return 1;
+        } else {
+          // If both have the same 'published' property value, sort alphabetically by the 'domainSlug' property
+          return a.domainSlug.localeCompare(b.domainSlug);
+        }
+      });
       const websites = websitesArray.existing.map((site) => (
         <a
           key={site.domain}
           href={"../config/" + site.domainSlug}
           className="noSelect"
+          style={{backgroundColor:(site.published ? "#ffffff10" : "#00000020")}}
         >
-          {/* < FaCircle /> */}
           <img
             src={site.thumbnail === "" ? placeholder.src : site.thumbnail}
             loading="lazy"
@@ -106,10 +117,10 @@ export default function Dashboard() {
             </div>
           ) : (
             <div className="publishedCheck">
-            <p>
-              Not published <AiOutlineClose />
-            </p>
-          </div>
+              <p>
+                Not published <AiOutlineClose />
+              </p>
+            </div>
           )}
           {/* <p>{site.initDate}</p> */}
         </a>
