@@ -475,6 +475,9 @@
   border-radius: 4px;
   transition: all 200ms ease-in-out;
 }
+#dashnav #mobileMenu.clicked {
+  position: fixed;
+}
 #dashnav .clicked div:nth-child(1) {
   transform: rotate(45deg) translateX(6px) translateY(6px);
 }
@@ -484,12 +487,13 @@
 #dashnav .clicked div:nth-child(3) {
   transform: rotate(135deg) translateX(-8px) translateY(9px);
 }
-#dashnav #overlayMenu[class="clicked"] {
+#dashnav #overlayMenu.clicked {
   height: 100vh;
+  overflow-y: hidden;
   opacity: 1;
 }
 #dashnav #overlayMenu {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
