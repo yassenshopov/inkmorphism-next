@@ -116,7 +116,7 @@ export default function Dashboard() {
               </p>
             </div>
           ) : (
-            <div className="publishedCheck">
+            <div className={"publishedCheck " + (site.published ? "published" : "notPublished")}>
               <p>
                 Not published <AiOutlineClose />
               </p>
