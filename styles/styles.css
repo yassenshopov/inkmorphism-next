@@ -1991,7 +1991,17 @@
     position: relative;
     text-decoration: none;
     margin: 0;
-    padding: 0 0 20px 0;
+    padding: 10px 0 10px 0;
+    background-color: #108c3f;
+    border-radius: 0 0 15px 15px;
+    width: 100%;
+    bottom: auto;
+    right: auto;
+    font-size: 1rem;
+    font-weight: 1000;
+  }
+  #dash #websites > a .publishedCheck.notPublished {
+    background-color: #00000075;
   }
   #dashfooter {
     justify-content: center;
