@@ -595,7 +595,7 @@
   vertical-align: unset;
 }
 #dash #websites > a:hover {
-  background-color: #3994ac;
+  background-color: var(--mainColor1) !important;
 }
 #dash #websites #linkTemplates {
   display: flex;

@@ -169,10 +169,7 @@ export default function Templates() {
         });
         console.log(fileObject);
         setFile(fileObject);
-        // access file here
         uploadBytes(logoRef, file, metadata).then((snapshot) => {
-          // window.location.reload(false)
-
           let urlRedirect = "../../config/" + domainSlug;
           window.location.href = urlRedirect;
         });
