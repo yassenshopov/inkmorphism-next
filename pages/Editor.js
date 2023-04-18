@@ -744,7 +744,7 @@ function Editor(props) {
 
   useEffect(() => {
     console.log(logoFileToUpload);
-    if (logoFileToUpload !== "123" && 1) {
+    if (logoFileToUpload !== "123") {
       try {
         uid =
           "user-" + props.auth.currentUser.uid + "/" + props.name + "/logo.png";

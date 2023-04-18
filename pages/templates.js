@@ -18,6 +18,11 @@ import defaultProfilePic from "../styles/images/defaultProfilePic.png";
 import defaultLogo from "../styles/images/logoPlace.png";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 
+let domainSlug;
+let newSite;
+let col;
+let slug;
+
 export default function Templates() {
   let profile_pic = "";
 
@@ -66,14 +71,16 @@ export default function Templates() {
     profile_pic = userData.profile_pic;
   }
 
-  const [file, setFile] = useState(null);
+  const [defaultLogo, setDefaultLogo] = useState("");
+  const [defaultThumbnail, setDefaultThumbnail] = useState("");
+  const [styleVar, setStyleVar] = useState("");
 
   async function randomSiteGen(style) {
+    setStyleVar(style);
     let user;
     let db = getFirestore(app);
     const auth = getAuth(app);
     let uid;
-    let col;
     try {
       uid = auth.currentUser.uid;
       user = "user-" + uid;
@@ -84,82 +91,22 @@ export default function Templates() {
     }
     let randomWords = require("random-words");
     let words = randomWords(2);
-    let slug = "";
+    slug = "";
     for (let word in words) {
       slug = slug + words[word] + "-";
     }
     slug = slug + Math.ceil(100 + Math.random() * 899);
-    let domainSlug = slug;
+    domainSlug = slug;
     slug = slug + ".inkmorphism.com";
     console.log(slug);
-    let newSite = {
-      published: false,
-      deleted: false,
-      domain: slug,
-      domainSlug: domainSlug,
-      initDate: "",
-      name: "New Site v5",
-      style: style,
-      thumbnail:
-        "https://media.discordapp.net/attachments/1059220738718048346/1093273362404495442/midjourney_steel_mines_blue_and_black_anime_style_realism_26d3a467-8571-4daa-9bd1-1ddd4ca51f24.png?width=1115&height=643",
-      webContent: {
-        meta: {
-          colorPalette: {
-            color1: "#e6970f",
-            color2: "#d9d8af",
-            color3: "#79e16b",
-            colorLight: "#fefefe",
-            colorDark: "#121212",
-          },
-          metaFavicon:
-            "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Flogo.png?alt=media&token=ba50553d-4f67-4d24-b909-e98e6585dad9",
-          metaStyle: style.toLowerCase(),
-          metaTitle: "Your Website",
-          metaDescription: "The description for your website",
-          metaThumbnail:
-            "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fthumbnail.png?alt=media&token=bf24a392-9096-4d28-a9b0-f9d7941f8e85",
-          metaAuthor: "Meta Author",
-        },
-        pages: {
-          main: {
-            structure: [
-              {
-                type: "nav",
-                options: {},
-                content: {
-                  logo: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fleaf-since-484%2FsrcFiles%2Flogo.png?alt=media&token=3a81fc14-b6cc-454f-9d1c-48e9b84ccbc3",
-                },
-              },
-              {
-                type: "imgAndTxt",
-                content: {
-                  img: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fminerals-locate-276%2FsrcFiles%2FimgPlaceholder.png?alt=media&token=f3dbf650-3ac2-4644-9047-a207ab6f80f9",
-                  txt: "This is text about some located minerals. This is text about some located minerals. This is text about some located minerals. This is text about some located minerals.",
-                },
-                options: {
-                  direction: "directHorizontal",
-                },
-              },
-              {
-                type: "footer",
-                options: {},
-                content: {
-                  txt: "Copyright by XYZ",
-                },
-              },
-            ],
-          },
-        },
-      },
-    };
-    await setDoc(doc(col, domainSlug), newSite);
 
     const storage = getStorage();
     let logoRef = ref(storage, user + "/" + domainSlug + "/logo.png");
+    let thumbnailRef = ref(storage, user + "/" + domainSlug + "/thumbnail.png");
     let metadata = { contentType: "image/png" };
-    const logoUrl = newSite["webContent"]["meta"]["metaFavicon"];
 
     let url = "./newSiteLogo.png";
+    let url2 = "./newSiteThumbnail.png";
     fetch(url)
       .then((response) => response.blob())
       .then((blob) => {
@@ -167,17 +114,122 @@ export default function Templates() {
         const fileObject = new File([blob], "logo.png", {
           type: "image/png",
         });
-        console.log(fileObject);
-        setFile(fileObject);
-        uploadBytes(logoRef, file, metadata).then((snapshot) => {
-          let urlRedirect = "../../config/" + domainSlug;
-          window.location.href = urlRedirect;
+        uploadBytes(logoRef, fileObject, metadata).then(() => {
+          getDownloadURL(logoRef).then((url) => {
+            setDefaultLogo(url);
+          });
         });
+      })
+      .then(() => {
+        fetch(url2)
+          .then((response) => response.blob())
+          .then((blob) => {
+            console.log(blob);
+            const fileObject2 = new File([blob], "thumbnail.png", {
+              type: "image/png",
+            });
+            uploadBytes(thumbnailRef, fileObject2, metadata).then(() => {
+              getDownloadURL(thumbnailRef).then((url) => {
+                setDefaultThumbnail(url);
+              });
+            });
+          });
       });
   }
 
+  useEffect(() => {
+    if (defaultThumbnail !== "" && defaultLogo !== "") {
+      console.log(defaultThumbnail);
+      console.log(defaultLogo);
+      console.log(domainSlug);
+      console.log(slug);
+      newSite = {
+        published: false,
+        deleted: false,
+        domain: slug,
+        domainSlug: domainSlug,
+        initDate: "",
+        name: "New Site v6",
+        style: styleVar.slice(0, 1).toUpperCase() + styleVar.slice(1),
+        thumbnail: defaultThumbnail,
+        webContent: {
+          meta: {
+            colorPalette: {
+              color1: "#e6970f",
+              color2: "#d9d8af",
+              color3: "#79e16b",
+              colorLight: "#fefefe",
+              colorDark: "#121212",
+            },
+            metaFavicon: defaultLogo,
+            metaStyle: styleVar.toLowerCase(),
+            metaTitle: "Your Website",
+            metaDescription: "The description for your website",
+            metaThumbnail: defaultThumbnail,
+            metaAuthor: "Meta Author",
+          },
+          pages: {
+            main: {
+              structure: [
+                {
+                  type: "nav",
+                  options: {},
+                  content: {
+                    logo: defaultLogo,
+                  },
+                },
+                {
+                  type: "imgAndTxt",
+                  content: {
+                    img: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fminerals-locate-276%2FsrcFiles%2FimgPlaceholder.png?alt=media&token=f3dbf650-3ac2-4644-9047-a207ab6f80f9",
+                    txt: "This is text about some located minerals.",
+                  },
+                  options: {
+                    direction: "directHorizontal",
+                  },
+                },
+                {
+                  type: "footer",
+                  options: {},
+                  content: {
+                    txt: "Copyright by XYZ",
+                  },
+                },
+              ],
+            },
+          },
+        },
+      };
+      console.log(newSite);
+      setDoc(doc(col, domainSlug), newSite);
+      let urlRedirect = "../../config/" + domainSlug;
+      window.location.href = urlRedirect;
+    }
+  }, [defaultThumbnail]);
+
+  const templatesArr = ["simple"];
+  const templates = templatesArr.map((template, index) => (
+    <article key={index}>
+      <img src={"templates/" + template + "Template.png"} />
+      <h2>{template.slice(0, 1).toUpperCase() + template.slice(1)}</h2>
+      <div id="hiddenBtns">
+        <a
+          className="noSelect"
+          onClick={() => {
+            randomSiteGen(template);
+          }}
+        >
+          Get Started with {template} →
+        </a>
+        <a href={"templates/" + template} className="noSelect">
+          Preview Template
+        </a>
+      </div>
+    </article>
+  ));
+
   return (
-    <div className={"Templates"}>
+    <div className="Templates">
       <Head>
         <link rel="icon" href="/faviconWh.ico" />
         <title>Inkmorphism - Templates for your websites!</title>
@@ -188,7 +240,8 @@ export default function Templates() {
       <Dashnav profile_pic={profile_pic} auth={auth} />
       <main id="templatesWrapper">
         <section id="templates">
-          <article>
+          {templates}
+          {/* <article>
             <img src="templates/simpleTemplate.png" />
             <h2>Simple</h2>
             <div id="hiddenBtns">
@@ -201,7 +254,7 @@ export default function Templates() {
               </a>
               <a href="templates/simple">Preview Template</a>
             </div>
-          </article>
+          </article> */}
           {/* <article>
             <img src="templates/neobrutalismTemplate2.png" />
             <h2>Neobrutalism</h2>
