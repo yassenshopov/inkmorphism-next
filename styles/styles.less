@@ -609,11 +609,18 @@
       & > *:nth-child(1) {
         font-size: 2rem;
       }
-      img {
+      .imgWrapper {
         width: 100%;
-        max-width: 100%;
-        min-height: 80px;
+        height: 150px;
         border-radius: 15px 0 0 15px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          height: 100%;
+          width: auto;
+        }
       }
       a {
         color: #fff;
@@ -2098,8 +2105,19 @@
         padding: 0;
         text-decoration: none;
         text-align: center;
-        img {
+        .imgWrapper {
+          width: 100%;
+          height: 200px;
           border-radius: 15px 15px 0 0;
+          overflow: hidden;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          img {
+            border-radius: none;
+            height: 100%;
+            width: auto;
+          }
         }
         * {
           justify-self: center;
