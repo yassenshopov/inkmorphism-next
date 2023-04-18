@@ -566,11 +566,18 @@
 #dash #websites > a > *:nth-child(1) {
   font-size: 2rem;
 }
-#dash #websites > a img {
+#dash #websites > a .imgWrapper {
   width: 100%;
-  max-width: 100%;
-  min-height: 80px;
+  height: 150px;
   border-radius: 15px 0 0 15px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#dash #websites > a .imgWrapper img {
+  height: 100%;
+  width: auto;
 }
 #dash #websites > a a {
   color: #fff;
@@ -1979,8 +1986,19 @@
     text-decoration: none;
     text-align: center;
   }
-  #dash #websites > a img {
+  #dash #websites > a .imgWrapper {
+    width: 100%;
+    height: 200px;
     border-radius: 15px 15px 0 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #dash #websites > a .imgWrapper img {
+    border-radius: none;
+    height: 100%;
+    width: auto;
   }
   #dash #websites > a * {
     justify-self: center;

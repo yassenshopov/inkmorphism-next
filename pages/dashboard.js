@@ -100,12 +100,16 @@ export default function Dashboard() {
           key={site.domain}
           href={"../config/" + site.domainSlug}
           className="noSelect"
-          style={{backgroundColor:(site.published ? "#ffffff10" : "#00000020")}}
+          style={{
+            backgroundColor: site.published ? "#ffffff10" : "#00000020",
+          }}
         >
-          <img
-            src={site.thumbnail === "" ? placeholder.src : site.thumbnail}
-            loading="lazy"
-          />
+          <div className="imgWrapper">
+            <img
+              src={site.thumbnail === "" ? placeholder.src : site.thumbnail}
+              loading="lazy"
+            />
+          </div>
           <h2>{site.name}</h2>
           <p>{site.style}</p>
           <p target="_blank">{site.domain}</p>
@@ -116,7 +120,12 @@ export default function Dashboard() {
               </p>
             </div>
           ) : (
-            <div className={"publishedCheck " + (site.published ? "published" : "notPublished")}>
+            <div
+              className={
+                "publishedCheck " +
+                (site.published ? "published" : "notPublished")
+              }
+            >
               <p>
                 Not published <AiOutlineClose />
               </p>
@@ -142,7 +151,6 @@ export default function Dashboard() {
               displayName: auth.currentUser.displayName,
             });
           } catch (err) {}
-          // Metadata now contains the metadata for 'images/forest.jpg'
         })
         .catch((error) => {
           // Uh-oh, an error occurred!
