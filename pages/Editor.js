@@ -472,7 +472,7 @@ function Editor(props) {
         },
       },
     });
-    setPublishToggle(defaults.published)
+    setPublishToggle(defaults.published);
   }, [pageData, trigger]);
 
   useEffect(() => {
@@ -542,11 +542,9 @@ function Editor(props) {
       });
     }
     try {
-      uid =
-        "user-" +
-        props.auth.currentUser.uid
+      uid = "user-" + props.auth.currentUser.uid;
     } catch (err) {
-      console.log(err)
+      console.log(err);
       uid = "_";
     }
     const profilePicRef = ref(storage, uid + "/profilePic.png");
@@ -712,16 +710,25 @@ function Editor(props) {
     console.log(index);
   }
 
+  const fileInputRef = useRef(null);
+  function replicateFileInputClick() {
+    fileInputRef.current.click();
+  }
+
   const [file, setFile] = useState();
   const [fileToUpload, setFileToUpload] = useState("123");
   const [uploadNewImgToggle, setUploadNewImgToggle] = useState(false);
   function showPreview(e) {
-    if (e.target.files[0].size > 4187152) {
-      alert("File is bigger than 4 MB. Use a smaller file.");
-      e.val = "";
-    } else {
-      setFile(URL.createObjectURL(e.target.files[0]));
-      setFileToUpload(e.target.files[0]);
+    try {
+      if (e.target.files[0].size > 4187152) {
+        alert("File is bigger than 4 MB. Use a smaller file.");
+        e.val = "";
+      } else {
+        setFile(URL.createObjectURL(e.target.files[0]));
+        setFileToUpload(e.target.files[0]);
+      }
+    } catch (err) {
+      console.log(err);
     }
   }
 
@@ -842,6 +849,7 @@ function Editor(props) {
             },
             ...pageData.slice(index + 1),
           ]);
+          setLoadBool(false);
           // clearFileInput();
         }, 2000);
       });
@@ -859,6 +867,7 @@ function Editor(props) {
   let uid;
 
   async function uploadFile() {
+    setLoadBool(true);
     let randomString = generateRandomString(16);
     console.log(props);
     try {
@@ -976,15 +985,24 @@ function Editor(props) {
           id="popupWrapper"
         >
           <form id="popup">
-            {/* <p onClick={() => uploadFile()}>Click for upload</p> */}
             <p id="message">Upload new image</p>
+            <label htmlFor="fileInput" className="fileInputLabel">
+              Choose your file
+            </label>
             <input
+              id="fileInput"
+              className="fileInput"
+              ref={fileInputRef}
               type="file"
               placeholder="Upload new picture"
               accept="image/png, image/gif, image/jpeg"
               onChange={showPreview}
             />
-            <img id="previewPicUpload" src={file} />
+            <img
+              id="previewPicUpload"
+              src={file}
+              onClick={replicateFileInputClick}
+            />
             <div id="buttons">
               <p
                 onClick={() => {
