@@ -112,7 +112,11 @@ export default function Dashboard() {
           </div>
           <h2>{site.name}</h2>
           <p>{site.style}</p>
-          <p target="_blank">{site.domain}</p>
+          <div>
+            <a href={"https://" + site.domain} target="_blank">
+              {site.domain}
+            </a>
+          </div>
           {site.published ? (
             <div className="publishedCheck">
               <p>

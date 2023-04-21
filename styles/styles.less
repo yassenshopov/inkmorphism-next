@@ -622,10 +622,10 @@
           width: auto;
         }
       }
-      a {
-        color: #fff;
-        justify-self: right;
-      }
+      // a {
+      //   color: #fff;
+      //   justify-self: right;
+      // }
       article {
         display: flex;
         flex-direction: column;
@@ -816,6 +816,24 @@
     box-shadow: 10px 10px 10px #12121299, -10px -10px 10px #ffffff25;
     z-index: 102;
     position: relative;
+    .fileInput {
+      display: none;
+    }
+    .fileInputLabel {
+      font-size: 1.2rem;
+      background-color: var(--mainColor1);
+      color: var(--mainLight);
+      padding: 10px 4vw;
+      border-radius: 12px;
+      // border: 2px solid var(--mainLight);
+      box-shadow: 0px 0px 20px #12121249;
+      cursor: pointer;
+      transition: all 200ms ease-in-out;
+    }
+    .fileInputLabel:hover {
+      filter: brightness(1.4);
+      box-shadow: 0px 0px 30px #12121299;
+    }
     #message {
       // margin: 0 0 40px 0;
       padding: 0 10vw 40px 10vw;
@@ -838,12 +856,22 @@
       padding: 8px 1vw;
     }
     #previewPicUpload {
-      width: 100%;
+      width: fit-content;
+      background-color: var(--mainLight);
       border-radius: 10px;
       height: 30vh;
-      width: 30vh;
+      min-width: 30vh;
       box-shadow: 0px 0px 20px #12121229;
       margin: 40px 0;
+      margin-left: 4vw;
+      margin-right: 4vw;
+      min-height: 180px;
+      cursor: pointer;
+      transition: all 200ms ease-in-out;
+    }
+    #previewPicUpload:hover {
+      filter: brightness(0.4);
+      box-shadow: 0px 0px 30px #12121259;
     }
     #sectionSelection {
       display: grid;
@@ -1399,10 +1427,11 @@
   }
 }
 
-.simple, .skeletal {
+.simple,
+.skeletal {
   background: linear-gradient(var(--color1), var(--color2));
   width: 100vw;
-  min-height: 100vh;
+  min-height: fit-content;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: var(--colorDark);
   display: flex;
@@ -2155,14 +2184,19 @@
     transition: all 400ms ease-in-out;
     #popup {
       width: 100%;
+      box-sizing: border-box;
+
       max-width: 90%;
       #previewPicUpload {
-        width: 100%;
-        border-radius: 18%;
-        height: 64vw;
-        width: 80%;
-        box-shadow: 0px 0px 10px #12121299, 0px 0px 10px #ffffff00;
+        width: fit-content;
+        background-color: var(--mainLight);
+        border-radius: 10px;
+        height: auto;
+        min-width: 30vh;
+        max-width: 100%;
+        box-shadow: 0px 0px 20px #12121229;
         margin: 40px 0;
+        box-sizing: border-box;
       }
       #sectionSelection {
         grid-template-columns: repeat(2, 1fr);
@@ -2188,7 +2222,8 @@
     }
   }
 
-  .simple, .skeletal {
+  .simple,
+  .skeletal {
     overflow-x: hidden;
   }
 

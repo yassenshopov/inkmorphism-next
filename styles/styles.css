@@ -579,10 +579,6 @@
   height: 100%;
   width: auto;
 }
-#dash #websites > a a {
-  color: #fff;
-  justify-self: right;
-}
 #dash #websites > a article {
   display: flex;
   flex-direction: column;
@@ -764,6 +760,23 @@
   z-index: 102;
   position: relative;
 }
+#popupWrapper #popup .fileInput {
+  display: none;
+}
+#popupWrapper #popup .fileInputLabel {
+  font-size: 1.2rem;
+  background-color: var(--mainColor1);
+  color: var(--mainLight);
+  padding: 10px 4vw;
+  border-radius: 12px;
+  box-shadow: 0px 0px 20px #12121249;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+#popupWrapper #popup .fileInputLabel:hover {
+  filter: brightness(1.4);
+  box-shadow: 0px 0px 30px #12121299;
+}
 #popupWrapper #popup #message {
   padding: 0 10vw 40px 10vw;
 }
@@ -783,12 +796,22 @@
   padding: 8px 1vw;
 }
 #popupWrapper #popup #previewPicUpload {
-  width: 100%;
+  width: fit-content;
+  background-color: var(--mainLight);
   border-radius: 10px;
   height: 30vh;
-  width: 30vh;
+  min-width: 30vh;
   box-shadow: 0px 0px 20px #12121229;
   margin: 40px 0;
+  margin-left: 4vw;
+  margin-right: 4vw;
+  min-height: 180px;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+#popupWrapper #popup #previewPicUpload:hover {
+  filter: brightness(0.4);
+  box-shadow: 0px 0px 30px #12121259;
 }
 #popupWrapper #popup #sectionSelection {
   display: grid;
@@ -1326,7 +1349,7 @@
 .skeletal {
   background: linear-gradient(var(--color1), var(--color2));
   width: 100vw;
-  min-height: 100vh;
+  min-height: fit-content;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: var(--colorDark);
   display: flex;
@@ -2032,15 +2055,19 @@
   }
   #popupWrapper #popup {
     width: 100%;
+    box-sizing: border-box;
     max-width: 90%;
   }
   #popupWrapper #popup #previewPicUpload {
-    width: 100%;
-    border-radius: 18%;
-    height: 64vw;
-    width: 80%;
-    box-shadow: 0px 0px 10px #12121299, 0px 0px 10px #ffffff00;
+    width: fit-content;
+    background-color: var(--mainLight);
+    border-radius: 10px;
+    height: auto;
+    min-width: 30vh;
+    max-width: 100%;
+    box-shadow: 0px 0px 20px #12121229;
     margin: 40px 0;
+    box-sizing: border-box;
   }
   #popupWrapper #popup #sectionSelection {
     grid-template-columns: repeat(2, 1fr);
