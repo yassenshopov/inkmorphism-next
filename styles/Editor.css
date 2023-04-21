@@ -520,6 +520,10 @@ html {
   .Editor > main nav #openFS {
     display: none !important;
   }
+  .Editor > main #mainEditorWrapper {
+    width: 100vw;
+    background-color: #252525;
+  }
   .Editor aside {
     position: fixed;
     top: 0;
