@@ -113,8 +113,11 @@ export default function Dashboard() {
           <h2>{site.name}</h2>
           <p>{site.style}</p>
           <div>
-            <a href={"https://" + site.domain} target="_blank">
+            {/* <a href={"https://" + site.domain} target="_blank">
               {site.domain}
+            </a> */}
+            <a href={"https://inkmorphism.com/sites/" + site.domainSlug} target="_blank">
+              {"inkmorphism.com/sites/" + site.domainSlug}
             </a>
           </div>
           {site.published ? (
