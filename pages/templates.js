@@ -149,14 +149,14 @@ export default function Templates() {
         domain: slug,
         domainSlug: domainSlug,
         initDate: "",
-        name: "New Site v6",
+        name: "New Site v7",
         style: styleVar.slice(0, 1).toUpperCase() + styleVar.slice(1),
         thumbnail: defaultThumbnail,
         webContent: {
           meta: {
             colorPalette: {
-              color1: "#e6970f",
-              color2: "#d9d8af",
+              color1: "#ffffff",
+              color2: "#ffffeb",
               color3: "#79e16b",
               colorLight: "#fefefe",
               colorDark: "#121212",
