@@ -66,7 +66,7 @@ export default function Login() {
     // Add more providers if needed.
     return provider;
   }
-
+  
   function signInWithGH() {
     const provider = new GithubAuthProvider();
     signInWithPopup(auth, provider)
@@ -88,13 +88,8 @@ export default function Login() {
           fetchSignInMethodsForEmail(auth, email).then((methods) => {
             console.log(methods);
             const provider = getProviderForSignInMethods(methods);
-            const data = getCurrentAccessToken();
-            console.log(data)
-            if (!data) {
-              throw new Error('Something went wrong obtaining access token');
-            }
-            const credential = provider.credentialFromResult(result);
-            
+            // const credential = provider.credentialFromResult(result);
+            setLoadBool(true);
             signInWithRedirect(auth, provider)
               .then((result) => {
                 console.log(result);
@@ -104,25 +99,12 @@ export default function Login() {
                   const token = credential.accessToken;
                 }
                 const user = result.user;
+                setLoadBool(false);
               })
               .catch((err) => {
                 console.log(err);
               });
           });
-          // //
-          // setLoadBool(true);
-          // signInWithPopup(auth, provider)
-          //   .then((result) => {
-          //     const credential = GoogleAuthProvider.credentialFromResult(result);
-          //     if (credential) {
-          //       const token = credential.accessToken;
-          //     }
-          //     const user = result.user;
-          //   })
-          //   .catch((err) => {
-          //     setLoadBool(false);
-          //   });
-          // //
         }
       });
   }

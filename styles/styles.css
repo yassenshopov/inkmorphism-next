@@ -738,7 +738,7 @@
   height: 100vh;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 100;
   box-sizing: border-box;
   font-family: "Oswald";
   color: var(--mainDark);
@@ -874,7 +874,7 @@
 }
 #loader {
   position: fixed;
-  z-index: 96;
+  z-index: 101;
   top: 0;
   left: 0;
   width: 100%;
