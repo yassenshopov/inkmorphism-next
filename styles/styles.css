@@ -491,8 +491,10 @@
   height: 100vh;
   overflow-y: hidden;
   opacity: 1;
+  pointer-events: auto;
 }
 #dashnav #overlayMenu {
+  pointer-events: none;
   position: fixed;
   top: 0;
   left: 0;
