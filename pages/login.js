@@ -6,6 +6,8 @@ import {
   onAuthStateChanged,
   GoogleAuthProvider,
   signInWithEmailAndPassword,
+  fetchSignInMethodsForEmail,
+  signInWithRedirect,
 } from "firebase/auth";
 import { useEffect, useState, useCallback, useContext } from "react";
 import {
@@ -18,9 +20,9 @@ import {
 import app from "../firebase/clientApp";
 import Head from "next/head";
 import { SiGoogle, SiGithub, SiTwitter } from "react-icons/si";
-import logo from '../styles/images/logo.png';
+import logo from "../styles/images/logo.png";
 import { useRouter } from "next/router";
-import Loader from './components/loader.js'
+import Loader from "./components/loader.js";
 
 export default function Login() {
   const [userData, setUserData] = useState({});
@@ -46,25 +48,83 @@ export default function Login() {
 
   async function sendRegisterData(regData) {
     regData = JSON.parse(JSON.stringify(regData));
-    await setDoc(doc(col, "user-"+ regData["uid"]), regData);
+    await setDoc(doc(col, "user-" + regData["uid"]), regData);
+  }
+
+  function getProviderForSignInMethods(methods) {
+    let provider;
+    if (methods.includes(GoogleAuthProvider.PROVIDER_ID)) {
+      provider = new GoogleAuthProvider();
+      console.log(provider);
+    } else if (methods.includes(FacebookAuthProvider.PROVIDER_ID)) {
+      provider = new FacebookAuthProvider();
+      console.log(provider);
+    } else if (methods.includes(TwitterAuthProvider.PROVIDER_ID)) {
+      provider = new TwitterAuthProvider();
+      console.log(provider);
+    }
+    // Add more providers if needed.
+    return provider;
   }
 
   function signInWithGH() {
     const provider = new GithubAuthProvider();
-    signInWithPopup(auth, provider).then((result) => {
-      const credential = GithubAuthProvider.credentialFromResult(result);
-      if (credential) {
-        const token = credential.accessToken;
-        // ...
-      }
-      // The signed-in user info.
-      const user = result.user;
-    }).catch((err) => {
-      console.log(err.code)
-      if (err.code === 'auth/account-exists-with-different-credential') {
-        console.log(err)
-      }
-    });
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log(result);
+        const credential = GithubAuthProvider.credentialFromResult(result);
+        if (credential) {
+          const token = credential.accessToken;
+          // ...
+        }
+        // The signed-in user info.
+        const user = result.user;
+      })
+      .catch((err) => {
+        console.dir(err);
+        if (err.code === "auth/account-exists-with-different-credential") {
+          const email = err.customData.email;
+          console.log(err);
+          fetchSignInMethodsForEmail(auth, email).then((methods) => {
+            console.log(methods);
+            const provider = getProviderForSignInMethods(methods);
+            const data = getCurrentAccessToken();
+            console.log(data)
+            if (!data) {
+              throw new Error('Something went wrong obtaining access token');
+            }
+            const credential = provider.credentialFromResult(result);
+            
+            signInWithRedirect(auth, provider)
+              .then((result) => {
+                console.log(result);
+                // The signed-in user info.
+                const credential = provider.credentialFromResult(result);
+                if (credential) {
+                  const token = credential.accessToken;
+                }
+                const user = result.user;
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          });
+          // //
+          // setLoadBool(true);
+          // signInWithPopup(auth, provider)
+          //   .then((result) => {
+          //     const credential = GoogleAuthProvider.credentialFromResult(result);
+          //     if (credential) {
+          //       const token = credential.accessToken;
+          //     }
+          //     const user = result.user;
+          //   })
+          //   .catch((err) => {
+          //     setLoadBool(false);
+          //   });
+          // //
+        }
+      });
   }
 
   function signInWithTW() {
@@ -84,16 +144,18 @@ export default function Login() {
 
   function signInWithG() {
     const provider = new GoogleAuthProvider();
-    setLoadBool(true)
-    signInWithPopup(auth, provider).then((result) => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      if (credential) {
-        const token = credential.accessToken;
-      }
-      const user = result.user;
-    }).catch((err) => {
-      setLoadBool(false)
-    })
+    setLoadBool(true);
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        if (credential) {
+          const token = credential.accessToken;
+        }
+        const user = result.user;
+      })
+      .catch((err) => {
+        setLoadBool(false);
+      });
   }
 
   function signInWithEmail() {
@@ -111,8 +173,8 @@ export default function Login() {
   let router = useRouter();
   function redirect() {
     setTimeout(() => {
-      router.push('/dashboard')
-    }, 500)
+      router.push("/dashboard");
+    }, 500);
   }
   return (
     <>
@@ -123,8 +185,8 @@ export default function Login() {
       </Head>
       {loadBool ? <Loader /> : ""}
       <div className="login">
-        <p>{(auth.currentUser == null) ? "" : redirect()}</p>
-        <img src={logo.src}/>
+        <p>{auth.currentUser == null ? "" : redirect()}</p>
+        <img src={logo.src} />
         {/* <h2>Login:</h2> */}
         <div id="loginWrapper">
           <div id="form">
@@ -144,7 +206,9 @@ export default function Login() {
               placeholder="Enter your password"
               autoComplete="current-password"
             />
-            <button onClick={signInWithEmail}>Log in</button>
+            <button onClick={signInWithEmail} className="noSelect">
+              Log in
+            </button>
           </div>
           <div id="orSection">
             <div></div>
@@ -167,7 +231,9 @@ export default function Login() {
           </div>
         </div>
         <div id="loginDisclaimer">
-          <p>Don't have an account? <a href="../register">Register</a></p>
+          <p>
+            Don't have an account? <a href="../register">Register</a>
+          </p>
         </div>
       </div>
     </>
