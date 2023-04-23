@@ -5,6 +5,8 @@ import fs from 'fs';
 export default function handler(req, res) {
     const { folderName, pageTitle } = req.body;
 
+    // alert(folderName)
+
     let pageTitleUp = pageTitle.charAt(0).toUpperCase() + pageTitle.slice(1); 
     //   create new folder
     fs.mkdirSync(`pages/sites/${folderName}`);
