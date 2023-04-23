@@ -7,7 +7,7 @@ export default function Dash(props) {
       <h1>Your Dashboard</h1>
       <div id="websites">
         <p>
-          You have {props.sitesTotal} website projects in total.{" "}
+          You have {props.sitesTotal} website project{(props.sitesTotal === 1) ? "" : "s"} in total.{" "}
           {props.sitesTotal <= 10 ? (
             <a href="../templates">Start a new one?</a>
           ) : (
