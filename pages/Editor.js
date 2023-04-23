@@ -631,6 +631,7 @@ function Editor(props) {
       },
       ...pageData.slice(index + 1),
     ]);
+    setIsUnsavedChanges(true);
   }
 
   const colorChange = (e) => {
@@ -649,6 +650,7 @@ function Editor(props) {
         },
       },
     });
+    setIsUnsavedChanges(true);
   };
 
   const nameChange = (e) => {
@@ -843,6 +845,7 @@ function Editor(props) {
             ...pageData.slice(index + 1),
           ]);
           setLoadBool(false);
+          setIsUnsavedChanges(true);
           // clearFileInput();
         }, 2000);
       });
@@ -943,87 +946,90 @@ function Editor(props) {
         </nav>
 
         <div id="lowerMenu">
+          <div
+            id="bgShadow"
+            className={
+              isStyleOpen || isProfileOpen || isSettingsOpen ? "active" : ""
+            }
+          ></div>
           <div id="actualLowerMenu">
-            <div id="dropDowns">
-                  <div
-                  style={{display: (isStyleOpen ? "flex" : "none"), flexDirection: "column"}}
-                    // className={`dropdown-items ${isStyleOpen ? "show" : ""}`}
-                  >
-                    <a>Colors</a>
-                    <ul id="colorList">
-                      <li>
-                        <input
-                          name="color1"
-                          id="color1"
-                          type="color"
-                          defaultValue={
-                            defaults["webContent"]["meta"]["colorPalette"][
-                              "color1"
-                            ]
-                          }
-                          onChange={colorChange}
-                        />
-                        <label htmlFor="color1">Main color 1</label>
-                      </li>
-                      <li>
-                        <input
-                          name="color2"
-                          id="color2"
-                          type="color"
-                          defaultValue={
-                            defaults["webContent"]["meta"]["colorPalette"][
-                              "color2"
-                            ]
-                          }
-                          onChange={colorChange}
-                        />
-                        <label htmlFor="color2">Main color 2</label>
-                      </li>
-                      <li>
-                        <input
-                          name="color3"
-                          id="color3"
-                          type="color"
-                          defaultValue={
-                            defaults["webContent"]["meta"]["colorPalette"][
-                              "color3"
-                            ]
-                          }
-                          onChange={colorChange}
-                        />
-                        <label htmlFor="color3">Accent Color</label>
-                      </li>
-                      <li>
-                        <input
-                          name="colorLight"
-                          id="colorLight"
-                          type="color"
-                          defaultValue={
-                            defaults["webContent"]["meta"]["colorPalette"][
-                              "colorLight"
-                            ]
-                          }
-                          onChange={colorChange}
-                        />
-                        <label htmlFor="colorLight">Color Light</label>
-                      </li>
-                      <li>
-                        <input
-                          name="colorDark"
-                          id="colorDark"
-                          type="color"
-                          defaultValue={
-                            defaults["webContent"]["meta"]["colorPalette"][
-                              "colorDark"
-                            ]
-                          }
-                          onChange={colorChange}
-                        />
-                        <label htmlFor="colorDark">Color Dark</label>
-                      </li>
-                    </ul>
-                    {/* This is a TODO section */}
-                    {/* <div id="websiteStyle">
+            <div
+              id="styleMenu"
+              style={{
+                display: isStyleOpen ? "flex" : "none",
+                flexDirection: "column",
+              }}
+              // className={`dropdown-items ${isStyleOpen ? "show" : ""}`}
+            >
+              <h2>Colors</h2>
+              <ul id="colorList">
+                <li>
+                  <input
+                    name="color1"
+                    id="color1"
+                    type="color"
+                    defaultValue={
+                      defaults["webContent"]["meta"]["colorPalette"]["color1"]
+                    }
+                    onChange={colorChange}
+                  />
+                  <label htmlFor="color1">Main color 1</label>
+                </li>
+                <li>
+                  <input
+                    name="color2"
+                    id="color2"
+                    type="color"
+                    defaultValue={
+                      defaults["webContent"]["meta"]["colorPalette"]["color2"]
+                    }
+                    onChange={colorChange}
+                  />
+                  <label htmlFor="color2">Main color 2</label>
+                </li>
+                <li>
+                  <input
+                    name="color3"
+                    id="color3"
+                    type="color"
+                    defaultValue={
+                      defaults["webContent"]["meta"]["colorPalette"]["color3"]
+                    }
+                    onChange={colorChange}
+                  />
+                  <label htmlFor="color3">Accent Color</label>
+                </li>
+                <li>
+                  <input
+                    name="colorLight"
+                    id="colorLight"
+                    type="color"
+                    defaultValue={
+                      defaults["webContent"]["meta"]["colorPalette"][
+                        "colorLight"
+                      ]
+                    }
+                    onChange={colorChange}
+                  />
+                  <label htmlFor="colorLight">Color Light</label>
+                </li>
+                <li>
+                  <input
+                    name="colorDark"
+                    id="colorDark"
+                    type="color"
+                    defaultValue={
+                      defaults["webContent"]["meta"]["colorPalette"][
+                        "colorDark"
+                      ]
+                    }
+                    onChange={colorChange}
+                  />
+                  <label htmlFor="colorDark">Color Dark</label>
+                </li>
+              </ul>
+              {/* This is a TODO section */}
+              {/* <div id="websiteStyle">
                   <label for="websiteStyle" class="label">
                     Website Style:
                   </label>
@@ -1036,101 +1042,125 @@ function Editor(props) {
                     <option value="minimalism">Minimalism</option>
                   </select>
                 </div> */}
-                  </div>
+            </div>
+            <div
+              id="profileMenu"
+              style={{
+                display: isProfileOpen ? "flex" : "none",
+                flexDirection: "column",
+              }}
+            >
+              <section id="profileSection">
+                <div>
+                  <img src={user.photoURL} alt="Profile Pic" />
+                  <p>{user.displayName}</p>
+                  <p>{user.email}</p>
+                </div>
+                <div></div>
+              </section>
+            </div>
+            <div
+              style={{
+                display: isSettingsOpen ? "flex" : "none",
+                flexDirection: "column",
+              }}
+              id="settingsMenu"
+            >
+              <h2>Website Settings</h2>
+              <form id="websiteSettings" onSubmit={handleSubmit}>
+                <div id="websiteNameWrapper">
+                  <label htmlFor="websiteName">Website title:</label>
+                  <input
+                    id="websiteName"
+                    name="websiteName"
+                    type="text"
+                    defaultValue={defaults.name}
+                    placeholder="Enter website name..."
+                    onChange={nameChange}
+                  />
+                  <span onClick={saveNewData} className="noSelect">
+                    <RiSave3Fill
+                      style={{ display: isSaved ? "none" : "flex" }}
+                    />
+                    <BsCheckLg style={{ display: isSaved ? "flex" : "none" }} />
+                  </span>
+                </div>
+                <div>
+                  <label id="message" htmlFor="changeLogo">
+                    Change logo:
+                  </label>
+                  <input
+                    type="file"
+                    placeholder="Upload new picture"
+                    name="changeLogo"
+                    id="changeLogo"
+                    accept="image/png, image/gif, image/jpeg"
+                    onChange={showLogoPreview}
+                  />
+                  <img id="logoPreview" src={logoFile} />
+                </div>
+                <div>
+                  <label id="message" htmlFor="changeThumbnail">
+                    Change thumbnail:
+                  </label>
+                  <input
+                    type="file"
+                    placeholder="Upload new picture"
+                    name="changeThumbnail"
+                    id="changeThumbnail"
+                    accept="image/png, image/gif, image/jpeg"
+                    onChange={showThumbnailPreview}
+                  />
+                  <img id="thumbnailPreview" src={thumbnailFile} />
+                </div>
+                <div id="dangerZoneWrapper">
+                  <p id="dangerZone">Danger zone</p>
+                  <h2>Publish website:</h2>
                   <div
-                  style={{display: (isProfileOpen ? "flex" : "none"), flexDirection: "column"}}
-                  // className={`dropdown-items ${isProfileOpen ? "show" : ""}`}
+                    className={`noSelect publishToggle ${isPublishToggleOn ? "on" : ""}`}
+                    onClick={handlePublishToggle}
                   >
-                    <section id="profileSection">
-                      <div>
-                        <img src={user.photoURL} alt="Profile Pic" />
-                        <p>{user.displayName}</p>
-                        <p>{user.email}</p>
-                      </div>
-                      <div></div>
-                    </section>
+                    <div className="switch"></div>
+                    <p>Published</p>
                   </div>
-                  <div
-                    // className={`dropdown-items ${isSettingsOpen ? "show" : ""}`}
-                    style={{display: (isSettingsOpen ? "flex" : "none"), flexDirection: "column"}}
+                  <a
+                    className="noSelect"
+                    id="deleteSite"
+                    onClick={deleteSite}
+                    style={{ fontSize: "1.2rem" }}
                   >
-                    <form id="websiteSettings" onSubmit={handleSubmit}>
-                      <div id="websiteNameWrapper">
-                        <label htmlFor="websiteName">Website Title</label>
-                        <input
-                          id="websiteName"
-                          name="websiteName"
-                          type="text"
-                          defaultValue={defaults.name}
-                          placeholder="Enter website name..."
-                          onChange={nameChange}
-                        />
-                        <span onClick={saveNewData}>
-                          <RiSave3Fill
-                            style={{ display: isSaved ? "none" : "flex" }}
-                          />
-                          <BsCheckLg
-                            style={{ display: isSaved ? "flex" : "none" }}
-                          />
-                        </span>
-                      </div>
-                      <label id="message" htmlFor="changeLogo">
-                        Change logo:
-                      </label>
-                      <input
-                        type="file"
-                        placeholder="Upload new picture"
-                        name="changeLogo"
-                        id="changeLogo"
-                        accept="image/png, image/gif, image/jpeg"
-                        onChange={showLogoPreview}
-                      />
-                      <img id="logoPreview" src={logoFile} />
-                      <label id="message" htmlFor="changeThumbnail">
-                        Change thumbnail:
-                      </label>
-                      <input
-                        type="file"
-                        placeholder="Upload new picture"
-                        name="changeThumbnail"
-                        id="changeThumbnail"
-                        accept="image/png, image/gif, image/jpeg"
-                        onChange={showThumbnailPreview}
-                      />
-                      <img id="thumbnailPreview" src={thumbnailFile} />
-                    </form>
-                    <a>Danger zone</a>
-                    <div id="publishWebsite">
-                      <p>Publish website:</p>
-                      <div
-                        className={`publishToggle ${
-                          isPublishToggleOn ? "on" : ""
-                        }`}
-                        onClick={handlePublishToggle}
-                      >
-                        <div className="switch"></div>
-                        <p>Published</p>
-                      </div>
-                    </div>
-                    <a
-                      className="noSelect"
-                      id="deleteSite"
-                      onClick={deleteSite}
-                      style={{ fontSize: "1.2rem" }}
-                    >
-                      Delete this website <FaTrashAlt id="trashIcon" />
-                    </a>
-                  </div>
+                    Delete this website <FaTrashAlt id="trashIcon" />
+                  </a>
+                </div>
+              </form>
             </div>
           </div>
           <div id="lowerMenuBtns">
-            <p onClick={toggleStyle}>
+            <p
+              onClick={() => {
+                setIsStyleOpen((prevstate) => !prevstate);
+                setIsProfileOpen(false);
+                setIsSettingsOpen(false);
+              }}
+            >
               <FaPalette />
             </p>
-            <p onClick={toggleProfile}>
+            <p
+              onClick={() => {
+                setIsProfileOpen((prevstate) => !prevstate);
+                setIsStyleOpen(false);
+                setIsSettingsOpen(false);
+              }}
+            >
               <AiOutlineUser />
             </p>
-            <p onClick={toggleSettings}>
+            <p
+              onClick={() => {
+                setIsSettingsOpen((prevstate) => !prevstate);
+                setIsStyleOpen(false);
+                setIsProfileOpen(false);
+              }}
+            >
               <AiFillSetting />
             </p>
           </div>

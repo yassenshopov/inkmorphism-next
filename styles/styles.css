@@ -2021,6 +2021,8 @@
     width: 100%;
     height: fit-content;
     max-height: 360px;
+    min-height: 160px;
+    background-color: #00000075;
     border-radius: 15px 15px 0 0;
     overflow: hidden;
     display: flex;
@@ -2113,6 +2115,7 @@
     flex-direction: column-reverse;
     padding-left: 0;
     padding-right: 0;
+    width: 100%;
   }
   .imgAndTxt img,
   .imgAndTxt p {
@@ -2120,9 +2123,15 @@
   }
   .imgAndTxt p {
     text-align: center;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    box-sizing: border-box;
   }
   .imgAndTxt img {
     border-radius: 0;
+  }
+  .imgAndTxt .imgWrapper {
+    width: 100% !important;
   }
 }
 @media screen and (max-width: 900px) and (min-width: 649px) {
