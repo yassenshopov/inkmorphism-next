@@ -26,6 +26,7 @@ import {
   FaTrashAlt,
   FaPlus,
   FaPalette,
+  FaUserAlt,
 } from "react-icons/fa";
 import Head from "next/head";
 import logo from "../styles/images/logoWh.png";
@@ -951,6 +952,11 @@ function Editor(props) {
             className={
               isStyleOpen || isProfileOpen || isSettingsOpen ? "active" : ""
             }
+            onClick={() => {
+              setIsStyleOpen(false);
+              setIsProfileOpen(false);
+              setIsSettingsOpen(false);
+            }}
           ></div>
           <div id="actualLowerMenu">
             <div
@@ -1152,7 +1158,7 @@ function Editor(props) {
                 setIsSettingsOpen(false);
               }}
             >
-              <AiOutlineUser />
+              <FaUserAlt />
             </p>
             <p
               onClick={() => {
