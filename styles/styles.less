@@ -2146,6 +2146,8 @@
           width: 100%;
           height: fit-content;
           max-height: 360px;
+          min-height: 160px;
+          background-color: #00000075;
           border-radius: 15px 15px 0 0;
           overflow: hidden;
           display: flex;
@@ -2250,15 +2252,22 @@
     flex-direction: column-reverse;
     padding-left: 0;
     padding-right: 0;
+    width: 100%;
     img,
     p {
       width: 100% !important;
     }
     p {
       text-align: center;
+      padding-left: 10vw;
+      padding-right: 10vw;
+      box-sizing: border-box;
     }
     img {
       border-radius: 0;
+    }
+    .imgWrapper {
+      width: 100% !important;
     }
   }
 }
