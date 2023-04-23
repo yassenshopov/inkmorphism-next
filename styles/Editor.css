@@ -73,6 +73,9 @@ html {
   overflow-y: scroll;
   border-radius: 20px 20px 0 0;
 }
+.Editor > main > nav p {
+  margin: 0;
+}
 .Editor > main > nav button {
   font-size: 2rem;
   display: flex;
@@ -111,6 +114,34 @@ html {
   background: #ffffff40;
   cursor: pointer;
   transition: all 400ms ease-in-out;
+}
+.Editor > main > #lowerMenu {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--mainLight);
+  z-index: 88;
+  padding: 10px 0;
+}
+.Editor > main > #lowerMenu #lowerMenuBtns {
+  display: flex;
+  height: 60px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10vw;
+  box-sizing: border-box;
+}
+.Editor > main > #lowerMenu #lowerMenuBtns p {
+  padding: 6px 4vw;
+  font-size: 1.2rem;
+  border-radius: 12px;
+  transition: all 200ms ease-in-out;
+}
+.Editor > main > #lowerMenu #lowerMenuBtns p:hover {
+  color: var(--mainLight);
+  background-color: var(--mainColor1);
 }
 .Editor > main #mainEditorWrapper {
   width: 100%;
@@ -509,6 +540,7 @@ html {
     width: 100%;
     border-radius: 0;
     height: 100%;
+    padding-bottom: calc(1.2rem + 20px + 40px);
   }
   .Editor > main nav {
     top: 0;
@@ -519,6 +551,9 @@ html {
   .Editor > main nav #mobileMode,
   .Editor > main nav #openFS {
     display: none !important;
+  }
+  .Editor > main > #lowerMenu {
+    display: block;
   }
   .Editor > main #mainEditorWrapper {
     width: 100vw;

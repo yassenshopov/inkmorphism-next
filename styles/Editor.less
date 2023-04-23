@@ -77,6 +77,9 @@ html {
       gap: 1vw;
       overflow-y: scroll;
       border-radius: 20px 20px 0 0;
+      p {
+        margin: 0;
+      }
       button {
         font-size: 2rem;
         display: flex;
@@ -118,6 +121,34 @@ html {
       }
     }
     caret-color: var(--mainLight);
+    > #lowerMenu {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: var(--mainLight);
+      z-index: 88;
+      padding: 10px 0;
+      #lowerMenuBtns {
+        display: flex;
+        height: 60px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10vw;
+        box-sizing: border-box;
+        p {
+          padding: 6px 4vw;
+          font-size: 1.2rem;
+          border-radius: 12px;
+          transition: all 200ms ease-in-out;
+        }
+        p:hover {
+          color: var(--mainLight);
+          background-color: var(--mainColor1);
+        }
+      }
+    }
     #mainEditorWrapper {
       width: 100%;
       display: flex;
@@ -541,6 +572,7 @@ html {
       width: 100%;
       border-radius: 0;
       height: 100%;
+      padding-bottom: calc(1.2rem + 20px + 40px);
       nav {
         top: 0;
         width: 100%;
@@ -550,6 +582,9 @@ html {
         #openFS {
           display: none !important;
         }
+      }
+      > #lowerMenu {
+        display: block;
       }
       #mainEditorWrapper {
         width: 100vw;

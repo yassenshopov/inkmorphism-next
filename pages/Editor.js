@@ -20,7 +20,13 @@ import { RiSave3Fill } from "react-icons/ri";
 import { BiEdit } from "react-icons/bi";
 import { BsCheckLg } from "react-icons/bs";
 import { CgFormatText } from "react-icons/cg";
-import { FaMobileAlt, FaDesktop, FaTrashAlt, FaPlus } from "react-icons/fa";
+import {
+  FaMobileAlt,
+  FaDesktop,
+  FaTrashAlt,
+  FaPlus,
+  FaPalette,
+} from "react-icons/fa";
 import Head from "next/head";
 import logo from "../styles/images/logoWh.png";
 import { useRouter } from "next/router";
@@ -28,6 +34,7 @@ import Loader from "./components/loader.js";
 import HideContent from "./components/hideContent.js";
 import { TfiLayoutMediaLeft, TfiImage } from "react-icons/tfi";
 import { RxCross1 } from "react-icons/rx";
+import { AiFillSetting, AiOutlineUser } from "react-icons/ai";
 
 const dataArr = [];
 
@@ -934,6 +941,21 @@ function Editor(props) {
             <MdOutlineCloseFullscreen />
           </button>
         </nav>
+
+        <div id="lowerMenu">
+          <div id="actualLowerMenu"></div>
+          <div id="lowerMenuBtns">
+            <p>
+              <FaPalette />
+            </p>
+            <p>
+              <AiOutlineUser />
+            </p>
+            <p>
+              <AiFillSetting />
+            </p>
+          </div>
+        </div>
 
         <button id="fetch" onClick={getData}></button>
 
