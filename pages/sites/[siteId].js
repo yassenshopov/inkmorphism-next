@@ -42,6 +42,7 @@ export default function Default() {
   }, []);
 
   let dataArr = [];
+  const [fullData, setFullData] = useState({});
   const [pageData, setPageData] = useState([]);
   const [metaData, setMetaData] = useState({
     metaThumbnail:
@@ -74,6 +75,7 @@ export default function Default() {
             try {
               setPageData(item.webContent.pages.main.structure);
               setMetaData(item.webContent.meta);
+              setFullData(item)
             } catch (err) {
               console.log(err);
             }
@@ -115,7 +117,7 @@ export default function Default() {
                   src={metaData.metaFavicon}
                   draggable={false}
                 />
-                <p>{metaData.metaTitle}</p>
+                <p>{fullData.name}</p>
               </a>
             </nav>
           );
@@ -156,6 +158,16 @@ export default function Default() {
         <title>{metaData.metaTitle}</title>
         <meta name="description" content={metaData.metaDescription}></meta>
         <link rel="icon" href={metaData.metaFavicon} />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content={metaData.metaAuthor}></meta>
+        <meta property="og:image" content={metaData.metaThumbnail}></meta>
+        <meta property="og:type" content="website"></meta>
+        <meta property="og:title" content={metaData.metaTitle}></meta>
+        <meta property="og:description" content={metaData.metaThumbnail}></meta>
+        <meta property="twitter:card" content="summary_large_image"></meta>
+        <meta property="twitter:title" content={metaData.metaTitle}></meta>
+        <meta property="twitter:description" content={metaData.metaThumbnail}></meta>
       </Head>
       <button id="fetch" onClick={getData}></button>
       {fullSite}
