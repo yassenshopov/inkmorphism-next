@@ -68,11 +68,9 @@ export default function Default() {
     const ref = doc(db, "publicSites", siteId);
     try {
       const data = await getDoc(ref).then((doc) => {
-        console.log(doc)
         dataArr.push(doc.data());
         dataArr.forEach((item, index) => {
           if (item !== undefined) {
-            console.log(item)
             try {
               setPageData(item.webContent.pages.main.structure);
               setMetaData(item.webContent.meta);
