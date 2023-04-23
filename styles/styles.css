@@ -491,8 +491,10 @@
   height: 100vh;
   overflow-y: hidden;
   opacity: 1;
+  pointer-events: auto;
 }
 #dashnav #overlayMenu {
+  pointer-events: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -543,12 +545,15 @@
 #dash h2 {
   font-family: "Oswald";
 }
+#dash h1 {
+  margin: 0;
+}
 #dash #websites {
   display: flex;
   flex-direction: column;
   gap: 20px;
   min-height: 80vh;
-  padding: 40px 0;
+  padding: 20px 0;
   position: relative;
 }
 #dash #websites > a {
@@ -1430,7 +1435,7 @@
 }
 .imgAndTxt {
   display: flex;
-  padding: 40px 10%;
+  padding: 20px 10%;
   align-items: center;
   justify-content: space-between;
   gap: 2vw;

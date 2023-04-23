@@ -524,6 +524,9 @@ html {
     width: 100vw;
     background-color: #252525;
   }
+  .Editor > main #mainEditorWrapper .changeImg {
+    font-size: 1.4rem !important;
+  }
   .Editor aside {
     position: fixed;
     top: 0;
