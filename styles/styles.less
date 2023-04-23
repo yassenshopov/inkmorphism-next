@@ -987,6 +987,9 @@
   align-items: center;
   color: var(--mainLight);
   background: linear-gradient(var(--mainColor1), var(--mainColor2));
+  padding: 0 10vw;
+  box-sizing: border-box;
+  text-align: center;
   p,
   a {
     font-size: 2rem;
@@ -2141,21 +2144,25 @@
         text-align: center;
         .imgWrapper {
           width: 100%;
-          height: 200px;
+          height: fit-content;
+          max-height: 360px;
           border-radius: 15px 15px 0 0;
           overflow: hidden;
           display: flex;
           justify-content: center;
           align-items: center;
           img {
-            border-radius: none;
-            height: 100%;
-            width: auto;
+            border-radius: 0;
+            height: auto;
+            width: 100%;
           }
         }
         * {
           justify-self: center;
           align-self: center;
+        }
+        a, p, h2 {
+          padding: 0 6vw;
         }
         & > *:last-child {
           text-decoration: underline;
