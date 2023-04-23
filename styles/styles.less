@@ -17,6 +17,10 @@
   --wb3Color1: #ffde52;
   --wb3Color2: #cdac00;
   --wb3Color3: #0b98b8;
+
+  --scrollbarThumb: var(--mainColor1);
+  --scrollbarTrack: var(--mainColor3);
+  --scrollbarWidth: 10px;
 }
 
 @font-face {
@@ -40,20 +44,16 @@
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: var(--scrollbarWidth);
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--mainColor3);
+  background: var(--scrollbarTrack);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--mainColor1);
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: var(--scrollbarThumb);
+  border-radius: var(--scrollbarWidth);
 }
 
 #MainNav {
