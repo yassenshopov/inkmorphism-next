@@ -68,6 +68,7 @@ export default function Default() {
     const ref = doc(db, "publicSites", siteId);
     try {
       const data = await getDoc(ref).then((doc) => {
+        console.log(doc)
         dataArr.push(doc.data());
         dataArr.forEach((item, index) => {
           if (item !== undefined && index === 1) {
@@ -143,6 +144,16 @@ export default function Default() {
     setFullSite(sections);
   }, [pageData]);
 
+  useEffect(() => {
+    const root = document.documentElement;
+    root.style.setProperty(
+      "--scrollbarThumb", metaData.colorPalette.color1
+    );
+    root.style.setProperty(
+      "--scrollbarTrack", "#121212"
+    );
+  }, [pageData]);
+
   return (
     <div
       className={metaData.metaStyle}
@@ -163,10 +174,10 @@ export default function Default() {
         <meta property="og:image" content={metaData.metaThumbnail}></meta>
         <meta property="og:type" content="website"></meta>
         <meta property="og:title" content={metaData.metaTitle}></meta>
-        <meta property="og:description" content={metaData.metaThumbnail}></meta>
+        <meta property="og:description" content={metaData.metaDescription}></meta>
         <meta property="twitter:card" content="summary_large_image"></meta>
         <meta property="twitter:title" content={metaData.metaTitle}></meta>
-        <meta property="twitter:description" content={metaData.metaThumbnail}></meta>
+        <meta property="twitter:description" content={metaData.metaDescription}></meta>
       </Head>
       <button id="fetch" onClick={getData}></button>
       {fullSite}
