@@ -922,6 +922,9 @@
   align-items: center;
   color: var(--mainLight);
   background: linear-gradient(var(--mainColor1), var(--mainColor2));
+  padding: 0 10vw;
+  box-sizing: border-box;
+  text-align: center;
 }
 #hideContent p,
 #hideContent a {
@@ -2016,7 +2019,8 @@
   }
   #dash #websites > a .imgWrapper {
     width: 100%;
-    height: 200px;
+    height: fit-content;
+    max-height: 360px;
     border-radius: 15px 15px 0 0;
     overflow: hidden;
     display: flex;
@@ -2024,13 +2028,18 @@
     align-items: center;
   }
   #dash #websites > a .imgWrapper img {
-    border-radius: none;
-    height: 100%;
-    width: auto;
+    border-radius: 0;
+    height: auto;
+    width: 100%;
   }
   #dash #websites > a * {
     justify-self: center;
     align-self: center;
+  }
+  #dash #websites > a a,
+  #dash #websites > a p,
+  #dash #websites > a h2 {
+    padding: 0 6vw;
   }
   #dash #websites > a > *:last-child {
     text-decoration: underline;
