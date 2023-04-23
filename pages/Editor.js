@@ -195,6 +195,7 @@ function Editor(props) {
       ...pageData.slice(index + 1),
     ]);
     setEditPopupToggle(false);
+    setIsUnsavedChanges(true);
   }
 
   function addSection(type, index) {
@@ -204,6 +205,7 @@ function Editor(props) {
       ...pageData.slice(index),
     ]);
     setPopupToggle(false);
+    setIsUnsavedChanges(true);
   }
   const sectionTypes = [
     {
@@ -342,14 +344,14 @@ function Editor(props) {
                 />
                 <p>{defaults.name}</p>
               </a>
-              <p
+              {/* <p
                 className="editBtn noSelect"
                 onClick={() => {
                   deleteSectionPopup(index);
                 }}
               >
                 <BiEdit />
-              </p>
+              </p> */}
               <div className="addSection">
                 <p
                   onClick={() => {
@@ -458,7 +460,6 @@ function Editor(props) {
       }
     });
     setSectionsData(sections);
-    console.log(pageData);
     setData({
       ...defaults,
       webContent: {
@@ -478,7 +479,6 @@ function Editor(props) {
   useEffect(() => {
     async function asyncFunc() {
       if (userName !== "fallback") {
-        console.log(userName, props.name);
         const col2 = collection(db, "users", userName, "websites");
         const data2 = await getDocs(col2).then((snapshot) => {
           let checkPrivacy = false;
@@ -551,7 +551,6 @@ function Editor(props) {
     try {
       // const profilePic = getDoc(profilePicRef);
       getDownloadURL(profilePicRef).then((metadata) => {
-        console.log(metadata);
         setUser({
           displayName: props.auth.currentUser.displayName,
           photoURL: metadata,
@@ -588,9 +587,9 @@ function Editor(props) {
     if (savedData.published) {
       await setDoc(doc(db, "publicSites", props["name"]), savedData);
     }
-    console.log(savedData);
     setTimeout(() => {
       setIsSaved(false);
+      setIsUnsavedChanges(false);
     }, 2000);
     setTrigger(!trigger);
   }
@@ -606,13 +605,10 @@ function Editor(props) {
   // };
 
   function saveNewData() {
-    console.log(defaults);
     sendData(defaults);
   }
 
   function txtFieldChange(e, index) {
-    console.log(e, index);
-    console.log(pageData);
     setPageData((pageData) => [
       ...pageData.slice(0, index),
       {
@@ -707,7 +703,6 @@ function Editor(props) {
 
   function uploadNewImg(index) {
     setUploadNewImgToggle(true);
-    console.log(index);
   }
 
   const fileInputRef = useRef(null);
@@ -750,7 +745,6 @@ function Editor(props) {
   }
 
   useEffect(() => {
-    console.log(logoFileToUpload);
     if (logoFileToUpload !== "123") {
       try {
         uid =
@@ -762,9 +756,7 @@ function Editor(props) {
       let metadata = { contentType: "image/png" };
       // actualUpload(photoRef, metadata);
       uploadBytes(logoFileRef, logoFileToUpload, metadata).then((snapshot) => {
-        console.log(snapshot);
         const pngURL = getDownloadURL(logoFileRef).then((url) => {
-          console.log(url);
           setTrigger(!trigger);
         });
       });
@@ -789,7 +781,6 @@ function Editor(props) {
   }
 
   useEffect(() => {
-    console.log(thumbnailFileToUpload);
     if (thumbnailFileToUpload !== "123" && 1) {
       try {
         uid =
@@ -805,9 +796,7 @@ function Editor(props) {
       let metadata = { contentType: "image/png" };
       uploadBytes(thumbnailFileRef, thumbnailFileToUpload, metadata).then(
         (snapshot) => {
-          console.log(snapshot);
           const pngURL = getDownloadURL(thumbnailFileRef).then((url) => {
-            console.log(url);
             setTrigger(!trigger);
           });
         }
@@ -828,10 +817,7 @@ function Editor(props) {
 
   function actualUpload(photoRef, metadata, index) {
     uploadBytes(photoRef, fileToUpload, metadata).then((snapshot) => {
-      console.log("Uploaded a file:", snapshot.metadata.name);
-      console.log(snapshot);
       const pngURL = getDownloadURL(photoRef).then((url) => {
-        console.log(url);
         setUploadNewImgToggle(false);
         setTimeout(() => {
           setPageData((pageData) => [
@@ -857,7 +843,6 @@ function Editor(props) {
   }
 
   useEffect(() => {
-    console.log(fileToUpload);
     setActualFileToUpload(fileToUpload);
   }, [fileToUpload]);
 
@@ -869,7 +854,6 @@ function Editor(props) {
   async function uploadFile() {
     setLoadBool(true);
     let randomString = generateRandomString(16);
-    console.log(props);
     try {
       uid =
         "user-" +
@@ -904,6 +888,8 @@ function Editor(props) {
     });
   };
 
+  const [isUnsavedChanges, setIsUnsavedChanges] = useState(false);
+
   return (
     <div className={"Editor" + fsClass + modeClass}>
       <Head>
@@ -919,13 +905,18 @@ function Editor(props) {
 
       {hideContent ? <HideContent /> : ""}
 
-      {/* <dialog open>
+      {/* <dialog open style={{display: "none"}}>
         <p>You are refreshing the page</p>
         <button>Ok</button><button>Maybe</button><button>Cancel</button>
       </dialog> */}
 
       <main id="editor">
         <nav id="nav">
+          <p>
+            {isUnsavedChanges
+              ? "You have some unsaved changes"
+              : "All changes saved"}
+          </p>
           <button onClick={saveNewData} className="noSelect">
             <RiSave3Fill style={{ display: isSaved ? "none" : "flex" }} />
             <BsCheckLg style={{ display: isSaved ? "flex" : "none" }} />
@@ -986,7 +977,7 @@ function Editor(props) {
         >
           <form id="popup">
             <p id="message">Upload new image</p>
-            <label htmlFor="fileInput" className="fileInputLabel">
+            <label htmlFor="fileInput" className="fileInputLabel noSelect">
               Choose your file
             </label>
             <input
@@ -1006,7 +997,6 @@ function Editor(props) {
             <div id="buttons">
               <p
                 onClick={() => {
-                  console.log(uploadNewImgToggle);
                   setUploadNewImgToggle(false);
                 }}
                 className="noSelect"
