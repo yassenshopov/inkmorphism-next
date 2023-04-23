@@ -158,7 +158,6 @@ export default function Default() {
         <title>{metaData.metaTitle}</title>
         <meta name="description" content={metaData.metaDescription}></meta>
         <link rel="icon" href={metaData.metaFavicon} />
-
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content={metaData.metaAuthor}></meta>
         <meta property="og:image" content={metaData.metaThumbnail}></meta>
