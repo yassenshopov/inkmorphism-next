@@ -71,7 +71,7 @@ export default function Default() {
         console.log(doc)
         dataArr.push(doc.data());
         dataArr.forEach((item, index) => {
-          if (item !== undefined && index === 1) {
+          if (item !== undefined) {
             console.log(item)
             try {
               setPageData(item.webContent.pages.main.structure);
