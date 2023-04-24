@@ -27,6 +27,8 @@ import {
   FaPlus,
   FaPalette,
   FaUserAlt,
+  FaSun,
+  FaMoon,
 } from "react-icons/fa";
 import Head from "next/head";
 import logo from "../styles/images/logoWh.png";
@@ -901,6 +903,23 @@ function Editor(props) {
 
   const [isUnsavedChanges, setIsUnsavedChanges] = useState(false);
 
+  const [isDarkModeOn, setDarkModeOn] = useState(false);
+
+  function toggleDarkMode() {
+    setDarkModeOn(!isDarkModeOn);
+  }
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (isDarkModeOn) {
+      root.style.setProperty("--mainLight", "#212529");
+      root.style.setProperty("--mainDark", "#fefefe");
+    } else {
+      root.style.setProperty("--mainLight", "#fefefe");
+      root.style.setProperty("--mainDark", "#212529");
+    }
+  }, [isDarkModeOn]);
+
   return (
     <div className={"Editor" + fsClass + modeClass}>
       <Head>
@@ -1123,7 +1142,9 @@ function Editor(props) {
                   <p id="dangerZone">Danger zone</p>
                   <h2>Publish website:</h2>
                   <div
-                    className={`noSelect publishToggle ${isPublishToggleOn ? "on" : ""}`}
+                    className={`noSelect publishToggle ${
+                      isPublishToggleOn ? "on" : ""
+                    }`}
                     onClick={handlePublishToggle}
                   >
                     <div className="switch"></div>
@@ -1474,6 +1495,18 @@ function Editor(props) {
         {/* <button onClick={() => console.log(pageData)}>
           Press me for 'pageData'
         </button> */}
+        <div id="darkModeToggleWrapper">
+          <p>Editor is in: { isDarkModeOn ? "Dark" : "Light"} Mode</p>
+          <div
+            className={`noSelect darkModeToggle ${isDarkModeOn ? "dark" : "light"}`}
+            onClick={toggleDarkMode}
+          >
+            <div className="switch"></div>
+            <FaSun />
+            <FaMoon />
+          </div>
+          <p>(This applies just to the Editor, and not the website project itself)</p>
+        </div>
       </aside>
     </div>
   );
