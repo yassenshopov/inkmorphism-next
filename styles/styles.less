@@ -1,6 +1,8 @@
 :root {
-  --mainLight: #fefefe;
+  // --mainDark: #fefefe;
+  // --mainLight: #101010;
   --mainDark: #101010;
+  --mainLight: #fefefe;
   --mainColor1: #3994ac;
   --mainColor2: #09596b;
   --mainColor3: #42042c;
@@ -796,12 +798,12 @@
   justify-content: center;
   align-items: center;
   position: fixed;
-  background-color: #00000099;
+  background-color: #000000ea;
   width: 100vw;
   height: 100vh;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 108;
   box-sizing: border-box;
   font-family: "Oswald";
   color: var(--mainDark);
@@ -818,7 +820,8 @@
     min-width: 40vw;
     max-width: 80vw;
     text-align: center;
-    box-shadow: 10px 10px 10px #12121299, -10px -10px 10px #ffffff25;
+    // box-shadow: 10px 10px 10px #12121299, -10px -10px 10px #ffffff25;
+    // box-shadow: 0px 0px 80px var(--mainLight);
     z-index: 102;
     position: relative;
     .fileInput {
@@ -951,7 +954,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: var(--mainLight);
+  color: #fefefe;
   background: linear-gradient(var(--mainColor1), var(--mainColor2));
   #loadWrapper {
     display: flex;
@@ -1521,6 +1524,10 @@
   align-items: center;
   p {
     text-align: center;
+    cursor: pointer;
+    padding: 10px 1vw;
+    caret-color: var(--mainDark);
+    font-size: 1rem;
   }
 }
 
@@ -1534,7 +1541,7 @@
     font-size: 1.2rem;
     cursor: pointer;
     padding: 10px 1vw;
-    caret-color: #000000;
+    caret-color: var(--mainDark);
   }
 }
 
@@ -2164,7 +2171,9 @@
           justify-self: center;
           align-self: center;
         }
-        a, p, h2 {
+        a,
+        p,
+        h2 {
           padding: 0 6vw;
         }
         & > *:last-child {
