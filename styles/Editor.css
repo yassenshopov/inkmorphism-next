@@ -394,6 +394,7 @@ html {
   font-size: 2vw;
   cursor: pointer;
   border-radius: 16px;
+  font-family: var(--font2);
 }
 .Editor > main #mainEditorWrapper main > * .imgWrapper .changeImg:hover {
   opacity: 1;
