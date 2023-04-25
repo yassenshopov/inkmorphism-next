@@ -876,6 +876,16 @@
 #popupWrapper #popup #buttons .green {
   background-color: #098334 !important;
 }
+.container {
+  display: flex;
+  justify-content: center;
+}
+.box {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  cursor: move;
+}
 #loader {
   position: fixed;
   z-index: 501;

@@ -912,11 +912,11 @@ function Editor(props) {
   useEffect(() => {
     const root = document.documentElement;
     if (isDarkModeOn) {
-      root.style.setProperty("--mainLight", "#212529");
+      root.style.setProperty("--mainLight", "#111519");
       root.style.setProperty("--mainDark", "#fefefe");
     } else {
       root.style.setProperty("--mainLight", "#fefefe");
-      root.style.setProperty("--mainDark", "#212529");
+      root.style.setProperty("--mainDark", "#111519");
     }
   }, [isDarkModeOn]);
 
@@ -1496,16 +1496,21 @@ function Editor(props) {
           Press me for 'pageData'
         </button> */}
         <div id="darkModeToggleWrapper">
-          <p>Editor is in: { isDarkModeOn ? "Dark" : "Light"} Mode</p>
+          <p>Editor is in: {isDarkModeOn ? "Dark" : "Light"} Mode</p>
           <div
-            className={`noSelect darkModeToggle ${isDarkModeOn ? "dark" : "light"}`}
+            className={`noSelect darkModeToggle ${
+              isDarkModeOn ? "dark" : "light"
+            }`}
             onClick={toggleDarkMode}
           >
             <div className="switch"></div>
             <FaSun />
             <FaMoon />
           </div>
-          <p>(This applies just to the Editor, and not the website project itself)</p>
+          <p>
+            (This applies just to the Editor, and not the website project
+            itself)
+          </p>
         </div>
       </aside>
     </div>
