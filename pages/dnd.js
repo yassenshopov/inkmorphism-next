@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import update from 'immutability-helper';
+import { TouchBackend } from 'react-dnd-touch-backend';
+import { useEffect } from "react";
 
 const Box = ({ id, color, index, moveBox }) => {
   const [{ isDragging }, drag] = useDrag({
@@ -84,8 +86,29 @@ export default function DnD() {
     );
   };
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    setIsMobile(mediaQuery.matches);
+
+    const handleMediaQueryChange = (event) => {
+      setIsMobile(event.matches);
+    };
+    mediaQuery.addEventListener('change', handleMediaQueryChange);
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleMediaQueryChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    console.log("isMobile:" + isMobile)
+  }, [isMobile])
+
+
   return (
-    <DndProvider backend={HTML5Backend}>
+    <DndProvider backend={isMobile ? TouchBackend : HTML5Backend}>
       <div className="container">
         {boxes.map((box, index) => (
           <Box
