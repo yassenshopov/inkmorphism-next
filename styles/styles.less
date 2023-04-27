@@ -137,6 +137,7 @@
     overflow-y: hidden;
     height: 100vh;
     opacity: 1;
+    pointer-events: all;
   }
   #overlayMenu {
     position: absolute;
@@ -154,6 +155,7 @@
     justify-content: center;
     align-items: center;
     transition: all 400ms ease-in-out;
+    pointer-events: none;
     a {
       font-size: 2.4rem;
     }
@@ -991,7 +993,7 @@
 
 #hideContent {
   position: fixed;
-  z-index: 96;
+  z-index: 196;
   top: 0;
   left: 0;
   width: 100%;
@@ -2162,6 +2164,7 @@
         padding: 0;
         text-decoration: none;
         text-align: center;
+        box-sizing: border-box;
         .imgWrapper {
           width: 100%;
           height: fit-content;
@@ -2187,6 +2190,9 @@
         p,
         h2 {
           padding: 0 6vw;
+        }
+        a {
+          font-size: 0.8rem;
         }
         & > *:last-child {
           text-decoration: underline;

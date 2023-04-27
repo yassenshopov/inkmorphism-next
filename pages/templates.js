@@ -51,18 +51,34 @@ export default function Templates() {
     } catch (err) {
       uid = "_";
     }
-
-    try {
-      // profile_pic = auth.currentUser.photoURL;
-      console.log(auth);
-      setUserData({
-        profile_pic: auth.currentUser.photoURL,
-        displayName: auth.currentUser.displayName,
+    const storage = getStorage();
+    const storageRef = ref(storage, uid + "/profilePic.png");
+    getDownloadURL(storageRef)
+      .then((metadata) => {
+        setUserData({
+          photoURL: metadata,
+        });
+        try {
+          // profile_pic = auth.currentUser.photoURL;
+          setUserData({
+            profile_pic: metadata,
+            // profile_pic: auth.currentUser.photoURL,
+            displayName: auth.currentUser.displayName,
+          });
+        } catch (err) {}
+      })
+      .catch((error) => {
+        // Uh-oh, an error occurred!
+        try {
+          console.log(userDataDB);
+          // profile_pic = auth.currentUser.photoURL;
+          setUserData({
+            profile_pic: auth.currentUser.photoURL,
+            // profile_pic: auth.currentUser.photoURL,
+            displayName: auth.currentUser.displayName,
+          });
+        } catch (err) {}
       });
-      console.log(userData);
-    } catch (err) {
-      console.log(err);
-    }
   }
 
   try {
@@ -237,7 +253,7 @@ export default function Templates() {
 
       <button id="fetch" onClick={getData}></button>
 
-      <Dashnav profile_pic={profile_pic} auth={auth} />
+      <Dashnav profile_pic={userData.profile_pic} auth={auth} />
       <main id="templatesWrapper">
         <section id="templates">
           {templates}
