@@ -58,7 +58,7 @@ export default function Dashboard() {
   }, []);
 
   const [theData, setData] = useState("");
-  const [deletedWebsites, setDeletedWebsites] = useState("");
+  const [deletedWebsites, setDeletedWebsites] = useState([]);
   const [sitesTotal, setSitesTotal] = useState(0);
   let profile_pic;
 
