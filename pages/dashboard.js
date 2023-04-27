@@ -58,6 +58,7 @@ export default function Dashboard() {
   }, []);
 
   const [theData, setData] = useState("");
+  const [deletedWebsites, setDeletedWebsites] = useState("");
   const [sitesTotal, setSitesTotal] = useState(0);
   let profile_pic;
 
@@ -141,8 +142,37 @@ export default function Dashboard() {
           {/* <p>{site.initDate}</p> */}
         </a>
       ));
+      const deletedSites = websitesArray.deleted.map((site) => (
+        <a
+          key={site.domain}
+          href={"../config/" + site.domainSlug}
+          className="noSelect deletedWebsites"
+          style={{
+            backgroundColor: site.published ? "#ffffff10" : "#00000020",
+          }}
+        >
+          <h2>{site.name}</h2>
+          <p>{site.style}</p>
+          <div>
+            {/* <a href={"https://" + site.domain} target="_blank">
+              {site.domain}
+            </a> */}
+            <a href={"https://inkmorphism.com/sites/" + site.domainSlug} target="_blank">
+              {"inkmorphism.com/sites/" + site.domainSlug}
+            </a>
+          </div>
+          <div className="imgWrapper">
+            <img
+              src={site.thumbnail === "" ? placeholder.src : site.thumbnail}
+              loading="lazy"
+            />
+          </div>
+          {/* <p>{site.initDate}</p> */}
+        </a>
+      ));
       setSitesTotal(websitesArray.existing.length);
       setData(websites);
+      setDeletedWebsites(deletedSites);
       const storage = getStorage();
       const storageRef = ref(storage, uid + "/profilePic.png");
       getDownloadURL(storageRef)
@@ -191,7 +221,7 @@ export default function Dashboard() {
       <button id="fetch" onClick={getData}></button>
 
       <Dashnav profile_pic={userData.profile_pic} auth={auth} />
-      <Dash sitesTotal={sitesTotal} theData={theData} />
+      <Dash sitesTotal={sitesTotal} theData={theData} deletedSites={deletedWebsites} />
       <Dashfooter />
     </div>
   );
