@@ -615,13 +615,10 @@
       padding: 0 2vw 0 0;
       box-shadow: 10px 10px 10px #12121220, -10px -10px 20px #a59cc409;
       transition: all 200ms ease-in-out;
-      & > *:nth-child(1) {
-        font-size: 2rem;
-      }
+      overflow: hidden;
       .imgWrapper {
         width: 100%;
         height: 150px;
-        border-radius: 15px 0 0 15px;
         overflow: hidden;
         display: flex;
         justify-content: center;
@@ -660,6 +657,18 @@
     }
     & > a:hover {
       background-color: var(--mainColor1) !important;
+    }
+    & > a.deletedWebsites {
+      grid-template-columns: 25% 20% 15% 20%;
+      padding: 0 0 0 2vw;
+      overflow: hidden;
+      // background-color: #68666690 !important;
+      filter: saturate(10%) brightness(110%);
+      backdrop-filter: saturate(10%) brightness(110%);
+    }
+    & > a.deletedWebsites:hover {
+      filter: saturate(100%) brightness(100%);
+      backdrop-filter: saturate(100%) brightness(100%);
     }
     #linkTemplates {
       display: flex;

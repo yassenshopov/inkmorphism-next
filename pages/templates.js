@@ -17,6 +17,7 @@ import placeholder from "../styles/images/placeholder.png";
 import defaultProfilePic from "../styles/images/defaultProfilePic.png";
 import defaultLogo from "../styles/images/logoPlace.png";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+import Loader from "./components/loader.js";
 
 let domainSlug;
 let newSite;
@@ -25,6 +26,8 @@ let slug;
 
 export default function Templates() {
   let profile_pic = "";
+
+  const [loadBool, setLoadBool] = useState(false);
 
   useEffect(() => {
     const el = document.getElementById("fetch");
@@ -92,6 +95,7 @@ export default function Templates() {
   const [styleVar, setStyleVar] = useState("");
 
   async function randomSiteGen(style) {
+    setLoadBool(prevState => !prevState)
     setStyleVar(style);
     let user;
     let db = getFirestore(app);
@@ -147,6 +151,7 @@ export default function Templates() {
             uploadBytes(thumbnailRef, fileObject2, metadata).then(() => {
               getDownloadURL(thumbnailRef).then((url) => {
                 setDefaultThumbnail(url);
+                // setLoadBool(prevState => !prevState)
               });
             });
           });
@@ -165,7 +170,7 @@ export default function Templates() {
         domain: slug,
         domainSlug: domainSlug,
         initDate: "",
-        name: "New Site v7",
+        name: "Fuzzy Beats",
         style: styleVar.slice(0, 1).toUpperCase() + styleVar.slice(1),
         thumbnail: defaultThumbnail,
         webContent: {
@@ -179,7 +184,7 @@ export default function Templates() {
             },
             metaFavicon: defaultLogo,
             metaStyle: styleVar.toLowerCase(),
-            metaTitle: "Your Website",
+            metaTitle: "Fuzzy Beats",
             metaDescription: "The description for your website",
             metaThumbnail: defaultThumbnail,
             metaAuthor: "Meta Author",
@@ -198,7 +203,7 @@ export default function Templates() {
                   type: "imgAndTxt",
                   content: {
                     img: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fminerals-locate-276%2FsrcFiles%2FimgPlaceholder.png?alt=media&token=f3dbf650-3ac2-4644-9047-a207ab6f80f9",
-                    txt: "This is text about some located minerals.",
+                    txt: "Get ready to hop along with Fuzzy Beats at their high-energy bunny bash!",
                   },
                   options: {
                     direction: "directHorizontal",
@@ -208,7 +213,7 @@ export default function Templates() {
                   type: "footer",
                   options: {},
                   content: {
-                    txt: "Copyright by XYZ",
+                    txt: "Copyright by Fuzzy Beats ©",
                   },
                 },
               ],
@@ -235,7 +240,7 @@ export default function Templates() {
             randomSiteGen(template);
           }}
         >
-          Get Started with {template} →
+          Get Started with <em>{template}</em> →
         </a>
         <a href={"templates/" + template} className="noSelect">
           Preview Template
@@ -250,6 +255,8 @@ export default function Templates() {
         <link rel="icon" href="/faviconWh.ico" />
         <title>Inkmorphism - Templates for your websites!</title>
       </Head>
+
+      {loadBool ? <Loader /> : ""}
 
       <button id="fetch" onClick={getData}></button>
 
