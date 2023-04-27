@@ -86,7 +86,10 @@ export default function DnD() {
     );
   };
 
-  const [isMobile, setIsMobile] = useState(true);
+  //Current bug:
+  //On prod, on mobile DnD is not working
+  //It defaults to the HTML5Backend because of the 1st render
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 767px)');
