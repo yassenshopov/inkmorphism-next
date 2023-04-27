@@ -609,14 +609,14 @@
   background-color: var(--mainColor1) !important;
 }
 #dash #websites > a.deletedWebsites {
-  grid-template-columns: 25% 20% 15% 20%;
+  grid-template-columns: 25% 15% 35% 20%;
   padding: 0 0 0 2vw;
   overflow: hidden;
-  filter: saturate(10%) brightness(110%);
-  backdrop-filter: saturate(10%) brightness(110%);
+  filter: saturate(10%);
+  backdrop-filter: saturate(100%) brightness(110%);
 }
 #dash #websites > a.deletedWebsites:hover {
-  filter: saturate(100%) brightness(100%);
+  filter: saturate(100%);
   backdrop-filter: saturate(100%) brightness(100%);
 }
 #dash #websites #linkTemplates {
@@ -2091,6 +2091,18 @@
   }
   #dash #websites > a .publishedCheck.notPublished {
     background-color: #00000075;
+  }
+  #dash #websites > a.deletedWebsites {
+    grid-template-columns: 1fr;
+    backdrop-filter: none;
+    padding: 0 0 30px 0;
+  }
+  #dash #websites > a.deletedWebsites .imgWrapper {
+    order: 1;
+    padding: 0;
+  }
+  #dash #websites > a.deletedWebsites :not(.imgWrapper) {
+    order: 2;
   }
   #dashfooter {
     justify-content: center;

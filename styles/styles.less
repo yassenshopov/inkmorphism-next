@@ -659,15 +659,15 @@
       background-color: var(--mainColor1) !important;
     }
     & > a.deletedWebsites {
-      grid-template-columns: 25% 20% 15% 20%;
+      grid-template-columns: 25% 15% 35% 20%;
       padding: 0 0 0 2vw;
       overflow: hidden;
-      // background-color: #68666690 !important;
-      filter: saturate(10%) brightness(110%);
-      backdrop-filter: saturate(10%) brightness(110%);
+      // background-color: #2a2a2a10 !important;
+      filter: saturate(10%);
+      backdrop-filter: saturate(100%) brightness(110%);
     }
     & > a.deletedWebsites:hover {
-      filter: saturate(100%) brightness(100%);
+      filter: saturate(100%);
       backdrop-filter: saturate(100%) brightness(100%);
     }
     #linkTemplates {
@@ -2223,6 +2223,18 @@
         }
         .publishedCheck.notPublished {
           background-color: #00000075;
+        }
+      }
+      > a.deletedWebsites {
+        grid-template-columns: 1fr;
+        backdrop-filter: none;
+        padding: 0 0 30px 0;
+        .imgWrapper {
+          order: 1;
+          padding: 0;
+        }
+        :not(.imgWrapper) {
+          order: 2;
         }
       }
     }
