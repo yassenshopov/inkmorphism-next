@@ -8,91 +8,105 @@ import {
   SiGooglemybusiness,
 } from "react-icons/si";
 import { AiFillStar } from "react-icons/ai";
-import { BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill } from "react-icons/bs"
+import {
+  BsFillArrowRightCircleFill,
+  BsFillArrowLeftCircleFill,
+} from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { randomWords } from "random-words";
-import { getFirestore, collection, getDocs, doc, setDoc } from 'firebase/firestore/lite';
-import { getAuth } from 'firebase/auth'
-import app from '../../firebase/clientApp';
- 
-export default function Neobrutalism() {
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  doc,
+  setDoc,
+} from "firebase/firestore/lite";
+import { getAuth } from "firebase/auth";
+import app from "../../firebase/clientApp";
 
+export default function Neobrutalism() {
   const [scrollLeft, setScrollLeft] = useState(1);
   const [scrollRight, setScrollRight] = useState(0);
-  const handleScroll = event => {
-    setScrollLeft((((event.currentTarget.scrollWidth/3) - event.currentTarget.scrollLeft)/(event.currentTarget.scrollWidth/3)));
-    setScrollRight(1 + (-1)*(((event.currentTarget.scrollWidth/3) - event.currentTarget.scrollLeft)/(event.currentTarget.scrollWidth/3)))
+  const handleScroll = (event) => {
+    setScrollLeft(
+      (event.currentTarget.scrollWidth / 3 - event.currentTarget.scrollLeft) /
+        (event.currentTarget.scrollWidth / 3)
+    );
+    setScrollRight(
+      1 +
+        -1 *
+          ((event.currentTarget.scrollWidth / 3 -
+            event.currentTarget.scrollLeft) /
+            (event.currentTarget.scrollWidth / 3))
+    );
   };
 
-  const [siteName, setSiteName] = useState("")
+  const [siteName, setSiteName] = useState("");
   const siteInput = (e) => {
-    console.log(e.target.value)
-    setSiteName(e.target.value)
-  }
+    console.log(e.target.value);
+    setSiteName(e.target.value);
+  };
 
   async function randomSiteGen(style) {
-    alert(style)
+    alert(style);
     let user;
     let db = getFirestore(app);
     const auth = getAuth(app);
     let uid;
     let col;
     try {
-      uid = auth.currentUser.uid; 
-      user = "user-" + uid
+      uid = auth.currentUser.uid;
+      user = "user-" + uid;
       let db = getFirestore(app);
       col = collection(db, "users", user, "websites");
     } catch (error) {
-      console.log(error)
-      uid = "_" 
+      console.log(error);
+      uid = "_";
     }
-    let randomWords = require('random-words');
-    let words = randomWords(2)
+    let randomWords = require("random-words");
+    let words = randomWords(2);
     let slug = "";
     for (let word in words) {
-      console.log(words[word])
-      slug = slug + words[word] + "-"
+      console.log(words[word]);
+      slug = slug + words[word] + "-";
     }
-    slug = slug + Math.ceil(Math.random()*999)
-    slug = slug + ".inkmorphism.com"
-    console.log(slug)
-    console.log(siteName)
+    slug = slug + Math.ceil(Math.random() * 999);
+    slug = slug + ".inkmorphism.com";
+    console.log(slug);
+    console.log(siteName);
     let newSite = {
-      "domain": slug,
+      domain: slug,
       initDate: "",
-      name: siteName, 
+      name: siteName,
       thumbnail: "",
       style: style,
-    }
+    };
 
     await setDoc(doc(col, siteName), newSite);
 
-    let urlRedirect = "../../config/" + slug
+    let urlRedirect = "../../config/" + slug;
     // window.location.href = urlRedirect
   }
 
-  return ( 
-    <div className="Neobrutalism">
+  return (
+    <div className="simple previewTemplate">
       <Head>
         {/* <link rel="icon" href={defaultFiles['logo']} /> */}
-        <title>Neobrutalism | Inkmorphism - The AI Website Builder</title> 
+        <title>Simple | Inkmorphism - The AI Website Builder</title>
       </Head>
 
       <div id="contentWrapper">
-        <nav>
-          <div id="logo">
-            <img src="nbLogo.png" alt="NeoCoach" />
-            <a>NeoCoach</a>
+        <nav className="nav">
+          <div id="logo" className="noSelect">
+            <img src="simpleLogo.png" alt="Fuzzy Beats" />
+            <a>Fuzzy Beats</a>
           </div>
-          <div id="links">
-            <a href="#about">About us</a>
-            <a href="#testimonials">Testimonials</a>
-            <a href="#contact">Contact us</a>
-          </div>
-          <button className="noSelect">Get in touch</button>
         </nav>
 
-        <main>
+        {/* <main>
+
+
+
           <section id="hero">
             <div id="heroText">
               <h1>
@@ -237,15 +251,38 @@ export default function Neobrutalism() {
               <button>Submit</button>
             </form>
           </section>
+        </main> */}
+
+        <main>
+          <section id="hero">
+            <div id="heroTxt">
+              <h1>Fuzzy Beats: The Ultimate Rockin' Bunnies!</h1>
+              <h2>Listen to our latest album and catch us on tour</h2>
+            </div>
+            <div id="bgImg">
+              <div className="shadow"></div>
+              <img src="simpleHero3.png" />
+            </div>
+          </section>
+
+          <section id="about" className="imgAndTxt">
+            <div className="txt">
+              <h2>Who are we?</h2>
+              <p>
+                Fuzzy Beats is a rock band from the UK, formed in 2010. The band
+                consists of lead vocalist and guitarist, Fuzzy, bassist, Buzzy,
+                and drummer, Dizzy. The band has released 3 albums to date, with
+                their latest album, "Fuzzy Beats: The Ultimate Rockin'
+                Bunnies!", released in 2020. The band is currently on tour in
+                the UK, with plans to tour Europe and the US in 2023.
+              </p>
+            </div>
+            <img src="simpleAbout.png" />
+          </section>
         </main>
 
-        <footer>
-          <div>
-            <a>Made with Inkmorphism</a>
-            <p>
-              <em>(All images are created with Midjourney)</em>
-            </p>
-          </div>
+        <footer className="footer">
+          <p>Copyright by Fuzzy Beats ©</p>
           <section id="socialLinks">
             <SiLinkedin />
             <SiInstagram />
@@ -256,8 +293,19 @@ export default function Neobrutalism() {
       </div>
 
       <div>
-        <input id="siteName" type="text" placeholder="Enter your site name..." onChange={siteInput}/>
-        <button onClick={() => {randomSiteGen("Neobrutalism")}}>Create your website with Neobrutalism</button>
+        <input
+          id="siteName"
+          type="text"
+          placeholder="Enter your site name..."
+          onChange={siteInput}
+        />
+        <button
+          onClick={() => {
+            randomSiteGen("Neobrutalism");
+          }}
+        >
+          Create your website with Neobrutalism
+        </button>
       </div>
     </div>
   );

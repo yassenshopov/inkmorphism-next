@@ -1278,7 +1278,7 @@ function Editor(props) {
         </div>
         <div id="mainEditorWrapper">
           <main
-            className={defaults["webContent"]["meta"]["metaStyle"]}
+            className={defaults["webContent"]["meta"]["metaStyle"] + " editor"}
             style={{
               "--color1":
                 defaults["webContent"]["meta"]["colorPalette"]["color1"],
