@@ -174,7 +174,6 @@ export default function Dashboard() {
               href={"../config/" + site.domainSlug}
               className="noSelect deletedWebsites"
               style={{
-                backgroundColor: site.published ? "#ffffff10" : "#00000020",
                 display: daysTillDeletion(site.delTime) < 1 ? "none" : "grid",
               }}
             >
