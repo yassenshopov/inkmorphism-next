@@ -59,6 +59,7 @@ export default function Dashboard() {
 
   const [theData, setData] = useState("");
   const [deletedWebsites, setDeletedWebsites] = useState([]);
+  const [deletedSitesLen, setDeletedSitesLen] = useState(0);
   const [sitesTotal, setSitesTotal] = useState(0);
   let profile_pic;
 
@@ -117,7 +118,10 @@ export default function Dashboard() {
             {/* <a href={"https://" + site.domain} target="_blank">
               {site.domain}
             </a> */}
-            <a href={"https://inkmorphism.com/sites/" + site.domainSlug} target="_blank">
+            <a
+              href={"https://inkmorphism.com/sites/" + site.domainSlug}
+              target="_blank"
+            >
               {"inkmorphism.com/sites/" + site.domainSlug}
             </a>
           </div>
@@ -157,7 +161,10 @@ export default function Dashboard() {
             {/* <a href={"https://" + site.domain} target="_blank">
               {site.domain}
             </a> */}
-            <a href={"https://inkmorphism.com/sites/" + site.domainSlug} target="_blank">
+            <a
+              href={"https://inkmorphism.com/sites/" + site.domainSlug}
+              target="_blank"
+            >
               {"inkmorphism.com/sites/" + site.domainSlug}
             </a>
           </div>
@@ -171,6 +178,7 @@ export default function Dashboard() {
         </a>
       ));
       setSitesTotal(websitesArray.existing.length);
+      setDeletedSitesLen(websitesArray.deleted.length);
       setData(websites);
       setDeletedWebsites(deletedSites);
       const storage = getStorage();
@@ -221,7 +229,12 @@ export default function Dashboard() {
       <button id="fetch" onClick={getData}></button>
 
       <Dashnav profile_pic={userData.profile_pic} auth={auth} />
-      <Dash sitesTotal={sitesTotal} theData={theData} deletedSites={deletedWebsites} />
+      <Dash
+        sitesTotal={sitesTotal}
+        theData={theData}
+        deletedSites={deletedWebsites}
+        deletedSitesLen={deletedSitesLen}
+      />
       <Dashfooter />
     </div>
   );
