@@ -685,9 +685,18 @@ function Editor(props) {
 
   let router = useRouter();
 
+  function delTime() {
+    const now = new Date();
+    // const seconds = now.getSeconds();
+    const seconds = Math.round(now.getTime() / 1000);
+    const nanoseconds = (now.getTime() * 1000000) + (now.getMilliseconds() * 1000000);
+    return { seconds: seconds, nanoseconds: nanoseconds };
+  }
+
   async function deleteSite() {
     await updateDoc(doc(db, "users", userName, "websites", props["name"]), {
       deleted: true,
+      delTime: delTime(),
     }).then(() => {
       router.push("/dashboard");
     });

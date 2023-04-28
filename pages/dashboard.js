@@ -64,10 +64,11 @@ export default function Dashboard() {
   let profile_pic;
 
   function daysTillDeletion(obj) {
+    console.log(obj)
     try {
       const now = new Date();
       const deletionDate = new Date(
-        obj.seconds * 1000 + obj.nanoseconds / 1000000
+        obj.seconds * 1000
       );
       const daysPassed = Math.floor(
         (now - deletionDate) / (1000 * 60 * 60 * 24)
@@ -163,6 +164,7 @@ export default function Dashboard() {
         </a>
       ));
       const deletedSites = websitesArray.deleted.map((site) => {
+        console.log(site.domainSlug)
         if (daysTillDeletion(site.delTime) < 1) {
           return null
         } else {
@@ -202,7 +204,6 @@ export default function Dashboard() {
           );
         }
       }).filter((site) => site !== null);
-      console.log(deletedSites);
       setDeletedSitesLen(deletedSites.length);
       setSitesTotal(websitesArray.existing.length);
       setData(websites);
