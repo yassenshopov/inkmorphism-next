@@ -63,6 +63,22 @@ export default function Dashboard() {
   const [sitesTotal, setSitesTotal] = useState(0);
   let profile_pic;
 
+  function daysTillDeletion(obj) {
+    try {
+      const now = new Date();
+      const deletionDate = new Date(
+        obj.seconds * 1000 + obj.nanoseconds / 1000000
+      );
+      const daysPassed = Math.floor(
+        (now - deletionDate) / (1000 * 60 * 60 * 24)
+      );
+      const daysLeft = 29 - daysPassed;
+      return daysLeft;
+    } catch (err) {
+      return 0;
+    }
+  }
+
   async function getData() {
     try {
       let db = getFirestore(app);
@@ -146,39 +162,49 @@ export default function Dashboard() {
           {/* <p>{site.initDate}</p> */}
         </a>
       ));
-      const deletedSites = websitesArray.deleted.map((site) => (
-        <a
-          key={site.domain}
-          href={"../config/" + site.domainSlug}
-          className="noSelect deletedWebsites"
-          style={{
-            backgroundColor: site.published ? "#ffffff10" : "#00000020",
-          }}
-        >
-          <h2>{site.name}</h2>
-          <p>{site.style}</p>
-          <div>
-            {/* <a href={"https://" + site.domain} target="_blank">
-              {site.domain}
-            </a> */}
+      const deletedSites = websitesArray.deleted.map((site) => {
+        if (daysTillDeletion(site.delTime) < 1) {
+          return null
+        } else {
+          return (
             <a
-              href={"https://inkmorphism.com/sites/" + site.domainSlug}
-              target="_blank"
+              key={site.domain}
+              href={"../config/" + site.domainSlug}
+              className="noSelect deletedWebsites"
+              style={{
+                backgroundColor: site.published ? "#ffffff10" : "#00000020",
+                display: daysTillDeletion(site.delTime) < 1 ? "none" : "grid",
+              }}
             >
-              {"inkmorphism.com/sites/" + site.domainSlug}
+              <h2>{site.name}</h2>
+              <div>
+                {/* <a href={"https://" + site.domain} target="_blank">
+                {site.domain}
+              </a> */}
+                <a
+                  href={"https://inkmorphism.com/sites/" + site.domainSlug}
+                  target="_blank"
+                >
+                  {"inkmorphism.com/sites/" + site.domainSlug}
+                </a>
+              </div>
+              <p>
+                {daysTillDeletion(site.delTime).toString() +
+                  " days till full deletion"}
+              </p>
+              <div className="imgWrapper">
+                <img
+                  src={site.thumbnail === "" ? placeholder.src : site.thumbnail}
+                  loading="lazy"
+                />
+              </div>
             </a>
-          </div>
-          <div className="imgWrapper">
-            <img
-              src={site.thumbnail === "" ? placeholder.src : site.thumbnail}
-              loading="lazy"
-            />
-          </div>
-          {/* <p>{site.initDate}</p> */}
-        </a>
-      ));
+          );
+        }
+      }).filter((site) => site !== null);
+      console.log(deletedSites);
+      setDeletedSitesLen(deletedSites.length);
       setSitesTotal(websitesArray.existing.length);
-      setDeletedSitesLen(websitesArray.deleted.length);
       setData(websites);
       setDeletedWebsites(deletedSites);
       const storage = getStorage();
