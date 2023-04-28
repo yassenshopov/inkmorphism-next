@@ -154,7 +154,7 @@ export default function Default() {
 
   return (
     <div
-      className={metaData.metaStyle}
+      className={metaData.metaStyle + " published"}
       style={{
         "--color1": metaData["colorPalette"]["color1"],
         "--color2": metaData["colorPalette"]["color2"],

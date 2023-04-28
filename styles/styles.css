@@ -1474,6 +1474,9 @@
   padding: 10px 1vw;
   caret-color: var(--mainDark);
 }
+.published p {
+  cursor: auto;
+}
 .directHorizontal {
   flex-direction: row;
 }
