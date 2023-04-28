@@ -18,6 +18,7 @@
   --scrollbarThumb: var(--mainColor1);
   --scrollbarTrack: var(--mainColor3);
   --scrollbarWidth: 10px;
+  --scrollbarRadius: 0px;
 }
 @font-face {
   font-family: "Oswald";
@@ -43,7 +44,7 @@
 }
 ::-webkit-scrollbar-thumb {
   background: var(--scrollbarThumb);
-  border-radius: var(--scrollbarWidth);
+  border-radius: var(--scrollbarRadius);
 }
 #MainNav {
   position: fixed;
@@ -609,10 +610,10 @@
   background-color: var(--mainColor1) !important;
 }
 #dash #websites > a.deletedWebsites {
-  grid-template-columns: 25% 15% 35% 20%;
+  grid-template-columns: 20% 30% 20% 20%;
   padding: 0 0 0 2vw;
   overflow: hidden;
-  filter: saturate(10%);
+  filter: saturate(60%);
   backdrop-filter: saturate(100%) brightness(110%);
 }
 #dash #websites > a.deletedWebsites:hover {
