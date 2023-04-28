@@ -26,7 +26,7 @@ export default function Dash(props) {
         ) : (
           ""
         )}
-        {props.deletedSites.length > 0 ? (
+        {/* {props.deletedSites.length > 0 ? (
           <p>
             {props.deletedSites.length} Deleted websites (They get permanently deleted after 30 days in the
             bin):
@@ -34,7 +34,7 @@ export default function Dash(props) {
         ) : (
           ""
         )}
-        {props.deletedSites}
+        {props.deletedSites} */}
       </div>
     </main>
   );
