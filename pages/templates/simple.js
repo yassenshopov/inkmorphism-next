@@ -92,6 +92,7 @@ export default function Neobrutalism() {
     <div className="simple previewTemplate">
       <Head>
         {/* <link rel="icon" href={defaultFiles['logo']} /> */}
+        <link rel="icon" href="../faviconWh.ico" />
         <title>Simple | Inkmorphism - The AI Website Builder</title>
       </Head>
 
@@ -270,14 +271,45 @@ export default function Neobrutalism() {
               <h2>Who are we?</h2>
               <p>
                 Fuzzy Beats is a rock band from the UK, formed in 2010. The band
-                consists of lead vocalist and guitarist, Fuzzy, bassist, Buzzy,
-                and drummer, Dizzy. The band has released 3 albums to date, with
-                their latest album, "Fuzzy Beats: The Ultimate Rockin'
+                consists of lead vocalist and guitarist, <strong>Fuzzy</strong>,
+                bassist, <strong>Buzzy</strong>, and drummer,{" "}
+                <strong>Dizzy</strong>. The band has released 3 albums to date,
+                with their latest album, "Fuzzy Beats: The Ultimate Rockin'
                 Bunnies!", released in 2020. The band is currently on tour in
                 the UK, with plans to tour Europe and the US in 2023.
               </p>
             </div>
             <img src="simpleAbout.png" />
+          </section>
+
+          <section className="grid3">
+            <div className="gridItem">
+              <img src="simpleGridElement1.png" />
+              <h2>Digital Discordance</h2>
+              <p>
+                <em>Digital Discordance</em>: A high-energy album filled with
+                glitchy beats and futuristic soundscapes that will take you on a
+                journey through the digital unknown.
+              </p>
+            </div>
+            <div className="gridItem">
+              <img src="simpleGridElement4.png" />
+              <h2>Sky Garden Symphony</h2>
+              <p>
+                <em>Sky Garden Symphony</em>: A relaxing album filled with
+                ambient textures and soothing melodies that will take you on a
+                journey through the clouds.
+              </p>
+            </div>
+            <div className="gridItem">
+              <img src="simpleGridElement2.png" />
+              <h2>Pixels</h2>
+              <p>
+                <em>Pixels</em>: A retro album filled with 8-bit beats and
+                chiptune melodies that will take you on a journey through the
+                digital past.
+              </p>
+            </div>
           </section>
         </main>
 
@@ -292,7 +324,7 @@ export default function Neobrutalism() {
         </footer>
       </div>
 
-      <div>
+      {/* <div>
         <input
           id="siteName"
           type="text"
@@ -306,7 +338,7 @@ export default function Neobrutalism() {
         >
           Create your website with Neobrutalism
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }
