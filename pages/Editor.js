@@ -241,120 +241,136 @@ function Editor(props) {
   const [sectionSelection, setSectionsSelection] = useState();
 
   useEffect(() => {
-    const sections = pageData.map((section, index) => {
-      switch (section.type) {
-        case "txtOnly":
-          return (
-            <section
-              key={index}
-              className={section.type + " " + section.options.direction}
-            >
-              <div
-                onClick={() => {
-                  addSectionPopup(index);
-                }}
-                className="addSection"
+    console.log(pageData);
+    console.log(pageData.length === 0);
+    if (pageData.length === 0) {
+      const emptySection = [
+        <section
+          key="0"
+          id="emptySection"
+          className="noSelect"
+          onClick={() => addSectionPopup(0)}
+        >
+          <h2>Your website is a bit empty. Add a section!</h2>
+          <img src="../emptyEditor.png" />
+        </section>,
+      ];
+      setSectionsData(emptySection);
+    } else {
+      const sections = pageData.map((section, index) => {
+        switch (section.type) {
+          case "txtOnly":
+            return (
+              <section
+                key={index}
+                className={section.type + " " + section.options.direction}
               >
-                <p>
-                  Add section <FaPlus />
-                </p>
-              </div>
-              <p
-                suppressContentEditableWarning={true}
-                onBlur={(e) => {
-                  txtFieldChange(e, index);
-                }}
-                contentEditable={true}
-              >
-                {section.content.txt}
-              </p>
-              <p
-                className="editBtn noSelect"
-                onClick={() => {
-                  deleteSectionPopup(index);
-                }}
-              >
-                <BiEdit />
-              </p>
-              <div className="addSection">
-                <p
-                  onClick={() => {
-                    addSectionPopup(index + 1);
-                  }}
-                >
-                  Add section <FaPlus />
-                </p>
-              </div>
-            </section>
-          );
-        case "imgAndTxt":
-          return (
-            <section
-              key={index}
-              className={section.type + " " + section.options.direction}
-            >
-              <div
-                onClick={() => {
-                  addSectionPopup(index);
-                }}
-                className="addSection"
-              >
-                <p>
-                  Add section <FaPlus />
-                </p>
-              </div>
-              <p
-                suppressContentEditableWarning={true}
-                onBlur={(e) => {
-                  txtFieldChange(e, index);
-                }}
-                contentEditable={true}
-              >
-                {section.content.txt}
-              </p>
-              <div className="imgWrapper">
-                <img src={section.content.img} draggable={false} />
                 <div
-                  className="changeImg noSelect"
                   onClick={() => {
-                    setIndexOfNewPic(index);
-                    uploadNewImg();
+                    addSectionPopup(index);
                   }}
+                  className="addSection"
                 >
-                  Click to change image
+                  <p>
+                    Add section <FaPlus />
+                  </p>
                 </div>
-              </div>
-              <p
-                className="editBtn noSelect"
-                onClick={() => {
-                  deleteSectionPopup(index);
-                }}
-              >
-                <BiEdit />
-              </p>
-              <div className="addSection">
                 <p
+                  suppressContentEditableWarning={true}
+                  onBlur={(e) => {
+                    txtFieldChange(e, index);
+                  }}
+                  contentEditable={true}
+                >
+                  {section.content.txt}
+                </p>
+                <p
+                  className="editBtn noSelect"
                   onClick={() => {
-                    addSectionPopup(index + 1);
+                    deleteSectionPopup(index);
                   }}
                 >
-                  Add section <FaPlus />
+                  <BiEdit />
                 </p>
-              </div>
-            </section>
-          );
-        case "nav":
-          return (
-            <nav className={section.type} key={index}>
-              <a id="navLogo">
-                <img
-                  src={defaults.webContent.meta.metaFavicon}
-                  draggable={false}
-                  loading="lazy"
-                />
-                <p>{defaults.name}</p>
-              </a>
-              {/* <p
+                <div className="addSection">
+                  <p
+                    onClick={() => {
+                      addSectionPopup(index + 1);
+                    }}
+                  >
+                    Add section <FaPlus />
+                  </p>
+                </div>
+              </section>
+            );
+          case "imgAndTxt":
+            return (
+              <section
+                key={index}
+                className={section.type + " " + section.options.direction}
+              >
+                <div
+                  onClick={() => {
+                    addSectionPopup(index);
+                  }}
+                  className="addSection"
+                >
+                  <p>
+                    Add section <FaPlus />
+                  </p>
+                </div>
+                <p
+                  suppressContentEditableWarning={true}
+                  onBlur={(e) => {
+                    txtFieldChange(e, index);
+                  }}
+                  contentEditable={true}
+                >
+                  {section.content.txt}
+                </p>
+                <div className="imgWrapper">
+                  <img src={section.content.img} draggable={false} />
+                  <div
+                    className="changeImg noSelect"
+                    onClick={() => {
+                      setIndexOfNewPic(index);
+                      uploadNewImg();
+                    }}
+                  >
+                    Click to change image
+                  </div>
+                </div>
+                <p
+                  className="editBtn noSelect"
+                  onClick={() => {
+                    deleteSectionPopup(index);
+                  }}
+                >
+                  <BiEdit />
+                </p>
+                <div className="addSection">
+                  <p
+                    onClick={() => {
+                      addSectionPopup(index + 1);
+                    }}
+                  >
+                    Add section <FaPlus />
+                  </p>
+                </div>
+              </section>
+            );
+          case "nav":
+            return (
+              <nav className={section.type} key={index}>
+                <a id="navLogo">
+                  <img
+                    src={defaults.webContent.meta.metaFavicon}
+                    draggable={false}
+                    loading="lazy"
+                  />
+                  <p>{defaults.name}</p>
+                </a>
+                {/* <p
                 className="editBtn noSelect"
                 onClick={() => {
                   deleteSectionPopup(index);
@@ -362,47 +378,47 @@ function Editor(props) {
               >
                 <BiEdit />
               </p> */}
-              <div className="addSection">
+                <div className="addSection">
+                  <p
+                    onClick={() => {
+                      addSectionPopup(index + 1);
+                    }}
+                  >
+                    Add section <FaPlus />
+                  </p>
+                </div>
+              </nav>
+            );
+          case "footer":
+            return (
+              <footer className={section.type} key={index}>
+                <div className="addSection">
+                  <p
+                    onClick={() => {
+                      addSectionPopup(index);
+                    }}
+                  >
+                    Add section <FaPlus />
+                  </p>
+                </div>
                 <p
+                  suppressContentEditableWarning={true}
+                  onBlur={(e) => {
+                    txtFieldChange(e, index);
+                  }}
+                  contentEditable={true}
+                >
+                  {section.content.txt}
+                </p>
+                <p
+                  className="editBtn noSelect"
                   onClick={() => {
-                    addSectionPopup(index + 1);
+                    deleteSectionPopup(index);
                   }}
                 >
-                  Add section <FaPlus />
+                  <BiEdit />
                 </p>
-              </div>
-            </nav>
-          );
-        case "footer":
-          return (
-            <footer className={section.type} key={index}>
-              <div className="addSection">
-                <p
-                  onClick={() => {
-                    addSectionPopup(index);
-                  }}
-                >
-                  Add section <FaPlus />
-                </p>
-              </div>
-              <p
-                suppressContentEditableWarning={true}
-                onBlur={(e) => {
-                  txtFieldChange(e, index);
-                }}
-                contentEditable={true}
-              >
-                {section.content.txt}
-              </p>
-              <p
-                className="editBtn noSelect"
-                onClick={() => {
-                  deleteSectionPopup(index);
-                }}
-              >
-                <BiEdit />
-              </p>
-              {/* <div className="addSection">
+                {/* <div className="addSection">
                   <p
                     onClick={() => {
                       addSectionPopup(index + 1);
@@ -411,79 +427,80 @@ function Editor(props) {
                     Add section <FaPlus />
                   </p>
                 </div> */}
-            </footer>
-          );
-        case "imgOnly":
-          return (
-            <section
-              key={index}
-              className={section.type + " " + section.options.direction}
-            >
-              <div
-                onClick={() => {
-                  addSectionPopup(index);
-                }}
-                className="addSection"
+              </footer>
+            );
+          case "imgOnly":
+            return (
+              <section
+                key={index}
+                className={section.type + " " + section.options.direction}
               >
-                <p>
-                  Add section <FaPlus />
-                </p>
-              </div>
-              <div className="imgWrapper">
-                <img
-                  src={section.content.img}
-                  draggable={false}
-                  loading="lazy"
-                />
                 <div
-                  style={{ borderRadius: 0 }}
-                  className="changeImg noSelect"
                   onClick={() => {
-                    setIndexOfNewPic(index);
-                    uploadNewImg();
+                    addSectionPopup(index);
                   }}
+                  className="addSection"
                 >
-                  Click to change image
+                  <p>
+                    Add section <FaPlus />
+                  </p>
                 </div>
-              </div>
-              <p
-                className="editBtn noSelect"
-                onClick={() => {
-                  deleteSectionPopup(index);
-                }}
-              >
-                <BiEdit />
-              </p>
-              <div className="addSection">
+                <div className="imgWrapper">
+                  <img
+                    src={section.content.img}
+                    draggable={false}
+                    loading="lazy"
+                  />
+                  <div
+                    style={{ borderRadius: 0 }}
+                    className="changeImg noSelect"
+                    onClick={() => {
+                      setIndexOfNewPic(index);
+                      uploadNewImg();
+                    }}
+                  >
+                    Click to change image
+                  </div>
+                </div>
                 <p
+                  className="editBtn noSelect"
                   onClick={() => {
-                    addSectionPopup(index + 1);
+                    deleteSectionPopup(index);
                   }}
                 >
-                  Add section <FaPlus />
+                  <BiEdit />
                 </p>
-              </div>
-            </section>
-          );
-        default:
-          break;
-      }
-    });
-    setSectionsData(sections);
-    setData({
-      ...defaults,
-      webContent: {
-        ...defaults.webContent,
-        pages: {
-          ...defaults.webContent.pages,
-          main: {
-            ...defaults.webContent.pages.main,
-            structure: pageData,
+                <div className="addSection">
+                  <p
+                    onClick={() => {
+                      addSectionPopup(index + 1);
+                    }}
+                  >
+                    Add section <FaPlus />
+                  </p>
+                </div>
+              </section>
+            );
+          default:
+            break;
+        }
+      });
+      setSectionsData(sections);
+      setData({
+        ...defaults,
+        webContent: {
+          ...defaults.webContent,
+          pages: {
+            ...defaults.webContent.pages,
+            main: {
+              ...defaults.webContent.pages.main,
+              structure: pageData,
+            },
           },
         },
-      },
-    });
-    setPublishToggle(defaults.published);
+      });
+      setPublishToggle(defaults.published);
+    }
   }, [pageData, trigger]);
 
   useEffect(() => {
@@ -559,7 +576,6 @@ function Editor(props) {
     }
     const profilePicRef = ref(storage, uid + "/profilePic.png");
     try {
-      // const profilePic = getDoc(profilePicRef);
       getDownloadURL(profilePicRef).then((metadata) => {
         setUser({
           displayName: props.auth.currentUser.displayName,
@@ -570,7 +586,6 @@ function Editor(props) {
     } catch (err) {
       console.log(err);
     }
-    // console.log(profilePic);
     setLoadBool(false);
   }
 
@@ -687,9 +702,9 @@ function Editor(props) {
 
   function delTime() {
     const now = new Date();
-    // const seconds = now.getSeconds();
     const seconds = Math.round(now.getTime() / 1000);
-    const nanoseconds = (now.getTime() * 1000000) + (now.getMilliseconds() * 1000000);
+    const nanoseconds =
+      now.getTime() * 1000000 + now.getMilliseconds() * 1000000;
     return { seconds: seconds, nanoseconds: nanoseconds };
   }
 

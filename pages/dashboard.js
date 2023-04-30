@@ -18,28 +18,6 @@ import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 
 export default function Dashboard() {
-  // const [folderName, setFolderName] = useState('default');
-  // const [pageTitle, setPageTitle] = useState('default');
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     const response = await fetch('/api/create-page', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       },
-  //       body: JSON.stringify({ folderName, pageTitle })
-  //     });
-
-  //     const data = await response.json();
-  //     console.log(data.message);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
-
   const [userDataDB, setUserDB] = useState({
     photoURL: "",
   });
@@ -171,7 +149,6 @@ export default function Dashboard() {
           return (
             <a
               key={site.domain}
-              href={"../config/" + site.domainSlug}
               className="noSelect deletedWebsites"
               style={{
                 display: daysTillDeletion(site.delTime) < 1 ? "none" : "grid",
