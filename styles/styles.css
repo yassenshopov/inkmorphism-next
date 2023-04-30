@@ -1384,6 +1384,7 @@
   justify-content: center;
   align-items: center;
   font-size: 0.8vw;
+  height: 100%;
 }
 .simple.previewTemplate #contentWrapper::-webkit-scrollbar {
   display: none;
@@ -1426,6 +1427,9 @@
 .simple.previewTemplate #contentWrapper main {
   padding: 0;
   margin: 0;
+}
+.simple.previewTemplate #contentWrapper main > :nth-child(2n+1) {
+  background-color: var(--simpleColor1);
 }
 .simple.previewTemplate #contentWrapper main #hero {
   padding: 0;
@@ -1519,7 +1523,7 @@
   align-items: center;
   gap: 2vw;
   padding: 20px 2vw;
-  box-shadow: -10px 10px 0px var(--simpleColor2), 10px -10px 0px var(--simpleColor2);
+  background-color: var(--mainLight);
 }
 .simple.previewTemplate #contentWrapper .grid3 .gridItem ::selection {
   background-color: var(--simpleColor3);
@@ -1632,6 +1636,7 @@
   font-size: 1.4rem;
   font-weight: 600;
   color: var(--colorDark);
+  cursor: pointer !important;
 }
 .footer {
   display: flex;
@@ -2410,6 +2415,7 @@
     width: 80%;
     padding: 0 1vw;
     text-align: center;
+    line-height: 1.8;
   }
   .simple.previewTemplate #contentWrapper main .imgAndTxt .txt h2 {
     font-size: 2.6rem;
@@ -2428,7 +2434,35 @@
   .simple.previewTemplate #contentWrapper main .imgAndTxt img {
     border-radius: 0;
     width: 100%;
-    box-shadow: 0px 10px 0 var(--simpleColor3);
+    box-shadow: 0px 0px 0 var(--simpleColor3);
+  }
+  .simple.previewTemplate #contentWrapper main .grid3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .simple.previewTemplate #contentWrapper main .grid3 .gridItem {
+    padding: 40px 6vw;
+    box-sizing: border-box;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+  }
+  .simple.previewTemplate #contentWrapper main .grid3 .gridItem h2 {
+    height: fit-content;
+    margin: 0;
+  }
+  .simple.previewTemplate #contentWrapper main .grid3 .gridItem p {
+    line-height: 1.8;
+  }
+  .simple.previewTemplate #contentWrapper main .grid3 .gridItem ::selection {
+    background-color: var(--simpleColor3);
+    color: var(--simpleMainLight);
   }
   .simple.previewTemplate #contentWrapper .footer {
     display: flex;

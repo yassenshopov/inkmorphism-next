@@ -1475,6 +1475,7 @@
   align-items: center;
   // margin: 40px 0 0 0;
   font-size: 0.8vw;
+  height: 100%;
   #contentWrapper::-webkit-scrollbar {
     display: none;
   }
@@ -1518,6 +1519,9 @@
     main {
       padding: 0;
       margin: 0;
+      > :nth-child(2n+1) {
+        background-color: var(--simpleColor1);
+      }
       #hero {
         padding: 0;
         position: relative;
@@ -1612,8 +1616,9 @@
         align-items: center;
         gap: 2vw;
         padding: 20px 2vw;
-        box-shadow: -10px 10px 0px var(--simpleColor2),
-          10px -10px 0px var(--simpleColor2);
+        background-color: var(--mainLight);
+        // box-shadow: -10px 10px 0px var(--simpleColor2),
+        //   10px -10px 0px var(--simpleColor2);
         ::selection {
           background-color: var(--simpleColor3);
           color: var(--simpleMainDark);
@@ -1732,6 +1737,7 @@
       font-size: 1.4rem;
       font-weight: 600;
       color: var(--colorDark);
+      cursor: pointer !important;
     }
   }
 }
@@ -2570,6 +2576,7 @@
             width: 80%;
             padding: 0 1vw;
             text-align: center;
+            line-height: 1.8;
             h2 {
               font-size: 2.6rem;
               background-color: var(--simpleColor3);
@@ -2588,7 +2595,38 @@
           img {
             border-radius: 0;
             width: 100%;
-            box-shadow: 0px 10px 0 var(--simpleColor3);
+            box-shadow: 0px 0px 0 var(--simpleColor3);
+          }
+        }
+        .grid3 {
+          // grid-template-columns: repeat(1, 1fr);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          .gridItem {
+            // padding: 0;
+            padding: 40px 6vw;
+            box-sizing: border-box;
+            width: 100%;
+            // height: 100%;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            h2 {
+              height: fit-content;
+              margin: 0;
+            }
+            p {
+              line-height: 1.8;
+            }
+            ::selection {
+              background-color: var(--simpleColor3);
+              color: var(--simpleMainLight);
+            }
           }
         }
       }
