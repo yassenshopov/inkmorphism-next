@@ -491,6 +491,28 @@ label {
   cursor: pointer;
   border: none;
 }
+.Editor > main #mainEditorWrapper main #emptySection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 79vh;
+  cursor: pointer;
+  background-color: var(--mainLight);
+}
+.Editor > main #mainEditorWrapper main #emptySection h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  font-family: var(--font2);
+  color: var(--mainDark);
+}
+.Editor > main #mainEditorWrapper main #emptySection img {
+  width: 40%;
+  height: auto;
+}
+.Editor > main #mainEditorWrapper main #emptySection:hover {
+  background-color: #49494920;
+}
 .Editor aside {
   width: 20vw;
   padding: 2vw;
@@ -772,8 +794,8 @@ label {
 }
 .Editor #darkModeToggleWrapper .darkModeToggle .switch {
   position: absolute;
-  height: calc(16px*2 + 10px);
-  width: calc(16px*2 + 10px);
+  height: calc(16px * 2 + 10px);
+  width: calc(16px * 2 + 10px);
   right: 0.5vw;
   border-radius: 50%;
   background-color: var(--mainDark);
@@ -787,7 +809,7 @@ label {
   background-color: var(--mainLight);
 }
 .Editor #darkModeToggleWrapper .darkModeToggle.dark .switch {
-  right: calc(100% - 16px*2 - 10px - 0.5vw);
+  right: calc(100% - 16px * 2 - 10px - 0.5vw);
 }
 @media screen and (max-width: 600px) {
   .Editor > main {
@@ -820,6 +842,13 @@ label {
   }
   .Editor > main #mainEditorWrapper .changeImg {
     font-size: 1.4rem !important;
+  }
+  .Editor > main #mainEditorWrapper #emptySection h2 {
+    text-align: center;
+    padding: 0 10%;
+  }
+  .Editor > main #mainEditorWrapper #emptySection img {
+    width: 80% !important;
   }
   .Editor aside {
     position: fixed;
