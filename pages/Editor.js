@@ -1313,7 +1313,9 @@ function Editor(props) {
       </main>
 
       <aside>
-        <img id="mainLogo" src={logo.src} />
+        <a href="../../dashboard">
+          <img id="mainLogo" src={logo.src} />
+        </a>
         <h1>Hello, {user.displayName}.</h1>
 
         <div id="dropDowns">
