@@ -650,6 +650,13 @@ label {
     #mainLogo {
       width: 4vw;
       height: 4vw;
+      transition: all 400ms ease-in-out;
+      border-radius: 50%;
+    }
+    #mainLogo:hover {
+      transform: rotate(-360deg);
+      filter: invert(1);
+      box-shadow: 0 0 20px 0 rgba(147, 147, 147, 0.2);
     }
     #publishWebsite {
       display: flex;
@@ -757,6 +764,9 @@ label {
   #websiteSettings {
     display: flex;
     flex-direction: column;
+    label {
+      cursor: pointer;
+    }
     #websiteNameWrapper {
       box-sizing: border-box;
       position: relative;
@@ -890,6 +900,12 @@ label {
       }
       > #lowerMenu {
         display: block;
+        #lowerMenuBtns {
+          padding: 0 10vw;
+          p {
+            margin: 10px 0px;
+          }
+        }
       }
       #mainEditorWrapper {
         width: 100vw;

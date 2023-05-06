@@ -616,6 +616,13 @@ label {
 .Editor aside #mainLogo {
   width: 4vw;
   height: 4vw;
+  transition: all 400ms ease-in-out;
+  border-radius: 50%;
+}
+.Editor aside #mainLogo:hover {
+  transform: rotate(-360deg);
+  filter: invert(1);
+  box-shadow: 0 0 20px 0 rgba(147, 147, 147, 0.2);
 }
 .Editor aside #publishWebsite {
   display: flex;
@@ -713,6 +720,9 @@ label {
 .Editor #websiteSettings {
   display: flex;
   flex-direction: column;
+}
+.Editor #websiteSettings label {
+  cursor: pointer;
 }
 .Editor #websiteSettings #websiteNameWrapper {
   box-sizing: border-box;
@@ -840,6 +850,12 @@ label {
   }
   .Editor > main > #lowerMenu {
     display: block;
+  }
+  .Editor > main > #lowerMenu #lowerMenuBtns {
+    padding: 0 10vw;
+  }
+  .Editor > main > #lowerMenu #lowerMenuBtns p {
+    margin: 10px 0px;
   }
   .Editor > main #mainEditorWrapper {
     width: 100vw;
