@@ -826,7 +826,7 @@ label {
 .Editor #darkModeToggleWrapper .darkModeToggle.dark .switch {
   right: calc(100% - 16px * 2 - 10px - 0.5vw);
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 821px) {
   .Editor > main {
     margin: 0;
     width: 100%;
@@ -842,7 +842,7 @@ label {
     gap: 4vw;
   }
   .Editor > main nav p {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   .Editor > main nav #mobileMode,
   .Editor > main nav #openFS {

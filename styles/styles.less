@@ -77,7 +77,7 @@
   z-index: 2;
   outline: none !important;
   -webkit-tap-highlight-color: transparent !important;
-  background-color: rgba(255, 255, 255, .01);
+  background-color: rgba(255, 255, 255, 0.01);
   @keyframes mobileMenuAnimation {
     0% {
       filter: drop-shadow(0 0 0px var(--mainLight));
@@ -110,6 +110,16 @@
     gap: 1vw;
     font-size: 1.6rem;
     z-index: 9;
+  }
+  .signIn {
+    transition: all 200ms ease-in-out;
+    border-radius: 12px;
+    margin: 10px 0;
+    padding: 10px 1vw;
+  }
+  .signIn:hover {
+    color: var(--mainColor2);
+    background-color: var(--mainLight);
   }
   #mobileMenu {
     position: absolute;
@@ -1515,7 +1525,7 @@
     main {
       padding: 0;
       margin: 0;
-      > :nth-child(2n+1) {
+      > :nth-child(2n + 1) {
         background-color: var(--simpleColor1);
       }
       #hero {
@@ -2266,6 +2276,23 @@
       }
       p {
         display: none;
+      }
+    }
+    #overlayMenu {
+      > * {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+      .signIn {
+        transition: all 200ms ease-in-out;
+        border-radius: 12px;
+        margin: 10px 0;
+        padding: 10px 1vw;
+        color: var(--mainColor2);
+        background-color: var(--mainLight);
+        padding: 20px 6vw !important;
       }
     }
     // background-color: #101010;
