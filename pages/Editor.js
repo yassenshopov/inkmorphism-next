@@ -401,6 +401,7 @@ function Editor(props) {
                     Add section <FaPlus />
                   </p>
                 </div>
+                <p id="watermark">Built with Inkmorphism 🖋️</p>
                 <p
                   suppressContentEditableWarning={true}
                   onBlur={(e) => {
@@ -507,13 +508,11 @@ function Editor(props) {
     async function asyncFunc() {
       const realUserData = getDoc(doc(db, "users", userName)).then((doc) => {
         try {
-          console.log(doc._document.data.value.mapValue.fields.darkMode.booleanValue);
           setDarkModeOn(doc._document.data.value.mapValue.fields.darkMode.booleanValue);
         } catch {
           setDarkModeOn(false);
         }
       });
-      // console.log(realUserData)
       if (userName !== "fallback") {
         const col2 = collection(db, "users", userName, "websites");
         const data2 = await getDocs(col2).then((snapshot) => {

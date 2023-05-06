@@ -375,8 +375,8 @@ label {
   transition: all 400ms ease-in-out;
   position: relative;
   z-index: 1;
-  border-top: 2px solid #12121200;
-  border-bottom: 2px solid #12121200;
+  border-top: 0px solid #12121200;
+  border-bottom: 0px solid #12121200;
   box-sizing: border-box;
 }
 .Editor > main #mainEditorWrapper main > * .imgWrapper {

@@ -74,7 +74,7 @@ export default function Default() {
             try {
               setPageData(item.webContent.pages.main.structure);
               setMetaData(item.webContent.meta);
-              setFullData(item)
+              setFullData(item);
             } catch (err) {
               console.log(err);
             }
@@ -105,17 +105,18 @@ export default function Default() {
               className={section.type + " " + section.options.direction}
             >
               <p>{section.content.txt}</p>
-              <img src={section.content.img} draggable={false} loading={index>3 ? "lazy" : "eager"} />
+              <img
+                src={section.content.img}
+                draggable={false}
+                loading={index > 3 ? "lazy" : "eager"}
+              />
             </section>
           );
         case "nav":
           return (
             <nav className={section.type} key={index}>
               <a href="" id="navLogo" className="noSelect">
-                <img
-                  src={metaData.metaFavicon}
-                  draggable={false}
-                />
+                <img src={metaData.metaFavicon} draggable={false} />
                 <p>{fullData.name}</p>
               </a>
             </nav>
@@ -123,6 +124,9 @@ export default function Default() {
         case "footer":
           return (
             <footer className={section.type} key={index}>
+              <p id="watermark">
+                <a href="https://inkmorphism.com" target="_blank">Built with Inkmorphism 🖋️</a>
+              </p>
               <p>{section.content.txt}</p>
             </footer>
           );
@@ -132,7 +136,11 @@ export default function Default() {
               key={index}
               className={section.type + " " + section.options.direction}
             >
-              <img src={section.content.img} draggable={false} loading={index>3 ? "lazy" : "eager"} />
+              <img
+                src={section.content.img}
+                draggable={false}
+                loading={index > 3 ? "lazy" : "eager"}
+              />
             </section>
           );
         default:
@@ -144,12 +152,8 @@ export default function Default() {
 
   useEffect(() => {
     const root = document.documentElement;
-    root.style.setProperty(
-      "--scrollbarThumb", metaData.colorPalette.color1
-    );
-    root.style.setProperty(
-      "--scrollbarTrack", "#121212"
-    );
+    root.style.setProperty("--scrollbarThumb", metaData.colorPalette.color1);
+    root.style.setProperty("--scrollbarTrack", "#121212");
   }, [pageData]);
 
   return (
@@ -172,10 +176,16 @@ export default function Default() {
         <meta property="og:image" content={metaData.metaThumbnail}></meta>
         <meta property="og:type" content="website"></meta>
         <meta property="og:title" content={metaData.metaTitle}></meta>
-        <meta property="og:description" content={metaData.metaDescription}></meta>
+        <meta
+          property="og:description"
+          content={metaData.metaDescription}
+        ></meta>
         <meta property="twitter:card" content="summary_large_image"></meta>
         <meta property="twitter:title" content={metaData.metaTitle}></meta>
-        <meta property="twitter:description" content={metaData.metaDescription}></meta>
+        <meta
+          property="twitter:description"
+          content={metaData.metaDescription}
+        ></meta>
       </Head>
       <button id="fetch" onClick={getData}></button>
       {fullSite}
