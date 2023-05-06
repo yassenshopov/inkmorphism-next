@@ -100,6 +100,16 @@
   font-size: 1.6rem;
   z-index: 9;
 }
+#MainNav .signIn {
+  transition: all 200ms ease-in-out;
+  border-radius: 12px;
+  margin: 10px 0;
+  padding: 10px 1vw;
+}
+#MainNav .signIn:hover {
+  color: var(--mainColor2);
+  background-color: var(--mainLight);
+}
 #MainNav #mobileMenu {
   position: absolute;
   right: 6vw;
@@ -1430,7 +1440,7 @@
   padding: 0;
   margin: 0;
 }
-.simple.previewTemplate #contentWrapper main > :nth-child(2n+1) {
+.simple.previewTemplate #contentWrapper main > :nth-child(2n + 1) {
   background-color: var(--simpleColor1);
 }
 .simple.previewTemplate #contentWrapper main #hero {
@@ -2141,6 +2151,21 @@
   }
   #MainNav #logo p {
     display: none;
+  }
+  #MainNav #overlayMenu > * {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  #MainNav #overlayMenu .signIn {
+    transition: all 200ms ease-in-out;
+    border-radius: 12px;
+    margin: 10px 0;
+    padding: 10px 1vw;
+    color: var(--mainColor2);
+    background-color: var(--mainLight);
+    padding: 20px 6vw !important;
   }
   #MainNav > *:nth-child(2) {
     display: none;
