@@ -37,9 +37,9 @@ export default function Home() {
             <a href="/templates">Let's go</a>
           </div>
           <div id="exampleSites">
+            <img src="main/example4.png" />
             <img src="main/example1.png" />
             <img src="main/example2.png" />
-            <img src="main/example4.png" />
           </div>
         </section>
 
@@ -54,7 +54,7 @@ export default function Home() {
             <img src="main/midjourneyLogo.png" />
           </a>
         </section>
-{/* 
+        {/* 
         <section></section>
 
         <section></section>
@@ -75,7 +75,10 @@ export default function Home() {
           <a href="https://instagram.com/inkmorphism" target="_blank">
             <FaInstagram />
           </a>
-          <a href="https://www.linkedin.com/company/inkmorphism/" target="_blank">
+          <a
+            href="https://www.linkedin.com/company/inkmorphism/"
+            target="_blank"
+          >
             <FaLinkedin />
           </a>
         </div>
