@@ -505,6 +505,15 @@ function Editor(props) {
 
   useEffect(() => {
     async function asyncFunc() {
+      const realUserData = getDoc(doc(db, "users", userName)).then((doc) => {
+        try {
+          console.log(doc._document.data.value.mapValue.fields.darkMode.booleanValue);
+          setDarkModeOn(doc._document.data.value.mapValue.fields.darkMode.booleanValue);
+        } catch {
+          setDarkModeOn(false);
+        }
+      });
+      // console.log(realUserData)
       if (userName !== "fallback") {
         const col2 = collection(db, "users", userName, "websites");
         const data2 = await getDocs(col2).then((snapshot) => {
@@ -552,6 +561,7 @@ function Editor(props) {
       try {
         propsName = "user-" + props.auth.currentUser.uid + "/" + props.name;
         setUserName("user-" + props.auth.currentUser.uid);
+        setDarkModeOn(props.darkMode);
       } catch (err) {
         propsName = "user-" + "fallback" + "/" + props["name"];
         setUserName("fallback2");
@@ -591,6 +601,13 @@ function Editor(props) {
 
   const [isSaved, setIsSaved] = useState(false);
 
+  async function setDarkModePreference(mode) {
+    const user = doc(db, "users", userName);
+    await updateDoc(user, {
+      darkMode: mode,
+    });
+  }
+
   async function sendData(savedData) {
     let propsName;
     setIsSaved(true);
@@ -612,10 +629,11 @@ function Editor(props) {
     if (savedData.published) {
       await setDoc(doc(db, "publicSites", props["name"]), savedData);
     }
+    setIsSaved(false);
+    setIsUnsavedChanges(false);
     setTimeout(() => {
-      setIsSaved(false);
-      setIsUnsavedChanges(false);
-    }, 2000);
+      setIsUnsavedChanges(null);
+    }, 4000);
     setTrigger(!trigger);
   }
 
@@ -925,11 +943,12 @@ function Editor(props) {
     });
   };
 
-  const [isUnsavedChanges, setIsUnsavedChanges] = useState(false);
+  const [isUnsavedChanges, setIsUnsavedChanges] = useState(null);
 
   const [isDarkModeOn, setDarkModeOn] = useState(false);
 
   function toggleDarkMode() {
+    setDarkModePreference(!isDarkModeOn);
     setDarkModeOn(!isDarkModeOn);
   }
 
@@ -966,11 +985,24 @@ function Editor(props) {
 
       <main id="editor">
         <nav id="nav">
-          <p>
-            {isUnsavedChanges
-              ? "You have some unsaved changes"
-              : "All changes saved"}
-          </p>
+          {isUnsavedChanges ? (
+            <p
+              style={{
+                backgroundColor: "var(--mainColor2)",
+                color: "var(--mainLight)",
+                padding: "12px 1vw",
+                borderRadius: "12px",
+              }}
+            >
+              You have some unsaved changes ⚠️
+            </p>
+          ) : isUnsavedChanges === false ? (
+            <p style={{ padding: "12px 1vw", borderRadius: "12px" }}>
+              All changes saved ✓
+            </p>
+          ) : (
+            <p style={{ padding: "12px 1vw", borderRadius: "12px" }}></p>
+          )}
           <button onClick={saveNewData} className="noSelect">
             <RiSave3Fill style={{ display: isSaved ? "none" : "flex" }} />
             <BsCheckLg style={{ display: isSaved ? "flex" : "none" }} />
