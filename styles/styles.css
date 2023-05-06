@@ -1646,11 +1646,18 @@
   justify-content: space-evenly;
   align-items: center;
 }
+.footer #watermark {
+  cursor: auto;
+}
+.footer #watermark a {
+  color: var(--colorDark);
+  text-decoration: none;
+}
 .footer p {
   text-align: center;
   cursor: pointer;
   padding: 10px 1vw;
-  caret-color: var(--mainDark);
+  caret-color: var(--colorDark);
   font-size: 1rem;
 }
 .imgAndTxt {
@@ -1664,7 +1671,7 @@
   font-size: 1.2rem;
   cursor: pointer;
   padding: 10px 1vw;
-  caret-color: var(--mainDark);
+  caret-color: var(--colorDark);
 }
 .published p {
   cursor: auto;
