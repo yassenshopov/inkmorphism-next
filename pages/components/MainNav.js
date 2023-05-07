@@ -38,7 +38,7 @@ export default function MainNav() {
                 <p>Inkmorphism</p>
             </a>
             <div>
-            <a className='noSelect' href='/templates'>Templates</a>
+            <a className='noSelect' href='/templates'>Browse templates</a>
             <a className='noSelect' href='/about'>About us</a>
             <a className='noSelect' href='/blog'>Blog</a>
             <a className='noSelect signIn' onClick={checkLogin}>Sign in <FiLogIn/></a>
@@ -50,7 +50,7 @@ export default function MainNav() {
             <div id='bar3'></div>
             </div>
             <div id='overlayMenu' className={mobileToggle}>
-            <a className='noSelect' href='/templates'>Templates</a>
+            <a className='noSelect' href='/templates'>Browse templates</a>
             <a className='noSelect' href='/about'>About us</a>
             <a className='noSelect' href='/blog'>Blog</a>
             <a className='noSelect signIn' onClick={checkLogin}>Sign in <FiLogIn/></a>
