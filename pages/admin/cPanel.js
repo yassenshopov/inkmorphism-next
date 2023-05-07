@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import app from "../../firebase/clientApp";
 import {
   getFirestore,
@@ -9,7 +9,7 @@ import {
   collection,
   getDocs,
 } from "firebase/firestore/lite";
-import { async } from "@firebase/util";
+import { getAuth } from "firebase/auth";
 
 let publicSites = [];
 
@@ -17,26 +17,31 @@ export default function CPanel() {
   const [folderName, setFolderName] = useState("default");
   const [pageTitle, setPageTitle] = useState("default");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await fetch("http://localhost:3000/api/create-page", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ folderName, pageTitle }),
-      });
-
-      const data = await response.json();
-      console.log(data.message);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
+  let uid;
+  const auth = getAuth(app);
   let db = getFirestore(app);
+
+  async function getData() {
+    try {
+      try {
+        uid = "user-" + auth.currentUser.uid;
+      } catch (err) {
+        uid = "_";
+      }
+      const userInfo = doc(db, `users/` + uid);
+      let data = await getDoc(userInfo);
+      setIsAdmin(data.data().isAdmin);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  useEffect(() => {
+    const el = document.getElementById("fetch");
+    setTimeout(() => {
+      el.click();
+    }, 1500);
+  }, []);
 
   const create = async () => {
     publicSites.forEach(async (item, index) => {
@@ -53,7 +58,7 @@ export default function CPanel() {
     });
     setTimeout(() => {
       setIsOperationDone(true);
-    }, 1000)
+    }, 1000);
   };
 
   async function getPublicSitesData() {
@@ -87,6 +92,7 @@ export default function CPanel() {
 
   const [getDataBtn, setGetDataBtn] = useState(true);
   const [isOperationDone, setIsOperationDone] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   return (
     <div id="cPanel">
@@ -115,28 +121,42 @@ export default function CPanel() {
         <button type="submit">Create page</button>
       </form> */}
 
-      <div id="getDataBtn" className="noSelect"           
-          
+      <button id="fetch" onClick={getData}></button>
+
+      {isAdmin ? (
+        <div
+          id="getDataBtn"
+          className="noSelect"
           style={{
-            backgroundColor: (isOperationDone ? "green" : ""),
-            cursor: (isOperationDone ? "default" : "pointer")
+            backgroundColor: isOperationDone ? "green" : "var(--mainColor2)",
+            cursor: isOperationDone ? "default" : "pointer",
+          }}
+        >
+          {getDataBtn ? (
+            <p
+              onClick={() => {
+                getPublicSitesData();
+              }}
+            >
+              Get Public Sites Data?
+            </p>
+          ) : isOperationDone ? (
+            <p>Done 👍</p>
+          ) : (
+            <p onClick={create}>
+              Data loaded. <br></br>Click to generate static pages 👍
+            </p>
+          )}
+        </div>
+      ) : (
+        <div id="getDataBtn">
+          <p onClick={() => {
+            window.location.href = "../../login"
           }}>
-        {getDataBtn ? (
-          <p
-            onClick={() => {
-              getPublicSitesData();
-            }}
-          >
-            Get Public Sites Data?
+            You are not an admin. <br></br>Log in as an admin to access this
           </p>
-        ) : isOperationDone ? (
-          <p>Done 👍</p>
-        ) : (
-          <p onClick={create}>
-            Data loaded. <br></br>Click to generate static pages 👍
-          </p>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

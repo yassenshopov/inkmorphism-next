@@ -1006,6 +1006,7 @@
   font-family: "Oswald";
   padding: 30px 2vw;
   margin: 0;
+  text-align: center;
 }
 #cPanel #getDataBtn:hover {
   background-color: var(--mainColor3);
