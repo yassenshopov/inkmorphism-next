@@ -38,20 +38,23 @@ export default function CPanel() {
 
   let db = getFirestore(app);
 
-  const create = async () => { 
+  const create = async () => {
     publicSites.forEach(async (item, index) => {
-        const response = await fetch(
-            "http://localhost:3000/api/create-static-page",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({item}),
-            }
-          );
+      const response = await fetch(
+        "http://localhost:3000/api/create-static-page",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ item }),
+        }
+      );
     });
-  }
+    setTimeout(() => {
+      setIsOperationDone(true);
+    }, 1000)
+  };
 
   async function getPublicSitesData() {
     const ref = collection(db, "publicSites");
@@ -63,6 +66,7 @@ export default function CPanel() {
           publicSites.push(item.data());
           console.log(publicSites);
         });
+        setGetDataBtn(false);
       });
       // dataArr.push(doc.data());
       // dataArr.forEach((item, index) => {
@@ -81,12 +85,15 @@ export default function CPanel() {
     }
   }
 
+  const [getDataBtn, setGetDataBtn] = useState(true);
+  const [isOperationDone, setIsOperationDone] = useState(false);
+
   return (
-    <div className="cPanel">
+    <div id="cPanel">
       <Head>
         <title>Control Panel - Inkmorphism</title>
       </Head>
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}>
         <label>
           Folder name:
           <input
@@ -106,17 +113,30 @@ export default function CPanel() {
         </label>
         <br />
         <button type="submit">Create page</button>
-      </form>
+      </form> */}
 
-      <button
-        onClick={() => {
-          getPublicSitesData();
-        }}
-      >
-        Get Public Sites Data
-      </button>
-
-      <p onClick={create}>PRESS WHEN READY</p>
+      <div id="getDataBtn" className="noSelect"           
+          
+          style={{
+            backgroundColor: (isOperationDone ? "green" : ""),
+            cursor: (isOperationDone ? "default" : "pointer")
+          }}>
+        {getDataBtn ? (
+          <p
+            onClick={() => {
+              getPublicSitesData();
+            }}
+          >
+            Get Public Sites Data?
+          </p>
+        ) : isOperationDone ? (
+          <p>Done 👍</p>
+        ) : (
+          <p onClick={create}>
+            Data loaded. <br></br>Click to generate static pages 👍
+          </p>
+        )}
+      </div>
     </div>
   );
 }
