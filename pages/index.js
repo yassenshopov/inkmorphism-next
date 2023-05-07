@@ -32,8 +32,8 @@ export default function Home() {
       <main>
         <section id="hero">
           <div id="heroTxt">
-            <h1>Never start with a blank webpage again.</h1>
-            <h2>Let Inkmorphism build it for you</h2>
+            <h1>Got a new website and not sure how to make it pop?</h1>
+            <h2>Let Inkmorphism build it for you!</h2>
             <a href="/templates">Let's go</a>
           </div>
           <div id="exampleSites">
