@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import app from "../../firebase/clientApp";
 import {
   getFirestore,
@@ -9,7 +9,7 @@ import {
   collection,
   getDocs,
 } from "firebase/firestore/lite";
-import { async } from "@firebase/util";
+import { getAuth } from "firebase/auth";
 
 let publicSites = [];
 
@@ -17,41 +17,49 @@ export default function CPanel() {
   const [folderName, setFolderName] = useState("default");
   const [pageTitle, setPageTitle] = useState("default");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await fetch("http://localhost:3000/api/create-page", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ folderName, pageTitle }),
-      });
-
-      const data = await response.json();
-      console.log(data.message);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
+  let uid;
+  const auth = getAuth(app);
   let db = getFirestore(app);
 
-  const create = async () => { 
-    publicSites.forEach(async (item, index) => {
-        const response = await fetch(
-            "http://localhost:3000/api/create-static-page",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({item}),
-            }
-          );
-    });
+  async function getData() {
+    try {
+      try {
+        uid = "user-" + auth.currentUser.uid;
+      } catch (err) {
+        uid = "_";
+      }
+      const userInfo = doc(db, `users/` + uid);
+      let data = await getDoc(userInfo);
+      setIsAdmin(data.data().isAdmin);
+    } catch (err) {
+      console.log(err);
+    }
   }
+
+  useEffect(() => {
+    const el = document.getElementById("fetch");
+    setTimeout(() => {
+      el.click();
+    }, 1500);
+  }, []);
+
+  const create = async () => {
+    publicSites.forEach(async (item, index) => {
+      const response = await fetch(
+        "http://localhost:3000/api/create-static-page",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ item }),
+        }
+      );
+    });
+    setTimeout(() => {
+      setIsOperationDone(true);
+    }, 1000);
+  };
 
   async function getPublicSitesData() {
     const ref = collection(db, "publicSites");
@@ -63,6 +71,7 @@ export default function CPanel() {
           publicSites.push(item.data());
           console.log(publicSites);
         });
+        setGetDataBtn(false);
       });
       // dataArr.push(doc.data());
       // dataArr.forEach((item, index) => {
@@ -81,12 +90,16 @@ export default function CPanel() {
     }
   }
 
+  const [getDataBtn, setGetDataBtn] = useState(true);
+  const [isOperationDone, setIsOperationDone] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
   return (
-    <div className="cPanel">
+    <div id="cPanel">
       <Head>
         <title>Control Panel - Inkmorphism</title>
       </Head>
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}>
         <label>
           Folder name:
           <input
@@ -106,17 +119,44 @@ export default function CPanel() {
         </label>
         <br />
         <button type="submit">Create page</button>
-      </form>
+      </form> */}
 
-      <button
-        onClick={() => {
-          getPublicSitesData();
-        }}
-      >
-        Get Public Sites Data
-      </button>
+      <button id="fetch" onClick={getData}></button>
 
-      <p onClick={create}>PRESS WHEN READY</p>
+      {isAdmin ? (
+        <div
+          id="getDataBtn"
+          className="noSelect"
+          style={{
+            backgroundColor: isOperationDone ? "green" : "var(--mainColor2)",
+            cursor: isOperationDone ? "default" : "pointer",
+          }}
+        >
+          {getDataBtn ? (
+            <p
+              onClick={() => {
+                getPublicSitesData();
+              }}
+            >
+              Get Public Sites Data?
+            </p>
+          ) : isOperationDone ? (
+            <p>Done 👍</p>
+          ) : (
+            <p onClick={create}>
+              Data loaded. <br></br>Click to generate static pages 👍
+            </p>
+          )}
+        </div>
+      ) : (
+        <div id="getDataBtn">
+          <p onClick={() => {
+            window.location.href = "../../login"
+          }}>
+            You are not an admin. <br></br>Log in as an admin to access this
+          </p>
+        </div>
+      )}
     </div>
   );
 }

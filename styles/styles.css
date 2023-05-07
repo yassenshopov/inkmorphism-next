@@ -108,10 +108,6 @@
   color: var(--mainColor2);
   background-color: var(--mainLight);
 }
-#MainNav .signIn:hover {
-  color: var(--mainColor2);
-  background-color: var(--mainLight);
-}
 #MainNav #mobileMenu {
   position: absolute;
   right: 6vw;
@@ -984,6 +980,36 @@
 }
 #hideContent * {
   font-size: 8rem;
+}
+#cPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 10vw;
+  background-color: var(--mainColor1);
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+}
+#cPanel #getDataBtn {
+  transition: all 200ms ease-in-out;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--mainColor2);
+  cursor: pointer;
+}
+#cPanel #getDataBtn > * {
+  color: var(--mainLight);
+  font-family: "Oswald";
+  padding: 30px 2vw;
+  margin: 0;
+  text-align: center;
+}
+#cPanel #getDataBtn:hover {
+  background-color: var(--mainColor3);
 }
 .noSelect {
   -webkit-tap-highlight-color: transparent;
@@ -2534,6 +2560,9 @@
   }
   .nav p {
     display: none;
+  }
+  .footer {
+    flex-direction: column-reverse;
   }
   .imgAndTxt {
     flex-direction: column-reverse;
