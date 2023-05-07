@@ -88,20 +88,20 @@ export default function Register() {
 
   function signInWithG() {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider).then((result) => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      if (credential) {
-        // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-        const token = credential.accessToken;
-        // ...
-      }
-      // The signed-in user info.
-      const user = result.user;
-    })
-    .catch((err) => {
-        return
-      }
-    )
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        if (credential) {
+          // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+          const token = credential.accessToken;
+          // ...
+        }
+        // The signed-in user info.
+        const user = result.user;
+      })
+      .catch((err) => {
+        return;
+      });
   }
 
   const actionCodeSettings = {
@@ -179,7 +179,9 @@ export default function Register() {
       </Head>
       <div className="register">
         <p>{auth.currentUser == null ? "" : redirect()}</p>
-        <img src={logo.src} />
+        <a href=".." className="noSelect">
+          <img src={logo.src} />
+        </a>{" "}
         <div id="registerWrapper">
           <div id="form">
             <label htmlFor="email">Email address:</label>
