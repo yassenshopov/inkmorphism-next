@@ -168,7 +168,9 @@ export default function Login() {
       {loadBool ? <Loader /> : ""}
       <div className="login">
         <p>{auth.currentUser == null ? "" : redirect()}</p>
-        <img src={logo.src} />
+        <a href=".." className="noSelect">
+          <img src={logo.src} />
+        </a>
         {/* <h2>Login:</h2> */}
         <div id="loginWrapper">
           <div id="form">
