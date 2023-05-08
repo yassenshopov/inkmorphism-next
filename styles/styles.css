@@ -999,10 +999,10 @@
   border-radius: 12px;
   overflow: hidden;
   background-color: var(--mainColor2);
+  color: var(--mainLight);
   cursor: pointer;
 }
 #cPanel #getDataBtn > * {
-  color: var(--mainLight);
   font-family: "Oswald";
   padding: 30px 2vw;
   margin: 0;

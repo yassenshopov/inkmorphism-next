@@ -128,7 +128,8 @@ export default function CPanel() {
           id="getDataBtn"
           className="noSelect"
           style={{
-            backgroundColor: isOperationDone ? "green" : "var(--mainColor2)",
+            backgroundColor: isOperationDone ? "white" : "var(--mainColor2)",
+            color: isOperationDone ? "green" : "white",
             cursor: isOperationDone ? "default" : "pointer",
           }}
         >

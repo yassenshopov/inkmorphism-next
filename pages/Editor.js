@@ -940,6 +940,7 @@ function Editor(props) {
       ...defaults,
       published: !isPublishToggleOn,
     });
+    setIsUnsavedChanges(true);
   };
 
   const [isUnsavedChanges, setIsUnsavedChanges] = useState(null);

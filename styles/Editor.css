@@ -375,8 +375,8 @@ label {
   transition: all 400ms ease-in-out;
   position: relative;
   z-index: 1;
-  border-top: 0px solid #12121200;
-  border-bottom: 0px solid #12121200;
+  border-top: 2px solid #12121200;
+  border-bottom: 2px solid #12121200;
   box-sizing: border-box;
 }
 .Editor > main #mainEditorWrapper main > * .imgWrapper {
@@ -644,8 +644,9 @@ label {
   position: absolute;
   top: 4px;
   left: 4px;
-  width: 12%;
-  height: 22px;
+  width: 45px;
+  height: 45px;
+  padding: 0;
   border-radius: 50%;
   background-color: var(--mainLight);
   transition: all 0.2s ease-in-out;
@@ -667,7 +668,7 @@ label {
   background-color: var(--mainColor1);
 }
 .Editor aside #publishWebsite .publishToggle.on .switch {
-  left: calc(100% - 53px);
+  left: calc(100% - 50px);
 }
 .Editor aside #publishWebsite .publishToggle.on p {
   opacity: 1;
