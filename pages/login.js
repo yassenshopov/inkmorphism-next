@@ -16,6 +16,7 @@ import {
   getDocs,
   doc,
   setDoc,
+  updateDoc,
 } from "firebase/firestore/lite";
 import app from "../firebase/clientApp";
 import Head from "next/head";
@@ -48,7 +49,7 @@ export default function Login() {
 
   async function sendRegisterData(regData) {
     regData = JSON.parse(JSON.stringify(regData));
-    await setDoc(doc(col, "user-" + regData["uid"]), regData);
+    await updateDoc(doc(col, "user-" + regData["uid"]), regData);
   }
 
   function getProviderForSignInMethods(methods) {
