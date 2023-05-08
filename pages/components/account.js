@@ -34,13 +34,17 @@ export default function Account(props) {
   const [file, setFile] = useState();
   const [fileToUpload, setFileToUpload] = useState();
   function showPreview(e) {
-    if (e.target.files[0].size > 4187152) {
-      alert("File is bigger than 4 MB. Use a smaller file.");
-      e.val = "";
-      // setFile("")
-    } else {
-      setFile(URL.createObjectURL(e.target.files[0]));
-      setFileToUpload(e.target.files[0]);
+    try {
+      if (e.target.files[0].size > 4187152) {
+        alert("File is bigger than 4 MB. Use a smaller file.");
+        e.val = "";
+        // setFile("")
+      } else {
+        setFile(URL.createObjectURL(e.target.files[0]));
+        setFileToUpload(e.target.files[0]);
+      }
+    } catch (err) {
+      console.log(err);
     }
   }
 

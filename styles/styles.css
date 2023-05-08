@@ -158,7 +158,7 @@
   pointer-events: none;
 }
 #MainNav #overlayMenu a {
-  font-size: 2.4rem;
+  font-size: 2rem;
   margin: -10px 0 20px 0;
 }
 .About,
@@ -529,7 +529,7 @@
 }
 #dashnav #overlayMenu a,
 #dashnav #overlayMenu p {
-  font-size: 2.4rem;
+  font-size: 2rem;
   margin: 0;
 }
 @keyframes loaderRotate {
