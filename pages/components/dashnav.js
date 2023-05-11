@@ -37,7 +37,7 @@ export default function Dashnav(props) {
  
     return (
         <nav id="dashnav">
-            <a href='/' className='noSelect'>
+            <a href='/' className='noSelect' id="logo">
                 <img src={logo.src}/>
                 <p>Inkmorphism</p>
             </a>

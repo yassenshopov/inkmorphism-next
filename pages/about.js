@@ -16,7 +16,7 @@ export default function About() {
 
       <MainNav/>
 
-      <WIP/>
+      {/* <WIP/> */}
 
     </div>
   );

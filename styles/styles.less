@@ -381,23 +381,79 @@
     justify-content: center;
     align-items: center;
     font-family: "Oswald";
-    // background-color: #fefefe80;
-    // backdrop-filter: blur(10px) saturate(2) brightness(1.2);
-    // backdrop-filter: blur(10px) saturate(1.2) brightness(1.6);
     width: 25%;
-    padding: 40px 0;
-    margin: 40px 0;
+    // padding: 0 0 40px 0;
+    // margin: 40px 0;
     color: var(--mainLight);
-    box-shadow: 10px 10px 10px #12121250, -10px -10px 10px #ffffff19;
+    box-shadow: 10px 10px 10px #12121250, -10px -10px 10px #ffffff06;
     border-radius: 24px;
-
-    #profilePicWrapper {
+    box-sizing: border-box;
+    overflow: hidden;
+    gap: 1px;
+    section {
+      width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      max-width: 10vw;
+      * {
+        transition: all 200ms ease-in-out;
+      }
+      h2 {
+        background-color: #00000050;
+        width: 100%;
+        padding: 10px 2vw;
+        // margin: 0 0 20px 0;
+        margin: 0;
+        text-align: center;
+        box-sizing: border-box;
+        position: relative;
+        transition: all 200ms ease-in-out;
+        cursor: pointer;
+        span {
+          position: absolute;
+          right: 1vw;
+          transition: all 200ms ease-in-out;
+        }
+      }
+      h2:hover {
+        background-color: #00000080;
+        span {
+          transform: rotate(90deg);
+        }
+      }
+      .dropdownContent {
+        flex-direction: column;
+        padding: 40px 0;
+        display: none;
+      }
+      .dropdownContent.clicked {
+        display: flex;
+      }
+    }
+    #privacySection {
+      #resetPassBtn {
+        border: none;
+        padding: 10px 2vw;
+        cursor: pointer;
+        background-color: #00000050;
+        transition: all 200ms ease-in-out;
+        border-radius: 12px;
+      }
+      #resetPassBtn:hover {
+        background-color: #00000080;
+      }
+    }
+    #profilePicWrapper {
+      display: flex;
+      overflow: hidden;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 10vw;
       position: relative;
+      height: 10vw;
+      border-radius: 24px;
       .hiddenMenu {
         position: absolute;
         display: flex;
@@ -406,7 +462,6 @@
         align-items: center;
         background-color: #000000;
         width: 100%;
-        border-radius: 24px;
         height: 100%;
         transition: all 400ms ease-in-out;
         opacity: 0;
@@ -417,7 +472,8 @@
         opacity: 0.8;
       }
       #profilePic {
-        width: 100%;
+        min-width: 100%;
+        height: 100%;
         border-radius: 24px;
       }
     }
@@ -439,12 +495,20 @@
   padding: 0 6vw;
   font-family: "Oswald";
   color: #fff;
+  #logo:hover {
+    img {
+      transform: rotate(-360deg);
+      filter: invert(1);
+      box-shadow: -10px -10px 10px #12121210, 10px 10px 10px #ffffff10;
+    }
+  }
   a {
     text-decoration: none;
   }
   & img {
     height: 60px;
     border-radius: 50%;
+    transition: all 200ms ease-in-out;
     box-shadow: 10px 10px 10px #12121240, -10px -10px 10px #ffffff16;
   }
   & > div,
@@ -642,7 +706,6 @@
         box-shadow: 10px 10px 10px #12121210, -10px -10px 20px #ffffff10;
         img {
           width: 2.4vw;
-          background-color: var(--mainLight);
           background-color: #00000075;
           padding: 4px;
           margin: 0;
@@ -742,13 +805,15 @@
       background-color: var(--mainLight);
       color: var(--mainDark);
       filter: saturate(1.2);
-      img {
-        min-width: 100%;
-        width: auto;
-        min-height: 420px;
-        max-height: 460px;
-        // min-width: 100%;
+      .imgWrapper {
         z-index: 1;
+        width: 100%;
+        overflow: hidden;
+        height: 550px;
+        img {
+          width: 100%;
+          height: fit-content;
+        }
       }
       a {
         text-decoration: none;
@@ -2571,9 +2636,20 @@
 
   #accountWrapper {
     #accountSection {
-      width: 90%;
-      #profilePicWrapper {
-        max-width: 70%;
+      width: 100%;
+      border-radius: 0;
+      section {
+        .dropdownContent {
+          width: 100%;
+          #profilePicWrapper {
+            // width: 100%;
+            width: 240px;
+            height: 240px;
+          }
+          img {
+            width: 100%;
+          }
+        }
       }
     }
   }

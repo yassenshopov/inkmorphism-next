@@ -4,6 +4,7 @@ import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import app from "../../firebase/clientApp";
 import { BiLoaderAlt } from "react-icons/bi";
 import { useRouter } from "next/router";
+import { MdKeyboardArrowDown, MdKeyboardArrowLeft } from "react-icons/md";
 
 export default function Account(props) {
   const [profilePic, setProfilePic] = useState("");
@@ -54,6 +55,7 @@ export default function Account(props) {
   };
 
   function sendReset() {
+    setIsResetPassBtnClicked(true);
     sendPasswordResetEmail(auth, auth.currentUser.email)
       .then(() => {
         // Password reset email sent!
@@ -61,7 +63,7 @@ export default function Account(props) {
         auth.signOut();
         setTimeout(() => {
           router.push("/login");
-        }, 200);
+        }, 1000);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -69,16 +71,62 @@ export default function Account(props) {
       });
   }
 
+  const [isResetPassBtnClicked, setIsResetPassBtnClicked] = useState(false);
+  const [isPersonalDetailsMenuOpen, setIsPersonalDetailsMenuOpen] =
+    useState(true);
+  const [isPrivacyMenuOpen, setIsPrivacyMenuOpen] = useState(false);
+
   const profileSec = (
     <main id="accountSection">
-      <div id="profilePicWrapper">
-        <img src={props.profilePic} id="profilePic" />
-        <div className="hiddenMenu noSelect" onClick={openPopup}>
-          <p>Change picture</p>
+      <section id="personalDetailsSection">
+        <h2
+          onClick={() => {
+            setIsPersonalDetailsMenuOpen(!isPersonalDetailsMenuOpen);
+          }}
+          className="noSelect"
+        >
+          Personal details{" "}
+          <span>
+            <MdKeyboardArrowDown />
+          </span>
+        </h2>
+        <div
+          className={"dropdownContent " + (isPersonalDetailsMenuOpen ? "clicked" : "") }
+        >
+          <div id="profilePicWrapper">
+            <img src={props.profilePic} id="profilePic" />
+            <div className="hiddenMenu noSelect" onClick={openPopup}>
+              <p>Change picture</p>
+            </div>
+          </div>
+          <p id="displayName">{props.userInfo.name}</p>
         </div>
-      </div>
-      <p id="displayName">{props.displayName}</p>
-      <button onClick={sendReset}>Reset your password</button>
+      </section>
+      <section id="privacySection">
+        <h2
+          onClick={() => {
+            setIsPrivacyMenuOpen(!isPrivacyMenuOpen);
+          }}
+          className="noSelect"
+        >
+          {" "}
+          Privacy{" "}
+          <span>
+            <MdKeyboardArrowDown />
+          </span>
+        </h2>
+        <div
+          className={"dropdownContent " + (isPrivacyMenuOpen ? "clicked" : "") }
+        >
+          {isResetPassBtnClicked ? (
+            <p>You will receive an email by us shortly</p>
+          ) : (
+            <p id="resetPassBtn" onClick={sendReset}>
+              Reset your password
+            </p>
+          )}
+        </div>
+      </section>
     </main>
   );
 
