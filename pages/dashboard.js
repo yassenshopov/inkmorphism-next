@@ -92,6 +92,7 @@ export default function Dashboard() {
           return a.domainSlug.localeCompare(b.domainSlug);
         }
       });
+      console.log(websitesArray.existing)
       const websites = websitesArray.existing.map((site) => (
         <a
           key={site.domain}
@@ -106,6 +107,9 @@ export default function Dashboard() {
               src={site.thumbnail === "" ? placeholder.src : site.thumbnail}
               loading="lazy"
             />
+          </div>
+          <div className="logoWrapper">
+            <img src={site.webContent.meta.metaFavicon} loading="lazy" />
           </div>
           <h2>{site.name}</h2>
           <p>{site.style}</p>
