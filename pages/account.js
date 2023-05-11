@@ -2,14 +2,17 @@ import Head from "next/head";
 import Dashnav from "./components/dashnav.js";
 import Dashfooter from "./components/dashfooter.js";
 import Account from "./components/account.js";
-import {
-  getFirestore,
-} from "firebase/firestore/lite";
+import { getFirestore } from "firebase/firestore/lite";
 import { getAuth } from "firebase/auth";
 import app from "../firebase/clientApp";
 import { useEffect, useState } from "react";
 import defaultProfilePic from "../styles/images/defaultProfilePic.png";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import { doc, getDoc } from "firebase/firestore/lite";
+
+let userInfoRendered = {
+  name: "Default",
+};
 
 export default function Templates() {
   const [userDataDB, setUserDB] = useState({
@@ -40,16 +43,20 @@ export default function Templates() {
       uid = "_";
     }
 
+    const userInfoRef = doc(db, "users", uid);
+    const userInfo = await getDoc(
+      doc(db, "users", "user-" + auth.currentUser.uid)
+    ).then((info) => {
+      userInfoRendered = info.data();
+    });
     const storage = getStorage();
     const storageRef = ref(storage, uid + "/profilePic.png");
     getDownloadURL(storageRef)
-      .then((metadata) => {
-        console.log(metadata);
+      .then(async (metadata) => {
         setUserDB({
           photoURL: metadata,
         });
         try {
-          console.log(userDataDB);
           // profile_pic = auth.currentUser.photoURL;
           setUserData({
             profile_pic: metadata,
@@ -97,6 +104,7 @@ export default function Templates() {
       <Account
         profilePic={userDataDB.photoURL}
         displayName={userData.displayName}
+        userInfo={userInfoRendered}
       />
 
       <Dashfooter />

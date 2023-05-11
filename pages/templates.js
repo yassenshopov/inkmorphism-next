@@ -95,7 +95,7 @@ export default function Templates() {
   const [styleVar, setStyleVar] = useState("");
 
   async function randomSiteGen(style) {
-    setLoadBool(prevState => !prevState)
+    setLoadBool((prevState) => !prevState);
     setStyleVar(style);
     let user;
     let db = getFirestore(app);
@@ -231,7 +231,9 @@ export default function Templates() {
   const templatesArr = ["simple"];
   const templates = templatesArr.map((template, index) => (
     <article key={index}>
-      <img src={"templates/" + template + "Template.png"} />
+      <div className="imgWrapper">
+        <img src={"templates/" + template + "Template.png"} />
+      </div>
       <h2>{template.slice(0, 1).toUpperCase() + template.slice(1)}</h2>
       <div id="hiddenBtns">
         <a
