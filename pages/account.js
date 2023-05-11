@@ -10,7 +10,9 @@ import defaultProfilePic from "../styles/images/defaultProfilePic.png";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { doc, getDoc } from "firebase/firestore/lite";
 
-let userInfoRendered = {};
+let userInfoRendered = {
+  name: "Default",
+};
 
 export default function Templates() {
   const [userDataDB, setUserDB] = useState({

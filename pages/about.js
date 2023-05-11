@@ -15,10 +15,10 @@ export default function About() {
 
       <MainNav />
 
-      {/* <WIP/> */}
-      <main>
+      <WIP/>
+      {/* <main>
         123
-      </main>
+      </main> */}
 
       <footer>
         <p>Inkmorphism © 2023</p>
