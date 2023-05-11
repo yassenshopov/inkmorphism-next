@@ -168,6 +168,50 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  width: 100vw;
+}
+.About main,
+.Blog main {
+  width: 100vw;
+  min-height: 80vh;
+  background: linear-gradient(var(--mainColor2), var(--mainColor3));
+}
+.About footer,
+.Blog footer {
+  width: 100%;
+  min-height: 200px;
+  padding: 40px 16vw;
+  background: linear-gradient(to top, var(--mainColor2), var(--mainColor3));
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  color: var(--mainLight);
+  font-family: "WorkSans";
+}
+.About footer #socialLinks,
+.Blog footer #socialLinks {
+  display: flex;
+  flex-direction: row;
+  gap: 1vw;
+}
+.About footer #socialLinks a,
+.Blog footer #socialLinks a {
+  color: var(--mainLight);
+  font-size: 2rem;
+  padding: 20px;
+  margin: 0;
+  transition: all 200ms ease-in-out;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.About footer #socialLinks a:hover,
+.Blog footer #socialLinks a:hover {
+  background-color: #00000040;
 }
 #WIP {
   display: flex;
@@ -331,11 +375,22 @@
 #mainPage footer #socialLinks {
   display: flex;
   flex-direction: row;
-  gap: 2vw;
+  gap: 1vw;
 }
 #mainPage footer #socialLinks a {
   color: var(--mainLight);
   font-size: 2rem;
+  padding: 20px;
+  margin: 0;
+  transition: all 200ms ease-in-out;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#mainPage footer #socialLinks a:hover {
+  background-color: #00000040;
 }
 #accountWrapper {
   background: linear-gradient(var(--mainColor2), var(--mainColor3));
@@ -2241,9 +2296,14 @@
   font-size: 2rem;
 }
 @media screen and (max-width: 650px) {
-  .About,
-  .Blog {
-    width: 100vw;
+  .About footer,
+  .Blog footer {
+    flex-direction: column-reverse;
+    font-size: 1.2rem;
+  }
+  .About footer #socialLinks,
+  .Blog footer #socialLinks {
+    gap: 10vw;
   }
   #WIP {
     min-height: 100vh;
