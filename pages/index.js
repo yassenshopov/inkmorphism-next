@@ -69,15 +69,16 @@ export default function Home() {
       <footer>
         <p>Inkmorphism © 2023</p>
         <div id="socialLinks">
-          <a href="https://twitter.com/inkmorphism" target="_blank">
+          <a href="https://twitter.com/inkmorphism" target="_blank" className="noSelect">
             <FaTwitter />
           </a>
-          <a href="https://instagram.com/inkmorphism" target="_blank">
+          <a href="https://instagram.com/inkmorphism" target="_blank"  className="noSelect">
             <FaInstagram />
           </a>
           <a
             href="https://www.linkedin.com/company/inkmorphism/"
             target="_blank"
+            className="noSelect"
           >
             <FaLinkedin />
           </a>
