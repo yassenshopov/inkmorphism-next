@@ -99,7 +99,7 @@ export default function Account(props) {
               <p>Change picture</p>
             </div>
           </div>
-          <p id="displayName">{props.userInfo.name || props.displayName}</p>
+          {/* <p id="displayName">{props.userInfo.name || props.displayName}</p> */}
         </div>
       </section>
       <section id="privacySection">
