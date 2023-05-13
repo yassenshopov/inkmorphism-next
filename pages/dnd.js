@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import update from 'immutability-helper';
 import { TouchBackend } from 'react-dnd-touch-backend';
-import { useEffect } from "react";
 
 const Box = ({ id, color, index, moveBox }) => {
   const [{ isDragging }, drag] = useDrag({
@@ -51,33 +50,32 @@ const Box = ({ id, color, index, moveBox }) => {
     }),
   });
 
-  const opacity = isDragging ? 0.4 : 1;
-
   const ref = React.useRef(null);
   drag(drop(ref));
 
   return (
     <div
-      className="box"
+      // className="box"
       ref={ref}
-      style={{ backgroundColor: color, opacity }}
-    />
+      style={{ backgroundColor: color, width: "100px", height: "100px", opacity: isDragging ? 0 : 1}}
+    >
+    </div>
   );
 };
 
 export default function DnD() {
   const [boxes, setBoxes] = useState([
-    { id: 1, color: "red" },
-    { id: 2, color: "green" },
-    { id: 3, color: "blue" },
-    { id: 4, color: "orange" },
-    { id: 5, color: "purple" },
+    { id: 1, color: "#12a66e" },
+    { id: 2, color: "#aaaa78" },
+    { id: 3, color: "#bb78af" },
+    { id: 4, color: "#faa901" },
+    { id: 5, color: "#2143dd" },
   ]);
 
   const moveBox = (dragIndex, hoverIndex) => {
     const draggedBox = boxes[dragIndex];
     setBoxes(
-      update(boxes, {
+      update(boxes, { 
         $splice: [
           [dragIndex, 1],
           [hoverIndex, 0, draggedBox],
@@ -89,6 +87,7 @@ export default function DnD() {
   //Current bug:
   //On prod, on mobile DnD is not working
   //It defaults to the HTML5Backend because of the 1st render
+
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -105,14 +104,9 @@ export default function DnD() {
     };
   }, []);
 
-  useEffect(() => {
-    console.log("isMobile:" + isMobile)
-  }, [isMobile])
-
-
   return (
     <DndProvider backend={isMobile ? TouchBackend : HTML5Backend}>
-      <div className="container">
+      <div className="dndContainer">
         {boxes.map((box, index) => (
           <Box
             key={box.id}
