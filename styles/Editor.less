@@ -396,6 +396,15 @@ label {
           border-top: 2px solid #12121200;
           border-bottom: 2px solid #12121200;
           box-sizing: border-box;
+          p[contenteditable="true"] {
+            transition: all 200ms ease-in-out;
+            border-radius: 6px;
+            border: 1px solid #00000000;
+          }
+          p[contenteditable="true"]:hover {
+            background-color: #83838321;
+            border: 1px solid var(--mainDark);
+          }
           .imgWrapper {
             position: relative;
             width: fit-content;

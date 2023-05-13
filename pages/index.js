@@ -6,7 +6,7 @@ import MainNav from "./components/MainNav";
 let title = "Inkmorphism - the AI Website Builder";
 let img = "main/og.webp";
 let description =
-  "Create stunning websites with Inkmorphism - the AI-powered website builder that leverages generative image and text technology to streamline your design process.";
+  "Inkmorphism: the AI website builder that streamlines your design process. Create stunning sites effortlessly! Operates with OpenAI & Midjourney.";
 let author = "Yassen Shopov";
 
 export default function Home() {
@@ -69,10 +69,18 @@ export default function Home() {
       <footer>
         <p>Inkmorphism © 2023</p>
         <div id="socialLinks">
-          <a href="https://twitter.com/inkmorphism" target="_blank" className="noSelect">
+          <a
+            href="https://twitter.com/inkmorphism"
+            target="_blank"
+            className="noSelect"
+          >
             <FaTwitter />
           </a>
-          <a href="https://instagram.com/inkmorphism" target="_blank"  className="noSelect">
+          <a
+            href="https://instagram.com/inkmorphism"
+            target="_blank"
+            className="noSelect"
+          >
             <FaInstagram />
           </a>
           <a
