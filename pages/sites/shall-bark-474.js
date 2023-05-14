@@ -1,7 +1,15 @@
 
     import Head from "next/head";
+    import { useEffect } from "react";
   
     export default function Default() {
+
+          useEffect(() => {
+            const root = document.documentElement;
+            root.style.setProperty("--scrollbarThumb", "#ebebeb");
+            root.style.setProperty("--scrollbarTrack", "#121212");
+          }, []);
+
           return (
             <main
               className={"skeletal published"}
@@ -10,7 +18,9 @@
                 "--color2": "#ffffff",
                 "--color3": "#1eff00",
                 "--colorLight": "#ffffff",
-                "--colorDark": "#000000"              
+                "--colorDark": "#000000",
+                "--scrollbarThumb": "#ebebeb",
+                "--scrollbarTrack": "#121212",
               }}
             >
             <Head>

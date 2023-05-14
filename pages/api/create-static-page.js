@@ -74,8 +74,16 @@ function itemToPage(item) {
   console.log(sections);
   return `
     import Head from "next/head";
+    import { useEffect } from "react";
   
     export default function Default() {
+
+          useEffect(() => {
+            const root = document.documentElement;
+            root.style.setProperty("--scrollbarThumb", "${item.webContent.meta.colorPalette.color1}");
+            root.style.setProperty("--scrollbarTrack", "#121212");
+          }, []);
+
           return (
             <main
               className={"${item.webContent.meta.metaStyle + " published"}"}
@@ -88,7 +96,9 @@ function itemToPage(item) {
                 }",
                 "--colorDark": "${
                   item.webContent.meta["colorPalette"]["colorDark"]
-                }"              
+                }",
+                "--scrollbarThumb": "${item.webContent.meta.colorPalette.color1}",
+                "--scrollbarTrack": "#121212",
               }}
             >
             <Head>
