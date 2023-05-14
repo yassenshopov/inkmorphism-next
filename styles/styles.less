@@ -558,6 +558,93 @@
   }
 }
 
+#cPanel {
+  height: fit-content !important;
+  min-height: 100vh;
+  #publicSites {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 80vw;
+    padding: 120px 0;
+    gap: 20px;
+    height: fit-content;
+    position: relative;
+    .site {
+      width: 100%;
+      height: 200px;
+      position: relative;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 1rem;
+      color: var(--mainDark);
+      font-family: "Oswald";
+      border-radius: 12px;
+      padding: 20px 0;
+      background: linear-gradient(var(--simpleColor1), var(--simpleColor2));
+      box-shadow: 10px 10px 10px #12121210, -10px -10px 10px #ffffff09;
+      overflow: hidden;
+      h2 {
+        padding: 0;
+        margin: 0;
+      }
+      a {
+        color: var(--mainDark);
+      }
+      .thumbnailWrapper {
+        width: 18vw;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center !important;
+        background-color: #00000020;
+        img {
+          width: auto;
+          min-width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .logoWrapper {
+        position: absolute;
+        top: 10px;
+        right: 0.6vw;
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 10px 10px 10px #12121210, -10px -10px 20px #ffffff10;
+        transition: all 200ms ease-in-out;
+          background-color: #00000035;
+        img {
+          width: 2.4vw;
+          // background-color: #00000035;
+          padding: 6px;
+          margin: 0;
+          min-height: 2.4vw;
+          border-radius: 50%;
+          filter: drop-shadow(0 0 6px #12121240);
+        }
+      }
+    }
+    .site:hover > .logoWrapper{
+      background-color: #ffffff;
+    }
+  }
+}
+
 .Dashboard {
   width: 100vw;
 }
@@ -587,7 +674,8 @@
       box-shadow: -10px -10px 10px #12121210, 10px 10px 10px #ffffff10;
     }
   }
-  a, p {
+  a,
+  p {
     text-decoration: none;
     transition: all 200ms ease-in-out;
   }

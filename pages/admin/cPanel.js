@@ -43,6 +43,9 @@ export default function CPanel() {
     }, 1500);
   }, []);
 
+  const [theData, setData] = useState("");
+  // let publicSitesRendered = [];
+
   const create = async () => {
     publicSites.forEach(async (item, index) => {
       const response = await fetch(
@@ -55,7 +58,12 @@ export default function CPanel() {
           body: JSON.stringify({ item }),
         }
       );
+      const reference = doc(db, "publicSites", item.domainSlug);
+      await updateDoc(reference, {
+        isSynced: true,
+      });
     });
+
     setTimeout(() => {
       setIsOperationDone(true);
     }, 1000);
@@ -72,19 +80,56 @@ export default function CPanel() {
           console.log(publicSites);
         });
         setGetDataBtn(false);
+
+        const publicSitesRendered = publicSites.map((site, index) => {
+          try {
+            return (
+              <div
+                key={site.domain}
+                // href={"../config/" + site.domainSlug}
+                className="noSelect site"
+                style={{
+                  background: site.isSynced ? "rgb(211 217 255 / 50%)" : "rgb(235 223 85)",
+                }}
+              >
+                <div className="thumbnailWrapper">
+                  <img
+                    src={
+                      site.thumbnail === "" ? placeholder.src : site.thumbnail
+                    }
+                    loading="lazy"
+                  />
+                </div>
+                <div className="logoWrapper">
+                  <img src={site.webContent.meta.metaFavicon} loading="lazy" />
+                </div>
+                <h2>{site.name}</h2>
+                <p>{site.style}</p>
+                <div>
+                  {/* <a href={"https://" + site.domain} target="_blank">
+                {site.domain}
+              </a> */}
+                  <a
+                    href={"https://inkmorphism.com/sites/" + site.domainSlug}
+                    target="_blank"
+                  >
+                    {"inkmorphism.com/sites/" + site.domainSlug}
+                  </a>
+                </div>
+                <p>
+                  {site.isSynced
+                    ? "Static file is up-to-date"
+                    : "Update available"
+                    }
+                </p>
+              </div>
+            );
+          } catch (err) {
+            console.log(err);
+          }
+        });
+        setData(publicSitesRendered);
       });
-      // dataArr.push(doc.data());
-      // dataArr.forEach((item, index) => {
-      //   if (item !== undefined) {
-      //     try {
-      //       setPageData(item.webContent.pages.main.structure);
-      //       setMetaData(item.webContent.meta);
-      //       setFullData(item)
-      //     } catch (err) {
-      //       console.log(err);
-      //     }
-      //   }
-      // });
     } catch (err) {
       console.log(err);
     }
@@ -98,28 +143,12 @@ export default function CPanel() {
     <div id="cPanel">
       <Head>
         <title>Control Panel - Inkmorphism</title>
+        <meta
+          name="description"
+          content="Control Panel for Inkmorphism. Create, edit, and delete websites."
+        />
+        <link rel="icon" href="/logoWh.png" />
       </Head>
-      {/* <form onSubmit={handleSubmit}>
-        <label>
-          Folder name:
-          <input
-            type="text"
-            value={folderName}
-            onChange={(e) => setFolderName(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Page title:
-          <input
-            type="text"
-            value={pageTitle}
-            onChange={(e) => setPageTitle(e.target.value)}
-          />
-        </label>
-        <br />
-        <button type="submit">Create page</button>
-      </form> */}
 
       <button id="fetch" onClick={getData}></button>
 
@@ -151,13 +180,17 @@ export default function CPanel() {
         </div>
       ) : (
         <div id="getDataBtn">
-          <p onClick={() => {
-            window.location.href = "../../login"
-          }}>
+          <p
+            onClick={() => {
+              window.location.href = "../../login";
+            }}
+          >
             You are not an admin. <br></br>Log in as an admin to access this
           </p>
         </div>
       )}
+
+      <div id="publicSites">{theData}</div>
     </div>
   );
 }
