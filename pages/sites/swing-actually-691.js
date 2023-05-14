@@ -1,16 +1,39 @@
-export default function Default() {
-        return (
-          <main
-            className={"skeletal published"}
-            style={{
-              "--color1": "#0f61e6",
-              "--color2": "#ffffff",
-              "--color3": "#79e16b",
-              "--colorLight": "#fefefe",
-              "--colorDark": "#121212"              
-            }}
-          >            
-            
+
+    import Head from "next/head";
+  
+    export default function Default() {
+          return (
+            <main
+              className={"skeletal published"}
+              style={{
+                "--color1": "#0f61e6",
+                "--color2": "#ffffff",
+                "--color3": "#79e16b",
+                "--colorLight": "#fefefe",
+                "--colorDark": "#121212"              
+              }}
+            >
+            <Head>
+              <title>Your Website</title>
+              <meta name="description" content="The description for your website"></meta>
+              <link rel="icon" href="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Flogo.png?alt=media&token=ba50553d-4f67-4d24-b909-e98e6585dad9" />
+              <meta name="viewport" content="width=device-width, initial-scale=1" />
+              <meta name="author" content="Meta Author"></meta>
+              <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fthumbnail.png?alt=media&token=bf24a392-9096-4d28-a9b0-f9d7941f8e85"></meta>
+              <meta property="og:type" content="website"></meta>
+              <meta property="og:title" content="Your Website"></meta>
+              <meta
+                property="og:description"
+                content="The description for your website"
+              ></meta>
+              <meta property="twitter:card" content="summary_large_image"></meta>
+              <meta property="twitter:title" content="Your Website"></meta>
+              <meta
+                property="twitter:description"
+                content="The description for your website"
+              ></meta>
+            </Head>    
+              
             <nav 
               className="nav" 
               key="0"
@@ -57,6 +80,6 @@ export default function Default() {
               <p>Copyright by XYZ</p>
             </footer>
             
-          </main>
-        );
-    }
+            </main>
+          );
+      }

@@ -1,16 +1,39 @@
-export default function Default() {
-        return (
-          <main
-            className={"simple published"}
-            style={{
-              "--color1": "#ffffff",
-              "--color2": "#ffffeb",
-              "--color3": "#79e16b",
-              "--colorLight": "#fefefe",
-              "--colorDark": "#121212"              
-            }}
-          >            
-            
+
+    import Head from "next/head";
+  
+    export default function Default() {
+          return (
+            <main
+              className={"simple published"}
+              style={{
+                "--color1": "#ffffff",
+                "--color2": "#ffffeb",
+                "--color3": "#79e16b",
+                "--colorLight": "#fefefe",
+                "--colorDark": "#121212"              
+              }}
+            >
+            <Head>
+              <title>Fuzzy Beats</title>
+              <meta name="description" content="The description for your website"></meta>
+              <link rel="icon" href="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-PTP01LUe7wQiQrvtPccCjdLnRY33%2Fprevious-sport-186%2Flogo.png?alt=media&token=b92cd4c1-2eb4-4d13-8105-6acb7e96ece4" />
+              <meta name="viewport" content="width=device-width, initial-scale=1" />
+              <meta name="author" content="Meta Author"></meta>
+              <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-PTP01LUe7wQiQrvtPccCjdLnRY33%2Fprevious-sport-186%2Fthumbnail.png?alt=media&token=f5bd859b-d40e-4b53-8812-7456ced3de17"></meta>
+              <meta property="og:type" content="website"></meta>
+              <meta property="og:title" content="Fuzzy Beats"></meta>
+              <meta
+                property="og:description"
+                content="The description for your website"
+              ></meta>
+              <meta property="twitter:card" content="summary_large_image"></meta>
+              <meta property="twitter:title" content="Fuzzy Beats"></meta>
+              <meta
+                property="twitter:description"
+                content="The description for your website"
+              ></meta>
+            </Head>    
+              
             <nav 
               className="nav" 
               key="0"
@@ -56,6 +79,6 @@ export default function Default() {
               <p>Copyright by Fuzzy Beats ©</p>
             </footer>
             
-          </main>
-        );
-    }
+            </main>
+          );
+      }

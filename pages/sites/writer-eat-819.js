@@ -1,16 +1,39 @@
-export default function Default() {
-        return (
-          <main
-            className={"simple published"}
-            style={{
-              "--color1": "#ffffff",
-              "--color2": "#f9f9f0",
-              "--color3": "#79e16b",
-              "--colorLight": "#fefefe",
-              "--colorDark": "#130b0b"              
-            }}
-          >            
-            
+
+    import Head from "next/head";
+  
+    export default function Default() {
+          return (
+            <main
+              className={"simple published"}
+              style={{
+                "--color1": "#ffffff",
+                "--color2": "#f9f9f0",
+                "--color3": "#79e16b",
+                "--colorLight": "#fefefe",
+                "--colorDark": "#130b0b"              
+              }}
+            >
+            <Head>
+              <title>Your Website</title>
+              <meta name="description" content="The description for your website"></meta>
+              <link rel="icon" href="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fwriter-eat-819%2Flogo.png?alt=media&token=9478d91b-0a45-4659-8c7a-0dd69eacadc3" />
+              <meta name="viewport" content="width=device-width, initial-scale=1" />
+              <meta name="author" content="Meta Author"></meta>
+              <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fwriter-eat-819%2Fthumbnail.png?alt=media&token=1b70126e-68fc-472d-96db-ee4b12c36095"></meta>
+              <meta property="og:type" content="website"></meta>
+              <meta property="og:title" content="Your Website"></meta>
+              <meta
+                property="og:description"
+                content="The description for your website"
+              ></meta>
+              <meta property="twitter:card" content="summary_large_image"></meta>
+              <meta property="twitter:title" content="Your Website"></meta>
+              <meta
+                property="twitter:description"
+                content="The description for your website"
+              ></meta>
+            </Head>    
+              
             <nav 
               className="nav" 
               key="0"
@@ -56,6 +79,6 @@ export default function Default() {
               <p>Copyright by Restaurant for Writers</p>
             </footer>
             
-          </main>
-        );
-    }
+            </main>
+          );
+      }

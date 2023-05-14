@@ -1,16 +1,39 @@
-export default function Default() {
-        return (
-          <main
-            className={"simple published"}
-            style={{
-              "--color1": "#ffffff",
-              "--color2": "#e0e2ff",
-              "--color3": "#79e16b",
-              "--colorLight": "#fefefe",
-              "--colorDark": "#121212"              
-            }}
-          >            
-            
+
+    import Head from "next/head";
+  
+    export default function Default() {
+          return (
+            <main
+              className={"simple published"}
+              style={{
+                "--color1": "#ffffff",
+                "--color2": "#e0e2ff",
+                "--color3": "#79e16b",
+                "--colorLight": "#fefefe",
+                "--colorDark": "#121212"              
+              }}
+            >
+            <Head>
+              <title>Your Website</title>
+              <meta name="description" content="The description for your website"></meta>
+              <link rel="icon" href="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2Flogo.png?alt=media&token=5985477f-82e1-4470-9cd5-e5cfd2c23948" />
+              <meta name="viewport" content="width=device-width, initial-scale=1" />
+              <meta name="author" content="Meta Author"></meta>
+              <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2Fthumbnail.png?alt=media&token=dc99e3f0-bc95-4434-80bb-a146568ed75b"></meta>
+              <meta property="og:type" content="website"></meta>
+              <meta property="og:title" content="Your Website"></meta>
+              <meta
+                property="og:description"
+                content="The description for your website"
+              ></meta>
+              <meta property="twitter:card" content="summary_large_image"></meta>
+              <meta property="twitter:title" content="Your Website"></meta>
+              <meta
+                property="twitter:description"
+                content="The description for your website"
+              ></meta>
+            </Head>    
+              
             <nav 
               className="nav" 
               key="0"
@@ -137,6 +160,6 @@ export default function Default() {
               <p>Copyright by Quarries LTD</p>
             </footer>
             
-          </main>
-        );
-    }
+            </main>
+          );
+      }
