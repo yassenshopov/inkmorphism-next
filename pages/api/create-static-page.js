@@ -5,19 +5,16 @@ function itemToPage(item) {
     (section, index) => {
       switch (section.type) {
         case "txtOnly":
-          return (
-            `
+          return `
             <section
               key="${index}"
               className="${section.type + " " + section.options.direction}"
             >
               <p>${section.content.txt}</p>
             </section>
-            `
-          );
+            `;
         case "imgAndTxt":
-          return (
-            `
+          return `
             <section
               key="${index}"
               className="${section.type + " " + section.options.direction}"
@@ -29,11 +26,9 @@ function itemToPage(item) {
                 loading="${index > 3 ? "lazy" : "eager"}"
               />
             </section>
-            `
-          );
+            `;
         case "nav":
-          return (
-            `
+          return `
             <nav 
               className="${section.type}" 
               key="${index}"
@@ -43,11 +38,9 @@ function itemToPage(item) {
                 <p>${item.name}</p>
               </a>
             </nav>
-            `
-          );
+            `;
         case "footer":
-          return (
-            `
+          return `
             <footer 
               className="${section.type}"
               key="${index}"
@@ -59,11 +52,9 @@ function itemToPage(item) {
               </p>
               <p>${section.content.txt}</p>
             </footer>
-            `
-          );
+            `;
         case "imgOnly":
-          return (
-            `
+          return `
             <section
               key="${index}"
               className="${section.type + " " + section.options.direction}"
@@ -74,30 +65,56 @@ function itemToPage(item) {
                 loading="${index > 3 ? "lazy" : "eager"}"
               />
             </section>
-            `
-          );
+            `;
         default:
           break;
       }
     }
   );
   console.log(sections);
-  return `export default function Default() {
-        return (
-          <main
-            className={"${item.webContent.meta.metaStyle + " published"}"}
-            style={{
-              "--color1": "${item.webContent.meta["colorPalette"]["color1"]}",
-              "--color2": "${item.webContent.meta["colorPalette"]["color2"]}",
-              "--color3": "${item.webContent.meta["colorPalette"]["color3"]}",
-              "--colorLight": "${item.webContent.meta["colorPalette"]["colorLight"]}",
-              "--colorDark": "${item.webContent.meta["colorPalette"]["colorDark"]}"              
-            }}
-          >            
-            ${sections}
-          </main>
-        );
-    }`;
+  return `
+    import Head from "next/head";
+  
+    export default function Default() {
+          return (
+            <main
+              className={"${item.webContent.meta.metaStyle + " published"}"}
+              style={{
+                "--color1": "${item.webContent.meta["colorPalette"]["color1"]}",
+                "--color2": "${item.webContent.meta["colorPalette"]["color2"]}",
+                "--color3": "${item.webContent.meta["colorPalette"]["color3"]}",
+                "--colorLight": "${
+                  item.webContent.meta["colorPalette"]["colorLight"]
+                }",
+                "--colorDark": "${
+                  item.webContent.meta["colorPalette"]["colorDark"]
+                }"              
+              }}
+            >
+            <Head>
+              <title>${item.webContent.meta.metaTitle}</title>
+              <meta name="description" content="${item.webContent.meta.metaDescription}"></meta>
+              <link rel="icon" href="${item.webContent.meta.metaFavicon}" />
+              <meta name="viewport" content="width=device-width, initial-scale=1" />
+              <meta name="author" content="${item.webContent.meta.metaAuthor}"></meta>
+              <meta property="og:image" content="${item.webContent.meta.metaThumbnail}"></meta>
+              <meta property="og:type" content="website"></meta>
+              <meta property="og:title" content="${item.webContent.meta.metaTitle}"></meta>
+              <meta
+                property="og:description"
+                content="${item.webContent.meta.metaDescription}"
+              ></meta>
+              <meta property="twitter:card" content="summary_large_image"></meta>
+              <meta property="twitter:title" content="${item.webContent.meta.metaTitle}"></meta>
+              <meta
+                property="twitter:description"
+                content="${item.webContent.meta.metaDescription}"
+              ></meta>
+            </Head>    
+              ${sections}
+            </main>
+          );
+      }`;
 }
 
 export default function handler(req, res) {

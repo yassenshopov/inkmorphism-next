@@ -1,16 +1,39 @@
-export default function Default() {
-        return (
-          <main
-            className={"skeletal published"}
-            style={{
-              "--color1": "#8fffb8",
-              "--color2": "#fdff80",
-              "--color3": "#fcffe5",
-              "--colorLight": "#ffffff",
-              "--colorDark": "#0a0000"              
-            }}
-          >            
-            
+
+    import Head from "next/head";
+  
+    export default function Default() {
+          return (
+            <main
+              className={"skeletal published"}
+              style={{
+                "--color1": "#8fffb8",
+                "--color2": "#fdff80",
+                "--color3": "#fcffe5",
+                "--colorLight": "#ffffff",
+                "--colorDark": "#0a0000"              
+              }}
+            >
+            <Head>
+              <title>Inkmorphism - Your Website</title>
+              <meta name="description" content="The description for your website"></meta>
+              <link rel="icon" href="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fmusic-point-595%2Flogo.png?alt=media&token=b601d1f8-8708-4c89-b8f5-8d75f2f1c164" />
+              <meta name="viewport" content="width=device-width, initial-scale=1" />
+              <meta name="author" content="Meta Author"></meta>
+              <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fmusic-point-595%2Fthumbnail.png?alt=media&token=667a1542-8de7-45b2-ae39-520667a9af22"></meta>
+              <meta property="og:type" content="website"></meta>
+              <meta property="og:title" content="Inkmorphism - Your Website"></meta>
+              <meta
+                property="og:description"
+                content="The description for your website"
+              ></meta>
+              <meta property="twitter:card" content="summary_large_image"></meta>
+              <meta property="twitter:title" content="Inkmorphism - Your Website"></meta>
+              <meta
+                property="twitter:description"
+                content="The description for your website"
+              ></meta>
+            </Head>    
+              
             <nav 
               className="nav" 
               key="0"
@@ -45,6 +68,6 @@ export default function Default() {
               />
             </section>
             
-          </main>
-        );
-    }
+            </main>
+          );
+      }

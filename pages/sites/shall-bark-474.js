@@ -1,16 +1,39 @@
-export default function Default() {
-        return (
-          <main
-            className={"skeletal published"}
-            style={{
-              "--color1": "#ebebeb",
-              "--color2": "#ffffff",
-              "--color3": "#1eff00",
-              "--colorLight": "#ffffff",
-              "--colorDark": "#000000"              
-            }}
-          >            
-            
+
+    import Head from "next/head";
+  
+    export default function Default() {
+          return (
+            <main
+              className={"skeletal published"}
+              style={{
+                "--color1": "#ebebeb",
+                "--color2": "#ffffff",
+                "--color3": "#1eff00",
+                "--colorLight": "#ffffff",
+                "--colorDark": "#000000"              
+              }}
+            >
+            <Head>
+              <title>Dragon's Den</title>
+              <meta name="description" content="The description for your website"></meta>
+              <link rel="icon" href="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fshall-bark-474%2Flogo.png?alt=media&token=ab62a6c5-6114-441b-81d2-d632694356e6" />
+              <meta name="viewport" content="width=device-width, initial-scale=1" />
+              <meta name="author" content="Meta Author"></meta>
+              <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fshall-bark-474%2Fthumbnail.png?alt=media&token=81f9fb8a-dd2d-45e2-989c-9ed9be12b1c4"></meta>
+              <meta property="og:type" content="website"></meta>
+              <meta property="og:title" content="Dragon's Den"></meta>
+              <meta
+                property="og:description"
+                content="The description for your website"
+              ></meta>
+              <meta property="twitter:card" content="summary_large_image"></meta>
+              <meta property="twitter:title" content="Dragon's Den"></meta>
+              <meta
+                property="twitter:description"
+                content="The description for your website"
+              ></meta>
+            </Head>    
+              
             <nav 
               className="nav" 
               key="0"
@@ -120,6 +143,6 @@ export default function Default() {
               <p>Copyright by DnD 2023</p>
             </footer>
             
-          </main>
-        );
-    }
+            </main>
+          );
+      }
