@@ -89,7 +89,7 @@ export default function CPanel() {
                 // href={"../config/" + site.domainSlug}
                 className="noSelect site"
                 style={{
-                  background: site.isSynced ? "rgb(211 217 255 / 50%)" : "rgb(235 223 85)",
+                  background: site.isSynced ? "rgb(211 217 255 / 20%)" : "rgb(235 223 85)",
                 }}
               >
                 <div className="thumbnailWrapper">

@@ -553,11 +553,10 @@
   justify-content: center;
   align-items: center;
   font-size: 1rem;
-  color: var(--mainDark);
+  color: var(--mainLight);
   font-family: "Oswald";
   border-radius: 12px;
   padding: 20px 0;
-  background: linear-gradient(var(--simpleColor1), var(--simpleColor2));
   box-shadow: 10px 10px 10px #12121210, -10px -10px 10px #ffffff09;
   overflow: hidden;
 }
@@ -566,7 +565,7 @@
   margin: 0;
 }
 #cPanel #publicSites .site a {
-  color: var(--mainDark);
+  color: var(--mainLight);
 }
 #cPanel #publicSites .site .thumbnailWrapper {
   width: 18vw;
