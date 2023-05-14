@@ -208,6 +208,7 @@ function Editor(props) {
       ...pageData.slice(0, index),
       ...pageData.slice(index + 1),
     ]);
+    setBoxes((boxes) => [...boxes.slice(0, index), ...boxes.slice(index + 1)]);
     setEditPopupToggle(false);
     setIsUnsavedChanges(true);
   }
@@ -218,6 +219,11 @@ function Editor(props) {
       newSections[type],
       ...pageData.slice(index),
     ]);
+    setBoxes((boxes) => [
+      ...boxes.slice(0, index),
+      newSections[type],
+      ...boxes.slice(index),
+    ])
     setPopupToggle(false);
     setIsUnsavedChanges(true);
   }
@@ -280,6 +286,8 @@ function Editor(props) {
         if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
           return;
         }
+
+        console.log(dragIndex, hoverIndex)
 
         moveBox(dragIndex, hoverIndex);
         item.index = hoverIndex;
@@ -396,7 +404,12 @@ function Editor(props) {
           );
         case "nav":
           return (
-            <nav className={section.type}>
+            <nav
+              className={section.type}
+              onClick={() => {
+                console.log(boxes);
+              }}
+            >
               <a id="navLogo">
                 <img
                   src={defaults.webContent.meta.metaFavicon}
@@ -514,13 +527,29 @@ function Editor(props) {
               </div>
             </section>
           );
-        // default:
-        //   break;
+        default:
+          break;
       }
     } catch (err) {
       console.log(err);
     }
   }
+
+  const [boxes, setBoxes] = useState([]);
+
+  const moveBox = (dragIndex, hoverIndex) => {
+    const draggedBox = boxes[dragIndex];
+    console.log(draggedBox);
+    alert("dragIndex: ", dragIndex, " hoverIndex: ", hoverIndex);
+    setBoxes(
+      update(boxes, {
+        $splice: [
+          [dragIndex, 1],
+          [hoverIndex, 0, draggedBox],
+        ],
+      })
+    );
+  };
 
   useEffect(() => {
     console.log(pageData);
@@ -539,243 +568,14 @@ function Editor(props) {
       ];
       setSectionsData(emptySection);
     } else {
-      const sections = pageData.map((section, index) => {
+      const sections = boxes.map((section, index) => {
         return (
           <Box
             id={index}
             index={index}
             key={index}
-            // moveBox={moveBox}
-            content={
-              turnIntoSection(section, index)
-              // switch (section.type) {
-              //   case "txtOnly":
-              //     return (
-              //       <section
-              //         key={index}
-              //         className={section.type + " " + section.options.direction}
-              //       >
-              //         <div
-              //           onClick={() => {
-              //             addSectionPopup(index);
-              //           }}
-              //           className="addSection"
-              //         >
-              //           <p>
-              //             Add section <FaPlus />
-              //           </p>
-              //         </div>
-              //         <p
-              //           suppressContentEditableWarning={true}
-              //           onBlur={(e) => {
-              //             txtFieldChange(e, index);
-              //           }}
-              //           contentEditable={true}
-              //         >
-              //           {section.content.txt}
-              //         </p>
-              //         <p
-              //           className="editBtn noSelect"
-              //           onClick={() => {
-              //             deleteSectionPopup(index);
-              //           }}
-              //         >
-              //           <BiEdit />
-              //         </p>
-              //         <div className="addSection">
-              //           <p
-              //             onClick={() => {
-              //               addSectionPopup(index + 1);
-              //             }}
-              //           >
-              //             Add section <FaPlus />
-              //           </p>
-              //         </div>
-              //       </section>
-              //     );
-              //   case "imgAndTxt":
-              //     return (
-              //       <section
-              //         key={index}
-              //         className={section.type + " " + section.options.direction}
-              //       >
-              //         <div
-              //           onClick={() => {
-              //             addSectionPopup(index);
-              //           }}
-              //           className="addSection"
-              //         >
-              //           <p>
-              //             Add section <FaPlus />
-              //           </p>
-              //         </div>
-              //         <p
-              //           suppressContentEditableWarning={true}
-              //           onBlur={(e) => {
-              //             txtFieldChange(e, index);
-              //           }}
-              //           contentEditable={true}
-              //         >
-              //           {section.content.txt}
-              //         </p>
-              //         <div className="imgWrapper">
-              //           <img src={section.content.img} draggable={false} />
-              //           <div
-              //             className="changeImg noSelect"
-              //             onClick={() => {
-              //               setIndexOfNewPic(index);
-              //               uploadNewImg();
-              //             }}
-              //           >
-              //             Click to change image
-              //           </div>
-              //         </div>
-              //         <p
-              //           className="editBtn noSelect"
-              //           onClick={() => {
-              //             deleteSectionPopup(index);
-              //           }}
-              //         >
-              //           <BiEdit />
-              //         </p>
-              //         <div className="addSection">
-              //           <p
-              //             onClick={() => {
-              //               addSectionPopup(index + 1);
-              //             }}
-              //           >
-              //             Add section <FaPlus />
-              //           </p>
-              //         </div>
-              //       </section>
-              //     );
-              //   case "nav":
-              //     return (
-              //       <nav className={section.type} key={index}>
-              //         <a id="navLogo">
-              //           <img
-              //             src={defaults.webContent.meta.metaFavicon}
-              //             draggable={false}
-              //             loading="lazy"
-              //           />
-              //           <p>{defaults.name}</p>
-              //         </a>
-              //         {/* <p
-              //       className="editBtn noSelect"
-              //       onClick={() => {
-              //         deleteSectionPopup(index);
-              //       }}
-              //     >
-              //       <BiEdit />
-              //     </p> */}
-              //         <div className="addSection">
-              //           <p
-              //             onClick={() => {
-              //               addSectionPopup(index + 1);
-              //             }}
-              //           >
-              //             Add section <FaPlus />
-              //           </p>
-              //         </div>
-              //       </nav>
-              //     );
-              //   case "footer":
-              //     return (
-              //       <footer className={section.type} key={index}>
-              //         <div className="addSection">
-              //           <p
-              //             onClick={() => {
-              //               addSectionPopup(index);
-              //             }}
-              //           >
-              //             Add section <FaPlus />
-              //           </p>
-              //         </div>
-              //         <p id="watermark">Built with Inkmorphism 🖋️</p>
-              //         <p
-              //           suppressContentEditableWarning={true}
-              //           onBlur={(e) => {
-              //             txtFieldChange(e, index);
-              //           }}
-              //           contentEditable={true}
-              //         >
-              //           {section.content.txt}
-              //         </p>
-              //         <p
-              //           className="editBtn noSelect"
-              //           onClick={() => {
-              //             deleteSectionPopup(index);
-              //           }}
-              //         >
-              //           <BiEdit />
-              //         </p>
-              //         {/* <div className="addSection">
-              //         <p
-              //           onClick={() => {
-              //             addSectionPopup(index + 1);
-              //           }}
-              //         >
-              //           Add section <FaPlus />
-              //         </p>
-              //       </div> */}
-              //       </footer>
-              //     );
-              //   case "imgOnly":
-              //     return (
-              //       <section
-              //         key={index}
-              //         className={section.type + " " + section.options.direction}
-              //       >
-              //         <div
-              //           onClick={() => {
-              //             addSectionPopup(index);
-              //           }}
-              //           className="addSection"
-              //         >
-              //           <p>
-              //             Add section <FaPlus />
-              //           </p>
-              //         </div>
-              //         <div className="imgWrapper">
-              //           <img
-              //             src={section.content.img}
-              //             draggable={false}
-              //             loading="lazy"
-              //           />
-              //           <div
-              //             style={{ borderRadius: 0 }}
-              //             className="changeImg noSelect"
-              //             onClick={() => {
-              //               setIndexOfNewPic(index);
-              //               uploadNewImg();
-              //             }}
-              //           >
-              //             Click to change image
-              //           </div>
-              //         </div>
-              //         <p
-              //           className="editBtn noSelect"
-              //           onClick={() => {
-              //             deleteSectionPopup(index);
-              //           }}
-              //         >
-              //           <BiEdit />
-              //         </p>
-              //         <div className="addSection">
-              //           <p
-              //             onClick={() => {
-              //               addSectionPopup(index + 1);
-              //             }}
-              //           >
-              //             Add section <FaPlus />
-              //           </p>
-              //         </div>
-              //       </section>
-              //     );
-              //   // default:
-              //   //   break;
-              // }
-            }
+            moveBox={moveBox}
+            content={turnIntoSection(section, index)}
           />
         );
       });
@@ -830,6 +630,7 @@ function Editor(props) {
                 try {
                   setData(item);
                   setPageData(item.webContent.pages.main.structure);
+                  setBoxes(item.webContent.pages.main.structure);
                   setLogoFile(item.webContent.meta.metaFavicon);
                   setThumbnailFile(item.webContent.meta.metaThumbnail);
                 } catch (err) {
@@ -960,6 +761,21 @@ function Editor(props) {
         },
       },
       ...pageData.slice(index + 1),
+    ]);
+    setBoxes((boxes) => [
+      ...boxes.slice(0, index),
+      {
+        ...boxes[index],
+        content: {
+          ...boxes.content,
+          txt: e.target.innerText,
+          img:
+            boxes[index].content.img !== undefined
+              ? boxes[index].content.img
+              : "",
+        },
+      },
+      ...boxes.slice(index + 1),
     ]);
     setIsUnsavedChanges(true);
   }
@@ -1182,6 +998,21 @@ function Editor(props) {
               },
             },
             ...pageData.slice(index + 1),
+          ]);
+          setBoxes((boxes) => [
+            ...boxes.slice(0, index),
+            {
+              ...boxes[index],
+              content: {
+                ...boxes.content,
+                txt:
+                  boxes[index].content.txt !== undefined
+                    ? boxes[index].content.txt
+                    : "",
+                img: url,
+              },
+            },
+            ...boxes.slice(index + 1),
           ]);
           setLoadBool(false);
           setIsUnsavedChanges(true);
