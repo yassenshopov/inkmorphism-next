@@ -437,10 +437,10 @@ label {
   border-bottom: 2px solid var(--mainLight);
   background-color: #49494920;
 }
-.Editor > main #mainEditorWrapper main > *:hover > .editBtn {
+.Editor > main #mainEditorWrapper main > * > *:hover > .editBtn {
   opacity: 1;
 }
-.Editor > main #mainEditorWrapper main > *:hover > *[class="addSection"] {
+.Editor > main #mainEditorWrapper main > * > *:hover > *[class="addSection"] {
   opacity: 1;
 }
 .Editor > main #mainEditorWrapper main .editBtn {

@@ -3,9 +3,6 @@ import {
   getFirestore,
   getDoc,
   doc,
-  updateDoc,
-  collection,
-  getDocs,
 } from "firebase/firestore/lite";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import Head from "next/head";
