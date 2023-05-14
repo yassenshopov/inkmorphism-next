@@ -223,7 +223,7 @@ function Editor(props) {
       ...boxes.slice(0, index),
       newSections[type],
       ...boxes.slice(index),
-    ])
+    ]);
     setPopupToggle(false);
     setIsUnsavedChanges(true);
   }
@@ -287,7 +287,7 @@ function Editor(props) {
           return;
         }
 
-        console.log(dragIndex, hoverIndex)
+        console.log(dragIndex, hoverIndex);
 
         moveBox(dragIndex, hoverIndex);
         item.index = hoverIndex;
@@ -724,6 +724,9 @@ function Editor(props) {
     if (savedData.published) {
       await setDoc(doc(db, "publicSites", props["name"]), savedData);
     }
+    await updateDoc(doc(db, "publicSites", props["name"]), {
+      isSynced: false,
+    });
     setIsSaved(false);
     setIsUnsavedChanges(false);
     setTimeout(() => {
