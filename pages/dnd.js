@@ -74,6 +74,9 @@ export default function DnD() {
 
   const moveBox = (dragIndex, hoverIndex) => {
     const draggedBox = boxes[dragIndex];
+    console.log(draggedBox);
+    console.log(dragIndex);
+    console.log(hoverIndex);
     setBoxes(
       update(boxes, { 
         $splice: [
@@ -88,7 +91,7 @@ export default function DnD() {
   //On prod, on mobile DnD is not working
   //It defaults to the HTML5Backend because of the 1st render
 
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 767px)');

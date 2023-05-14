@@ -540,15 +540,22 @@
   background-color: var(--mainColor2);
   padding: 0 6vw;
   font-family: "Oswald";
-  color: #fff;
+}
+#dashnav p {
+  color: var(--mainLight);
+}
+#dashnav #logo p {
+  color: var(--mainLight) !important;
 }
 #dashnav #logo:hover img {
   transform: rotate(-360deg);
   filter: invert(1);
   box-shadow: -10px -10px 10px #12121210, 10px 10px 10px #ffffff10;
 }
-#dashnav a {
+#dashnav a,
+#dashnav p {
   text-decoration: none;
+  transition: all 200ms ease-in-out;
 }
 #dashnav img {
   height: 60px;
@@ -591,7 +598,7 @@
   justify-content: center;
   gap: 0.4vw;
   line-height: 0.6;
-  transition: margin 400ms ease-in-out, visibility 400ms ease-in-out, opacity 400ms ease-in-out;
+  transition: all 200ms ease-in-out;
   z-index: 2;
   cursor: pointer;
   padding: 20px 0.4vw;
