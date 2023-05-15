@@ -724,9 +724,13 @@ function Editor(props) {
     if (savedData.published) {
       await setDoc(doc(db, "publicSites", props["name"]), savedData);
     }
-    await updateDoc(doc(db, "publicSites", props["name"]), {
-      isSynced: false,
-    });
+    try {
+      await updateDoc(doc(db, "publicSites", props["name"]), {
+        isSynced: false,
+      });
+    } catch (err) {
+      console.log(err);
+    }
     setIsSaved(false);
     setIsUnsavedChanges(false);
     setTimeout(() => {
