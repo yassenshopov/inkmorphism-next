@@ -3,7 +3,7 @@
   --mainLight: #fefefe;
   --mainColor1: #3994ac;
   --mainColor2: #09596b;
-  --mainColor3: #42042c;
+  --mainColor3: #7c7e00;
   --mainLinkColor: #415eec;
   --nbMainLight: #faf9f9;
   --nbMainDark: #121212;
@@ -527,6 +527,152 @@
   height: 100%;
   border-radius: 24px;
 }
+#pricing {
+  background: linear-gradient(var(--mainColor2), var(--mainColor3));
+  padding: 80px 0;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#pricing #hero {
+  color: var(--mainLight);
+  font-family: "WorkSans";
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 100px 16vw 60px 16vw;
+  position: relative;
+  width: 50%;
+  text-align: center;
+}
+#pricing #hero h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+#pricing #hero h2 {
+  font-size: 2.4rem;
+  margin: 0;
+  opacity: 0.8;
+}
+#pricing #hero #fallingStar {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  right: 20vw;
+  transform: rotate(100deg);
+  font-size: 10rem;
+  opacity: 0.1;
+  filter: drop-shadow(0 0 20px #ffffff50);
+}
+#pricing #hero #paymentMode {
+  display: flex;
+  flex-direction: row;
+  gap: 2vw;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0 0 0;
+  cursor: pointer;
+}
+#pricing #hero #paymentMode p {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--mainLight);
+  transition: all 200ms ease-in-out;
+}
+#pricing #hero #paymentMode p.dim {
+  opacity: 0.5;
+}
+#pricing #hero #paymentMode .paymentModeSwitch {
+  height: 60px;
+  width: 6vw;
+  background-color: var(--mainColor3);
+  border-radius: 48px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 2px 0vw;
+  position: relative;
+}
+#pricing #hero #paymentMode .paymentModeSwitch .switch {
+  display: inline-block;
+  position: absolute;
+  left: -0.6vw;
+  width: 48px;
+  height: 48px;
+  margin: 0 20px;
+  background-color: var(--mainLight);
+  border-radius: 50%;
+  transition: all 200ms ease-in-out;
+}
+#pricing #hero #paymentMode .paymentModeSwitch .switch.clicked {
+  left: 2vw;
+}
+#pricing #plansGrid {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2vw;
+  width: 100%;
+  padding: 40px 16vw;
+  box-sizing: border-box;
+  min-height: fit-content;
+  font-family: "WorkSans";
+}
+#pricing #plansGrid .plan {
+  width: 25%;
+  height: fit-content;
+  background-color: var(--mainLight);
+  color: var(--mainDark);
+  border-radius: 24px;
+  box-shadow: 10px 10px 10px #12121220, -10px -10px 10px #ffffff06;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 2vw;
+  gap: 20px;
+  text-align: left;
+  transition: all 200ms ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+#pricing #plansGrid .plan h2 {
+  margin: 0;
+  font-size: 2rem;
+}
+#pricing #plansGrid .plan h2 span {
+  font-size: 1.4rem;
+}
+#pricing #plansGrid .plan button {
+  border: none;
+  padding: 20px 2vw;
+  width: 100%;
+  cursor: pointer;
+  background-color: var(--mainDark);
+  transition: all 200ms ease-in-out;
+  border-radius: 6px;
+  color: var(--mainLight);
+  font-size: 1.2rem;
+}
+#pricing #plansGrid .plan button:hover {
+  background-color: var(--mainColor3);
+}
+#pricing #plansGrid .plan:hover {
+  transform: scale(1.01);
+}
+#pricing #plansGrid .plan.best #bestLabel {
+  position: absolute;
+  top: -16px;
+  right: 0;
+  background-color: var(--mainDark);
+  color: var(--mainLight);
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 0 12px 0 6px;
+}
 #cPanel {
   height: fit-content !important;
   min-height: 100vh;
@@ -926,7 +1072,7 @@
   align-items: center;
   text-align: center;
   border-radius: 15px;
-  box-shadow: 10px 10px 10px #12121250, -10px -10px 10px #ffffff19;
+  box-shadow: 10px 10px 10px #12121220, -10px -10px 10px #ffffff09;
   transition: all 200ms ease-in-out;
   overflow: hidden;
   position: relative;
@@ -958,7 +1104,7 @@
   z-index: 2;
   width: 100%;
   height: 100%;
-  background: linear-gradient(var(--mainLight), var(--mainColor2));
+  background: linear-gradient(var(--mainColor1), var(--mainColor2));
   opacity: 0;
   transition: all 300ms ease-in-out;
   gap: 40px;
@@ -972,7 +1118,7 @@
   font-weight: 1000;
   text-transform: uppercase;
   color: var(--mainDark);
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   transition: all 200ms ease-in-out;
   border-bottom: 2px solid #10101000;
   padding: 0 0 10px 0;
