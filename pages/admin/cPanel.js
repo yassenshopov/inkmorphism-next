@@ -90,6 +90,7 @@ export default function CPanel() {
                 className="noSelect site"
                 style={{
                   background: site.isSynced ? "rgb(211 217 255 / 20%)" : "rgb(235 223 85)",
+                  color: site.isSynced ? "white" : "black",
                 }}
               >
                 <div className="thumbnailWrapper">
@@ -112,6 +113,9 @@ export default function CPanel() {
                   <a
                     href={"https://inkmorphism.com/sites/" + site.domainSlug}
                     target="_blank"
+                    style={{
+                      color: site.isSynced ? "white" : "black",
+                    }}
                   >
                     {"inkmorphism.com/sites/" + site.domainSlug}
                   </a>

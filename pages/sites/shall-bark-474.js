@@ -6,7 +6,7 @@
 
           useEffect(() => {
             const root = document.documentElement;
-            root.style.setProperty("--scrollbarThumb", "#ebebeb");
+            root.style.setProperty("--scrollbarThumb", "#ffffff");
             root.style.setProperty("--scrollbarTrack", "#121212");
           }, []);
 
@@ -14,12 +14,12 @@
             <main
               className={"skeletal published"}
               style={{
-                "--color1": "#ebebeb",
+                "--color1": "#ffffff",
                 "--color2": "#ffffff",
                 "--color3": "#1eff00",
                 "--colorLight": "#ffffff",
                 "--colorDark": "#000000",
-                "--scrollbarThumb": "#ebebeb",
+                "--scrollbarThumb": "#ffffff",
                 "--scrollbarTrack": "#121212",
               }}
             >
@@ -56,17 +56,23 @@
             ,
             <section
               key="1"
-              className="txtOnly reverseHorizontal"
+              className="imgAndTxt reverseHorizontal"
             >
-              <p>Section       tum tum tum       #1!</p>
+              <p>This is your new ImgNTxt section.</p>
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fshall-bark-474%2FEv16tHJ1oDuDFWkI.png?alt=media&token=da942497-6f8d-4871-a5b3-611b79ba83cf"
+                draggable="false"
+                loading="eager"
+              />
             </section>
             ,
             <section
               key="2"
-              className="imgOnly "
+              className="imgAndTxt directHorizontal"
             >
+              <p>This is your new ImgNTxt section.</p>
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fshall-bark-474%2F1EhtVjciiqlFqisK.png?alt=media&token=878d26bc-5bed-4883-93e1-043bc2df5a2f"
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fshall-bark-474%2F0ztYFCHinR1Fr8P3.png?alt=media&token=11eed2f3-dbe0-4224-9947-64487a99979f"
                 draggable="false"
                 loading="eager"
               />
@@ -77,7 +83,7 @@
               className="imgOnly "
             >
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fshall-bark-474%2FerhtpH41sdJBpgnw.png?alt=media&token=62d4f033-a57c-42b2-b84d-6b08d2f05cd5"
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fshall-bark-474%2F1EhtVjciiqlFqisK.png?alt=media&token=878d26bc-5bed-4883-93e1-043bc2df5a2f"
                 draggable="false"
                 loading="eager"
               />
@@ -88,7 +94,7 @@
               className="imgOnly "
             >
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fshall-bark-474%2FGZb4I7juvRCWjv6a.png?alt=media&token=cfc22125-2696-4613-b617-c63f2740ce40"
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fshall-bark-474%2FerhtpH41sdJBpgnw.png?alt=media&token=62d4f033-a57c-42b2-b84d-6b08d2f05cd5"
                 draggable="false"
                 loading="lazy"
               />
@@ -99,7 +105,7 @@
               className="imgOnly "
             >
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fshall-bark-474%2FI9C6RyF7IccdwsGu.png?alt=media&token=f6b9c11d-bb86-4de1-a37a-fd7e2d761907"
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fshall-bark-474%2FGZb4I7juvRCWjv6a.png?alt=media&token=cfc22125-2696-4613-b617-c63f2740ce40"
                 draggable="false"
                 loading="lazy"
               />
@@ -107,6 +113,17 @@
             ,
             <section
               key="6"
+              className="imgOnly "
+            >
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fshall-bark-474%2FI9C6RyF7IccdwsGu.png?alt=media&token=f6b9c11d-bb86-4de1-a37a-fd7e2d761907"
+                draggable="false"
+                loading="lazy"
+              />
+            </section>
+            ,
+            <section
+              key="7"
               className="imgAndTxt reverseHorizontal"
             >
               <p>This is your new ImgNTxt section.</p>
@@ -118,7 +135,7 @@
             </section>
             ,
             <section
-              key="7"
+              key="8"
               className="imgAndTxt directHorizontal"
             >
               <p>Age of Drakes</p>
@@ -130,7 +147,7 @@
             </section>
             ,
             <section
-              key="8"
+              key="9"
               className="imgAndTxt reverseHorizontal"
             >
               <p>This is your new ImgNTxt sections.</p>
@@ -143,7 +160,7 @@
             ,
             <footer 
               className="footer"
-              key="9"
+              key="10"
             >
               <p id="watermark">
                 <a href="https://inkmorphism.com" target="_blank">

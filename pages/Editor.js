@@ -245,7 +245,6 @@ function Editor(props) {
     },
   ];
 
-  const [trigger, setTrigger] = useState(false);
   const [popupToggle, setPopupToggle] = useState(false);
   const [editPopupToggle, setEditPopupToggle] = useState(false);
   const [deleteBtn, setDeleteBtn] = useState();
@@ -412,9 +411,11 @@ function Editor(props) {
             >
               <a id="navLogo">
                 <img
-                  src={defaults.webContent.meta.metaFavicon}
+                  // src={defaults.webContent.meta.metaFavicon}
+                  src={logoFile}
                   draggable={false}
                   loading="lazy"
+                  id="navLogoImg"
                 />
                 <p>{defaults.name}</p>
               </a>
@@ -595,7 +596,7 @@ function Editor(props) {
       });
       setPublishToggle(defaults.published);
     }
-  }, [pageData, trigger]);
+  }, [pageData]);
 
   useEffect(() => {
     async function asyncFunc() {
@@ -736,7 +737,7 @@ function Editor(props) {
     setTimeout(() => {
       setIsUnsavedChanges(null);
     }, 4000);
-    setTrigger(!trigger);
+    // setTrigger(!trigger);
   }
 
   // onkeydown = function(e) {
@@ -926,9 +927,36 @@ function Editor(props) {
       let logoFileRef = ref(storage, uid);
       let metadata = { contentType: "image/png" };
       // actualUpload(photoRef, metadata);
+      // document.getElementById("navLogoImg").src = URL.createObjectURL(logoFileToUpload);
+      setPageData((pageData) => [
+        ...pageData.slice(0, 0),
+        {
+          ...pageData[0],
+          content: {
+            ...pageData.content,
+            logo:
+              pageData[0].content.logo
+          },
+        },
+        ...pageData.slice(1),
+      ]);
+      setBoxes((boxes) => [
+        ...boxes.slice(0, 0),
+        {
+          ...boxes[0],
+          content: {
+            ...boxes.content,
+            logo:
+              boxes[0].content.logo
+          },
+        },
+        ...boxes.slice(1),
+      ]);
+      document.getElementById("navLogoImg").src = "https://media.discordapp.net/attachments/1059220738718048346/1107952148018364426/midjourney_mature_military_woman_white_camouflage_snow_backgrou_30387c81-73df-4cb3-8c05-7f9cfc5b4677.png?width=494&height=656";
+      console.log(document.getElementById("navLogoImg").src)
       uploadBytes(logoFileRef, logoFileToUpload, metadata).then((snapshot) => {
         const pngURL = getDownloadURL(logoFileRef).then((url) => {
-          setTrigger(!trigger);
+          // setTrigger(!trigger);
         });
       });
     }
@@ -968,7 +996,7 @@ function Editor(props) {
       uploadBytes(thumbnailFileRef, thumbnailFileToUpload, metadata).then(
         (snapshot) => {
           const pngURL = getDownloadURL(thumbnailFileRef).then((url) => {
-            setTrigger(!trigger);
+            // setTrigger(!trigger);
           });
         }
       );
@@ -1114,7 +1142,7 @@ function Editor(props) {
   return (
     <div className={"Editor" + fsClass + modeClass}>
       <Head>
-        <link rel="icon" href={defaults["webContent"]["meta"]["metaFavicon"]} />
+        <link rel="icon" href={logoFile} />
         <title>{defaults["webContent"]["meta"]["metaTitle"]}</title>
         <meta
           name="description"
