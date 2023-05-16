@@ -585,7 +585,9 @@
     h2 {
       font-size: 2.4rem;
       margin: 0;
-      opacity: 0.8;
+      span {
+        opacity: 0.7;
+      }
     }
     #fallingStar {
       position: absolute;
@@ -605,6 +607,7 @@
       justify-content: center;
       padding: 20px 0 0 0;
       cursor: pointer;
+      width: 100%;
       p {
         margin: 0;
         font-size: 1.2rem;
@@ -615,9 +618,10 @@
         opacity: 0.5;
       }
       .paymentModeSwitch {
+        transition: all 200ms ease-in-out;
         height: 60px;
-        width: 6vw;
-        background-color: var(--mainColor3);
+        width: 20%;
+        background-color: var(--mainDark);
         border-radius: 48px;
         display: flex;
         flex-direction: row;
@@ -639,8 +643,11 @@
           transition: all 200ms ease-in-out;
         }
         .switch.clicked {
-          left: 2vw;
+          left: calc(100% - 75px);
         }
+      }
+      .paymentModeSwitch:hover {
+        background-color: var(--mainColor3);
       }
     }
   }
@@ -664,12 +671,12 @@
       padding: 40px 0;
       display: flex;
       flex-direction: column;
-      padding: 20px 2vw;
+      padding: 20px 2vw 50px 2vw;
       gap: 20px;
       text-align: left;
       transition: all 200ms ease-in-out;
       position: relative;
-      overflow: hidden;
+      z-index: 0;
       h2 {
         margin: 0;
         font-size: 2rem;
@@ -677,7 +684,6 @@
           font-size: 1.4rem;
         }
       }
-
       button {
         border: none;
         padding: 20px 2vw;
@@ -687,12 +693,82 @@
         transition: all 200ms ease-in-out;
         border-radius: 6px;
         color: var(--mainLight);
+        margin: 10px 0 20px 0;
         // font-family: "Oswald";
         // text-transform: uppercase;
         font-size: 1.2rem;
       }
       button:hover {
         background-color: var(--mainColor3);
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        li {
+          list-style: none;
+          color: var(--mainDark);
+          margin-top: 30px;
+          position: relative;
+          padding-right: 3vw;
+          span {
+            position: absolute;
+            right: 0px;
+            top: 0;
+            transition: all 200ms ease-in-out;
+            font-size: 1.2rem;
+            padding: 6px;
+            margin-top: -6px;
+            div {
+              position: absolute;
+              bottom: 40px;
+              left: -10vw;
+              z-index: 90;
+              background-color: var(--mainDark);
+              color: var(--mainLight);
+              padding: 10px 20px;
+              font-size: 0.8rem;
+              border-radius: 6px;
+              transition: all 200ms ease-in-out;
+              opacity: 0;
+              visibility: hidden;
+              width: 200px;
+              text-align: center;
+              box-shadow: 10px 10px 10px #12121210, -10px -10px 10px #ffffff10;
+            }
+          }
+          span:hover {
+            color: var(--mainColor3);
+          }
+          span:hover > div {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+        li:hover > span {
+          color: var(--mainColor3);
+        }
+        li:hover > span > div {
+          opacity: 1;
+          visibility: visible;
+        }
+        .comingSoon {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          padding: 30px 0;
+          text-align: center;
+          gap: 10px;
+          span {
+            position: relative;
+            background-color: #000000;
+            min-width: 10%;
+            max-width: 20%;
+            height: 0.1px !important;
+            display: inline-block;
+            padding: 0;
+          }
+        }
       }
     }
     .plan:hover {
@@ -710,6 +786,25 @@
         border-radius: 0 12px 0 6px;
         // font-family: "Oswald";
         // text-transform: uppercase;
+        transition: all 200ms ease-in-out;
+      }
+    }
+    .plan.best:hover {
+      #bestLabel {
+        background-color: var(--mainColor3);
+      }
+    }
+    .plan.notWorking {
+      h2 {
+        color: #00000050;
+      }
+      p {
+        color: #00000050;
+      }
+      button {
+        background-color: #00000050;
+        color: var(--mainLight);
+        cursor: not-allowed;
       }
     }
   }
@@ -2704,6 +2799,80 @@
     min-height: 100vh;
     img {
       width: 80%;
+    }
+  }
+  #pricing {
+    box-sizing: border-box;
+    padding: 10px 6vw;
+    #hero {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 120px 0 60px 0;
+      #paymentMode {
+        display: flex;
+        flex-direction: row;
+        gap: 4vw;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 0 0 0;
+        cursor: pointer;
+        p {
+          margin: 0;
+          font-size: 1.2rem;
+          color: var(--mainLight);
+          transition: all 200ms ease-in-out;
+        }
+        p.dim {
+          opacity: 0.5;
+        }
+        .paymentModeSwitch {
+          height: 60px;
+          width: 30vw;
+          background-color: var(--mainColor3);
+          border-radius: 48px;
+          display: flex;
+          flex-direction: row;
+          // justify-content: center;
+          align-items: center;
+          padding: 2px 0vw;
+          position: relative;
+          .switch {
+            position: absolute;
+            display: inline-block;
+            position: absolute;
+            // top: 2px;
+            left: -3vw;
+            width: 48px;
+            height: 48px;
+            margin: 0 20px;
+            background-color: var(--mainLight);
+            border-radius: 50%;
+            transition: all 200ms ease-in-out;
+          }
+        }
+      }
+    }
+    #plansGrid {
+      box-sizing: border-box;
+      padding: 10px 6vw;
+      flex-direction: column;
+      gap: 40px;
+      align-items: center;
+      .plan {
+        width: 90%;
+        gap: 20px;
+        padding: 20px 10vw;
+        ul {
+          li {
+            span {
+              div {
+                right: 0;
+                left: -50vw;
+              }
+            }
+          }
+        }
+      }
     }
   }
   #MainNav {

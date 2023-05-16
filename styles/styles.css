@@ -556,7 +556,9 @@
 #pricing #hero h2 {
   font-size: 2.4rem;
   margin: 0;
-  opacity: 0.8;
+}
+#pricing #hero h2 span {
+  opacity: 0.7;
 }
 #pricing #hero #fallingStar {
   position: absolute;
@@ -576,6 +578,7 @@
   justify-content: center;
   padding: 20px 0 0 0;
   cursor: pointer;
+  width: 100%;
 }
 #pricing #hero #paymentMode p {
   margin: 0;
@@ -587,9 +590,10 @@
   opacity: 0.5;
 }
 #pricing #hero #paymentMode .paymentModeSwitch {
+  transition: all 200ms ease-in-out;
   height: 60px;
-  width: 6vw;
-  background-color: var(--mainColor3);
+  width: 20%;
+  background-color: var(--mainDark);
   border-radius: 48px;
   display: flex;
   flex-direction: row;
@@ -609,7 +613,10 @@
   transition: all 200ms ease-in-out;
 }
 #pricing #hero #paymentMode .paymentModeSwitch .switch.clicked {
-  left: 2vw;
+  left: calc(100% - 75px);
+}
+#pricing #hero #paymentMode .paymentModeSwitch:hover {
+  background-color: var(--mainColor3);
 }
 #pricing #plansGrid {
   display: flex;
@@ -632,12 +639,12 @@
   padding: 40px 0;
   display: flex;
   flex-direction: column;
-  padding: 20px 2vw;
+  padding: 20px 2vw 50px 2vw;
   gap: 20px;
   text-align: left;
   transition: all 200ms ease-in-out;
   position: relative;
-  overflow: hidden;
+  z-index: 0;
 }
 #pricing #plansGrid .plan h2 {
   margin: 0;
@@ -655,10 +662,80 @@
   transition: all 200ms ease-in-out;
   border-radius: 6px;
   color: var(--mainLight);
+  margin: 10px 0 20px 0;
   font-size: 1.2rem;
 }
 #pricing #plansGrid .plan button:hover {
   background-color: var(--mainColor3);
+}
+#pricing #plansGrid .plan ul {
+  margin: 0;
+  padding: 0;
+}
+#pricing #plansGrid .plan ul li {
+  list-style: none;
+  color: var(--mainDark);
+  margin-top: 30px;
+  position: relative;
+  padding-right: 3vw;
+}
+#pricing #plansGrid .plan ul li span {
+  position: absolute;
+  right: 0px;
+  top: 0;
+  transition: all 200ms ease-in-out;
+  font-size: 1.2rem;
+  padding: 6px;
+  margin-top: -6px;
+}
+#pricing #plansGrid .plan ul li span div {
+  position: absolute;
+  bottom: 40px;
+  left: -10vw;
+  z-index: 90;
+  background-color: var(--mainDark);
+  color: var(--mainLight);
+  padding: 10px 20px;
+  font-size: 0.8rem;
+  border-radius: 6px;
+  transition: all 200ms ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  width: 200px;
+  text-align: center;
+  box-shadow: 10px 10px 10px #12121210, -10px -10px 10px #ffffff10;
+}
+#pricing #plansGrid .plan ul li span:hover {
+  color: var(--mainColor3);
+}
+#pricing #plansGrid .plan ul li span:hover > div {
+  opacity: 1;
+  visibility: visible;
+}
+#pricing #plansGrid .plan ul li:hover > span {
+  color: var(--mainColor3);
+}
+#pricing #plansGrid .plan ul li:hover > span > div {
+  opacity: 1;
+  visibility: visible;
+}
+#pricing #plansGrid .plan ul .comingSoon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0;
+  text-align: center;
+  gap: 10px;
+}
+#pricing #plansGrid .plan ul .comingSoon span {
+  position: relative;
+  background-color: #000000;
+  min-width: 10%;
+  max-width: 20%;
+  height: 0.1px !important;
+  display: inline-block;
+  padding: 0;
 }
 #pricing #plansGrid .plan:hover {
   transform: scale(1.01);
@@ -672,6 +749,21 @@
   padding: 10px 20px;
   font-size: 1rem;
   border-radius: 0 12px 0 6px;
+  transition: all 200ms ease-in-out;
+}
+#pricing #plansGrid .plan.best:hover #bestLabel {
+  background-color: var(--mainColor3);
+}
+#pricing #plansGrid .plan.notWorking h2 {
+  color: #00000050;
+}
+#pricing #plansGrid .plan.notWorking p {
+  color: #00000050;
+}
+#pricing #plansGrid .plan.notWorking button {
+  background-color: #00000050;
+  color: var(--mainLight);
+  cursor: not-allowed;
 }
 #cPanel {
   height: fit-content !important;
@@ -2570,6 +2662,71 @@
   }
   #WIP img {
     width: 80%;
+  }
+  #pricing {
+    box-sizing: border-box;
+    padding: 10px 6vw;
+  }
+  #pricing #hero {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 120px 0 60px 0;
+  }
+  #pricing #hero #paymentMode {
+    display: flex;
+    flex-direction: row;
+    gap: 4vw;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0 0 0;
+    cursor: pointer;
+  }
+  #pricing #hero #paymentMode p {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--mainLight);
+    transition: all 200ms ease-in-out;
+  }
+  #pricing #hero #paymentMode p.dim {
+    opacity: 0.5;
+  }
+  #pricing #hero #paymentMode .paymentModeSwitch {
+    height: 60px;
+    width: 30vw;
+    background-color: var(--mainColor3);
+    border-radius: 48px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 2px 0vw;
+    position: relative;
+  }
+  #pricing #hero #paymentMode .paymentModeSwitch .switch {
+    display: inline-block;
+    position: absolute;
+    left: -3vw;
+    width: 48px;
+    height: 48px;
+    margin: 0 20px;
+    background-color: var(--mainLight);
+    border-radius: 50%;
+    transition: all 200ms ease-in-out;
+  }
+  #pricing #plansGrid {
+    box-sizing: border-box;
+    padding: 10px 6vw;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+  }
+  #pricing #plansGrid .plan {
+    width: 90%;
+    gap: 20px;
+    padding: 20px 10vw;
+  }
+  #pricing #plansGrid .plan ul li span div {
+    right: 0;
+    left: -50vw;
   }
   #MainNav {
     justify-content: center;
