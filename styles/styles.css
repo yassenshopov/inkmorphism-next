@@ -530,6 +530,7 @@
 #cPanel {
   height: fit-content !important;
   min-height: 100vh;
+  scroll-behavior: smooth;
 }
 #cPanel #publicSites {
   display: flex;
@@ -542,6 +543,9 @@
   gap: 20px;
   height: fit-content;
   position: relative;
+}
+#cPanel #publicSites .site:hover {
+  background: #00000040 !important;
 }
 #cPanel #publicSites .site {
   width: 100%;
@@ -559,6 +563,7 @@
   padding: 20px 0;
   box-shadow: 10px 10px 10px #12121210, -10px -10px 10px #ffffff09;
   overflow: hidden;
+  transition: all 200ms ease-in-out;
 }
 #cPanel #publicSites .site h2 {
   padding: 0;
