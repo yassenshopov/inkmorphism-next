@@ -4,7 +4,7 @@ import WIP from "./components/wip";
 import MainNav from "./components/MainNav";
 import { FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { GiFallingStar } from "react-icons/gi";
- import { AiFillInfoCircle } from "react-icons/ai";
+import { AiFillInfoCircle } from "react-icons/ai";
 import { useState } from "react";
 
 export default function Pricing() {
@@ -68,9 +68,34 @@ export default function Pricing() {
                 Get started
               </button>
               <ul>
-              <li>- Full access to all templates<span><AiFillInfoCircle/><div>Unlimited access to the full gallery of Inkmorphism templates</div></span></li>
-                <li>- Responsive design on mobile</li>
-                <li>- Single page application (SPA)</li>
+                <li>
+                  - Full access to all templates
+                  <span>
+                    <AiFillInfoCircle />
+                    <div>
+                      Unlimited access to the full gallery of Inkmorphism
+                      templates
+                    </div>
+                  </span>
+                </li>
+                <li>
+                  - Responsive design on mobile
+                  <span>
+                    <AiFillInfoCircle />
+                    <div>
+                      Layout is adjusted for all mobile devices for better user
+                      experience
+                    </div>
+                  </span>
+                </li>
+                <li>- Single page application (SPA)
+                  <span>
+                    <AiFillInfoCircle />
+                    <div>
+                      A main page that contains all your sections
+                    </div>
+                  </span>
+                </li>
               </ul>
             </div>
           </div>
@@ -92,13 +117,73 @@ export default function Pricing() {
                 Get started
               </button>{" "}
               <ul>
-                <li>- Full access to all templates<span><AiFillInfoCircle/><div>Unlimited access to the full gallery of Inkmorphism templates</div></span></li>
-                <li>- Responsive design on mobile<span><AiFillInfoCircle/></span></li>
-                <li>- Single page application (SPA)<span><AiFillInfoCircle/></span></li>
+                <li>
+                  - Full access to all templates
+                  <span>
+                    <AiFillInfoCircle />
+                    <div>
+                      Unlimited access to the full gallery of Inkmorphism
+                      templates
+                    </div>
+                  </span>
+                </li>
+                <li>
+                  - Responsive design on mobile
+                  <span>
+                    <AiFillInfoCircle />
+                    <div>
+                      Layout is adjusted for all mobile devices for better user
+                      experience
+                    </div>
+                  </span>
+                </li>
+                <li>- Single page application (SPA)
+                  <span>
+                    <AiFillInfoCircle />
+                    <div>
+                      A main page that contains all your sections
+                    </div>
+                  </span>
+                </li>
+                <li>
+                  - Weekly consultation
+                  <span>
+                    <AiFillInfoCircle />
+                    <div>
+                      Weekly consultation with a professional web developer
+                    </div>
+                  </span>
+                </li>
+                <li>
+                  - Website analytics
+                  <span>
+                    <AiFillInfoCircle />
+                    <div>
+                      Track your website's performance with Google Analytics
+                    </div>
+                  </span>
+                </li>
                 <li className="comingSoon">
                   <span></span>Coming soon<span></span>
                 </li>
-                <li>- Multiple Pages<span><AiFillInfoCircle/></span></li>
+                <li>
+                  - Multiple Pages
+                  <span>
+                    <AiFillInfoCircle />
+                    <div>
+                      Create multiple pages for your website
+                    </div>
+                  </span>
+                </li>
+                <li>
+                  - Add a custom domain
+                  <span>
+                    <AiFillInfoCircle />
+                    <div>
+                      Add a custom domain to your website
+                    </div>
+                  </span>
+                </li>
               </ul>
             </div>
           </div>

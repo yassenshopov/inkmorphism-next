@@ -550,7 +550,7 @@
   text-align: center;
 }
 #pricing #hero h1 {
-  font-size: 3rem;
+  font-size: 4rem;
   margin: 0;
 }
 #pricing #hero h2 {
@@ -593,7 +593,7 @@
   transition: all 200ms ease-in-out;
   height: 60px;
   width: 20%;
-  background-color: var(--mainDark);
+  border: 4px solid var(--mainLight);
   border-radius: 48px;
   display: flex;
   flex-direction: row;
@@ -736,6 +736,7 @@
   height: 0.1px !important;
   display: inline-block;
   padding: 0;
+  margin-top: 2px;
 }
 #pricing #plansGrid .plan:hover {
   transform: scale(1.01);
@@ -755,13 +756,13 @@
   background-color: var(--mainColor3);
 }
 #pricing #plansGrid .plan.notWorking h2 {
-  color: #00000050;
+  color: #00000070;
 }
-#pricing #plansGrid .plan.notWorking p {
-  color: #00000050;
+#pricing #plansGrid .plan.notWorking * {
+  color: #00000070;
 }
 #pricing #plansGrid .plan.notWorking button {
-  background-color: #00000050;
+  background-color: #00000070;
   color: var(--mainLight);
   cursor: not-allowed;
 }
@@ -2693,12 +2694,10 @@
   #pricing #hero #paymentMode .paymentModeSwitch {
     height: 60px;
     width: 30vw;
-    background-color: var(--mainColor3);
     border-radius: 48px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 2px 0vw;
     position: relative;
   }
   #pricing #hero #paymentMode .paymentModeSwitch .switch {
@@ -2722,11 +2721,15 @@
   #pricing #plansGrid .plan {
     width: 90%;
     gap: 20px;
-    padding: 20px 10vw;
+    padding: 20px 10vw 40px;
+  }
+  #pricing #plansGrid .plan ul li {
+    padding-right: 6vw;
   }
   #pricing #plansGrid .plan ul li span div {
     right: 0;
-    left: -50vw;
+    width: 40vw;
+    transform: translateX(-80%);
   }
   #MainNav {
     justify-content: center;
