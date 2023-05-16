@@ -4,6 +4,7 @@ import WIP from "./components/wip";
 import MainNav from "./components/MainNav";
 import { FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { GiFallingStar } from "react-icons/gi";
+ import { AiFillInfoCircle } from "react-icons/ai";
 import { useState } from "react";
 
 export default function Pricing() {
@@ -26,15 +27,19 @@ export default function Pricing() {
       {/* <WIP/> */}
       <main id="pricing">
         <section id="hero">
-          <h1>Create your website</h1>
-          <h2>(and let AI make it better)</h2>
-          <p id="fallingStar">
-            {/* <GiFallingStar /> */}
-          </p>
-          <div id="paymentMode" onClick={paymentModeToggle}>
+          <h1>Craft your website</h1>
+          <h2>
+            <span>(and let </span>AI<span> make it better)</span>
+          </h2>
+          <p id="fallingStar">{/* <GiFallingStar /> */}</p>
+          <div
+            id="paymentMode"
+            onClick={paymentModeToggle}
+            className="noSelect"
+          >
             <p className={monthlyPayment ? "dim" : ""}>Monthly</p>
             <div
-              className={`noSelect paymentModeSwitch ${
+              className={`paymentModeSwitch ${
                 monthlyPayment ? "monthly" : "annual"
               }`}
             >
@@ -58,63 +63,74 @@ export default function Pricing() {
                 onClick={() => {
                   window.location.href = "../templates";
                 }}
+                className="noSelect"
               >
                 Get started
               </button>
-              <p>Full access to all templates</p>
+              <ul>
+              <li>- Full access to all templates<span><AiFillInfoCircle/><div>Unlimited access to the full gallery of Inkmorphism templates</div></span></li>
+                <li>- Responsive design on mobile</li>
+                <li>- Single page application (SPA)</li>
+              </ul>
             </div>
           </div>
           <div className="plan best">
-            <p id="bestLabel">Most popular!</p>
+            {/* <p id="bestLabel">Most popular!</p> */}
             <p>
               <strong>Creator</strong> plan
             </p>
             <h2>
-              19$/<span>month</span>
+              {monthlyPayment ? 19 : 24}$/<span>month</span>
             </h2>
-            <button
-              onClick={() => {
-                window.location.href = "../templates";
-              }}
-            >
-              Get started
-            </button>{" "}
-            <p>Free forever</p>
-            <p>1 website</p>
-            <p>1 page</p>
-            <p>1 template</p>
-            <p>1 revision</p>
+            <div className="features">
+              <button
+                onClick={() => {
+                  window.location.href = "../templates";
+                }}
+                className="noSelect"
+              >
+                Get started
+              </button>{" "}
+              <ul>
+                <li>- Full access to all templates<span><AiFillInfoCircle/><div>Unlimited access to the full gallery of Inkmorphism templates</div></span></li>
+                <li>- Responsive design on mobile<span><AiFillInfoCircle/></span></li>
+                <li>- Single page application (SPA)<span><AiFillInfoCircle/></span></li>
+                <li className="comingSoon">
+                  <span></span>Coming soon<span></span>
+                </li>
+                <li>- Multiple Pages<span><AiFillInfoCircle/></span></li>
+              </ul>
+            </div>
           </div>
-          <div className="plan">
+          <div className="plan notWorking">
             <p>
               <strong>Business</strong> plan
             </p>
             <h2>
-              39$/<span>month</span>
+              {monthlyPayment ? 39 : 54}$/<span>month</span>
             </h2>
-            <button
-              onClick={() => {
-                window.location.href = "../templates";
-              }}
-            >
-              Get started
-            </button>
-            <p>Free forever</p>
-            <p>1 website</p>
-            <p>1 page</p>
-            <p>1 template</p>
-            <p>1 revision</p>
-            <p>1 publish</p>
-            <p>1 domain</p>
-            <p>1 GB storage</p>
-            <p>1 GB bandwidth</p>
-            <p>1 email</p>
-            <p>1 user</p>
-            <p>1 support</p>
-            <p>1 analytics</p>
-            <p>1 SEO</p>
-            <p>1 social media</p>
-            <p>1 integrations</p>
+            <div className="features">
+              <button
+                onClick={() => {
+                  window.location.href = "../templates";
+                }}
+                className="noSelect"
+              >
+                To be announced
+              </button>
+              <ul>
+                <li>- Full access to all templates</li>
+                <li>- Responsive design on mobile</li>
+                <li>- Single page application (SPA)</li>
+                <li>Multiple Pages</li>
+                <li>Custom domain</li>
+                <li>Custom email</li>
+                <li>Custom analytics</li>
+                <li>Custom SEO</li>
+                <li>Custom social media</li>
+                <li>Custom integrations</li>
+              </ul>
+            </div>
           </div>
         </section>
       </main>
