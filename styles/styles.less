@@ -579,7 +579,7 @@
     width: 50%;
     text-align: center;
     h1 {
-      font-size: 3rem;
+      font-size: 4rem;
       margin: 0;
     }
     h2 {
@@ -621,7 +621,8 @@
         transition: all 200ms ease-in-out;
         height: 60px;
         width: 20%;
-        background-color: var(--mainDark);
+        // background-color: var(--mainDark);
+        border: 4px solid var(--mainLight);
         border-radius: 48px;
         display: flex;
         flex-direction: row;
@@ -767,6 +768,7 @@
             height: 0.1px !important;
             display: inline-block;
             padding: 0;
+            margin-top: 2px;
           }
         }
       }
@@ -784,8 +786,6 @@
         padding: 10px 20px;
         font-size: 1rem;
         border-radius: 0 12px 0 6px;
-        // font-family: "Oswald";
-        // text-transform: uppercase;
         transition: all 200ms ease-in-out;
       }
     }
@@ -796,13 +796,13 @@
     }
     .plan.notWorking {
       h2 {
-        color: #00000050;
+        color: #00000070;
       }
-      p {
-        color: #00000050;
+      * {
+        color: #00000070;
       }
       button {
-        background-color: #00000050;
+        background-color: #00000070;
         color: var(--mainLight);
         cursor: not-allowed;
       }
@@ -2828,13 +2828,12 @@
         .paymentModeSwitch {
           height: 60px;
           width: 30vw;
-          background-color: var(--mainColor3);
+          // background-color: var(--mainColor3);
           border-radius: 48px;
           display: flex;
           flex-direction: row;
           // justify-content: center;
           align-items: center;
-          padding: 2px 0vw;
           position: relative;
           .switch {
             position: absolute;
@@ -2861,13 +2860,16 @@
       .plan {
         width: 90%;
         gap: 20px;
-        padding: 20px 10vw;
+        padding: 20px 10vw 40px;
         ul {
           li {
+            padding-right: 6vw;
             span {
               div {
                 right: 0;
-                left: -50vw;
+                // left: -66vw;
+                width: 40vw;
+                transform: translateX(-80%);
               }
             }
           }
