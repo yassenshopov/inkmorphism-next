@@ -65,16 +65,49 @@
               />
             </section>
             ,
+            <section
+              key="2"
+              className="imgOnly "
+            >
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fsign-master-810%2FEJm3rSqRuhXPnkX9.png?alt=media&token=47723a66-98ec-4aac-a72e-406b90a7f574"
+                draggable="false"
+                loading="eager"
+              />
+            </section>
+            ,
+            <section
+              key="3"
+              className="imgOnly "
+            >
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fsign-master-810%2FYd6g9m6ZL4OBzJob.png?alt=media&token=af03894f-f1a1-4fab-90c2-300ac544e984"
+                draggable="false"
+                loading="eager"
+              />
+            </section>
+            ,
+            <section
+              key="4"
+              className="imgOnly "
+            >
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fsign-master-810%2FplVlbUWi4lVBq1hN.png?alt=media&token=c5750d3b-3d5c-47b2-bad3-384a89da1cc0"
+                draggable="false"
+                loading="lazy"
+              />
+            </section>
+            ,
             <footer 
               className="footer"
-              key="2"
+              key="5"
             >
               <p id="watermark">
                 <a href="https://inkmorphism.com" target="_blank">
                   Built with Inkmorphism 🖋️
                 </a>
               </p>
-              <p>Copyright by Pokeon Palette ©</p>
+              <p>Copyright by Pokemon Palette ©</p>
             </footer>
             
             </main>

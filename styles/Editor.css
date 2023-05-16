@@ -526,7 +526,7 @@ label {
 .Editor aside {
   width: 20vw;
   padding: 2vw;
-  min-height: 80vh;
+  min-height: 84vh;
   transition: all 400ms ease-in-out;
   max-height: 80vh;
   overflow-y: scroll;
