@@ -63,7 +63,7 @@ export default function Pricing() {
             <div className="features">
               <button
                 onClick={() => {
-                  // window.location.href = "../templates";
+                  window.location.href = "../templates";
                 }}
                 className="noSelect"
               >
@@ -193,7 +193,7 @@ export default function Pricing() {
             <div className="features">
               <button
                 onClick={() => {
-                  window.location.href = "../templates";
+                  // window.location.href = "../templates";
                 }}
                 className="noSelect"
               >
@@ -266,7 +266,7 @@ export default function Pricing() {
         <section id="specialOffer">
           <div className="txt">
             <h2>Lifetime deal!</h2>
-            <h3>(limited time)</h3>
+            <h3>Limited time offer <span><TfiTime/></span></h3>
             <p>
               You can get lifetime access to the <strong>Creator</strong> plan for 449$
             </p>
