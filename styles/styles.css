@@ -650,6 +650,7 @@
   align-items: center;
   padding: 2px 0vw;
   position: relative;
+  background-color: #ffffff20;
 }
 #pricing #hero #paymentMode .paymentModeSwitch .switch {
   display: inline-block;
@@ -839,6 +840,9 @@
 #pricing #specialOffer h2 {
   font-size: 4rem;
   margin: 0;
+}
+#pricing #specialOffer h3 {
+  font-size: 2.4rem;
 }
 #pricing #specialOffer p {
   font-size: 1.4rem;
