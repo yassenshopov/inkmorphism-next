@@ -362,6 +362,10 @@
   font-family: "Oswald";
   margin-top: 40px;
   text-decoration: none;
+  transition: all 200ms ease-in-out;
+}
+#mainPage main #hero #heroTxt a:hover {
+  filter: drop-shadow(-3px 3px 0px red) drop-shadow(3px -3px 0px cyan);
 }
 @keyframes moveSites {
   0% {
@@ -414,6 +418,10 @@
 }
 #mainPage main #partners img {
   max-height: 60px;
+  transition: all 200ms ease-in-out;
+}
+#mainPage main #partners img:hover {
+  filter: drop-shadow(-3px 3px 0px red) drop-shadow(3px -3px 0px cyan);
 }
 #mainPage main #partners div {
   width: 2vw;
@@ -569,6 +577,14 @@
   justify-content: center;
   align-items: center;
 }
+#pricing section {
+  padding: 80px 0;
+}
+#pricing section:nth-child(2n+3) {
+  background-color: #10101080;
+  min-height: 600px;
+  width: 100%;
+}
 #pricing #hero {
   color: var(--mainLight);
   font-family: "WorkSans";
@@ -579,8 +595,9 @@
   gap: 20px;
   padding: 100px 16vw 60px 16vw;
   position: relative;
-  width: 50%;
+  width: 100%;
   text-align: center;
+  box-sizing: border-box;
 }
 #pricing #hero h1 {
   font-size: 4rem;
@@ -644,9 +661,11 @@
   background-color: var(--mainLight);
   border-radius: 50%;
   transition: all 200ms ease-in-out;
+  box-shadow: 6px 0px 10px #12121280, 0px -6px 10px #ffffff26;
 }
 #pricing #hero #paymentMode .paymentModeSwitch .switch.clicked {
   left: calc(100% - 75px);
+  box-shadow: -6px 0px 10px #12121280, 0px 6px 10px #ffffff26;
 }
 #pricing #hero #paymentMode .paymentModeSwitch:hover {
   background-color: var(--mainColor3);
@@ -657,7 +676,7 @@
   justify-content: center;
   gap: 2vw;
   width: 100%;
-  padding: 40px 16vw;
+  padding: 80px 16vw;
   box-sizing: border-box;
   min-height: fit-content;
   font-family: "WorkSans";
@@ -805,6 +824,25 @@
 #pricing #plansGrid .plan.notWorking ul li span div {
   background-color: #8d8d8d;
   color: var(--mainLight);
+}
+#pricing #specialOffer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 80px 16vw;
+  box-sizing: border-box;
+  color: var(--mainLight);
+  font-family: "WorkSans";
+}
+#pricing #specialOffer h2 {
+  font-size: 4rem;
+  margin: 0;
+}
+#pricing #specialOffer p {
+  font-size: 1.4rem;
+  margin: 0;
 }
 #cPanel {
   height: fit-content !important;
@@ -1090,6 +1128,7 @@
   min-height: 80vh;
   padding: 20px 0;
   position: relative;
+  scroll-behavior: smooth;
 }
 #dash #websites > a {
   display: grid;
