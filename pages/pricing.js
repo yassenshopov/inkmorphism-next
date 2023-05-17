@@ -10,7 +10,7 @@ import MainFooter from "./components/MainFooter";
 import { TfiTime } from "react-icons/tfi";
 
 export default function Pricing() {
-  const [monthlyPayment, setMonthlyPayment] = useState(false);
+  const [monthlyPayment, setMonthlyPayment] = useState(true);
 
   function paymentModeToggle() {
     setMonthlyPayment(!monthlyPayment);
