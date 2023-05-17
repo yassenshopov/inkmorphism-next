@@ -2756,6 +2756,13 @@
     box-sizing: border-box;
     padding: 120px 0 60px 0;
   }
+  #pricing #hero h1 {
+    font-size: 3rem;
+  }
+  #pricing #hero h2 {
+    padding: 10px 0;
+    font-size: 1.6rem;
+  }
   #pricing #hero #paymentMode {
     display: flex;
     flex-direction: row;
