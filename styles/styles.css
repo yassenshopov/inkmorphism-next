@@ -51,6 +51,39 @@
   background: var(--scrollbarThumb);
   border-radius: var(--scrollbarRadius);
 }
+#MainFooter {
+  width: 100%;
+  min-height: 200px;
+  padding: 40px 16vw;
+  background: linear-gradient(to top, var(--mainColor2), var(--mainColor3));
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  color: var(--mainLight);
+  font-family: "WorkSans";
+}
+#MainFooter #socialLinks {
+  display: flex;
+  flex-direction: row;
+  gap: 1vw;
+}
+#MainFooter #socialLinks a {
+  color: var(--mainLight);
+  font-size: 2rem;
+  padding: 20px;
+  margin: 0;
+  transition: all 200ms ease-in-out;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#MainFooter #socialLinks a:hover {
+  background-color: #00000040;
+}
 #MainNav {
   position: fixed;
   top: 0;
@@ -704,6 +737,7 @@
   width: 200px;
   text-align: center;
   box-shadow: 10px 10px 10px #12121210, -10px -10px 10px #ffffff10;
+  pointer-events: none;
 }
 #pricing #plansGrid .plan ul li span:hover {
   color: var(--mainColor3);
@@ -755,16 +789,22 @@
 #pricing #plansGrid .plan.best:hover #bestLabel {
   background-color: var(--mainColor3);
 }
-#pricing #plansGrid .plan.notWorking h2 {
-  color: #00000070;
-}
-#pricing #plansGrid .plan.notWorking * {
+#pricing #plansGrid .plan.notWorking h2,
+#pricing #plansGrid .plan.notWorking p,
+#pricing #plansGrid .plan.notWorking ul li {
   color: #00000070;
 }
 #pricing #plansGrid .plan.notWorking button {
   background-color: #00000070;
   color: var(--mainLight);
   cursor: not-allowed;
+}
+#pricing #plansGrid .plan.notWorking button svg {
+  vertical-align: top;
+}
+#pricing #plansGrid .plan.notWorking ul li span div {
+  background-color: #00000070;
+  color: var(--mainLight);
 }
 #cPanel {
   height: fit-content !important;
@@ -3104,20 +3144,20 @@
     background-color: var(--simpleColor3);
     color: var(--simpleMainLight);
   }
-  .simple.previewTemplate #contentWrapper .footer {
+  #MainFooter {
     display: flex;
     flex-direction: column-reverse;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     background-color: var(--simpleColor1);
-    padding: 10px 10%;
+    padding: 20px 10%;
   }
-  .simple.previewTemplate #contentWrapper .footer p {
+  #MainFooter p {
     cursor: auto;
     height: fit-content;
   }
-  .simple.previewTemplate #contentWrapper .footer #socialLinks {
+  #MainFooter #socialLinks {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -3126,7 +3166,7 @@
     padding: 20px 0;
     cursor: auto;
   }
-  .simple.previewTemplate #contentWrapper .footer #socialLinks * {
+  #MainFooter #socialLinks * {
     cursor: pointer;
     padding: 20px 4vw;
   }

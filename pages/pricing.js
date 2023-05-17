@@ -6,6 +6,8 @@ import { FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { GiFallingStar } from "react-icons/gi";
 import { AiFillInfoCircle } from "react-icons/ai";
 import { useState } from "react";
+import MainFooter from "./components/MainFooter";
+import { TfiTime } from "react-icons/tfi";
 
 export default function Pricing() {
   const [monthlyPayment, setMonthlyPayment] = useState(false);
@@ -88,12 +90,11 @@ export default function Pricing() {
                     </div>
                   </span>
                 </li>
-                <li>- Single page application (SPA)
+                <li>
+                  - Single page application (SPA)
                   <span>
                     <AiFillInfoCircle />
-                    <div>
-                      A main page that contains all your sections
-                    </div>
+                    <div>A main page that contains all your sections</div>
                   </span>
                 </li>
               </ul>
@@ -137,12 +138,11 @@ export default function Pricing() {
                     </div>
                   </span>
                 </li>
-                <li>- Single page application (SPA)
+                <li>
+                  - Single page application (SPA)
                   <span>
                     <AiFillInfoCircle />
-                    <div>
-                      A main page that contains all your sections
-                    </div>
+                    <div>A main page that contains all your sections</div>
                   </span>
                 </li>
                 <li>
@@ -170,18 +170,14 @@ export default function Pricing() {
                   - Multiple Pages
                   <span>
                     <AiFillInfoCircle />
-                    <div>
-                      Create multiple pages for your website
-                    </div>
+                    <div>Create multiple pages for your website</div>
                   </span>
                 </li>
                 <li>
                   - Add a custom domain
                   <span>
                     <AiFillInfoCircle />
-                    <div>
-                      Add a custom domain to your website
-                    </div>
+                    <div>Add a custom domain to your website</div>
                   </span>
                 </li>
               </ul>
@@ -201,51 +197,75 @@ export default function Pricing() {
                 }}
                 className="noSelect"
               >
-                To be announced
+                To be announced <TfiTime/>
               </button>
               <ul>
-                <li>- Full access to all templates</li>
-                <li>- Responsive design on mobile</li>
-                <li>- Single page application (SPA)</li>
-                <li>Multiple Pages</li>
-                <li>Custom domain</li>
-                <li>Custom email</li>
-                <li>Custom analytics</li>
-                <li>Custom SEO</li>
-                <li>Custom social media</li>
-                <li>Custom integrations</li>
+                <li>
+                  - Full access to all templates
+                  <span>
+                    <AiFillInfoCircle />
+                    <div>
+                      Unlimited access to the full gallery of Inkmorphism
+                      templates
+                    </div>
+                  </span>
+                </li>
+                <li>
+                  - Responsive design on mobile
+                  <span>
+                    <AiFillInfoCircle />
+                    <div>
+                      Layout is adjusted for all mobile devices for better user
+                      experience
+                    </div>
+                  </span>
+                </li>
+                <li>
+                  - Single page application (SPA)
+                  <span>
+                    <AiFillInfoCircle />
+                    <div>A main page that contains all your sections</div>
+                  </span>
+                </li>
+                <li>
+                  - Weekly consultation
+                  <span>
+                    <AiFillInfoCircle />
+                    <div>
+                      Weekly consultation with a professional web developer
+                    </div>
+                  </span>
+                </li>
+                <li>
+                  - Website analytics
+                  <span>
+                    <AiFillInfoCircle />
+                    <div>
+                      Track your website's performance with Google Analytics
+                    </div>
+                  </span>
+                </li>
+                <li>
+                  - Multiple Pages
+                  <span>
+                    <AiFillInfoCircle />
+                    <div>Create multiple pages for your website</div>
+                  </span>
+                </li>
+                <li>
+                  - Add a custom domain
+                  <span>
+                    <AiFillInfoCircle />
+                    <div>Add a custom domain to your website</div>
+                  </span>
+                </li>
               </ul>
             </div>
           </div>
         </section>
       </main>
 
-      <footer>
-        <p>Inkmorphism © 2023</p>
-        <div id="socialLinks">
-          <a
-            href="https://twitter.com/inkmorphism"
-            target="_blank"
-            className="noSelect"
-          >
-            <FaTwitter />
-          </a>
-          <a
-            href="https://instagram.com/inkmorphism"
-            target="_blank"
-            className="noSelect"
-          >
-            <FaInstagram />
-          </a>
-          <a
-            href="https://www.linkedin.com/company/inkmorphism/"
-            target="_blank"
-            className="noSelect"
-          >
-            <FaLinkedin />
-          </a>
-        </div>
-      </footer>
+      <MainFooter />
     </div>
   );
 }
