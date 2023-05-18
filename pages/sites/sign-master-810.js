@@ -59,7 +59,7 @@
               className="imgOnly "
             >
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fsign-master-810%2FcDv5n2xoFnRH9I9e.png?alt=media&token=9b11a56f-49c9-4749-a4c5-569535e546c5"
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fsign-master-810%2FdqT4hi9DZ7dLLt71.png?alt=media&token=18846d95-16cb-47c6-a60f-3e4b04f15a1c"
                 draggable="false"
                 loading="eager"
               />
@@ -70,37 +70,15 @@
               className="imgOnly "
             >
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fsign-master-810%2FEJm3rSqRuhXPnkX9.png?alt=media&token=47723a66-98ec-4aac-a72e-406b90a7f574"
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fsign-master-810%2FzhElYOdwlH8gAoak.png?alt=media&token=6e469917-7b18-4fae-a264-8c57de075473"
                 draggable="false"
                 loading="eager"
-              />
-            </section>
-            ,
-            <section
-              key="3"
-              className="imgOnly "
-            >
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fsign-master-810%2FYd6g9m6ZL4OBzJob.png?alt=media&token=af03894f-f1a1-4fab-90c2-300ac544e984"
-                draggable="false"
-                loading="eager"
-              />
-            </section>
-            ,
-            <section
-              key="4"
-              className="imgOnly "
-            >
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fsign-master-810%2FplVlbUWi4lVBq1hN.png?alt=media&token=c5750d3b-3d5c-47b2-bad3-384a89da1cc0"
-                draggable="false"
-                loading="lazy"
               />
             </section>
             ,
             <footer 
               className="footer"
-              key="5"
+              key="3"
             >
               <p id="watermark">
                 <a href="https://inkmorphism.com" target="_blank">
