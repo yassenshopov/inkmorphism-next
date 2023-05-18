@@ -410,9 +410,7 @@ function Editor(props) {
           );
         case "nav":
           return (
-            <nav
-              className={section.type}
-            >
+            <nav className={section.type}>
               <a id="navLogo">
                 <img
                   // src={defaults.webContent.meta.metaFavicon}
@@ -639,6 +637,19 @@ function Editor(props) {
                   setBoxes(item.webContent.pages.main.structure);
                   setLogoFile(item.webContent.meta.metaFavicon);
                   setThumbnailFile(item.webContent.meta.metaThumbnail);
+                  let gallery = [];
+                  item.gallery.forEach((doc) => {
+                    gallery.push(doc);
+                  });
+                  setSiteGallery(
+                    gallery.map((item) => {
+                      return (
+                        <div key={item.name} className="galleryItem noSelect">
+                          <img src={item.url} />
+                        </div>
+                      );
+                    })
+                  );
                 } catch (err) {
                   console.log(err);
                 }
@@ -958,8 +969,7 @@ function Editor(props) {
         ...boxes.slice(1),
       ]);
       uploadBytes(logoFileRef, logoFileToUpload, metadata).then((snapshot) => {
-        const pngURL = getDownloadURL(logoFileRef).then((url) => {
-        });
+        const pngURL = getDownloadURL(logoFileRef).then((url) => {});
       });
     }
   }, [logoFileToUpload]);
@@ -1140,6 +1150,8 @@ function Editor(props) {
       mediaQuery.removeEventListener("change", handleMediaQueryChange);
     };
   }, []);
+
+  const [siteGallery, setSiteGallery] = useState([]);
 
   return (
     <div className={"Editor" + fsClass + modeClass}>
@@ -1468,24 +1480,37 @@ function Editor(props) {
           id="popupWrapper"
         >
           <form id="popup">
-            <p id="message">Upload new image</p>
-            <label htmlFor="fileInput" className="fileInputLabel noSelect">
-              Choose your file
-            </label>
-            <input
-              id="fileInput"
-              className="fileInput"
-              ref={fileInputRef}
-              type="file"
-              placeholder="Upload new picture"
-              accept="image/png, image/gif, image/jpeg"
-              onChange={showPreview}
-            />
-            <img
-              id="previewPicUpload"
-              src={file}
-              onClick={replicateFileInputClick}
-            />
+            <div id="imgUpload">
+              <div id="newImgUpload" style={{ flexDirection: "column" }}>
+                <p id="message">Upload new image</p>
+                <label htmlFor="fileInput" className="fileInputLabel noSelect">
+                  Choose your file
+                </label>
+                <input
+                  id="fileInput"
+                  className="fileInput"
+                  ref={fileInputRef}
+                  type="file"
+                  placeholder="Upload new picture"
+                  accept="image/png, image/gif, image/jpeg"
+                  onChange={showPreview}
+                />
+                <img
+                  id="previewPicUpload"
+                  src={file}
+                  onClick={replicateFileInputClick}
+                  className="noSelect"
+                />
+              </div>
+              <div style={{ flexDirection: "column", display: (siteGallery.length !== 0 ? "flex" : "none")}}>
+                <p
+                  className="noSelect"
+                >
+                  Choose from gallery:
+                </p>
+                <div id="siteGallery">{siteGallery}</div>
+              </div>
+            </div>
             <div id="buttons">
               <p
                 onClick={() => {
