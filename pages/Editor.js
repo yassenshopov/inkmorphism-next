@@ -638,18 +638,22 @@ function Editor(props) {
                   setLogoFile(item.webContent.meta.metaFavicon);
                   setThumbnailFile(item.webContent.meta.metaThumbnail);
                   let gallery = [];
-                  item.gallery.forEach((doc) => {
-                    gallery.push(doc);
-                  });
-                  setSiteGallery(
-                    gallery.map((item) => {
-                      return (
-                        <div key={item.name} className="galleryItem noSelect">
-                          <img src={item.url} />
-                        </div>
-                      );
-                    })
-                  );
+                  try {
+                    item.gallery.forEach((doc) => {
+                      gallery.push(doc);
+                    });
+                    setSiteGallery(
+                      gallery.map((item, index) => {
+                        return (
+                          <div key={index} className="galleryItem noSelect">
+                            <img src={item.url} />
+                          </div>
+                        );
+                      })
+                    );
+                  } catch (err) {
+                    console.log(err);
+                  }
                 } catch (err) {
                   console.log(err);
                 }
@@ -1502,12 +1506,13 @@ function Editor(props) {
                   className="noSelect"
                 />
               </div>
-              <div style={{ flexDirection: "column", display: (siteGallery.length !== 0 ? "flex" : "none")}}>
-                <p
-                  className="noSelect"
-                >
-                  Choose from gallery:
-                </p>
+              <div
+                style={{
+                  flexDirection: "column",
+                  display: siteGallery.length !== 0 ? "flex" : "none",
+                }}
+              >
+                <p className="noSelect">Choose from gallery:</p>
                 <div id="siteGallery">{siteGallery}</div>
               </div>
             </div>
