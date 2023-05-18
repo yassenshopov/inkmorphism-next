@@ -378,6 +378,9 @@ label {
   border-top: 2px solid #12121200;
   border-bottom: 2px solid #12121200;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .Editor > main #mainEditorWrapper main > * p[contenteditable="true"] {
   transition: all 200ms ease-in-out;

@@ -131,7 +131,6 @@ function Editor(props) {
     setTimeout(() => {
       el.click();
     }, 3500);
-    console.log(props);
   }, []);
 
   const storage = getStorage(app);
@@ -304,6 +303,8 @@ function Editor(props) {
     return <div ref={dragRef}>{content}</div>;
   };
 
+  let ogTxt = "";
+
   function turnIntoSection(section, index) {
     try {
       switch (section.type) {
@@ -324,6 +325,9 @@ function Editor(props) {
                 suppressContentEditableWarning={true}
                 onBlur={(e) => {
                   txtFieldChange(e, index);
+                }}
+                onFocus={(e) => {
+                  ogTxt = e.target.innerText;
                 }}
                 contentEditable={true}
               >
@@ -366,6 +370,9 @@ function Editor(props) {
                 onBlur={(e) => {
                   txtFieldChange(e, index);
                 }}
+                onFocus={(e) => {
+                  ogTxt = e.target.innerText;
+                }}
                 contentEditable={true}
               >
                 {section.content.txt}
@@ -405,9 +412,6 @@ function Editor(props) {
           return (
             <nav
               className={section.type}
-              onClick={() => {
-                console.log(boxes);
-              }}
             >
               <a id="navLogo">
                 <img
@@ -455,6 +459,9 @@ function Editor(props) {
                 suppressContentEditableWarning={true}
                 onBlur={(e) => {
                   txtFieldChange(e, index);
+                }}
+                onFocus={(e) => {
+                  ogTxt = e.target.innerText;
                 }}
                 contentEditable={true}
               >
@@ -553,8 +560,6 @@ function Editor(props) {
   };
 
   useEffect(() => {
-    console.log(pageData);
-    console.log(pageData.length === 0);
     if (pageData.length === 0) {
       const emptySection = [
         <section
@@ -785,7 +790,9 @@ function Editor(props) {
       },
       ...boxes.slice(index + 1),
     ]);
-    setIsUnsavedChanges(true);
+    if (e.target.innerText !== ogTxt) {
+      setIsUnsavedChanges(true);
+    }
   }
 
   const colorChange = (e) => {
@@ -934,8 +941,7 @@ function Editor(props) {
           ...pageData[0],
           content: {
             ...pageData.content,
-            logo:
-              pageData[0].content.logo
+            logo: pageData[0].content.logo,
           },
         },
         ...pageData.slice(1),
@@ -946,17 +952,13 @@ function Editor(props) {
           ...boxes[0],
           content: {
             ...boxes.content,
-            logo:
-              boxes[0].content.logo
+            logo: boxes[0].content.logo,
           },
         },
         ...boxes.slice(1),
       ]);
-      document.getElementById("navLogoImg").src = "https://media.discordapp.net/attachments/1059220738718048346/1107952148018364426/midjourney_mature_military_woman_white_camouflage_snow_backgrou_30387c81-73df-4cb3-8c05-7f9cfc5b4677.png?width=494&height=656";
-      console.log(document.getElementById("navLogoImg").src)
       uploadBytes(logoFileRef, logoFileToUpload, metadata).then((snapshot) => {
         const pngURL = getDownloadURL(logoFileRef).then((url) => {
-          // setTrigger(!trigger);
         });
       });
     }

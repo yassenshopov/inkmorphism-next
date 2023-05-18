@@ -1,9 +1,5 @@
 import Head from "next/head";
-import Link from "next/link";
-import WIP from "./components/wip";
 import MainNav from "./components/MainNav";
-import { FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
-import { GiFallingStar } from "react-icons/gi";
 import { AiFillInfoCircle } from "react-icons/ai";
 import { useState } from "react";
 import MainFooter from "./components/MainFooter";
@@ -33,7 +29,7 @@ export default function Pricing() {
           <h2>
             <span>(and let </span>AI<span> make it better)</span>
           </h2>
-          <p id="fallingStar">{/* <GiFallingStar /> */}</p>
+          {/* <p id="fallingStar"><GiFallingStar /></p> */}
           <div
             id="paymentMode"
             onClick={paymentModeToggle}
@@ -270,6 +266,9 @@ export default function Pricing() {
             <p>
               You can get lifetime access to the <strong>Creator</strong> plan for 449$
             </p>
+          </div>
+          <div className="visual">
+            {/* <img src="clock.png" /> */}
           </div>
         </section>
       </main>
