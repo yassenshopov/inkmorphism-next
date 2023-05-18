@@ -56,6 +56,13 @@
             ,
             <section
               key="1"
+              className="txtOnly reverseHorizontal"
+            >
+              <p>Hello to your new section</p>
+            </section>
+            ,
+            <section
+              key="2"
               className="imgAndTxt reverseHorizontal"
             >
               <p>This is your new ImgNTxt section.</p>
@@ -67,23 +74,12 @@
             </section>
             ,
             <section
-              key="2"
+              key="3"
               className="imgAndTxt reverseHorizontal"
             >
               <p>This is your new ImgNTxt section.</p>
               <img
                 src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2F8Z8dThIL2mWh7rY6.png?alt=media&token=296ecaa8-7f24-4750-9c4e-28ee87ea3420"
-                draggable="false"
-                loading="eager"
-              />
-            </section>
-            ,
-            <section
-              key="3"
-              className="imgOnly "
-            >
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2FNGduZ5yGKaXeJLXT.png?alt=media&token=4930d9c9-5e90-4363-9d1b-dc16d9b5c27d"
                 draggable="false"
                 loading="eager"
               />
@@ -147,20 +143,9 @@
               />
             </section>
             ,
-            <section
-              key="9"
-              className="imgOnly "
-            >
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2FVzw2jZjfT1VPZAHv.png?alt=media&token=c631549e-80ad-4c8c-8b37-704f0121a8ab"
-                draggable="false"
-                loading="lazy"
-              />
-            </section>
-            ,
             <footer 
               className="footer"
-              key="10"
+              key="9"
             >
               <p id="watermark">
                 <a href="https://inkmorphism.com" target="_blank">

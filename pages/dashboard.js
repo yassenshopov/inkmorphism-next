@@ -42,7 +42,6 @@ export default function Dashboard() {
   let profile_pic;
 
   function daysTillDeletion(obj) {
-    console.log(obj)
     try {
       const now = new Date();
       const deletionDate = new Date(
@@ -146,7 +145,6 @@ export default function Dashboard() {
         </a>
       ));
       const deletedSites = websitesArray.deleted.map((site) => {
-        console.log(site.domainSlug)
         if (daysTillDeletion(site.delTime) < 1) {
           return null
         } else {
@@ -207,7 +205,6 @@ export default function Dashboard() {
         .catch((error) => {
           // Uh-oh, an error occurred!
           try {
-            console.log(userDataDB);
             // profile_pic = auth.currentUser.photoURL;
             setUserData({
               profile_pic: auth.currentUser.photoURL,

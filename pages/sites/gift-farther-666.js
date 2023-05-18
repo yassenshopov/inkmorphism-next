@@ -58,7 +58,7 @@
               key="1"
               className="txtOnly reverseHorizontal"
             >
-              <p>Hello to your new section</p>
+              <p>Hello to your new se ction</p>
             </section>
             ,
             <section
