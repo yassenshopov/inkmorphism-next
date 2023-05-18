@@ -848,6 +848,10 @@
   font-size: 1.4rem;
   margin: 0;
 }
+#pricing #specialOffer .visual img {
+  transform: rotate3d(0.1, 0.4, 0.5, 45deg);
+  filter: drop-shadow(0 0 20px #ffffff50);
+}
 #cPanel {
   height: fit-content !important;
   min-height: 100vh;
