@@ -7,7 +7,7 @@ import { TfiTime } from "react-icons/tfi";
 
 // Meta data:
 let title = "Inkmorphism Pricing | Affordable Plans for Every Need";
-let img = "pricing/og.webp";
+let img = "https://inkmorphism.com/pricing/og.webp";
 let description =
   "Choose from our range of affordable pricing plans for our AI-powered website builder and create stunning websites effortlessly.";
 let author = "Yassen Shopov";
