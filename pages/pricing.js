@@ -5,6 +5,14 @@ import { useState } from "react";
 import MainFooter from "./components/MainFooter";
 import { TfiTime } from "react-icons/tfi";
 
+// Meta data:
+let title = "Inkmorphism Pricing | Affordable Plans for Every Need";
+let img = "pricing/og.webp";
+let description =
+  "Choose from our range of affordable pricing plans for our AI-powered website builder and create stunning websites effortlessly.";
+let author = "Yassen Shopov";
+
+
 export default function Pricing() {
   const [monthlyPayment, setMonthlyPayment] = useState(true);
 
@@ -15,9 +23,18 @@ export default function Pricing() {
   return (
     <div className={"Pricing"}>
       <Head>
-        {/* <link rel="icon" href={defaultFiles['logo']} /> */}
-        <title>Inkmorphism - Pricing</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{title}</title>
+        <meta name="author" content={author}></meta>
+        <meta name="description" content={description} />
         <link rel="icon" href="/faviconWh.ico" />
+        <meta property="og:image" content={img}></meta>
+        <meta property="og:type" content="website"></meta>
+        <meta property="og:title" content={title}></meta>
+        <meta property="og:description" content={description}></meta>
+        <meta property="twitter:card" content="summary_large_image"></meta>
+        <meta property="twitter:title" content={title}></meta>
+        <meta property="twitter:description" content={description}></meta>
       </Head>
 
       <MainNav />
