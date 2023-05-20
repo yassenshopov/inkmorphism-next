@@ -194,6 +194,164 @@
   font-size: 2rem;
   margin: -10px 0 20px 0;
 }
+.Blog #blogs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 2vw;
+  width: 100%;
+  padding: 80px 16vw;
+  box-sizing: border-box;
+  min-height: fit-content;
+  font-family: "WorkSans";
+}
+.Blog #blogs img {
+  width: 100%;
+}
+.Blog #blogs .article {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 0vw 0px 0vw;
+  gap: 30px;
+  text-align: left;
+  transition: all 200ms ease-in-out;
+  position: relative;
+  z-index: 0;
+  color: var(--mainLight);
+  text-decoration: none;
+  overflow: hidden;
+  font-family: "WorkSans";
+  background-color: #00000020;
+}
+.Blog #blogs .article > *:not(.imgWrapper, button) {
+  padding: 0 2vw;
+}
+.Blog #blogs .article .description {
+  opacity: 0;
+  transition: all 200ms ease-in-out;
+  height: 0vh;
+}
+.Blog #blogs .article .author {
+  margin: 0;
+  text-align: right;
+}
+.Blog #blogs .article .tags {
+  display: flex;
+  flex-direction: row;
+  align-self: flex-end;
+  gap: 1vw;
+  flex-wrap: wrap;
+}
+.Blog #blogs .article .tags p {
+  margin: 0;
+  padding: 10px 1vw;
+  border-radius: 12px;
+}
+.Blog #blogs .article .tags *:nth-child(1) {
+  background-color: var(--mainColor1);
+}
+.Blog #blogs .article .tags *:nth-child(2) {
+  background-color: var(--mainColor2);
+}
+.Blog #blogs .article .tags *:nth-child(3) {
+  background-color: var(--mainColor3);
+}
+.Blog #blogs .article h2 {
+  margin: 20px 0;
+  font-size: 2.5rem;
+  align-self: flex-start;
+  width: 100%;
+  word-wrap: break-word;
+  padding: 0;
+}
+.Blog #blogs .article button {
+  border: none;
+  margin: 0px 0;
+  padding: 25px 0;
+  color: var(--mainDark);
+  background-color: var(--mainLight);
+  cursor: pointer;
+  font-family: "WorkSans";
+  font-weight: 600;
+  transition: all 200ms ease-in-out;
+  font-size: 1.5rem;
+}
+.Blog #blogs .article button:hover {
+  color: var(--mainLight);
+  background-color: var(--mainDark);
+}
+.Blog #blogs .article p {
+  text-align: right;
+  line-height: 1.3;
+}
+.Blog #blogs .article:hover {
+  filter: brightness(1.05) saturate(2) opacity(1);
+}
+.Blog #blogs .article:hover > .description {
+  display: block;
+  visibility: visible;
+  height: 100px;
+  opacity: 1;
+}
+#contentStudio main {
+  display: flex;
+  flex-direction: column;
+  font-family: "WorkSans";
+}
+#contentStudio main #newBlogForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100vw;
+  padding: 120px 0;
+  font-family: "WorkSans";
+}
+#contentStudio main #newBlogForm h2 {
+  font-size: 2.5rem;
+  width: 70%;
+  word-wrap: break-word;
+  padding: 0;
+  text-align: center;
+}
+#contentStudio main #newBlogForm > div {
+  width: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2vw;
+  padding: 10px;
+}
+#contentStudio main #newBlogForm > div input {
+  padding: 10px;
+  font-family: "WorkSans";
+}
+#contentStudio main #newBlogForm img {
+  width: 50%;
+  mix-blend-mode: difference;
+  filter: drop-shadow(0px 20px 10px var(--mainDark));
+}
+#contentStudio main #newBlogForm #submit {
+  color: var(--mainLight);
+  background-color: var(--mainDark);
+  cursor: pointer;
+  font-family: "WorkSans";
+  font-weight: 600;
+  transition: all 200ms ease-in-out;
+  font-size: 1.5rem;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+}
+#contentStudio main #newBlogForm #submit:hover {
+  color: var(--mainDark);
+  background-color: var(--mainLight);
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
 .About,
 .Blog {
   display: flex;

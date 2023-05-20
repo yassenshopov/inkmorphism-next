@@ -39,7 +39,6 @@ export default function Dashboard() {
   const [deletedWebsites, setDeletedWebsites] = useState([]);
   const [deletedSitesLen, setDeletedSitesLen] = useState(0);
   const [sitesTotal, setSitesTotal] = useState(0);
-  let profile_pic;
 
   function daysTillDeletion(obj) {
     try {
