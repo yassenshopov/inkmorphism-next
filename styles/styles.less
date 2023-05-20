@@ -1418,6 +1418,35 @@
   }
 }
 
+.Article {
+  width: 100vw;
+  padding: 120px 0 0 0;
+  font-family: "WorkSans";
+  color: #fff;
+  background: linear-gradient(var(--mainColor2), var(--mainColor3));
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    article {
+      background-color: var(--mainLight);
+      color: var(--mainDark);
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      padding: 80px 10vw;
+      border-radius: 12px;
+      p {
+        line-height: 2;
+      }
+    }
+  }
+}
+
 #popupWrapper {
   display: flex;
   flex-direction: column;
