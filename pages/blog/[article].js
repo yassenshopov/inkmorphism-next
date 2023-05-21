@@ -13,12 +13,17 @@ import {
   setDoc,
   getDoc,
 } from "firebase/firestore/lite";
+import { BiLoaderAlt } from "react-icons/bi";
 
 export default function Article() {
   const router = useRouter();
   const articleId = router.query.article;
 
-  const [markdownContent, setMarkdownContent] = useState("");
+  const [markdownContent, setMarkdownContent] = useState(
+    <div id="articleLoader">
+      <BiLoaderAlt />
+    </div>
+  );
   const db = getFirestore();
   const [article, setArticle] = useState({});
   const [thumbnail, setThumbnail] = useState("");
@@ -28,19 +33,21 @@ export default function Article() {
     //   importData();
     // };
     // getStatic();
-    getData()
+    getData();
 
     if (articleId !== undefined && thumbnail !== "") {
       import(`./raw_files/${articleId}.md`)
         .then((module) => {
-            const processedMD = module.default.replace("%placeholder%", thumbnail)
-          setMarkdownContent(processedMD);
+          const processedMD = module.default.replace(
+            "%placeholder%",
+            thumbnail
+          );
+          setMarkdownContent(<ReactMarkdown>{processedMD}</ReactMarkdown>);
         })
         .catch((error) => {
           // Handle any errors that occurred during import
           console.error(error);
         });
-      
     }
   }, [router.query.article, thumbnail]);
 
@@ -50,9 +57,9 @@ export default function Article() {
     console.log(data.data());
     setArticle(data.data());
     try {
-        setThumbnail(data.data().thumbnail);
-    } catch(err) {
-        console.log(err)
+      setThumbnail(data.data().thumbnail);
+    } catch (err) {
+      console.log(err);
     }
   }
 
@@ -68,11 +75,9 @@ export default function Article() {
 
       <main>
         <div id="thumbnail">
-            <img src={thumbnail}/>
+          <img src={thumbnail} />
         </div>
-        <article>
-          <ReactMarkdown>{markdownContent}</ReactMarkdown>
-        </article>
+        <article>{markdownContent}</article>
       </main>
 
       <MainFooter />
