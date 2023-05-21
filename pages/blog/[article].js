@@ -26,7 +26,7 @@ export default function Article() {
   );
   const db = getFirestore();
   const [article, setArticle] = useState({});
-  const [thumbnail, setThumbnail] = useState("");
+  const [thumbnail, setThumbnail] = useState("https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/blog%2Fbanner.webp?alt=media&token=0941c310-98e5-45e0-af1b-8bb48c9218b3");
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [description, setDescription] = useState("");
