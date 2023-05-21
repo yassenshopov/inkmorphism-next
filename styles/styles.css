@@ -95,7 +95,7 @@
   align-items: center;
   backdrop-filter: blur(20px);
   font-family: "Oswald";
-  z-index: 2;
+  z-index: 5;
   outline: none !important;
   -webkit-tap-highlight-color: transparent !important;
   background-color: rgba(255, 255, 255, 0.01);
@@ -1513,21 +1513,60 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+.Article main > #thumbnail {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  margin-top: -120px;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Article main > #thumbnail img {
+  filter: blur(10px);
+  width: 100%;
 }
 .Article main article {
+  z-index: 2;
   background-color: var(--mainLight);
   color: var(--mainDark);
   width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   gap: 20px;
   padding: 80px 10vw;
   border-radius: 12px;
 }
+.Article main article h1 {
+  font-size: 3rem;
+}
+.Article main article h2 {
+  font-size: 2.5rem;
+}
+.Article main article h3 {
+  font-size: 2rem;
+}
 .Article main article p {
+  font-size: 1.1rem;
   line-height: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Article main article img {
+  width: 80%;
+  height: auto;
+  border-radius: 6px;
+  justify-self: center;
+  align-self: center;
+  margin: 0;
 }
 #popupWrapper {
   display: flex;
