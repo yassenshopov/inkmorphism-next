@@ -1,12 +1,14 @@
 # Can an AI Build a Website?
 
+![Image](%placeholder%)
+
 When developing an online presence, before anything else, a creator needs to be able to answer the question; “Can I Build a Website?” From the very beginning, building a website was a hefty investment of time and expertise. If you wanted a website, you needed to have a coder who could put the elements of the website together in a way that plays well with computers, you needed an asset designer or asset library to pull graphics from, and you needed someone to write the content that would fill the website itself. In more recent years, this process has been made easier than ever by the help of building block website design services such as Notion or Squarespace. In this sense, the building block function of building a website would consist of already created assets and organization schemes which the web master would pick and choose from to create their own website. But with the technological advancements of just the last year, this process has once again evolved.
 
 Enter, AI (artifical intelligence). By use of AI, a computer program/algorithm can now make design choices and create content for users as opposed to needing a human every step of the way. Previous advancements were all about convenience of making design choices based off of a library of assets that were already created by humans. Now with the improvements in AI, every web designer can have a perfectly unique website that fits both the needs of their customers or audience, and their unique sensibilities.
 
 Today, we’ll give a brief overview of AI website content design and how it can be used to its fullest potential to save time, money, and effort on the path to making a website or landing page which rivals the biggest names in your field. While some of the benefits of AI web design may be obvious, let’s go into detail of some of the unique ways that AIs can assist in web design.
 
-# How to use AI in Web Development?
+## How to use AI in Web Development?
 
 As far as technologyas the technology has progressedhas so far progressed, we aren’t at the point where there’s just one button someone needs to press and an AI does all the work of research, development, planning, and design. But we are pretty close! Let’s take a look at how AI can benefit the speed of web development, consistency in design, personalization, and reduced errors.
 
@@ -22,27 +24,27 @@ Lastly, reducing errors and enhancing usability. Standards on improving SEO (Sea
 
 While these capabilities are certainly handy to be able to reference, what does that actually mean for web design?
 
-# What does an AI for Web Content Do?
+## What does an AI for Web Content Do?
 
 AI can work quickly and with a wide variety of expertise. But that expertise is only as good as how its used. You can’t really just log into chatGPT and ask it to make a website for you from scratch. But other more specialized tools exist which can separately design web images, website textual content, web layouts, and iteratively test websites against competitors. Let’s take a look at each one-by-one.
 
-## AI For Image Generation
+### AI For Image Generation
 
 The two most common forms of AI generated content are visual and textual. For example, if you’ve scrolled past an AI generated work of art, you’re already familiar with how AI can produce digital images on a moment’s notice. This power can be harnessed for web design to be able to quickly fill out a website with images, photos, logos, and icons without needing to pay for a resource pack or graphic designer. This puts the power of visual language into the hands of anyone who is interested, equalizing the play field between amateurs, hobbyists & large scale corporations in terms of being able to make a web presence.
 
-## AI for Text Generation
+### AI for Text Generation
 
 The other most common form of AI generated content, besides the visual content mentioned above, is textual content. This is where you’ve probably already met our good friend chatGPT, able to spit out recommendations, facts, and comparisons just like a chat with an expert may otherwise provide. In much the same way, AI is able to fill in the textual gaps of a website to make it feel complete. Even better, AI is able to quickly generate textual content at scale, so filling out 1,000 different product descriptions can take place in an hour rather than several weeks of human work.
 
-## AI for Web Layouts
+### AI for Web Layouts
 
 Now for the AI uses you may be less familiar with. Using AI technology to generate web layouts allows everyday laypeople to have stunning web design and usability without needing to hire an agency to put the website together for them. An AI will follow not only best practices, but also market trends to generate websites which both fit the bill for a particular product but also are on the cutting edge of what’s fashionable in web design. This opens the door wide open to making anyone and everyone able to have their own website with every bell and whistle they could ever ask for.
 
-## AI for Testing and Iteration
+### AI for Testing and Iteration
 
 Last but not least, AI emboldens everyday people to not just design a website, but to create a web page that is competitive in their market corner without a fancy degree or years of study. Let’s say you want to start a coffee company, and want to best compete with the frontrunnerfront runner in your market space, Schmarbucks. Instead of only being able to compete on price or customer service, your web site can also compete with the help of AI. AI knows every trick in the book for assessing where your competitor Schmarbucks is lacking on the web design front, and how to appeal to customers who are fed up with their poor website experience. This allows you or anyone to be competitive in terms of online user experience (UX/UI) without any expert training or cost.
 
-# Why would you Not Use AI Web Design?
+## Why would you Not Use AI Web Design?
 
 While all these use cases are certainly appealing in how much they are benefitted for AI assistance, that doesn’t necessarily mean that every website will want to turn to AI for designing their web content.
 
@@ -52,6 +54,6 @@ Consider as well that AI in general is trained on thousands upon thousands of ex
 
 All that in mind, AI is still immensely useful and able to save billions of man hours when it comes to web design and development. But there are caveats to its use that need to be considered as well.
 
-# Conclusion
+## Conclusion
 
 The advent of AI has been transformative to say the least. All kinds of design and development are now possible which were previously either prohibitively expensive or out of reach for the average creator. Now with the digital tools provided by AI, anyone and everyone can have the website that best suits them and their audience in a moment’s notice.
