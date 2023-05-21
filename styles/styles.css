@@ -3023,6 +3023,87 @@
   .Blog footer #socialLinks {
     gap: 10vw;
   }
+  .Article {
+    width: 100vw;
+    padding: 120px 0 0 0;
+    font-family: "WorkSans";
+    color: #fff;
+    background: linear-gradient(var(--mainColor2), var(--mainColor3));
+  }
+  .Article main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 10px;
+  }
+  .Article main > #thumbnail {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    margin-top: -500px;
+    width: auto;
+    height: 1000px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Article main > #thumbnail img {
+    filter: blur(10px);
+    width: 100%;
+  }
+  .Article main article {
+    z-index: 2;
+    background-color: var(--mainLight);
+    color: var(--mainDark);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding: 80px 10vw;
+    border-radius: 12px;
+    min-height: 80vh;
+    box-sizing: border-box;
+  }
+  .Article main article #articleLoader {
+    justify-self: center;
+    align-self: center;
+  }
+  .Article main article #articleLoader > * {
+    font-size: 6rem;
+    animation: loaderRotate 800ms infinite linear;
+  }
+  .Article main article h1 {
+    font-size: 2.6rem;
+    margin: 0;
+  }
+  .Article main article h2 {
+    font-size: 2.5rem;
+    margin: 0;
+  }
+  .Article main article h3 {
+    font-size: 2rem;
+    margin: 0;
+  }
+  .Article main article p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .Article main article img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    justify-self: center;
+    align-self: center;
+    margin: 20px 0;
+  }
   #WIP {
     min-height: 100vh;
   }

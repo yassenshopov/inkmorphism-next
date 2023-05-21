@@ -27,6 +27,9 @@ export default function Article() {
   const db = getFirestore();
   const [article, setArticle] = useState({});
   const [thumbnail, setThumbnail] = useState("");
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [description, setDescription] = useState("");
 
   useEffect(() => {
     // const getStatic = () => {
@@ -58,6 +61,9 @@ export default function Article() {
     setArticle(data.data());
     try {
       setThumbnail(data.data().thumbnail);
+      setTitle(data.data().title);
+      setAuthor(data.data().author);
+      setDescription(data.data().description);
     } catch (err) {
       console.log(err);
     }
@@ -66,9 +72,18 @@ export default function Article() {
   return (
     <div className={"Article"}>
       <Head>
-        {/* <link rel="icon" href={defaultFiles['logo']} /> */}
-        <title>Inkmorphism - Article</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{title}</title>
+        <meta name="author" content={author}></meta>
+        <meta name="description" content={description} />
         <link rel="icon" href="/faviconWh.ico" />
+        <meta property="og:image" content={thumbnail}></meta>
+        <meta property="og:type" content="website"></meta>
+        <meta property="og:title" content={title}></meta>
+        <meta property="og:description" content={description}></meta>
+        <meta property="twitter:card" content="summary_large_image"></meta>
+        <meta property="twitter:title" content={title}></meta>
+        <meta property="twitter:description" content={description}></meta>
       </Head>
 
       <MainNav />
