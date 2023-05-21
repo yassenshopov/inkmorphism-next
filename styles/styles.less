@@ -1617,6 +1617,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    margin-bottom: 100px;
     > #thumbnail {
       position: absolute;
       top: 0;
@@ -1644,6 +1645,15 @@
       gap: 20px;
       padding: 80px 10vw;
       border-radius: 12px;
+      min-height: 60vh;
+      #articleLoader {
+        justify-self: center;
+        align-self: center;
+        > * {
+          font-size: 10rem;
+          animation: loaderRotate 800ms infinite linear;
+        }
+      } 
       h1 {
         font-size: 3rem;
       }
@@ -1667,7 +1677,7 @@
         border-radius: 6px;
         justify-self: center;
         align-self: center;
-        margin: 0;
+        margin: 20px 0;
       }
     }
   }
