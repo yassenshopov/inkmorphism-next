@@ -1680,13 +1680,41 @@
       h3 {
         font-size: 2rem;
       }
+      a {
+        color: var(--mainColor1);
+        text-decoration: none;
+        transition: all 300ms ease-in-out;
+      }
+      a:hover {
+        color: var(--mainColor2);
+      }
       p {
         font-size: 1.1rem;
         line-height: 2;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: center;
+        // align-items: center;
+        img {
+          display: block;
+          margin: 0 auto;
+        }
+        a {
+          display: inline;
+        }
+      }
+      ul {
+        list-style-type: none;
+        li {
+          line-height: 2;
+          font-size: 1.1rem;
+          :before {
+            content: "►";
+            padding: 0 1vw;
+            display: inline-block;
+            width: 1em;
+          }
+        }
       }
       img {
         width: 80%;
@@ -3264,6 +3292,19 @@
             animation: loaderRotate 800ms infinite linear;
           }
         } 
+        ul {
+          margin: 0;
+          // list-style: none;
+          padding: 0;
+          li {
+            line-height: 2;
+            // font-size: 1rem;
+            :before {
+              content: ►;
+              padding: 1vw;
+            }
+          }
+        }
         h1 {
           font-size: 2.6rem;
           margin: 0;
@@ -3279,10 +3320,10 @@
         p {
           font-size: 1.1rem;
           line-height: 1.8;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
+          // display: flex;
+          // flex-direction: column;
+          // justify-content: center;
+          // align-items: center;
         }
         img {
           width: 100%;
