@@ -1578,13 +1578,37 @@
 .Article main article h3 {
   font-size: 2rem;
 }
+.Article main article a {
+  color: var(--mainColor1);
+  text-decoration: none;
+  transition: all 300ms ease-in-out;
+}
+.Article main article a:hover {
+  color: var(--mainColor2);
+}
 .Article main article p {
   font-size: 1.1rem;
   line-height: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+}
+.Article main article p img {
+  display: block;
+  margin: 0 auto;
+}
+.Article main article p a {
+  display: inline;
+}
+.Article main article ul {
+  list-style-type: none;
+}
+.Article main article ul li {
+  line-height: 2;
+  font-size: 1.1rem;
+}
+.Article main article ul li :before {
+  content: "►";
+  padding: 0 1vw;
+  display: inline-block;
+  width: 1em;
 }
 .Article main article img {
   width: 80%;
@@ -3092,6 +3116,17 @@
     font-size: 6rem;
     animation: loaderRotate 800ms infinite linear;
   }
+  .Article main article ul {
+    margin: 0;
+    padding: 0;
+  }
+  .Article main article ul li {
+    line-height: 2;
+  }
+  .Article main article ul li :before {
+    content: ►;
+    padding: 1vw;
+  }
   .Article main article h1 {
     font-size: 2.6rem;
     margin: 0;
@@ -3107,10 +3142,6 @@
   .Article main article p {
     font-size: 1.1rem;
     line-height: 1.8;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
   }
   .Article main article img {
     width: 100%;
