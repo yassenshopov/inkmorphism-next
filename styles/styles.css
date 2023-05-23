@@ -1712,6 +1712,7 @@
 }
 #popupWrapper #popup #message {
   padding: 0 10vw 40px 10vw;
+  color: var(--mainDark);
 }
 #popupWrapper #popup #editSectionDeleteBtn * {
   color: var(--mainLight);
