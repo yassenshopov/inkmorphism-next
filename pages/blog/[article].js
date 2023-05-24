@@ -30,6 +30,9 @@ export default function Article() {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [description, setDescription] = useState("");
+  const [authorProfilePic, setAuthorProfilePic] = useState("");
+  const [authorBio, setAuthorBio] = useState("");
+  const [authorSocials, setAuthorSocials] = useState([]);//[twitter, linkedin, github, website
 
   useEffect(() => {
     // const getStatic = () => {
@@ -45,6 +48,8 @@ export default function Article() {
             "%placeholder%",
             thumbnail
           );
+          // console.log((<ReactMarkdown>{processedMD}</ReactMarkdown>).props.children.toString())
+          console.log(document.getElementById("article").children)
           setMarkdownContent(<ReactMarkdown>{processedMD}</ReactMarkdown>);
         })
         .catch((error) => {
@@ -64,6 +69,9 @@ export default function Article() {
       setTitle(data.data().title);
       setAuthor(data.data().author);
       setDescription(data.data().description);
+      setAuthorProfilePic(data.data().authorProfilePic);
+      setAuthorBio(data.data().authorBio);
+      setAuthorSocials(data.data().authorSocials);
     } catch (err) {
       console.log(err);
     }
@@ -92,7 +100,28 @@ export default function Article() {
         <div id="thumbnail">
           <img src={thumbnail} />
         </div>
-        <article>{markdownContent}</article>
+        <article id="article">{markdownContent}
+          <section id="authorProfile">
+            <div id="authorProfilePic">
+              <img src={authorProfilePic} />
+            </div>
+            <div id="authorProfileInfo">
+              <h3>{author}</h3>
+              <p>{authorBio}</p>
+              <div id="socials">
+                {
+                  authorSocials.map((social, index) => {
+                    return (
+                      <a href={social.url} target="_blank" key={index}>
+                        <div>{social.icon}</div>
+                      </a>
+                    )
+                  })
+                }
+              </div>
+            </div>
+          </section>
+        </article>
       </main>
 
       <MainFooter />

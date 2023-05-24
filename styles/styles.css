@@ -210,6 +210,71 @@
   font-size: 2rem;
   padding: 20px 6vw;
 }
+.Blog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Blog main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Blog main #hero {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  font-family: "WorkSans";
+  color: var(--mainLight);
+  margin: 150px 0 30px 0;
+  width: 100%;
+  padding: 20px 12vw 0 12vw;
+  box-sizing: border-box;
+  gap: 10vw;
+}
+.Blog main #hero #heroTxt {
+  width: 50%;
+}
+.Blog main #hero #heroTxt h1 {
+  font-size: 4rem;
+}
+.Blog main #hero #heroTxt h2 {
+  font-size: 2.5rem;
+}
+.Blog main #hero #heroTxt a {
+  text-align: center;
+  display: block;
+  font-size: 1.4rem;
+  color: var(--mainLight);
+  background-color: var(--mainDark);
+  border: none;
+  padding: 20px 2vw;
+  width: fit-content;
+  font-family: "Oswald";
+  margin-top: 40px;
+  text-decoration: none;
+  transition: all 200ms ease-in-out;
+}
+.Blog main #hero #heroTxt a:hover {
+  filter: drop-shadow(-3px 3px 0px red) drop-shadow(3px -3px 0px cyan);
+}
+.Blog main #hero #heroImg {
+  width: 30%;
+}
+.Blog main #hero #heroImg img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 10px 10px 10px #12121220, -10px -10px 10px #ffffff06;
+  mix-blend-mode: soft-light;
+  transition: all 200ms ease-in-out;
+}
+.Blog main #hero #heroImg img:hover {
+  transform: scale(1.02);
+}
 .Blog #blogs {
   display: grid;
   grid-template-columns: repeat(3, minmax(300px, 1fr));
@@ -1560,6 +1625,40 @@
   padding: 80px 10vw;
   border-radius: 12px;
   min-height: 60vh;
+}
+.Article main article #authorProfile {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+.Article main article #authorProfile #authorProfilePic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 8vw;
+  height: 8vw;
+  overflow: hidden;
+  margin: 20px 2vw;
+}
+.Article main article #authorProfile #authorProfilePic img {
+  width: 100%;
+}
+.Article main article #authorProfile #authorProfileInfo {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+}
+.Article main article #authorProfile #authorProfileInfo h3 {
+  font-size: 2rem;
+  margin: 10px 0;
+}
+.Article main article #authorProfile #authorProfileInfo p {
+  margin: 0;
 }
 .Article main article #articleLoader {
   justify-self: center;
@@ -3063,6 +3162,24 @@
   .About footer #socialLinks,
   .Blog footer #socialLinks {
     gap: 10vw;
+  }
+  .Blog main #hero {
+    width: 100%;
+    padding: 0 4vw;
+    box-sizing: border-box;
+  }
+  .Blog main #hero #heroTxt h1 {
+    font-size: 2.6rem;
+  }
+  .Blog main #hero #heroTxt h2 {
+    font-size: 1.6rem;
+  }
+  .Blog main #blogs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 0;
   }
   .Article {
     width: 100vw;
