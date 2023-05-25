@@ -106,14 +106,14 @@ export default function Article() {
               <img src={authorProfilePic} />
             </div>
             <div id="authorProfileInfo">
-              <h3>{author}</h3>
-              <p>{authorBio}</p>
+              <h3><em>{author}</em></h3>
+              <p><em>{authorBio}</em></p>
               <div id="socials">
                 {
                   authorSocials.map((social, index) => {
                     return (
                       <a href={social.url} target="_blank" key={index}>
-                        <div>{social.icon}</div>
+                        <img src={social.icon} />
                       </a>
                     )
                   })
