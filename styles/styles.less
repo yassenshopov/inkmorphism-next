@@ -1742,6 +1742,8 @@
           // border-radius: 50%;
           overflow: hidden;
           margin: 20px 2vw;
+          box-shadow: 0px 0px 40px #12121220;
+          border-radius: 12px;
           img {
             width: 100%;
           }
@@ -1759,6 +1761,25 @@
           }
           p {
             margin: 0;
+          }
+          #socials {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 0vw;
+            margin: 10px 0 0 0;
+            img {
+              width: 3vw;
+              height: 3vw;
+              filter: brightness(1);
+              transition: all 200ms ease-in-out;
+              padding: 10px 2vw;
+              margin: 0;
+            }
+            img:hover {
+              filter: brightness(0);
+            }
           }
         }
       }

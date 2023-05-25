@@ -1641,6 +1641,8 @@
   height: 8vw;
   overflow: hidden;
   margin: 20px 2vw;
+  box-shadow: 0px 0px 40px #12121220;
+  border-radius: 12px;
 }
 .Article main article #authorProfile #authorProfilePic img {
   width: 100%;
@@ -1659,6 +1661,25 @@
 }
 .Article main article #authorProfile #authorProfileInfo p {
   margin: 0;
+}
+.Article main article #authorProfile #authorProfileInfo #socials {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0vw;
+  margin: 10px 0 0 0;
+}
+.Article main article #authorProfile #authorProfileInfo #socials img {
+  width: 3vw;
+  height: 3vw;
+  filter: brightness(1);
+  transition: all 200ms ease-in-out;
+  padding: 10px 2vw;
+  margin: 0;
+}
+.Article main article #authorProfile #authorProfileInfo #socials img:hover {
+  filter: brightness(0);
 }
 .Article main article #articleLoader {
   justify-self: center;
