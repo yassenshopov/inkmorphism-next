@@ -269,7 +269,6 @@
   width: 100%;
   border-radius: 12px;
   box-shadow: 10px 10px 10px #12121220, -10px -10px 10px #ffffff06;
-  mix-blend-mode: soft-light;
   transition: all 200ms ease-in-out;
 }
 .Blog main #hero #heroImg img:hover {
@@ -3186,8 +3185,16 @@
   }
   .Blog main #hero {
     width: 100%;
-    padding: 0 4vw;
+    padding: 0 4vw 40px 0;
     box-sizing: border-box;
+    flex-direction: column;
+    text-align: center;
+  }
+  .Blog main #hero #heroTxt {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .Blog main #hero #heroTxt h1 {
     font-size: 2.6rem;
@@ -3195,12 +3202,39 @@
   .Blog main #hero #heroTxt h2 {
     font-size: 1.6rem;
   }
+  .Blog main #hero #heroTxt a {
+    width: 50%;
+    padding: 20px 0;
+    font-size: 2rem;
+  }
+  .Blog main #hero #heroImg {
+    display: none;
+  }
   .Blog main #blogs {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
     padding: 0;
+  }
+  .Blog main #blogs .article {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 24px;
+    box-shadow: 0 0 2vw #12121280;
+  }
+  .Blog main #blogs .article h2 {
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .Blog main #blogs .article .tags {
+    align-self: center;
+    gap: 4vw;
+  }
+  .Blog main #blogs .article .tags p {
+    font-size: 1.2rem;
+    padding: 10px 4vw;
   }
   .Article {
     width: 100vw;
@@ -3246,6 +3280,54 @@
     border-radius: 12px;
     min-height: 80vh;
     box-sizing: border-box;
+  }
+  .Article main article #authorProfile {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .Article main article #authorProfile #authorProfilePic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 50vw;
+    overflow: hidden;
+    margin: 20px 2vw;
+    box-shadow: 0px 0px 40px #12121220;
+    border-radius: 12px;
+  }
+  .Article main article #authorProfile #authorProfilePic img {
+    width: 100%;
+  }
+  .Article main article #authorProfile #authorProfileInfo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .Article main article #authorProfile #authorProfileInfo h3 {
+    font-size: 2rem;
+    margin: 10px 0;
+  }
+  .Article main article #authorProfile #authorProfileInfo p {
+    margin: 0;
+  }
+  .Article main article #authorProfile #authorProfileInfo #socials {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 10px 0 0 0;
+  }
+  .Article main article #authorProfile #authorProfileInfo #socials img {
+    width: 10vw;
+    height: 10vw;
   }
   .Article main article #articleLoader {
     justify-self: center;
