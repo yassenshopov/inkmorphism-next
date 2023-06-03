@@ -18,6 +18,20 @@ export default function Blog() {
   const articlesArr = {
     published: [
       {
+        urlSlug: "unlock-ai-potential",
+        publishDate: {
+          timestampValue: "2023-05-23T21:00:00.520Z",
+        },
+        description:
+          "Discover how AI-powered website builders can supercharge your SEO efforts. Unlock the full potential of search engine optimization with advanced automation.",
+        title: "Maximizing SEO Potential with AI-Powered Website Builders",
+        isPublished: true,
+        author: "Yassen Shopov",
+        tags: ["SEO"],
+        thumbnail:
+          "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/blog%2Funlock-ai-potential%2Fthumbnail.webp?alt=media&token=c41a78da-a3ae-44c9-837c-770f9cf29085&_gl=1*es9gy4*_ga*MTE1NDIyNjIyMi4xNjczMTk2MTM5*_ga_CW55HF8NVT*MTY4NTgxMjc5NS44Mi4xLjE2ODU4MTQwMDAuMC4wLjA.",
+      },
+      {
         urlSlug: "can-ai-build-a-website",
         publishDate: {
           timestampValue: "2023-05-23T21:00:00.520Z",
@@ -80,14 +94,16 @@ export default function Blog() {
       <div className="imgWrapper">
         <img src={site.thumbnail} loading="lazy" />
       </div>
-      <p className="author">- by {site.author}</p>
-      <h2>{site.title}</h2>
-      {/* <p className="description">{site.description}</p> */}
-      <div className="tags">
-        {" "}
-        {site.tags.map((item, index) => (
-          <p key={index}>{item}</p>
-        ))}
+      <div className="middleContent">
+        <p className="author">- by {site.author}</p>
+        <h2>{site.title}</h2>
+        {/* <p className="description">{site.description}</p> */}
+        <div className="tags">
+          {" "}
+          {site.tags.map((item, index) => (
+            <p key={index}>{item}</p>
+          ))}
+        </div>
       </div>
       <button>Read more</button>
     </a>
@@ -133,9 +149,9 @@ export default function Blog() {
       <main>
         <section id="hero">
           <div id="heroTxt">
-            <h1>Insights, Tips, and Inspiration</h1>
+            <h1>Insights, tips, and inspiration</h1>
             <h2>Elevate Your design skills with expert articles</h2>
-            <a href="#blogs">Explore ↓</a>
+            <a href="#blogs" className="noSelect">Explore ↓</a>
           </div>
           <div id="heroImg">
             <img src="blog/hero.gif" />
