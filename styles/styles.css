@@ -125,7 +125,7 @@
   margin: 10px 0;
   padding: 10px 1vw;
 }
-#MainNav a:hover {
+#MainNav a:not(#logo):hover {
   color: var(--mainColor2);
   background-color: var(--mainLight);
 }
@@ -276,23 +276,21 @@
 }
 .Blog #blogs {
   display: grid;
-  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: 1fr;
   gap: 2vw;
   width: 100%;
-  padding: 80px 16vw;
+  padding: 80px 8vw;
   box-sizing: border-box;
   min-height: fit-content;
   font-family: "WorkSans";
-}
-.Blog #blogs img {
-  width: 100%;
+  align-items: stretch;
 }
 .Blog #blogs .article {
   width: 100%;
-  height: fit-content;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 0px 0vw 0px 0vw;
   gap: 30px;
   text-align: left;
@@ -304,6 +302,18 @@
   overflow: hidden;
   font-family: "WorkSans";
   background-color: #00000020;
+}
+.Blog #blogs .article .middleContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 0 2vw;
+  box-sizing: border-box;
+  height: 100%;
+}
+.Blog #blogs .article img {
+  width: 100%;
 }
 .Blog #blogs .article > *:not(.imgWrapper, button) {
   padding: 0 2vw;
@@ -340,7 +350,7 @@
 }
 .Blog #blogs .article h2 {
   margin: 20px 0;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   align-self: flex-start;
   width: 100%;
   word-wrap: break-word;
@@ -1641,10 +1651,18 @@
   overflow: hidden;
   margin: 20px 2vw;
   box-shadow: 0px 0px 40px #12121220;
-  border-radius: 12px;
+  border-radius: 8px;
+  transition: all 200ms ease-in-out;
+}
+.Article main article #authorProfile #authorProfilePic:hover {
+  box-shadow: 0px 0px 40px #12121240;
 }
 .Article main article #authorProfile #authorProfilePic img {
   width: 100%;
+  transition: all 200ms ease-in-out;
+}
+.Article main article #authorProfile #authorProfilePic img:hover {
+  transform: scale(1.05);
 }
 .Article main article #authorProfile #authorProfileInfo {
   width: 70%;
@@ -3185,7 +3203,7 @@
   }
   .Blog main #hero {
     width: 100%;
-    padding: 0 4vw 40px 0;
+    padding: 0 4vw 40px;
     box-sizing: border-box;
     flex-direction: column;
     text-align: center;
@@ -3224,6 +3242,8 @@
     box-shadow: 0 0 2vw #12121280;
   }
   .Blog main #blogs .article h2 {
+    padding: 0 2vw;
+    font-size: 2rem;
     text-align: center;
     width: 100%;
     box-sizing: border-box;
