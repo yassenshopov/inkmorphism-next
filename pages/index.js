@@ -37,9 +37,9 @@ export default function Home() {
             <a href="/templates">Let's go</a>
           </div>
           <div id="exampleSites">
-            <img src="main/example4.png" />
-            <img src="main/example1.png" />
-            <img src="main/example2.png" />
+            <img src="main/example4.webp" />
+            <img src="main/example1.webp" />
+            <img src="main/example2.webp" />
           </div>
         </section>
 
