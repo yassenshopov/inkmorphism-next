@@ -62,7 +62,7 @@
                 }
                   <section id="authorProfile">
                     <div id="authorProfilePic">
-                      <img src={authorData.authorProfilePic} />
+                      <img loading="lazy" src={authorData.authorProfilePic} />
                     </div>
                     <div id="authorProfileInfo">
                       <h3><em>Dan Riemen</em></h3>
@@ -72,7 +72,7 @@
                         authorData.authorSocials.map((social, index) => {
                           return (
                             <a href={social.url} target="_blank" key={index} className="noSelect">
-                              <img src={social.icon} />
+                              <img loading="lazy" src={social.icon} />
                             </a>
                           )
                         })
