@@ -71,7 +71,7 @@ function itemToPage(item) {
                 }
                   <section id="authorProfile">
                     <div id="authorProfilePic">
-                      <img src={authorData.authorProfilePic} />
+                      <img loading="lazy" src={authorData.authorProfilePic} />
                     </div>
                     <div id="authorProfileInfo">
                       <h3><em>${item.author}</em></h3>
@@ -81,7 +81,7 @@ function itemToPage(item) {
                         authorData.authorSocials.map((social, index) => {
                           return (
                             <a href={social.url} target="_blank" key={index} className="noSelect">
-                              <img src={social.icon} />
+                              <img loading="lazy" src={social.icon} />
                             </a>
                           )
                         })
