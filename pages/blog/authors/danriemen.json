@@ -1,0 +1,22 @@
+{
+  "author": "Dan Riemen",
+  "authorProfilePic": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/blog%2Fauthors%2Fdan_riemen.png?alt=media&token=b416d162-bedd-4472-88d0-7fb7589a4d5b",
+  "authorBio": "Dan Riemen works as a freelance copywriter and lives as a tech enthusiast. Going on a decade of technical process documentation experience, Dan specializes in offering content writing, marketing insights, and site audits to tech entrepreneurs and companies.",
+  "authorSocials": [
+    {
+      "icon": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/blog%2Fauthors%2Ftwitter.png?alt=media&token=041c68a0-2ae3-4ec2-8151-506b5e42dda8",
+      "type": "twitter",
+      "url": "https://twitter.com/levelzerozero"
+    },
+    {
+      "icon": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/blog%2Fauthors%2Flinkedin.png?alt=media&token=01b943fe-90d2-49f2-b928-e6d18f7b97b0",
+      "type": "linkedin",
+      "url": "https://www.linkedin.com/in/danriemen/"
+    },
+    {
+      "icon": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/blog%2Fauthors%2Flink.png?alt=media&token=c88cf21d-cf5e-4158-b02e-a4fbabc5fadc",
+      "type": "website",
+      "url": "https://www.lvl-00.com/"
+    }
+  ]
+}

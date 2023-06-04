@@ -16,7 +16,7 @@
               style={{
                 "--color1": "#ffffff",
                 "--color2": "#e0e2ff",
-                "--color3": "#79e16b",
+                "--color3": "#000000",
                 "--colorLight": "#fefefe",
                 "--colorDark": "#121212",
                 "--scrollbarThumb": "#ffffff",
@@ -126,7 +126,7 @@
             >
               <p>This is your new ImgNTxt section.</p>
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2F99Si52uFA2193U22.png?alt=media&token=f03ddc9e-8899-4f11-be14-c3794b8ee584"
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2F0J25GB7VSJvILCsL.png?alt=media&token=7c1a9ca1-42f2-4bee-bb94-9229e9bc483c"
                 draggable="false"
                 loading="lazy"
               />
