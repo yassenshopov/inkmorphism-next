@@ -1,0 +1,22 @@
+{
+  "author": "Yassen Shopov",
+  "authorProfilePic": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/blog%2Fauthors%2Fyassen_shopov.png?alt=media&token=9ee73480-8963-4f29-815e-cec16b1791ad&_gl=1*qthe0r*_ga*MTE1NDIyNjIyMi4xNjczMTk2MTM5*_ga_CW55HF8NVT*MTY4NTgxMjc5NS44Mi4xLjE2ODU4MTUyNzIuMC4wLjA.",
+  "authorSocials": [
+    {
+      "icon": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/blog%2Fauthors%2Ftwitter.png?alt=media&token=041c68a0-2ae3-4ec2-8151-506b5e42dda8",
+      "type": "twitter",
+      "url": "https://twitter.com/yassenshopov"
+    },
+    {
+      "icon": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/blog%2Fauthors%2Flinkedin.png?alt=media&token=01b943fe-90d2-49f2-b928-e6d18f7b97b0",
+      "type": "linkedin",
+      "url": "https://www.linkedin.com/in/yassenshopov/"
+    },
+    {
+      "icon": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/blog%2Fauthors%2Flink.png?alt=media&token=c88cf21d-cf5e-4158-b02e-a4fbabc5fadc",
+      "type": "website",
+      "url": "https://yassenshopov.com/"
+    }
+  ],
+  "authorBio": "Yassen Shopov is a Front-end developer and the founder of Inkmorphism. Yassen specialises in the building of personal and portfolio websites, which culminated in the creation of the Inkmorphism project."
+}

@@ -2,6 +2,7 @@ import { useState } from "react";
 import Dashfooter from "../components/dashfooter";
 import Dashnav from "../components/dashnav";
 import { getFirestore, collection, doc, setDoc } from "firebase/firestore/lite";
+import articles from "../blog/articlesData.json";
 
 export default function ContentStudio() {
   const [formData, setFormData] = useState({
@@ -21,11 +22,9 @@ export default function ContentStudio() {
     }));
   };
 
-    const db = getFirestore();
+  const db = getFirestore();
 
   function makeEntry() {
-    // document.getElementById("submit").innerHTML = "Submitted!";
-    // const form = document.getElementById("newBlogForm");
     const ref = collection(db, "articles");
     setDoc(doc(ref, formData.urlSlug), formData);
     console.log(formData);
@@ -33,6 +32,26 @@ export default function ContentStudio() {
 
   function preventDefault(e) {
     e.preventDefault();
+  }
+
+  async function makeStaticArticles() {
+      articles.forEach(async (item, index) => {
+        const response = await fetch(
+          "http://localhost:3000/api/create-static-article",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ item }),
+          }
+        );
+        // const reference = doc(db, "publicSites", item.domainSlug);
+        // await updateDoc(reference, {
+        //   isSynced: true,
+        // });
+      });
+
   }
 
   return (
@@ -117,6 +136,12 @@ export default function ContentStudio() {
             </p>
           </div>
         </form>
+        <div
+          id="staticArticleGen"
+          onClick={() => {
+            makeStaticArticles();
+          }}
+        >Click to make static articles</div>
       </main>
       <Dashfooter />
     </div>
