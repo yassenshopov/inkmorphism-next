@@ -1,0 +1,29 @@
+[
+  {
+    "urlSlug": "unlock-ai-potential",
+    "publishDate": {
+      "timestampValue": "2023-05-23T21:00:00.520Z"
+    },
+    "description": "Discover how AI-powered website builders can supercharge your SEO efforts. Unlock the full potential of search engine optimization with advanced automation.",
+    "title": "Maximizing SEO Potential with AI-Powered Website Builders",
+    "isPublished": true,
+    "author": "Yassen Shopov",
+    "tags": ["SEO"],
+    "thumbnail": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/blog%2Funlock-ai-potential%2Fthumbnail.webp?alt=media&token=c41a78da-a3ae-44c9-837c-770f9cf29085&_gl=1*es9gy4*_ga*MTE1NDIyNjIyMi4xNjczMTk2MTM5*_ga_CW55HF8NVT*MTY4NTgxMjc5NS44Mi4xLjE2ODU4MTQwMDAuMC4wLjA."
+  },
+  {
+    "urlSlug": "can-ai-build-a-website",
+    "publishDate": {
+      "timestampValue": "2023-05-23T21:00:00.520Z"
+    },
+    "description": "Discover the power of AI in web design: save time, money, and effort while creating stunning websites that rival the biggest names in your field.",
+    "title": "Can AI Build a Website?",
+
+    "isPublished": true,
+
+    "author": "Dan Riemen",
+
+    "tags": ["Web Design", "AI", "ChatGPT"],
+    "thumbnail": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/blog%2Fcan-ai-build-a-website%2Fthumbnail.webp?alt=media&token=c4513118-2aa7-45c3-bda6-23ff53966704"
+  }
+]
