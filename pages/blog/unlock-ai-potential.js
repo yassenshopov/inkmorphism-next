@@ -60,27 +60,27 @@
                 <article id="article">{
                   processedMD
                 }
-                  <section id="authorProfile">
-                    <div id="authorProfilePic">
-                      <img loading="lazy" src={authorData.authorProfilePic} />
-                    </div>
-                    <div id="authorProfileInfo">
-                      <h3><em>Yassen Shopov</em></h3>
-                      <p><em>{authorData.authorBio}</em></p>
-                      <div id="socials">
-                      {
-                        authorData.authorSocials.map((social, index) => {
-                          return (
-                            <a href={social.url} target="_blank" key={index} className="noSelect">
-                              <img loading="lazy" src={social.icon} />
-                            </a>
-                          )
-                        })
-                      }
-                      </div>
-                    </div>
-                  </section>
                 </article>
+                <section id="authorProfile">
+                  <div id="authorProfilePic">
+                    <img loading="lazy" src={authorData.authorProfilePic} />
+                  </div>
+                  <div id="authorProfileInfo">
+                    <h3>Yassen Shopov</h3>
+                    <p>{authorData.authorBio}</p>
+                    <div id="socials">
+                    {
+                      authorData.authorSocials.map((social, index) => {
+                        return (
+                          <a href={social.url} target="_blank" key={index} className="noSelect">
+                            <img loading="lazy" src={social.icon} />
+                          </a>
+                        )
+                      })
+                    }
+                    </div>
+                  </div>
+                </section>
               </main>
           
               <MainFooter />
