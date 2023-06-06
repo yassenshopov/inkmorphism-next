@@ -1,23 +1,19 @@
 import Head from "next/head";
-import WIP from "./components/wip";
 import MainNav from "./components/MainNav";
 import MainFooter from "./components/MainFooter";
 import { useEffect, useState } from "react";
-import app from "../firebase/clientApp";
-import {
-  getFirestore,
-  collection,
-  getDocs,
-  doc,
-  setDoc,
-} from "firebase/firestore/lite";
 import data from "./blog/articlesData.json";
 
 export default function Blog() {
   const [articlesData, setArticlesData] = useState([]);
   const [articlesRendered, setArticlesRendered] = useState([]);
 
+  const [sth, setSth] = useState("sth");
+
   useEffect(() => {
+    setTimeout(() => {
+      setSth("sth2");
+    }, 2000);
     importData();
   }, []);
   const importData = async () => {
@@ -70,8 +66,8 @@ export default function Blog() {
         <section id="hero">
           <div id="heroTxt">
             <h1>Insights, tips, and inspiration</h1>
-            <h2>Elevate Your design skills with expert articles</h2>
-            <a href="#blogs" className="noSelect">
+            <h2>Elevate your design skills with expert articles</h2>
+            <a href="#explore" className="noSelect">
               Explore ↓
             </a>
           </div>
@@ -80,7 +76,10 @@ export default function Blog() {
           </div>
         </section>
 
-        <section id="blogs">{articlesRendered}</section>
+        <section id="blogs">
+          {articlesRendered}
+          <div id="explore"></div>
+        </section>
       </main>
 
       <MainFooter />
