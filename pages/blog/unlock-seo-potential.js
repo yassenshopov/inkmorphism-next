@@ -24,7 +24,7 @@
           try {
             const jsonData = await import('./authors/yassenshopov.json');
             setAuthorData(jsonData);
-            const md = await import('./raw_files/unlock-ai-potential.md');
+            const md = await import('./raw_files/unlock-seo-potential.md');
             setProcessedMD(<ReactMarkdown>{md.default.replace(
               "%placeholder%",
               "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/blog%2Funlock-ai-potential%2Fthumbnail.webp?alt=media&token=c41a78da-a3ae-44c9-837c-770f9cf29085&_gl=1*es9gy4*_ga*MTE1NDIyNjIyMi4xNjczMTk2MTM5*_ga_CW55HF8NVT*MTY4NTgxMjc5NS44Mi4xLjE2ODU4MTQwMDAuMC4wLjA."
