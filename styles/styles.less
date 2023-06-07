@@ -1792,12 +1792,13 @@
         align-items: flex-start;
         gap: 10px;
         h3 {
+          font-family: "Oswald";
           font-size: 1.4rem;
           margin: 10px 0;
         }
         p {
-          line-height: 1.5;
-          margin: 0;
+          line-height: 1.8;
+          margin: 16px 0;
         }
         #socials {
           display: flex;
@@ -1844,13 +1845,23 @@
         }
       }
       h1 {
+        font-family: "Oswald";
         font-size: 3rem;
       }
       h2 {
+        font-family: "Oswald";
+        margin: 0;
         font-size: 2.5rem;
       }
       h3 {
+        font-family: "Oswald";
+        margin: 0;
         font-size: 2rem;
+      }
+      h4 {
+        font-family: "Oswald";
+        margin: 0;
+        font-size: 1.5rem;
       }
       a {
         color: var(--mainColor1);
@@ -1869,7 +1880,7 @@
         // align-items: center;
         img {
           display: block;
-          margin: 0 auto;
+          margin: 20px auto 60px;
         }
         a {
           display: inline;
@@ -1878,13 +1889,20 @@
       ul {
         list-style-type: none;
         li {
+          a {
+            :before {
+              content: "-" !important;
+            }
+          }
           line-height: 2;
           font-size: 1.1rem;
-          :before {
-            content: "►";
-            padding: 0 1vw;
-            display: inline-block;
-            width: 1em;
+          *:first-child {
+            :before {
+              content: "►";
+              padding: 0 1vw;
+              display: inline-block;
+              width: 1em;
+            }
           }
         }
       }
@@ -3559,7 +3577,7 @@
         z-index: 2;
         background-color: var(--mainLight);
         color: var(--mainDark);
-        width: 100%;
+        width: 100vw;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -3584,21 +3602,20 @@
             line-height: 2;
             // font-size: 1rem;
             :before {
-              content: ►;
               padding: 1vw;
             }
           }
         }
         h1 {
-          font-size: 2.6rem;
+          font-size: 2.2rem;
           margin: 0;
         }
         h2 {
-          font-size: 2.5rem;
+          font-size: 2rem;
           margin: 0;
         }
         h3 {
-          font-size: 2rem;
+          font-size: 1.6rem;
           margin: 0;
         }
         p {
