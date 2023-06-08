@@ -1,5 +1,17 @@
 [
   {
+    "urlSlug": "5-web-design-trends-for-2023",
+    "publishDate": {
+      "timestampValue": "2023-06-08T21:00:00.520Z"
+    },
+    "description": "Unveil the future of web design with 5 cutting-edge trends for 2023. Dive into futuristic designs that redefine online experiences.",
+    "title": "Futuristic Designs: Exploring 5 Next-Level Web Design Trends in 2023",
+    "isPublished": true,
+    "author": "Yassen Shopov",
+    "tags": ["Web Design", "UX"],
+    "thumbnail": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/blog%2F5-web-design-trends-for-2023%2F5-web-design-trends-for-2023.webp?alt=media&token=10a6fab6-0e14-4c6a-b6da-21e3bc37f839&_gl=1*1dhqw7*_ga*MTE1NDIyNjIyMi4xNjczMTk2MTM5*_ga_CW55HF8NVT*MTY4NjIxNjA3Ny44OS4xLjE2ODYyMTYxMzIuMC4wLjA."
+  },
+  {
     "urlSlug": "unlock-seo-potential",
     "publishDate": {
       "timestampValue": "2023-05-23T21:00:00.520Z"
@@ -14,7 +26,7 @@
   {
     "urlSlug": "can-ai-build-a-website",
     "publishDate": {
-      "timestampValue": "2023-05-23T21:00:00.520Z"
+      "timestampValue": "2023-05-21T21:00:00.520Z"
     },
     "description": "Discover the power of AI in web design: save time, money, and effort while creating stunning websites that rival the biggest names in your field.",
     "title": "Can AI Build a Website?",
