@@ -72,9 +72,9 @@ export default function Blog() {
           </div>
         </section>
 
+        <div id="explore"></div>
         <section id="blogs">
           {articlesRendered}
-          <div id="explore"></div>
         </section>
       </main>
 
