@@ -8,6 +8,13 @@ import Loader from "../components/loader.js";
 export default function MainNav() {
   const auth = getAuth(app);
   console.log(auth.currentUser);
+  const [sth, setSth] = useState("sth");
+
+  useEffect(() => {
+    setTimeout(() => {
+      setSth("sth2");
+    }, 2000);
+  }, []);
 
   const [mobileToggle, setMobileToggle] = useState("");
   function mobileSwitch() {
