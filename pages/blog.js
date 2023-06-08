@@ -8,12 +8,8 @@ export default function Blog() {
   const [articlesData, setArticlesData] = useState([]);
   const [articlesRendered, setArticlesRendered] = useState([]);
 
-  const [sth, setSth] = useState("sth");
 
   useEffect(() => {
-    setTimeout(() => {
-      setSth("sth2");
-    }, 2000);
     importData();
   }, []);
   const importData = async () => {
