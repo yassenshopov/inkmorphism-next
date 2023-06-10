@@ -1703,7 +1703,6 @@
   color: var(--mainDark);
   border-radius: 12px;
   box-sizing: border-box;
-  padding: 40px 2vw;
 }
 .Article main aside #suggestions h2 {
   padding: 0 0 20px 0;
@@ -3424,6 +3423,10 @@
   .Article main aside #suggestions a h3 {
     font-size: 1.6rem;
     padding: 0 10vw;
+  }
+  .Article main aside #suggestions a .tags p {
+    font-size: 1.4rem;
+    padding: 6px 10vw;
   }
   .Article main aside #suggestions a button {
     font-size: 2rem;
