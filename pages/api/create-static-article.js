@@ -15,6 +15,7 @@ function itemToPage(item) {
         authorSocials: [],
         author: "",
       });
+      const [articleData, setArticleData] = useState([]);
       const [processedMD, setProcessedMD] = useState("");
 
       useEffect(() => {
@@ -29,6 +30,8 @@ function itemToPage(item) {
               .replace(/\s/g, "")
               .toLowerCase()}.json');
             setAuthorData(jsonData);
+            const articleDataJSON = await import("./articlesData.json");
+            setArticleData(articleDataJSON.default.filter((item) => item.urlSlug !== "${item.urlSlug}"));
             const md = await import('./raw_files/${item.urlSlug}.md');
             setProcessedMD(<ReactMarkdown>{md.default.replace(
               "%placeholder%",
@@ -70,26 +73,55 @@ function itemToPage(item) {
                   processedMD
                 }
                 </article>
-                <section id="authorProfile">
-                  <div id="authorProfilePic">
-                    <img loading="lazy" src={authorData.authorProfilePic} />
-                  </div>
-                  <div id="authorProfileInfo">
-                    <h3>${item.author}</h3>
-                    <p>{authorData.authorBio}</p>
-                    <div id="socials">
-                    {
-                      authorData.authorSocials.map((social, index) => {
-                        return (
-                          <a href={social.url} target="_blank" key={index} className="noSelect">
-                            <img loading="lazy" src={social.icon} />
-                          </a>
-                        )
-                      })
-                    }
+                <aside>
+                  <section id="authorProfile">
+                    <div id="authorProfilePic">
+                      <img loading="lazy" src={authorData.authorProfilePic} />
                     </div>
-                  </div>
-                </section>
+                    <div id="authorProfileInfo">
+                      <h3>${item.author}</h3>
+                      <p>{authorData.authorBio}</p>
+                      <div id="socials">
+                      {
+                        authorData.authorSocials.map((social, index) => {
+                          return (
+                            <a href={social.url} target="_blank" key={index} className="noSelect">
+                              <img loading="lazy" src={social.icon} />
+                            </a>
+                          )
+                        })
+                      }
+                      </div>
+                    </div>
+                  </section>
+                  <section>
+                    <div id="suggestions">
+                      <h2>Suggested Content:</h2>
+                      {articleData.map((article, index) => {
+                        return (
+                          <a
+                            href={"/blog/" + article.urlSlug}
+                            key={index}
+                            className="noSelect"
+                          >
+                            <div className="imgWrapper">
+                              <img loading="lazy" src={article.thumbnail} />
+                            </div>
+                            <div className="middleContent">
+                              <h3>{article.title}</h3>
+                              <div className="tags">
+                                {article.tags.map((item, index) => (
+                                  <p key={index}>{item}</p>
+                                ))}
+                              </div>
+                            </div>
+                            <button>Read more</button>
+                          </a>
+                        );
+                      })}
+                    </div>
+                  </section>
+                </aside>
               </main>
           
               <MainFooter />

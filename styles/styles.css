@@ -55,13 +55,13 @@
   width: 100%;
   min-height: 200px;
   padding: 40px 16vw;
-  background: var(--mainLight);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
   color: var(--mainDark);
+  background: var(--mainLight);
   font-family: "WorkSans";
 }
 #MainFooter #socialLinks {
@@ -1606,7 +1606,7 @@
   filter: blur(10px);
   width: 100%;
 }
-.Article main #authorProfile {
+.Article main aside {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -1614,6 +1614,17 @@
   align-items: left;
   z-index: 2;
   width: 25vw;
+  color: var(--mainDark);
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+.Article main aside #authorProfile {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: left;
+  z-index: 2;
   background-color: var(--mainLight);
   color: var(--mainDark);
   border-radius: 12px;
@@ -1621,7 +1632,7 @@
   padding: 40px 2vw;
   box-shadow: 0px 0px 40px #12121220;
 }
-.Article main #authorProfile #authorProfilePic {
+.Article main aside #authorProfile #authorProfilePic {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1632,17 +1643,17 @@
   transition: all 200ms ease-in-out;
   align-self: center;
 }
-.Article main #authorProfile #authorProfilePic:hover {
+.Article main aside #authorProfile #authorProfilePic:hover {
   box-shadow: 0px 0px 40px #12121240;
 }
-.Article main #authorProfile #authorProfilePic img {
+.Article main aside #authorProfile #authorProfilePic img {
   width: 100%;
   transition: all 200ms ease-in-out;
 }
-.Article main #authorProfile #authorProfilePic img:hover {
+.Article main aside #authorProfile #authorProfilePic img:hover {
   transform: scale(1.05);
 }
-.Article main #authorProfile #authorProfileInfo {
+.Article main aside #authorProfile #authorProfileInfo {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -1650,16 +1661,16 @@
   align-items: flex-start;
   gap: 10px;
 }
-.Article main #authorProfile #authorProfileInfo h3 {
+.Article main aside #authorProfile #authorProfileInfo h3 {
   font-family: "Oswald";
   font-size: 1.4rem;
   margin: 10px 0;
 }
-.Article main #authorProfile #authorProfileInfo p {
+.Article main aside #authorProfile #authorProfileInfo p {
   line-height: 1.8;
   margin: 16px 0;
 }
-.Article main #authorProfile #authorProfileInfo #socials {
+.Article main aside #authorProfile #authorProfileInfo #socials {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -1670,15 +1681,114 @@
   width: 100%;
   box-sizing: border-box;
 }
-.Article main #authorProfile #authorProfileInfo #socials img {
+.Article main aside #authorProfile #authorProfileInfo #socials img {
   width: 3vw;
   filter: brightness(1);
   transition: all 200ms ease-in-out;
   padding: 10px 1vw;
   margin: 0;
 }
-.Article main #authorProfile #authorProfileInfo #socials img:hover {
+.Article main aside #authorProfile #authorProfileInfo #socials img:hover {
   filter: brightness(0);
+}
+.Article main aside #suggestions {
+  text-align: center;
+  gap: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: left;
+  z-index: 2;
+  color: var(--mainDark);
+  border-radius: 12px;
+  box-sizing: border-box;
+  padding: 40px 2vw;
+}
+.Article main aside #suggestions h2 {
+  padding: 0 0 20px 0;
+}
+.Article main aside #suggestions a {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid #00000020;
+  transition: all 200ms ease-in-out;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 40px #12121220;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--mainDark);
+  overflow: hidden;
+  cursor: pointer;
+}
+.Article main aside #suggestions a .tags {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0vw;
+  padding: 20px 2vw 10px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+.Article main aside #suggestions a .tags p {
+  color: var(--mainLight);
+  padding: 4px 20px;
+  font-size: 1rem;
+  font-family: "Oswald";
+  border-radius: 6px;
+  margin: 0 10px 10px 0;
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+}
+.Article main aside #suggestions a .tags p:hover {
+  filter: brightness(0.8);
+}
+.Article main aside #suggestions a .tags *:nth-child(1) {
+  background-color: var(--mainColor1);
+}
+.Article main aside #suggestions a .tags *:nth-child(2) {
+  background-color: var(--mainColor2);
+}
+.Article main aside #suggestions a .tags *:nth-child(3) {
+  background-color: var(--mainColor3);
+}
+.Article main aside #suggestions a:hover {
+  background-color: #00000020;
+}
+.Article main aside #suggestions a img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px 6px 0 0;
+}
+.Article main aside #suggestions a h3 {
+  font-family: "Oswald";
+  font-size: 1.4rem;
+  margin: 10px 0;
+  padding: 0 2vw;
+}
+.Article main aside #suggestions a p {
+  line-height: 1.8;
+  margin: 16px 0;
+}
+.Article main aside #suggestions a button {
+  background-color: var(--mainColor1);
+  color: var(--mainLight);
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  font-family: "Oswald";
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+  width: 100%;
+}
+.Article main aside #suggestions a button:hover {
+  background-color: var(--mainColor2);
 }
 .Article main article {
   z-index: 2;
@@ -3297,7 +3407,29 @@
     filter: blur(10px);
     width: 100%;
   }
-  .Article main #authorProfile {
+  .Article main aside {
+    width: 100%;
+  }
+  .Article main aside #suggestions {
+    padding: 40px 0 0;
+    gap: 40px;
+  }
+  .Article main aside #suggestions h2 {
+    font-size: 2rem;
+  }
+  .Article main aside #suggestions a {
+    border-radius: 18px;
+    box-shadow: 0 0 40px #12121280;
+  }
+  .Article main aside #suggestions a h3 {
+    font-size: 1.6rem;
+    padding: 0 10vw;
+  }
+  .Article main aside #suggestions a button {
+    font-size: 2rem;
+    padding: 20px 0;
+  }
+  .Article main aside #authorProfile {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -3306,7 +3438,7 @@
     width: 100%;
     padding: 20px 10vw 40px;
   }
-  .Article main #authorProfile #authorProfilePic {
+  .Article main aside #authorProfile #authorProfilePic {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -3316,10 +3448,10 @@
     box-shadow: 0px 0px 40px #12121220;
     border-radius: 12px;
   }
-  .Article main #authorProfile #authorProfilePic img {
+  .Article main aside #authorProfile #authorProfilePic img {
     width: 100%;
   }
-  .Article main #authorProfile #authorProfileInfo {
+  .Article main aside #authorProfile #authorProfileInfo {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -3327,14 +3459,14 @@
     align-items: flex-start;
     gap: 10px;
   }
-  .Article main #authorProfile #authorProfileInfo h3 {
+  .Article main aside #authorProfile #authorProfileInfo h3 {
     font-size: 2rem;
     margin: 10px 0;
   }
-  .Article main #authorProfile #authorProfileInfo p {
+  .Article main aside #authorProfile #authorProfileInfo p {
     margin: 0;
   }
-  .Article main #authorProfile #authorProfileInfo #socials {
+  .Article main aside #authorProfile #authorProfileInfo #socials {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -3342,7 +3474,7 @@
     align-items: center;
     margin: 10px 0 0 0;
   }
-  .Article main #authorProfile #authorProfileInfo #socials img {
+  .Article main aside #authorProfile #authorProfileInfo #socials img {
     width: 10vw;
     height: 10vw;
   }
@@ -3393,6 +3525,7 @@
   .Article main article p {
     font-size: 1.1rem;
     line-height: 1.8;
+    margin: 10px 0;
   }
   .Article main article img {
     width: 100%;
@@ -3400,7 +3533,7 @@
     border-radius: 6px;
     justify-self: center;
     align-self: center;
-    margin: 20px 0;
+    margin: 10px 0 !important;
   }
   #WIP {
     min-height: 100vh;
@@ -3861,7 +3994,8 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    background-color: var(--simpleColor1);
+    color: var(--mainDark);
+    background: var(--mainLight);
     padding: 20px 10%;
   }
   #MainFooter p {
