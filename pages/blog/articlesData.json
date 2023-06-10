@@ -1,5 +1,17 @@
 [
   {
+    "urlSlug": "navigating-dark-mode-trend",
+    "publishDate": {
+      "timestampValue": "2023-06-10T08:00:00.000Z"
+    },
+    "description": "Discover the benefits of dark mode in web design and learn how to design websites that prioritize eye comfort. Navigate the dark mode trend with practical tips and techniques.",
+    "title": "Navigating the Dark Mode Trend: Designing Websites for Eye Comfort",
+    "isPublished": true,
+    "author": "Yassen Shopov",
+    "tags": ["Web Design", "UX", "Accessibility"],
+    "thumbnail": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/blog%2Fnavigating-dark-mode-trend%2Fthumbnail.webp?alt=media&token=ba740e3e-4ff7-4321-a7f9-f7e876409a8a&_gl=1*1tospw6*_ga*MTE1NDIyNjIyMi4xNjczMTk2MTM5*_ga_CW55HF8NVT*MTY4NjM5NDIzOS45MS4xLjE2ODYzOTYyOTMuMC4wLjA."
+  },
+  {
     "urlSlug": "5-web-design-trends-for-2023",
     "publishDate": {
       "timestampValue": "2023-06-08T21:00:00.520Z"
