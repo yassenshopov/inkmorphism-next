@@ -4,6 +4,10 @@ import { AiFillInfoCircle } from "react-icons/ai";
 import { useState } from "react";
 import MainFooter from "./components/MainFooter";
 import { TfiTime } from "react-icons/tfi";
+import app from "../firebase/clientApp";
+import { getAuth } from "firebase/auth";
+import useCreatorStatus from "../stripe/useCreatorStatus";
+import createCheckoutSession from "../stripe/createCheckoutSession";
 
 // Meta data:
 let title = "Inkmorphism Pricing | Affordable Plans for Every Need";
@@ -12,8 +16,10 @@ let description =
   "Choose from our range of affordable pricing plans for our AI-powered website builder and create stunning websites effortlessly.";
 let author = "Yassen Shopov";
 
-
 export default function Pricing() {
+  const [user, setUser] = useState(getAuth(app));
+  const isCreator = useCreatorStatus(user);
+
   const [monthlyPayment, setMonthlyPayment] = useState(true);
 
   function paymentModeToggle() {
@@ -210,7 +216,7 @@ export default function Pricing() {
                 }}
                 className="noSelect"
               >
-                To be announced <TfiTime/>
+                To be announced <TfiTime />
               </button>
               <ul>
                 <li>
@@ -276,17 +282,45 @@ export default function Pricing() {
             </div>
           </div>
         </section>
+        <section>
+          {!isCreator ? (
+            <button
+              onClick={() => {
+                console.log(user.currentUser.uid);
+                createCheckoutSession(user.currentUser.uid);
+              }}
+              id="subscribe"
+              className="noSelect"
+            >
+              Subscribe
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                window.location.href = "../dashboard";
+              }}
+              id="subscribe"
+              className="noSelect"
+            >
+              Go to dashboard
+            </button>
+          )}
+        </section>
         <section id="specialOffer">
           <div className="txt">
             <h2>Lifetime deal!</h2>
-            <h3>Limited time offer <span><TfiTime/></span></h3>
+            <h3>
+              Limited time offer{" "}
+              <span>
+                <TfiTime />
+              </span>
+            </h3>
             <p>
-              You can get lifetime access to the <strong>Creator</strong> plan for 449$
+              You can get lifetime access to the <strong>Creator</strong> plan
+              for 449$
             </p>
           </div>
-          <div className="visual">
-            {/* <img src="clock.png" /> */}
-          </div>
+          <div className="visual">{/* <img src="clock.png" /> */}</div>
         </section>
       </main>
 
