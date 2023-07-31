@@ -286,7 +286,6 @@ export default function Pricing() {
           {!isCreator ? (
             <button
               onClick={() => {
-                console.log(user.currentUser.uid);
                 createCheckoutSession(user.currentUser.uid);
               }}
               id="subscribe"

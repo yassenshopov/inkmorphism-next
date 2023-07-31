@@ -56,10 +56,11 @@
             ,
             <section
               key="1"
-              className="imgOnly "
+              className="imgAndTxt reverseHorizontal"
             >
+              <p>This is your new ImgNTxt section.</p>
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2F4A4gAMNhlEpny5Tv.png?alt=media&token=ec75b842-7b31-4fb9-94b2-1b27206f8370"
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2F2q0MicBSeDaX7OFr.png?alt=media&token=c89edd71-f8f8-400b-ba19-1e33809eee5a"
                 draggable="false"
                 loading="eager"
               />
@@ -67,11 +68,10 @@
             ,
             <section
               key="2"
-              className="imgAndTxt reverseHorizontal"
+              className="imgOnly "
             >
-              <p>This is your new ImgNTxt section.</p>
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2Fn8ifmkE2HZQngrHC.png?alt=media&token=19df1cb0-22ab-4097-9079-f2dd496b8a80"
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2F4u8mFoB0N5F1aqOg.png?alt=media&token=2e4251ac-317e-42a0-9ea9-5ba5579cee52"
                 draggable="false"
                 loading="eager"
               />
@@ -79,18 +79,21 @@
             ,
             <section
               key="3"
-              className="txtOnly reverseHorizontal"
+              className="imgOnly "
             >
-              <p>Hello to your new section</p>
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2F3DE0CUsedSqkNgtb.png?alt=media&token=b97db44f-43b3-445f-acb0-00062b72bc4b"
+                draggable="false"
+                loading="eager"
+              />
             </section>
             ,
             <section
               key="4"
-              className="imgAndTxt reverseHorizontal"
+              className="imgOnly "
             >
-              <p>This is your new ImgNTxt section.</p>
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2FbiZCMblvQP80WFFc.png?alt=media&token=24719f09-d0e3-49bf-b796-0279d44fc0af"
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2F4A4gAMNhlEpny5Tv.png?alt=media&token=ec75b842-7b31-4fb9-94b2-1b27206f8370"
                 draggable="false"
                 loading="lazy"
               />
@@ -102,7 +105,7 @@
             >
               <p>This is your new ImgNTxt section.</p>
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2F8Z8dThIL2mWh7rY6.png?alt=media&token=296ecaa8-7f24-4750-9c4e-28ee87ea3420"
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2Fn8ifmkE2HZQngrHC.png?alt=media&token=19df1cb0-22ab-4097-9079-f2dd496b8a80"
                 draggable="false"
                 loading="lazy"
               />
@@ -110,11 +113,11 @@
             ,
             <section
               key="6"
-              className="imgAndTxt directHorizontal"
+              className="imgAndTxt reverseHorizontal"
             >
-              <p>This is text some located minerals.</p>
+              <p>This is your new ImgNTxt section.</p>
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2FLIDyng1i4VdYd9gs.png?alt=media&token=610f43db-07f9-465e-b48e-006c5b856ee6"
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2F3gwGkuFJrBmk4Bio.png?alt=media&token=c429d0e1-298c-4b9f-bc13-40d9017a6df1"
                 draggable="false"
                 loading="lazy"
               />
@@ -122,22 +125,18 @@
             ,
             <section
               key="7"
-              className="imgAndTxt reverseHorizontal"
+              className="txtOnly reverseHorizontal"
             >
-              <p>This is your new ImgNTxt section.</p>
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2F0J25GB7VSJvILCsL.png?alt=media&token=7c1a9ca1-42f2-4bee-bb94-9229e9bc483c"
-                draggable="false"
-                loading="lazy"
-              />
+              <p>Hello to your new section</p>
             </section>
             ,
             <section
               key="8"
-              className="imgOnly "
+              className="imgAndTxt reverseHorizontal"
             >
+              <p>This is your new ImgNTxt section.</p>
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2FfIH2FODhl51LI66L.png?alt=media&token=de28d874-9c88-4ae4-a520-dd227f613686"
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2FbiZCMblvQP80WFFc.png?alt=media&token=24719f09-d0e3-49bf-b796-0279d44fc0af"
                 draggable="false"
                 loading="lazy"
               />
@@ -149,7 +148,7 @@
             >
               <p>This is your new ImgNTxt section.</p>
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2F0rPlA478EdnArTjh.png?alt=media&token=065bec95-e887-448d-b53a-84121c818ab1"
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2F8Z8dThIL2mWh7rY6.png?alt=media&token=296ecaa8-7f24-4750-9c4e-28ee87ea3420"
                 draggable="false"
                 loading="lazy"
               />
@@ -157,6 +156,53 @@
             ,
             <section
               key="10"
+              className="imgAndTxt directHorizontal"
+            >
+              <p>This is text some located minerals.</p>
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2FLIDyng1i4VdYd9gs.png?alt=media&token=610f43db-07f9-465e-b48e-006c5b856ee6"
+                draggable="false"
+                loading="lazy"
+              />
+            </section>
+            ,
+            <section
+              key="11"
+              className="imgAndTxt reverseHorizontal"
+            >
+              <p>This is your new ImgNTxt section.</p>
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2F0J25GB7VSJvILCsL.png?alt=media&token=7c1a9ca1-42f2-4bee-bb94-9229e9bc483c"
+                draggable="false"
+                loading="lazy"
+              />
+            </section>
+            ,
+            <section
+              key="12"
+              className="imgOnly "
+            >
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2FfIH2FODhl51LI66L.png?alt=media&token=de28d874-9c88-4ae4-a520-dd227f613686"
+                draggable="false"
+                loading="lazy"
+              />
+            </section>
+            ,
+            <section
+              key="13"
+              className="imgAndTxt reverseHorizontal"
+            >
+              <p>This is your new ImgNTxt section.</p>
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2F0rPlA478EdnArTjh.png?alt=media&token=065bec95-e887-448d-b53a-84121c818ab1"
+                draggable="false"
+                loading="lazy"
+              />
+            </section>
+            ,
+            <section
+              key="14"
               className="imgOnly "
             >
               <img
@@ -168,7 +214,7 @@
             ,
             <footer 
               className="footer"
-              key="11"
+              key="15"
             >
               <p id="watermark">
                 <a href="https://inkmorphism.com" target="_blank">
