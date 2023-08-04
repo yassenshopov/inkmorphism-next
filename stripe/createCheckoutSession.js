@@ -47,12 +47,13 @@ export default async function createCheckoutSession(uid) {
         console.log(snap)
         console.log(snap.data())
         const sessionData = snap.data();
+        let sessionId = sessionData.sessionId;
         if (sessionData && sessionData.sessionId) {
           // We have a session, let's redirect to Checkout
           // Init Stripe
           const stripe = await getStripe();
           console.log(stripe)
-          stripe.redirectToCheckout({ sessionId: sessionData.sessionId });
+          stripe.redirectToCheckout({sessionId: sessionId});
         }
       }
     } catch (err) {
