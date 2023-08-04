@@ -21,39 +21,39 @@ export default async function createCheckoutSession(uid) {
   //     cancel_url: window.location.origin + "/",
   //   }
   // );
-  const checkoutSessionRef = doc(
+  const checkoutSessionRef = collection(
     db,
     "users",
-    `user-${uid}`,
-    "checkout_sessions",
-    "active"
+    `${uid}`,
+    "checkout_sessions"
   );
 
   const checkoutSessionData = {
-    price: "price_1GqIC8HYgolSBA35zoTTN2Zl",
+    price: "price_1NHt89CwphplMhaR6UzbRKqT",
     success_url: window.location.origin,
     cancel_url: window.location.origin,
-    sessionId: "123", // Placeholder for the sessionId that will be added later
   };
 
-  setDoc(
+  const newCheckoutSessionRef = await addDoc(
     checkoutSessionRef,
     checkoutSessionData
   );
 
   // Wait for the CheckoutSession to get attached by the extension
-  onSnapshot(checkoutSessionRef, async (snap) => {
+  onSnapshot(newCheckoutSessionRef, async (snap) => {
+    console.log(snap)
     try {
-      console.log(snap);
-      console.log(snap.data());
-      const { sessionId } = snap.data();
-      console.log(sessionId==true)
-      if (sessionId) {
-        // We have a session, let's redirect to Checkout
-        // Init Stripe
-        const stripe = await getStripe();
-        console.log(stripe);
-        stripe.redirectToCheckout({ sessionId });
+      if (snap.exists()) {
+        console.log(snap)
+        console.log(snap.data())
+        const sessionData = snap.data();
+        if (sessionData && sessionData.sessionId) {
+          // We have a session, let's redirect to Checkout
+          // Init Stripe
+          const stripe = await getStripe();
+          console.log(stripe)
+          stripe.redirectToCheckout({ sessionId: sessionData.sessionId });
+        }
       }
     } catch (err) {
       console.log(err);
