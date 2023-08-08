@@ -129,9 +129,10 @@ export default function Pricing() {
             </h2>
             <div className="features">
               <button
-                onClick={() => {
-                  window.location.href = "../templates";
-                }}
+                  onClick={() => {
+                    let price = monthlyPayment ? 19 : 24;
+                    createCheckoutSession(user.currentUser.uid, price);
+                  }}
                 className="noSelect"
               >
                 Get started
@@ -282,7 +283,7 @@ export default function Pricing() {
             </div>
           </div>
         </section>
-        <section>
+        {/* <section>
           {!isCreator ? (
             <button
               onClick={() => {
@@ -319,8 +320,7 @@ export default function Pricing() {
               for 449$
             </p>
           </div>
-          <div className="visual">{/* <img src="clock.png" /> */}</div>
-        </section>
+        </section> */}
       </main>
 
       <MainFooter />

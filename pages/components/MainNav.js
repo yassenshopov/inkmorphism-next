@@ -61,11 +61,11 @@ export default function MainNav() {
           Blog
         </a>
         {auth.currentUser === null ? (
-          <a className="noSelect signIn" onClick={checkLogin}>
-            Sign in <FiLogIn />
+          <a className="noSelect signIn" href="/register" style={{fontWeight: 500}}>
+            Get started for free
           </a>
         ) : (
-          <a className="noSelect signIn" onClick={redirect}>
+          <a className="noSelect signIn" href="/dashboard">
             My dashboard
           </a>
         )}

@@ -87,8 +87,9 @@
 #MainNav {
   position: fixed;
   top: 0;
-  width: 80vw;
-  padding: 0px 10vw;
+  width: 100vw;
+  box-sizing: border-box;
+  padding: 0px 4vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -535,6 +536,7 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  width: 100vw;
 }
 #mainPage main {
   background: linear-gradient(var(--mainColor2), var(--mainColor3));
@@ -549,12 +551,53 @@
 }
 #mainPage main section {
   width: 100%;
-  padding: 40px 16vw;
+  padding: 60px 16vw;
   box-sizing: border-box;
   min-height: 400px;
+  background: var(--mainDark);
+  color: var(--mainLight);
+}
+#mainPage main section h2 {
+  color: var(--mainLight);
+  font-size: 4rem;
+  margin: 0 0 20px 0;
+  text-align: center;
+  font-family: "Roboto";
+  font-weight: 100;
 }
 #mainPage main section:nth-child(2n) {
-  backdrop-filter: blur(10px) saturate(1.4) brightness(1.2);
+  background-color: var(--mainLight);
+  color: var(--mainDark);
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#mainPage main section:nth-child(2n) h2 {
+  color: var(--mainDark);
+}
+#mainPage main .ctaBtn {
+  text-align: center;
+  display: block;
+  font-size: 1.4rem;
+  background-color: var(--mainDark);
+  color: var(--mainLight);
+  border: none;
+  padding: 1.5rem 4vw;
+  width: fit-content;
+  margin: 1.4rem 0;
+  text-decoration: none;
+  transition: all 200ms ease-in-out;
+  width: max-content;
+  border-radius: 2rem;
+  animation: buttonAnimation 1s infinite;
+  font-weight: 500;
+  cursor: pointer;
+}
+#mainPage main .ctaBtn:hover {
+  color: var(--mainDark);
+  background-color: var(--mainLight);
 }
 #mainPage main #hero {
   display: flex;
@@ -562,37 +605,103 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 180px 16vw 100px 16vw;
+  padding: 180px 16vw 60px 16vw;
   gap: 4vw;
   box-sizing: border-box;
+  background-color: var(--mainDark);
+  position: relative;
+}
+#mainPage main #hero .backgroundDecor {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  width: 8rem;
+  height: 8rem;
+  filter: blur(0.4rem) drop-shadow(4px 4px 0px #ff0000) drop-shadow(-4px -4px 0px #00ffff);
+  background-color: var(--mainDark);
+  border-radius: 50%;
+  z-index: 0;
+  transition: all 200ms ease-in-out;
+}
+#mainPage main #hero .backgroundDecor:nth-child(2) {
+  top: 5%;
+  right: 5%;
+  left: auto;
+  width: 10rem;
+  height: 10rem;
+}
+#mainPage main #hero .backgroundDecor:hover {
+  filter: blur(0.4rem) drop-shadow(4px -4px 0px #ff0000) drop-shadow(-4px 4px 0px #00ffff);
+}
+#mainPage main #hero #heroTxt {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--mainLight);
+  z-index: 1;
 }
 #mainPage main #hero #heroTxt h1 {
   margin: 0 0 50px 0;
-  font-weight: 1000;
-  font-size: 3.6rem;
+  font-weight: 100;
+  font-size: 5rem;
   color: var(--mainLight);
+  font-family: "Roboto";
+  width: 50vw;
+  box-sizing: border-box;
+}
+#mainPage main #hero #heroTxt h1 span {
+  font-weight: 1000;
+  filter: drop-shadow(2px 2px 0px rgba(255, 0, 0, 0.806)) drop-shadow(-2px -2px 0px rgba(0, 255, 255, 0.64));
+  transition: all 200ms ease-in-out;
+  color: var(--mainDark);
+}
+#mainPage main #hero #heroTxt h1:hover span {
+  filter: drop-shadow(3px 3px 0px rgba(0, 255, 255, 0.84)) drop-shadow(-3px -3px 0px rgba(255, 0, 0, 0.506));
 }
 #mainPage main #hero #heroTxt h2 {
   margin: 0 0 20px 0;
   font-size: 1.4rem;
   color: var(--mainLight);
+  font-weight: 100;
+  font-family: "WorkSans";
+}
+#mainPage main #hero #heroTxt h3 {
+  font-weight: 100;
+  font-size: 1rem;
 }
 #mainPage main #hero #heroTxt a {
   text-align: center;
   display: block;
-  font-size: 1.4rem;
-  color: var(--mainLight);
+  font-size: 1.6rem;
   background-color: var(--mainDark);
+  color: var(--mainLight);
   border: none;
-  padding: 20px 2vw;
+  padding: 1.5rem 4vw;
   width: fit-content;
-  font-family: "Oswald";
-  margin-top: 40px;
+  margin: 1.4rem 0;
   text-decoration: none;
   transition: all 200ms ease-in-out;
+  width: max-content;
+  border-radius: 2rem;
+  animation: buttonAnimation 1s infinite;
+  font-weight: 500;
 }
 #mainPage main #hero #heroTxt a:hover {
-  filter: drop-shadow(-3px 3px 0px red) drop-shadow(3px -3px 0px cyan);
+  color: var(--mainDark);
+  background-color: var(--mainLight);
+}
+@keyframes buttonAnimation {
+  0% {
+    filter: drop-shadow(-5px 5px 0px rgba(0, 255, 255, 0.84)) drop-shadow(5px -5px 0px rgba(255, 0, 0, 0.506));
+  }
+  50% {
+    filter: drop-shadow(5px 5px 0px rgba(0, 255, 255, 0.84)) drop-shadow(-5px -5px 0px rgba(255, 0, 0, 0.506));
+  }
+  100% {
+    filter: drop-shadow(-5px 5px 0px rgba(0, 255, 255, 0.84)) drop-shadow(5px -5px 0px rgba(255, 0, 0, 0.506));
+  }
 }
 @keyframes moveSites {
   0% {
@@ -609,33 +718,11 @@
     opacity: 0;
   }
 }
-#mainPage main #hero #exampleSites {
-  width: 34vw;
-  border-radius: 12px;
-  height: fit-content;
-  position: relative;
-}
-#mainPage main #hero #exampleSites img {
-  width: 34vw;
-  top: 0;
-  left: 0;
-  border-radius: 12px;
-  box-shadow: 1vw 1vw 4vw #fefefe70;
-  animation: moveSites 4s infinite 2s;
-}
-#mainPage main #hero #exampleSites > *:nth-child(2) {
-  position: absolute;
-  animation: moveSites 4s infinite 4s;
-}
-#mainPage main #hero #exampleSites > *:nth-child(3) {
-  position: absolute;
-  animation: moveSites 4s infinite 0s;
-}
 #mainPage main #partners {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--mainLight);
+  color: var(--mainDark);
   flex-direction: row;
   gap: 2vw;
   width: 100%;
@@ -646,20 +733,123 @@
 #mainPage main #partners img {
   max-height: 60px;
   transition: all 200ms ease-in-out;
+  filter: drop-shadow(-1px 1px 0px var(--mainDark)) drop-shadow(1px -1px 0px var(--mainDark));
 }
 #mainPage main #partners img:hover {
-  filter: drop-shadow(-3px 3px 0px red) drop-shadow(3px -3px 0px cyan);
+  transform: scale(1.1);
 }
 #mainPage main #partners div {
   width: 2vw;
   height: 1px;
-  background-color: var(--mainLight);
+  background-color: var(--mainDark);
+}
+#mainPage main #templateGallery {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 90vw;
+  gap: 2vw;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: fit-content;
+  margin: 40px 0;
+  scroll-behavior: smooth;
+}
+#mainPage main #templateGallery:hover .wrapper {
+  animation-play-state: paused;
+}
+@keyframes scrollAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+#mainPage main #templateGallery::-webkit-scrollbar-thumb {
+  width: 0px;
+  background: transparent;
+}
+#mainPage main #templateGallery::-webkit-scrollbar-track {
+  width: 0px;
+  background: transparent;
+}
+#mainPage main #templateGallery .wrapper {
+  flex: 0 0 45%;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 2vw;
+  min-height: fit-content;
+  height: 100%;
+  color: var(--mainDark);
+  border-radius: 12px;
+  animation: scrollAnimation 10s infinite linear;
+  text-align: left;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+#mainPage main #templateGallery .wrapper img {
+  width: 100%;
+  height: fit-content;
+  border-radius: 6px;
+  max-height: 20rem;
+}
+#mainPage main #templateGallery .wrapper h3 {
+  font-size: 1.6rem;
+}
+#mainPage main #howItWorks {
+  width: 100vw;
+  box-sizing: border-box;
+  padding-left: 0;
+  padding-right: 0;
+}
+#mainPage main #howItWorks div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 2vw;
+  width: 100vw;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: fit-content;
+  color: var(--mainLight);
+  font-family: "WorkSans";
+  font-weight: 100;
+  font-size: 1.6rem;
+}
+#mainPage main #howItWorks div .step {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  box-sizing: border-box;
+  padding: 0;
+  gap: 0;
+}
+#mainPage main #howItWorks div .step img {
+  width: 100%;
+  transition: all 200ms ease-in-out;
+  mix-blend-mode: color-dodge;
+}
+#mainPage main #howItWorks div .step p {
+  padding: 0;
+}
+#mainPage main #howItWorks div img:hover {
+  transform: scale(1.02);
+}
+#mainPage main #howItWorks p {
+  text-align: center;
+  font-size: 1.4rem;
+  padding: 40px 0;
 }
 #mainPage footer {
   width: 100%;
   min-height: 200px;
   padding: 40px 16vw;
   background: linear-gradient(to top, var(--mainColor2), var(--mainColor3));
+  background: var(--mainDark);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -3653,12 +3843,14 @@
     width: 100vw;
   }
   #mainPage main #hero {
-    padding: 160px 0vw 100px 0vw;
+    padding: 100px 0vw 40px 0vw;
     flex-direction: column;
     gap: 40px;
-    width: 90vw;
     justify-content: center;
     align-items: center;
+  }
+  #mainPage main #hero .backgroundDecor {
+    opacity: 0.1;
   }
   #mainPage main #hero #heroTxt {
     display: flex;
@@ -3668,14 +3860,21 @@
     text-align: center;
   }
   #mainPage main #hero #heroTxt h1 {
-    font-size: 3rem;
+    width: 90vw;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
   }
-  #mainPage main #hero #heroTxt * {
+  #mainPage main #hero #heroTxt *:not(span) {
     margin: 20px;
   }
   #mainPage main #hero #heroTxt a {
     padding: 20px 10vw;
-    margin: 30px 0 0 0;
+    width: 60%;
+    font-size: 1.4rem;
+  }
+  #mainPage main #hero #heroTxt h2 {
+    max-width: 80%;
+    font-size: 1.2rem;
   }
   #mainPage main #hero #exampleSites {
     width: 80%;
