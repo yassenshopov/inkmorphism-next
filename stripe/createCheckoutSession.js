@@ -10,7 +10,7 @@ import {
   addDoc,
 } from "firebase/firestore";
 
-export default async function createCheckoutSession(uid) {
+export default async function createCheckoutSession(uid, price) {
   const db = getFirestore(app);
 
   // const checkoutSesh = await addDoc(
@@ -29,9 +29,9 @@ export default async function createCheckoutSession(uid) {
   );
 
   const checkoutSessionData = {
-    price: "price_1NHt89CwphplMhaR6UzbRKqT",
+    price: (price === 19) ? "price_1NHt89CwphplMhaRaemsizbe" : "price_1NHt89CwphplMhaR6UzbRKqT",
     success_url: window.location.origin,
-    cancel_url: window.location.origin,
+    cancel_url: `${window.location.origin}/pricing`,
   };
 
   const newCheckoutSessionRef = await addDoc(
