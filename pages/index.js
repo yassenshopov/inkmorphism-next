@@ -112,29 +112,152 @@ export default function Home() {
           </div>
         </section>
         <section id="howItWorks">
-          <h2>How it works</h2>
+          <h2>How it works:</h2>
+          <p>
+            Our AI is trained on the latest design trends and can create a
+            website for you in seconds.
+          </p>
           <div>
             <div className="step">
               <img src="/main/step1.png" />
               <h3>Step 1</h3>
               <p>Choose a template</p>
+              <p>
+                - Explore a variety of templates <br />
+                - Choose the one that fits your needs <br />- Let our AI
+                generate a website for you
+              </p>
             </div>
             <div className="step">
               <img src="/main/step2.png" />
               <h3>Step 2</h3>
               <p>Enhance and customize</p>
+              <p>
+                - Add your own content <br />
+                - Customize the design <br />- Use our AI helpers to improve
+                your copy, images, and more
+              </p>
             </div>
             <div className="step">
               <img src="/main/step3.png" />
               <h3>Step 3</h3>
               <p>Launch your site</p>
+              <p>
+                - Connect your domain <br />
+                - Get ranked on Google <br />- Start receiving traffic
+              </p>
             </div>
           </div>
-          <p>
-            Our AI is trained on the latest design trends and can create a
-            website for you in seconds.
-          </p>
         </section>
+        <section id="features">
+          <h2>Features</h2>
+          <p>
+            Inkmorphism is the AI website builder that streamlines your design
+            process.
+          </p>
+          <div>
+            <div className="feature">
+              <img src="/main/feature1.png" />
+              <h3>AI helpers</h3>
+              <p>
+                Our AI helpers can improve your copy, images, and more. They
+                will help you create a stunning website effortlessly.
+              </p>
+            </div>
+            <div className="feature">
+              <img src="/main/feature2.png" />
+              <h3>Custom domains</h3>
+              <p>
+                Connect your own domain to your website. We will take care of
+                the rest.
+              </p>
+            </div>
+            <div className="feature">
+              <img src="/main/feature3.png" />
+              <h3>SEO</h3>
+              <p>
+                Our AI will help you rank on Google. We will take care of the
+                rest.
+              </p>
+            </div>
+            <div className="feature">
+              <img src="/main/feature4.png" />
+              <h3>Analytics</h3>
+              <p>
+                Track your website's performance with our built-in analytics
+                tools.
+              </p>
+            </div>
+            <div className="feature">
+              <img src="/main/feature5.png" />
+              <h3>Templates</h3>
+              <p>
+                Choose from a variety of templates to get started with your
+                website.
+              </p>
+            </div>
+            <div className="feature">
+              <img src="/main/feature6.png" />
+              <h3>Customization</h3>
+              <p>
+                Customize your website to fit your needs. Our AI will help you
+                with that.
+              </p>
+            </div>
+          </div>
+        </section>
+        {/* <section id="pricing">
+          <h2>Simple pricing</h2>
+          <p>
+            We offer a free plan for you to try out our product. If you like it,
+            you can upgrade to a paid plan.
+          </p>
+          <div id="pricingCards">
+            <div className="card">
+              <h3>Free</h3>
+              <p>Try out our product for free.</p>
+              <p>
+                - 1 website <br />
+                - 1 template <br />
+                - 1 page <br />
+                - 1 AI helper <br />
+                - 1 custom domain <br />
+                - 1 GB storage <br />
+                - 1 GB bandwidth <br />
+                - 1 email <br />
+                - 1 GB email storage <br />
+                - 1 GB email bandwidth <br />
+              </p>
+              <a className="ctaBtn noSelect" href="/templates">
+                Get started for free
+              </a>
+            </div>
+            <div className="card">
+              <h3>Pro</h3>
+              <p>Upgrade to a paid plan to unlock more features.</p>
+              <p>
+                - 1 website <br />
+                - 1 template <br />
+                - 1 page <br />
+              </p>
+              <a className="ctaBtn noSelect" href="/templates">
+                Get started for free
+              </a>
+            </div>
+            <div className="card">
+              <h3>Business</h3>
+              <p>Upgrade to a paid plan to unlock more features.</p>
+              <p>
+                - 1 website <br />
+                - 1 template <br />
+                - 1 page <br />
+              </p>
+              <a className="ctaBtn noSelect" href="/templates">
+                Get started for free
+              </a>
+            </div>
+          </div>
+        </section> */}
       </main>
 
       <footer>

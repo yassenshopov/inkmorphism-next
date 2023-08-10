@@ -1583,6 +1583,7 @@
 }
 #dash #websites > a .logoWrapper img {
   width: 2.4vw;
+  height: 2.4vw;
   background-color: #00000075;
   margin: 0;
 }
@@ -3953,6 +3954,7 @@
   }
   #dash #websites > a .logoWrapper img {
     width: 10vw;
+    height: 10vw;
   }
   #dash #websites > a .imgWrapper {
     width: 100%;
