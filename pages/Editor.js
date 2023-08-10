@@ -100,29 +100,6 @@ function Editor(props) {
     email: "me@something.com",
   });
 
-  // function getUserData() {
-  //   const storageRef = ref(storage, uid + "/profilePic.png");
-
-  //   const user = doc(db, "users", userName, "websites", props.name);
-  //   const data = await getDoc(col)
-  //     .then((doc) => {
-  //       dataArr.push(doc.data());
-  //       dataArr.forEach((item) => {
-  //         if (item !== undefined) {
-  //           try {
-  //             setData(item);
-  //             setPageData(item.webContent.pages.main.structure);
-  //             setLogoFile(item.webContent.meta.metaFavicon);
-  //             setThumbnailFile(item.webContent.meta.metaThumbnail);
-  //           } catch (err) {
-  //             console.log(err);
-  //           }
-  //         }
-  //       });
-  //     })
-  //   setUser()
-  // }
-
   // This is a smart roundabout => On the initial render, the button is clicked programmatically,
   // and thus the data that's been fetched is displayed on the page.
   useEffect(() => {
@@ -1110,14 +1087,25 @@ function Editor(props) {
   }
 
   const [isPublishToggleOn, setPublishToggle] = useState(false);
+  const [publishWebsiteToggle, setPublishWebsiteToggle] = useState(false);
 
   const handlePublishToggle = () => {
-    setPublishToggle(!isPublishToggleOn);
-    setData({
-      ...defaults,
-      published: !isPublishToggleOn,
-    });
-    setIsUnsavedChanges(true);
+    // Open popup that says:
+    // "This website is currently on the Free plan.
+    // Upgrade to the Creator plan to publish your website
+    // and gain access to all available features."
+    // If user clicks "Upgrade", redirect to /pricing -> with a param in URL for the site's slugURL
+    // If user clicks "Cancel", close popup
+    if (!isPublishToggleOn) {
+      setPublishWebsiteToggle(!publishWebsiteToggle);
+      setPublishToggle(!isPublishToggleOn);
+      setData({
+        ...defaults,
+        published: !isPublishToggleOn,
+      });
+      // setIsUnsavedChanges(true);
+      // saveNewData();
+    }
   };
 
   const [isUnsavedChanges, setIsUnsavedChanges] = useState(null);
@@ -1531,6 +1519,40 @@ function Editor(props) {
             </div>
           </form>
         </div>
+
+        <div
+          style={{ display: publishWebsiteToggle ? "flex" : "none" }}
+          id="popupWrapper"
+        >
+          <form id="popup">
+            <div id="publishWebsite">
+              <p id="message">
+                This website is currently on the Free plan. Upgrade to the
+                Creator plan to publish your website and gain access to all
+                available features.
+              </p>
+            </div>
+            <div id="buttons">
+              <p
+                onClick={() => {
+                  setPublishWebsiteToggle(false);
+                }}
+                className="noSelect"
+              >
+                Cancel
+              </p>
+              <p
+                onClick={() => {
+                  window.location.href = `/pricing?${props["name"]}`;
+                }}
+                className="noSelect green"
+              >
+                Upgrade
+              </p>
+            </div>
+          </form>
+        </div>
+
         <div id="mainEditorWrapper">
           <main
             className={defaults["webContent"]["meta"]["metaStyle"] + " editor"}
