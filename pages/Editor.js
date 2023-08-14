@@ -35,7 +35,12 @@ import logo from "../styles/images/logoWh.webp";
 import { useRouter } from "next/router";
 import Loader from "./components/loader.js";
 import HideContent from "./components/hideContent.js";
-import { TfiLayoutMediaLeft, TfiImage, TfiLayoutColumn3 } from "react-icons/tfi";
+import {
+  TfiLayoutMediaLeft,
+  TfiImage,
+  TfiLayoutColumn3,
+  TfiLayoutColumn2,
+} from "react-icons/tfi";
 import { RxCross1 } from "react-icons/rx";
 import { AiFillSetting, AiOutlineUser } from "react-icons/ai";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
@@ -143,6 +148,18 @@ function Editor(props) {
       },
       type: "imgOnly",
     },
+    grid2: {
+      content: {
+        img1: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fgrid3_img1.png?alt=media&token=73bdb872-b2dd-4413-845c-4f075cf38af6",
+        img2: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fgrid3_img2.png?alt=media&token=efa0ed56-6352-4415-858c-a4a861b7cb0a",
+        txt1: "This is your new Grid2 section.",
+        txt2: "This is your new Grid2 section.",
+      },
+      options: {
+        direction: "",
+      },
+      type: "grid2",
+    },
     grid3: {
       content: {
         img1: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fgrid3_img1.png?alt=media&token=73bdb872-b2dd-4413-845c-4f075cf38af6",
@@ -156,7 +173,7 @@ function Editor(props) {
         direction: "",
       },
       type: "grid3",
-    }
+    },
   };
 
   function addSectionPopup(ind) {
@@ -237,7 +254,12 @@ function Editor(props) {
       id: "grid3",
       icon: <TfiLayoutColumn3 />,
       name: "3-Column Grid",
-    }
+    },
+    {
+      id: "grid2",
+      icon: <TfiLayoutColumn2 />,
+      name: "2-Column Grid",
+    },
   ];
 
   const [popupToggle, setPopupToggle] = useState(false);
@@ -497,6 +519,92 @@ function Editor(props) {
                   contentEditable={true}
                 >
                   {section.content.txt3}
+                </p>
+              </article>
+              <p
+                className="editBtn noSelect"
+                onClick={() => {
+                  deleteSectionPopup(index);
+                }}
+              >
+                <BiEdit />
+              </p>
+              <div className="addSection">
+                <p
+                  onClick={() => {
+                    addSectionPopup(index + 1);
+                  }}
+                >
+                  Add section <FaPlus />
+                </p>
+              </div>
+            </section>
+          );
+        case "grid2":
+          return (
+            <section className={section.type + " " + section.options.direction}>
+              <div
+                onClick={() => {
+                  addSectionPopup(index);
+                }}
+                className="addSection"
+              >
+                <p>
+                  Add section <FaPlus />
+                </p>
+              </div>
+              <article>
+                <div className="imgWrapper">
+                  <img src={section.content.img1} draggable={false} />
+                  <div
+                    className="changeImg noSelect"
+                    onClick={() => {
+                      setIndexOfNewPic(index);
+                      setPropNameOfNewPic("img1");
+                      uploadNewImg();
+                    }}
+                  >
+                    Click to change image
+                  </div>
+                </div>
+                <p
+                  suppressContentEditableWarning={true}
+                  onBlur={(e) => {
+                    txtFieldChange2(e, index, "txt1");
+                  }}
+                  onFocus={(e) => {
+                    ogTxt = e.target.innerText;
+                  }}
+                  contentEditable={true}
+                >
+                  {section.content.txt1}
+                </p>
+              </article>
+              <article>
+                <div className="imgWrapper">
+                  <img src={section.content.img2} draggable={false} />
+                  <div
+                    className="changeImg noSelect"
+                    onClick={() => {
+                      setIndexOfNewPic(index);
+                      setPropNameOfNewPic("img2");
+                      uploadNewImg();
+                    }}
+                  >
+                    Click to change image
+                  </div>
+                </div>
+                <p
+                  suppressContentEditableWarning={true}
+                  onBlur={(e) => {
+                    txtFieldChange2(e, index, "txt2");
+                  }}
+                  onFocus={(e) => {
+                    ogTxt = e.target.innerText;
+                  }}
+                  contentEditable={true}
+                >
+                  {section.content.txt2}
                 </p>
               </article>
               <p

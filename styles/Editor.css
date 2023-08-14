@@ -371,7 +371,7 @@ label {
   width: 100%;
 }
 .Editor > main #mainEditorWrapper main > * {
-  min-height: 150px;
+  min-height: 100px;
   transition: all 400ms ease-in-out;
   position: relative;
   z-index: 1;
@@ -428,17 +428,17 @@ label {
   height: 100%;
 }
 .Editor > main #mainEditorWrapper main > *:first-child:hover {
-  background-color: #49494920;
   border-bottom: 2px solid var(--mainLight);
+  opacity: 0.8;
 }
 .Editor > main #mainEditorWrapper main > *:last-child:hover {
-  background-color: #49494920;
   border-top: 2px solid var(--mainLight);
+  opacity: 0.8;
 }
 .Editor > main #mainEditorWrapper main > *:not(:first-child, :last-child):hover {
   border-top: 2px solid var(--mainLight);
   border-bottom: 2px solid var(--mainLight);
-  background-color: #49494920;
+  opacity: 0.9;
 }
 .Editor > main #mainEditorWrapper main > * > *:hover > .editBtn {
   opacity: 1;
@@ -462,9 +462,8 @@ label {
   transition: all 400ms ease-in-out;
   z-index: 102;
   display: flex;
-}
-.Editor > main #mainEditorWrapper main .editBtn:hover {
-  background-color: var(--colorLight);
+  background-color: var(--mainLight);
+  color: var(--mainDark);
 }
 .Editor > main #mainEditorWrapper main .addSection:first-child {
   top: -2px;
@@ -500,7 +499,7 @@ label {
   padding: 10px 4vw;
   font-size: 1rem;
   border-radius: 0 0 24px 24px;
-  box-shadow: 0 0px 20px #fefefe20;
+  box-shadow: 0 0 10px #49494960;
   cursor: pointer;
   border: none;
 }

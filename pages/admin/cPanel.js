@@ -30,6 +30,7 @@ export default function CPanel() {
       }
       const userInfo = doc(db, `users/` + uid);
       let data = await getDoc(userInfo);
+      console.log(data.data());
       setIsAdmin(data.data().isAdmin);
     } catch (err) {
       console.log(err);
