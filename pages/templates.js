@@ -18,6 +18,8 @@ import defaultProfilePic from "../styles/images/defaultProfilePic.png";
 import defaultLogo from "../styles/images/logoPlace.png";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import Loader from "./components/loader.js";
+import MainNav from "./components/MainNav.js";
+import MainFooter from "./components/MainFooter.js";
 
 let domainSlug;
 let newSite;
@@ -228,14 +230,12 @@ export default function Templates() {
     }
   }, [defaultThumbnail]);
 
-  const templatesArr = ["simple"];
+  const templatesArr = ["simple", "glassmorphism", "minimalism", "neobrutalism", "web3"];
   const templates = templatesArr.map((template, index) => (
     <article key={index}>
       <div className="imgWrapper">
-        <img src={"templates/" + template + "Template.png"} />
-      </div>
-      <h2>{template.slice(0, 1).toUpperCase() + template.slice(1)}</h2>
-      <div id="hiddenBtns">
+        <img src={"main/" + template + "Thumbnail.png"} />
+        <div id="hiddenBtns">
         <a
           className="noSelect"
           onClick={() => {
@@ -248,6 +248,8 @@ export default function Templates() {
           Preview Template
         </a>
       </div>
+      </div>
+      <h2>{template.slice(0, 1).toUpperCase() + template.slice(1)}</h2>
     </article>
   ));
 
@@ -262,8 +264,12 @@ export default function Templates() {
 
       <button id="fetch" onClick={getData}></button>
 
-      <Dashnav profile_pic={userData.profile_pic} auth={auth} />
+      {/* <Dashnav profile_pic={userData.profile_pic} auth={auth} /> */}
+      < MainNav />
       <main id="templatesWrapper">
+        <section>
+          <h1>Templates</h1>
+        </section>
         <section id="templates">
           {templates}
           {/* <article>
@@ -358,7 +364,7 @@ export default function Templates() {
           </article> */}
         </section>
       </main>
-      <Dashfooter />
+      < MainFooter />
     </div>
   );
 }

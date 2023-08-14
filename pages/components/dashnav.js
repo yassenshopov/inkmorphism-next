@@ -1,4 +1,4 @@
-import logo from '../../styles/images/logo.png';
+import logo from '../../styles/images/logoWh.webp';
 import app from "../../firebase/clientApp";
 import { getAuth } from 'firebase/auth'
 import { getFirestore, collection, getDoc, doc, setDoc } from 'firebase/firestore/lite';
@@ -8,8 +8,6 @@ import { useEffect, useState } from 'react';
 import { FiLogOut, FiUser } from 'react-icons/fi'
   
 export default function Dashnav(props) { 
-
-    // console.log(props.auth)
 
     const [loadBool, setLoadBool] = useState(false)
 
@@ -45,7 +43,6 @@ export default function Dashnav(props) {
                 <a className="noSelect" href='../dashboard'>Dashboard</a>
                 <div id='profileMenu'>
                     <a href="../account">My account < FiUser /></a>
-                    {/* <p>|</p> */}
                     <p id="signOut" onClick={openPopup} className="noSelect">Log out < FiLogOut /></p>
                     <div id='profilePic'>
                         <img src={props.profile_pic} className={"noSelect"}/>

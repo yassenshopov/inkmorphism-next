@@ -628,14 +628,11 @@ label {
 }
 .Editor aside #mainLogo {
   width: 4vw;
-  height: 4vw;
-  transition: all 400ms ease-in-out;
-  border-radius: 50%;
+  height: auto;
+  transition: all 200ms ease-in-out;
 }
 .Editor aside #mainLogo:hover {
-  transform: rotate(-360deg);
   filter: invert(1);
-  box-shadow: 0 0 20px 0 rgba(147, 147, 147, 0.2);
 }
 .Editor aside #publishWebsite {
   display: flex;
