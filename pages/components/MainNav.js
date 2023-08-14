@@ -47,7 +47,7 @@ export default function MainNav() {
       {loadBool ? <Loader /> : ""}
 
       <a href="/" id="logo" className="noSelect">
-        <img src="/logoWh.png" />
+        <img src="/logoWh.webp" />
         <p>Inkmorphism</p>
       </a>
       <div>

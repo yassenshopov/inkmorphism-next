@@ -146,8 +146,15 @@
   justify-content: space-between;
   align-items: center;
   gap: 1vw;
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   z-index: 9;
+}
+#MainNav #logo img {
+  width: 60px;
+  height: auto;
+  object-fit: cover;
+  margin: auto;
+  padding-top: 4px;
 }
 #MainNav .signIn {
   transition: all 200ms ease-in-out;
@@ -529,6 +536,17 @@
   transform: skewX(-10deg);
   margin-bottom: -30px;
 }
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(1vh);
+  visibility: hidden;
+  transition: opacity 400ms ease-in-out, transform 400ms ease-in-out;
+}
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}
 #mainPage {
   font-family: "WorkSans";
   display: flex;
@@ -539,7 +557,6 @@
   width: 100vw;
 }
 #mainPage main {
-  background: linear-gradient(var(--mainColor2), var(--mainColor3));
   min-height: 100vh;
   width: 100%;
   display: flex;
@@ -783,7 +800,6 @@
   height: 100%;
   color: var(--mainDark);
   border-radius: 12px;
-  animation: scrollAnimation 10s infinite linear;
   text-align: left;
   box-sizing: border-box;
   text-decoration: none;
@@ -843,6 +859,35 @@
   text-align: center;
   font-size: 1.4rem;
   padding: 40px 0;
+}
+#mainPage main #features #featuresPane {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  grid-template-areas: "a b c" "d e f";
+  gap: 6vw;
+  width: 100%;
+  padding: 80px 6vw;
+}
+#mainPage main #features #featuresPane .feature {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  gap: 0;
+}
+#mainPage main #features #featuresPane .feature img {
+  width: 100%;
+  transition: all 200ms ease-in-out;
+}
+#mainPage main #features #featuresPane .feature img:hover {
+  transform: scale(1.02);
+}
+#mainPage main #features #featuresPane .feature p {
+  padding: 0;
 }
 #mainPage footer {
   width: 100%;
@@ -1379,9 +1424,7 @@
   color: var(--mainLight) !important;
 }
 #dashnav #logo:hover img {
-  transform: rotate(-360deg);
   filter: invert(1);
-  box-shadow: -10px -10px 10px #12121210, 10px 10px 10px #ffffff10;
 }
 #dashnav a,
 #dashnav p {
@@ -1389,10 +1432,9 @@
   transition: all 200ms ease-in-out;
 }
 #dashnav img {
-  height: 60px;
-  border-radius: 50%;
+  width: 60px;
+  height: auto;
   transition: all 200ms ease-in-out;
-  box-shadow: 10px 10px 10px #12121240, -10px -10px 10px #ffffff16;
 }
 #dashnav > div,
 #dashnav > a {
@@ -1400,7 +1442,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 2vw;
+  gap: 1vw;
   font-size: 1.4rem;
   text-decoration: none;
 }
@@ -1646,13 +1688,21 @@
 #templatesWrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
   font-family: "Noto";
   color: #fff;
-  padding: 80px 10vw;
+  padding: 120px 4vw 80px;
   font-family: "Oswald";
-  background: linear-gradient(var(--mainColor2), var(--mainColor3));
-  width: 80vw;
+  background-color: var(--mainDark);
+  width: 100vw;
+  box-sizing: border-box;
+}
+#templatesWrapper h1 {
+  margin: 0;
+  font-size: 3rem;
+  color: var(--mainLight);
+  text-align: left;
+  padding: 0 1vw 40px;
+  font-weight: 400;
 }
 #templatesWrapper #templates {
   display: grid;
@@ -1660,40 +1710,36 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: fit-content fit-content fit-content;
   row-gap: 60px;
-  column-gap: 6vw;
+  column-gap: 2vw;
   min-height: 60vh;
 }
 #templatesWrapper #templates article {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  border-radius: 15px;
-  box-shadow: 10px 10px 10px #12121220, -10px -10px 10px #ffffff09;
-  transition: all 200ms ease-in-out;
-  overflow: hidden;
+  border-radius: 6px;
   position: relative;
   font-family: "WorkSans";
-  background-color: var(--mainLight);
   color: var(--mainDark);
-  filter: saturate(1.2);
+  height: fit-content;
+}
+#templatesWrapper #templates article h2 {
+  color: var(--mainLight);
+  padding: 0 1vw;
+  font-weight: 100;
 }
 #templatesWrapper #templates article .imgWrapper {
   z-index: 1;
   width: 100%;
   overflow: hidden;
-  height: 550px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  height: max-content;
 }
 #templatesWrapper #templates article .imgWrapper img {
   width: 100%;
-  height: fit-content;
 }
-#templatesWrapper #templates article a {
-  text-decoration: none;
-  color: #fff;
-}
-#templatesWrapper #templates article #hiddenBtns {
+#templatesWrapper #templates article .imgWrapper #hiddenBtns {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -1701,39 +1747,40 @@
   align-items: center;
   z-index: 2;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(var(--mainColor1), var(--mainColor2));
+  height: 80%;
+  background: linear-gradient(0deg, #ffffff90, #ffffff);
   opacity: 0;
   transition: all 300ms ease-in-out;
   gap: 40px;
+  border-radius: 6px;
   filter: saturate(2);
+  top: 0;
 }
-#templatesWrapper #templates article #hiddenBtns * {
+#templatesWrapper #templates article .imgWrapper #hiddenBtns * {
   cursor: pointer;
 }
-#templatesWrapper #templates article #hiddenBtns a {
-  font-family: "WorkSans";
+#templatesWrapper #templates article .imgWrapper #hiddenBtns a {
   font-weight: 1000;
   text-transform: uppercase;
   color: var(--mainDark);
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   transition: all 200ms ease-in-out;
   border-bottom: 2px solid #10101000;
   padding: 0 0 10px 0;
   min-width: 60%;
   max-width: 80%;
+  text-align: center;
+  font-weight: 500;
 }
-#templatesWrapper #templates article #hiddenBtns > *:nth-child(2) {
-  color: var(--mainLight);
-}
-#templatesWrapper #templates article #hiddenBtns a:hover {
+#templatesWrapper #templates article .imgWrapper #hiddenBtns a:hover {
   border-bottom: 2px solid var(--mainDark);
 }
-#templatesWrapper #templates article #hiddenBtns a:nth-child(2):hover {
-  border-bottom: 2px solid var(--mainLight);
-}
-#templatesWrapper #templates article #hiddenBtns:hover {
+#templatesWrapper #templates article .imgWrapper #hiddenBtns:hover {
   opacity: 1;
+}
+#templatesWrapper #templates article a {
+  text-decoration: none;
+  color: #fff;
 }
 #dashfooter {
   display: flex;

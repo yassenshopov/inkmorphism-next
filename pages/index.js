@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
 import MainNav from "./components/MainNav";
+import { useState, useEffect } from "react";
 
 // Meta data:
 let title = "Inkmorphism - the AI Website Builder";
@@ -10,6 +11,31 @@ let description =
 let author = "Yassen Shopov";
 
 export default function Home() {
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const element = document.querySelectorAll('.fade-in-section');
+      console.log("---------");
+      if (element) {
+        for (let i = 0; i < element.length; i++) {
+          const rect = element[i].getBoundingClientRect();
+          console.log(rect.y + rect.height);
+          if (rect.y < window.innerHeight && (rect.y + rect.height) > 0) {
+            element[i].classList.add('is-visible');
+          } else {
+            element[i].classList.remove('is-visible');
+          }
+        }
+      }
+      console.log("---------");
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check on initial load
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div id="mainPage" className="darkMode">
       <Head>
@@ -53,7 +79,7 @@ export default function Home() {
           </div> */}
         </section>
 
-        <section id="partners">
+        <section id="partners" className={`fade-in-section`}>
           <a className="noSelect" href="https://openai.com/">
             <img src="main/openaiLogo.png" />
           </a>
@@ -67,7 +93,7 @@ export default function Home() {
 
         <section></section>
 
-        <section>
+        <section className={`fade-in-section`}>
           <h2>A template for every one of your needs</h2>
           <p>
             Choose from a variety of templates to get started with your website.
@@ -111,7 +137,7 @@ export default function Home() {
             </a>
           </div>
         </section>
-        <section id="howItWorks">
+        <section id="howItWorks" className={`fade-in-section`}>
           <h2>How it works:</h2>
           <p>
             Our AI is trained on the latest design trends and can create a
@@ -149,13 +175,13 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section id="features">
+        <section id="features" className={`fade-in-section`}>
           <h2>Features</h2>
           <p>
             Inkmorphism is the AI website builder that streamlines your design
             process.
           </p>
-          <div>
+          <div id="featuresPane">
             <div className="feature">
               <img src="/main/feature1.png" />
               <h3>AI helpers</h3>

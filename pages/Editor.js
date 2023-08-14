@@ -31,7 +31,7 @@ import {
   FaMoon,
 } from "react-icons/fa";
 import Head from "next/head";
-import logo from "../styles/images/logoWh.png";
+import logo from "../styles/images/logoWh.webp";
 import { useRouter } from "next/router";
 import Loader from "./components/loader.js";
 import HideContent from "./components/hideContent.js";
@@ -1090,12 +1090,6 @@ function Editor(props) {
   const [publishWebsiteToggle, setPublishWebsiteToggle] = useState(false);
 
   const handlePublishToggle = () => {
-    // Open popup that says:
-    // "This website is currently on the Free plan.
-    // Upgrade to the Creator plan to publish your website
-    // and gain access to all available features."
-    // If user clicks "Upgrade", redirect to /pricing -> with a param in URL for the site's slugURL
-    // If user clicks "Cancel", close popup
     if (!isPublishToggleOn) {
       setPublishWebsiteToggle(!publishWebsiteToggle);
       setPublishToggle(!isPublishToggleOn);
