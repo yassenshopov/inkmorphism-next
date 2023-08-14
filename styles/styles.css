@@ -2992,7 +2992,7 @@
 }
 .simple,
 .skeletal {
-  background: linear-gradient(var(--color1), var(--color2));
+  background-color: var(--colorLight);
   width: 100vw;
   min-height: fit-content;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -3009,6 +3009,15 @@
 .skeletal img {
   border-radius: 16px;
   width: 100%;
+}
+.simple > *:nth-child(2n + 1),
+.skeletal > *:nth-child(2n + 1) {
+  background-color: var(--color1);
+  color: var(--colorLight);
+}
+.simple > *:nth-child(2n + 1) #navLogo p,
+.skeletal > *:nth-child(2n + 1) #navLogo p {
+  color: var(--colorLight);
 }
 .txtOnly {
   display: flex;
@@ -3065,6 +3074,43 @@
 .grid3 article img {
   border-radius: 6px;
   width: 100%;
+}
+.grid3 article .imgWrapper .changeImg {
+  font-size: 1.2rem !important;
+  text-align: center;
+}
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  gap: 2vw;
+  padding: 80px 10%;
+}
+.grid2 article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1vw;
+  padding: 20px 2vw;
+}
+.grid2 article h2 {
+  font-size: 2.2rem;
+  width: fit-content;
+  height: 50px;
+  text-align: center;
+}
+.grid2 article p {
+  font-size: 1.2rem;
+  padding: 0;
+}
+.grid2 article img {
+  border-radius: 6px;
+  width: 100%;
+}
+.grid2 article .imgWrapper .changeImg {
+  font-size: 1.2rem !important;
+  text-align: center;
 }
 .nav {
   display: flex;
@@ -4300,11 +4346,44 @@
   .skeletal {
     overflow-x: hidden;
   }
+  .nav #navLogo {
+    height: 60px;
+  }
   .nav p {
     display: none;
   }
   .footer {
     flex-direction: column-reverse;
+  }
+  .grid3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .grid3 article {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    gap: 40px;
+  }
+  .grid3 article p {
+    line-height: 1.8;
+  }
+  .grid2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .grid2 article {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    gap: 40px;
+  }
+  .grid2 article p {
+    line-height: 1.8;
   }
   .imgAndTxt {
     flex-direction: column-reverse;

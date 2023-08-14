@@ -15,11 +15,9 @@ export default function Home() {
   useEffect(() => {
     const handleScroll = () => {
       const element = document.querySelectorAll('.fade-in-section');
-      console.log("---------");
       if (element) {
         for (let i = 0; i < element.length; i++) {
           const rect = element[i].getBoundingClientRect();
-          console.log(rect.y + rect.height);
           if (rect.y < window.innerHeight && (rect.y + rect.height) > 0) {
             element[i].classList.add('is-visible');
           } else {
@@ -27,7 +25,6 @@ export default function Home() {
           }
         }
       }
-      console.log("---------");
     };
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Check on initial load
