@@ -2400,6 +2400,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       column-gap: 1vw;
+      row-gap: 1vw;
       width: 100%;
       padding: 10px 2vw 50px;
       box-sizing: border-box;
@@ -3225,6 +3226,36 @@
     width: 100% !important;
     border-radius: 0;
     height: auto;
+  }
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 2vw;
+  padding: 80px 10%;
+  article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
+    padding: 20px 2vw;
+    h2 {
+      font-size: 2.2rem;
+      width: fit-content;
+      height: 50px;
+      text-align: center;
+    }
+    p {
+      font-size: 1.2rem;
+      padding: 0;
+    }
+    img {
+      border-radius: 6px;
+      width: 100%;
+    }
   }
 }
 
