@@ -2915,7 +2915,7 @@
   color: var(--colorDark);
   background: var(--colorLight);
 }
-.industrial > div:nth-child(2n + 1) > * {
+.industrial > div:nth-child(2n + 1) > *:not(.hero) {
   background-color: var(--color1);
 }
 .industrial > div:nth-child(2n) > * {
@@ -2934,6 +2934,42 @@
   font-size: 1.4rem;
   font-weight: 1000;
   color: inherit;
+}
+.industrial .hero .txtWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 10%;
+  text-align: left;
+  width: 60%;
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 2;
+  top: 10%;
+  transform: translateY(10%);
+}
+.industrial .hero .txtWrapper > * {
+  padding: 10px 1vw;
+}
+.industrial .hero .txtWrapper h2 {
+  font-size: 3.4rem;
+  font-weight: 1000;
+  margin: 0;
+}
+.industrial .hero .txtWrapper p {
+  width: 100%;
+  line-height: 1.5;
+  box-sizing: border-box;
+  font-size: 2.4rem;
+}
+.industrial .hero .imgWrapper {
+  width: 100% !important;
+  z-index: 1;
+}
+.industrial .hero .imgWrapper img {
+  width: 100%;
+  filter: brightness(0.5);
 }
 .industrial .imgAndTxt {
   padding: 0;

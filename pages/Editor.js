@@ -40,6 +40,7 @@ import {
   TfiImage,
   TfiLayoutColumn3,
   TfiLayoutColumn2,
+  TfiWidget,
 } from "react-icons/tfi";
 import { RxCross1 } from "react-icons/rx";
 import { AiFillSetting, AiOutlineUser } from "react-icons/ai";
@@ -175,6 +176,17 @@ function Editor(props) {
       },
       type: "grid3",
     },
+    hero: {
+      content: {
+        heading: "This is your new Hero section.",
+        txt: "This is your new Hero section.",
+        img: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fhero_img.png?alt=media&token=cd992c4a-c6c3-4a68-bed7-e0efdeba8df5"
+      },
+      options: {
+        direction: "",
+      },
+      type: "hero",
+    },
   };
 
   function addSectionPopup(ind) {
@@ -265,6 +277,11 @@ function Editor(props) {
       id: "grid2",
       icon: <TfiLayoutColumn2 />,
       name: "2-Column Grid",
+    },
+    {
+      id: "hero",
+      icon: <TfiWidget />,
+      name: "Hero Section",
     },
   ];
 
@@ -667,6 +684,81 @@ function Editor(props) {
                 className="editBtn noSelect"
                 onClick={() => {
                   deleteSectionPopup(index, "2 Column Section");
+                }}
+              >
+                <BiEdit />
+              </p>
+              <div className="addSection">
+                <p
+                  onClick={() => {
+                    addSectionPopup(index + 1);
+                  }}
+                >
+                  Add section <FaPlus />
+                </p>
+              </div>
+            </section>
+          );
+        case "hero":
+          return (
+            <section className={section.type}>
+              <div
+                onClick={() => {
+                  addSectionPopup(index);
+                }}
+                className="addSection"
+              >
+                <p>
+                  Add section <FaPlus />
+                </p>
+              </div>
+              <div className="txtWrapper">
+                {
+                  section.content.h1 !== "" ? (
+                    <h2
+                    suppressContentEditableWarning={true}
+                    onBlur={(e) => {
+                      txtFieldChange2(e, index, "heading");
+                    }}
+                    onFocus={(e) => {
+                      ogTxt = e.target.innerText;
+                    }}
+                    contentEditable={true}
+                  >
+                    {section.content.heading}
+                  </h2>
+                  ) : null
+                }
+                <p
+                  suppressContentEditableWarning={true}
+                  onBlur={(e) => {
+                    txtFieldChange2(e, index, "txt");
+                  }}
+                  onFocus={(e) => {
+                    ogTxt = e.target.innerText;
+                  }}
+                  contentEditable={true}
+                >
+                  {section.content.txt}
+                </p>
+              </div>
+              <div className="imgWrapper">
+                <img src={section.content.img} draggable={false} />
+                <div
+                  className="changeImg noSelect"
+                  onClick={() => {
+                    setIndexOfNewPic(index);
+                    setPropNameOfNewPic("img");
+                    uploadNewImg();
+                  }}
+                >
+                  Click to change image
+                </div>
+              </div>
+              <p
+                className="editBtn noSelect"
+                onClick={() => {
+                  deleteSectionPopup(index, "Image and Text Section");
                 }}
               >
                 <BiEdit />
