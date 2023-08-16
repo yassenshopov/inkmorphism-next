@@ -2,6 +2,7 @@ import Head from "next/head";
 import { FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
 import MainNav from "./components/MainNav";
 import { useState, useEffect } from "react";
+import MainFooter from "./components/MainFooter";
 
 // Meta data:
 let title = "Inkmorphism - the AI Website Builder";
@@ -11,25 +12,24 @@ let description =
 let author = "Yassen Shopov";
 
 export default function Home() {
-
   useEffect(() => {
     const handleScroll = () => {
-      const element = document.querySelectorAll('.fade-in-section');
+      const element = document.querySelectorAll(".fade-in-section");
       if (element) {
         for (let i = 0; i < element.length; i++) {
           const rect = element[i].getBoundingClientRect();
-          if (rect.y < window.innerHeight && (rect.y + rect.height) > 0) {
-            element[i].classList.add('is-visible');
+          if (rect.y < window.innerHeight && rect.y + rect.height > 0) {
+            element[i].classList.add("is-visible");
           } else {
-            element[i].classList.remove('is-visible');
+            element[i].classList.remove("is-visible");
           }
         }
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     handleScroll(); // Check on initial load
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -99,6 +99,11 @@ export default function Home() {
             Get started for free
           </a>
           <div id="templateGallery">
+          <a className="wrapper" href="/templates/Industrial" target="_blank">
+              <img src="/main/IndustrialThumbnail.png" loading="lazy" />
+              <h3>Industrial</h3>
+              <p>Industrial, a modern template for your business.</p>
+            </a>
             <a className="wrapper" href="/templates/minimalism" target="_blank">
               <img src="/main/minimalismThumbnail.png" loading="lazy" />
               <h3>Minimalism</h3>
@@ -283,7 +288,9 @@ export default function Home() {
         </section> */}
       </main>
 
-      <footer>
+      <MainFooter />
+
+      {/* <footer>
         <p>Inkmorphism © 2023</p>
         <div id="socialLinks">
           <a
@@ -308,7 +315,7 @@ export default function Home() {
             <FaLinkedin />
           </a>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 }
