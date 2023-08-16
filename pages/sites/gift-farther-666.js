@@ -6,7 +6,7 @@
 
           useEffect(() => {
             const root = document.documentElement;
-            root.style.setProperty("--scrollbarThumb", "#ffffff");
+            root.style.setProperty("--scrollbarThumb", "#3f5a44");
             root.style.setProperty("--scrollbarTrack", "#121212");
           }, []);
 
@@ -14,12 +14,12 @@
             <main
               className={"skeletal published"}
               style={{
-                "--color1": "#ffffff",
+                "--color1": "#3f5a44",
                 "--color2": "#ffffff",
                 "--color3": "#79e16b",
                 "--colorLight": "#fefefe",
                 "--colorDark": "#121212",
-                "--scrollbarThumb": "#ffffff",
+                "--scrollbarThumb": "#3f5a44",
                 "--scrollbarTrack": "#121212",
               }}
             >
@@ -56,13 +56,6 @@
             ,
             <section
               key="1"
-              className="txtOnly reverseHorizontal"
-            >
-              <p>Hello to your new se ction</p>
-            </section>
-            ,
-            <section
-              key="2"
               className="imgAndTxt reverseHorizontal"
             >
               <p>This is your new ImgNTxt section.</p>
@@ -72,20 +65,39 @@
                 loading="eager"
               />
             </section>
-            ,
+            ,,
             <section
               key="3"
+              className="txtOnly reverseHorizontal"
+            >
+              <p>Hello to your new se ction</p>
+            </section>
+            ,
+            <section
+              key="4"
+              className="imgAndTxt reverseHorizontal"
+            >
+              <p>This is your new ImgNTxt section.</p>
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2FimgAndTxt.png?alt=media&token=754fc70d-7640-4975-9077-6d46b953d15b"
+                draggable="false"
+                loading="lazy"
+              />
+            </section>
+            ,
+            <section
+              key="5"
               className="imgOnly "
             >
               <img
                 src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2FimgOnly.png?alt=media&token=ec1b1d09-f378-4223-8f47-13e6469d5ebb"
                 draggable="false"
-                loading="eager"
+                loading="lazy"
               />
             </section>
             ,
             <section
-              key="4"
+              key="6"
               className="imgOnly "
             >
               <img
@@ -94,16 +106,16 @@
                 loading="lazy"
               />
             </section>
-            ,
+            ,,,
             <section
-              key="5"
+              key="9"
               className="txtOnly reverseHorizontal"
             >
               <p>Hello to your new section! Here you can type whatever!</p>
             </section>
             ,
             <section
-              key="6"
+              key="10"
               className="imgOnly "
             >
               <img
@@ -114,7 +126,7 @@
             </section>
             ,
             <section
-              key="7"
+              key="11"
               className="imgAndTxt reverseHorizontal"
             >
               <p>This is your new ImgNTxt section.</p>
@@ -126,7 +138,7 @@
             </section>
             ,
             <section
-              key="8"
+              key="12"
               className="imgAndTxt reverseHorizontal"
             >
               <p>This is your new ImgNTxt section.</p>
@@ -138,7 +150,7 @@
             </section>
             ,
             <section
-              key="9"
+              key="13"
               className="imgAndTxt reverseHorizontal"
             >
               <p>This is your new ImgNTxt section.</p>
@@ -150,7 +162,7 @@
             </section>
             ,
             <section
-              key="10"
+              key="14"
               className="imgOnly "
             >
               <img
@@ -159,10 +171,10 @@
                 loading="lazy"
               />
             </section>
-            ,
+            ,,
             <footer 
               className="footer"
-              key="11"
+              key="16"
             >
               <p id="watermark">
                 <a href="https://inkmorphism.com" target="_blank">

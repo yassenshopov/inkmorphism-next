@@ -1,9 +1,5 @@
 import app from "../../firebase/clientApp";
-import {
-  getFirestore,
-  getDoc,
-  doc,
-} from "firebase/firestore/lite";
+import { getFirestore, getDoc, doc } from "firebase/firestore/lite";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import Head from "next/head";
 import React, { useState, useEffect } from "react";
@@ -84,6 +80,43 @@ export default function Default() {
   }
 
   useEffect(() => {
+    try {
+      let main = document.querySelector(".published main");
+      for (let i = 0; i < main.children.length; i++) {
+        if (main.children[i].id !== "emptySection") {
+          console.log(
+            window.getComputedStyle(main.children[i])[
+              "background-color"
+            ]
+          );
+          main.children[i].children[0].style.color = getContrastYIQfromBG(
+            window.getComputedStyle(main.children[i])[
+              "background-color"
+            ]
+          );
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }, [fullSite]);
+  function getContrastYIQfromBG(rgbColor) {
+    console.log(rgbColor);
+
+    // Extracting the individual color components from the RGB format
+    var rgbValues = rgbColor.substring(4, rgbColor.length - 1).split(",");
+    var r = parseInt(rgbValues[0].trim());
+    var g = parseInt(rgbValues[1].trim());
+    var b = parseInt(rgbValues[2].trim());
+
+    // Calculating YIQ value
+    var yiq = (r * 299 + g * 587 + b * 114) / 1000;
+    console.log(yiq);
+
+    return yiq >= 128 ? "var(--colorDark)" : "var(--colorLight)";
+  }
+
+  useEffect(() => {
     const sections = pageData.map((section, index) => {
       switch (section.type) {
         case "txtOnly":
@@ -101,12 +134,17 @@ export default function Default() {
               key={index}
               className={section.type + " " + section.options.direction}
             >
-              <p>{section.content.txt}</p>
+              <div className="txtWrapper">
+                <h2>{section.content.heading}</h2>
+                <p>{section.content.txt}</p>
+              </div>
+              <div className="imgWrapper">
               <img
                 src={section.content.img}
                 draggable={false}
                 loading={index > 3 ? "lazy" : "eager"}
               />
+              </div>
             </section>
           );
         case "nav":
@@ -122,7 +160,9 @@ export default function Default() {
           return (
             <footer className={section.type} key={index}>
               <p id="watermark">
-                <a href="https://inkmorphism.com" target="_blank">Built with Inkmorphism 🖋️</a>
+                <a href="https://inkmorphism.com" target="_blank">
+                  Built with Inkmorphism 🖋️
+                </a>
               </p>
               <p>{section.content.txt}</p>
             </footer>
@@ -185,7 +225,7 @@ export default function Default() {
         ></meta>
       </Head>
       <button id="fetch" onClick={getData}></button>
-      {fullSite}
+      <main>{fullSite}</main>
     </div>
   );
 }

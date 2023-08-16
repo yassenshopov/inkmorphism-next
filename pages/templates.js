@@ -175,6 +175,7 @@ export default function Templates() {
         name: "Fuzzy Beats",
         style: styleVar.slice(0, 1).toUpperCase() + styleVar.slice(1),
         thumbnail: defaultThumbnail,
+        pageType: "SPA",
         webContent: {
           meta: {
             colorPalette: {
@@ -230,7 +231,7 @@ export default function Templates() {
     }
   }, [defaultThumbnail]);
 
-  const templatesArr = ["simple", "glassmorphism", "minimalism", "neobrutalism", "web3"];
+  const templatesArr = ["simple", "glassmorphism", "minimalism", "neobrutalism", "web3", "industrial"];
   const templates = templatesArr.map((template, index) => (
     <article key={index}>
       <div className="imgWrapper">
