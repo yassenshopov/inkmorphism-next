@@ -85,14 +85,10 @@ export default function Default() {
       for (let i = 0; i < main.children.length; i++) {
         if (main.children[i].id !== "emptySection") {
           console.log(
-            window.getComputedStyle(main.children[i])[
-              "background-color"
-            ]
+            window.getComputedStyle(main.children[i])["background-color"]
           );
           main.children[i].children[0].style.color = getContrastYIQfromBG(
-            window.getComputedStyle(main.children[i])[
-              "background-color"
-            ]
+            window.getComputedStyle(main.children[i])["background-color"]
           );
         }
       }
@@ -139,11 +135,11 @@ export default function Default() {
                 <p>{section.content.txt}</p>
               </div>
               <div className="imgWrapper">
-              <img
-                src={section.content.img}
-                draggable={false}
-                loading={index > 3 ? "lazy" : "eager"}
-              />
+                <img
+                  src={section.content.img}
+                  draggable={false}
+                  loading={index > 3 ? "lazy" : "eager"}
+                />
               </div>
             </section>
           );
@@ -180,10 +176,119 @@ export default function Default() {
               />
             </section>
           );
+        case "grid2":
+          return (
+            <section
+              key={index}
+              className={section.type + " " + section.options.direction}
+            >
+              <article>
+                <div className="imgWrapper">
+                  <img
+                    src={section.content.img1}
+                    draggable={false}
+                    loading={index > 3 ? "lazy" : "eager"}
+                  />
+                </div>
+                <p>{section.content.txt1}</p>
+              </article>
+              <article>
+                <div className="imgWrapper">
+                  <img
+                    src={section.content.img2}
+                    draggable={false}
+                    loading={index > 3 ? "lazy" : "eager"}
+                  />
+                </div>
+                <p>{section.content.txt2}</p>
+              </article>
+            </section>
+          );
+        // case "grid3":
+        //   return (
+        //     <section
+        //       key={index}
+        //       className={section.type + " " + section.options.direction}
+        //     >
+        //       <article>
+        //         <div className="imgWrapper">
+        //           <img
+        //             src={section.content.img1}
+        //             draggable={false}
+        //             loading={index > 3 ? "lazy" : "eager"}
+        //           />
+        //         </div>
+        //         <p>{section.content.txt1}</p>
+        //       </article>
+        //       <article>
+        //         <div className="imgWrapper">
+        //           <img
+        //             src={section.content.img2}
+        //             draggable={false}
+        //             loading={index > 3 ? "lazy" : "eager"}
+        //           />
+        //         </div>
+        //         <p>{section.content.txt2}</p>
+        //       </article>
+        //       <article>
+        //         <div className="imgWrapper">
+        //           <img
+        //             src={section.content.img3}
+        //             draggable={false}
+        //             loading={index > 3 ? "lazy" : "eager"}
+        //           />
+        //         </div>
+        //         <p>{section.content.txt3}</p>
+        //       </article>
+        //     </section>
+        //   );
+        // case "grid2":
+        //   return (
+        //     <section
+        //       key={index}
+        //       className={section.type + " " + section.options.direction}
+        //     >
+        //       <article>
+        //         <div className="imgWrapper">
+        //           <img
+        //             src={section.content.img1}
+        //             draggable={false}
+        //             loading={index > 3 ? "lazy" : "eager"}
+        //           />
+        //         </div>
+        //         <p>{section.content.txt1}</p>
+        //       </article>
+        //       <article>
+        //         <div className="imgWrapper">
+        //           <img
+        //             src={section.content.img2}
+        //             draggable={false}
+        //             loading={index > 3 ? "lazy" : "eager"}
+        //           />
+        //         </div>
+        //         <p>{section.content.txt2}</p>
+        //       </article>
+        //     </section>
+        //   );
+        // case "hero":
+        //   return (
+        //     <section key={index} className={section.type}>
+        //       <div className="txtWrapper">
+        //         {section.content.heading !== "" ? (
+        //           <h2>{section.content.heading}</h2>
+        //         ) : null}
+        //         <p>{section.content.txt}</p>
+        //       </div>
+        //       <div className="imgWrapper">
+        //         <img src={section.content.img} draggable={false} />
+        //       </div>
+        //     </section>
+        //   );
         default:
           break;
       }
     });
+
     setFullSite(sections);
   }, [pageData]);
 

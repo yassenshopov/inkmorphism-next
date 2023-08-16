@@ -40,7 +40,7 @@ export default function Dashnav(props) {
                 <p>Inkmorphism</p>
             </a>
             <div id='rightPane'>
-                <a className="noSelect" href='../dashboard'>Dashboard</a>
+                <a className="noSelect" href='../dashboard'>My dashboard</a>
                 <div id='profileMenu'>
                     <a href="../account">My account < FiUser /></a>
                     <p id="signOut" onClick={openPopup} className="noSelect">Log out < FiLogOut /></p>
@@ -56,7 +56,7 @@ export default function Dashnav(props) {
                 <div id='bar3'></div>
             </div>
             <div id='overlayMenu' className={mobileToggle}>
-                <a className="noSelect" href='../dashboard'>Dashboard</a>
+                <a className="noSelect" href='../dashboard'>My dashboard</a>
                 <a href="../account">My account < FiUser /></a>
                 <p id="signOut" onClick={openPopup} className="noSelect">Log out < FiLogOut /></p>
             </div>

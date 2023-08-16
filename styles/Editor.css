@@ -530,6 +530,7 @@ label {
   max-height: 80vh;
   overflow-y: scroll;
   scroll-behavior: smooth;
+  font-family: "Raleway", sans-serif;
 }
 .Editor aside input[type="color"] {
   padding: 0;
@@ -661,6 +662,7 @@ label {
 .Editor aside #publishWebsite .publishToggle p {
   position: absolute;
   top: 25%;
+  transform: translateY(25%);
   left: 16%;
   background-color: transparent;
   color: var(--mainLight);
