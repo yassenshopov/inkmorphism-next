@@ -103,7 +103,8 @@
   align-items: center;
 }
 #MainFooter #socialLinks a:hover {
-  background-color: #00000040;
+  color: var(--mainLight);
+  filter: drop-shadow(3px 3px 0px red) drop-shadow(-3px -3px 0px cyan);
 }
 #MainNav {
   position: fixed;
@@ -4178,6 +4179,16 @@
   }
   #mainPage {
     width: 100vw;
+    overflow-x: hidden;
+  }
+  #mainPage main {
+    width: 100%;
+  }
+  #mainPage main section p {
+    text-align: center;
+  }
+  #mainPage main section h2 {
+    font-size: 2.5rem;
   }
   #mainPage main #hero {
     padding: 100px 0vw 40px 0vw;
@@ -4213,28 +4224,6 @@
     max-width: 80%;
     font-size: 1.2rem;
   }
-  #mainPage main #hero #exampleSites {
-    width: 80%;
-    margin: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  #mainPage main #hero #exampleSites img {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-  }
-  #mainPage main #hero #exampleSites > *:nth-child(1) {
-    animation: moveSites 4s infinite;
-  }
-  #mainPage main #hero #exampleSites > *:nth-child(2) {
-    animation: moveSites 4s infinite 1s;
-  }
-  #mainPage main #hero #exampleSites > *:nth-child(3) {
-    animation: moveSites 4s infinite 2s;
-  }
   #mainPage main #partners {
     font-size: 1rem;
     padding: 40px 0;
@@ -4248,6 +4237,56 @@
     width: 0vw;
     height: 10px;
     background-color: var(--mainLight);
+  }
+  #mainPage main #templateGallery .wrapper {
+    flex: 0 0 80%;
+    padding: 0 6vw;
+  }
+  #mainPage main #templateGallery .wrapper img {
+    border-radius: 0px;
+  }
+  #mainPage main #templateGallery .wrapper p {
+    text-align: left;
+  }
+  #mainPage main #templateGallery .wrapper h3 {
+    font-size: 1.2rem;
+  }
+  #mainPage main #features {
+    padding: 40px 10vw;
+    box-sizing: border-box;
+    flex-direction: column;
+    gap: 10px;
+    width: 100vw;
+    max-width: 100vw;
+    text-align: center;
+  }
+  #mainPage main #features #featuresPane {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  #mainPage main #features #featuresPane .feature {
+    box-sizing: border-box;
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+  #mainPage main #features #featuresPane .feature .featureImg {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  #mainPage main #features #featuresPane .feature h3 {
+    font-size: 1.5rem;
+  }
+  #mainPage main #features #featuresPane .feature p {
+    font-size: 1rem;
   }
   #mainPage footer {
     flex-direction: column-reverse;
