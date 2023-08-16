@@ -132,6 +132,7 @@ function Editor(props) {
     imgAndTxt: {
       content: {
         txt: "This is your new ImgNTxt section.",
+        heading: "Heading",
         img: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2FimgAndTxt.png?alt=media&token=754fc70d-7640-4975-9077-6d46b953d15b",
       },
       options: {
@@ -197,16 +198,21 @@ function Editor(props) {
     );
   }
 
-  function deleteSectionPopup(ind) {
+  function deleteSectionPopup(ind, type) {
     setEditPopupToggle(true);
     setDeleteBtn(
-      <p
-        onClick={() => {
-          deleteSection(ind);
-        }}
-      >
-        Delete this section
-      </p>
+      <>
+        <h2>
+          <span style={{ fontWeight: 400 }}>Type:</span> {type}
+        </h2>
+        <p
+          onClick={() => {
+            deleteSection(ind);
+          }}
+        >
+          Delete this section
+        </p>
+      </>
     );
   }
 
@@ -321,6 +327,34 @@ function Editor(props) {
     return <div ref={dragRef}>{content}</div>;
   };
 
+  useEffect(() => {
+    try {
+      let main = document.querySelector("main.editor");
+      for (let i = 0; i < main.children.length; i++) {
+        if (main.children[i].id !== "emptySection") {
+          main.children[i].children[0].style.color = getContrastYIQfromBG(
+            window.getComputedStyle(main.children[i].children[0])[
+              "background-color"
+            ]
+          );
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }, [sectionsData, defaults]);
+  function getContrastYIQfromBG(rgbColor) {
+    // Extracting the individual color components from the RGB format
+    var rgbValues = rgbColor.substring(5, rgbColor.length - 1).split(",");
+    var r = parseInt(rgbValues[0].trim());
+    var g = parseInt(rgbValues[1].trim());
+    var b = parseInt(rgbValues[2].trim());
+
+    // Calculating YIQ value
+    var yiq = (r * 299 + g * 587 + b * 114) / 1000;
+    return yiq >= 128 ? "var(--colorDark)" : "var(--colorLight)";
+  }
+
   let ogTxt = "";
 
   function turnIntoSection(section, index) {
@@ -328,7 +362,11 @@ function Editor(props) {
       switch (section.type) {
         case "txtOnly":
           return (
-            <section className={section.type + " " + section.options.direction}>
+            <section
+              key={index}
+              className={section.type + " " + section.options.direction}
+              // style={{ color: getContrastYIQfromBG(index) }}
+            >
               <div
                 onClick={() => {
                   addSectionPopup(index);
@@ -354,7 +392,7 @@ function Editor(props) {
               <p
                 className="editBtn noSelect"
                 onClick={() => {
-                  deleteSectionPopup(index);
+                  deleteSectionPopup(index, "Text Section");
                 }}
               >
                 <BiEdit />
@@ -383,18 +421,36 @@ function Editor(props) {
                   Add section <FaPlus />
                 </p>
               </div>
-              <p
-                suppressContentEditableWarning={true}
-                onBlur={(e) => {
-                  txtFieldChange(e, index);
-                }}
-                onFocus={(e) => {
-                  ogTxt = e.target.innerText;
-                }}
-                contentEditable={true}
-              >
-                {section.content.txt}
-              </p>
+              <div className="txtWrapper">
+                {
+                  section.content.h1 !== "" ? (
+                    <h2
+                    suppressContentEditableWarning={true}
+                    onBlur={(e) => {
+                      txtFieldChange2(e, index, "heading");
+                    }}
+                    onFocus={(e) => {
+                      ogTxt = e.target.innerText;
+                    }}
+                    contentEditable={true}
+                  >
+                    {section.content.heading}
+                  </h2>
+                  ) : null
+                }
+                <p
+                  suppressContentEditableWarning={true}
+                  onBlur={(e) => {
+                    txtFieldChange2(e, index, "txt");
+                  }}
+                  onFocus={(e) => {
+                    ogTxt = e.target.innerText;
+                  }}
+                  contentEditable={true}
+                >
+                  {section.content.txt}
+                </p>
+              </div>
               <div className="imgWrapper">
                 <img src={section.content.img} draggable={false} />
                 <div
@@ -411,7 +467,7 @@ function Editor(props) {
               <p
                 className="editBtn noSelect"
                 onClick={() => {
-                  deleteSectionPopup(index);
+                  deleteSectionPopup(index, "Image and Text Section");
                 }}
               >
                 <BiEdit />
@@ -524,7 +580,7 @@ function Editor(props) {
               <p
                 className="editBtn noSelect"
                 onClick={() => {
-                  deleteSectionPopup(index);
+                  deleteSectionPopup(index, "3 Column Section");
                 }}
               >
                 <BiEdit />
@@ -610,7 +666,7 @@ function Editor(props) {
               <p
                 className="editBtn noSelect"
                 onClick={() => {
-                  deleteSectionPopup(index);
+                  deleteSectionPopup(index, "2 Column Section");
                 }}
               >
                 <BiEdit />
@@ -670,7 +726,9 @@ function Editor(props) {
                   Add section <FaPlus />
                 </p>
               </div>
-              <p id="watermark">Built with Inkmorphism 🖋️</p>
+              <p id="watermark">
+                Built with Inkmorphism <img src="../logoWh.webp" />
+              </p>
               <p
                 suppressContentEditableWarning={true}
                 onBlur={(e) => {
@@ -686,7 +744,7 @@ function Editor(props) {
               <p
                 className="editBtn noSelect"
                 onClick={() => {
-                  deleteSectionPopup(index);
+                  deleteSectionPopup(index, "Footer");
                 }}
               >
                 <BiEdit />
@@ -736,7 +794,7 @@ function Editor(props) {
               <p
                 className="editBtn noSelect"
                 onClick={() => {
-                  deleteSectionPopup(index);
+                  deleteSectionPopup(index, "Image Section");
                 }}
               >
                 <BiEdit />

@@ -41,6 +41,27 @@
   font-family: "Roboto";
   src: url("fonts/Roboto-Medium.ttf") format("truetype");
 }
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/raleway/v28/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVuEooCP.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/raleway/v28/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVvaooCP.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/raleway/v28/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVsEpYCP.ttf) format('truetype');
+}
 ::-webkit-scrollbar {
   width: var(--scrollbarWidth);
 }
@@ -2207,12 +2228,26 @@
   padding: 0 10vw 40px 10vw;
   color: var(--mainDark);
 }
-#popupWrapper #popup #editSectionDeleteBtn * {
+#popupWrapper #popup #editSectionDeleteBtn {
+  margin-top: -40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+  padding: 0 10vw 40px 10vw;
+}
+#popupWrapper #popup #editSectionDeleteBtn h2 {
+  font-family: "Oswald";
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 200;
+}
+#popupWrapper #popup #editSectionDeleteBtn p {
   color: var(--mainLight);
   background-color: #912323;
   border-radius: 12px;
-  padding: 20px 4vw;
-  margin: 0 0 40px 0;
+  padding: 10px 2vw;
   cursor: pointer;
 }
 #popupWrapper #popup #customX {
@@ -2806,6 +2841,78 @@
   gap: 2vw;
   font-size: 2rem;
 }
+.industrial {
+  font-family: "Raleway", sans-serif;
+  color: var(--colorDark);
+  background: var(--colorLight);
+}
+.industrial > div:nth-child(2n + 1) > * {
+  background-color: var(--color1);
+}
+.industrial > div:nth-child(2n) > * {
+  background-color: var(--color2);
+}
+.industrial .nav {
+  justify-content: left;
+}
+.industrial .nav #navLogo {
+  height: fit-content;
+}
+.industrial .nav #navLogo img {
+  height: 5rem;
+}
+.industrial .nav #navLogo p {
+  font-size: 1.4rem;
+  font-weight: 1000;
+  color: inherit;
+}
+.industrial .imgAndTxt {
+  padding: 0;
+  gap: 0;
+}
+.industrial .imgAndTxt > *.txtWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10%;
+  text-align: left;
+  width: 60% !important;
+  box-sizing: border-box;
+}
+.industrial .imgAndTxt > *.txtWrapper > * {
+  padding: 10px 1vw;
+}
+.industrial .imgAndTxt > *.txtWrapper h2 {
+  font-size: 2.4rem;
+  font-weight: 1000;
+  margin: 0;
+}
+.industrial .imgAndTxt > *.txtWrapper p {
+  width: 100%;
+  line-height: 1.5;
+  box-sizing: border-box;
+  font-size: 1.4rem;
+}
+.industrial .imgAndTxt > *.imgWrapper {
+  width: 40% !important;
+}
+.industrial .imgAndTxt > *.imgWrapper img {
+  width: 100%;
+}
+.industrial .footer {
+  min-height: 100px;
+}
+.industrial.published main > *:nth-child(2n + 1) {
+  background-color: var(--color1);
+}
+.industrial.published main:nth-child(2n) {
+  background-color: var(--color2);
+}
+.industrial.published main > *:nth-child(2n + 1) * {
+  background-color: transparent;
+}
+.industrial.published main > *:nth-child(2n) * {
+  background-color: transparent;
+}
 .simple.previewTemplate {
   display: flex;
   flex-direction: column;
@@ -3030,7 +3137,7 @@
   font-size: 1.2rem;
   cursor: pointer;
   padding: 10px 1vw;
-  caret-color: #000000;
+  caret-color: inherit;
 }
 .imgOnly {
   display: flex;
@@ -3051,7 +3158,7 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
   gap: 2vw;
-  padding: 80px 10%;
+  padding: 20px 10%;
 }
 .grid3 article {
   display: flex;
@@ -3084,7 +3191,7 @@
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto;
   gap: 2vw;
-  padding: 80px 10%;
+  padding: 20px 10%;
 }
 .grid2 article {
   display: flex;
@@ -3105,8 +3212,10 @@
   padding: 0;
 }
 .grid2 article img {
-  border-radius: 6px;
   width: 100%;
+}
+.grid2 article .imgWrapper {
+  border-radius: 6px;
 }
 .grid2 article .imgWrapper .changeImg {
   font-size: 1.2rem !important;
@@ -3154,6 +3263,11 @@
   color: var(--colorDark);
   text-decoration: none;
 }
+.footer #watermark img {
+  height: 16px;
+  width: auto;
+  padding: 0 0 0 0.4vw;
+}
 .footer p {
   text-align: center;
   cursor: pointer;
@@ -3180,17 +3294,11 @@
 .directHorizontal {
   flex-direction: row;
 }
-.directHorizontal > * {
-  width: 50% !important;
-}
 .directHorizontal p {
   width: 40%;
 }
 .reverseHorizontal {
   flex-direction: row-reverse;
-}
-.reverseHorizontal > * {
-  width: 50% !important;
 }
 .reverseHorizontal p {
   width: 40%;

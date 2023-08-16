@@ -50,6 +50,8 @@
   src: url("./fonts/Roboto-Medium.ttf") format("truetype");
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap");
+
 ::-webkit-scrollbar {
   width: var(--scrollbarWidth);
 }
@@ -2362,12 +2364,24 @@
       color: var(--mainDark);
     }
     #editSectionDeleteBtn {
-      * {
+      margin-top: -40px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 2vw;
+      padding: 0 10vw 40px 10vw;
+      h2 {
+        font-family: "Oswald";
+        margin: 0;
+        font-size: 1.4rem;
+        font-weight: 200;
+      }
+      p {
         color: var(--mainLight);
         background-color: #912323;
         border-radius: 12px;
-        padding: 20px 4vw;
-        margin: 0 0 40px 0;
+        padding: 10px 2vw;
         cursor: pointer;
       }
     }
@@ -2574,9 +2588,9 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-.noSelect:focus {
-  outline: none !important;
+  &:focus {
+    outline: none !important;
+  }
 }
 
 .Neobrutalism {
@@ -2985,6 +2999,91 @@
   }
 }
 
+.industrial {
+  font-family: "Raleway", sans-serif;
+  color: var(--colorDark);
+  background: var(--colorLight);
+  > div {
+    &:nth-child(2n + 1) > * {
+      background-color: var(--color1);
+    }
+    &:nth-child(2n) > * {
+      background-color: var(--color2);
+    }
+  }
+  .nav {
+    justify-content: left;
+    #navLogo {
+      height: fit-content;
+      img {
+        height: 5rem;
+      }
+      p {
+        font-size: 1.4rem;
+        font-weight: 1000;
+        color: inherit;
+      }
+    }
+  }
+  .imgAndTxt {
+    padding: 0;
+    gap: 0;
+    > * {
+      &.txtWrapper {
+        display: flex;
+        flex-direction: column;
+        padding: 0 10%;
+        text-align: left;
+        width: 60% !important;
+        box-sizing: border-box;
+        & > * {
+          padding: 10px 1vw;
+        }
+        h2 {
+          font-size: 2.4rem;
+          font-weight: 1000;
+          margin: 0;
+        }
+        p {
+          width: 100%;
+          line-height: 1.5;
+          box-sizing: border-box;
+          font-size: 1.4rem;
+        }
+      }
+      &.imgWrapper {
+        width: 40% !important;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .footer {
+    min-height: 100px;
+  }
+}
+
+.industrial.published {
+  main {
+    
+    & > *:nth-child(2n + 1) {
+      background-color: var(--color1);
+    }
+    &:nth-child(2n) {
+      background-color: var(--color2);
+    }
+    > * {
+      &:nth-child(2n + 1) * {
+        background-color: transparent;
+      }
+      &:nth-child(2n) * {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
 .simple.previewTemplate {
   display: flex;
   flex-direction: column;
@@ -3217,7 +3316,7 @@
     font-size: 1.2rem;
     cursor: pointer;
     padding: 10px 1vw;
-    caret-color: #000000;
+    caret-color: inherit;
   }
 }
 
@@ -3241,7 +3340,7 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
   gap: 2vw;
-  padding: 80px 10%;
+  padding: 20px 10%;
   article {
     display: flex;
     flex-direction: column;
@@ -3277,7 +3376,7 @@
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto;
   gap: 2vw;
-  padding: 80px 10%;
+  padding: 20px 10%;
   article {
     display: flex;
     flex-direction: column;
@@ -3296,10 +3395,10 @@
       padding: 0;
     }
     img {
-      border-radius: 6px;
       width: 100%;
     }
     .imgWrapper {
+      border-radius: 6px;
       .changeImg {
         font-size: 1.2rem !important;
         text-align: center;
@@ -3349,6 +3448,11 @@
       color: var(--colorDark);
       text-decoration: none;
     }
+    img {
+      height: 16px;
+      width: auto;
+      padding: 0 0 0 0.4vw;
+    }
   }
   p {
     text-align: center;
@@ -3382,7 +3486,7 @@
 .directHorizontal {
   flex-direction: row;
   > * {
-    width: 50% !important;
+    // width: 50% !important;
   }
   p {
     width: 40%;
@@ -3392,7 +3496,7 @@
 .reverseHorizontal {
   flex-direction: row-reverse;
   > * {
-    width: 50% !important;
+    // width: 50%;
   }
   p {
     width: 40%;

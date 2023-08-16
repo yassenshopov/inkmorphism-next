@@ -375,19 +375,17 @@ label {
   transition: all 400ms ease-in-out;
   position: relative;
   z-index: 1;
-  border-top: 2px solid #12121200;
-  border-bottom: 2px solid #12121200;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.Editor > main #mainEditorWrapper main > * p[contenteditable="true"] {
+.Editor > main #mainEditorWrapper main > * *[contenteditable="true"] {
   transition: all 200ms ease-in-out;
   border-radius: 6px;
   border: 1px solid #00000000;
 }
-.Editor > main #mainEditorWrapper main > * p[contenteditable="true"]:hover {
+.Editor > main #mainEditorWrapper main > * *[contenteditable="true"]:hover {
   background-color: #83838321;
   border: 1px solid var(--mainDark);
 }
@@ -428,17 +426,16 @@ label {
   height: 100%;
 }
 .Editor > main #mainEditorWrapper main > *:first-child:hover {
-  border-bottom: 2px solid var(--mainLight);
   opacity: 0.8;
+  box-shadow: 0 0 10px #49494960;
 }
 .Editor > main #mainEditorWrapper main > *:last-child:hover {
-  border-top: 2px solid var(--mainLight);
   opacity: 0.8;
+  box-shadow: 0 0 10px #49494960;
 }
 .Editor > main #mainEditorWrapper main > *:not(:first-child, :last-child):hover {
-  border-top: 2px solid var(--mainLight);
-  border-bottom: 2px solid var(--mainLight);
   opacity: 0.9;
+  box-shadow: 0 0 10px #49494960;
 }
 .Editor > main #mainEditorWrapper main > * > *:hover > .editBtn {
   opacity: 1;

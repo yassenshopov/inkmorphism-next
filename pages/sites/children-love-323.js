@@ -65,9 +65,9 @@
                 loading="eager"
               />
             </section>
-            ,,,,
+            ,,,,,
             <section
-              key="6"
+              key="7"
               className="imgAndTxt reverseHorizontal"
             >
               <p>Example 2askdla</p>
@@ -79,7 +79,7 @@
             </section>
             ,
             <section
-              key="7"
+              key="8"
               className="imgAndTxt reverseHorizontal"
             >
               <p>This is your new ImgNTxt adassection.</p>
@@ -91,7 +91,7 @@
             </section>
             ,
             <section
-              key="8"
+              key="9"
               className="imgAndTxt reverseHorizontal"
             >
               <p>This is your new ImgNTxt section.</p>
@@ -104,7 +104,7 @@
             ,
             <footer 
               className="footer"
-              key="9"
+              key="10"
             >
               <p id="watermark">
                 <a href="https://inkmorphism.com" target="_blank">
