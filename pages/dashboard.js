@@ -16,6 +16,8 @@ import placeholder from "../styles/images/placeholder.png";
 import defaultProfilePic from "../styles/images/defaultProfilePic.png";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
+import MainFooter from "./components/MainFooter.js";
+import { MdOutlineModeEditOutline } from "react-icons/md";
 
 export default function Dashboard() {
   const [userDataDB, setUserDB] = useState({
@@ -43,9 +45,7 @@ export default function Dashboard() {
   function daysTillDeletion(obj) {
     try {
       const now = new Date();
-      const deletionDate = new Date(
-        obj.seconds * 1000
-      );
+      const deletionDate = new Date(obj.seconds * 1000);
       const daysPassed = Math.floor(
         (now - deletionDate) / (1000 * 60 * 60 * 24)
       );
@@ -90,15 +90,16 @@ export default function Dashboard() {
           return a.domainSlug.localeCompare(b.domainSlug);
         }
       });
-      console.log(websitesArray.existing)
+      console.log(websitesArray.existing);
       const websites = websitesArray.existing.map((site) => (
-        <a
+        <article
           key={site.domain}
-          href={"../config/" + site.domainSlug}
           className="noSelect"
-          style={{
-            backgroundColor: site.published ? "#ffffff10" : "#00000020",
-          }}
+          style={
+            {
+              // backgroundColor: site.published ? "#ffffff10" : "#00000020",
+            }
+          }
         >
           <div className="imgWrapper">
             <img
@@ -109,19 +110,24 @@ export default function Dashboard() {
           <div className="logoWrapper">
             <img src={site.webContent.meta.metaFavicon} loading="lazy" />
           </div>
-          <h2>{site.name}</h2>
-          <p>{site.style}</p>
-          <div>
-            {/* <a href={"https://" + site.domain} target="_blank">
-              {site.domain}
-            </a> */}
+          <div className="siteInfo">
+            <h2>{site.name}</h2>
+            <p className={"styleTag " + site.style.toLowerCase()}>{site.style}</p>
+            {
+            site.published ?
             <a
               href={"https://inkmorphism.com/sites/" + site.domainSlug}
               target="_blank"
             >
               {"inkmorphism.com/sites/" + site.domainSlug}
             </a>
+            :
+            <p>Not published yet. <a href={"../pricing?site="+site.domainSlug}>Click here to publish</a></p>
+            }
           </div>
+          <a href={"../config/" + site.domainSlug} className="editBtn">
+            Edit <MdOutlineModeEditOutline />
+          </a>
           {site.published ? (
             <div className="publishedCheck">
               <p>
@@ -140,47 +146,47 @@ export default function Dashboard() {
               </p>
             </div>
           )}
-          {/* <p>{site.initDate}</p> */}
-        </a>
+        </article>
       ));
-      const deletedSites = websitesArray.deleted.map((site) => {
-        if (daysTillDeletion(site.delTime) < 1) {
-          return null
-        } else {
-          return (
-            <a
-              key={site.domain}
-              className="noSelect deletedWebsites"
-              style={{
-                display: daysTillDeletion(site.delTime) < 1 ? "none" : "grid",
-              }}
-            >
-              <h2>{site.name}</h2>
-              <div>
-                {/* <a href={"https://" + site.domain} target="_blank">
-                {site.domain}
-              </a> */}
-                <a
-                  href={"https://inkmorphism.com/sites/" + site.domainSlug}
-                  target="_blank"
-                >
-                  {"inkmorphism.com/sites/" + site.domainSlug}
-                </a>
-              </div>
-              <p>
-                {daysTillDeletion(site.delTime).toString() +
-                  " days till full deletion"}
-              </p>
-              <div className="imgWrapper">
-                <img
-                  src={site.thumbnail === "" ? placeholder.src : site.thumbnail}
-                  loading="lazy"
-                />
-              </div>
-            </a>
-          );
-        }
-      }).filter((site) => site !== null);
+      const deletedSites = websitesArray.deleted
+        .map((site) => {
+          if (daysTillDeletion(site.delTime) < 1) {
+            return null;
+          } else {
+            return (
+              <article
+                key={site.domain}
+                className="noSelect deletedWebsites"
+                style={{
+                  display: daysTillDeletion(site.delTime) < 1 ? "none" : "grid",
+                }}
+              >
+                <h2>{site.name}</h2>
+                <div>
+                  <a
+                    href={"https://inkmorphism.com/sites/" + site.domainSlug}
+                    target="_blank"
+                  >
+                    {"inkmorphism.com/sites/" + site.domainSlug}
+                  </a>
+                </div>
+                <p>
+                  {daysTillDeletion(site.delTime).toString() +
+                    " days till full deletion"}
+                </p>
+                <div className="imgWrapper">
+                  <img
+                    src={
+                      site.thumbnail === "" ? placeholder.src : site.thumbnail
+                    }
+                    loading="lazy"
+                  />
+                </div>
+              </article>
+            );
+          }
+        })
+        .filter((site) => site !== null);
       setDeletedSitesLen(deletedSites.length);
       setSitesTotal(websitesArray.existing.length);
       setData(websites);
@@ -238,7 +244,7 @@ export default function Dashboard() {
         deletedSites={deletedWebsites}
         deletedSitesLen={deletedSitesLen}
       />
-      <Dashfooter />
+      <MainFooter />
     </div>
   );
 }
