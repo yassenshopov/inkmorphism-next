@@ -74,7 +74,7 @@ export default function Account(props) {
   const [isResetPassBtnClicked, setIsResetPassBtnClicked] = useState(false);
   const [isPersonalDetailsMenuOpen, setIsPersonalDetailsMenuOpen] =
     useState(true);
-  const [isPrivacyMenuOpen, setIsPrivacyMenuOpen] = useState(false);
+  const [isPrivacyMenuOpen, setIsPrivacyMenuOpen] = useState(true);
 
   const profileSec = (
     <main id="accountSection">

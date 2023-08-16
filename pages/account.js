@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import defaultProfilePic from "../styles/images/defaultProfilePic.png";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { doc, getDoc } from "firebase/firestore/lite";
+import MainFooter from "./components/MainFooter.js";
 
 let userInfoRendered = {
   name: "Default",
@@ -107,7 +108,7 @@ export default function Templates() {
         userInfo={userInfoRendered}
       />
 
-      <Dashfooter />
+      <MainFooter />
     </div>
   );
 }

@@ -20,7 +20,7 @@ export default function Dash(props) {
         {props.sitesTotal <= 10 ? (
           <a href="../templates" id="linkTemplates" className="noSelect">
             <article>
-              <BsPlusLg />
+              Create a new website <BsPlusLg />
             </article>
           </a>
         ) : (

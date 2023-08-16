@@ -1858,7 +1858,7 @@ function Editor(props) {
               </p>
               <p
                 onClick={() => {
-                  window.location.href = `/pricing?${props["name"]}`;
+                  window.location.href = `/pricing?site=${props["name"]}`;
                 }}
                 className="noSelect green"
               >
