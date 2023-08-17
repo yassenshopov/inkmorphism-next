@@ -8,6 +8,7 @@ import app from "../firebase/clientApp";
 import { getAuth } from "firebase/auth";
 import useCreatorStatus from "../stripe/useCreatorStatus";
 import createCheckoutSession from "../stripe/createCheckoutSession";
+import Loader from "./components/loader";
 
 // Meta data:
 let title = "Inkmorphism Pricing | Affordable Plans for Every Need";
@@ -21,6 +22,7 @@ export default function Pricing() {
   const isCreator = useCreatorStatus(user);
 
   const [monthlyPayment, setMonthlyPayment] = useState(true);
+  const [loader, setLoader] = useState(false);
 
   function paymentModeToggle() {
     setMonthlyPayment(!monthlyPayment);
@@ -47,6 +49,7 @@ export default function Pricing() {
 
       {/* <WIP/> */}
       <main id="pricing">
+        { loader ? <Loader/> : null}
         <section id="hero">
           <h1>Craft your website</h1>
           <h2>
@@ -132,6 +135,7 @@ export default function Pricing() {
                   onClick={() => {
                     let price = monthlyPayment ? 19 : 24;
                     createCheckoutSession(user.currentUser.uid, price);
+                    setLoader(true);
                   }}
                 className="noSelect"
               >
