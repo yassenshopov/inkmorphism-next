@@ -15,7 +15,7 @@ import {
 import placeholder from "../styles/images/placeholder.png";
 import defaultProfilePic from "../styles/images/defaultProfilePic.png";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
+import { AiFillCheckCircle, AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 import MainFooter from "./components/MainFooter.js";
 import { MdOutlineModeEditOutline } from "react-icons/md";
 
@@ -120,6 +120,7 @@ export default function Dashboard() {
               target="_blank"
             >
               {"inkmorphism.com/sites/" + site.domainSlug}
+              <AiFillCheckCircle/>
             </a>
             :
             <p>Not published yet. <a href={"../pricing?site="+site.domainSlug}>Click here to publish</a></p>

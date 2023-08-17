@@ -1538,6 +1538,7 @@
   transition: all 200ms ease-in-out;
 }
 #dashnav #mobileMenu.clicked {
+  right: 5vw;
   position: fixed;
 }
 #dashnav #mobileMenu.clicked div {
@@ -1646,6 +1647,11 @@
 #dash #websites > article h2 {
   font-size: 2rem;
   margin: 0;
+}
+#dash #websites > article .siteInfo a svg {
+  vertical-align: middle;
+  padding: 0 0.4vw;
+  color: #239616;
 }
 #dash #websites > article .logoWrapper {
   position: absolute;
@@ -4277,10 +4283,8 @@
     justify-content: center;
     align-items: center;
   }
-  #mainPage main #features #featuresPane .feature .featureImg {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+  #mainPage main #features #featuresPane .feature img {
+    width: 80%;
   }
   #mainPage main #features #featuresPane .feature h3 {
     font-size: 1.5rem;
@@ -4355,6 +4359,7 @@
     width: 80%;
     box-sizing: border-box;
     padding: 15px 5vw;
+    margin: 20px 0;
   }
   #dash #websites > article .logoWrapper {
     right: 2vw;
@@ -4424,6 +4429,10 @@
   }
   #dash #websites > a.deletedWebsites :not(.imgWrapper) {
     order: 2;
+  }
+  #dash #websites #linkTemplates {
+    min-height: 60px;
+    font-size: 1.2rem;
   }
   #popupWrapper {
     transition: all 400ms ease-in-out;

@@ -1626,6 +1626,7 @@
     }
   }
   #mobileMenu.clicked {
+    right: 5vw;
     position: fixed;
     div {
       background-color: var(--mainLight);
@@ -1740,6 +1741,15 @@
       h2 {
         font-size: 2rem;
         margin: 0;
+      }
+      .siteInfo {
+        a {
+          svg {
+            vertical-align: middle;
+            padding: 0 0.4vw;
+            color: #239616;
+          }
+        }
       }
       .logoWrapper {
         position: absolute;
@@ -4515,10 +4525,8 @@
             gap: 10px;
             justify-content: center;
             align-items: center;
-            .featureImg {
-              width: 100%;
-              height: 200px;
-              object-fit: cover;
+            img {
+              width: 80%;
             }
             h3 {
               font-size: 1.5rem;
@@ -4600,6 +4608,7 @@
           width: 80%;
           box-sizing: border-box;
           padding: 15px 5vw;
+          margin: 20px 0;
         }
         .logoWrapper {
           right: 2vw;
@@ -4670,6 +4679,10 @@
         :not(.imgWrapper) {
           order: 2;
         }
+      }
+      #linkTemplates {
+        min-height: 60px;
+        font-size: 1.2rem;
       }
     }
   }
