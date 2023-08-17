@@ -4298,6 +4298,9 @@
   #templatesWrapper #templates {
     grid-template-columns: 1fr;
   }
+  #dashnav {
+    width: 100%;
+  }
   #dashnav a:nth-child(1) p {
     display: none;
   }
@@ -4311,7 +4314,11 @@
     display: flex;
   }
   #dashnav #mobileMenu {
+    right: 0;
     display: flex;
+  }
+  #dash {
+    width: 100%;
   }
   #dash #websites {
     gap: 60px;
@@ -4336,8 +4343,10 @@
     width: 100%;
   }
   #dash #websites > article .siteInfo a {
-    box-sizing: border-box;
-    padding: 20px 10vw;
+    font-size: inherit;
+    max-width: 80%;
+    overflow-wrap: break-word;
+    padding: 0;
   }
   #dash #websites > article .siteInfo .styleTag {
     padding: 15px 5vw;
@@ -4415,9 +4424,6 @@
   }
   #dash #websites > a.deletedWebsites :not(.imgWrapper) {
     order: 2;
-  }
-  #dashfooter {
-    justify-content: center;
   }
   #popupWrapper {
     transition: all 400ms ease-in-out;
@@ -4591,14 +4597,12 @@
     color: var(--simpleMainLight);
   }
   #MainFooter {
-    display: flex;
     flex-direction: column-reverse;
-    justify-content: space-between;
-    align-items: center;
     width: 100%;
     color: var(--mainDark);
     background: var(--mainLight);
-    padding: 20px 10%;
+    padding: 0;
+    box-sizing: content-box;
   }
   #MainFooter p {
     cursor: auto;
@@ -4616,6 +4620,12 @@
   #MainFooter #socialLinks * {
     cursor: pointer;
     padding: 20px 4vw;
+  }
+  #MainFooter > * {
+    width: 100%;
+    padding: 0 10%;
+    box-sizing: border-box;
+    text-align: center;
   }
   .simple,
   .skeletal {

@@ -99,8 +99,8 @@ export default function Home() {
             Get started for free
           </a>
           <div id="templateGallery">
-          <a className="wrapper" href="/templates/Industrial" target="_blank">
-              <img src="/main/IndustrialThumbnail.png" loading="lazy" />
+          <a className="wrapper" href="/templates/industrial" target="_blank">
+              <img src="/main/industrialThumbnail.png" loading="lazy" />
               <h3>Industrial</h3>
               <p>Industrial, a modern template for your business.</p>
             </a>
