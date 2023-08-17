@@ -4544,6 +4544,7 @@
     }
   }
   #dashnav {
+    width: 100%;
     a:nth-child(1) {
       p {
         display: none;
@@ -4559,11 +4560,13 @@
       }
     }
     #mobileMenu {
+      right: 0;
       display: flex;
     }
   }
 
   #dash {
+    width: 100%;
     #websites {
       gap: 60px;
       > article {
@@ -4584,9 +4587,10 @@
           box-sizing: border-box;
           width: 100%;
           a {
-            box-sizing: border-box;
-            padding: 20px 10vw;
-            // font-size: 1rem;
+            font-size: inherit;
+            max-width: 80%;
+            overflow-wrap: break-word;
+            padding: 0;
           }
           .styleTag {
             padding: 15px 5vw;
@@ -4668,10 +4672,6 @@
         }
       }
     }
-  }
-
-  #dashfooter {
-    justify-content: center;
   }
 
   #popupWrapper {
@@ -4867,15 +4867,13 @@
   }
 
   #MainFooter {
-    display: flex;
     flex-direction: column-reverse;
-    justify-content: space-between;
-    align-items: center;
     width: 100%;
     color: var(--mainDark);
     background: var(--mainLight);
-    padding: 20px 10%;
+    padding: 0;
     // gap: 20px;
+    box-sizing: content-box;
     p {
       cursor: auto;
       height: fit-content;
@@ -4893,6 +4891,12 @@
         cursor: pointer;
         padding: 20px 4vw;
       }
+    }
+    &>* {
+      width: 100%;
+      padding: 0 10%;
+      box-sizing: border-box;
+      text-align: center;
     }
   }
 
