@@ -18,10 +18,15 @@ export default function Dash(props) {
         {props.theData === "" ? <BiLoaderAlt id="loaderSites" /> : ""}
         {props.theData}
         {props.sitesTotal <= 10 ? (
-          <a href="../templates" id="linkTemplates" className="noSelect">
+          <a href="../templates" id="linkTemplates" className={`noSelect ${props.sitesTotal===0 ? "noSites" : "123"}`}>
             <article>
               Create a new website <BsPlusLg />
             </article>
+            <div>
+                <img src="/main/industrialThumbnail.png" />
+                <img src="/main/minimalismThumbnail.png" />
+                <img src="/main/glassmorphismThumbnail.png" />
+              </div>
           </a>
         ) : (
           ""

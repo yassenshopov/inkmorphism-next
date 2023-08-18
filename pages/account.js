@@ -77,11 +77,8 @@ export default function Templates() {
             photoURL:
               "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2FprofilePic2.png?alt=media&token=64d91b16-4f83-42a9-b297-94f2c5126a06",
           });
-          console.log(userDataDB);
-          // profile_pic = auth.currentUser.photoURL;
           setUserData({
-            profile_pic: auth.currentUser.photoURL,
-            // profile_pic: auth.currentUser.photoURL,
+            profile_pic: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2FprofilePic2.png?alt=media&token=64d91b16-4f83-42a9-b297-94f2c5126a06",
             displayName: auth.currentUser.displayName,
           });
         } catch (err) {

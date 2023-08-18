@@ -188,15 +188,14 @@ export default function Home() {
               <img src="/main/feature1.png" />
               <h3>AI helpers</h3>
               <p>
-                Our AI helpers can improve your copy, images, and more. They
-                will help you create a stunning website effortlessly.
+                Our AI helpers can improve your copy, images, and more.
               </p>
             </div>
             <div className="feature">
               <img src="/main/feature2.png" />
               <h3>Custom domains</h3>
               <p>
-                Connect your own domain to your website. We will take care of
+                Connect your own domain to your website. We'll take care of
                 the rest.
               </p>
             </div>

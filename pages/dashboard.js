@@ -14,8 +14,19 @@ import {
 } from "firebase/firestore/lite";
 import placeholder from "../styles/images/placeholder.png";
 import defaultProfilePic from "../styles/images/defaultProfilePic.png";
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import { AiFillCheckCircle, AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
+import {
+  getStorage,
+  ref,
+  getDownloadURL,
+  getMetadata,
+  getBytes,
+  uploadBytes,
+} from "firebase/storage";
+import {
+  AiFillCheckCircle,
+  AiOutlineCheck,
+  AiOutlineClose,
+} from "react-icons/ai";
 import MainFooter from "./components/MainFooter.js";
 import { MdOutlineModeEditOutline } from "react-icons/md";
 
@@ -95,11 +106,6 @@ export default function Dashboard() {
         <article
           key={site.domain}
           className="noSelect"
-          style={
-            {
-              // backgroundColor: site.published ? "#ffffff10" : "#00000020",
-            }
-          }
         >
           <div className="imgWrapper">
             <img
@@ -112,19 +118,25 @@ export default function Dashboard() {
           </div>
           <div className="siteInfo">
             <h2>{site.name}</h2>
-            <p className={"styleTag " + site.style.toLowerCase()}>{site.style}</p>
-            {
-            site.published ?
-            <a
-              href={"https://inkmorphism.com/sites/" + site.domainSlug}
-              target="_blank"
-            >
-              {"inkmorphism.com/sites/" + site.domainSlug}
-              <AiFillCheckCircle/>
-            </a>
-            :
-            <p>Not published yet. <a href={"../pricing?site="+site.domainSlug}>Click here to publish</a></p>
-            }
+            <p className={"styleTag " + site.style.toLowerCase()}>
+              {site.style}
+            </p>
+            {site.published ? (
+              <a
+                href={"https://inkmorphism.com/sites/" + site.domainSlug}
+                target="_blank"
+              >
+                {"inkmorphism.com/sites/" + site.domainSlug}
+                <AiFillCheckCircle />
+              </a>
+            ) : (
+              <p>
+                Not published yet.{" "}
+                <a href={"../pricing?site=" + site.domainSlug}>
+                  Click here to publish
+                </a>
+              </p>
+            )}
           </div>
           <a href={"../config/" + site.domainSlug} className="editBtn">
             Edit <MdOutlineModeEditOutline />
@@ -210,14 +222,11 @@ export default function Dashboard() {
         })
         .catch((error) => {
           // Uh-oh, an error occurred!
-          try {
-            // profile_pic = auth.currentUser.photoURL;
-            setUserData({
-              profile_pic: auth.currentUser.photoURL,
-              // profile_pic: auth.currentUser.photoURL,
-              displayName: auth.currentUser.displayName,
-            });
-          } catch (err) {}
+          console.log(error);
+          setUserData({
+            profile_pic: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2FprofilePic2.png?alt=media&token=64d91b16-4f83-42a9-b297-94f2c5126a06",
+            displayName: auth.currentUser.displayName,
+          });
         });
     } catch (err) {
       window.location.href = "../login";

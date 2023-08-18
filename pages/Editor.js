@@ -180,7 +180,7 @@ function Editor(props) {
       content: {
         heading: "This is your new Hero section.",
         txt: "This is your new Hero section.",
-        img: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fhero_img.png?alt=media&token=cd992c4a-c6c3-4a68-bed7-e0efdeba8df5"
+        img: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fhero_img.png?alt=media&token=cd992c4a-c6c3-4a68-bed7-e0efdeba8df5",
       },
       options: {
         direction: "",
@@ -439,9 +439,8 @@ function Editor(props) {
                 </p>
               </div>
               <div className="txtWrapper">
-                {
-                  section.content.h1 !== "" ? (
-                    <h2
+                {section.content.h1 !== "" ? (
+                  <h2
                     suppressContentEditableWarning={true}
                     onBlur={(e) => {
                       txtFieldChange2(e, index, "heading");
@@ -453,8 +452,7 @@ function Editor(props) {
                   >
                     {section.content.heading}
                   </h2>
-                  ) : null
-                }
+                ) : null}
                 <p
                   suppressContentEditableWarning={true}
                   onBlur={(e) => {
@@ -713,9 +711,8 @@ function Editor(props) {
                 </p>
               </div>
               <div className="txtWrapper">
-                {
-                  section.content.h1 !== "" ? (
-                    <h2
+                {section.content.h1 !== "" ? (
+                  <h2
                     suppressContentEditableWarning={true}
                     onBlur={(e) => {
                       txtFieldChange2(e, index, "heading");
@@ -727,8 +724,7 @@ function Editor(props) {
                   >
                     {section.content.heading}
                   </h2>
-                  ) : null
-                }
+                ) : null}
                 <p
                   suppressContentEditableWarning={true}
                   onBlur={(e) => {
@@ -1070,17 +1066,20 @@ function Editor(props) {
       uid = "_";
     }
     const profilePicRef = ref(storage, uid + "/profilePic.png");
-    try {
       getDownloadURL(profilePicRef).then((metadata) => {
         setUser({
           displayName: props.auth.currentUser.displayName,
           photoURL: metadata,
           email: props.auth.currentUser.email,
         });
+      }).catch((err) => {
+        console.log(err);
+        setUser({
+          displayName: props.auth.currentUser.displayName,
+          photoURL: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2FprofilePic2.png?alt=media&token=64d91b16-4f83-42a9-b297-94f2c5126a06",
+          email: props.auth.currentUser.email,
+        });        
       });
-    } catch (err) {
-      console.log(err);
-    }
     setLoadBool(false);
   }
 
@@ -1722,7 +1721,10 @@ function Editor(props) {
             >
               <section id="profileSection">
                 <div>
-                  <img src={user.photoURL} alt="Profile Pic" />
+                  <img
+                    src={user.photoURL}
+                    alt="Profile Pic"
+                  />
                   <p>{user.displayName}</p>
                   <p>{user.email}</p>
                 </div>
