@@ -10,6 +10,7 @@ import { FiLogOut, FiUser } from 'react-icons/fi'
 export default function Dashnav(props) { 
 
     const [loadBool, setLoadBool] = useState(false)
+    const [profilePicIsLoading, setProfilePicIsLoading] = useState(true)
 
     let router = useRouter();
     function signOut() {
@@ -19,6 +20,12 @@ export default function Dashnav(props) {
             router.push('/login')
           }, 200)
     }
+
+    useEffect(() => {
+        setTimeout(() => {
+            setProfilePicIsLoading(false)
+        }, 2500)
+    }, [])
 
     const [popupToggle, setPopupToggle] = useState(false)
     const openPopup = () => {
@@ -45,7 +52,7 @@ export default function Dashnav(props) {
                     <a href="../account">My account < FiUser /></a>
                     <p id="signOut" onClick={openPopup} className="noSelect">Log out < FiLogOut /></p>
                     <div id='profilePic'>
-                        <img src={props.profile_pic} className={"noSelect"}/>
+                        <img src={props.profile_pic} className={"noSelect"} style={{filter: profilePicIsLoading ? "invert(1)" : "none"}}/>
                     </div>
                 </div>
             </div>
@@ -71,7 +78,6 @@ export default function Dashnav(props) {
                 </form>
             </div>
             {loadBool ? <Loader/> : ""}  
-            {/* <button id="fetch" onClick={getData}></button> */}
         </nav>
     );   
 }

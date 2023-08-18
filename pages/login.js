@@ -24,6 +24,14 @@ import { SiGoogle, SiGithub, SiTwitter } from "react-icons/si";
 import logo from "../styles/images/logo.png";
 import { useRouter } from "next/router";
 import Loader from "./components/loader.js";
+import {
+  getDownloadURL,
+  ref,
+  uploadString,
+  getStorage,
+  getMetadata,
+  getBytes,
+} from "firebase/storage";
 
 export default function Login() {
   const [userData, setUserData] = useState({});
@@ -47,9 +55,25 @@ export default function Login() {
   let db = getFirestore(app);
   const col = collection(db, "users");
 
+  //storage
+  const storage = getStorage();
+
   async function sendRegisterData(regData) {
     regData = JSON.parse(JSON.stringify(regData));
-    await updateDoc(doc(col, "user-" + regData["uid"]), regData);
+    const isUserRegistered = await getDocs(col).then((snapshot) => {
+      let isRegistered = false;
+      snapshot.forEach((doc) => {
+        if (doc.id === "user-" + regData["uid"]) {
+          isRegistered = true;
+        }
+      });
+      return isRegistered;
+    });
+    if (isUserRegistered) {
+      await updateDoc(doc(col, "user-" + regData["uid"]), regData);
+    } else {
+      await setDoc(doc(col, "user-" + regData["uid"]), regData);
+    }
   }
 
   function getProviderForSignInMethods(methods) {
@@ -67,7 +91,7 @@ export default function Login() {
     // Add more providers if needed.
     return provider;
   }
-  
+
   function signInWithGH() {
     const provider = new GithubAuthProvider();
     signInWithPopup(auth, provider)

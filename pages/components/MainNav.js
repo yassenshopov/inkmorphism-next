@@ -69,7 +69,6 @@ export default function MainNav() {
             My dashboard
           </a>
         )}
-        {/* <img src={profile_pic} alt="Profile Pic"/> */}
       </div>
       <div
         id="mobileMenu"

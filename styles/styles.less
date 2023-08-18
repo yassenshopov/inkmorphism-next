@@ -975,12 +975,12 @@
           }
           h3 {
             font-size: 1.6rem;
-            // padding: 20px 0;
             font-weight: 1000;
           }
           p {
             padding: 0;
             text-align: left;
+            font-size: 1.2rem;
           }
         }
       }
@@ -1898,6 +1898,52 @@
       }
       article {
         text-decoration: none;
+      }
+      div {
+        display: none;
+      }
+      &.noSites {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding: 40px 0;
+        article {
+          font-size: 1.2rem;
+        }
+        div {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          gap: 2vw;
+          padding: 20px 6vw;
+          box-sizing: border-box;
+          img {
+            width: 20%;
+            height: auto;
+            margin: 0 1vw;
+            animation: scaleUpDown 400ms infinite;
+            border: 1px solid var(--mainGrey);
+            border-radius: 8px;
+            &:nth-child(2) {
+              animation-delay: 200ms;
+            }
+          }
+          @keyframes scaleUpDown {
+            0% {
+              transform: scale(1);
+            }
+            50% {
+              transform: scale(1.01);
+            }
+            100% {
+              transform: scale(1);
+            }
+          }
+        }
       }
     }
   }
@@ -4698,6 +4744,25 @@
       #linkTemplates {
         min-height: 60px;
         font-size: 1.2rem;
+        &.noSites {
+          div {
+            flex-direction: column;
+            gap: 40px;
+            align-items:flex-start;
+            img {
+              width: 60%;
+              &:nth-child(2) {
+                align-self: flex-end;
+              }
+              &:nth-child(3) {
+                align-self: center;
+              }
+              &:not(:nth-child(1)) {
+                margin-top: -70px;
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -4736,14 +4801,17 @@
   }
 
   #accountWrapper {
+    padding: 0 10vw;
     #accountSection {
       width: 100%;
-      border-radius: 0;
+      border-radius: 12px;
       section {
         .dropdownContent {
           width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
           #profilePicWrapper {
-            // width: 100%;
             width: 240px;
             height: 240px;
           }

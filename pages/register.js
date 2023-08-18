@@ -53,7 +53,21 @@ export default function Register() {
 
   async function sendRegisterData(regData) {
     regData = JSON.parse(JSON.stringify(regData));
-    await setDoc(doc(col, "user-" + regData["uid"]), regData);
+    regData = JSON.parse(JSON.stringify(regData));
+    const isUserRegistered = await getDocs(col).then((snapshot) => {
+      let isRegistered = false;
+      snapshot.forEach((doc) => {
+        if (doc.id === "user-" + regData["uid"]) {
+          isRegistered = true;
+        }
+      });
+      return isRegistered;
+    });
+    if (isUserRegistered) {
+      await updateDoc(doc(col, "user-" + regData["uid"]), regData);
+    } else {
+      await setDoc(doc(col, "user-" + regData["uid"]), regData);
+    }
   }
 
   function signInWithGH() {
