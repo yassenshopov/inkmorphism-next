@@ -18,6 +18,7 @@ import {
   getDocs,
   doc,
   setDoc,
+  updateDoc,
 } from "firebase/firestore/lite";
 import app from "../firebase/clientApp";
 import Head from "next/head";
