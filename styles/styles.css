@@ -1352,6 +1352,159 @@
   transform: rotate3d(0.1, 0.4, 0.5, 45deg);
   filter: drop-shadow(0 0 20px #ffffff50);
 }
+.Sandbox {
+  width: 100vw;
+}
+.Sandbox .content {
+  min-height: 100vh;
+  padding: 80px 10vw;
+  font-family: "Raleway", sans-serif;
+}
+.Sandbox .content .website {
+  width: 100%;
+  min-height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 6vw;
+  padding: 20px 2vw;
+  box-sizing: border-box;
+  border-radius: 12px;
+  border: 1px solid var(--mainGrey);
+}
+.Sandbox .content .website .mainData {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+.Sandbox .content .website .mainData .gptPrompt {
+  font-size: 1rem;
+  border-radius: 12px;
+  padding: 20px 2vw;
+  border: 1px solid var(--mainGrey);
+}
+.Sandbox .content .website .mainData .copyBtn {
+  border: none;
+  padding: 10px 2vw;
+  width: 100%;
+  cursor: pointer;
+  background-color: var(--mainDark);
+  border-radius: 6px;
+  color: var(--mainLight);
+  margin: 10px 0 20px 0;
+  font-family: "Raleway", sans-serif;
+  margin: 20px 0;
+  font-size: 1.2rem;
+  transition: all 200ms ease-in-out;
+}
+.Sandbox .content .website .mainData .copyBtn:hover {
+  background-color: var(--mainColor3);
+}
+.Sandbox .content .website .mainData h2 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+.Sandbox .content .website .mainData p {
+  margin: 0;
+  font-size: 1.2rem;
+}
+.Sandbox .content .website .mainData img {
+  width: auto;
+  height: 200px;
+}
+.Sandbox .content .website .metaData {
+  width: 100%;
+  box-sizing: border-box;
+}
+.Sandbox .content .website .metaData > div {
+  position: relative;
+}
+.Sandbox .content .website .metaData .rw {
+  font-size: 1rem;
+  margin: 0;
+  padding: 20px 2vw;
+  border-radius: 12px;
+  border: 1px solid var(--mainGrey);
+  width: 80%;
+  max-width: 80%;
+  min-width: 80%;
+  height: 200px;
+  box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
+}
+.Sandbox .content .website .metaData .rw::placeholder {
+  color: var(--mainGrey);
+}
+.Sandbox .content .website .metaData .rw.keyword {
+  height: fit-content;
+  min-height: 50px;
+}
+.Sandbox .content .website .metaData svg {
+  color: #098334;
+  font-size: 2rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.Sandbox .content .website .metaData .keywords .keywordsWrapper {
+  display: flex;
+  column-gap: 1vw;
+  align-items: center;
+  max-width: 80%;
+  flex-wrap: wrap;
+}
+.Sandbox .content .website .metaData .keywords .keywordsWrapper p {
+  border-radius: 12px;
+  padding: 10px 20px;
+  background-color: var(--mainColor1);
+  width: fit-content;
+  color: var(--mainLight);
+  max-height: 50px;
+  min-height: 1.2rem;
+  margin: 10px 0;
+  position: relative;
+}
+.Sandbox .content .website .metaData .keywords .keywordsWrapper p:hover:not(.addMore)::after {
+  content: "x";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  color: var(--mainLight);
+  background-color: #d23b3b;
+  border-radius: 50%;
+  font-size: 1rem;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-weight: 1000;
+}
+.Sandbox .content .website .metaData .keywords .keywordsWrapper p:nth-child(2n) {
+  background-color: var(--mainColor2);
+}
+.Sandbox .content .website .metaData .keywords .keywordsWrapper p:nth-child(3n) {
+  background-color: var(--mainColor3);
+}
+.Sandbox .content .website .metaData .keywords .keywordsWrapper p.addMore {
+  cursor: pointer;
+  font-size: 3rem;
+  margin: 0;
+  background-color: var(--mainLight);
+  color: var(--mainDark);
+  border: 2px solid var(--mainDark);
+  display: inline-block;
+  line-height: 0.5;
+  transition: all 200ms ease-in-out;
+}
+.Sandbox .content .website .metaData .keywords .keywordsWrapper p.addMore:hover {
+  background-color: var(--mainDark);
+  color: var(--mainLight);
+}
 #cPanel {
   height: fit-content !important;
   min-height: 100vh;
