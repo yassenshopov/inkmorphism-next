@@ -191,6 +191,7 @@ function Editor(props) {
     },
     maps: {
       content: {
+        heading: "This is your new Maps section.",
         embedURL:
           "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.926688116498!2d0.06028477670855494!3d51.53290447181915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a71ee354f153%3A0x671ad86d6a68536b!2sIron%20brew!5e0!3m2!1sbg!2sbg!4v1693293570490!5m2!1sbg!2sbg",
       },
@@ -390,6 +391,81 @@ function Editor(props) {
   }
 
   let ogTxt = "";
+
+  function openEditMenu(index, type) {
+    const editSectionMenuTypes = {
+      maps: (
+        <div className={type}>
+          <div className="inputFld">
+            <label htmlFor="changeMapInput">Change map location:</label>
+            <input
+              type="text"
+              id="changeMapInput"
+              placeholder="Change location of map..."
+              defaultValue={pageData[index].content.embedURL}
+              onChange={(e) => {
+                setPageData((pageData) => [
+                  ...pageData.slice(0, index),
+                  {
+                    ...pageData[index],
+                    content: {
+                      ...pageData[index].content,
+                      embedURL: e.target.value,
+                    },
+                  },
+                  ...pageData.slice(index + 1),
+                ]);
+                setBoxes((boxes) => [
+                  ...boxes.slice(0, index),
+                  {
+                    ...boxes[index],
+                    content: {
+                      ...boxes[index].content,
+                      embedURL: e.target.value,
+                    },
+                  },
+                  ...boxes.slice(index + 1),
+                ]);
+                setIsUnsavedChanges(true);
+              }}
+            />
+          </div>
+          <button
+            className="deleteSection noSelect"
+            onClick={() => {
+              deleteSection(index);
+            }}
+          >
+            Delete <RxCross1 />
+          </button>
+        </div>
+      ),
+    };
+    setEditPopupToggle(true);
+    setDeleteBtn(
+      <div className="editSectionMenu">
+        <h2>
+          <span>Type:</span>{" "}
+          {type === "txtOnly"
+            ? "Text Section"
+            : type === "imgAndTxt"
+            ? "Image and Text Section"
+            : type === "imgOnly"
+            ? "Image Section"
+            : type === "grid3"
+            ? "3 Column Section"
+            : type === "grid2"
+            ? "2 Column Section"
+            : type === "hero"
+            ? "Hero Section"
+            : type === "maps"
+            ? "Maps Section"
+            : null}
+        </h2>
+        {editSectionMenuTypes[type]}
+      </div>
+    );
+  }
 
   function turnIntoSection(section, index) {
     try {
@@ -827,15 +903,32 @@ function Editor(props) {
                   Add section <FaPlus />
                 </p>
               </div>
-              <iframe
-                src={section.content.embedURL}
-                width="100%"
-                height="450"
-                style={{ border: 0, display: "flex" }}
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
+              <h2
+                  suppressContentEditableWarning={true}
+                  onBlur={(e) => {
+                    txtFieldChange2(e, index, "heading");
+                  }}
+                  onFocus={(e) => {
+                    ogTxt = e.target.innerText;
+                  }}
+                  contentEditable={true}
+                >{section.content.heading}</h2>
+              <div className="mapsWrapper">
+                <iframe
+                  src={section.content.embedURL}
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+                <p
+                  className="changeImg noSelect"
+                  onClick={() => {
+                    openEditMenu(index, "maps");
+                  }}
+                >
+                  Click to change the map location
+                </p>
+              </div>
               <p
                 className="editBtn noSelect"
                 onClick={() => {

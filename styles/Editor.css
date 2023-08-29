@@ -389,6 +389,11 @@ label {
   background-color: #83838321;
   border: 1px solid var(--mainDark);
 }
+.Editor > main #mainEditorWrapper main > * .mapsWrapper {
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
 .Editor > main #mainEditorWrapper main > * .imgWrapper {
   position: relative;
   width: fit-content;

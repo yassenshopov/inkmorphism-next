@@ -56,7 +56,7 @@ function itemToPage(item) {
             >
               <p id="watermark">
                 <a href="https://inkmorphism.com" target="_blank">
-                  Built with Inkmorphism 🖋️
+                  Built with Inkmorphism <img src="../logoWh.webp" />
                 </a>
               </p>
               <p>${section.content.txt}</p>
@@ -159,15 +159,17 @@ function itemToPage(item) {
               `;
         case "maps":
           return `
-            <iframe
-              src="${section.content.embedURL}"
-              width="100%"
-              height="450"
-              style={{border:0}}
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
+          <section className="${section.type}">
+            <h2>${section.content.heading}</h2>
+            <div className="mapsWrapper">
+              <iframe
+                src="${section.content.embedURL}"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </section>
             `;
         default:
           break;
