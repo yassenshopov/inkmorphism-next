@@ -193,15 +193,17 @@
               </div>
             </section>
             
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.926688116498!2d0.06028477670855494!3d51.53290447181915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a71ee354f153%3A0x671ad86d6a68536b!2sIron%20brew!5e0!3m2!1sbg!2sbg!4v1693293570490!5m2!1sbg!2sbg"
-              width="100%"
-              height="450"
-              style={{border:0}}
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
+          <section className="maps">
+            <h2>Visit us @ our London location:</h2>
+            <div className="mapsWrapper">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.926688116498!2d0.06028477670855494!3d51.53290447181915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a71ee354f153%3A0x671ad86d6a68536b!2sIron%20brew!5e0!3m2!1sbg!2sbg!4v1693293570490!5m2!1sbg!2sbg"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </section>
             
             <footer 
               className="footer"
@@ -209,7 +211,7 @@
             >
               <p id="watermark">
                 <a href="https://inkmorphism.com" target="_blank">
-                  Built with Inkmorphism 🖋️
+                  Built with Inkmorphism <img src="../logoWh.webp" />
                 </a>
               </p>
               <p>Copyright by Iron Brews ©</p>

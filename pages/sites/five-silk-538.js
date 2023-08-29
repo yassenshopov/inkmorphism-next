@@ -113,7 +113,7 @@
             >
               <p id="watermark">
                 <a href="https://inkmorphism.com" target="_blank">
-                  Built with Inkmorphism 🖋️
+                  Built with Inkmorphism <img src="../logoWh.webp" />
                 </a>
               </p>
               <p>Copyright by Fuzzy Beats ©</p>

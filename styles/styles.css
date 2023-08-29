@@ -2525,13 +2525,16 @@
   align-items: center;
   justify-content: center;
   gap: 2vw;
-  padding: 0 10vw 40px 10vw;
+  padding: 0 6vw 40px;
 }
 #popupWrapper #popup #editSectionDeleteBtn h2 {
-  font-family: "Oswald";
   margin: 0;
   font-size: 1.4rem;
   font-weight: 200;
+  text-decoration: underline;
+}
+#popupWrapper #popup #editSectionDeleteBtn h2 span {
+  font-weight: 1000;
 }
 #popupWrapper #popup #editSectionDeleteBtn p {
   color: var(--mainLight);
@@ -2539,6 +2542,50 @@
   border-radius: 12px;
   padding: 10px 2vw;
   cursor: pointer;
+}
+#popupWrapper #popup #editSectionDeleteBtn .maps {
+  padding: 40px 2vw;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 40vw;
+}
+#popupWrapper #popup #editSectionDeleteBtn .maps .inputFld {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#popupWrapper #popup #editSectionDeleteBtn .maps .inputFld label {
+  font-size: 1rem;
+}
+#popupWrapper #popup #editSectionDeleteBtn .maps .inputFld input {
+  width: 100%;
+  font-family: "Raleway", sans-serif;
+  padding: 10px 2vw;
+  border-radius: 12px;
+  border: var(--mainDark) 1px solid;
+  caret-color: var(--mainDark);
+  color: var(--mainDark);
+  box-sizing: border-box;
+}
+#popupWrapper #popup #editSectionDeleteBtn .maps .deleteSection {
+  color: var(--mainLight);
+  background-color: #912323;
+  border-radius: 12px;
+  padding: 10px 2vw;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+  width: fit-content;
+  align-self: center;
+  transition: all 200ms ease-in-out;
+  border: none;
+}
+#popupWrapper #popup #editSectionDeleteBtn .maps .deleteSection:hover {
+  transform: scale(1.05);
 }
 #popupWrapper #popup #customX {
   position: absolute;
@@ -3144,12 +3191,68 @@
 .industrial .imgWrapper {
   display: flex;
 }
+.industrial .maps {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2vw;
+  width: 100%;
+  padding: 40px 0 80px;
+  box-sizing: border-box;
+}
+.industrial .maps h2 {
+  font-size: 2.4rem;
+  font-weight: 1000;
+  width: 80%;
+  text-align: center;
+}
+.industrial .maps .mapsWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.industrial .maps .mapsWrapper iframe {
+  width: 100%;
+  height: 50vh;
+  box-shadow: 0 0 20px #12121280;
+  z-index: 1;
+}
+.industrial .maps .mapsWrapper .changeImg {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: #00000090;
+  font-size: 2rem;
+  cursor: pointer;
+  font-family: "Oswald";
+  opacity: 0;
+  transition: all 200ms ease-in-out;
+}
+.industrial .maps .mapsWrapper .changeImg:hover {
+  opacity: 1;
+}
 .industrial .nav {
   justify-content: left;
 }
 .industrial .nav #navLogo {
   height: fit-content;
   color: inherit;
+  transition: all 200ms ease-in-out;
+}
+.industrial .nav #navLogo:hover {
+  filter: drop-shadow(2px 1px 0px #12121280);
 }
 .industrial .nav #navLogo img {
   height: 5rem;
