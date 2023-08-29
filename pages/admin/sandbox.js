@@ -45,12 +45,53 @@ export default function Sandbox() {
   const [addNewKeywordMode, setAddNewKeywordMode] = useState(false);
   const [copied, setCopied] = useState(false);
 
+//   const [domain, setDomain] = useState("");
+//   const [results, setResults] = useState(null);
+
+//   const API_KEY =
+//     "pk1_541c5e9b37047cd87bd30d43848c41dce7322efa4924d028c65ff60091dc89fc";
+//   const API_KEY_SECRET =
+//     "sk1_42dd3b63afae45be5bef4be047e418cfef34a07a15c30f551962bbf92e48ee0c";
+//   const API_BASE_URL = "https://porkbun.com/api/json/v3/";
+
+//   async function searchDomainPrices(domain) {
+//     const url = `${API_BASE_URL}?domain=${domain}`;
+//     const response = await fetch(url, {
+//         headers: {
+//           Authorization: `Bearer ${API_KEY}`,
+//         },
+//       });
+//     return data;
+//   }
+
+//   const handleSearch = async () => {
+//     if (domain) {
+//       const data = await searchDomainPrices(domain);
+//       setResults(data);
+//     }
+//   };
+
   return (
     <div className="Sandbox">
       <Dashnav />
       <div className="content">
         <h1>Sandbox</h1>
-        {/* Render your websites here */}
+        {/* <div>
+          <h2>Choose a domain:</h2>
+          <input
+            type="text"
+            value={domain}
+            onChange={(e) => setDomain(e.target.value)}
+            placeholder="Enter a domain name"
+          />
+          <button onClick={handleSearch}>Search</button>
+          {results && (
+            <div>
+              <h2>Domain Search Results</h2>
+              <pre>{JSON.stringify(results, null, 2)}</pre>
+            </div>
+          )}
+        </div> */}
         {websites.map((website) => (
           <div key={website.id} className="website">
             <div className="mainData">
@@ -59,7 +100,8 @@ export default function Sandbox() {
               <p>{website.domain}</p>
               <hr style={{ width: "100%", backgroundColor: "black" }} />
               <div>
-                <h3>Prompt for GPT:</h3>
+                <h2>Prompts for GPT</h2>
+                <h3>Meta Description:</h3>
                 <p className="gptPrompt">
                   Write a meta description that's 100% optimised for SEO and is
                   guaranteed to rank on Google's first page with the following
@@ -101,6 +143,58 @@ export default function Sandbox() {
                       "Write a meta description that's 100% optimised for SEO and is guaranteed to rank on Google's first page with the following metrics: Character limit: 160 Keyword density: 1.5% Flesch readability score: 60 Sentiment: Positive " +
                         website.webContent.meta.metaTitle +
                         " " +
+                        website.webContent.meta.pageContentSummary +
+                        " " +
+                        website.webContent.meta.targetAudience +
+                        " " +
+                        website.webContent.meta.callToAction +
+                        " Keywords: " +
+                        website.webContent.meta.keywords.join(", ")
+                    );
+                    setCopied(true);
+                    setTimeout(() => {
+                      setCopied(false);
+                    }, 2000);
+                  }}
+                >
+                  {copied ? <AiFillCheckCircle /> : <MdOutlineContentCopy />}
+                </button>
+                <h3>Meta Title:</h3>
+                <p className="gptPrompt">
+                  Write a meta title that's 100% optimised for SEO and is
+                  guaranteed to rank on Google's first page with the following
+                  metrics:
+                  <br></br>
+                  <br></br>
+                  Character limit: 60
+                  <br></br>
+                  Keyword density: 1.5%
+                  <br></br>
+                  Flesch readability score: 60
+                  <br></br>
+                  Sentiment: Positive
+                  <br></br>
+                  {website.webContent.meta.pageContentSummary
+                    ? "Page Content Summary: " +
+                      website.webContent.meta.pageContentSummary
+                    : ""}
+                  <br></br>
+                  {website.webContent.meta.targetAudience
+                    ? "Target Audience: " +
+                      website.webContent.meta.targetAudience
+                    : ""}
+                  <br></br>
+                  {website.webContent.meta.callToAction
+                    ? "Call to Action: " + website.webContent.meta.callToAction
+                    : ""}
+                  <br></br>
+                  Keywords: {website.webContent.meta.keywords.join(", ")}
+                </p>
+                <button
+                  className="copyBtn"
+                  onClick={() => {
+                    navigator.clipboard.writeText(
+                      "Write a meta title that's 100% optimised for SEO and is guaranteed to rank on Google's first page with the following metrics: Character limit: 60 Keyword density: 1.5% Flesch readability score: 60 Sentiment: Positive " +
                         website.webContent.meta.pageContentSummary +
                         " " +
                         website.webContent.meta.targetAudience +

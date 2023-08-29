@@ -8,7 +8,32 @@
             const root = document.documentElement;
             root.style.setProperty("--scrollbarThumb", "#ffffff");
             root.style.setProperty("--scrollbarTrack", "#121212");
+
+            try {
+              let main = document.querySelector("main.published");
+              for (let i = 0; i < main.children.length; i++) {
+                main.children[i].style.color = getContrastYIQfromBG(
+                  window.getComputedStyle(main.children[i])[
+                    "background-color"
+                  ]
+                );
+              }
+            } catch (err) {
+              console.log(err);
+            }
           }, []);
+          
+          function getContrastYIQfromBG(rgbColor) {
+            // Extracting the individual color components from the RGB format
+            var rgbValues = rgbColor.substring(5, rgbColor.length - 1).split(",");
+            var r = parseInt(rgbValues[0].trim());
+            var g = parseInt(rgbValues[1].trim());
+            var b = parseInt(rgbValues[2].trim());
+        
+            // Calculating YIQ value
+            var yiq = (r * 299 + g * 587 + b * 114) / 1000;
+            return yiq >= 128 ? "var(--colorDark)" : "var(--colorLight)";
+          }
 
           return (
             <main
@@ -53,31 +78,41 @@
                 <p>Fuzzy Beats</p>
               </a>
             </nav>
-            ,
+            
             <section
               key="1"
               className="imgAndTxt directHorizontal"
             >
-              <p>Get ready to hop along with Fuzzy Beats at their high-energy bunny bash!</p>
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fminerals-locate-276%2FsrcFiles%2FimgPlaceholder.png?alt=media&token=f3dbf650-3ac2-4644-9047-a207ab6f80f9"
-                draggable="false"
-                loading="eager"
-              />
+              <div className="txtWrapper">
+                <h2>undefined</h2>
+                <p>Get ready to hop along with Fuzzy Beats at their high-energy bunny bash!</p>
+              </div>
+              <div className="imgWrapper">
+                <img
+                  src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fminerals-locate-276%2FsrcFiles%2FimgPlaceholder.png?alt=media&token=f3dbf650-3ac2-4644-9047-a207ab6f80f9"
+                  draggable="false"
+                  loading="eager"
+                />
+              </div>
             </section>
-            ,
+            
             <section
               key="2"
               className="imgAndTxt reverseHorizontal"
             >
-              <p>Fuzzy Beats: the cutest rock band on the scene, bringing high-energy performances and infectious tunes to audiences everywhere</p>
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-ALNvFdJ75LPwHkSuRsxig6ujMrs1%2Fexperience-figure-152%2FdkIB086W0E4oY9Qq.png?alt=media&token=924b519c-2c50-42dc-9761-85eec1e02670"
-                draggable="false"
-                loading="eager"
-              />
+              <div className="txtWrapper">
+                <h2>undefined</h2>
+                <p>Fuzzy Beats: the cutest rock band on the scene, bringing high-energy performances and infectious tunes to audiences everywhere</p>
+              </div>
+              <div className="imgWrapper">
+                <img
+                  src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-ALNvFdJ75LPwHkSuRsxig6ujMrs1%2Fexperience-figure-152%2FdkIB086W0E4oY9Qq.png?alt=media&token=924b519c-2c50-42dc-9761-85eec1e02670"
+                  draggable="false"
+                  loading="eager"
+                />
+              </div>
             </section>
-            ,
+            
             <footer 
               className="footer"
               key="3"

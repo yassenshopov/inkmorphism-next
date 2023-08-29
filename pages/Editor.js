@@ -42,7 +42,7 @@ import {
   TfiLayoutColumn2,
   TfiWidget,
 } from "react-icons/tfi";
-import { RxCross1 } from "react-icons/rx";
+import { RxCross1, RxCrosshair1 } from "react-icons/rx";
 import { AiFillSetting, AiOutlineUser } from "react-icons/ai";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -170,6 +170,7 @@ function Editor(props) {
         txt1: "This is your new Grid3 section.",
         txt2: "This is your new Grid3 section.",
         txt3: "This is your new Grid3 section.",
+        heading: "Heading",
       },
       options: {
         direction: "",
@@ -181,11 +182,22 @@ function Editor(props) {
         heading: "This is your new Hero section.",
         txt: "This is your new Hero section.",
         img: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fhero_img.png?alt=media&token=cd992c4a-c6c3-4a68-bed7-e0efdeba8df5",
+        cta: "Explore",
       },
       options: {
         direction: "",
       },
       type: "hero",
+    },
+    maps: {
+      content: {
+        embedURL:
+          "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.926688116498!2d0.06028477670855494!3d51.53290447181915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a71ee354f153%3A0x671ad86d6a68536b!2sIron%20brew!5e0!3m2!1sbg!2sbg!4v1693293570490!5m2!1sbg!2sbg",
+      },
+      options: {
+        direction: "",
+      },
+      type: "maps",
     },
   };
 
@@ -282,6 +294,11 @@ function Editor(props) {
       id: "hero",
       icon: <TfiWidget />,
       name: "Hero Section",
+    },
+    {
+      id: "maps",
+      icon: <RxCrosshair1 />,
+      name: "Maps Section",
     },
   ];
 
@@ -511,87 +528,101 @@ function Editor(props) {
                   Add section <FaPlus />
                 </p>
               </div>
-              <article>
-                <div className="imgWrapper">
-                  <img src={section.content.img1} draggable={false} />
-                  <div
-                    className="changeImg noSelect"
-                    onClick={() => {
-                      setIndexOfNewPic(index);
-                      setPropNameOfNewPic("img1");
-                      uploadNewImg();
-                    }}
-                  >
-                    Click to change image
+              <h2
+                suppressContentEditableWarning={true}
+                onBlur={(e) => {
+                  txtFieldChange2(e, index, "heading");
+                }}
+                onFocus={(e) => {
+                  ogTxt = e.target.innerText;
+                }}
+                contentEditable={true}
+              >
+                {section.content.heading}
+              </h2>
+              <div className="grid">
+                <article>
+                  <div className="imgWrapper">
+                    <img src={section.content.img1} draggable={false} />
+                    <div
+                      className="changeImg noSelect"
+                      onClick={() => {
+                        setIndexOfNewPic(index);
+                        setPropNameOfNewPic("img1");
+                        uploadNewImg();
+                      }}
+                    >
+                      Click to change image
+                    </div>
                   </div>
-                </div>
-                <p
-                  suppressContentEditableWarning={true}
-                  onBlur={(e) => {
-                    txtFieldChange2(e, index, "txt1");
-                  }}
-                  onFocus={(e) => {
-                    ogTxt = e.target.innerText;
-                  }}
-                  contentEditable={true}
-                >
-                  {section.content.txt1}
-                </p>
-              </article>
-              <article>
-                <div className="imgWrapper">
-                  <img src={section.content.img2} draggable={false} />
-                  <div
-                    className="changeImg noSelect"
-                    onClick={() => {
-                      setIndexOfNewPic(index);
-                      setPropNameOfNewPic("img2");
-                      uploadNewImg();
+                  <p
+                    suppressContentEditableWarning={true}
+                    onBlur={(e) => {
+                      txtFieldChange2(e, index, "txt1");
                     }}
-                  >
-                    Click to change image
-                  </div>
-                </div>
-                <p
-                  suppressContentEditableWarning={true}
-                  onBlur={(e) => {
-                    txtFieldChange2(e, index, "txt2");
-                  }}
-                  onFocus={(e) => {
-                    ogTxt = e.target.innerText;
-                  }}
-                  contentEditable={true}
-                >
-                  {section.content.txt2}
-                </p>
-              </article>
-              <article>
-                <div className="imgWrapper">
-                  <img src={section.content.img3} draggable={false} />
-                  <div
-                    className="changeImg noSelect"
-                    onClick={() => {
-                      setIndexOfNewPic(index);
-                      setPropNameOfNewPic("img3");
-                      uploadNewImg();
+                    onFocus={(e) => {
+                      ogTxt = e.target.innerText;
                     }}
+                    contentEditable={true}
                   >
-                    Click to change image
+                    {section.content.txt1}
+                  </p>
+                </article>
+                <article>
+                  <div className="imgWrapper">
+                    <img src={section.content.img2} draggable={false} />
+                    <div
+                      className="changeImg noSelect"
+                      onClick={() => {
+                        setIndexOfNewPic(index);
+                        setPropNameOfNewPic("img2");
+                        uploadNewImg();
+                      }}
+                    >
+                      Click to change image
+                    </div>
                   </div>
-                </div>
-                <p
-                  suppressContentEditableWarning={true}
-                  onBlur={(e) => {
-                    txtFieldChange2(e, index, "txt3");
-                  }}
-                  onFocus={(e) => {
-                    ogTxt = e.target.innerText;
-                  }}
-                  contentEditable={true}
-                >
-                  {section.content.txt3}
-                </p>
-              </article>
+                  <p
+                    suppressContentEditableWarning={true}
+                    onBlur={(e) => {
+                      txtFieldChange2(e, index, "txt2");
+                    }}
+                    onFocus={(e) => {
+                      ogTxt = e.target.innerText;
+                    }}
+                    contentEditable={true}
+                  >
+                    {section.content.txt2}
+                  </p>
+                </article>
+                <article>
+                  <div className="imgWrapper">
+                    <img src={section.content.img3} draggable={false} />
+                    <div
+                      className="changeImg noSelect"
+                      onClick={() => {
+                        setIndexOfNewPic(index);
+                        setPropNameOfNewPic("img3");
+                        uploadNewImg();
+                      }}
+                    >
+                      Click to change image
+                    </div>
+                  </div>
+                  <p
+                    suppressContentEditableWarning={true}
+                    onBlur={(e) => {
+                      txtFieldChange2(e, index, "txt3");
+                    }}
+                    onFocus={(e) => {
+                      ogTxt = e.target.innerText;
+                    }}
+                    contentEditable={true}
+                  >
+                    {section.content.txt3}
+                  </p>
+                </article>
+              </div>
               <p
                 className="editBtn noSelect"
                 onClick={() => {
@@ -737,6 +768,19 @@ function Editor(props) {
                 >
                   {section.content.txt}
                 </p>
+                <p
+                  suppressContentEditableWarning={true}
+                  onBlur={(e) => {
+                    txtFieldChange2(e, index, "cta");
+                  }}
+                  onFocus={(e) => {
+                    ogTxt = e.target.innerText;
+                  }}
+                  contentEditable={true}
+                  className="cta"
+                >
+                  {section.content.cta}
+                </p>
               </div>
               <div className="imgWrapper">
                 <img src={section.content.img} draggable={false} />
@@ -751,6 +795,47 @@ function Editor(props) {
                   Click to change image
                 </div>
               </div>
+              <p
+                className="editBtn noSelect"
+                onClick={() => {
+                  deleteSectionPopup(index, "Image and Text Section");
+                }}
+              >
+                <BiEdit />
+              </p>
+              <div className="addSection">
+                <p
+                  onClick={() => {
+                    addSectionPopup(index + 1);
+                  }}
+                >
+                  Add section <FaPlus />
+                </p>
+              </div>
+            </section>
+          );
+        case "maps":
+          return (
+            <section className={section.type}>
+              <div
+                onClick={() => {
+                  addSectionPopup(index);
+                }}
+                className="addSection"
+              >
+                <p>
+                  Add section <FaPlus />
+                </p>
+              </div>
+              <iframe
+                src={section.content.embedURL}
+                width="100%"
+                height="450"
+                style={{ border: 0, display: "flex" }}
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
               <p
                 className="editBtn noSelect"
                 onClick={() => {
@@ -1066,19 +1151,22 @@ function Editor(props) {
       uid = "_";
     }
     const profilePicRef = ref(storage, uid + "/profilePic.png");
-      getDownloadURL(profilePicRef).then((metadata) => {
+    getDownloadURL(profilePicRef)
+      .then((metadata) => {
         setUser({
           displayName: props.auth.currentUser.displayName,
           photoURL: metadata,
           email: props.auth.currentUser.email,
         });
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.log(err);
         setUser({
           displayName: props.auth.currentUser.displayName,
-          photoURL: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2FprofilePic2.png?alt=media&token=64d91b16-4f83-42a9-b297-94f2c5126a06",
+          photoURL:
+            "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2FprofilePic2.png?alt=media&token=64d91b16-4f83-42a9-b297-94f2c5126a06",
           email: props.auth.currentUser.email,
-        });        
+        });
       });
     setLoadBool(false);
   }
@@ -1326,6 +1414,7 @@ function Editor(props) {
         alert("File is bigger than 4 MB. Use a smaller file.");
         e.val = "";
       } else {
+        ``;
         setLogoFile(URL.createObjectURL(e.target.files[0]));
         setLogoFileToUpload(e.target.files[0]);
       }
@@ -1721,10 +1810,7 @@ function Editor(props) {
             >
               <section id="profileSection">
                 <div>
-                  <img
-                    src={user.photoURL}
-                    alt="Profile Pic"
-                  />
+                  <img src={user.photoURL} alt="Profile Pic" />
                   <p>{user.displayName}</p>
                   <p>{user.email}</p>
                 </div>

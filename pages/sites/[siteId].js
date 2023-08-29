@@ -176,34 +176,6 @@ export default function Default() {
               />
             </section>
           );
-        case "grid2":
-          return (
-            <section
-              key={index}
-              className={section.type + " " + section.options.direction}
-            >
-              <article>
-                <div className="imgWrapper">
-                  <img
-                    src={section.content.img1}
-                    draggable={false}
-                    loading={index > 3 ? "lazy" : "eager"}
-                  />
-                </div>
-                <p>{section.content.txt1}</p>
-              </article>
-              <article>
-                <div className="imgWrapper">
-                  <img
-                    src={section.content.img2}
-                    draggable={false}
-                    loading={index > 3 ? "lazy" : "eager"}
-                  />
-                </div>
-                <p>{section.content.txt2}</p>
-              </article>
-            </section>
-          );
         // case "grid3":
         //   return (
         //     <section
@@ -270,20 +242,20 @@ export default function Default() {
         //       </article>
         //     </section>
         //   );
-        // case "hero":
-        //   return (
-        //     <section key={index} className={section.type}>
-        //       <div className="txtWrapper">
-        //         {section.content.heading !== "" ? (
-        //           <h2>{section.content.heading}</h2>
-        //         ) : null}
-        //         <p>{section.content.txt}</p>
-        //       </div>
-        //       <div className="imgWrapper">
-        //         <img src={section.content.img} draggable={false} />
-        //       </div>
-        //     </section>
-        //   );
+        case "hero":
+          return (
+            <section key={index} className={section.type}>
+              <div className="txtWrapper">
+                {/* {section.content.heading !== "" ? (
+                  <h2>{section.content.heading}</h2>
+                ) : null} */}
+                <p>{section.content.txt}</p>
+              </div>
+              <div className="imgWrapper">
+                <img src={section.content.img}/>
+              </div>
+            </section>
+          );
         default:
           break;
       }

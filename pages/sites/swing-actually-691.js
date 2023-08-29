@@ -8,7 +8,32 @@
             const root = document.documentElement;
             root.style.setProperty("--scrollbarThumb", "#0f61e6");
             root.style.setProperty("--scrollbarTrack", "#121212");
+
+            try {
+              let main = document.querySelector("main.published");
+              for (let i = 0; i < main.children.length; i++) {
+                main.children[i].style.color = getContrastYIQfromBG(
+                  window.getComputedStyle(main.children[i])[
+                    "background-color"
+                  ]
+                );
+              }
+            } catch (err) {
+              console.log(err);
+            }
           }, []);
+          
+          function getContrastYIQfromBG(rgbColor) {
+            // Extracting the individual color components from the RGB format
+            var rgbValues = rgbColor.substring(5, rgbColor.length - 1).split(",");
+            var r = parseInt(rgbValues[0].trim());
+            var g = parseInt(rgbValues[1].trim());
+            var b = parseInt(rgbValues[2].trim());
+        
+            // Calculating YIQ value
+            var yiq = (r * 299 + g * 587 + b * 114) / 1000;
+            return yiq >= 128 ? "var(--colorDark)" : "var(--colorLight)";
+          }
 
           return (
             <main
@@ -53,31 +78,41 @@
                 <p>Portfolio</p>
               </a>
             </nav>
-            ,
+            
             <section
               key="1"
               className="imgAndTxt reverseHorizontal"
             >
-              <p>Magic</p>
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fswing-actually-691%2FhWv2UsQyr1YdvxIW.png?alt=media&token=ce3671dc-dbe9-44e5-b116-dff040e29849"
-                draggable="false"
-                loading="eager"
-              />
+              <div className="txtWrapper">
+                <h2>undefined</h2>
+                <p>Magic</p>
+              </div>
+              <div className="imgWrapper">
+                <img
+                  src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fswing-actually-691%2FhWv2UsQyr1YdvxIW.png?alt=media&token=ce3671dc-dbe9-44e5-b116-dff040e29849"
+                  draggable="false"
+                  loading="eager"
+                />
+              </div>
             </section>
-            ,
+            
             <section
               key="2"
               className="imgAndTxt directHorizontal"
             >
-              <p>This is text about some located minerals. This is text about some located minerals. This is text about some located minerals. This is text about some located minerals.</p>
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fminerals-locate-276%2FsrcFiles%2FimgPlaceholder.png?alt=media&token=f3dbf650-3ac2-4644-9047-a207ab6f80f9"
-                draggable="false"
-                loading="eager"
-              />
+              <div className="txtWrapper">
+                <h2>undefined</h2>
+                <p>This is text about some located minerals. This is text about some located minerals. This is text about some located minerals. This is text about some located minerals.</p>
+              </div>
+              <div className="imgWrapper">
+                <img
+                  src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fminerals-locate-276%2FsrcFiles%2FimgPlaceholder.png?alt=media&token=f3dbf650-3ac2-4644-9047-a207ab6f80f9"
+                  draggable="false"
+                  loading="eager"
+                />
+              </div>
             </section>
-            ,
+            
             <footer 
               className="footer"
               key="3"
