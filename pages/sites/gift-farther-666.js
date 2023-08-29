@@ -8,7 +8,32 @@
             const root = document.documentElement;
             root.style.setProperty("--scrollbarThumb", "#3f5a44");
             root.style.setProperty("--scrollbarTrack", "#121212");
+
+            try {
+              let main = document.querySelector("main.published");
+              for (let i = 0; i < main.children.length; i++) {
+                main.children[i].style.color = getContrastYIQfromBG(
+                  window.getComputedStyle(main.children[i])[
+                    "background-color"
+                  ]
+                );
+              }
+            } catch (err) {
+              console.log(err);
+            }
           }, []);
+          
+          function getContrastYIQfromBG(rgbColor) {
+            // Extracting the individual color components from the RGB format
+            var rgbValues = rgbColor.substring(5, rgbColor.length - 1).split(",");
+            var r = parseInt(rgbValues[0].trim());
+            var g = parseInt(rgbValues[1].trim());
+            var b = parseInt(rgbValues[2].trim());
+        
+            // Calculating YIQ value
+            var yiq = (r * 299 + g * 587 + b * 114) / 1000;
+            return yiq >= 128 ? "var(--colorDark)" : "var(--colorLight)";
+          }
 
           return (
             <main
@@ -53,38 +78,48 @@
                 <p>Roll Your Ways</p>
               </a>
             </nav>
-            ,
+            
             <section
               key="1"
               className="imgAndTxt reverseHorizontal"
             >
-              <p>This is your new ImgNTxt section.</p>
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2FimgAndTxt.png?alt=media&token=754fc70d-7640-4975-9077-6d46b953d15b"
-                draggable="false"
-                loading="eager"
-              />
+              <div className="txtWrapper">
+                <h2>undefined</h2>
+                <p>This is your new ImgNTxt section.</p>
+              </div>
+              <div className="imgWrapper">
+                <img
+                  src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2FimgAndTxt.png?alt=media&token=754fc70d-7640-4975-9077-6d46b953d15b"
+                  draggable="false"
+                  loading="eager"
+                />
+              </div>
             </section>
-            ,,
+            
             <section
               key="3"
               className="txtOnly reverseHorizontal"
             >
               <p>Hello to your new se ction</p>
             </section>
-            ,
+            
             <section
               key="4"
               className="imgAndTxt reverseHorizontal"
             >
-              <p>This is your new ImgNTxt section.</p>
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2FimgAndTxt.png?alt=media&token=754fc70d-7640-4975-9077-6d46b953d15b"
-                draggable="false"
-                loading="lazy"
-              />
+              <div className="txtWrapper">
+                <h2>undefined</h2>
+                <p>This is your new ImgNTxt section.</p>
+              </div>
+              <div className="imgWrapper">
+                <img
+                  src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2FimgAndTxt.png?alt=media&token=754fc70d-7640-4975-9077-6d46b953d15b"
+                  draggable="false"
+                  loading="lazy"
+                />
+              </div>
             </section>
-            ,
+            
             <section
               key="5"
               className="imgOnly "
@@ -95,7 +130,7 @@
                 loading="lazy"
               />
             </section>
-            ,
+            
             <section
               key="6"
               className="imgOnly "
@@ -106,14 +141,50 @@
                 loading="lazy"
               />
             </section>
-            ,,,
+            
+              <section className="grid3 ">
+                <h2
+                >
+                  undefined
+                </h2>
+                <div className="grid">
+                  <article>
+                    <div className="imgWrapper">
+                      <img src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fgrid3_img1.png?alt=media&token=73bdb872-b2dd-4413-845c-4f075cf38af6" draggable="false" loading="lazy"/>
+                    </div>
+                    <p
+                    >
+                      sdklksdjklsajdasd
+                    </p>
+                  </article>
+                  <article>
+                    <div className="imgWrapper">
+                      <img src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fgrid3_img2.png?alt=media&token=efa0ed56-6352-4415-858c-a4a861b7cb0a" draggable="false" loading="lazy"/>
+                    </div>
+                    <p
+                    >
+                      Thdsa
+                    </p>
+                  </article>
+                  <article>
+                    <div className="imgWrapper">
+                      <img src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fgrid3_img3.png?alt=media&token=a6a99aef-0947-4847-8ed1-979fadc2f5b3" draggable="false" loading="lazy"/>
+                    </div>
+                    <p
+                    >
+                      dsajlk
+                    </p>
+                  </article>
+                </div>
+              </section>
+              
             <section
               key="9"
               className="txtOnly reverseHorizontal"
             >
               <p>Hello to your new section! Here you can type whatever!</p>
             </section>
-            ,
+            
             <section
               key="10"
               className="imgOnly "
@@ -124,43 +195,58 @@
                 loading="lazy"
               />
             </section>
-            ,
+            
             <section
               key="11"
               className="imgAndTxt reverseHorizontal"
             >
-              <p>This is your new ImgNTxt section.</p>
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fgift-farther-666%2FEV68ABNAI3hY2Ngh.png?alt=media&token=e668b7ae-03aa-48f2-9592-9d09d53aa9d2"
-                draggable="false"
-                loading="lazy"
-              />
+              <div className="txtWrapper">
+                <h2>undefined</h2>
+                <p>This is your new ImgNTxt section.</p>
+              </div>
+              <div className="imgWrapper">
+                <img
+                  src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fgift-farther-666%2FEV68ABNAI3hY2Ngh.png?alt=media&token=e668b7ae-03aa-48f2-9592-9d09d53aa9d2"
+                  draggable="false"
+                  loading="lazy"
+                />
+              </div>
             </section>
-            ,
+            
             <section
               key="12"
               className="imgAndTxt reverseHorizontal"
             >
-              <p>This is your new ImgNTxt section.</p>
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fgift-farther-666%2FkfoYJMKNOIeJraOc.png?alt=media&token=afee015e-b1b3-4094-b775-b120407aaa7b"
-                draggable="false"
-                loading="lazy"
-              />
+              <div className="txtWrapper">
+                <h2>undefined</h2>
+                <p>This is your new ImgNTxt section.</p>
+              </div>
+              <div className="imgWrapper">
+                <img
+                  src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fgift-farther-666%2FkfoYJMKNOIeJraOc.png?alt=media&token=afee015e-b1b3-4094-b775-b120407aaa7b"
+                  draggable="false"
+                  loading="lazy"
+                />
+              </div>
             </section>
-            ,
+            
             <section
               key="13"
               className="imgAndTxt reverseHorizontal"
             >
-              <p>This is your new ImgNTxt section.</p>
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2FimgAndTxt.png?alt=media&token=754fc70d-7640-4975-9077-6d46b953d15b"
-                draggable="false"
-                loading="lazy"
-              />
+              <div className="txtWrapper">
+                <h2>undefined</h2>
+                <p>This is your new ImgNTxt section.</p>
+              </div>
+              <div className="imgWrapper">
+                <img
+                  src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2FimgAndTxt.png?alt=media&token=754fc70d-7640-4975-9077-6d46b953d15b"
+                  draggable="false"
+                  loading="lazy"
+                />
+              </div>
             </section>
-            ,
+            
             <section
               key="14"
               className="imgOnly "
@@ -171,7 +257,7 @@
                 loading="lazy"
               />
             </section>
-            ,,
+            
             <footer 
               className="footer"
               key="16"

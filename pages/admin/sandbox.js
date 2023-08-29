@@ -45,38 +45,38 @@ export default function Sandbox() {
   const [addNewKeywordMode, setAddNewKeywordMode] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const [domain, setDomain] = useState("");
-  const [results, setResults] = useState(null);
+//   const [domain, setDomain] = useState("");
+//   const [results, setResults] = useState(null);
 
-  const API_KEY =
-    "pk1_541c5e9b37047cd87bd30d43848c41dce7322efa4924d028c65ff60091dc89fc";
-  const API_KEY_SECRET =
-    "sk1_42dd3b63afae45be5bef4be047e418cfef34a07a15c30f551962bbf92e48ee0c";
-  const API_BASE_URL = "https://porkbun.com/api/json/v3/";
+//   const API_KEY =
+//     "pk1_541c5e9b37047cd87bd30d43848c41dce7322efa4924d028c65ff60091dc89fc";
+//   const API_KEY_SECRET =
+//     "sk1_42dd3b63afae45be5bef4be047e418cfef34a07a15c30f551962bbf92e48ee0c";
+//   const API_BASE_URL = "https://porkbun.com/api/json/v3/";
 
-  async function searchDomainPrices(domain) {
-    const url = `${API_BASE_URL}?domain=${domain}`;
-    const response = await fetch(url, {
-        headers: {
-          Authorization: `Bearer ${API_KEY}`,
-        },
-      });
-    return data;
-  }
+//   async function searchDomainPrices(domain) {
+//     const url = `${API_BASE_URL}?domain=${domain}`;
+//     const response = await fetch(url, {
+//         headers: {
+//           Authorization: `Bearer ${API_KEY}`,
+//         },
+//       });
+//     return data;
+//   }
 
-  const handleSearch = async () => {
-    if (domain) {
-      const data = await searchDomainPrices(domain);
-      setResults(data);
-    }
-  };
+//   const handleSearch = async () => {
+//     if (domain) {
+//       const data = await searchDomainPrices(domain);
+//       setResults(data);
+//     }
+//   };
 
   return (
     <div className="Sandbox">
       <Dashnav />
       <div className="content">
         <h1>Sandbox</h1>
-        <div>
+        {/* <div>
           <h2>Choose a domain:</h2>
           <input
             type="text"
@@ -91,8 +91,7 @@ export default function Sandbox() {
               <pre>{JSON.stringify(results, null, 2)}</pre>
             </div>
           )}
-        </div>
-        {/* Render your websites here */}
+        </div> */}
         {websites.map((website) => (
           <div key={website.id} className="website">
             <div className="mainData">

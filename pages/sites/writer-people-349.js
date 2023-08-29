@@ -8,7 +8,32 @@
             const root = document.documentElement;
             root.style.setProperty("--scrollbarThumb", "#ffe5e5");
             root.style.setProperty("--scrollbarTrack", "#121212");
+
+            try {
+              let main = document.querySelector("main.published");
+              for (let i = 0; i < main.children.length; i++) {
+                main.children[i].style.color = getContrastYIQfromBG(
+                  window.getComputedStyle(main.children[i])[
+                    "background-color"
+                  ]
+                );
+              }
+            } catch (err) {
+              console.log(err);
+            }
           }, []);
+          
+          function getContrastYIQfromBG(rgbColor) {
+            // Extracting the individual color components from the RGB format
+            var rgbValues = rgbColor.substring(5, rgbColor.length - 1).split(",");
+            var r = parseInt(rgbValues[0].trim());
+            var g = parseInt(rgbValues[1].trim());
+            var b = parseInt(rgbValues[2].trim());
+        
+            // Calculating YIQ value
+            var yiq = (r * 299 + g * 587 + b * 114) / 1000;
+            return yiq >= 128 ? "var(--colorDark)" : "var(--colorLight)";
+          }
 
           return (
             <main
@@ -53,7 +78,7 @@
                 <p>The Tangled Stories</p>
               </a>
             </nav>
-            ,
+            
             <section
               key="1"
               className="imgOnly "
@@ -64,19 +89,24 @@
                 loading="eager"
               />
             </section>
-            ,
+            
             <section
               key="2"
               className="imgAndTxt directHorizontal"
             >
-              <p>This is text about some located minerals.</p>
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-ALNvFdJ75LPwHkSuRsxig6ujMrs1%2Fwriter-people-349%2FFpt3q7occtSsT7ZZ.png?alt=media&token=0c7105f2-7b61-42eb-9315-b521be513534"
-                draggable="false"
-                loading="eager"
-              />
+              <div className="txtWrapper">
+                <h2>undefined</h2>
+                <p>This is text about some located minerals.</p>
+              </div>
+              <div className="imgWrapper">
+                <img
+                  src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-ALNvFdJ75LPwHkSuRsxig6ujMrs1%2Fwriter-people-349%2FFpt3q7occtSsT7ZZ.png?alt=media&token=0c7105f2-7b61-42eb-9315-b521be513534"
+                  draggable="false"
+                  loading="eager"
+                />
+              </div>
             </section>
-            ,
+            
             <section
               key="3"
               className="imgOnly "
@@ -87,7 +117,7 @@
                 loading="eager"
               />
             </section>
-            ,
+            
             <section
               key="4"
               className="imgOnly "
@@ -98,7 +128,7 @@
                 loading="lazy"
               />
             </section>
-            ,
+            
             <section
               key="5"
               className="imgOnly "
@@ -109,7 +139,7 @@
                 loading="lazy"
               />
             </section>
-            ,
+            
             <section
               key="6"
               className="imgOnly "
@@ -120,7 +150,7 @@
                 loading="lazy"
               />
             </section>
-            ,
+            
             <footer 
               className="footer"
               key="7"

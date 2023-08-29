@@ -3304,10 +3304,14 @@
       background-color: var(--color2);
     }
   }
+  .imgWrapper {
+    display: flex;
+  }
   .nav {
     justify-content: left;
     #navLogo {
       height: fit-content;
+      color: inherit;
       img {
         height: 5rem;
       }
@@ -3319,19 +3323,20 @@
     }
   }
   .hero {
+    position: relative;
     .txtWrapper {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: flex-start;
+      align-items: center;
       padding: 0 10%;
-      text-align: left;
-      width: 60%;
+      text-align: center;
+      width: 100%;
       box-sizing: border-box;
       position: absolute;
       z-index: 2;
-      top: 10%;
-      transform: translateY(10%);
+      top: 50%;
+      transform: translateY(-50%);
       & > * {
         padding: 10px 1vw;
       }
@@ -3341,18 +3346,37 @@
         margin: 0;
       }
       p {
-        width: 100%;
+        width: 50%;
         line-height: 1.5;
         box-sizing: border-box;
-        font-size: 2.4rem;
+        font-size: 1.5rem;
+      }
+      .cta {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 2vw;
+        background-color: var(--colorLight);
+        padding: 10px 2vw;
+        border-radius: 12px;
+        max-width: 50%;
+        cursor: pointer;
+        width: fit-content;
+        font-weight: 1000;
+        color: var(--colorDark);
+        &:hover {
+          filter: brightness(0.8);
+        }
       }
     }
     .imgWrapper {
       width: 100% !important;
       z-index: 1;
+      display: flex;
       img {
         width: 100%;
-        filter: brightness(0.5);
+        filter: brightness(0.1) saturate(2);
       }
     }
   }
@@ -3379,7 +3403,7 @@
           width: 100%;
           line-height: 1.5;
           box-sizing: border-box;
-          font-size: 1.4rem;
+          font-size: 1.2rem;
         }
       }
       &.imgWrapper {
@@ -3392,26 +3416,31 @@
   }
   .footer {
     min-height: 100px;
+    #watermark {
+      a {
+        color: inherit;
+      }
+    }
   }
 }
 
 .industrial.published {
-  main {
-    & > *:nth-child(2n + 1) {
-      background-color: var(--color1);
-    }
-    &:nth-child(2n) {
-      background-color: var(--color2);
-    }
-    > * {
-      &:nth-child(2n + 1) * {
-        background-color: transparent;
-      }
-      &:nth-child(2n) * {
-        background-color: transparent;
-      }
-    }
+  // main {
+  & > *:nth-child(2n + 1) {
+    background-color: var(--color1);
   }
+  & > *:nth-child(2n) {
+    background-color: var(--color2);
+  }
+  // > * {
+  //   &:nth-child(2n + 1) * {
+  //     background-color: transparent;
+  //   }
+  //   &:nth-child(2n) * {
+  //     background-color: transparent;
+  //   }
+  // }
+  // }
 }
 
 .simple.previewTemplate {
@@ -3666,36 +3695,47 @@
 }
 
 .grid3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto;
-  gap: 2vw;
   padding: 20px 10%;
-  article {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1vw;
-    padding: 20px 2vw;
-    h2 {
-      font-size: 2.2rem;
-      width: fit-content;
-      height: 50px;
-      text-align: center;
-    }
-    p {
-      font-size: 1.2rem;
-      padding: 0;
-    }
-    img {
-      border-radius: 6px;
-      width: 100%;
-    }
-    .imgWrapper {
-      .changeImg {
-        font-size: 1.2rem !important;
+  h2 {
+    font-size: 2.4rem;
+    height: 50px;
+    text-align: center;
+    width: 100%;
+    padding: 20px 10%;
+    box-sizing: border-box;
+    height: fit-content;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 2vw;
+    article {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 1vw;
+      padding: 20px 2vw;
+      h2 {
+        font-size: 2.2rem;
+        width: fit-content;
+        height: 50px;
         text-align: center;
+      }
+      p {
+        font-size: 1.2rem;
+        padding: 0;
+      }
+      img {
+        border-radius: 6px;
+        width: 100%;
+      }
+      .imgWrapper {
+        .changeImg {
+          font-size: 1.2rem !important;
+          text-align: center;
+        }
       }
     }
   }

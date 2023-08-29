@@ -1,8 +1,8 @@
 import fs from "fs";
 
 function itemToPage(item) {
-  const sections = item.webContent.pages.main.structure.map(
-    (section, index) => {
+  const sections = item.webContent.pages.main.structure
+    .map((section, index) => {
       switch (section.type) {
         case "txtOnly":
           return `
@@ -19,12 +19,21 @@ function itemToPage(item) {
               key="${index}"
               className="${section.type + " " + section.options.direction}"
             >
-              <p>${section.content.txt}</p>
-              <img
-                src="${section.content.img}"
-                draggable="false"
-                loading="${index > 3 ? "lazy" : "eager"}"
-              />
+              <div className="txtWrapper">
+                ${
+                  section.content.heading !== ""
+                    ? `<h2>${section.content.heading}</h2>`
+                    : null
+                }
+                <p>${section.content.txt}</p>
+              </div>
+              <div className="imgWrapper">
+                <img
+                  src="${section.content.img}"
+                  draggable="false"
+                  loading="${index > 3 ? "lazy" : "eager"}"
+                />
+              </div>
             </section>
             `;
         case "nav":
@@ -66,11 +75,105 @@ function itemToPage(item) {
               />
             </section>
             `;
+        case "hero":
+          return `
+            <section
+              key="${index}"
+              className="${section.type}"
+            >
+              <div className="txtWrapper">
+                ${
+                  section.content.heading !== ""
+                    ? `<h2>${section.content.heading}</h2>`
+                    : null
+                }
+                <p>${section.content.txt}</p>
+                <p className="cta"
+                  onClick={() => {
+                    window.scrollTo({
+                      top: window.innerHeight / 0.75,
+                      behavior: "smooth",
+                    });
+                  }}
+                >${section.content.cta}</p>
+              </div>
+              <div className="imgWrapper">
+                <img src='${section.content.img}'
+                draggable="false"
+                loading="${index > 3 ? "lazy" : "eager"}"
+                />
+              </div>
+            </section>
+        `;
+        case "grid3":
+          return `
+              <section className="${
+                section.type + " " + section.options.direction
+              }">
+                <h2
+                >
+                  ${section.content.heading}
+                </h2>
+                <div className="grid">
+                  <article>
+                    <div className="imgWrapper">
+                      <img src="${
+                        section.content.img1
+                      }" draggable="false" loading="${
+            index > 3 ? "lazy" : "eager"
+          }"/>
+                    </div>
+                    <p
+                    >
+                      ${section.content.txt1}
+                    </p>
+                  </article>
+                  <article>
+                    <div className="imgWrapper">
+                      <img src="${
+                        section.content.img2
+                      }" draggable="false" loading="${
+            index > 3 ? "lazy" : "eager"
+          }"/>
+                    </div>
+                    <p
+                    >
+                      ${section.content.txt2}
+                    </p>
+                  </article>
+                  <article>
+                    <div className="imgWrapper">
+                      <img src="${
+                        section.content.img3
+                      }" draggable="false" loading="${
+            index > 3 ? "lazy" : "eager"
+          }"/>
+                    </div>
+                    <p
+                    >
+                      ${section.content.txt3}
+                    </p>
+                  </article>
+                </div>
+              </section>
+              `;
+        case "maps":
+          return `
+            <iframe
+              src="${section.content.embedURL}"
+              width="100%"
+              height="450"
+              style={{border:0}}
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+            `;
         default:
           break;
       }
-    }
-  );
+    })
+    .join("");
   console.log(sections);
   return `
     import Head from "next/head";
@@ -80,9 +183,36 @@ function itemToPage(item) {
 
           useEffect(() => {
             const root = document.documentElement;
-            root.style.setProperty("--scrollbarThumb", "${item.webContent.meta.colorPalette.color1}");
+            root.style.setProperty("--scrollbarThumb", "${
+              item.webContent.meta.colorPalette.color1
+            }");
             root.style.setProperty("--scrollbarTrack", "#121212");
+
+            try {
+              let main = document.querySelector("main.published");
+              for (let i = 0; i < main.children.length; i++) {
+                main.children[i].style.color = getContrastYIQfromBG(
+                  window.getComputedStyle(main.children[i])[
+                    "background-color"
+                  ]
+                );
+              }
+            } catch (err) {
+              console.log(err);
+            }
           }, []);
+          
+          function getContrastYIQfromBG(rgbColor) {
+            // Extracting the individual color components from the RGB format
+            var rgbValues = rgbColor.substring(5, rgbColor.length - 1).split(",");
+            var r = parseInt(rgbValues[0].trim());
+            var g = parseInt(rgbValues[1].trim());
+            var b = parseInt(rgbValues[2].trim());
+        
+            // Calculating YIQ value
+            var yiq = (r * 299 + g * 587 + b * 114) / 1000;
+            return yiq >= 128 ? "var(--colorDark)" : "var(--colorLight)";
+          }
 
           return (
             <main
@@ -97,25 +227,37 @@ function itemToPage(item) {
                 "--colorDark": "${
                   item.webContent.meta["colorPalette"]["colorDark"]
                 }",
-                "--scrollbarThumb": "${item.webContent.meta.colorPalette.color1}",
+                "--scrollbarThumb": "${
+                  item.webContent.meta.colorPalette.color1
+                }",
                 "--scrollbarTrack": "#121212",
               }}
             >
             <Head>
               <title>${item.webContent.meta.metaTitle}</title>
-              <meta name="description" content="${item.webContent.meta.metaDescription}"></meta>
+              <meta name="description" content="${
+                item.webContent.meta.metaDescription
+              }"></meta>
               <link rel="icon" href="${item.webContent.meta.metaFavicon}" />
               <meta name="viewport" content="width=device-width, initial-scale=1" />
-              <meta name="author" content="${item.webContent.meta.metaAuthor}"></meta>
-              <meta property="og:image" content="${item.webContent.meta.metaThumbnail}"></meta>
+              <meta name="author" content="${
+                item.webContent.meta.metaAuthor
+              }"></meta>
+              <meta property="og:image" content="${
+                item.webContent.meta.metaThumbnail
+              }"></meta>
               <meta property="og:type" content="website"></meta>
-              <meta property="og:title" content="${item.webContent.meta.metaTitle}"></meta>
+              <meta property="og:title" content="${
+                item.webContent.meta.metaTitle
+              }"></meta>
               <meta
                 property="og:description"
                 content="${item.webContent.meta.metaDescription}"
               ></meta>
               <meta property="twitter:card" content="summary_large_image"></meta>
-              <meta property="twitter:title" content="${item.webContent.meta.metaTitle}"></meta>
+              <meta property="twitter:title" content="${
+                item.webContent.meta.metaTitle
+              }"></meta>
               <meta
                 property="twitter:description"
                 content="${item.webContent.meta.metaDescription}"
@@ -130,9 +272,6 @@ function itemToPage(item) {
 export default function handler(req, res) {
   const { item } = req.body;
 
-  //   create new folder
-  // fs.mkdirSync(`pages/sites/static/${data.domainSlug}`);
-  // create new page file
   fs.writeFileSync(
     `pages/sites/static/${item.domainSlug}.json`,
     JSON.stringify(item)
