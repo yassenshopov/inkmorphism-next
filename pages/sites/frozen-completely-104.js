@@ -40,7 +40,7 @@
               className={"industrial published"}
               style={{
                 "--color1": "#f5f5f5",
-                "--color2": "#171717",
+                "--color2": "#1e252a",
                 "--color3": "#79e16b",
                 "--colorLight": "#ebebeb",
                 "--colorDark": "#0e111a",

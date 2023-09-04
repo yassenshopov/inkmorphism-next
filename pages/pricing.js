@@ -9,6 +9,8 @@ import { getAuth } from "firebase/auth";
 import useCreatorStatus from "../stripe/useCreatorStatus";
 import createCheckoutSession from "../stripe/createCheckoutSession";
 import Loader from "./components/loader";
+import { TbConfetti } from "react-icons/tb";
+import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 
 // Meta data:
 let title = "Inkmorphism Pricing | Affordable Plans for Every Need";
@@ -49,11 +51,11 @@ export default function Pricing() {
 
       {/* <WIP/> */}
       <main id="pricing">
-        { loader ? <Loader/> : null}
+        {loader ? <Loader /> : null}
         <section id="hero">
           <h1>Craft your website</h1>
           <h2>
-            <span>(and let </span>AI<span> make it better)</span>
+            <span>(and let our </span>AI<span> make it better)</span>
           </h2>
           {/* <p id="fallingStar"><GiFallingStar /></p> */}
           <div
@@ -61,17 +63,19 @@ export default function Pricing() {
             onClick={paymentModeToggle}
             className="noSelect"
           >
-            <p className={monthlyPayment ? "dim" : ""}>Monthly</p>
+            <p className={monthlyPayment ? "" : "dim"}>Monthly</p>
             <div
               className={`paymentModeSwitch ${
                 monthlyPayment ? "monthly" : "annual"
               }`}
             >
               <div
-                className={"switch " + (monthlyPayment ? "clicked" : "annual")}
-              ></div>
+                className={"switch " + (monthlyPayment ? "monthly" : "annual")}
+              >
+                <TbConfetti />
+              </div>
             </div>
-            <p className={monthlyPayment ? "" : "dim"}>Annual</p>
+            <p className={monthlyPayment ? "dim" : ""}>Annual</p>
           </div>
         </section>
         <section id="plansGrid">
@@ -80,7 +84,8 @@ export default function Pricing() {
               <strong>Free</strong> plan
             </p>
             <h2>
-              0$/<span>month</span>
+              0$/
+              {monthlyPayment ? <span>month</span> : <span>year</span>}
             </h2>
             <div className="features">
               <button
@@ -89,7 +94,7 @@ export default function Pricing() {
                 }}
                 className="noSelect"
               >
-                Get started
+                Start for free
               </button>
               <ul>
                 <li>
@@ -123,20 +128,26 @@ export default function Pricing() {
             </div>
           </div>
           <div className="plan best">
-            {/* <p id="bestLabel">Most popular!</p> */}
+            <p id="bestLabel">Most popular!</p>
             <p>
               <strong>Creator</strong> plan
             </p>
-            <h2>
-              {monthlyPayment ? 19 : 24}$/<span>month</span>
-            </h2>
+            {monthlyPayment ? (
+              <h2>
+                24$/<span>month</span>
+              </h2>
+            ) : (
+              <h2>
+                228$/<span>year</span>
+              </h2>
+            )}
             <div className="features">
               <button
-                  onClick={() => {
-                    let price = monthlyPayment ? 19 : 24;
-                    createCheckoutSession(user.currentUser.uid, price);
-                    setLoader(true);
-                  }}
+                onClick={() => {
+                  let price = monthlyPayment ? 19 : 24;
+                  createCheckoutSession(user.currentUser.uid, price);
+                  setLoader(true);
+                }}
                 className="noSelect"
               >
                 Get started
@@ -170,11 +181,12 @@ export default function Pricing() {
                   </span>
                 </li>
                 <li>
-                  - Weekly consultation
+                  - Weekly report
                   <span>
                     <AiFillInfoCircle />
                     <div>
-                      Weekly consultation with a professional web developer
+                      A descriptive weekly report from a professional web
+                      developer that highlights improvements, ideas, performance
                     </div>
                   </span>
                 </li>
@@ -211,15 +223,21 @@ export default function Pricing() {
             <p>
               <strong>Business</strong> plan
             </p>
-            <h2>
-              {monthlyPayment ? 39 : 54}$/<span>month</span>
-            </h2>
+            {monthlyPayment ? (
+              <h2>
+                54$/<span>month</span>
+              </h2>
+            ) : (
+              <h2>
+                468$/<span>year</span>
+              </h2>
+            )}
             <div className="features">
               <button
                 onClick={() => {
                   // window.location.href = "../templates";
                 }}
-                className="noSelect"
+                className="noSelect notWorking"
               >
                 To be announced <TfiTime />
               </button>
@@ -285,6 +303,149 @@ export default function Pricing() {
                 </li>
               </ul>
             </div>
+          </div>
+        </section>
+        <section id="faq">
+          <h2>Frequently asked questions</h2>
+          <div className="question">
+            <h3>
+              <span>
+                <MdOutlineKeyboardArrowDown />
+              </span>
+              What is Inkmorphism?
+              <div
+                className="clicker"
+                onClick={(e) => {
+                  e.target.parentElement.parentElement.classList.toggle(
+                    "clicked"
+                  );
+                }}
+              ></div>
+            </h3>
+            <p>
+              Inkmorphism is an AI-powered website builder that allows you to
+              create stunning websites effortlessly. You can choose from a
+              variety of templates and customize them to your liking.
+              <br />
+              <br />
+              The key feature of Inkmorphism is AI enhancement. After you create
+              your website, our professional web devs will review it and use AI
+              to enhance it. This means that your website will be optimised,
+              have better SEO, and will be more user-friendly.
+              <br />
+              <br />
+              You also get a weekly report from our web devs that highlights
+              improvements, ideas, and performance.
+            </p>
+          </div>
+
+          <div className="question">
+            <h3>
+              <span>
+                <MdOutlineKeyboardArrowDown />
+              </span>
+              Can I build a website without any technical knowledge?
+              <div
+                className="clicker"
+                onClick={(e) => {
+                  e.target.parentElement.parentElement.classList.toggle(
+                    "clicked"
+                  );
+                }}
+              ></div>
+            </h3>
+            <p>
+              Yes! Inkmorphism is designed to be as simple as possible. You can
+              create a website in just a few clicks. You don't need any
+              technical knowledge to use Inkmorphism.
+            </p>
+          </div>
+
+          <div className="question">
+            <h3>
+              <span>
+                <MdOutlineKeyboardArrowDown />
+              </span>
+              Can I use my own domain name with Inkmorphism?
+              <div
+                className="clicker"
+                onClick={(e) => {
+                  e.target.parentElement.parentElement.classList.toggle(
+                    "clicked"
+                  );
+                }}
+              ></div>
+            </h3>
+            <p>
+              Yes! You can use your own domain name with Inkmorphism. You can
+              either buy a domain name from us or use your own domain name and
+              transfer it.
+            </p>
+          </div>
+
+          <div className="question">
+            <h3>
+              <span>
+                <MdOutlineKeyboardArrowDown />
+              </span>
+              Is there a free trial?
+              <div
+                className="clicker"
+                onClick={(e) => {
+                  e.target.parentElement.parentElement.classList.toggle(
+                    "clicked"
+                  );
+                }}
+              ></div>
+            </h3>
+            <p>
+              Yes! You can try Inkmorphism for free. You can create a website
+              and use it for free -{" "}
+              <a href="#pricing">then upgrade to a paid plan at any time</a>.
+            </p>
+          </div>
+
+          <div className="question">
+            <h3>
+              <span>
+                <MdOutlineKeyboardArrowDown />
+              </span>
+              Can I change my subscription plan?
+              <div
+                className="clicker"
+                onClick={(e) => {
+                  e.target.parentElement.parentElement.classList.toggle(
+                    "clicked"
+                  );
+                }}
+              ></div>
+            </h3>
+            <p>
+              Yes, you can change your subscription plan at any time by going to
+              the settings of your website.
+            </p>
+          </div>
+
+          <div className="question">
+            <h3>
+              <span>
+                <MdOutlineKeyboardArrowDown />
+              </span>
+              Who will be working on my website?
+              <div
+                className="clicker"
+                onClick={(e) => {
+                  e.target.parentElement.parentElement.classList.toggle(
+                    "clicked"
+                  );
+                }}
+              ></div>
+            </h3>
+            <p>
+              After creating a website and choosing a paid plan, we will assign
+              you a web developer from our team. They will be working on your
+              website and will use the most modern AI tools to enhance it.
+            </p>
           </div>
         </section>
         {/* <section>
