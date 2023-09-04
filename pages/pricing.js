@@ -144,7 +144,7 @@ export default function Pricing() {
             <div className="features">
               <button
                 onClick={() => {
-                  let price = monthlyPayment ? 19 : 24;
+                  let price = monthlyPayment ? 24 : 19;
                   createCheckoutSession(user.currentUser.uid, price);
                   setLoader(true);
                 }}
