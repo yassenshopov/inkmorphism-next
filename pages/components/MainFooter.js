@@ -6,11 +6,24 @@ import { FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 export default function MainFooter() {
   const [loadBool, setLoadBool] = useState(false);
 
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.async = true;
+    script.dataset.uid = '41dc387760';
+    script.src = 'https://inkmorphism.ck.page/41dc387760/index.js';
+    document.getElementById("footerLeft").appendChild(script);
+
+    return () => {
+      // Cleanup: remove the script element when the component unmounts
+      document.getElementById("footerLeft").removeChild(script);
+    };
+  }, []);
+
   return (
     <footer id="MainFooter">
       {loadBool ? <Loader /> : ""}
         <div id="footerLeft">
-          <p>Inkmorphism © 2023</p>
+          {/* <p>Inkmorphism © 2023</p> */}
         </div>
         <div id="footerRight">
           <div id="socialLinks">

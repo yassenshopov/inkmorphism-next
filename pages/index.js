@@ -99,15 +99,17 @@ export default function Home() {
             Get started for free
           </a>
           <div id="templateGallery">
-          <a className="wrapper" href="/templates/industrial" target="_blank">
+            <a className="wrapper" href="/templates/industrial" target="_blank">
               <img src="/main/industrialThumbnail.png" loading="lazy" />
               <h3>Industrial</h3>
               <p>Industrial, a modern template for your business.</p>
+              <span>New!</span>
             </a>
             <a className="wrapper" href="/templates/minimalism" target="_blank">
               <img src="/main/minimalismThumbnail.png" loading="lazy" />
               <h3>Minimalism</h3>
               <p>Minimalism is the art of using less to achieve more.</p>
+              <span>Soon</span>
             </a>
             <a
               className="wrapper"
@@ -117,6 +119,7 @@ export default function Home() {
               <img src="/main/glassmorphismThumbnail.png" loading="lazy" />
               <h3>Glassmorphism</h3>
               <p>Glassmorphism is a new trend in UI design.</p>
+              <span>Soon</span>
             </a>
             <a
               className="wrapper"
@@ -126,11 +129,13 @@ export default function Home() {
               <img src="/main/neobrutalismThumbnail.png" loading="lazy" />
               <h3>Neobrutalism</h3>
               <p>Neobrutalism is a new trend in UI design.</p>
+              <span>Soon</span>
             </a>
             <a className="wrapper" href="/templates/web3" target="_blank">
               <img src="/main/web3Thumbnail.png" loading="lazy" />
               <h3>Web 3.0</h3>
               <p>Web 3.0 is the next generation of the internet.</p>
+              <span>Soon</span>
             </a>
             <a className="wrapper" href="/templates/simple" target="_blank">
               <img src="/main/simpleThumbnail.png" loading="lazy" />
@@ -187,16 +192,14 @@ export default function Home() {
             <div className="feature">
               <img src="/main/feature1.png" />
               <h3>AI helpers</h3>
-              <p>
-                Our AI helpers can improve your copy, images, and more.
-              </p>
+              <p>Our AI helpers can improve your copy, images, and more.</p>
             </div>
             <div className="feature">
               <img src="/main/feature2.png" />
               <h3>Custom domains</h3>
               <p>
-                Connect your own domain to your website. We'll take care of
-                the rest.
+                Connect your own domain to your website. We'll take care of the
+                rest.
               </p>
             </div>
             <div className="feature">
