@@ -251,7 +251,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     #hero {
       display: flex;
       flex-direction: row;
@@ -259,20 +258,19 @@
       align-items: center;
       min-height: 300px;
       font-family: "WorkSans";
-      color: var(--mainLight);
-      margin: 150px 0 30px 0;
-      // width: 50vw;
+      margin: 80px 0 30px 0;
       width: 100%;
       padding: 20px 12vw 0 12vw;
       box-sizing: border-box;
       gap: 10vw;
       #heroTxt {
-        width: 50%;
+        width: 80%;
+        font-family: "Raleway", sans-serif;
         h1 {
           font-size: 4rem;
         }
         h2 {
-          font-size: 2.5rem;
+          font-size: 1.5rem;
         }
         a {
           text-align: center;
@@ -294,6 +292,7 @@
         }
       }
       #heroImg {
+        display: none;
         width: 30%;
         img {
           width: 100%;
@@ -311,41 +310,33 @@
   }
   #blogs {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: 1fr;
-    // flex-direction: row;
-    // justify-content: center;
-    // align-items: center;
-    // flex-wrap: wrap;
     gap: 2vw;
-    width: 100%;
+    width: 90%;
     padding: 80px 8vw;
     box-sizing: border-box;
     min-height: fit-content;
     font-family: "WorkSans";
     align-items: stretch;
     .article {
-      // width: 33%;
       width: 100%;
       transition: all 200ms ease-in-out;
-      // height: fit-content;
-      // background-color: var(--mainLight);
-      // border-radius: 24px;
-      // box-shadow: 10px 10px 10px #12121220, -10px -10px 10px #ffffff06;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 0px 0vw 0px 0vw;
+      padding: 0px 0vw 50px;
       gap: 30px;
+      font-family: "Raleway", sans-serif;
       text-align: left;
       transition: all 200ms ease-in-out;
       position: relative;
       z-index: 0;
-      color: var(--mainLight);
+      color: var(--mainDark);
       text-decoration: none;
       overflow: hidden;
-      font-family: "WorkSans";
-      background-color: #00000020;
+      border: 1px solid var(--mainGrey);
+      border-radius: 12px;
       .middleContent {
         display: flex;
         flex-direction: column;
@@ -381,15 +372,19 @@
           padding: 10px 1vw;
           // font-size: 1.2rem;
           border-radius: 12px;
+          font-weight: 1000;
         }
-        *:nth-child(1) {
+        *:nth-child(n) {
           background-color: var(--mainColor1);
+          color: var(--mainLight);
         }
-        *:nth-child(2) {
+        *:nth-child(2n) {
           background-color: var(--mainColor2);
+          color: var(--mainLight);
         }
-        *:nth-child(3) {
+        *:nth-child(3n) {
           background-color: var(--mainColor3);
+          color: var(--mainLight);
         }
       }
       h2 {
@@ -402,6 +397,7 @@
         padding: 0;
       }
       button {
+        display: none;
         border: none;
         margin: 0px 0;
         padding: 25px 0;
@@ -525,11 +521,11 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  width: 100vw;
   main {
     width: 100vw;
     min-height: 80vh;
-    background: linear-gradient(var(--mainColor2), var(--mainColor3));
+    background: var(--mainLight);
+    color: var(--mainDark);
   }
 }
 
@@ -1503,10 +1499,10 @@
       }
       p {
         font-family: 'Raleway', sans-serif;
-        font-size: 1.2rem;
         margin: 0;
         padding: 20px 1vw;
         display: none;
+        line-height: 1.5;
       }
     }
   }
@@ -2108,25 +2104,31 @@
         }
       }
     }
-    .editBtn {
-      text-decoration: none;
-      color: var(--mainLight);
-      background-color: var(--mainDark);
-      border-radius: 8px;
-      padding: 20px 0;
-      text-align: center;
-      font-size: 1.2rem;
-      font-family: "Raleway", sans-serif;
-      transition: all 200ms ease-in-out;
-      filter: drop-shadow(3px 3px 0px red) drop-shadow(-3px -3px 0px cyan);
-      &:hover {
-        filter: drop-shadow(3px 3px 0px cyan) drop-shadow(-3px -3px 0px red);
-        background-color: var(--mainLight);
-        color: var(--mainDark);
-      }
-      svg {
-        margin: 0 2px;
-        vertical-align: middle;
+    .actionBtns {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px 0 40px;
+      .editBtn {
+        text-decoration: none;
+        color: var(--mainLight);
+        background-color: var(--mainDark);
+        border-radius: 8px;
+        padding: 20px 0;
+        text-align: center;
+        font-size: 1.2rem;
+        font-family: "Raleway", sans-serif;
+        transition: all 200ms ease-in-out;
+        filter: drop-shadow(3px 3px 0px red) drop-shadow(-3px -3px 0px cyan);
+        &:hover {
+          filter: drop-shadow(3px 3px 0px cyan) drop-shadow(-3px -3px 0px red);
+          background-color: var(--mainLight);
+          color: var(--mainDark);
+        }
+        svg {
+          margin: 0 2px;
+          vertical-align: middle;
+        }
       }
     }
     & > article.deletedWebsites {
@@ -2231,13 +2233,14 @@
     font-size: 3rem;
     color: var(--mainLight);
     text-align: left;
-    padding: 0 1vw 40px;
+    padding: 40px 1vw 80px;
     font-weight: 400;
+    font-family: "Raleway", sans-serif;
   }
   #templates {
     display: grid;
     width: 100%;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: fit-content fit-content fit-content;
     row-gap: 60px;
     column-gap: 2vw;
@@ -2246,10 +2249,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      // align-items: center;
-      // text-align: center;
       border-radius: 6px;
-      // overflow: hidden;
       position: relative;
       font-family: "WorkSans";
       color: var(--mainDark);
@@ -2277,13 +2277,14 @@
           align-items: center;
           z-index: 2;
           width: 100%;
-          height: 80%;
-          background: linear-gradient(0deg, #ffffff90, #ffffff);
+          height: 85%;
+          background: linear-gradient(0deg, #ffffff99, #ffffff);
           opacity: 0;
           transition: all 300ms ease-in-out;
           gap: 40px;
           border-radius: 6px;
           filter: saturate(2);
+          font-family: "Oswald";
           top: 0;
           * {
             cursor: pointer;
@@ -2292,7 +2293,7 @@
             font-weight: 1000;
             text-transform: uppercase;
             color: var(--mainDark);
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             transition: all 200ms ease-in-out;
             border-bottom: 2px solid #10101000;
             padding: 0 0 10px 0;
@@ -2347,9 +2348,8 @@
 .Article {
   width: 100vw;
   padding: 160px 0 0 0;
-  font-family: "WorkSans";
+  font-family: "Raleway", sans-serif;
   color: #fff;
-  // background: linear-gradient(var(--mainColor2), var(--mainColor3));
   background: var(--mainLight);
   main {
     display: flex;
@@ -2402,16 +2402,13 @@
         border-radius: 12px;
         box-sizing: border-box;
         padding: 40px 2vw;
-        box-shadow: 0px 0px 40px #12121220;
+        border: 1px solid var(--mainGrey);
         #authorProfilePic {
           display: flex;
           justify-content: center;
           align-items: center;
           width: 60%;
-          // height: 8vw;
-          // border-radius: 50%;
           overflow: hidden;
-          // margin: 20px 2vw;
           box-shadow: 0px 0px 40px #12121220;
           border-radius: 8px;
           transition: all 200ms ease-in-out;
@@ -2435,9 +2432,9 @@
           align-items: flex-start;
           gap: 10px;
           h3 {
-            font-family: "Oswald";
             font-size: 1.4rem;
             margin: 10px 0;
+            font-weight: 1000;
           }
           p {
             line-height: 1.8;
@@ -2475,12 +2472,9 @@
         justify-content: space-between;
         align-items: left;
         z-index: 2;
-        // background-color: var(--mainLight);
         color: var(--mainDark);
         border-radius: 12px;
         box-sizing: border-box;
-        // padding: 40px 2vw;
-        // box-shadow: 0px 0px 40px #12121220;
         h2 {
           padding: 0 0 20px 0;
         }
@@ -2493,11 +2487,12 @@
           border-bottom: 1px solid #00000020;
           transition: all 200ms ease-in-out;
           box-sizing: border-box;
-          box-shadow: 0px 0px 40px #12121220;
+          border: 1px solid var(--mainGrey);
           border-radius: 12px;
           text-decoration: none;
           color: var(--mainDark);
           overflow: hidden;
+          margin-bottom: 40px;
           cursor: pointer;
           .tags {
             display: flex;
@@ -2515,10 +2510,10 @@
               color: var(--mainLight);
               padding: 4px 20px;
               font-size: 1rem;
-              font-family: "Oswald";
               border-radius: 6px;
               margin: 0 10px 10px 0;
               transition: all 200ms ease-in-out;
+              font-weight: 1000;
               cursor: pointer;
               &:hover {
                 filter: brightness(0.8);
@@ -2543,7 +2538,6 @@
             border-radius: 6px 6px 0 0;
           }
           h3 {
-            font-family: "Oswald";
             font-size: 1.4rem;
             margin: 10px 0;
             padding: 0 2vw;
@@ -2556,13 +2550,12 @@
             background-color: var(--mainColor1);
             color: var(--mainLight);
             border: none;
-            // border-radius: 6px;
             padding: 20px 20px;
             font-size: 1.6rem;
-            font-family: "Oswald";
             cursor: pointer;
             transition: all 200ms ease-in-out;
             width: 100%;
+            font-family: "Raleway", sans-serif;
             &:hover {
               background-color: var(--mainColor2);
             }
@@ -2582,7 +2575,7 @@
       padding: 20px 4vw 80px;
       border-radius: 12px;
       min-height: 60vh;
-      box-shadow: 0px 0px 40px #12121220;
+      border: 1px solid var(--mainGrey);
       #articleLoader {
         justify-self: center;
         align-self: center;
@@ -2592,21 +2585,17 @@
         }
       }
       h1 {
-        font-family: "Oswald";
         font-size: 3rem;
       }
       h2 {
-        font-family: "Oswald";
         margin: 0;
         font-size: 2.5rem;
       }
       h3 {
-        font-family: "Oswald";
         margin: 0;
         font-size: 2rem;
       }
       h4 {
-        font-family: "Oswald";
         margin: 0;
         font-size: 1.5rem;
       }
@@ -3514,7 +3503,7 @@
     justify-content: left;
     #navLogo {
       height: fit-content;
-      max-height: 50px;
+      max-height: 30px;
       color: inherit;
       transition: all 200ms ease-in-out;
       &:hover {
@@ -3523,10 +3512,10 @@
         }
       }
       img {
-        height: 5rem;
+        height: 3rem;
       }
       p {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         font-weight: 1000;
         color: inherit;
         border-bottom: 2px solid transparent;
@@ -3536,7 +3525,7 @@
   }
   .hero {
     position: relative;
-    height: 60vh;
+    height: 70vh;
     overflow: hidden;
     .txtWrapper {
       display: flex;
@@ -4567,8 +4556,6 @@
         .article {
           width: 100%;
           box-sizing: border-box;
-          border-radius: 24px;
-          box-shadow: 0 0 2vw #12121280;
           h2 {
             padding: 0 2vw;
             font-size: 2rem;
@@ -4576,9 +4563,14 @@
             width: 100%;
             box-sizing: border-box;
           }
+          .author {
+            padding: 0 2vw;
+          }
           .tags {
             align-self: center;
             gap: 4vw;
+            padding: 0 4vw;
+            justify-content: space-evenly;
             p {
               font-size: 1.2rem;
               padding: 10px 4vw;
@@ -4794,7 +4786,6 @@
         p {
           margin: 0;
           font-size: 1.2rem;
-          color: var(--mainLight);
           transition: all 200ms ease-in-out;
         }
         p.dim {
@@ -4824,13 +4815,13 @@
     }
     #plansGrid {
       box-sizing: border-box;
-      padding: 10px 6vw;
+      padding: 10px 6vw 60px;
       flex-direction: column;
       gap: 40px;
       align-items: center;
       width: 85%;
       .plan {
-        width: 90%;
+        width: 98%;
         gap: 20px; //gap between features
         padding: 20px 10vw 40px;
         ul {
@@ -5099,11 +5090,16 @@
             padding: 15px 5vw;
           }
         }
-        .editBtn {
-          width: 80%;
-          box-sizing: border-box;
-          padding: 15px 5vw;
-          margin: 20px 0;
+        .actionBtns {
+          width: 100%;
+          gap: 0;
+          padding: 0;
+          .editBtn {
+            width: 80%;
+            box-sizing: border-box;
+            padding: 15px 5vw;
+            margin: 20px 0;
+          }
         }
         .logoWrapper {
           right: 2vw;
@@ -5397,12 +5393,11 @@
   }
 
   #MainFooter {
-    flex-direction: column-reverse;
+    flex-direction: column;
     width: 100%;
     color: var(--mainDark);
     background: var(--mainLight);
-    padding: 0;
-    // gap: 20px;
+    padding: 50px 0;
     box-sizing: content-box;
     p {
       cursor: auto;
