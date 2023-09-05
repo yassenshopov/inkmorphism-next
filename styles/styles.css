@@ -258,21 +258,21 @@
   align-items: center;
   min-height: 300px;
   font-family: "WorkSans";
-  color: var(--mainLight);
-  margin: 150px 0 30px 0;
+  margin: 80px 0 30px 0;
   width: 100%;
   padding: 20px 12vw 0 12vw;
   box-sizing: border-box;
   gap: 10vw;
 }
 .Blog main #hero #heroTxt {
-  width: 50%;
+  width: 80%;
+  font-family: "Raleway", sans-serif;
 }
 .Blog main #hero #heroTxt h1 {
   font-size: 4rem;
 }
 .Blog main #hero #heroTxt h2 {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
 }
 .Blog main #hero #heroTxt a {
   text-align: center;
@@ -292,6 +292,7 @@
   filter: drop-shadow(-3px 3px 0px red) drop-shadow(3px -3px 0px cyan);
 }
 .Blog main #hero #heroImg {
+  display: none;
   width: 30%;
 }
 .Blog main #hero #heroImg img {
@@ -305,10 +306,10 @@
 }
 .Blog #blogs {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: 1fr;
   gap: 2vw;
-  width: 100%;
+  width: 90%;
   padding: 80px 8vw;
   box-sizing: border-box;
   min-height: fit-content;
@@ -320,17 +321,18 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 0px 0vw 0px 0vw;
+  padding: 0px 0vw 50px;
   gap: 30px;
+  font-family: "Raleway", sans-serif;
   text-align: left;
   transition: all 200ms ease-in-out;
   position: relative;
   z-index: 0;
-  color: var(--mainLight);
+  color: var(--mainDark);
   text-decoration: none;
   overflow: hidden;
-  font-family: "WorkSans";
-  background-color: #00000020;
+  border: 1px solid var(--mainGrey);
+  border-radius: 12px;
 }
 .Blog #blogs .article .middleContent {
   display: flex;
@@ -367,15 +369,19 @@
   margin: 0;
   padding: 10px 1vw;
   border-radius: 12px;
+  font-weight: 1000;
 }
-.Blog #blogs .article .tags *:nth-child(1) {
+.Blog #blogs .article .tags *:nth-child(n) {
   background-color: var(--mainColor1);
+  color: var(--mainLight);
 }
-.Blog #blogs .article .tags *:nth-child(2) {
+.Blog #blogs .article .tags *:nth-child(2n) {
   background-color: var(--mainColor2);
+  color: var(--mainLight);
 }
-.Blog #blogs .article .tags *:nth-child(3) {
+.Blog #blogs .article .tags *:nth-child(3n) {
   background-color: var(--mainColor3);
+  color: var(--mainLight);
 }
 .Blog #blogs .article h2 {
   margin: 20px 0;
@@ -386,6 +392,7 @@
   padding: 0;
 }
 .Blog #blogs .article button {
+  display: none;
   border: none;
   margin: 0px 0;
   padding: 25px 0;
@@ -495,13 +502,13 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  width: 100vw;
 }
 .About main,
 .Blog main {
   width: 100vw;
   min-height: 80vh;
-  background: linear-gradient(var(--mainColor2), var(--mainColor3));
+  background: var(--mainLight);
+  color: var(--mainDark);
 }
 #WIP {
   display: flex;
@@ -1429,10 +1436,10 @@
 }
 #pricing #faq .question p {
   font-family: 'Raleway', sans-serif;
-  font-size: 1.2rem;
   margin: 0;
   padding: 20px 1vw;
   display: none;
+  line-height: 1.5;
 }
 #pricing #specialOffer {
   display: flex;
@@ -2001,7 +2008,13 @@
   margin: 0;
   vertical-align: unset;
 }
-#dash #websites .editBtn {
+#dash #websites .actionBtns {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 0 40px;
+}
+#dash #websites .actionBtns .editBtn {
   text-decoration: none;
   color: var(--mainLight);
   background-color: var(--mainDark);
@@ -2013,12 +2026,12 @@
   transition: all 200ms ease-in-out;
   filter: drop-shadow(3px 3px 0px red) drop-shadow(-3px -3px 0px cyan);
 }
-#dash #websites .editBtn:hover {
+#dash #websites .actionBtns .editBtn:hover {
   filter: drop-shadow(3px 3px 0px cyan) drop-shadow(-3px -3px 0px red);
   background-color: var(--mainLight);
   color: var(--mainDark);
 }
-#dash #websites .editBtn svg {
+#dash #websites .actionBtns .editBtn svg {
   margin: 0 2px;
   vertical-align: middle;
 }
@@ -2120,13 +2133,14 @@
   font-size: 3rem;
   color: var(--mainLight);
   text-align: left;
-  padding: 0 1vw 40px;
+  padding: 40px 1vw 80px;
   font-weight: 400;
+  font-family: "Raleway", sans-serif;
 }
 #templatesWrapper #templates {
   display: grid;
   width: 100%;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: fit-content fit-content fit-content;
   row-gap: 60px;
   column-gap: 2vw;
@@ -2166,13 +2180,14 @@
   align-items: center;
   z-index: 2;
   width: 100%;
-  height: 80%;
-  background: linear-gradient(0deg, #ffffff90, #ffffff);
+  height: 85%;
+  background: linear-gradient(0deg, #ffffff99, #ffffff);
   opacity: 0;
   transition: all 300ms ease-in-out;
   gap: 40px;
   border-radius: 6px;
   filter: saturate(2);
+  font-family: "Oswald";
   top: 0;
 }
 #templatesWrapper #templates article .imgWrapper #hiddenBtns * {
@@ -2182,7 +2197,7 @@
   font-weight: 1000;
   text-transform: uppercase;
   color: var(--mainDark);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   transition: all 200ms ease-in-out;
   border-bottom: 2px solid #10101000;
   padding: 0 0 10px 0;
@@ -2230,7 +2245,7 @@
 .Article {
   width: 100vw;
   padding: 160px 0 0 0;
-  font-family: "WorkSans";
+  font-family: "Raleway", sans-serif;
   color: #fff;
   background: var(--mainLight);
 }
@@ -2287,7 +2302,7 @@
   border-radius: 12px;
   box-sizing: border-box;
   padding: 40px 2vw;
-  box-shadow: 0px 0px 40px #12121220;
+  border: 1px solid var(--mainGrey);
 }
 .Article main aside #authorProfile #authorProfilePic {
   display: flex;
@@ -2319,9 +2334,9 @@
   gap: 10px;
 }
 .Article main aside #authorProfile #authorProfileInfo h3 {
-  font-family: "Oswald";
   font-size: 1.4rem;
   margin: 10px 0;
+  font-weight: 1000;
 }
 .Article main aside #authorProfile #authorProfileInfo p {
   line-height: 1.8;
@@ -2373,11 +2388,12 @@
   border-bottom: 1px solid #00000020;
   transition: all 200ms ease-in-out;
   box-sizing: border-box;
-  box-shadow: 0px 0px 40px #12121220;
+  border: 1px solid var(--mainGrey);
   border-radius: 12px;
   text-decoration: none;
   color: var(--mainDark);
   overflow: hidden;
+  margin-bottom: 40px;
   cursor: pointer;
 }
 .Article main aside #suggestions a .tags {
@@ -2396,10 +2412,10 @@
   color: var(--mainLight);
   padding: 4px 20px;
   font-size: 1rem;
-  font-family: "Oswald";
   border-radius: 6px;
   margin: 0 10px 10px 0;
   transition: all 200ms ease-in-out;
+  font-weight: 1000;
   cursor: pointer;
 }
 .Article main aside #suggestions a .tags p:hover {
@@ -2423,7 +2439,6 @@
   border-radius: 6px 6px 0 0;
 }
 .Article main aside #suggestions a h3 {
-  font-family: "Oswald";
   font-size: 1.4rem;
   margin: 10px 0;
   padding: 0 2vw;
@@ -2438,10 +2453,10 @@
   border: none;
   padding: 20px 20px;
   font-size: 1.6rem;
-  font-family: "Oswald";
   cursor: pointer;
   transition: all 200ms ease-in-out;
   width: 100%;
+  font-family: "Raleway", sans-serif;
 }
 .Article main aside #suggestions a button:hover {
   background-color: var(--mainColor2);
@@ -2458,7 +2473,7 @@
   padding: 20px 4vw 80px;
   border-radius: 12px;
   min-height: 60vh;
-  box-shadow: 0px 0px 40px #12121220;
+  border: 1px solid var(--mainGrey);
 }
 .Article main article #articleLoader {
   justify-self: center;
@@ -2469,21 +2484,17 @@
   animation: loaderRotate 800ms infinite linear;
 }
 .Article main article h1 {
-  font-family: "Oswald";
   font-size: 3rem;
 }
 .Article main article h2 {
-  font-family: "Oswald";
   margin: 0;
   font-size: 2.5rem;
 }
 .Article main article h3 {
-  font-family: "Oswald";
   margin: 0;
   font-size: 2rem;
 }
 .Article main article h4 {
-  font-family: "Oswald";
   margin: 0;
   font-size: 1.5rem;
 }
@@ -3356,7 +3367,7 @@
 }
 .industrial .nav #navLogo {
   height: fit-content;
-  max-height: 50px;
+  max-height: 30px;
   color: inherit;
   transition: all 200ms ease-in-out;
 }
@@ -3364,10 +3375,10 @@
   border-bottom: 2px solid var(--colorDark);
 }
 .industrial .nav #navLogo img {
-  height: 5rem;
+  height: 3rem;
 }
 .industrial .nav #navLogo p {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 1000;
   color: inherit;
   border-bottom: 2px solid transparent;
@@ -3375,7 +3386,7 @@
 }
 .industrial .hero {
   position: relative;
-  height: 60vh;
+  height: 70vh;
   overflow: hidden;
 }
 .industrial .hero .txtWrapper {
@@ -4353,8 +4364,6 @@
   .Blog main #blogs .article {
     width: 100%;
     box-sizing: border-box;
-    border-radius: 24px;
-    box-shadow: 0 0 2vw #12121280;
   }
   .Blog main #blogs .article h2 {
     padding: 0 2vw;
@@ -4363,9 +4372,14 @@
     width: 100%;
     box-sizing: border-box;
   }
+  .Blog main #blogs .article .author {
+    padding: 0 2vw;
+  }
   .Blog main #blogs .article .tags {
     align-self: center;
     gap: 4vw;
+    padding: 0 4vw;
+    justify-content: space-evenly;
   }
   .Blog main #blogs .article .tags p {
     font-size: 1.2rem;
@@ -4569,7 +4583,6 @@
   #pricing #hero #paymentMode p {
     margin: 0;
     font-size: 1.2rem;
-    color: var(--mainLight);
     transition: all 200ms ease-in-out;
   }
   #pricing #hero #paymentMode p.dim {
@@ -4595,14 +4608,14 @@
   }
   #pricing #plansGrid {
     box-sizing: border-box;
-    padding: 10px 6vw;
+    padding: 10px 6vw 60px;
     flex-direction: column;
     gap: 40px;
     align-items: center;
     width: 85%;
   }
   #pricing #plansGrid .plan {
-    width: 90%;
+    width: 98%;
     gap: 20px;
     padding: 20px 10vw 40px;
   }
@@ -4848,7 +4861,12 @@
   #dash #websites > article .siteInfo .styleTag {
     padding: 15px 5vw;
   }
-  #dash #websites > article .editBtn {
+  #dash #websites > article .actionBtns {
+    width: 100%;
+    gap: 0;
+    padding: 0;
+  }
+  #dash #websites > article .actionBtns .editBtn {
     width: 80%;
     box-sizing: border-box;
     padding: 15px 5vw;
@@ -5122,11 +5140,11 @@
     color: var(--simpleMainLight);
   }
   #MainFooter {
-    flex-direction: column-reverse;
+    flex-direction: column;
     width: 100%;
     color: var(--mainDark);
     background: var(--mainLight);
-    padding: 0;
+    padding: 50px 0;
     box-sizing: content-box;
   }
   #MainFooter p {

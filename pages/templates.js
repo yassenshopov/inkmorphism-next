@@ -30,6 +30,7 @@ export default function Templates() {
   let profile_pic = "";
 
   const [loadBool, setLoadBool] = useState(false);
+  const [isUser, setIsUser] = useState(false);
 
   useEffect(() => {
     const el = document.getElementById("fetch");
@@ -53,6 +54,7 @@ export default function Templates() {
     let uid;
     try {
       uid = "user-" + auth.currentUser.uid;
+      setIsUser(true);
     } catch (err) {
       uid = "_";
     }
@@ -75,7 +77,6 @@ export default function Templates() {
       .catch((error) => {
         // Uh-oh, an error occurred!
         try {
-          console.log(userDataDB);
           // profile_pic = auth.currentUser.photoURL;
           setUserData({
             profile_pic: auth.currentUser.photoURL,
@@ -120,7 +121,6 @@ export default function Templates() {
     slug = slug + Math.ceil(100 + Math.random() * 899);
     domainSlug = slug;
     slug = slug + ".inkmorphism.com";
-    console.log(slug);
 
     const storage = getStorage();
     let logoRef = ref(storage, user + "/" + domainSlug + "/logo.png");
@@ -132,7 +132,6 @@ export default function Templates() {
     fetch(url)
       .then((response) => response.blob())
       .then((blob) => {
-        console.log(blob);
         const fileObject = new File([blob], "logo.png", {
           type: "image/png",
         });
@@ -146,7 +145,6 @@ export default function Templates() {
         fetch(url2)
           .then((response) => response.blob())
           .then((blob) => {
-            console.log(blob);
             const fileObject2 = new File([blob], "thumbnail.png", {
               type: "image/png",
             });
@@ -162,10 +160,6 @@ export default function Templates() {
 
   useEffect(() => {
     if (defaultThumbnail !== "" && defaultLogo !== "") {
-      console.log(defaultThumbnail);
-      console.log(defaultLogo);
-      console.log(domainSlug);
-      console.log(slug);
       newSite = {
         published: false,
         deleted: false,
@@ -224,14 +218,13 @@ export default function Templates() {
           },
         },
       };
-      console.log(newSite);
       setDoc(doc(col, domainSlug), newSite);
       let urlRedirect = "../../config/" + domainSlug;
       window.location.href = urlRedirect;
     }
   }, [defaultThumbnail]);
 
-  const templatesArr = ["simple", "glassmorphism", "minimalism", "neobrutalism", "web3", "industrial"];
+  const templatesArr = ["industrial", "simple", "glassmorphism", "minimalism", "neobrutalism", "web3"];
   const templates = templatesArr.map((template, index) => (
     <article key={index}>
       <div className="imgWrapper">
@@ -240,7 +233,11 @@ export default function Templates() {
         <a
           className="noSelect"
           onClick={() => {
-            randomSiteGen(template);
+            if (isUser) {
+              randomSiteGen(template);
+            } else {
+              window.location.href = "/login";
+            }
           }}
         >
           Get Started with <em>{template}</em> →

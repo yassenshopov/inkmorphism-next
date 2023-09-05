@@ -29,6 +29,7 @@ import {
 } from "react-icons/ai";
 import MainFooter from "./components/MainFooter.js";
 import { MdOutlineModeEditOutline } from "react-icons/md";
+import { BsSignpostFill } from "react-icons/bs";
 
 export default function Dashboard() {
   const [userDataDB, setUserDB] = useState({
@@ -103,10 +104,7 @@ export default function Dashboard() {
       });
       console.log(websitesArray.existing);
       const websites = websitesArray.existing.map((site) => (
-        <article
-          key={site.domain}
-          className="noSelect"
-        >
+        <article key={site.domain} className="noSelect">
           <div className="imgWrapper">
             <img
               src={site.thumbnail === "" ? placeholder.src : site.thumbnail}
@@ -138,9 +136,21 @@ export default function Dashboard() {
               </p>
             )}
           </div>
-          <a href={"../config/" + site.domainSlug} className="editBtn">
-            Edit <MdOutlineModeEditOutline />
-          </a>
+          <div className="actionBtns">
+            <a href={"../config/" + site.domainSlug} className="editBtn">
+              Edit <MdOutlineModeEditOutline />
+            </a>
+            {!site.published ? (
+              <a
+                href={"../pricing?site=" + site.domainSlug}
+                className="editBtn"
+              >
+                Publish <BsSignpostFill/>
+              </a>
+            ) : (
+              ""
+            )}
+          </div>
           {site.published ? (
             <div className="publishedCheck">
               <p>
@@ -224,7 +234,8 @@ export default function Dashboard() {
           // Uh-oh, an error occurred!
           console.log(error);
           setUserData({
-            profile_pic: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2FprofilePic2.png?alt=media&token=64d91b16-4f83-42a9-b297-94f2c5126a06",
+            profile_pic:
+              "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2FprofilePic2.png?alt=media&token=64d91b16-4f83-42a9-b297-94f2c5126a06",
             displayName: auth.currentUser.displayName,
           });
         });

@@ -577,15 +577,6 @@ label {
       border-radius: 12px 12px 0 0;
       overflow: hidden;
       width: 100%;
-      #shadowFilter {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        z-index: 94;
-        user-select: none;
-        pointer-events: none;
-        top: 0;
-      }
     }
     .dropdown:hover .dropdown-content {
       display: block;
@@ -637,6 +628,12 @@ label {
       max-height: 0;
       transition: all 200ms ease-out;
       overflow: hidden;
+    }
+    a:not(:last-child) {
+      border-bottom: 1px solid var(--mainGrey);
+      &:not(:first-child) {
+        border-top: 1px solid var(--mainGrey);
+      }
     }
 
     .dropdown-items.show {
