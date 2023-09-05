@@ -67,9 +67,6 @@ export default function Blog() {
               Explore ↓
             </a>
           </div>
-          <div id="heroImg">
-            <img src="blog/hero.gif" />
-          </div>
         </section>
 
         <div id="explore"></div>
