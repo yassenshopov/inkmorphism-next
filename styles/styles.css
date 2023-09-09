@@ -4481,6 +4481,41 @@
   font-size: 2rem;
 }
 @media screen and (max-width: 650px) {
+  .industrial .nav {
+    justify-content: center;
+  }
+  .industrial .hero .txtWrapper {
+    width: 100%;
+  }
+  .industrial .hero .txtWrapper h2 {
+    font-size: 1.6rem;
+  }
+  .industrial .hero .txtWrapper p {
+    font-size: 1.2rem;
+    width: 100%;
+  }
+  .industrial .hero .txtWrapper .cta {
+    padding: 10px 10vw;
+  }
+  .industrial .hero .imgWrapper {
+    height: 100%;
+  }
+  .industrial .imgAndTxt {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .industrial .imgAndTxt > *.txtWrapper,
+  .industrial .imgAndTxt > *.imgWrapper {
+    width: 100% !important;
+  }
+  .industrial .imgAndTxt .txtWrapper {
+    text-align: center;
+    padding: 40px 4vw;
+  }
+  .industrial .grid3 .grid {
+    display: flex;
+    flex-direction: column;
+  }
   .About footer,
   .Blog footer {
     flex-direction: column-reverse;
