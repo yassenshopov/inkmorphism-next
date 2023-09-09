@@ -1481,7 +1481,7 @@
       h3 {
         font-size: 1.4rem;
         position: relative;
-        font-family: 'Raleway', sans-serif;
+        font-family: "Raleway", sans-serif;
         .clicker {
           width: 100%;
           height: 100%;
@@ -1498,7 +1498,7 @@
         }
       }
       p {
-        font-family: 'Raleway', sans-serif;
+        font-family: "Raleway", sans-serif;
         margin: 0;
         padding: 20px 1vw;
         display: none;
@@ -1692,6 +1692,58 @@
                 }
               }
             }
+          }
+        }
+      }
+    }
+  }
+}
+
+.UsersDash {
+  font-family: "Raleway", sans-serif;
+  width: 100vw;
+  box-sizing: border-box;
+  .users {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 20px 2vw;
+    box-sizing: border-box;
+    .user {
+      width: 100%;
+      padding: 20px 2vw;
+      box-sizing: border-box;
+      border: 1px solid var(--mainGrey);
+      border-radius: 12px;
+      span {
+        font-size: 1.2rem;
+        font-weight: 1000;
+      }
+      img {
+        width: 8rem;
+        height: 8rem;
+        object-fit: cover;
+        border-radius: 12px;
+      }
+      p {
+        div {
+          width: fit-content;
+          display: inline;
+          border-radius: 24px;
+          padding: 10px 20px;
+          &.google {
+            color: var(--mainLight);
+            background-color: #cb1313;
+          }
+          &.github {
+            color: var(--mainLight);
+            background-color: #000000;
+          }
+          &.password {
+            color: var(--mainLight);
+            background-color: #626262;
           }
         }
       }
@@ -2273,7 +2325,8 @@
     justify-content: center;
     align-items: center;
     width: 40%;
-    select, input[type="text"] {
+    select,
+    input[type="text"] {
       padding: 10px 2vw;
       box-sizing: border-box;
       border-radius: 8px;
@@ -2361,7 +2414,7 @@
             filter: drop-shadow(0 0 10px #ffffff20);
           }
           50% {
-            filter: drop-shadow(0 0 20px #fff);
+            filter: drop-shadow(0 0 20px #ffffff40);
           }
           100% {
             filter: drop-shadow(0 0 10px #ffffff20);

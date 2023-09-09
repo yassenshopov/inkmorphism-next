@@ -1418,7 +1418,7 @@
 #pricing #faq .question h3 {
   font-size: 1.4rem;
   position: relative;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 #pricing #faq .question h3 .clicker {
   width: 100%;
@@ -1435,7 +1435,7 @@
   transition: all 200ms ease-in-out;
 }
 #pricing #faq .question p {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   margin: 0;
   padding: 20px 1vw;
   display: none;
@@ -1619,6 +1619,55 @@
 .Sandbox .content .website .metaData .keywords .keywordsWrapper p.addMore:hover {
   background-color: var(--mainDark);
   color: var(--mainLight);
+}
+.UsersDash {
+  font-family: "Raleway", sans-serif;
+  width: 100vw;
+  box-sizing: border-box;
+}
+.UsersDash .users {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding: 20px 2vw;
+  box-sizing: border-box;
+}
+.UsersDash .users .user {
+  width: 100%;
+  padding: 20px 2vw;
+  box-sizing: border-box;
+  border: 1px solid var(--mainGrey);
+  border-radius: 12px;
+}
+.UsersDash .users .user span {
+  font-size: 1.2rem;
+  font-weight: 1000;
+}
+.UsersDash .users .user img {
+  width: 8rem;
+  height: 8rem;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.UsersDash .users .user p div {
+  width: fit-content;
+  display: inline;
+  border-radius: 24px;
+  padding: 10px 20px;
+}
+.UsersDash .users .user p div.google {
+  color: var(--mainLight);
+  background-color: #cb1313;
+}
+.UsersDash .users .user p div.github {
+  color: var(--mainLight);
+  background-color: #000000;
+}
+.UsersDash .users .user p div.password {
+  color: var(--mainLight);
+  background-color: #626262;
 }
 #cPanel {
   height: fit-content !important;
@@ -2264,7 +2313,7 @@
     filter: drop-shadow(0 0 10px #ffffff20);
   }
   50% {
-    filter: drop-shadow(0 0 20px #fff);
+    filter: drop-shadow(0 0 20px #ffffff40);
   }
   100% {
     filter: drop-shadow(0 0 10px #ffffff20);

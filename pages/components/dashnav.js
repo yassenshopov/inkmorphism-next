@@ -1,7 +1,4 @@
 import logo from '../../styles/images/logoWh.webp';
-import app from "../../firebase/clientApp";
-import { getAuth } from 'firebase/auth'
-import { getFirestore, collection, getDoc, doc, setDoc } from 'firebase/firestore/lite';
 import { useRouter } from 'next/router';
 import Loader from '../components/loader.js'
 import { useEffect, useState } from 'react';
