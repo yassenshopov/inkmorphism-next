@@ -4675,6 +4675,47 @@
 }
 
 @media screen and (max-width: 650px) {
+  .industrial {
+    .nav {
+      justify-content: center;
+    }
+    .hero {
+      .txtWrapper {
+        width: 100%;
+        h2 {
+          font-size: 1.6rem;
+        }
+        p {
+          font-size: 1.2rem;
+          width: 100%;
+        }
+        .cta {
+          padding: 10px 10vw;
+        }
+      }
+      .imgWrapper {
+        height: 100%;
+      }
+    }
+    .imgAndTxt {
+      flex-direction: column;
+      gap: 20px;
+      &>*.txtWrapper,
+      &>*.imgWrapper {
+        width: 100% !important;
+      }
+      .txtWrapper {
+        text-align: center;
+        padding: 40px 4vw;
+      }
+    }
+    .grid3 {
+      .grid {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
   .About,
   .Blog {
     footer {

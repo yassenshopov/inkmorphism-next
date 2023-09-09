@@ -916,9 +916,9 @@ function Editor(props) {
               <div className="mapsWrapper">
                 <iframe
                   src={section.content.embedURL}
-                  allowfullscreen=""
+                  allowFullScreen=""
                   loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
+                  referrerPolicy="no-referrer-when-downgrade"
                 ></iframe>
                 <p
                   className="changeImg noSelect"
