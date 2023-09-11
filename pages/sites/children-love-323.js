@@ -79,6 +79,33 @@
               </a>
             </nav>
             
+              <section className="grid2 ">
+                <h2
+                >
+                  undefined
+                </h2>
+                <div className="grid">
+                  <article>
+                    <div className="imgWrapper">
+                      <img src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fgrid3_img1.png?alt=media&token=73bdb872-b2dd-4413-845c-4f075cf38af6" draggable="false" loading="eager"/>
+                    </div>
+                    <p
+                    >
+                      This is your new Grid2 section.
+                    </p>
+                  </article>
+                  <article>
+                    <div className="imgWrapper">
+                      <img src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2FZ0kugn8Jt65quNfn.png?alt=media&token=bc17f413-e89d-4b2b-b7a0-67fe06083537" draggable="false" loading="eager"/>
+                    </div>
+                    <p
+                    >
+                      This is your new Grid2 section.
+                    </p>
+                  </article>
+                </div>
+              </section>
+              
             <section
               key="2"
               className="imgAndTxt reverseHorizontal"
@@ -127,6 +154,33 @@
                     <p
                     >
                       This is your new Grid3 section.
+                    </p>
+                  </article>
+                </div>
+              </section>
+              
+              <section className="grid2 ">
+                <h2
+                >
+                  undefined
+                </h2>
+                <div className="grid">
+                  <article>
+                    <div className="imgWrapper">
+                      <img src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fchildren-love-323%2Fp2j3W754Y1ruXb5T.png?alt=media&token=e1c2f7d5-5153-4891-a8a5-a8749074d5c2" draggable="false" loading="lazy"/>
+                    </div>
+                    <p
+                    >
+                      This is your new Grid2 section.
+                    </p>
+                  </article>
+                  <article>
+                    <div className="imgWrapper">
+                      <img src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fgrid3_img2.png?alt=media&token=efa0ed56-6352-4415-858c-a4a861b7cb0a" draggable="false" loading="lazy"/>
+                    </div>
+                    <p
+                    >
+                      This is your new Grid2 section.
                     </p>
                   </article>
                 </div>

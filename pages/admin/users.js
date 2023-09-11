@@ -24,17 +24,23 @@ export default function UsersDash() {
           .filter((user) => user.uid)
           //sort by createdAt - in reverse
           .sort((a, b) => b.createdAt - a.createdAt);
-        dbRenderedData.forEach((user) => {
+        dbRenderedData.forEach(async (user) => {
+          //get users/uid-xyz/websites
+
+          const websitesRef = collection(db, `users`, `user-${user.uid}`, `websites`);
+          const websitesRefQuerySnapshot = await getDocs(websitesRef);
+          const websites = websitesRefQuerySnapshot.docs.map((doc) =>
+            doc.data()
+          );
+          user.websites = websites;
           try {
             getProfilePicFromStorage(user.uid);
-            console.log(profilePics);
           } catch (err) {
             console.error(err);
           }
         });
 
         setUsers(dbRenderedData);
-        console.log(dbRenderedData);
       } catch (err) {
         console.error(err);
       }
@@ -161,6 +167,29 @@ export default function UsersDash() {
                   {user.providerData[0].providerId}
                 </div>
               </p>
+              {
+                // If the user has websites, display them
+                user.websites ? (
+                  <>
+                    <h3>Websites:</h3>
+                    <ul>
+                      {user.websites.map((website) => {
+                        return (
+                          <li key={website.id}>
+                            <a href={`/admin/users/${website.domainSlug}`}>{website.name}</a>
+                          </li>
+                        );
+                      }
+                      )}
+                    </ul>
+                  </>
+                ) : (
+                  <p>
+                    <span>Websites: </span>
+                    None
+                  </p>
+                )
+              }
             </div>
           );
         })}

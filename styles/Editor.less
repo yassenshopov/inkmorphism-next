@@ -389,7 +389,7 @@ label {
         overflow-y: scroll;
         width: 100%;
         > * {
-          min-height: 100px;
+          // min-height: 100px;
           transition: all 400ms ease-in-out;
           position: relative;
           z-index: 1;
@@ -629,10 +629,10 @@ label {
       transition: all 200ms ease-out;
       overflow: hidden;
     }
-    a:not(:last-child) {
+    a:not(.mainLogoWrapper), .dropdown-items {
       border-bottom: 1px solid var(--mainGrey);
       &:not(:first-child) {
-        border-top: 1px solid var(--mainGrey);
+        // border-top: 1px solid var(--mainGrey);
       }
     }
 
