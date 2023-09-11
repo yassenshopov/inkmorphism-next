@@ -371,7 +371,6 @@ label {
   width: 100%;
 }
 .Editor > main #mainEditorWrapper main > * {
-  min-height: 100px;
   transition: all 400ms ease-in-out;
   position: relative;
   z-index: 1;
@@ -598,11 +597,9 @@ label {
   transition: all 200ms ease-out;
   overflow: hidden;
 }
-.Editor aside a:not(:last-child) {
+.Editor aside a:not(.mainLogoWrapper),
+.Editor aside .dropdown-items {
   border-bottom: 1px solid var(--mainGrey);
-}
-.Editor aside a:not(:last-child):not(:first-child) {
-  border-top: 1px solid var(--mainGrey);
 }
 .Editor aside .dropdown-items.show {
   max-height: fit-content;

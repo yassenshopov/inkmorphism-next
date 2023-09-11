@@ -62,7 +62,7 @@ export default function Home() {
               Inkmorphism builds on top of your ideas with the latest AI tools.
               Create stunning sites effortlessly!
             </h2>
-            <a href="/templates" className="noSelect">
+            <a href="/register" className="noSelect">
               Get started for free!
             </a>
             <h3>Try for free. No card required.</h3>
@@ -95,7 +95,7 @@ export default function Home() {
           <p>
             Choose from a variety of templates to get started with your website.
           </p>
-          <a className="ctaBtn noSelect" href="/templates">
+          <a className="ctaBtn noSelect" href="/register">
             Get started for free
           </a>
           <div id="templateGallery">

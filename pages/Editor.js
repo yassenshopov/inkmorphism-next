@@ -2165,7 +2165,7 @@ function Editor(props) {
       </main>
 
       <aside>
-        <a href="../../dashboard">
+        <a className="mainLogoWrapper" href="../../dashboard">
           <img id="mainLogo" src={logo.src} />
         </a>
         <h1>Hello, {user.displayName}.</h1>

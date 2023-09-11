@@ -6,7 +6,7 @@
 
           useEffect(() => {
             const root = document.documentElement;
-            root.style.setProperty("--scrollbarThumb", "#f5f5f5");
+            root.style.setProperty("--scrollbarThumb", "#1a1919");
             root.style.setProperty("--scrollbarTrack", "#121212");
 
             try {
@@ -39,12 +39,12 @@
             <main
               className={"industrial published"}
               style={{
-                "--color1": "#f5f5f5",
-                "--color2": "#1e252a",
+                "--color1": "#1a1919",
+                "--color2": "#191a1a",
                 "--color3": "#79e16b",
                 "--colorLight": "#ebebeb",
                 "--colorDark": "#0e111a",
-                "--scrollbarThumb": "#f5f5f5",
+                "--scrollbarThumb": "#1a1919",
                 "--scrollbarTrack": "#121212",
               }}
             >
@@ -105,6 +105,92 @@
         
             <section
               key="2"
+              className="hero"
+            >
+              <div className="txtWrapper">
+                <h2>This is your new Hero section.</h2>
+                <p>This is your new Hero section.</p>
+                <p className="cta"
+                  onClick={() => {
+                    window.scrollTo({
+                      top: window.innerHeight / 0.75,
+                      behavior: "smooth",
+                    });
+                  }}
+                >Explore</p>
+              </div>
+              <div className="imgWrapper">
+                <img src='https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fhero_img.png?alt=media&token=cd992c4a-c6c3-4a68-bed7-e0efdeba8df5'
+                draggable="false"
+                loading="eager"
+                />
+              </div>
+            </section>
+        
+            <section
+              key="3"
+              className="txtOnly reverseHorizontal"
+            >
+              <p>Hello to your new section</p>
+            </section>
+            
+            <section
+              key="4"
+              className="imgAndTxt reverseHorizontal"
+            >
+              <div className="txtWrapper">
+                <h2>Heading</h2>
+                <p>This is your new ImgNTxt section.</p>
+              </div>
+              <div className="imgWrapper">
+                <img
+                  src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2FimgAndTxt.png?alt=media&token=754fc70d-7640-4975-9077-6d46b953d15b"
+                  draggable="false"
+                  loading="lazy"
+                />
+              </div>
+            </section>
+            
+              <section className="grid2 ">
+                <h2
+                >
+                  undefined
+                </h2>
+                <div className="grid">
+                  <article>
+                    <div className="imgWrapper">
+                      <img src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fgrid3_img1.png?alt=media&token=73bdb872-b2dd-4413-845c-4f075cf38af6" draggable="false" loading="lazy"/>
+                    </div>
+                    <p
+                    >
+                      This is your new Grid2 section.
+                    </p>
+                  </article>
+                  <article>
+                    <div className="imgWrapper">
+                      <img src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fgrid3_img2.png?alt=media&token=efa0ed56-6352-4415-858c-a4a861b7cb0a" draggable="false" loading="lazy"/>
+                    </div>
+                    <p
+                    >
+                      This is your new Grid2 section.
+                    </p>
+                  </article>
+                </div>
+              </section>
+              
+            <section
+              key="6"
+              className="imgOnly "
+            >
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Ffrozen-completely-104%2FI0WLE7oRF8KNRvAa.png?alt=media&token=f713a2b0-cbd4-4c7c-b434-660b5f186960"
+                draggable="false"
+                loading="lazy"
+              />
+            </section>
+            
+            <section
+              key="7"
               className="imgAndTxt reverseHorizontal"
             >
               <div className="txtWrapper">
@@ -115,7 +201,7 @@
                 <img
                   src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Ffrozen-completely-104%2FTuAfhalO3nhBJuGM.png?alt=media&token=a4c50096-5c0a-42b7-aebb-bc2bc4d1d36f"
                   draggable="false"
-                  loading="eager"
+                  loading="lazy"
                 />
               </div>
             </section>
@@ -128,7 +214,7 @@
                 <div className="grid">
                   <article>
                     <div className="imgWrapper">
-                      <img src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Ffrozen-completely-104%2F5HKEWtgyJV81CePK.png?alt=media&token=cc76ec04-2ede-495d-b51c-93abf874ddc3" draggable="false" loading="eager"/>
+                      <img src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Ffrozen-completely-104%2F5HKEWtgyJV81CePK.png?alt=media&token=cc76ec04-2ede-495d-b51c-93abf874ddc3" draggable="false" loading="lazy"/>
                     </div>
                     <p
                     >
@@ -137,7 +223,7 @@
                   </article>
                   <article>
                     <div className="imgWrapper">
-                      <img src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Ffrozen-completely-104%2FRE9JpILOdEa1dj3N.png?alt=media&token=8134303e-b890-4ea4-8f82-f8ef1a162a89" draggable="false" loading="eager"/>
+                      <img src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Ffrozen-completely-104%2FRE9JpILOdEa1dj3N.png?alt=media&token=8134303e-b890-4ea4-8f82-f8ef1a162a89" draggable="false" loading="lazy"/>
                     </div>
                     <p
                     >
@@ -146,7 +232,7 @@
                   </article>
                   <article>
                     <div className="imgWrapper">
-                      <img src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Ffrozen-completely-104%2FSSNE7QiSIGjMiWBu.png?alt=media&token=c72e24d5-e910-4fc6-9f75-6f2a0840903a" draggable="false" loading="eager"/>
+                      <img src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Ffrozen-completely-104%2FSSNE7QiSIGjMiWBu.png?alt=media&token=c72e24d5-e910-4fc6-9f75-6f2a0840903a" draggable="false" loading="lazy"/>
                     </div>
                     <p
                     >
@@ -157,7 +243,7 @@
               </section>
               
             <section
-              key="4"
+              key="9"
               className="imgAndTxt directHorizontal"
             >
               <div className="txtWrapper">
@@ -207,7 +293,7 @@
             
             <footer 
               className="footer"
-              key="6"
+              key="11"
             >
               <p id="watermark">
                 <a href="https://inkmorphism.com" target="_blank">

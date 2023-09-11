@@ -105,6 +105,45 @@ function itemToPage(item) {
               </div>
             </section>
         `;
+        case "grid2":
+          return `
+              <section className="${
+                section.type + " " + section.options.direction
+              }">
+                <h2
+                >
+                  ${section.content.heading}
+                </h2>
+                <div className="grid">
+                  <article>
+                    <div className="imgWrapper">
+                      <img src="${
+                        section.content.img1
+                      }" draggable="false" loading="${
+            index > 3 ? "lazy" : "eager"
+          }"/>
+                    </div>
+                    <p
+                    >
+                      ${section.content.txt1}
+                    </p>
+                  </article>
+                  <article>
+                    <div className="imgWrapper">
+                      <img src="${
+                        section.content.img2
+                      }" draggable="false" loading="${
+            index > 3 ? "lazy" : "eager"
+          }"/>
+                    </div>
+                    <p
+                    >
+                      ${section.content.txt2}
+                    </p>
+                  </article>
+                </div>
+              </section>
+              `;
         case "grid3":
           return `
               <section className="${
