@@ -3,6 +3,7 @@ import Link from "next/link";
 import WIP from "./components/wip";
 import MainNav from "./components/MainNav";
 import { FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
+import MainFooter from "./components/MainFooter";
 
 export default function About() {
   return (
@@ -20,24 +21,7 @@ export default function About() {
         123
       </main> */}
 
-      <footer>
-        <p>Inkmorphism © 2023</p>
-        <div id="socialLinks">
-          <a href="https://twitter.com/inkmorphism" target="_blank" className="noSelect">
-            <FaTwitter />
-          </a>
-          <a href="https://instagram.com/inkmorphism" target="_blank"  className="noSelect">
-            <FaInstagram />
-          </a>
-          <a
-            href="https://www.linkedin.com/company/inkmorphism/"
-            target="_blank"
-            className="noSelect"
-          >
-            <FaLinkedin />
-          </a>
-        </div>
-      </footer>
+      <MainFooter/>
     </div>
   );
 }

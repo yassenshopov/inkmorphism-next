@@ -1,5 +1,11 @@
 import Head from "next/head";
-import { getFirestore, collection, doc, setDoc, getDoc } from "firebase/firestore/lite";
+import {
+  getFirestore,
+  collection,
+  doc,
+  setDoc,
+  getDoc,
+} from "firebase/firestore/lite";
 import { getAuth } from "firebase/auth";
 import app from "../firebase/clientApp";
 import { useState, useEffect } from "react";
@@ -56,15 +62,27 @@ export default function Templates() {
     //check if user has filled out the survey
     try {
       const userSurveyData = doc(db, "users", uid, "surveyData", "data");
+      const userSurveyDataDoc = await getDoc(userSurveyData)
+        .then((doc) => {
+          if (!doc.exists()) {
+            setSurveyNotFilled(true);
+          }
+        })
+      // if (!userSurveyDataDoc.exists()) {
+      // setTimeout(() => {
+      // setSurveyNotFilled(true);
+      // throw new Error("User hasn't filled out the survey yet");
+      // } , 1000);
+      // }
       try {
         const userSurveyResults = await getDoc(
           doc(db, "users", uid, "surveyData", "results")
         );
         setRecommendedTemplates(userSurveyResults.data().recommendedTemplates);
-      } catch(err) {
+      } catch (err) {
         setRecommendedTemplates([]);
       }
-      setSurveyNotFilled(false);
+      // setSurveyNotFilled(false);
     } catch (err) {
       console.log(err);
       setSurveyNotFilled(true);
@@ -273,7 +291,15 @@ export default function Templates() {
           </a>
         </div>
       </div>
-      <h2>{template.slice(0, 1).toUpperCase() + template.slice(1) + `${recommendedTemplates.includes(template) ? " (Recommended for you)" : ""}`}</h2>
+      <h2>
+        {template.slice(0, 1).toUpperCase() +
+          template.slice(1) +
+          `${
+            recommendedTemplates.includes(template)
+              ? " (Recommended for you)"
+              : ""
+          }`}
+      </h2>
     </article>
   ));
 
