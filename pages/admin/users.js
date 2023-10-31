@@ -128,12 +128,15 @@ export default function UsersDash() {
       <Dashnav />
       <h1>Users:</h1>
       <h2>
-        There are {users.length} user{users.length === 1 ? "" : "s"}.
+        There are {users.length || "-"} user{users.length === 1 ? "" : "s"}.
       </h2>
       <div className="users">
         {users.map((user) => {
           return (
             <div key={user.uid} className="user">
+              <div className="num">
+                <span>#{users.length - users.indexOf(user)}</span>
+              </div>
               <img src={profilePics[user.uid]} />
               <h2>
                 <span>Name: </span>
@@ -176,7 +179,7 @@ export default function UsersDash() {
                       {user.websites.map((website) => {
                         return (
                           <li key={website.id}>
-                            <a href={`/admin/users/${website.domainSlug}`}>{website.name}</a>
+                            <a href={`/config/${website.domainSlug}?user=${user.uid}`} target="_blank"> {website.domainSlug}</a>
                           </li>
                         );
                       }

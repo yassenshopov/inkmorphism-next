@@ -81,6 +81,25 @@ label {
   overflow-y: scroll;
   border-radius: 20px 20px 0 0;
 }
+.Editor > main > nav #externalAdmin,
+.Editor > main > nav .unsavedChanges {
+  background-color: var(--mainDark);
+  color: var(--mainLight);
+  padding: 10px 1vw;
+  animation: pulse 1s infinite;
+  border-radius: 12px;
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
 .Editor > main > nav p {
   margin: 0;
   transition: background-color 200ms ease-in-out;
@@ -597,7 +616,7 @@ label {
   transition: all 200ms ease-out;
   overflow: hidden;
 }
-.Editor aside a:not(.mainLogoWrapper),
+.Editor aside a:not(.mainLogoWrapper, #backBtn),
 .Editor aside .dropdown-items {
   border-bottom: 1px solid var(--mainGrey);
 }

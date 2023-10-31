@@ -6,6 +6,7 @@ import {
   onAuthStateChanged,
   GoogleAuthProvider,
   signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
   fetchSignInMethodsForEmail,
   signInWithRedirect,
 } from "firebase/auth";
@@ -21,7 +22,7 @@ import {
 import app from "../firebase/clientApp";
 import Head from "next/head";
 import { SiGoogle, SiGithub, SiTwitter } from "react-icons/si";
-import logo from "../styles/images/logo.png";
+import logo from "../styles/images/logoWh.webp";
 import { useRouter } from "next/router";
 import Loader from "./components/loader.js";
 import {
@@ -45,6 +46,8 @@ export default function Login() {
       const uid = user.uid;
       setUserData(user);
       sendRegisterData(user);
+      setLoadBool(true);
+      redirect();
       // ...
     } else {
       // User is signed out
@@ -168,13 +171,76 @@ export default function Login() {
   function signInWithEmail() {
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
-    signInWithEmailAndPassword(auth, email, password)
+    if (password.length < 6 || password.length > 50) {
+      alert("Password should be between 6 and 50 characters long.");
+    } else {
+      signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
       })
       .catch((error) => {
         console.log(error);
+        if (error.code === "auth/invalid-email" || error.code === "auth/missing-email") {
+          setInvalidEmail(true);
+        } else if (error.code === "auth/wrong-password" || error.code === "auth/missing-password" || error.code === "auth/user-not-found") {
+          setInvalidPassword(true);
+        } else if (error.code === "auth/user-not-found") { 
+          setInvalidEmail(true);
+        } else if (error.code === "auth/too-many-requests") {
+          alert("Too many requests. Please try again later.");
+        }
+        // setInvalidEmail(true);
+        // setInvalidPassword(true);
       });
+    }
+  }
+
+  function registerWithEmail() {
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    // let name = document.getElementById("name").value;
+    // auth.currentUser.displayName = name;
+    if (password.length < 6  || password.length > 50) {
+      alert("Password should be between 6 and 50 characters long.");
+    } else {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          console.log(userCredential);
+          sendSignInLinkToEmail(auth, email, actionCodeSettings)
+            .then(() => {
+              // The link was successfully sent. Inform the user.
+              // Save the email locally so you don't need to ask the user for it again
+              // if they open the link on the same device.
+              window.localStorage.setItem("emailForSignIn", email);
+              // ...
+            })
+            .catch((error) => {
+              console.log(error);
+              if (error.code === "auth/invalid-email" || error.code === "auth/missing-email") {
+                setInvalidEmail(true);
+              } else if (error.code === "auth/wrong-password" || error.code === "auth/missing-password" || error.code === "auth/user-not-found") {
+                setInvalidPassword(true);
+              } else if (error.code === "auth/user-not-found") { 
+                setInvalidEmail(true);
+              } else if (error.code === "auth/too-many-requests") {
+                alert("Too many requests. Please try again later.");
+              }
+              // ...
+            });
+        })
+        .catch((error) => {
+          console.log(error);
+          if (error.code === "auth/invalid-email" || error.code === "auth/missing-email") {
+            setInvalidEmail(true);
+          } else if (error.code === "auth/wrong-password" || error.code === "auth/missing-password" || error.code === "auth/user-not-found") {
+            setInvalidPassword(true);
+          } else if (error.code === "auth/user-not-found") { 
+            setInvalidEmail(true);
+          } else if (error.code === "auth/too-many-requests") {
+            alert("Too many requests. Please try again later.");
+          }
+        });
+    }
   }
 
   let router = useRouter();
@@ -183,6 +249,22 @@ export default function Login() {
       router.push("/dashboard");
     }, 500);
   }
+
+  const [invalidEmail, setInvalidEmail] = useState(false);
+  const [invalidPassword, setInvalidPassword] = useState(false);
+  const [isRegisterMode, setIsRegisterMode] = useState(false);
+  const [emptyEmail, setEmptyEmail] = useState(true);
+  const [emptyPassword, setEmptyPassword] = useState(true);
+
+  const [loadingAnimation, setLoadingAnimation] = useState(false);
+
+  useEffect(() => {
+      setLoadingAnimation((prev) => !prev);
+      setTimeout(() => {
+        setLoadingAnimation((prev) => !prev);
+      }, 1400);
+  }, [isRegisterMode]);
+
   return (
     <>
       <Head>
@@ -191,14 +273,19 @@ export default function Login() {
         <link rel="icon" href="/faviconWh.ico" />
       </Head>
       {loadBool ? <Loader /> : ""}
-      <div className="login">
-        <p>{auth.currentUser == null ? "" : redirect()}</p>
-        <a href=".." className="noSelect">
-          <img src={logo.src} />
-        </a>
+      <div className={"login"}>
         {/* <h2>Login:</h2> */}
-        <div id="loginWrapper">
+        <div id="loginWrapper" className={isRegisterMode ? "registerMode" : ""}>
+          <div id="img">
+            <img src={isRegisterMode ? "/tea2.png" : "/tea1.png"} 
+            className={loadingAnimation ? "loading" : ""}
+            draggable="false" />
+          </div>
           <div id="form">
+            <a href=".." className="noSelect logo">
+              <img src={logo.src} />
+            </a>
+            <h2>Welcome to Inkmorphism</h2>
             <label htmlFor="email">Email address:</label>
             <input
               id="email"
@@ -206,6 +293,17 @@ export default function Login() {
               name="email"
               placeholder="me@gmail.com"
               autoComplete="username"
+              className={invalidEmail ? "invalid" : ""}
+              onFocus={() => {
+                setInvalidEmail(false);
+              }}
+              onChange={(e) => {
+                if (e.target.value === "") {
+                  setEmptyEmail(true);
+                } else {
+                  setEmptyEmail(false);
+                }
+              }}
             />
             <label htmlFor="password">Password:</label>
             <input
@@ -214,35 +312,61 @@ export default function Login() {
               name="password"
               placeholder="Enter your password"
               autoComplete="current-password"
+              className={invalidPassword ? "invalid" : ""}
+              onFocus={() => {
+                setInvalidPassword(false);
+              }}
+              onChange={(e) => {
+                if (e.target.value === "") {
+                  setEmptyPassword(true);
+                } else {
+                  setEmptyPassword(false);
+                }
+              }}
             />
-            <button onClick={signInWithEmail} className="noSelect">
-              Log in
+            <p
+              className={
+                invalidEmail || invalidPassword ? "invalidEmail" : "invalidEmail invisible"
+              }
+            >
+              Invalid email or password
+            </p>
+            <button onClick={isRegisterMode ? registerWithEmail : signInWithEmail} className="noSelect ctaBtn"
+              // disabled={invalidEmail || emptyEmail || emptyPassword}
+            >
+              {isRegisterMode ? "Register" : "Sign in"}
             </button>
-          </div>
-          <div id="orSection">
-            <div></div>
-            <p>OR</p>
-            <div></div>
-          </div>
-          <div id="buttons">
-            <button onClick={signInWithG} className="noSelect">
+            <div id="orSection">
               <div></div>
-              <p>Log in with Google</p> <SiGoogle />{" "}
-            </button>
-            <button onClick={signInWithGH} className="noSelect">
+              <p>or</p>
               <div></div>
-              <p>Log in with GitHub</p> <SiGithub />
-            </button>
-            <button onClick={signInWithTW} className="noSelect">
-              <div></div>
-              <p>Log in with Twitter</p> <SiTwitter />
-            </button>
+            </div>
+            <div id="buttons">
+              <button onClick={signInWithG} className="noSelect">
+                <SiGoogle />
+              </button>
+              <button onClick={signInWithTW} className="noSelect">
+                <SiTwitter />
+              </button>
+              <button onClick={signInWithGH} className="noSelect">
+                <SiGithub />
+              </button>
+            </div>
+            <div id="disclaimer">
+              <p>
+                {isRegisterMode
+                  ? "Already have an account? "
+                  : "Don't have an account? "}
+                <span
+                  onClick={() => {
+                    setIsRegisterMode(!isRegisterMode);
+                  }}
+                >
+                  {isRegisterMode ? "Sign in" : "Register with us"}
+                </span>
+              </p>
+            </div>
           </div>
-        </div>
-        <div id="loginDisclaimer">
-          <p>
-            Don't have an account? <a href="../register">Register</a>
-          </p>
         </div>
       </div>
     </>

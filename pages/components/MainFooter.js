@@ -14,8 +14,12 @@ export default function MainFooter() {
     document.getElementById("footerLeft").appendChild(script);
 
     return () => {
+      try {
+        document.getElementById("footerLeft").removeChild(script);
+      } catch (e) {
+        console.log(e);
+      }
       // Cleanup: remove the script element when the component unmounts
-      document.getElementById("footerLeft").removeChild(script);
     };
   }, []);
 

@@ -1,121 +1,296 @@
 .login {
-  width: 80vw;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  font-family: var(--font1);
   line-height: 1.5;
-  height: fit-content;
   box-sizing: border-box;
+  background-color: var(--mainDark);
+  height: 100vh;
+  font-family: "Raleway", sans-serif;
 }
 .login #loginWrapper {
-  width: 100%;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  background-color: var(--mainLight);
+  justify-content: space-between;
+  border-radius: 1.2rem;
+  max-height: 80%;
+  overflow: hidden;
+  transition: all 200ms ease-in-out;
+}
+.login #loginWrapper.registerMode #img {
+  order: 2;
+}
+.login #loginWrapper > * {
+  width: 50%;
+}
+.login #loginWrapper #img {
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  transition: all 200ms ease-in-out;
+  background-color: var(--mainDark);
 }
-.login #orSection {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1vw;
-  color: var(--mainGrey);
+.login #loginWrapper #img img {
+  height: 100%;
+  width: auto;
+  min-width: 100%;
+  border-radius: 0;
+  transition: all 200ms ease-in-out;
 }
-.login #orSection :nth-child(1),
-.login #orSection :nth-child(3) {
-  background-color: var(--mainGrey);
-  width: 25vw;
-  height: 1px;
+.login #loginWrapper #img img.loading {
+  animation: loading 1.4s ease-in-out 1;
+}
+@keyframes loading {
+  0% {
+    filter: blur(0px);
+  }
+  50% {
+    filter: blur(100px);
+  }
+  100% {
+    filter: blur(0px);
+  }
 }
 .login #form {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 6vw;
+  box-sizing: border-box;
+}
+.login #form .logo {
+  width: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.login #form .logo img {
+  width: 100%;
+  height: auto;
+}
+.login #form label,
+.login #form input {
+  align-self: flex-start;
   width: 100%;
 }
 .login #form input {
   border: none;
   border-bottom: 1px solid var(--mainGrey);
   background-color: var(--mainLight);
-  padding: 10px 0;
+  padding: 10px 10px;
   transition: all 500ms ease-in-out;
+  border-radius: 6px 6px 0 0;
+  font-family: "Raleway", sans-serif;
+  margin-bottom: 20px;
 }
 .login #form input:focus {
   outline: none;
   border-bottom: 1px solid var(--mainDark);
+  background-color: #faf9fe;
 }
-.login #form label {
-  margin-top: 20px;
+.login #form input.invalid {
+  border-bottom: 1px solid #ff6565;
+  animation: shake 500ms ease-in-out;
+}
+.login #form input.invalid::placeholder,
+.login #form input.invalid::-webkit-input-placeholder {
+  color: rgba(241, 76, 76, 0.472);
+}
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.login #form .invalidEmail {
+  color: #ff2c2c;
+  animation: shake 500ms ease-in-out;
+  font-weight: 800;
+}
+.login #form .invalidEmail.invisible {
+  visibility: hidden;
 }
 .login #form button {
   border: none;
   margin: 10px 0;
   padding: 15px 0;
-  text-transform: uppercase;
   color: var(--mainLight);
   background-color: var(--mainDark);
-  border-radius: 15px;
-  box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.1), -5px -5px 5px rgba(255, 255, 255, 0.8);
+  border-radius: 2.5rem;
   cursor: pointer;
-  font-family: var(--font1);
   transition: all 500ms ease-in-out;
   font-size: 1.2rem;
 }
-.login #form button:hover {
-  filter: brightness(2) opacity(0.8);
+.login #form .ctaBtn {
+  filter: drop-shadow(-4px 4px 0px red) drop-shadow(4px -4px 0px cyan);
+  width: 80%;
+  font-weight: 800;
+  transition: all 200ms ease-in-out;
 }
-.login img {
-  width: 16vw;
-  border-radius: 10px;
+.login #form .ctaBtn:hover {
+  filter: drop-shadow(4px -4px 0px red) drop-shadow(-4px 4px 0px cyan);
+  background-color: var(--mainLight);
+  color: var(--mainDark);
+}
+.login #form #orSection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1vw;
+  color: var(--mainGrey);
+}
+.login #form #orSection :nth-child(1),
+.login #form #orSection :nth-child(3) {
+  background-color: var(--mainGrey);
+  width: 10vw;
+  height: 1px;
 }
 .login #buttons {
   align-items: center;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-evenly;
-  gap: 10px;
   width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  height: fit-content;
+  min-height: 50px;
 }
 .login #buttons button {
-  font-family: var(--font1);
-  background-color: var(--mainLight);
-  border-radius: 15px;
-  box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.1), -5px -5px 5px rgba(255, 255, 255, 0.8);
-  font-size: 1rem;
-  cursor: pointer;
-  border: none;
-  min-width: fit-content;
-  width: 100%;
-  padding: 10px 5vw;
-  flex-direction: row;
-  gap: 2vw;
-  align-items: center;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  transition: all 500ms ease-in-out;
-  height: fit-content;
-}
-.login #buttons button p {
-  font-size: 1rem;
+  background: none;
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  transition: all 200ms ease-in-out;
 }
 .login #buttons button:hover {
-  box-shadow: 4px 5px 30px rgba(0, 0, 0, 0.25), -5px -5px 15px rgba(255, 255, 255, 0.8);
-  filter: brightness(1.2) saturate(1.5) opacity(0.8);
+  filter: drop-shadow(1px -1px 0px red) drop-shadow(-1px 1px 0px cyan) invert(1);
 }
-.login #buttons button:nth-child(1) {
-  background-color: #db4437;
-  color: var(--mainLight);
+.login #buttons svg {
+  background-color: var(--mainDark);
+  font-size: 0.2rem;
+  padding: 0.6vw;
+  height: 1.6vw;
+  width: 1.6vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
 }
-.login #buttons button:nth-child(2) {
-  background-color: #000000;
-  color: var(--mainLight);
+.login #disclaimer {
+  margin-top: 20px;
 }
-.login #buttons button:nth-child(3) {
-  background-color: #1da1f2;
+.login #disclaimer span {
+  cursor: pointer;
   color: var(--mainLight);
+  background-color: var(--mainDark);
+  padding: 10px 1vw;
+  border-radius: 1rem;
+  margin: 0 1vw;
+  transition: all 200ms ease-in-out;
+}
+.login #disclaimer span:hover {
+  background-color: var(--mainLight);
+  color: var(--mainDark);
+  filter: drop-shadow(-4px 4px 0px red) drop-shadow(4px -4px 0px cyan);
+}
+@media (max-width: 768px) {
+  .login #loginWrapper {
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    border-radius: 0;
+    overflow-y: scroll;
+  }
+  .login #loginWrapper #img {
+    display: none;
+  }
+  .login #loginWrapper.registerMode #img {
+    order: 0;
+  }
+  .login #loginWrapper > * {
+    width: 100%;
+  }
+  .login #loginWrapper #img {
+    width: 100%;
+    height: 50%;
+  }
+  .login #loginWrapper #img img {
+    height: 100%;
+    width: auto;
+    min-width: 100%;
+    border-radius: 0;
+  }
+  .login #form {
+    padding: 20px 10vw;
+  }
+  .login #form h2 {
+    font-size: 2rem;
+    text-align: center;
+  }
+  .login #form .logo {
+    width: 20%;
+  }
+  .login #form input {
+    box-sizing: border-box;
+  }
+  .login #form .ctaBtn {
+    width: 100%;
+    margin-top: 0;
+  }
+  .login #form #orSection {
+    width: 100%;
+    justify-content: space-evenly;
+  }
+  .login #form #orSection :nth-child(1),
+  .login #form #orSection :nth-child(3) {
+    background-color: var(--mainGrey);
+    width: 25vw;
+    height: 1px;
+  }
+  .login #form #buttons button {
+    width: 16vw;
+    height: 100%;
+  }
+  .login #form #buttons button svg {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.7rem;
+  }
+  .login #form #disclaimer {
+    text-align: center;
+  }
+  .login #form #disclaimer span {
+    display: block;
+    margin: 10px auto;
+  }
 }
 .register {
   width: 80vw;
@@ -123,7 +298,6 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  font-family: var(--font1);
   line-height: 1.5;
   height: fit-content;
   box-sizing: border-box;
@@ -180,7 +354,6 @@
   border-radius: 15px;
   box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.1), -5px -5px 5px rgba(255, 255, 255, 0.8);
   cursor: pointer;
-  font-family: var(--font1);
   transition: all 500ms ease-in-out;
   font-size: 1.2rem;
 }
@@ -200,7 +373,6 @@
   width: 100%;
 }
 .register #buttons button {
-  font-family: var(--font1);
   background-color: var(--mainLight);
   border-radius: 15px;
   box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.1), -5px -5px 5px rgba(255, 255, 255, 0.8);
@@ -237,90 +409,4 @@
 .register #buttons button:nth-child(3) {
   background-color: #1da1f2;
   color: var(--mainLight);
-}
-@media screen and (min-width: 650px) {
-  .login {
-    width: 100vw;
-    margin: 0;
-    padding: 0;
-  }
-  .login img {
-    width: 8vw;
-  }
-  .login #loginWrapper {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    gap: 5vw;
-  }
-  .login #orSection {
-    flex-direction: column;
-  }
-  .login #orSection :nth-child(1),
-  .login #orSection :nth-child(3) {
-    width: 1px;
-    height: 150px;
-  }
-  .login #buttons {
-    justify-content: center;
-    align-items: center;
-    width: 20vw;
-    height: fit-content;
-  }
-  .login #buttons button {
-    height: 60px;
-    padding: 40px 5vw;
-  }
-  .login #buttons button p {
-    width: 8vw;
-  }
-  .login #buttons button :nth-child(3) {
-    font-size: 20px;
-  }
-  .login #form {
-    width: 20vw;
-  }
-  .register {
-    width: 100vw;
-    margin: 0;
-    padding: 0;
-  }
-  .register img {
-    width: 8vw;
-  }
-  .register #registerWrapper {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    gap: 5vw;
-  }
-  .register #orSection {
-    flex-direction: column;
-  }
-  .register #orSection :nth-child(1),
-  .register #orSection :nth-child(3) {
-    width: 1px;
-    height: 150px;
-  }
-  .register #buttons {
-    justify-content: center;
-    align-items: center;
-    width: 20vw;
-    height: fit-content;
-  }
-  .register #buttons button {
-    height: 60px;
-    padding: 40px 5vw;
-  }
-  .register #buttons button p {
-    width: 8vw;
-  }
-  .register #buttons button :nth-child(3) {
-    font-size: 20px;
-  }
-  .register #form {
-    width: 20vw;
-  }
 }

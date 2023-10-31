@@ -430,14 +430,14 @@ function Editor(props) {
               }}
             />
           </div>
-          <button
+          {/* <button
             className="deleteSection noSelect"
             onClick={() => {
               deleteSection(index);
             }}
           >
             Delete <RxCross1 />
-          </button>
+          </button> */}
         </div>
       ),
     };
@@ -904,15 +904,17 @@ function Editor(props) {
                 </p>
               </div>
               <h2
-                  suppressContentEditableWarning={true}
-                  onBlur={(e) => {
-                    txtFieldChange2(e, index, "heading");
-                  }}
-                  onFocus={(e) => {
-                    ogTxt = e.target.innerText;
-                  }}
-                  contentEditable={true}
-                >{section.content.heading}</h2>
+                suppressContentEditableWarning={true}
+                onBlur={(e) => {
+                  txtFieldChange2(e, index, "heading");
+                }}
+                onFocus={(e) => {
+                  ogTxt = e.target.innerText;
+                }}
+                contentEditable={true}
+              >
+                {section.content.heading}
+              </h2>
               <div className="mapsWrapper">
                 <iframe
                   src={section.content.embedURL}
@@ -1144,7 +1146,10 @@ function Editor(props) {
     }
   }, [pageData]);
 
+  const [isLoggedAsExternalAdmin, setLoggedAsExternalAdmin] = useState(false);
+
   useEffect(() => {
+  const userNameFromURL = "user-" +  new URLSearchParams(window.location.search).get("user");
     async function asyncFunc() {
       const realUserData = getDoc(doc(db, "users", userName)).then((doc) => {
         try {
@@ -1159,16 +1164,31 @@ function Editor(props) {
         const col2 = collection(db, "users", userName, "websites");
         const data2 = await getDocs(col2).then((snapshot) => {
           let checkPrivacy = false;
+          console.log(userName);
           snapshot.forEach((doc) => {
-            if (doc.data().domainSlug === props.name) {
+            if (
+              doc.data().domainSlug === props.name ||
+              userName === "user-gTEFEshrDaeGrt9YUt9Uljt0jF43"
+            ) {
               checkPrivacy = true;
+            }
+            if (
+              doc.data().domainSlug !== props.name ||
+              userName === "user-gTEFEshrDaeGrt9YUt9Uljt0jF43"
+            ) {
+              console.log("logged as external admin");
+              setLoggedAsExternalAdmin(true);
             }
           });
           if (checkPrivacy === false) {
             setHideContent(true);
           }
         });
-        col = doc(db, "users", userName, "websites", props.name);
+        if (isLoggedAsExternalAdmin) {
+          col = doc(db, "users", userNameFromURL, "websites", props.name);
+        } else {
+          col = doc(db, "users", userName, "websites", props.name);
+        }
         const data = await getDoc(col)
           .then((doc) => {
             dataArr.push(doc.data());
@@ -1210,7 +1230,7 @@ function Editor(props) {
       }
     }
     asyncFunc();
-  }, [userName]);
+  }, [userName, isLoggedAsExternalAdmin]);
 
   async function getData() {
     let propsName;
@@ -1755,14 +1775,16 @@ function Editor(props) {
 
       <main id="editor">
         <nav id="nav">
+          {isLoggedAsExternalAdmin ? (
+            <div id="externalAdmin">
+              <p>You are logged in as an external admin</p>
+            </div>
+          ) : (
+            ""
+          )}
           {isUnsavedChanges ? (
             <p
-              style={{
-                backgroundColor: "var(--mainColor2)",
-                color: "var(--mainLight)",
-                padding: "12px 1vw",
-                borderRadius: "12px",
-              }}
+              className="unsavedChanges"
             >
               You have some unsaved changes ⚠️
             </p>
