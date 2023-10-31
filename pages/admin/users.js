@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
 import Dashnav from "../components/dashnav";
 import app from "../../firebase/clientApp";
-import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  getDoc,
+  doc,
+} from "firebase/firestore/lite";
 import { getAuth } from "@firebase/auth";
 import { ref, getDownloadURL, getStorage } from "@firebase/storage";
 
 export default function UsersDash() {
   const [users, setUsers] = useState([]);
+  const [displayedUsers, setDisplayedUsers] = useState([]);
   const db = getFirestore(app);
   //getAuth
   const auth = getAuth(app);
@@ -27,7 +34,12 @@ export default function UsersDash() {
         dbRenderedData.forEach(async (user) => {
           //get users/uid-xyz/websites
 
-          const websitesRef = collection(db, `users`, `user-${user.uid}`, `websites`);
+          const websitesRef = collection(
+            db,
+            `users`,
+            `user-${user.uid}`,
+            `websites`
+          );
           const websitesRefQuerySnapshot = await getDocs(websitesRef);
           const websites = websitesRefQuerySnapshot.docs.map((doc) =>
             doc.data()
@@ -41,6 +53,7 @@ export default function UsersDash() {
         });
 
         setUsers(dbRenderedData);
+        setDisplayedUsers(dbRenderedData);
       } catch (err) {
         console.error(err);
       }
@@ -123,19 +136,176 @@ export default function UsersDash() {
     }
   }
 
+  const [whichBtnIsSelected, setWhichBtnIsSelected] = useState("none");
+  const [whichSortBtnIsSelected, setWhichSortBtnIsSelected] =
+    useState("newest");
+
+  const [popupWebsiteData, setPopupWebsiteData] = useState({});
+
   return (
     <div className="UsersDash">
       <Dashnav />
+      <div
+        className={
+          "popupWebsite" + (popupWebsiteData.deleted ? " deleted" : "")
+        }
+        style={{
+          display: Object.keys(popupWebsiteData).length > 0 ? "flex" : "none",
+        }}
+      >
+        <h1>{popupWebsiteData.name}</h1>
+        <img className="thumbnail" src={popupWebsiteData.thumbnail} />
+        <p>Style: {popupWebsiteData.style}</p>
+        {popupWebsiteData.deleted ? (
+          <p className="deleted">This website has been deleted.</p>
+        ) : (
+          ""
+        )}
+        <div id="closePopup" onClick={() => setPopupWebsiteData({})}>
+          X
+        </div>
+        <div className="colorPalette">
+          <h2>Color Palette</h2>
+          <div
+            className="color"
+            style={{
+              backgroundColor:
+                Object.keys(popupWebsiteData).length > 0
+                  ? popupWebsiteData.webContent.meta.colorPalette.color1
+                  : "#000000",
+            }}
+          ></div>
+          <div
+            className="color"
+            style={{
+              backgroundColor:
+                Object.keys(popupWebsiteData).length > 0
+                  ? popupWebsiteData.webContent.meta.colorPalette.color2
+                  : "#000000",
+            }}
+          ></div>
+          <div
+            className="color"
+            style={{
+              backgroundColor:
+                Object.keys(popupWebsiteData).length > 0
+                  ? popupWebsiteData.webContent.meta.colorPalette.color3
+                  : "#000000",
+            }}
+          ></div>
+          <div
+            className="color"
+            style={{
+              backgroundColor:
+                Object.keys(popupWebsiteData).length > 0
+                  ? popupWebsiteData.webContent.meta.colorPalette.colorDark
+                  : "#000000",
+            }}
+          ></div>
+          <div
+            className="color"
+            style={{
+              backgroundColor:
+                Object.keys(popupWebsiteData).length > 0
+                  ? popupWebsiteData.webContent.meta.colorPalette.colorLight
+                  : "#000000",
+            }}
+          ></div>
+        </div>
+      </div>
+
       <h1>Users:</h1>
       <h2>
         There are {users.length || "-"} user{users.length === 1 ? "" : "s"}.
       </h2>
+      <p id="filter">
+        Filter by
+        <button
+          className={whichBtnIsSelected === "paid" ? "selected" : ""}
+          onClick={() => {
+            setDisplayedUsers(users.filter((user) => user.isCreator === true));
+            setWhichBtnIsSelected("paid");
+          }}
+        >
+          <span>Paid users</span>
+        </button>
+        <button
+          className={whichBtnIsSelected === "admin" ? "selected" : ""}
+          onClick={() => {
+            setDisplayedUsers(users.filter((user) => user.isAdmin === true));
+            setWhichBtnIsSelected("admin");
+          }}
+        >
+          <span>Admins</span>
+        </button>
+        <button
+          className={whichBtnIsSelected === "free" ? "selected" : ""}
+          onClick={() => {
+            setDisplayedUsers(
+              users.filter(
+                (user) =>
+                  user.isCreator === false || user.isCreator === undefined
+              )
+            );
+            setWhichBtnIsSelected("free");
+          }}
+        >
+          <span>Free users</span>
+        </button>
+        <button
+          className={whichBtnIsSelected === "all" ? "selected" : ""}
+          onClick={() => {
+            setDisplayedUsers(users);
+            setWhichBtnIsSelected("all");
+          }}
+        >
+          <span>All users</span>
+        </button>
+      </p>
+      {/* <p id="sort">
+        Sort by
+        <button
+          className={whichSortBtnIsSelected === "newest" ? "selected" : ""}
+          onClick={() => {
+            if (whichSortBtnIsSelected !== "newest") {
+              setDisplayedUsers(users.reverse());
+            }
+            setWhichSortBtnIsSelected("newest");
+          }}
+        >
+          Newest
+        </button>
+        <button
+          className={whichSortBtnIsSelected === "oldest" ? "selected" : ""}
+          onClick={() => {
+            if (whichSortBtnIsSelected !== "oldest") {
+              setDisplayedUsers(users.reverse());
+            }
+            setWhichSortBtnIsSelected("oldest");
+          }}
+        >
+          Oldest
+        </button>
+      </p> */}
       <div className="users">
-        {users.map((user) => {
+        {displayedUsers.map((user) => {
           return (
-            <div key={user.uid} className="user">
+            <div
+              key={user.uid}
+              className={
+                "user" +
+                (user.isAdmin ? " isAdmin" : "") +
+                (user.isCreator ? " isCreator" : "")
+              }
+            >
               <div className="num">
-                <span>#{users.length - users.indexOf(user)}</span>
+                <span>
+                  #
+                  {(whichSortBtnIsSelected === "newest"
+                    ? users.length - users.indexOf(user)
+                    : users.indexOf(user) + 1) +
+                    (user.isAdmin ? " (admin)" : "")}
+                </span>
               </div>
               <img src={profilePics[user.uid]} />
               <h2>
@@ -179,11 +349,44 @@ export default function UsersDash() {
                       {user.websites.map((website) => {
                         return (
                           <li key={website.id}>
-                            <a href={`/config/${website.domainSlug}?user=${user.uid}`} target="_blank"> {website.domainSlug}</a>
+                            <a
+                              href={`/config/${website.domainSlug}?user=${user.uid}`}
+                              target="_blank"
+                            >
+                              {" "}
+                              {website.domainSlug}
+                            </a>
+                            <p
+                              onClick={async () => {
+                                const websiteRef = doc(
+                                  db,
+                                  `users`,
+                                  `user-${user.uid}`,
+                                  `websites`,
+                                  website.domainSlug
+                                );
+                                console.log(websiteRef);
+                                const websiteRefQuerySnapshot = await getDoc(
+                                  websiteRef
+                                );
+                                console.log(websiteRefQuerySnapshot.data());
+                                setPopupWebsiteData(
+                                  websiteRefQuerySnapshot.data()
+                                );
+                                alert(
+                                  Object.entries(websiteRefQuerySnapshot.data())
+                                    .map((entry) => {
+                                      return `${entry[0]}: ${entry[1]}`;
+                                    })
+                                    .join("\n")
+                                );
+                              }}
+                            >
+                              Fetch site data
+                            </p>
                           </li>
                         );
-                      }
-                      )}
+                      })}
                     </ul>
                   </>
                 ) : (
