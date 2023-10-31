@@ -1582,6 +1582,100 @@
   font-family: "Raleway", sans-serif;
   width: 100vw;
   box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+.UsersDash .popupWebsite {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000099;
+  color: var(--mainLight);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+.UsersDash .popupWebsite.deleted .thumbnail {
+  filter: grayscale(100%);
+}
+.UsersDash .popupWebsite .thumbnail {
+  width: 30%;
+  height: auto;
+  border-radius: 12px;
+  position: relative;
+}
+.UsersDash .popupWebsite .colorPalette {
+  display: flex;
+}
+.UsersDash .popupWebsite .colorPalette h2 {
+  margin: 10px;
+}
+.UsersDash .popupWebsite .colorPalette div {
+  margin-left: 2px;
+  width: 50px;
+  height: 50px;
+}
+.UsersDash .popupWebsite #closePopup {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--mainLight);
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 1000;
+}
+.UsersDash #filter button,
+.UsersDash #sort button {
+  border: none;
+  padding: 10px 2vw;
+  cursor: pointer;
+  margin: 0 20px;
+  background-color: var(--mainLight);
+  color: var(--mainDark);
+  border: 1px solid var(--mainDark);
+  border-radius: 6px;
+  font-family: "Raleway", sans-serif;
+  font-size: 1.2rem;
+  transition: all 200ms ease-in-out;
+}
+.UsersDash #filter button:hover,
+.UsersDash #sort button:hover {
+  background-color: var(--mainColor3);
+}
+.UsersDash #filter button.selected,
+.UsersDash #sort button.selected {
+  background-color: var(--mainDark);
+  color: var(--mainLight);
+  position: relative;
+}
+.UsersDash #filter button.selected::after,
+.UsersDash #sort button.selected::after {
+  content: "✓";
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  color: var(--mainLight);
+  background-color: #0ebb65;
+  border-radius: 50%;
+  font-size: 1rem;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 1000;
 }
 .UsersDash .users {
   display: grid;
@@ -1598,6 +1692,20 @@
   border-radius: 12px;
   box-shadow: 10px 10px 0px var(--mainGrey);
   position: relative;
+}
+.UsersDash .users .user a {
+  color: var(--mainDark);
+}
+.UsersDash .users .user.isAdmin,
+.UsersDash .users .user.isCreator {
+  border: none;
+  box-shadow: 10px 10px 0px red, -10px -10px 0px cyan;
+  background-color: var(--mainDark);
+  color: var(--mainLight);
+}
+.UsersDash .users .user.isAdmin a,
+.UsersDash .users .user.isCreator a {
+  color: var(--mainLight);
 }
 .UsersDash .users .user .num {
   position: absolute;
@@ -1624,7 +1732,8 @@
   width: fit-content;
   display: inline;
   border-radius: 24px;
-  padding: 10px 20px;
+  padding: 6px 14px;
+  margin: 0 10px;
 }
 .UsersDash .users .user p div.google {
   color: var(--mainLight);
