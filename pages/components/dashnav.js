@@ -48,9 +48,9 @@ export default function Dashnav(props) {
                 <div id='profileMenu'>
                     <a href="../account">My account < FiUser /></a>
                     <p id="signOut" onClick={openPopup} className="noSelect">Log out < FiLogOut /></p>
-                    <div id='profilePic'>
+                    <a id='profilePic' href='../account'>
                         <img src={props.profile_pic} className={"noSelect"} style={{filter: profilePicIsLoading ? "invert(1)" : "none"}}/>
-                    </div>
+                    </a>
                 </div>
             </div>
 

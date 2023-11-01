@@ -134,7 +134,7 @@ export default function Sandbox() {
                     ? "Call to Action: " + website.webContent.meta.callToAction
                     : ""}
                   <br></br>
-                  Keywords: {website.webContent.meta.keywords.join(", ")}
+                  Keywords: {website.webContent.meta.keywords ? website.webContent.meta.keywords.join(", ") : ""}
                 </p>
                 <button
                   className="copyBtn"
@@ -188,7 +188,7 @@ export default function Sandbox() {
                     ? "Call to Action: " + website.webContent.meta.callToAction
                     : ""}
                   <br></br>
-                  Keywords: {website.webContent.meta.keywords.join(", ")}
+                  Keywords: {website.webContent.meta.keywords ? website.webContent.meta.keywords.join(", ") : ""}
                 </p>
                 <button
                   className="copyBtn"
@@ -201,7 +201,7 @@ export default function Sandbox() {
                         " " +
                         website.webContent.meta.callToAction +
                         " Keywords: " +
-                        website.webContent.meta.keywords.join(", ")
+                        (website.webContent.meta.keywords ? website.webContent.meta.keywords.join(", ") : "")
                     );
                     setCopied(true);
                     setTimeout(() => {
@@ -299,7 +299,7 @@ export default function Sandbox() {
               <div className="keywords">
                 <h3>Keywords:</h3>
                 <div className="keywordsWrapper">
-                  {website.webContent.meta.keywords.map((keyword) => (
+                {website.webContent.meta.keywords ? website.webContent.meta.keywords.map((keyword) => (
                     <p
                       key={keyword}
                       onClick={() => {
@@ -315,7 +315,7 @@ export default function Sandbox() {
                     >
                       {keyword}
                     </p>
-                  ))}
+                  )) : ""}
                   {addNewKeywordMode ? (
                     <input
                       type="text"
@@ -354,11 +354,11 @@ export default function Sandbox() {
                     </p>
                   )}
                 </div>
-                {website.webContent.meta.keywords.length > 0 ? (
+                {website.webContent.meta.keywords ? website.webContent.meta.keywords.length > 0 ? (
                   <AiFillCheckCircle />
                 ) : (
                   ""
-                )}
+                ) : ""}
               </div>
             </div>
           </div>
