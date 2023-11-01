@@ -136,7 +136,7 @@ export default function UsersDash() {
     }
   }
 
-  const [whichBtnIsSelected, setWhichBtnIsSelected] = useState("none");
+  const [whichBtnIsSelected, setWhichBtnIsSelected] = useState("all");
   const [whichSortBtnIsSelected, setWhichSortBtnIsSelected] =
     useState("newest");
 
@@ -345,18 +345,38 @@ export default function UsersDash() {
                 user.websites ? (
                   <>
                     <h3>Websites:</h3>
-                    <ul>
-                      {user.websites.map((website) => {
-                        return (
-                          <li key={website.id}>
-                            <a
-                              href={`/config/${website.domainSlug}?user=${user.uid}`}
-                              target="_blank"
-                            >
-                              {" "}
-                              {website.domainSlug}
-                            </a>
-                            <p
+                    {user.websites.map((website) => {
+                      return (
+                        <div
+                          key={website.id}
+                          className="websiteBtn"
+                          // href={`/config/${website.domainSlug}?user=${user.uid}`}
+                          onClick={async () => {
+                            const websiteRef = doc(
+                              db,
+                              `users`,
+                              `user-${user.uid}`,
+                              `websites`,
+                              website.domainSlug
+                            );
+                            console.log(websiteRef);
+                            const websiteRefQuerySnapshot = await getDoc(
+                              websiteRef
+                            );
+                            console.log(websiteRefQuerySnapshot.data());
+                            setPopupWebsiteData(websiteRefQuerySnapshot.data());
+                            // alert(
+                            //   Object.entries(websiteRefQuerySnapshot.data())
+                            //     .map((entry) => {
+                            //       return `${entry[0]}: ${entry[1]}`;
+                            //     })
+                            //     .join("\n")
+                            // );
+                          }}
+                        >
+                          <p>{website.domainSlug}</p>
+                          {/* <p
+                              className="fetchSiteData"
                               onClick={async () => {
                                 const websiteRef = doc(
                                   db,
@@ -383,11 +403,10 @@ export default function UsersDash() {
                               }}
                             >
                               Fetch site data
-                            </p>
-                          </li>
-                        );
-                      })}
-                    </ul>
+                            </p> */}
+                        </div>
+                      );
+                    })}
                   </>
                 ) : (
                   <p>

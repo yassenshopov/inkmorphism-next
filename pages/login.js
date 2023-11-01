@@ -175,23 +175,30 @@ export default function Login() {
       alert("Password should be between 6 and 50 characters long.");
     } else {
       signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-      })
-      .catch((error) => {
-        console.log(error);
-        if (error.code === "auth/invalid-email" || error.code === "auth/missing-email") {
-          setInvalidEmail(true);
-        } else if (error.code === "auth/wrong-password" || error.code === "auth/missing-password" || error.code === "auth/user-not-found") {
-          setInvalidPassword(true);
-        } else if (error.code === "auth/user-not-found") { 
-          setInvalidEmail(true);
-        } else if (error.code === "auth/too-many-requests") {
-          alert("Too many requests. Please try again later.");
-        }
-        // setInvalidEmail(true);
-        // setInvalidPassword(true);
-      });
+        .then((userCredential) => {
+          const user = userCredential.user;
+        })
+        .catch((error) => {
+          console.log(error);
+          if (
+            error.code === "auth/invalid-email" ||
+            error.code === "auth/missing-email"
+          ) {
+            setInvalidEmail(true);
+          } else if (
+            error.code === "auth/wrong-password" ||
+            error.code === "auth/missing-password" ||
+            error.code === "auth/user-not-found"
+          ) {
+            setInvalidPassword(true);
+          } else if (error.code === "auth/user-not-found") {
+            setInvalidEmail(true);
+          } else if (error.code === "auth/too-many-requests") {
+            alert("Too many requests. Please try again later.");
+          }
+          // setInvalidEmail(true);
+          // setInvalidPassword(true);
+        });
     }
   }
 
@@ -200,7 +207,7 @@ export default function Login() {
     let password = document.getElementById("password").value;
     // let name = document.getElementById("name").value;
     // auth.currentUser.displayName = name;
-    if (password.length < 6  || password.length > 50) {
+    if (password.length < 6 || password.length > 50) {
       alert("Password should be between 6 and 50 characters long.");
     } else {
       createUserWithEmailAndPassword(auth, email, password)
@@ -216,11 +223,18 @@ export default function Login() {
             })
             .catch((error) => {
               console.log(error);
-              if (error.code === "auth/invalid-email" || error.code === "auth/missing-email") {
+              if (
+                error.code === "auth/invalid-email" ||
+                error.code === "auth/missing-email"
+              ) {
                 setInvalidEmail(true);
-              } else if (error.code === "auth/wrong-password" || error.code === "auth/missing-password" || error.code === "auth/user-not-found") {
+              } else if (
+                error.code === "auth/wrong-password" ||
+                error.code === "auth/missing-password" ||
+                error.code === "auth/user-not-found"
+              ) {
                 setInvalidPassword(true);
-              } else if (error.code === "auth/user-not-found") { 
+              } else if (error.code === "auth/user-not-found") {
                 setInvalidEmail(true);
               } else if (error.code === "auth/too-many-requests") {
                 alert("Too many requests. Please try again later.");
@@ -230,11 +244,18 @@ export default function Login() {
         })
         .catch((error) => {
           console.log(error);
-          if (error.code === "auth/invalid-email" || error.code === "auth/missing-email") {
+          if (
+            error.code === "auth/invalid-email" ||
+            error.code === "auth/missing-email"
+          ) {
             setInvalidEmail(true);
-          } else if (error.code === "auth/wrong-password" || error.code === "auth/missing-password" || error.code === "auth/user-not-found") {
+          } else if (
+            error.code === "auth/wrong-password" ||
+            error.code === "auth/missing-password" ||
+            error.code === "auth/user-not-found"
+          ) {
             setInvalidPassword(true);
-          } else if (error.code === "auth/user-not-found") { 
+          } else if (error.code === "auth/user-not-found") {
             setInvalidEmail(true);
           } else if (error.code === "auth/too-many-requests") {
             alert("Too many requests. Please try again later.");
@@ -259,11 +280,21 @@ export default function Login() {
   const [loadingAnimation, setLoadingAnimation] = useState(false);
 
   useEffect(() => {
+    setLoadingAnimation((prev) => !prev);
+    setTimeout(() => {
       setLoadingAnimation((prev) => !prev);
-      setTimeout(() => {
-        setLoadingAnimation((prev) => !prev);
-      }, 1400);
+    }, 1400);
   }, [isRegisterMode]);
+
+  const handleFormSubmit = (event) => {
+    if (event.key === "Enter") {
+      if (isRegisterMode) {
+        registerWithEmail();
+      } else {
+        signInWithEmail();
+      }
+    }
+  };
 
   return (
     <>
@@ -277,9 +308,11 @@ export default function Login() {
         {/* <h2>Login:</h2> */}
         <div id="loginWrapper" className={isRegisterMode ? "registerMode" : ""}>
           <div id="img">
-            <img src={isRegisterMode ? "/tea2.png" : "/tea1.png"} 
-            className={loadingAnimation ? "loading" : ""}
-            draggable="false" />
+            <img
+              src={isRegisterMode ? "/tea2.png" : "/tea1.png"}
+              className={loadingAnimation ? "loading" : ""}
+              draggable="false"
+            />
           </div>
           <div id="form">
             <a href=".." className="noSelect logo">
@@ -323,15 +356,20 @@ export default function Login() {
                   setEmptyPassword(false);
                 }
               }}
+              onKeyPress={handleFormSubmit}
             />
             <p
               className={
-                invalidEmail || invalidPassword ? "invalidEmail" : "invalidEmail invisible"
+                invalidEmail || invalidPassword
+                  ? "invalidEmail"
+                  : "invalidEmail invisible"
               }
             >
               Invalid email or password
             </p>
-            <button onClick={isRegisterMode ? registerWithEmail : signInWithEmail} className="noSelect ctaBtn"
+            <button
+              onClick={isRegisterMode ? registerWithEmail : signInWithEmail}
+              className="noSelect ctaBtn"
               // disabled={invalidEmail || emptyEmail || emptyPassword}
             >
               {isRegisterMode ? "Register" : "Sign in"}

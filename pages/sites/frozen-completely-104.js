@@ -120,7 +120,7 @@
                 >Explore</p>
               </div>
               <div className="imgWrapper">
-                <img src='https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fhero_img.png?alt=media&token=cd992c4a-c6c3-4a68-bed7-e0efdeba8df5'
+                <img src='https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Ffrozen-completely-104%2FmEjML9KrpedH0eFJ.png?alt=media&token=6db89f41-e591-485e-9bef-966be5536d48'
                 draggable="false"
                 loading="eager"
                 />
