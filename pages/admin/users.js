@@ -374,7 +374,12 @@ export default function UsersDash() {
                             // );
                           }}
                         >
-                          <p>{website.domainSlug}</p>
+                          <a
+                            href={`/config/${website.domainSlug}?user=${user.uid}`}
+                            target="_blank"
+                          >
+                            {website.domainSlug}
+                          </a>
                           {/* <p
                               className="fetchSiteData"
                               onClick={async () => {

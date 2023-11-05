@@ -1,0 +1,196 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap");
+
+.industrial {
+  font-family: "Raleway", sans-serif;
+  color: var(--colorDark);
+  background: var(--colorLight);
+  > div {
+    &:nth-child(2n + 1) > *:not(.hero) {
+      background-color: var(--color1);
+    }
+    &:nth-child(2n) > * {
+      background-color: var(--color2);
+    }
+  }
+  .imgWrapper {
+    display: flex;
+  }
+  .maps {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+    width: 100%;
+    padding: 40px 0 80px;
+    box-sizing: border-box;
+    h2 {
+      font-size: 2.4rem;
+      font-weight: 1000;
+      width: 80%;
+      text-align: center;
+    }
+    .mapsWrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 80%;
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      iframe {
+        width: 100%;
+        height: 50vh;
+        box-shadow: 0 0 20px #12121280;
+        z-index: 1;
+      }
+      .changeImg {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        background-color: #00000090;
+        font-size: 2rem;
+        cursor: pointer;
+        font-family: "Oswald";
+        opacity: 0;
+        transition: all 200ms ease-in-out;
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  .nav {
+    justify-content: left;
+    #navLogo {
+      height: fit-content;
+      max-height: 30px;
+      color: inherit;
+      transition: all 200ms ease-in-out;
+      &:hover {
+        p {
+          border-bottom: 2px solid var(--colorDark);
+        }
+      }
+      img {
+        height: 3rem;
+      }
+      p {
+        font-size: 1.2rem;
+        font-weight: 1000;
+        color: inherit;
+        border-bottom: 2px solid transparent;
+        transition: all 200ms ease-in-out;
+      }
+    }
+  }
+  .hero {
+    position: relative;
+    height: 70vh;
+    overflow: hidden;
+    .txtWrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 10%;
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      transform: translateY(-50%);
+      & > * {
+        padding: 10px 1vw;
+      }
+      h2 {
+        font-size: 3.4rem;
+        font-weight: 1000;
+        margin: 0;
+      }
+      p {
+        width: 50%;
+        line-height: 1.5;
+        box-sizing: border-box;
+        font-size: 1.5rem;
+      }
+      .cta {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 2vw;
+        background-color: var(--colorLight);
+        padding: 10px 2vw;
+        border-radius: 12px;
+        max-width: 50%;
+        cursor: pointer;
+        width: fit-content;
+        font-weight: 1000;
+        color: var(--colorDark);
+        &:hover {
+          filter: brightness(0.8);
+        }
+      }
+    }
+    .imgWrapper {
+      width: 100% !important;
+      z-index: 1;
+      display: flex;
+      img {
+        width: 100%;
+        filter: brightness(0.1) saturate(2);
+      }
+    }
+  }
+  .imgAndTxt {
+    padding: 0;
+    gap: 0;
+    > * {
+      &.txtWrapper {
+        display: flex;
+        flex-direction: column;
+        padding: 0 10%;
+        text-align: left;
+        width: 60% !important;
+        box-sizing: border-box;
+        & > * {
+          padding: 10px 1vw;
+        }
+        h2 {
+          font-size: 2.4rem;
+          font-weight: 1000;
+          margin: 0;
+        }
+        p {
+          width: 100%;
+          line-height: 1.5;
+          box-sizing: border-box;
+          font-size: 1.2rem;
+        }
+      }
+      &.imgWrapper {
+        width: 40% !important;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .footer {
+    min-height: 100px;
+    #watermark {
+      a {
+        color: inherit;
+      }
+    }
+  }
+}

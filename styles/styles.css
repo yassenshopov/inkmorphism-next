@@ -1804,7 +1804,6 @@
 #cPanel #publicSites .site {
   width: 100%;
   height: 200px;
-  position: relative;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -1818,6 +1817,7 @@
   box-shadow: 10px 10px 10px #12121210, -10px -10px 10px #ffffff09;
   overflow: hidden;
   transition: all 200ms ease-in-out;
+  position: relative;
 }
 #cPanel #publicSites .site h2 {
   padding: 0;
@@ -1866,6 +1866,32 @@
   min-height: 2.4vw;
   border-radius: 50%;
   filter: drop-shadow(0 0 6px #12121240);
+}
+#cPanel #publicSites .site .domainSlug {
+  padding: 10px 20px;
+  border-radius: 12px;
+  background-color: var(--mainDark);
+  color: var(--mainLight);
+  margin: 0;
+  animation: pulse 3s infinite;
+  cursor: pointer;
+}
+#cPanel #publicSites .site .updateRepoBtn {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translateY(-75%);
+  padding: 10px 20px;
+  border-radius: 12px;
+  background-color: var(--mainDark);
+  color: var(--mainLight);
+  animation: pulse 3s infinite;
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+}
+#cPanel #publicSites .site .updateRepoBtn:hover {
+  background-color: var(--mainLight);
+  color: var(--mainDark);
 }
 #cPanel #publicSites .site:hover > .logoWrapper {
   background-color: #ffffff;
@@ -4004,6 +4030,19 @@
   border-radius: 0;
   height: auto;
 }
+.imgAndTxt {
+  display: flex;
+  padding: 20px 10%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2vw;
+}
+.imgAndTxt p {
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 10px 1vw;
+  caret-color: var(--colorDark);
+}
 .grid3 {
   padding: 20px 10%;
 }
@@ -4142,19 +4181,6 @@
   padding: 10px 1vw;
   caret-color: var(--colorDark);
   font-size: 1rem;
-}
-.imgAndTxt {
-  display: flex;
-  padding: 20px 10%;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2vw;
-}
-.imgAndTxt p {
-  font-size: 1.2rem;
-  cursor: pointer;
-  padding: 10px 1vw;
-  caret-color: var(--colorDark);
 }
 .published p {
   cursor: auto;

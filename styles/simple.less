@@ -1,0 +1,24 @@
+.simple {
+  background-color: var(--colorLight);
+  width: 100vw;
+  min-height: fit-content;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--colorDark);
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  > * {
+    min-height: 150px;
+  }
+  img {
+    border-radius: 16px;
+    width: 100%;
+  }
+  > *:nth-child(2n + 1) {
+    background-color: var(--color1);
+    color: var(--colorLight);
+    #navLogo p {
+      color: var(--colorLight);
+    }
+  }
+}

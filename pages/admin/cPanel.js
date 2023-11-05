@@ -10,13 +10,11 @@ import {
   getDocs,
 } from "firebase/firestore/lite";
 import { getAuth } from "firebase/auth";
+import { BiCopy } from "react-icons/bi";
 
 let publicSites = [];
 
 export default function CPanel() {
-  const [folderName, setFolderName] = useState("default");
-  const [pageTitle, setPageTitle] = useState("default");
-
   let uid;
   const auth = getAuth(app);
   let db = getFirestore(app);
@@ -70,6 +68,16 @@ export default function CPanel() {
     }, 1000);
   };
 
+  async function updateRepo(site) {
+    const response = await fetch("http://localhost:3000/api/updateRepos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ site }),
+    });
+  }
+
   async function getPublicSitesData() {
     const ref = collection(db, "publicSites");
     console.log(ref);
@@ -90,7 +98,9 @@ export default function CPanel() {
                 // href={"../config/" + site.domainSlug}
                 className="noSelect site"
                 style={{
-                  background: site.isSynced ? "rgb(211 217 255 / 20%)" : "rgb(235 223 85)",
+                  background: site.isSynced
+                    ? "rgb(211 217 255 / 20%)"
+                    : "rgb(235 223 85)",
                   color: site.isSynced ? "white" : "black",
                 }}
               >
@@ -111,21 +121,34 @@ export default function CPanel() {
                   {/* <a href={"https://" + site.domain} target="_blank">
                 {site.domain}
               </a> */}
-                  <a
-                    href={"https://inkmorphism.com/sites/" + site.domainSlug}
-                    target="_blank"
+                  <p
+                    // href={"https://inkmorphism.com/sites/" + site.domainSlug}
+                    // target="_blank"
+                    className="domainSlug"
                     style={{
                       color: site.isSynced ? "white" : "black",
                     }}
+                    onClick={() => {
+                      navigator.clipboard.writeText(
+                        site.domainSlug
+                      );
+                    }}
                   >
-                    {"inkmorphism.com/sites/" + site.domainSlug}
-                  </a>
+                    {site.domainSlug} <BiCopy />
+                  </p>
+                  <p
+                    className="updateRepoBtn"
+                    onClick={() => {
+                      updateRepo(site);
+                    }}
+                  >
+                    Update Repo
+                  </p>
                 </div>
                 <p>
                   {site.isSynced
                     ? "Static file is up-to-date"
-                    : "Update available"
-                    }
+                    : "Update available"}
                 </p>
               </div>
             );
