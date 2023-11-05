@@ -40,7 +40,7 @@
               className={"industrial published"}
               style={{
                 "--color1": "#1a1919",
-                "--color2": "#191a1a",
+                "--color2": "#d6ffff",
                 "--color3": "#79e16b",
                 "--colorLight": "#ebebeb",
                 "--colorDark": "#0e111a",
@@ -81,6 +81,23 @@
             
             <section
               key="1"
+              className="imgAndTxt reverseHorizontal"
+            >
+              <div className="txtWrapper">
+                <h2>Heading</h2>
+                <p>This is your new ImgNTxt section.</p>
+              </div>
+              <div className="imgWrapper">
+                <img
+                  src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2FimgAndTxt.png?alt=media&token=754fc70d-7640-4975-9077-6d46b953d15b"
+                  draggable="false"
+                  loading="eager"
+                />
+              </div>
+            </section>
+            
+            <section
+              key="2"
               className="hero"
             >
               <div className="txtWrapper">
@@ -104,7 +121,7 @@
             </section>
         
             <section
-              key="2"
+              key="3"
               className="hero"
             >
               <div className="txtWrapper">
@@ -128,14 +145,14 @@
             </section>
         
             <section
-              key="3"
+              key="4"
               className="txtOnly reverseHorizontal"
             >
               <p>Hello to your new section</p>
             </section>
             
             <section
-              key="4"
+              key="5"
               className="imgAndTxt reverseHorizontal"
             >
               <div className="txtWrapper">
@@ -179,7 +196,7 @@
               </section>
               
             <section
-              key="6"
+              key="7"
               className="imgOnly "
             >
               <img
@@ -190,7 +207,7 @@
             </section>
             
             <section
-              key="7"
+              key="8"
               className="imgAndTxt reverseHorizontal"
             >
               <div className="txtWrapper">
@@ -243,7 +260,7 @@
               </section>
               
             <section
-              key="9"
+              key="10"
               className="imgAndTxt directHorizontal"
             >
               <div className="txtWrapper">
@@ -293,7 +310,7 @@
             
             <footer 
               className="footer"
-              key="11"
+              key="12"
             >
               <p id="watermark">
                 <a href="https://inkmorphism.com" target="_blank">

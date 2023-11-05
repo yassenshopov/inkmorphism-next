@@ -1,0 +1,23 @@
+.skeletal {
+  background-color: var(--colorLight);
+  width: 100%;
+  min-height: fit-content;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--colorDark);
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+.skeletal > * {
+  min-height: 150px;
+}
+.skeletal img {
+  width: 100%;
+}
+.skeletal > *:nth-child(2n + 1) {
+  background-color: var(--color1);
+  color: var(--colorLight);
+}
+.skeletal > *:nth-child(2n + 1) #navLogo p {
+  color: var(--colorLight);
+}
