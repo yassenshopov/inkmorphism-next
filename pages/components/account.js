@@ -148,64 +148,63 @@ export default function Account(props) {
           </span>
         </h2>
         <div className={"dropdownContent " + (openMenu[2] ? "clicked" : "")}>
-          {(props.userInfo.openAIAPIKey &&
-            props.userInfo.openAIAPIKey !== "" &&
-            props.userInfo.openAIAPIKeySecret &&
-            props.userInfo.openAIAPIKeySecret !== "") ?
-              <>
-                <h3>You haven't connected your OpenAI API key yet.</h3>
-                <p>
-                  API key:
-                  <input
-                    type="text"
-                    placeholder="API key..."
-                    className="keysInput"
-                  ></input>
-                </p>
-                <p>
-                  API secret:
-                  <input
-                    type="text"
-                    placeholder="API secret..."
-                    className="keysInput"
-                  ></input>
-                </p>
-                <p>
-                  <a
-                    href="https://beta.openai.com/account/api-keys"
-                    target="_blank"
-                  >
-                    Get your API key here
-                  </a>
-                </p>
-              </>
-              :
-              <>
-                <h3>Connected to OpenAI API</h3>
-                <p>
-                  API key:
-                  <input
-                    type="text"
-                    placeholder="**************"
-                    className="keysInput"
-                    disabled
-                  ></input>
-                </p>
-                <p>
-                  API secret:
-                  <input
-                    type="text"
-                    placeholder="**************"
-                    className="keysInput"
-                    disabled
-                  ></input>
-                </p>
-              </>
-            }
+          {props.userInfo.openAIAPIKey && props.userInfo.openAIAPIKeySecret ? (
+            <>
+              <h3>Connected to OpenAI API</h3>
+              <p>
+                API key:
+                <input
+                  type="text"
+                  placeholder="**************"
+                  className="keysInput"
+                  disabled
+                ></input>
+              </p>
+              <p>
+                API secret:
+                <input
+                  type="text"
+                  placeholder="**************"
+                  className="keysInput"
+                  disabled
+                ></input>
+              </p>
+            </>
+          ) : (
+            <>
+              <h3>You haven't connected your OpenAI API key yet.</h3>
+              <p>
+                API key:
+                <input
+                  type="text"
+                  placeholder="API key..."
+                  className="keysInput"
+                ></input>
+              </p>
+              <p>
+                API secret:
+                <input
+                  type="text"
+                  placeholder="API secret..."
+                  className="keysInput"
+                ></input>
+              </p>
+              <p>
+                <a
+                  href="https://beta.openai.com/account/api-keys"
+                  target="_blank"
+                >
+                  Get your API key here
+                </a>
+              </p>
+            </>
+          )}
         </div>
       </section>
     </main>
   );
+
+  console.log(props);
 
   return (
     <div id="accountWrapper">
