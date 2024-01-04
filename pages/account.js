@@ -90,7 +90,6 @@ export default function Templates() {
   return (
     <div className={"Account"}>
       <Head>
-        {/* <link rel="icon" href={defaultFiles['logo']} /> */}
         <link rel="icon" href="/faviconWh.ico" />
         <title>Inkmorphism - My account</title>
       </Head>
