@@ -147,7 +147,7 @@ export default function Account(props) {
             <MdKeyboardArrowDown />
           </span>
         </h2>
-        <div className={"dropdownContent " + (openMenu[2] ? "clicked" : "")}>
+        {/* <div className={"dropdownContent " + (openMenu[2] ? "clicked" : "")}>
           {props.userInfo.openAIAPIKey && props.userInfo.openAIAPIKeySecret ? (
             <>
               <h3>Connected to OpenAI API</h3>
@@ -199,7 +199,7 @@ export default function Account(props) {
               </p>
             </>
           )}
-        </div>
+        </div> */}
       </section>
     </main>
   );
