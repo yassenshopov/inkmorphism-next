@@ -48,7 +48,12 @@ import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import update from "immutability-helper";
 import { TouchBackend } from "react-dnd-touch-backend";
+// import OpenAI from "openai";
 
+// const openai = new OpenAI({
+//   apiKey: process.env.OPENAI_API_KEY,
+//   dangerouslyAllowBrowser: true,
+// });
 const dataArr = [];
 
 function Editor(props) {
@@ -344,8 +349,6 @@ function Editor(props) {
           return;
         }
 
-        console.log(dragIndex, hoverIndex);
-
         moveBox(dragIndex, hoverIndex);
         item.index = hoverIndex;
       },
@@ -362,22 +365,23 @@ function Editor(props) {
     return <div ref={dragRef}>{content}</div>;
   };
 
-  useEffect(() => {
-    try {
-      let main = document.querySelector("main.editor");
-      for (let i = 0; i < main.children.length; i++) {
-        if (main.children[i].id !== "emptySection") {
-          main.children[i].children[0].style.color = getContrastYIQfromBG(
-            window.getComputedStyle(main.children[i].children[0])[
-              "background-color"
-            ]
-          );
-        }
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }, [sectionsData, defaults]);
+  // useEffect(() => {
+  //   try {
+  //     let main = document.querySelector("main.editor");
+  //     for (let i = 0; i < main.children.length; i++) {
+  //       if (main.children[i].id !== "emptySection") {
+  //         main.children[i].children[0].style.color = getContrastYIQfromBG(
+  //           window.getComputedStyle(main.children[i].children[0])[
+  //             "background-color"
+  //           ]
+  //         );
+  //       }
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }, [sectionsData, defaults]);
+
   function getContrastYIQfromBG(rgbColor) {
     // Extracting the individual color components from the RGB format
     var rgbValues = rgbColor.substring(5, rgbColor.length - 1).split(",");
@@ -1090,7 +1094,6 @@ function Editor(props) {
 
   const moveBox = (dragIndex, hoverIndex) => {
     const draggedBox = boxes[dragIndex];
-    console.log(draggedBox);
     alert("dragIndex: ", dragIndex, " hoverIndex: ", hoverIndex);
     setBoxes(
       update(boxes, {
@@ -1149,7 +1152,8 @@ function Editor(props) {
   const [isLoggedAsExternalAdmin, setLoggedAsExternalAdmin] = useState(false);
 
   useEffect(() => {
-  const userNameFromURL = "user-" +  new URLSearchParams(window.location.search).get("user");
+    const userNameFromURL =
+      "user-" + new URLSearchParams(window.location.search).get("user");
     async function asyncFunc() {
       const realUserData = getDoc(doc(db, "users", userName)).then((doc) => {
         try {
@@ -1164,7 +1168,6 @@ function Editor(props) {
         const col2 = collection(db, "users", userName, "websites");
         const data2 = await getDocs(col2).then((snapshot) => {
           let checkPrivacy = false;
-          console.log(userName);
           snapshot.forEach((doc) => {
             if (
               doc.data().domainSlug === props.name ||
@@ -1176,7 +1179,6 @@ function Editor(props) {
               doc.data().domainSlug !== props.name ||
               userName === "user-gTEFEshrDaeGrt9YUt9Uljt0jF43"
             ) {
-              console.log("logged as external admin");
               setLoggedAsExternalAdmin(true);
             }
           });
@@ -1201,21 +1203,23 @@ function Editor(props) {
                   setLogoFile(item.webContent.meta.metaFavicon);
                   setThumbnailFile(item.webContent.meta.metaThumbnail);
                   let gallery = [];
-                  try {
-                    item.gallery.forEach((doc) => {
-                      gallery.push(doc);
-                    });
-                    setSiteGallery(
-                      gallery.map((item, index) => {
-                        return (
-                          <div key={index} className="galleryItem noSelect">
-                            <img src={item.url} />
-                          </div>
-                        );
-                      })
-                    );
-                  } catch (err) {
-                    console.log(err);
+                  if (item.gallery) {
+                    try {
+                      item.gallery.forEach((doc) => {
+                        gallery.push(doc);
+                      });
+                      setSiteGallery(
+                        gallery.map((item, index) => {
+                          return (
+                            <div key={index} className="galleryItem noSelect">
+                              <img src={item.url} />
+                            </div>
+                          );
+                        })
+                      );
+                    } catch (err) {
+                      console.log(err);
+                    }
                   }
                 } catch (err) {
                   console.log(err);
@@ -1313,13 +1317,13 @@ function Editor(props) {
     );
     if (savedData.published) {
       await setDoc(doc(db, "publicSites", props["name"]), savedData);
-    }
-    try {
-      await updateDoc(doc(db, "publicSites", props["name"]), {
-        isSynced: false,
-      });
-    } catch (err) {
-      console.log(err);
+      try {
+        await updateDoc(doc(db, "publicSites", props["name"]), {
+          isSynced: false,
+        });
+      } catch (err) {
+        console.log(err);
+      }
     }
     setIsSaved(false);
     setIsUnsavedChanges(false);
@@ -1340,6 +1344,7 @@ function Editor(props) {
   // };
 
   function saveNewData() {
+    defaults.lastEdited = currTime();
     sendData(defaults);
   }
 
@@ -1455,18 +1460,15 @@ function Editor(props) {
 
   let router = useRouter();
 
-  function delTime() {
+  function currTime() {
     const now = new Date();
-    const seconds = Math.round(now.getTime() / 1000);
-    const nanoseconds =
-      now.getTime() * 1000000 + now.getMilliseconds() * 1000000;
-    return { seconds: seconds, nanoseconds: nanoseconds };
+    return now;
   }
 
   async function deleteSite() {
     await updateDoc(doc(db, "users", userName, "websites", props["name"]), {
       deleted: true,
-      delTime: delTime(),
+      delTime: currTime(),
     }).then(() => {
       router.push("/dashboard");
     });
@@ -1752,6 +1754,7 @@ function Editor(props) {
   }, []);
 
   const [siteGallery, setSiteGallery] = useState([]);
+  // const [generatedImgSrc, setGeneratedImgSrc] = useState("");
 
   return (
     <div className={"Editor" + fsClass + modeClass}>
@@ -1783,11 +1786,7 @@ function Editor(props) {
             ""
           )}
           {isUnsavedChanges ? (
-            <p
-              className="unsavedChanges"
-            >
-              You have some unsaved changes ⚠️
-            </p>
+            <p className="unsavedChanges">You have some unsaved changes ⚠️</p>
           ) : isUnsavedChanges === false ? (
             <p style={{ padding: "12px 1vw", borderRadius: "12px" }}>
               All changes saved ✓
@@ -2127,6 +2126,31 @@ function Editor(props) {
                 Upload
               </p>
             </div>
+            {/* <div id="generateImg">
+              <p className="noSelect">Generate image</p>
+              <div id="generateImgBtns">
+                <input
+                  type="text"
+                  placeholder="Enter image description..."
+                  id="generateImgTxt"
+                />
+                <p
+                  className="noSelect"
+                  onClick={async () => {
+                    // get OpenAI to generate image
+                    // get the value from the input
+                    const image = await openai.images.generate({
+                      prompt: document.getElementById("generateImgTxt").value,
+                    });
+                    console.log(image.data);
+                    setGeneratedImgSrc(image.data[0].url);
+                  }}
+                >
+                  Generate
+                </p>
+                <img src={generatedImgSrc} />
+              </div>
+            </div> */}
           </form>
         </div>
 
@@ -2392,9 +2416,6 @@ function Editor(props) {
           </a>
         </div>
 
-        {/* <button onClick={() => console.log(pageData)}>
-          Press me for 'pageData'
-        </button> */}
         <div id="darkModeToggleWrapper">
           <p>Editor is in: {isDarkModeOn ? "Dark" : "Light"} Mode</p>
           <div

@@ -3,6 +3,7 @@ import { FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
 import MainNav from "./components/MainNav";
 import { useState, useEffect } from "react";
 import MainFooter from "./components/MainFooter";
+import { IoCard } from "react-icons/io5";
 
 // Meta data:
 let title = "Inkmorphism - the AI Website Builder";
@@ -65,7 +66,7 @@ export default function Home() {
             <a href="/login" className="noSelect">
               Get started for free!
             </a>
-            <h3>Try for free. No card required.</h3>
+            <h3>Try for free. No card required. <IoCard/> </h3>
           </div>
           <div className="backgroundDecor"></div>
           <div className="backgroundDecor"></div>
@@ -236,61 +237,9 @@ export default function Home() {
             </div>
           </div>
         </section>
-        {/* <section id="pricing">
-          <h2>Simple pricing</h2>
-          <p>
-            We offer a free plan for you to try out our product. If you like it,
-            you can upgrade to a paid plan.
-          </p>
-          <div id="pricingCards">
-            <div className="card">
-              <h3>Free</h3>
-              <p>Try out our product for free.</p>
-              <p>
-                - 1 website <br />
-                - 1 template <br />
-                - 1 page <br />
-                - 1 AI helper <br />
-                - 1 custom domain <br />
-                - 1 GB storage <br />
-                - 1 GB bandwidth <br />
-                - 1 email <br />
-                - 1 GB email storage <br />
-                - 1 GB email bandwidth <br />
-              </p>
-              <a className="ctaBtn noSelect" href="/templates">
-                Get started for free
-              </a>
-            </div>
-            <div className="card">
-              <h3>Pro</h3>
-              <p>Upgrade to a paid plan to unlock more features.</p>
-              <p>
-                - 1 website <br />
-                - 1 template <br />
-                - 1 page <br />
-              </p>
-              <a className="ctaBtn noSelect" href="/templates">
-                Get started for free
-              </a>
-            </div>
-            <div className="card">
-              <h3>Business</h3>
-              <p>Upgrade to a paid plan to unlock more features.</p>
-              <p>
-                - 1 website <br />
-                - 1 template <br />
-                - 1 page <br />
-              </p>
-              <a className="ctaBtn noSelect" href="/templates">
-                Get started for free
-              </a>
-            </div>
-          </div>
-        </section> */}
       </main>
 
-      <MainFooter />
+      {/* <MainFooter /> */}
 
       {/* <footer>
         <p>Inkmorphism © 2023</p>

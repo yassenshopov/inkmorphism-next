@@ -30,6 +30,7 @@ import {
 import MainFooter from "./components/MainFooter.js";
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import { BsSignpostFill } from "react-icons/bs";
+import { IoRefreshOutline } from "react-icons/io5";
 
 export default function Dashboard() {
   const [userDataDB, setUserDB] = useState({
@@ -102,7 +103,7 @@ export default function Dashboard() {
           return a.domainSlug.localeCompare(b.domainSlug);
         }
       });
-      console.log(websitesArray.existing);
+      console.table(websitesArray.existing[0]);
       const websites = websitesArray.existing.map((site) => (
         <article key={site.domain} className="noSelect">
           <div className="imgWrapper">
@@ -135,6 +136,10 @@ export default function Dashboard() {
                 </a>
               </p>
             )}
+            <p>
+              <span className="bold">Last edited:</span>{" "}
+              {site.lastEdited ? site.lastEdited.toDate().toString() : "--:--"}
+            </p>
           </div>
           <div className="actionBtns">
             <a href={"../config/" + site.domainSlug} className="editBtn">
@@ -178,7 +183,7 @@ export default function Dashboard() {
           } else {
             return (
               <article
-                key={site.domain}
+                key={site.domainSlug}
                 className="noSelect deletedWebsites"
                 style={{
                   display: daysTillDeletion(site.delTime) < 1 ? "none" : "grid",
@@ -205,6 +210,23 @@ export default function Dashboard() {
                     loading="lazy"
                   />
                 </div>
+                <button
+                  className="restoreBtn"
+                  onClick={() => {
+                    const docRef = doc(
+                      db,
+                      `users/` + uid + `/websites/` + site.domainSlug
+                    );
+                    console.log(docRef);
+                    setDoc(docRef, {
+                      ...site,
+                      deleted: false,
+                      delTime: null,
+                    });
+                    window.location.reload();
+                  }
+                  }
+                >Restore <IoRefreshOutline /></button>
               </article>
             );
           }
@@ -240,7 +262,7 @@ export default function Dashboard() {
           });
         });
     } catch (err) {
-      window.location.href = "../login";
+      // window.location.href = "../login";
     }
   }
 
