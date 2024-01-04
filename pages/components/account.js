@@ -4,11 +4,15 @@ import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import app from "../../firebase/clientApp";
 import { BiLoaderAlt } from "react-icons/bi";
 import { useRouter } from "next/router";
-import { MdKeyboardArrowDown, MdKeyboardArrowLeft } from "react-icons/md";
+import {
+  MdKeyboardArrowDown,
+  MdKeyboardArrowLeft,
+  MdModeEdit,
+} from "react-icons/md";
+import { IoCodeSlash } from "react-icons/io5";
 
 export default function Account(props) {
   console.log(props);
-  const [profilePic, setProfilePic] = useState("");
   let router = useRouter();
 
   const storage = getStorage();
@@ -72,16 +76,15 @@ export default function Account(props) {
   }
 
   const [isResetPassBtnClicked, setIsResetPassBtnClicked] = useState(false);
-  const [isPersonalDetailsMenuOpen, setIsPersonalDetailsMenuOpen] =
-    useState(true);
-  const [isPrivacyMenuOpen, setIsPrivacyMenuOpen] = useState(true);
+  const [isDevMode, setIsDevMode] = useState(true);
+  const [openMenu, setOpenMenu] = useState([true, false, false]);
 
   const profileSec = (
     <main id="accountSection">
       <section id="personalDetailsSection">
         <h2
           onClick={() => {
-            setIsPersonalDetailsMenuOpen(!isPersonalDetailsMenuOpen);
+            setOpenMenu([!openMenu[0], false, false]);
           }}
           className="noSelect"
         >
@@ -90,11 +93,11 @@ export default function Account(props) {
             <MdKeyboardArrowDown />
           </span>
         </h2>
-        <div
-          className={"dropdownContent " + (isPersonalDetailsMenuOpen ? "clicked" : "") }
-        >
+        <div className={"dropdownContent " + (openMenu[0] ? "clicked" : "")}>
+          <h3>Change your profile picture</h3>
           <div id="profilePicWrapper">
             <img src={props.profilePic} id="profilePic" />
+            <MdModeEdit className="editIcon" />
             <div className="hiddenMenu noSelect" onClick={openPopup}>
               <p>Change picture</p>
             </div>
@@ -102,24 +105,10 @@ export default function Account(props) {
           {/* <p id="displayName">{props.userInfo.name || props.displayName}</p> */}
         </div>
       </section>
-      <section id="openAIAPISection">
-        <h2
-          onClick={() => {
-            // router.push("/openAIAPI");
-          }}
-          className="noSelect"
-        >
-          OpenAI API
-        </h2>
-        <div className="dropdownContent clicked">
-          <p>API key: {props.userInfo.openAIAPIKey || "None"}</p>
-          <p>API secret: {props.userInfo.openAIAPIKeySecret || "None"}</p>
-        </div>
-      </section>
       <section id="privacySection">
         <h2
           onClick={() => {
-            setIsPrivacyMenuOpen(!isPrivacyMenuOpen);
+            setOpenMenu([false, !openMenu[1], false]);
           }}
           className="noSelect"
         >
@@ -129,9 +118,7 @@ export default function Account(props) {
             <MdKeyboardArrowDown />
           </span>
         </h2>
-        <div
-          className={"dropdownContent " + (isPrivacyMenuOpen ? "clicked" : "") }
-        >
+        <div className={"dropdownContent " + (openMenu[1] ? "clicked" : "")}>
           {isResetPassBtnClicked ? (
             <p>You will receive an email by us shortly</p>
           ) : (
@@ -139,6 +126,82 @@ export default function Account(props) {
               Reset your password
             </p>
           )}
+        </div>
+      </section>
+      <section id="openAIAPISection">
+        <h2
+          onClick={() => {
+            setOpenMenu([false, false, !openMenu[2]]);
+          }}
+          className="noSelect"
+        >
+          {isDevMode ? (
+            <div className="devModeIcon">
+              <IoCodeSlash />
+            </div>
+          ) : (
+            ""
+          )}
+          OpenAI API
+          <span>
+            <MdKeyboardArrowDown />
+          </span>
+        </h2>
+        <div className={"dropdownContent " + (openMenu[2] ? "clicked" : "")}>
+          {(props.userInfo.openAIAPIKey &&
+            props.userInfo.openAIAPIKey !== "" &&
+            props.userInfo.openAIAPIKeySecret &&
+            props.userInfo.openAIAPIKeySecret !== "") ?
+              <>
+                <h3>You haven't connected your OpenAI API key yet.</h3>
+                <p>
+                  API key:
+                  <input
+                    type="text"
+                    placeholder="API key..."
+                    className="keysInput"
+                  ></input>
+                </p>
+                <p>
+                  API secret:
+                  <input
+                    type="text"
+                    placeholder="API secret..."
+                    className="keysInput"
+                  ></input>
+                </p>
+                <p>
+                  <a
+                    href="https://beta.openai.com/account/api-keys"
+                    target="_blank"
+                  >
+                    Get your API key here
+                  </a>
+                </p>
+              </>
+              :
+              <>
+                <h3>Connected to OpenAI API</h3>
+                <p>
+                  API key:
+                  <input
+                    type="text"
+                    placeholder="**************"
+                    className="keysInput"
+                    disabled
+                  ></input>
+                </p>
+                <p>
+                  API secret:
+                  <input
+                    type="text"
+                    placeholder="**************"
+                    className="keysInput"
+                    disabled
+                  ></input>
+                </p>
+              </>
+            }
         </div>
       </section>
     </main>
