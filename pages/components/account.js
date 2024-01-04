@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { MdKeyboardArrowDown, MdKeyboardArrowLeft } from "react-icons/md";
 
 export default function Account(props) {
+  console.log(props);
   const [profilePic, setProfilePic] = useState("");
   let router = useRouter();
 
@@ -39,7 +40,6 @@ export default function Account(props) {
       if (e.target.files[0].size > 4187152) {
         alert("File is bigger than 4 MB. Use a smaller file.");
         e.val = "";
-        // setFile("")
       } else {
         setFile(URL.createObjectURL(e.target.files[0]));
         setFileToUpload(e.target.files[0]);
@@ -100,6 +100,20 @@ export default function Account(props) {
             </div>
           </div>
           {/* <p id="displayName">{props.userInfo.name || props.displayName}</p> */}
+        </div>
+      </section>
+      <section id="openAIAPISection">
+        <h2
+          onClick={() => {
+            // router.push("/openAIAPI");
+          }}
+          className="noSelect"
+        >
+          OpenAI API
+        </h2>
+        <div className="dropdownContent clicked">
+          <p>API key: {props.userInfo.openAIAPIKey || "None"}</p>
+          <p>API secret: {props.userInfo.openAIAPIKeySecret || "None"}</p>
         </div>
       </section>
       <section id="privacySection">

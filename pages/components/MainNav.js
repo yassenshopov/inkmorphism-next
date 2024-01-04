@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import app from "../../firebase/clientApp";
 import Loader from "../components/loader.js";
+import { FaBookReader, FaHandPeace } from "react-icons/fa";
 
 export default function MainNav() {
   const auth = getAuth(app);
@@ -42,8 +43,10 @@ export default function MainNav() {
 
   const [loadBool, setLoadBool] = useState(false);
 
+  const [isMenuVisible, setIsMenuVisible] = useState([false, false, false]);
+
   return (
-    <nav id="MainNav">
+    <nav id="MainNav" className={mobileToggle == "clicked" ? "mobileMenuClicked" : ""}>
       {loadBool ? <Loader /> : ""}
 
       <a href="/" id="logo" className="noSelect">
@@ -51,17 +54,48 @@ export default function MainNav() {
         <p>Inkmorphism</p>
       </a>
       <div>
+        <div
+          className="dropdown"
+          onClick={() => {
+            setIsMenuVisible([!isMenuVisible[0], false, false]);
+            setTimeout(() => {
+              setIsMenuVisible([false, false, false]);
+            }, 200000);
+          }}
+        >
+          Resources <span className="arrow"></span>
+          <div className={"fallingMenu " + (isMenuVisible[0] ? "visible" : "")}>
+            <a href="/about">
+              <div className="icon">
+                <FaHandPeace />
+              </div>
+              <div>
+                <p className="headline">About us</p>
+                <p className="description">Meet the team behind Inkmorphism</p>
+              </div>
+            </a>
+            <a href="/blog">
+              <div className="icon">
+                <FaBookReader />
+              </div>
+              <div>
+                <p className="headline">Blog</p>
+                <p className="description">
+                  Helpful articles about web development and design
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
         <a className="noSelect" href="/templates">
           Browse templates
         </a>
-        <a className="noSelect" href="/about">
-          About us
-        </a>
-        <a className="noSelect" href="/blog">
-          Blog
-        </a>
         {auth.currentUser === null ? (
-          <a className="noSelect signIn" href="/register" style={{fontWeight: 500}}>
+          <a
+            className="noSelect signIn"
+            href="/register"
+            style={{ fontWeight: 500 }}
+          >
             Get started for free
           </a>
         ) : (
@@ -90,7 +124,11 @@ export default function MainNav() {
           Blog
         </a>
         {auth.currentUser === null ? (
-          <a className="noSelect signIn" href="/register" style={{fontWeight: 500}}>
+          <a
+            className="noSelect signIn"
+            href="/register"
+            style={{ fontWeight: 500 }}
+          >
             Get started for free
           </a>
         ) : (

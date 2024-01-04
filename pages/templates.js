@@ -20,14 +20,14 @@ let newSite;
 let col;
 let slug;
 
-export default function Templates() {
-  // Meta data:
-  let title = "Inkmorphism - Templates for every website need";
-  let img = "https://inkmorphism.com/pricing/og.webp";
-  let description =
-    "Explore Inkmorphism's AI-powered website templates – Effortlessly create stunning sites with our innovative design solutions. Get started today!";
-  let author = "Yassen Shopov";
+// Meta data:
+let title = "Inkmorphism - Templates for every website need";
+let img = "https://inkmorphism.com/pricing/og.webp";
+let description =
+  "Explore Inkmorphism's AI-powered website templates – Effortlessly create stunning sites with our innovative design solutions. Get started today!";
+let author = "Yassen Shopov";
 
+export default function Templates() {
   let profile_pic = "";
 
   const [loadBool, setLoadBool] = useState(false);
@@ -62,12 +62,11 @@ export default function Templates() {
     //check if user has filled out the survey
     try {
       const userSurveyData = doc(db, "users", uid, "surveyData", "data");
-      const userSurveyDataDoc = await getDoc(userSurveyData)
-        .then((doc) => {
-          if (!doc.exists()) {
-            setSurveyNotFilled(true);
-          }
-        })
+      const userSurveyDataDoc = await getDoc(userSurveyData).then((doc) => {
+        if (!doc.exists()) {
+          setSurveyNotFilled(true);
+        }
+      });
       // if (!userSurveyDataDoc.exists()) {
       // setTimeout(() => {
       // setSurveyNotFilled(true);
@@ -193,65 +192,16 @@ export default function Templates() {
   }
 
   useEffect(() => {
-    if (defaultThumbnail !== "" && defaultLogo !== "") {
-      newSite = {
-        published: false,
-        deleted: false,
-        domain: slug,
-        domainSlug: domainSlug,
-        initDate: "",
-        name: "Fuzzy Beats",
-        style: styleVar.slice(0, 1).toUpperCase() + styleVar.slice(1),
-        thumbnail: defaultThumbnail,
-        pageType: "SPA",
-        webContent: {
-          meta: {
-            colorPalette: {
-              color1: "#ffffff",
-              color2: "#ffffeb",
-              color3: "#79e16b",
-              colorLight: "#fefefe",
-              colorDark: "#121212",
-            },
-            metaFavicon: defaultLogo,
-            metaStyle: styleVar.toLowerCase(),
-            metaTitle: "Fuzzy Beats",
-            metaDescription: "The description for your website",
-            metaThumbnail: defaultThumbnail,
-            metaAuthor: "Meta Author",
-          },
-          pages: {
-            main: {
-              structure: [
-                {
-                  type: "nav",
-                  options: {},
-                  content: {
-                    logo: defaultLogo,
-                  },
-                },
-                {
-                  type: "imgAndTxt",
-                  content: {
-                    img: "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Fminerals-locate-276%2FsrcFiles%2FimgPlaceholder.png?alt=media&token=f3dbf650-3ac2-4644-9047-a207ab6f80f9",
-                    txt: "Get ready to hop along with Fuzzy Beats at their high-energy bunny bash!",
-                  },
-                  options: {
-                    direction: "directHorizontal",
-                  },
-                },
-                {
-                  type: "footer",
-                  options: {},
-                  content: {
-                    txt: "Copyright by Fuzzy Beats ©",
-                  },
-                },
-              ],
-            },
-          },
-        },
-      };
+    if (defaultThumbnail !== "" && defaultLogo !== "") {      // get the static json from templates/templatenameStarter.json
+      let newSite = require("./templates/" + styleVar + "Starter.json");
+      // set the custom properties
+      newSite.domainSlug = domainSlug;
+      newSite.domainName = slug;
+      newSite.initDate = new Date().toLocaleDateString();
+      newSite.thumbnail = defaultThumbnail;
+      newSite.webContent.meta.metaThumbnail = defaultThumbnail;
+      newSite.webContent.meta.metaAuthor = auth.currentUser.displayName;
+      newSite.webContent.meta.metaFavicon = defaultLogo;
       setDoc(doc(col, domainSlug), newSite);
       let urlRedirect = "../../config/" + domainSlug;
       window.location.href = urlRedirect;
@@ -465,7 +415,6 @@ export default function Templates() {
                   });
                 } else {
                   setSurveyNotFilled(false);
-                  // send the filled out surveydata to firestore under user-uid/surveyData
                   let db = getFirestore(app);
                   const auth = getAuth(app);
                   let uid;

@@ -40,10 +40,10 @@
               className={"industrial published"}
               style={{
                 "--color1": "#1a1919",
-                "--color2": "#d6ffff",
-                "--color3": "#79e16b",
+                "--color2": "#f7f7f7",
+                "--color3": "#1c01e9",
                 "--colorLight": "#ebebeb",
-                "--colorDark": "#0e111a",
+                "--colorDark": "#454545",
                 "--scrollbarThumb": "#1a1919",
                 "--scrollbarTrack": "#121212",
               }}
@@ -81,23 +81,6 @@
             
             <section
               key="1"
-              className="imgAndTxt reverseHorizontal"
-            >
-              <div className="txtWrapper">
-                <h2>Heading</h2>
-                <p>This is your new ImgNTxt section.</p>
-              </div>
-              <div className="imgWrapper">
-                <img
-                  src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2FimgAndTxt.png?alt=media&token=754fc70d-7640-4975-9077-6d46b953d15b"
-                  draggable="false"
-                  loading="eager"
-                />
-              </div>
-            </section>
-            
-            <section
-              key="2"
               className="hero"
             >
               <div className="txtWrapper">
@@ -121,38 +104,14 @@
             </section>
         
             <section
-              key="3"
-              className="hero"
-            >
-              <div className="txtWrapper">
-                <h2>This is your new Hero section.</h2>
-                <p>This is your new Hero section.</p>
-                <p className="cta"
-                  onClick={() => {
-                    window.scrollTo({
-                      top: window.innerHeight / 0.75,
-                      behavior: "smooth",
-                    });
-                  }}
-                >Explore</p>
-              </div>
-              <div className="imgWrapper">
-                <img src='https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Ffrozen-completely-104%2FmEjML9KrpedH0eFJ.png?alt=media&token=6db89f41-e591-485e-9bef-966be5536d48'
-                draggable="false"
-                loading="eager"
-                />
-              </div>
-            </section>
-        
-            <section
-              key="4"
+              key="2"
               className="txtOnly reverseHorizontal"
             >
               <p>Hello to your new section</p>
             </section>
             
             <section
-              key="5"
+              key="3"
               className="imgAndTxt reverseHorizontal"
             >
               <div className="txtWrapper">
@@ -163,7 +122,7 @@
                 <img
                   src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2FimgAndTxt.png?alt=media&token=754fc70d-7640-4975-9077-6d46b953d15b"
                   draggable="false"
-                  loading="lazy"
+                  loading="eager"
                 />
               </div>
             </section>
@@ -176,7 +135,7 @@
                 <div className="grid">
                   <article>
                     <div className="imgWrapper">
-                      <img src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-default%2Fwebsite-default%2Fgrid3_img1.png?alt=media&token=73bdb872-b2dd-4413-845c-4f075cf38af6" draggable="false" loading="lazy"/>
+                      <img src="https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/user-gTEFEshrDaeGrt9YUt9Uljt0jF43%2Ffrozen-completely-104%2FZ53gqTDDsaBIelxl.png?alt=media&token=b4478150-1e09-45e0-8251-63d9a7008b22" draggable="false" loading="lazy"/>
                     </div>
                     <p
                     >
@@ -196,7 +155,7 @@
               </section>
               
             <section
-              key="7"
+              key="5"
               className="imgOnly "
             >
               <img
@@ -207,7 +166,7 @@
             </section>
             
             <section
-              key="8"
+              key="6"
               className="imgAndTxt reverseHorizontal"
             >
               <div className="txtWrapper">
@@ -260,7 +219,7 @@
               </section>
               
             <section
-              key="10"
+              key="8"
               className="imgAndTxt directHorizontal"
             >
               <div className="txtWrapper">
@@ -310,7 +269,7 @@
             
             <footer 
               className="footer"
-              key="12"
+              key="10"
             >
               <p id="watermark">
                 <a href="https://inkmorphism.com" target="_blank">
