@@ -160,8 +160,8 @@ export default function Templates() {
     let thumbnailRef = ref(storage, user + "/" + domainSlug + "/thumbnail.png");
     let metadata = { contentType: "image/png" };
 
-    let url = "./newSiteLogo.png";
-    let url2 = "./newSiteThumbnail.png";
+    let url = "./tepmlates/" + style + "Logo.png";
+    let url2 = "./tepmlates/" + style + "Thumbnail.png";
     fetch(url)
       .then((response) => response.blob())
       .then((blob) => {
@@ -222,7 +222,7 @@ export default function Templates() {
       className={recommendedTemplates.includes(template) ? "recommended" : ""}
     >
       <div className="imgWrapper">
-        <img src={"main/" + template + "Thumbnail.png"} />
+        <img src={"templates/" + template + "Thumbnail.png"} />
         <div id="hiddenBtns">
           <a
             className="noSelect"

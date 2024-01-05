@@ -70,11 +70,6 @@ export default function Home() {
           </div>
           <div className="backgroundDecor"></div>
           <div className="backgroundDecor"></div>
-          {/* <div id="exampleSites">
-            <img src="main/example4.webp" />
-            <img src="main/example1.webp" />
-            <img src="main/example2.webp" />
-          </div> */}
         </section>
 
         <section id="partners">
@@ -101,13 +96,13 @@ export default function Home() {
           </a>
           <div id="templateGallery">
             <a className="wrapper" href="/templates/industrial" target="_blank">
-              <img src="/main/industrialThumbnail.png" loading="lazy" />
+              <img src="/templates/industrialThumbnail.png" loading="lazy" />
               <h3>Industrial</h3>
               <p>Industrial, a modern template for your business.</p>
               <span>New!</span>
             </a>
             <a className="wrapper" href="/templates/minimalism" target="_blank">
-              <img src="/main/minimalismThumbnail.png" loading="lazy" />
+              <img src="/templates/minimalismThumbnail.png" loading="lazy" />
               <h3>Minimalism</h3>
               <p>Minimalism is the art of using less to achieve more.</p>
               <span>Soon...</span>
@@ -117,7 +112,7 @@ export default function Home() {
               href="/templates/glassmorphism"
               target="_blank"
             >
-              <img src="/main/glassmorphismThumbnail.png" loading="lazy" />
+              <img src="/templates/glassmorphismThumbnail.png" loading="lazy" />
               <h3>Glassmorphism</h3>
               <p>Glassmorphism is a new trend in UI design.</p>
               <span>Soon...</span>
@@ -127,19 +122,19 @@ export default function Home() {
               href="/templates/neobrutalism"
               target="_blank"
             >
-              <img src="/main/neobrutalismThumbnail.png" loading="lazy" />
+              <img src="/templates/neobrutalismThumbnail.png" loading="lazy" />
               <h3>Neobrutalism</h3>
               <p>Neobrutalism is a new trend in UI design.</p>
               <span>Soon...</span>
             </a>
             <a className="wrapper" href="/templates/web3" target="_blank">
-              <img src="/main/web3Thumbnail.png" loading="lazy" />
+              <img src="/templates/web3Thumbnail.png" loading="lazy" />
               <h3>Web 3.0</h3>
               <p>Web 3.0 is the next generation of the internet.</p>
               <span>Soon...</span>
             </a>
             <a className="wrapper" href="/templates/simple" target="_blank">
-              <img src="/main/simpleThumbnail.png" loading="lazy" />
+              <img src="/templates/simpleThumbnail.png" loading="lazy" />
               <h3>Simple</h3>
               <p>Simple is the art of using less to achieve more.</p>
             </a>

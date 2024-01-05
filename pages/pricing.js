@@ -49,7 +49,6 @@ export default function Pricing() {
 
       <MainNav />
 
-      {/* <WIP/> */}
       <main id="pricing">
         {loader ? <Loader /> : null}
         <section id="hero">
@@ -77,16 +76,14 @@ export default function Pricing() {
             </div>
             <p className={monthlyPayment ? "dim" : ""}>Annual</p>
           </div>
+          <p className="discountDisclaimer">Save 20% with the annual plan</p>
         </section>
         <section id="plansGrid">
           <div className="plan">
             <p>
               <strong>Free</strong> plan
             </p>
-            <h2>
-              0$/
-              {monthlyPayment ? <span>month</span> : <span>year</span>}
-            </h2>
+            <h2>$0</h2>
             <div className="features">
               <button
                 onClick={() => {
@@ -132,15 +129,14 @@ export default function Pricing() {
             <p>
               <strong>Creator</strong> plan
             </p>
-            {monthlyPayment ? (
-              <h2>
-                24$/<span>month</span>
-              </h2>
-            ) : (
-              <h2>
-                228$/<span>year</span>
-              </h2>
-            )}
+            <h2>
+              {monthlyPayment ? <>$24</> : <>$19</>}
+              <span>
+                /per month <br />
+                Billed
+                {monthlyPayment ? " monthly" : " annually"}
+              </span>
+            </h2>
             <div className="features">
               <button
                 onClick={() => {
@@ -223,15 +219,14 @@ export default function Pricing() {
             <p>
               <strong>Business</strong> plan
             </p>
-            {monthlyPayment ? (
-              <h2>
-                54$/<span>month</span>
-              </h2>
-            ) : (
-              <h2>
-                468$/<span>year</span>
-              </h2>
-            )}
+            <h2>
+              {monthlyPayment ? <>$54</> : <>$43</>}
+              <span>
+                /per month <br />
+                Billed
+                {monthlyPayment ? " monthly" : " annually"}
+              </span>
+            </h2>
             <div className="features">
               <button
                 onClick={() => {
