@@ -61,7 +61,9 @@
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500;600;700&display=swap");
 
 ::-webkit-scrollbar {
   width: var(--scrollbarWidth);
@@ -82,11 +84,127 @@
 }
 
 .TemplateStudio {
-  font-family: "WorkSans";
   width: 100vw;
+  padding: 1rem 1vw;
+  box-sizing: border-box;
   .mainContent {
     padding: 2rem 10rem;
   }
+  main {
+    border: 4px solid var(--mainDark);
+    section {
+      // border: 1px solid var(--mainGrey);
+    }
+  }
+}
+
+.glassmorphism {
+  box-sizing: border-box;
+  position: relative;
+  @glassmorphismFont1: "Open Sans", sans-serif;
+  @glassmorphismFont2: "Montserrat", sans-serif;
+  font-family: @glassmorphismFont1;
+  &>* {
+    padding: 40px 8vw;
+  }
+  &>*:nth-child(2n) {
+    background: linear-gradient(
+      -20deg,
+      var(--colorLight) 60%,
+      #12ffbc 60%,
+      #12ffbc,
+    );
+  }
+  &>*:not(.nav):nth-child(2n+1) {
+    background: linear-gradient(
+      45deg,
+      var(--colorLight) 45%,
+      #91eaf740 45%,
+      #61ac9760,
+    );
+  }
+  h2 {
+    font-size: 3rem;
+    margin: 0;
+    font-weight: 600;
+    color: var(--mainDark);
+    font-family: @glassmorphismFont2;
+  }
+  .nav {
+    position: absolute;
+    background-color: transparent;
+    backdrop-filter: blur(40px) saturate(180%) contrast(80%) brightness(120%);
+    width: 100%;
+    box-sizing: border-box;
+    #navLogo {
+      height: fit-content;
+      transition: all 200ms ease-in-out;
+      padding: 0 1vw;
+      &:hover {
+        background-color: #00000010;
+        border-radius: 1rem;
+      }
+      img {
+        width: 60px;
+        height: auto;
+        object-fit: cover;
+        margin: auto;
+      }
+      p {
+        font-size: 1.2rem;
+        font-weight: 1000;
+        font-family: @glassmorphismFont2;
+      }
+    }
+  }
+  .hero {
+    padding-top: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .imgWrapper {
+      width: 50%;
+      max-width: 50%;
+      position: relative;
+      img {
+        position: absolute;
+        top: 50%;
+        right: 0%;
+        transform: translate(0%, -50%);
+        width: 100%;
+      }
+    }
+    .txtWrapper {
+      width: 40%;
+      h2 {
+        font-size: 5rem;
+        font-weight: 600;
+        color: var(--mainDark);
+      }
+      p {
+        font-size: 1.2rem;
+        font-weight: 100;
+        color: var(--mainDark);
+        margin: 3rem 0;
+        line-height: 1.5;
+      }
+      .cta {
+        font-size: 1rem;
+        font-family: @glassmorphismFont2;
+        background-color: var(--color1);
+        color: var(--colorDark);
+        width: fit-content;
+        padding: 0.5rem 1vw;
+        border-radius: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 200ms ease-in-out;
+        &:hover {
+        }
+      }
+    }
+  }
+
 }
 
 .checkout {
@@ -233,7 +351,7 @@
   backdrop-filter: blur(20px);
   font-family: "Inter";
   z-index: 5;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.2);
   @keyframes mobileMenuAnimation {
     0% {
       filter: drop-shadow(0 0 0px var(--mainLight));
@@ -761,23 +879,25 @@
 .About {
   width: 100%;
   font-family: "Inter";
-  margin-top: -120px;
-  //every second section is dark
-  section:nth-child(2n) {
-    background-color: var(--mainDark);
-    color: var(--mainLight);
-    // text-align: right;
-    // width: 100%;
-  }
   section {
     background-color: var(--mainLight);
     padding: 50px 8vw;
+    text-align: right;
+    &:nth-child(2n):not(.hero) {
+      text-align: left;
+      background-color: var(--mainDark);
+      color: var(--mainLight);
+    }
   }
   .hero {
     width: 100%;
-    padding: 120px 8vw;
+    padding: 150px 8vw;
     box-sizing: border-box;
-    margin-bottom: -300px;
+    margin-top: -150px;
+    max-height: 650px;
+    background-color: var(--mainDark);
+    color: var(--mainLight);
+    text-align: left;
     h1 {
       font-weight: 400;
       line-height: 2;
@@ -905,7 +1025,7 @@
 }
 
 #mainPage {
-  font-family: "Open Sans", sans-serif;
+  font-family: "WorkSans", sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -938,7 +1058,6 @@
         font-size: 4rem;
         margin: 0 0 20px 0;
         text-align: center;
-        font-family: "Open Sans", sans-serif;
         font-weight: 100;
       }
     }
@@ -946,7 +1065,6 @@
       background-color: var(--mainLight);
       color: var(--mainDark);
       text-align: right;
-
       h2 {
         color: var(--mainDark);
       }
@@ -976,56 +1094,34 @@
     #hero {
       display: flex;
       flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      padding: 160px 16vw 80px 16vw;
-      gap: 4vw;
+      padding: 160px 8vw 80px;
       box-sizing: border-box;
-      background-image: url("./images/mainHeroBg.webp");
-      background-size: cover;
+      background: linear-gradient(
+        45deg,
+        #39032a 25%,
+        #39032af0 50%,
+        #39032afa 75%,
+      );
       position: relative;
-      .backgroundDecor {
-        position: absolute;
-        top: 50%;
-        left: 5%;
-        width: 8rem;
-        height: 8rem;
-        filter: blur(0.4rem);
-        // drop-shadow(-4px -4px 0px rgba(0, 255, 255, 1));
-        background: radial-gradient(circle at center, #6f42c1, #ff73c0);
-        border-radius: 50%;
-        z-index: 0;
-        transition: all 200ms ease-in-out;
-        display: none;
-      }
-      .backgroundDecor:nth-child(2) {
-        top: 5%;
-        right: 5%;
-        left: auto;
-        width: 10rem;
-        height: 10rem;
-      }
-      .backgroundDecor:hover {
-        filter: blur(0.4rem) drop-shadow(4px -4px 0px rgba(255, 0, 0, 1))
-          drop-shadow(-4px 4px 0px rgba(0, 255, 255, 1));
+      & > * {
+        width: 50%;
       }
       #heroTxt {
-        text-align: center;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-align: left;
         color: var(--mainLight);
-        z-index: 1;
+        padding: 0 1vw;
+        box-sizing: border-box;
         h1 {
           margin: 0 0 50px 0;
-          font-weight: 600;
-          font-size: 5rem;
+          font-weight: 800;
+          font-size: 4.5rem;
           color: var(--mainLight);
-          font-family: "Open Sans", sans-serif;
-          width: 60vw;
           box-sizing: border-box;
+          font-family: "Roboto";
           span {
             font-weight: 1000;
             filter: drop-shadow(2px 2px 0px rgba(255, 0, 0, 0.806))
@@ -1045,17 +1141,18 @@
           font-size: 1.4rem;
           color: var(--mainLight);
           font-weight: 200;
-          font-family: "WorkSans";
           max-width: 40vw;
+          text-align: left;
         }
         h3 {
           font-weight: 100;
           font-size: 1rem;
+          margin: 0;
+          padding: 0 3vw;
         }
         a {
-          text-align: center;
           display: block;
-          font-size: 1.6rem;
+          font-size: 1.2rem;
           background-color: var(--mainLight);
           color: var(--mainDark);
           border: none;
@@ -1372,55 +1469,55 @@
       }
     }
     #personalDetailsSection {
-
-    }
-    #profilePicWrapper {
-      display: flex;
-      overflow: hidden;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 10vw;
-      position: relative;
-      height: 10vw;
-      border-radius: 24px;
-      border: 1px solid var(--mainDark);
-      .editIcon {
-        position: absolute;
-        right: 1vw;
-        bottom: 1vw;
-        color: var(--mainDark);
-        background-color: var(--mainLight);
-        border: 1px solid var(--mainDark);
-        padding: 2px;
-        border-radius: 50%;
-        cursor: pointer;
-        transition: all 200ms ease-in-out;
-        z-index: 2;
-      }
-      .hiddenMenu {
-        position: absolute;
+      #profilePicWrapper {
         display: flex;
+        overflow: hidden;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: var(--mainDark);
-        color: var(--mainLight);
-        width: 100%;
-        height: 100%;
-        transition: all 400ms ease-in-out;
-        opacity: 0;
-        font-size: 1.2rem;
-        text-align: center;
-        cursor: pointer;
-      }
-      .hiddenMenu:hover {
-        opacity: 0.8;
-      }
-      #profilePic {
-        min-width: 100%;
-        height: 100%;
+        width: 10vw;
+        position: relative;
+        height: 10vw;
         border-radius: 24px;
+        border: 1px solid var(--mainDark);
+        .editIcon {
+          position: absolute;
+          right: 1vw;
+          bottom: 1vw;
+          color: var(--mainDark);
+          background-color: var(--mainLight);
+          border: 1px solid var(--mainDark);
+          padding: 2px;
+          border-radius: 50%;
+          cursor: pointer;
+          transition: all 200ms ease-in-out;
+          z-index: 2;
+          pointer-events: none;
+        }
+        .hiddenMenu {
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          background-color: var(--mainDark);
+          color: var(--mainLight);
+          width: 100%;
+          height: 100%;
+          transition: all 400ms ease-in-out;
+          opacity: 0;
+          font-size: 1.2rem;
+          text-align: center;
+          cursor: pointer;
+        }
+        .hiddenMenu:hover {
+          opacity: 0.8;
+        }
+        #profilePic {
+          min-width: 100%;
+          height: 100%;
+          border-radius: 24px;
+        }
       }
     }
   }
@@ -2160,7 +2257,7 @@
         background-color: var(--mainDark);
         color: var(--mainLight);
         a {
-          color: var(--mainLight);
+          color: var(--mainDark);
         }
       }
       .num {
@@ -2202,6 +2299,33 @@
           &.password {
             color: var(--mainLight);
             background-color: #626262;
+          }
+        }
+      }
+      .pokemon {
+        display: grid;
+        //try to fit 3 pokemon in a row, if too small, 2, if too small, 1
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+
+        .pokemonCard {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          border: 1px solid var(--mainGrey);
+          border-radius: 12px;
+          overflow: hidden;
+          margin: 10px;
+          p {
+            font-weight: 1000;
+          }
+          .palette {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            width: 100%;
+            div {
+              height: 50px;
+            }
           }
         }
       }
@@ -2883,19 +3007,22 @@
   flex-direction: column;
   font-family: "Noto";
   color: #fff;
-  padding: 120px 4vw 80px;
-  font-family: "Oswald";
+  padding: 150px 8vw 80px;
+  margin-top: -150px;
+  font-family: "Inter";
   background-color: var(--mainDark);
   width: 100vw;
   box-sizing: border-box;
   h1 {
-    margin: 0;
-    font-size: 3rem;
-    color: var(--mainLight);
-    text-align: left;
-    padding: 40px 1vw 80px;
     font-weight: 400;
-    font-family: "Raleway", sans-serif;
+    line-height: 2;
+    color: var(--mainGrey);
+  }
+  h2 {
+    max-width: 60%;
+    line-height: 1.2;
+    font-size: 3rem;
+    margin: 0;
   }
   #templates {
     display: grid;
@@ -2905,6 +3032,7 @@
     row-gap: 60px;
     column-gap: 2vw;
     min-height: 60vh;
+    margin: 80px 0;
     article {
       display: flex;
       flex-direction: column;
@@ -2930,8 +3058,9 @@
       }
       h2 {
         color: var(--mainLight);
-        padding: 0 1vw;
+        padding: 1rem 1vw;
         font-weight: 100;
+        font-size: 1.5rem;
       }
       .imgWrapper {
         z-index: 1;
@@ -3021,7 +3150,7 @@
 
 .Article {
   width: 100vw;
-  padding: 160px 0 0 0;
+  // padding: 160px 0 0 0;
   font-family: "Raleway", sans-serif;
   color: #fff;
   background: var(--mainLight);
@@ -3081,18 +3210,18 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          width: 60%;
+          //make the image a square
+          width: 200px;
+          height: 200px;
           overflow: hidden;
-          box-shadow: 0px 0px 40px #12121220;
+          border: 1px solid var(--mainGrey);
           border-radius: 8px;
           transition: all 200ms ease-in-out;
           align-self: center;
-          &:hover {
-            box-shadow: 0px 0px 40px #12121240;
-          }
           img {
             width: 100%;
             transition: all 200ms ease-in-out;
+            border-radius: 8px;
             &:hover {
               transform: scale(1.05);
             }

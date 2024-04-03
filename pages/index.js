@@ -68,8 +68,9 @@ export default function Home() {
             </a>
             <h3>Try for free. No card required. <IoCard/> </h3>
           </div>
-          <div className="backgroundDecor"></div>
-          <div className="backgroundDecor"></div>
+          <div id="heroImg">
+            <img src="main/heroImg.webp" />
+          </div>
         </section>
 
         <section id="partners">

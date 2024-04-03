@@ -1,0 +1,96 @@
+{
+  "published": false,
+  "deleted": false,
+  "name": "GlassPay",
+  "style": "Glassmorphism",
+  "pageType": "SPA",
+  "webContent": {
+    "meta": {
+      "colorPalette": {
+        "color1": "#12ffbc",
+        "color2": "#000000",
+        "color3": "#75b4ff",
+        "colorLight": "#ffffff",
+        "colorDark": "#000000"
+      },
+      "metaStyle": "glassmorphism",
+      "metaTitle": "Elegant Glass Design - Your Stylish Website",
+      "metaDescription": "Create a stunning website with Glass Elegance. A perfect blend of glassmorphism and modern design."
+    },
+    "pages": {
+      "main": {
+        "structure": [
+          {
+            "type": "nav",
+            "options": {},
+            "content": {}
+          },
+          {
+            "options": { "direction": "" },
+            "type": "hero",
+            "content": {
+              "txt": "Millions of companies of all sizes use Stripe online and in person to accept payments, send payouts, automate financial processes, and ultimately grow revenue.",
+              "cta": "Explore now ▼",
+              "img": "https://firebasestorage.googleapis.com/v0/b/inkmorphism.appspot.com/o/templates%2Fglassmorphism%2FheroImg.png?alt=media&token=9750ddd8-11c0-4061-9165-996e2fcb8fcb",
+              "heading": "Transparent payments"
+            }
+          },
+          {
+            "type": "imgAndTxt",
+            "content": {
+              "heading": "About us",
+              "txt": "Discover the story of Glass Elegance, where innovation and sophistication converge to create a unique online experience.",
+              "img": "https://your-website.com/path/to/about_image.jpg"
+            },
+            "options": {
+              "direction": "reverseHorizontal"
+            }
+          },
+          {
+            "content": {
+              "img1": "https://your-website.com/path/to/image1.jpg",
+              "img2": "https://your-website.com/path/to/image2.jpg",
+              "img3": "https://your-website.com/path/to/image3.jpg",
+              "txt1": "Explore a variety of glassmorphic elements and stylish layouts.",
+              "txt2": "Check out our latest web design trends and tips.",
+              "txt3": "Crafted with precision and creativity to make your website stand out.",
+              "heading": "What we offer:"
+            },
+            "options": {
+              "direction": ""
+            },
+            "type": "grid3"
+          },
+          {
+            "type": "imgAndTxt",
+            "content": {
+              "heading": "Our vision",
+              "txt": "At Glass Elegance, we envision a digital world where elegance and functionality seamlessly coexist. Join us in creating visually stunning and user-friendly websites.",
+              "img": "https://your-website.com/path/to/vision_image.jpg"
+            },
+            "options": {
+              "direction": "directHorizontal"
+            }
+          },
+          {
+            "content": {
+              "heading": "Visit us @ our Headquarters:",
+              "embedURL": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d78254.62888311259!2d-0.03589962423300514!3d52.19873939819569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d85d89f32a012d%3A0x63a320e1a35e3d21!2z0JrQtdC50LzQsdGA0LjQtNC2LCDQktC10LvQuNC60L7QsdGA0LjRgtCw0L3QuNGP!5e0!3m2!1sbg!2sbg!4v1704566126073!5m2!1sbg!2sbg"
+            },
+            "options": {
+              "direction": ""
+            },
+            "type": "maps"
+          },
+          {
+            "type": "footer",
+            "options": {},
+            "content": {
+              "txt": "Copyright by Glass Elegance © 2024"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

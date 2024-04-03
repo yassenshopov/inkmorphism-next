@@ -41,12 +41,23 @@ export default function UsersDash() {
             `websites`
           );
           const websitesRefQuerySnapshot = await getDocs(websitesRef);
+          console.log(websitesRefQuerySnapshot.docs);
           const websites = websitesRefQuerySnapshot.docs.map((doc) =>
             doc.data()
           );
           user.websites = websites;
           try {
-            getProfilePicFromStorage(user.uid);
+            // getProfilePicFromStorage(user.uid);
+          } catch (err) {
+            console.error(err);
+          }
+          //check if there is users/user.uid, for example if there is a user abc123 for every user-abc123
+          try {
+            const userRef = doc(db, `users`, `${user.uid}`);
+            const userRefQuerySnapshot = await getDoc(userRef);
+            if (userRefQuerySnapshot.exists()) {
+              user.pokemon = userRefQuerySnapshot.data().pokemon;
+            }
           } catch (err) {
             console.error(err);
           }
@@ -261,6 +272,15 @@ export default function UsersDash() {
         >
           <span>All users</span>
         </button>
+        <button
+          className={whichBtnIsSelected === "pokemon" ? "selected" : ""}
+          onClick={() => {
+            setDisplayedUsers(users.filter((user) => user.pokemon));
+            setWhichBtnIsSelected("pokemon");
+          }}
+        >
+          <span>Users w/ Pokemon</span>
+        </button>
       </p>
       {/* <p id="sort">
         Sort by
@@ -416,6 +436,35 @@ export default function UsersDash() {
                 ) : (
                   <p>
                     <span>Websites: </span>
+                    None
+                  </p>
+                )
+              }
+              {
+                //if the user has the Pokemon collection, display it
+                user.pokemon ? (
+                  <>
+                    <h3>Pokemon:</h3>
+                    <div className="pokemon">
+                      {user.pokemon.map((pokemon) => {
+                        return (
+                          <div key={pokemon.id} className="pokemonCard">
+                            <p>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</p>
+                            <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + (pokemon.shiny ? "shiny/" : "")
+                             + pokemon.id + ".png"} />
+                             <div className="palette">
+                                <div className="color" style={{backgroundColor: pokemon.palette[0]}}></div>
+                                <div className="color" style={{backgroundColor: pokemon.palette[1]}}></div>
+                                <div className="color" style={{backgroundColor: pokemon.palette[2]}}></div>
+                              </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </>
+                ) : (
+                  <p>
+                    <span>Pokemon: </span>
                     None
                   </p>
                 )
