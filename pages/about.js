@@ -48,10 +48,25 @@ export default function About() {
         <img src="/about/whoAreWe.webp" />
       </section>
 
-      {/* <WIP /> */}
-      {/* <main>
-        123
-      </main> */}
+      <section className="whoAreWe">
+        <h2>Who are we?</h2>
+        <p>
+          We are a team of 3 people, who are passionate about creating
+          high-quality products. We are constantly looking for new ways to
+          improve our products and make them more accessible to everyone.
+        </p>
+        <img src="/about/whoAreWe.webp" />
+      </section>
+      
+      <section className="whoAreWe">
+        <h2>Who are we?</h2>
+        <p>
+          We are a team of 3 people, who are passionate about creating
+          high-quality products. We are constantly looking for new ways to
+          improve our products and make them more accessible to everyone.
+        </p>
+        <img src="/about/whoAreWe.webp" />
+      </section>
 
       <MainFooter />
     </div>

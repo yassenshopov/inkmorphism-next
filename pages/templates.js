@@ -160,8 +160,8 @@ export default function Templates() {
     let thumbnailRef = ref(storage, user + "/" + domainSlug + "/thumbnail.png");
     let metadata = { contentType: "image/png" };
 
-    let url = "./tepmlates/" + style + "Logo.png";
-    let url2 = "./tepmlates/" + style + "Thumbnail.png";
+    let url = "./templates/" + style + "Logo.png";
+    let url2 = "./templates/" + style + "Thumbnail.png";
     fetch(url)
       .then((response) => response.blob())
       .then((blob) => {
@@ -192,7 +192,8 @@ export default function Templates() {
   }
 
   useEffect(() => {
-    if (defaultThumbnail !== "" && defaultLogo !== "") {      // get the static json from templates/templatenameStarter.json
+    if (defaultThumbnail !== "" && defaultLogo !== "") {
+      // get the static json from templates/templatenameStarter.json
       let newSite = require("./templates/" + styleVar + "Starter.json");
       // set the custom properties
       newSite.domainSlug = domainSlug;
@@ -444,6 +445,9 @@ export default function Templates() {
       <main id="templatesWrapper">
         <section>
           <h1>Templates</h1>
+          <h2>
+            Choose a template that fits your needs and start building 
+          </h2>
         </section>
         <section id="templates">{templates}</section>
       </main>

@@ -63,6 +63,69 @@
   src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVsEpYCP.ttf) format('truetype');
 }
 @font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Uw-.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvr6Ew-.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCs16Ew-.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Ew-.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtZ6Ew-.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCu170w-.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCuM70w-.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvr70w-.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvC70w-.ttf) format('truetype');
+}
+@font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 100;
@@ -125,6 +188,46 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuBWYMZg.ttf) format('truetype');
 }
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 300;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inconsolata/v32/QldgNThLqRwH-OJ1UHjlKENVzkWGVkL3GZQmAwLYxYWI2qfdm7Lpp9s8aRo.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inconsolata/v32/QldgNThLqRwH-OJ1UHjlKENVzkWGVkL3GZQmAwLYxYWI2qfdm7Lpp4U8aRo.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inconsolata/v32/QldgNThLqRwH-OJ1UHjlKENVzkWGVkL3GZQmAwLYxYWI2qfdm7Lpp7c8aRo.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inconsolata/v32/QldgNThLqRwH-OJ1UHjlKENVzkWGVkL3GZQmAwLYxYWI2qfdm7Lpp1s7aRo.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inconsolata/v32/QldgNThLqRwH-OJ1UHjlKENVzkWGVkL3GZQmAwLYxYWI2qfdm7Lpp2I7aRo.ttf) format('truetype');
+}
 ::-webkit-scrollbar {
   width: var(--scrollbarWidth);
 }
@@ -140,11 +243,108 @@
   box-sizing: border-box;
 }
 .TemplateStudio {
-  font-family: "WorkSans";
   width: 100vw;
+  padding: 1rem 1vw;
+  box-sizing: border-box;
 }
 .TemplateStudio .mainContent {
   padding: 2rem 10rem;
+}
+.TemplateStudio main {
+  border: 4px solid var(--mainDark);
+}
+.glassmorphism {
+  box-sizing: border-box;
+  position: relative;
+  font-family: "Open Sans", sans-serif;
+}
+.glassmorphism > * {
+  padding: 40px 8vw;
+}
+.glassmorphism > *:nth-child(2n) {
+  background: linear-gradient(-20deg, var(--colorLight) 60%, #12ffbc 60%, #12ffbc);
+}
+.glassmorphism > *:not(.nav):nth-child(2n+1) {
+  background: linear-gradient(45deg, var(--colorLight) 45%, #91eaf740 45%, #61ac9760);
+}
+.glassmorphism h2 {
+  font-size: 3rem;
+  margin: 0;
+  font-weight: 600;
+  color: var(--mainDark);
+  font-family: "Montserrat", sans-serif;
+}
+.glassmorphism .nav {
+  position: absolute;
+  background-color: transparent;
+  backdrop-filter: blur(40px) saturate(180%) contrast(80%) brightness(120%);
+  width: 100%;
+  box-sizing: border-box;
+}
+.glassmorphism .nav #navLogo {
+  height: fit-content;
+  transition: all 200ms ease-in-out;
+  padding: 0 1vw;
+}
+.glassmorphism .nav #navLogo:hover {
+  background-color: #00000010;
+  border-radius: 1rem;
+}
+.glassmorphism .nav #navLogo img {
+  width: 60px;
+  height: auto;
+  object-fit: cover;
+  margin: auto;
+}
+.glassmorphism .nav #navLogo p {
+  font-size: 1.2rem;
+  font-weight: 1000;
+  font-family: "Montserrat", sans-serif;
+}
+.glassmorphism .hero {
+  padding-top: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.glassmorphism .hero .imgWrapper {
+  width: 50%;
+  max-width: 50%;
+  position: relative;
+}
+.glassmorphism .hero .imgWrapper img {
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  transform: translate(0%, -50%);
+  width: 100%;
+}
+.glassmorphism .hero .txtWrapper {
+  width: 40%;
+}
+.glassmorphism .hero .txtWrapper h2 {
+  font-size: 5rem;
+  font-weight: 600;
+  color: var(--mainDark);
+}
+.glassmorphism .hero .txtWrapper p {
+  font-size: 1.2rem;
+  font-weight: 100;
+  color: var(--mainDark);
+  margin: 3rem 0;
+  line-height: 1.5;
+}
+.glassmorphism .hero .txtWrapper .cta {
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  background-color: var(--color1);
+  color: var(--colorDark);
+  width: fit-content;
+  padding: 0.5rem 1vw;
+  border-radius: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
 }
 .checkout {
   font-family: "Open Sans", sans-serif;
@@ -295,7 +495,7 @@
   backdrop-filter: blur(20px);
   font-family: "Inter";
   z-index: 5;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 @keyframes mobileMenuAnimation {
   0% {
@@ -788,21 +988,26 @@
 .About {
   width: 100%;
   font-family: "Inter";
-  margin-top: -120px;
-}
-.About section:nth-child(2n) {
-  background-color: var(--mainDark);
-  color: var(--mainLight);
 }
 .About section {
   background-color: var(--mainLight);
   padding: 50px 8vw;
+  text-align: right;
+}
+.About section:nth-child(2n):not(.hero) {
+  text-align: left;
+  background-color: var(--mainDark);
+  color: var(--mainLight);
 }
 .About .hero {
   width: 100%;
-  padding: 120px 8vw;
+  padding: 150px 8vw;
   box-sizing: border-box;
-  margin-bottom: -300px;
+  margin-top: -150px;
+  max-height: 650px;
+  background-color: var(--mainDark);
+  color: var(--mainLight);
+  text-align: left;
 }
 .About .hero h1 {
   font-weight: 400;
@@ -913,7 +1118,7 @@
   visibility: visible;
 }
 #mainPage {
-  font-family: "Open Sans", sans-serif;
+  font-family: "WorkSans", sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -949,7 +1154,6 @@
   font-size: 4rem;
   margin: 0 0 20px 0;
   text-align: center;
-  font-family: "Open Sans", sans-serif;
   font-weight: 100;
 }
 #mainPage main section:nth-child(2n) {
@@ -985,56 +1189,31 @@
 #mainPage main #hero {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 160px 16vw 80px 16vw;
-  gap: 4vw;
+  padding: 160px 8vw 80px;
   box-sizing: border-box;
-  background-image: url("images/mainHeroBg.webp");
-  background-size: cover;
+  background: linear-gradient(45deg, #39032a 25%, #39032af0 50%, #39032afa 75%);
   position: relative;
 }
-#mainPage main #hero .backgroundDecor {
-  position: absolute;
-  top: 50%;
-  left: 5%;
-  width: 8rem;
-  height: 8rem;
-  filter: blur(0.4rem);
-  background: radial-gradient(circle at center, #6f42c1, #ff73c0);
-  border-radius: 50%;
-  z-index: 0;
-  transition: all 200ms ease-in-out;
-  display: none;
-}
-#mainPage main #hero .backgroundDecor:nth-child(2) {
-  top: 5%;
-  right: 5%;
-  left: auto;
-  width: 10rem;
-  height: 10rem;
-}
-#mainPage main #hero .backgroundDecor:hover {
-  filter: blur(0.4rem) drop-shadow(4px -4px 0px #ff0000) drop-shadow(-4px 4px 0px #00ffff);
+#mainPage main #hero > * {
+  width: 50%;
 }
 #mainPage main #hero #heroTxt {
-  text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
   color: var(--mainLight);
-  z-index: 1;
+  padding: 0 1vw;
+  box-sizing: border-box;
 }
 #mainPage main #hero #heroTxt h1 {
   margin: 0 0 50px 0;
-  font-weight: 600;
-  font-size: 5rem;
+  font-weight: 800;
+  font-size: 4.5rem;
   color: var(--mainLight);
-  font-family: "Open Sans", sans-serif;
-  width: 60vw;
   box-sizing: border-box;
+  font-family: "Roboto";
 }
 #mainPage main #hero #heroTxt h1 span {
   font-weight: 1000;
@@ -1050,17 +1229,18 @@
   font-size: 1.4rem;
   color: var(--mainLight);
   font-weight: 200;
-  font-family: "WorkSans";
   max-width: 40vw;
+  text-align: left;
 }
 #mainPage main #hero #heroTxt h3 {
   font-weight: 100;
   font-size: 1rem;
+  margin: 0;
+  padding: 0 3vw;
 }
 #mainPage main #hero #heroTxt a {
-  text-align: center;
   display: block;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   background-color: var(--mainLight);
   color: var(--mainDark);
   border: none;
@@ -1358,7 +1538,7 @@
   color: var(--mainDark);
   filter: drop-shadow(2px 2px 0px red) drop-shadow(-2px -2px 0px cyan);
 }
-#accountWrapper #accountSection #profilePicWrapper {
+#accountWrapper #accountSection #personalDetailsSection #profilePicWrapper {
   display: flex;
   overflow: hidden;
   flex-direction: column;
@@ -1370,7 +1550,7 @@
   border-radius: 24px;
   border: 1px solid var(--mainDark);
 }
-#accountWrapper #accountSection #profilePicWrapper .editIcon {
+#accountWrapper #accountSection #personalDetailsSection #profilePicWrapper .editIcon {
   position: absolute;
   right: 1vw;
   bottom: 1vw;
@@ -1382,8 +1562,9 @@
   cursor: pointer;
   transition: all 200ms ease-in-out;
   z-index: 2;
+  pointer-events: none;
 }
-#accountWrapper #accountSection #profilePicWrapper .hiddenMenu {
+#accountWrapper #accountSection #personalDetailsSection #profilePicWrapper .hiddenMenu {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -1399,10 +1580,10 @@
   text-align: center;
   cursor: pointer;
 }
-#accountWrapper #accountSection #profilePicWrapper .hiddenMenu:hover {
+#accountWrapper #accountSection #personalDetailsSection #profilePicWrapper .hiddenMenu:hover {
   opacity: 0.8;
 }
-#accountWrapper #accountSection #profilePicWrapper #profilePic {
+#accountWrapper #accountSection #personalDetailsSection #profilePicWrapper #profilePic {
   min-width: 100%;
   height: 100%;
   border-radius: 24px;
@@ -2117,7 +2298,7 @@
 }
 .UsersDash .users .user.isAdmin a,
 .UsersDash .users .user.isCreator a {
-  color: var(--mainLight);
+  color: var(--mainDark);
 }
 .UsersDash .users .user .num {
   position: absolute;
@@ -2158,6 +2339,31 @@
 .UsersDash .users .user p div.password {
   color: var(--mainLight);
   background-color: #626262;
+}
+.UsersDash .users .user .pokemon {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+.UsersDash .users .user .pokemon .pokemonCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--mainGrey);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 10px;
+}
+.UsersDash .users .user .pokemon .pokemonCard p {
+  font-weight: 1000;
+}
+.UsersDash .users .user .pokemon .pokemonCard .palette {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+}
+.UsersDash .users .user .pokemon .pokemonCard .palette div {
+  height: 50px;
 }
 #cPanel {
   height: fit-content !important;
@@ -2809,20 +3015,23 @@
   flex-direction: column;
   font-family: "Noto";
   color: #fff;
-  padding: 120px 4vw 80px;
-  font-family: "Oswald";
+  padding: 150px 8vw 80px;
+  margin-top: -150px;
+  font-family: "Inter";
   background-color: var(--mainDark);
   width: 100vw;
   box-sizing: border-box;
 }
 #templatesWrapper h1 {
-  margin: 0;
-  font-size: 3rem;
-  color: var(--mainLight);
-  text-align: left;
-  padding: 40px 1vw 80px;
   font-weight: 400;
-  font-family: "Raleway", sans-serif;
+  line-height: 2;
+  color: var(--mainGrey);
+}
+#templatesWrapper h2 {
+  max-width: 60%;
+  line-height: 1.2;
+  font-size: 3rem;
+  margin: 0;
 }
 #templatesWrapper #templates {
   display: grid;
@@ -2832,6 +3041,7 @@
   row-gap: 60px;
   column-gap: 2vw;
   min-height: 60vh;
+  margin: 80px 0;
 }
 #templatesWrapper #templates article {
   display: flex;
@@ -2859,8 +3069,9 @@
 }
 #templatesWrapper #templates article h2 {
   color: var(--mainLight);
-  padding: 0 1vw;
+  padding: 1rem 1vw;
   font-weight: 100;
+  font-size: 1.5rem;
 }
 #templatesWrapper #templates article .imgWrapper {
   z-index: 1;
@@ -2945,7 +3156,6 @@
 }
 .Article {
   width: 100vw;
-  padding: 160px 0 0 0;
   font-family: "Raleway", sans-serif;
   color: #fff;
   background: var(--mainLight);
@@ -3009,19 +3219,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60%;
+  width: 200px;
+  height: 200px;
   overflow: hidden;
-  box-shadow: 0px 0px 40px #12121220;
+  border: 1px solid var(--mainGrey);
   border-radius: 8px;
   transition: all 200ms ease-in-out;
   align-self: center;
 }
-.Article main aside #authorProfile #authorProfilePic:hover {
-  box-shadow: 0px 0px 40px #12121240;
-}
 .Article main aside #authorProfile #authorProfilePic img {
   width: 100%;
   transition: all 200ms ease-in-out;
+  border-radius: 8px;
 }
 .Article main aside #authorProfile #authorProfilePic img:hover {
   transform: scale(1.05);

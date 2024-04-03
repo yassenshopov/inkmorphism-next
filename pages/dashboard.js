@@ -14,14 +14,7 @@ import {
 } from "firebase/firestore/lite";
 import placeholder from "../styles/images/placeholder.png";
 import defaultProfilePic from "../styles/images/defaultProfilePic.png";
-import {
-  getStorage,
-  ref,
-  getDownloadURL,
-  getMetadata,
-  getBytes,
-  uploadBytes,
-} from "firebase/storage";
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import {
   AiFillCheckCircle,
   AiOutlineCheck,
@@ -138,7 +131,7 @@ export default function Dashboard() {
             )}
             <p>
               <span className="bold">Last edited:</span>{" "}
-              {site.lastEdited ? site.lastEdited.toDate().toString() : "--:--"}
+              {site.lastEdited ? site.lastEdited.toDate().toString() : ( site.initDate ? site.initDate : "--:--")}
             </p>
           </div>
           <div className="actionBtns">
@@ -150,7 +143,7 @@ export default function Dashboard() {
                 href={"../pricing?site=" + site.domainSlug}
                 className="editBtn"
               >
-                Publish <BsSignpostFill/>
+                Publish <BsSignpostFill />
               </a>
             ) : (
               ""
@@ -224,9 +217,10 @@ export default function Dashboard() {
                       delTime: null,
                     });
                     window.location.reload();
-                  }
-                  }
-                >Restore <IoRefreshOutline /></button>
+                  }}
+                >
+                  Restore <IoRefreshOutline />
+                </button>
               </article>
             );
           }
